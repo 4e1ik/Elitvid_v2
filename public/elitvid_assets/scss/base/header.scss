@@ -1,0 +1,160 @@
+header {
+  background-color: black;
+  display: block;
+  position: fixed;
+  left: 0;
+  right: 0;
+  margin: auto;
+  z-index: 2;
+}
+
+ul {
+  list-style-type: none;
+}
+
+.header__main {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header__mobile-menu {
+  display: none;
+}
+
+.nav__burger {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo__main {
+  width: 12.5em;
+  height: 3.5em;
+}
+
+.logo__header-mobile {
+  display: none;
+}
+
+.nav__list {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+
+  a {
+    color: white;
+    font-size: 1.1em;
+    text-decoration: none;
+    padding: 1.425em 1em;
+    width: 7em;
+    text-align: center;
+    cursor: pointer;
+    display: inline-block;
+  }
+
+  a:hover {
+    background-color: #ffffff;
+    color: #000000;
+    transition: 0.3s ease-out;
+  }
+
+  li:hover > .nav__sublist {
+    visibility: visible;
+    opacity: 1;
+    transform: rotateX(0deg);
+  }
+
+  .nav__sublist {
+    position: absolute;
+    z-index: 2;
+    transform-origin: 0 0;
+    transform: rotateX(-90deg);
+    transition: .3s ease-out;
+    visibility: hidden;
+    opacity: 0;
+
+    li {
+      position: relative;
+    }
+
+    .nav__sublist {
+      position: absolute;
+      top: 0;
+      left: -100%;
+    }
+
+    a {
+      padding: 0.5em 0.48em;
+      width: 8.55em;
+      background-color: #fff;
+      font-size: 0.9em;
+      color: #000;
+      display: block;
+    }
+
+    a:hover {
+      background-color: #acacac;
+      color: #ffffff;
+      transition: 0.3s ease-out;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+
+  .nav__list {
+    a {
+      font-size: 2em;
+    }
+  }
+
+  .header__menu {
+    display: none;
+  }
+
+  .header__mobile-menu {
+    display: block;
+  }
+
+  .nav__list {
+    .nav__sublist {
+      .nav__sublist {
+        display: none;
+      }
+
+      a {
+        width: 15.55em;
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+
+  .logo__header {
+    //display: none;
+  }
+
+  .logo__header-mobile {
+    //display: block;
+
+    img {
+      //width: 6.5em;
+      //height: 6.5em;
+    }
+  }
+}
+
+@media (max-width: 410px) {
+
+  .logo__header {
+    //object-fit: cover;
+    //width: 40%;
+    img {
+      //width: 50%;
+      height: 100%;
+    }
+  }
+}
