@@ -62,7 +62,7 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="">Выйти</a>
+                    <a href="{{route('logout')}}">Выйти</a>
                 </li>
 
             </ul>
