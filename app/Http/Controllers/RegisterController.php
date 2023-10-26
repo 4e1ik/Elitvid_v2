@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UserRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -15,7 +16,7 @@ class RegisterController extends Controller
         return view('includes.elitvid.admin.registration');
     }
 
-    public function registration(Request $request){
+    public function registration(UserRequest $request){
 //        dd($request);
         if (Auth::check()){
             return redirect(route('admin'));
@@ -30,6 +31,6 @@ class RegisterController extends Controller
             Auth::login($user);
             return redirect(route('admin'));
         }
-        return redirect(route('login'));
+        return redirect(route('login'))->withInput();
     }
 }

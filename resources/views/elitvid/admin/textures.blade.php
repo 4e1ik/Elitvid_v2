@@ -12,7 +12,7 @@
                     </p>
                 </div>
                 <ul class="nav navbar-nav">
-                    <li><a href="{{route('posts.create')}}">Добавить товар</a></li>
+                    <li><a href="{{route('create', ['route' => 'textures'])}}">Добавить товар</a></li>
                 </ul>
             </div>
         </div>

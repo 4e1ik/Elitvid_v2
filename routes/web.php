@@ -33,7 +33,6 @@ Route::prefix('pots')->group(function () {
     Route::get('/rectangular_pots', [MainController::class, 'rectangular_pots'])->name('rectangular_pots');
     Route::get('/square_pots', [MainController::class, 'square_pots'])->name('square_pots');
     Route::get('/round_pots', [MainController::class, 'round_pots'])->name('round_pots');
-
 });
 
 Route::get('/login', [LoginController::class, 'index'])->name('login');
@@ -52,6 +51,9 @@ Route::middleware('auth')->prefix('admin')->group(function (){
     Route::get('/pots', [AdminController::class, 'pots'])->name('admin_pots');
     Route::get('/textures', [AdminController::class, 'textures'])->name('admin_textures');
     Route::get('/gallery', [AdminController::class, 'gallery'])->name('admin_gallery');
+
+    Route::get('/create/{route}', [AdminController::class, 'create'])->name('create');
+//    Route::get('/test/store', [AdminController::class, 'store'])->name('store');
 
     Route::delete('/images/{id}/{post}/delete', [ImageController::class, 'destroy'])->name('image_destory');
     Route::put('/images/{id}/{post}/update', [ImageController::class, 'update'])->name('image_update');

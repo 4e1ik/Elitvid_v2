@@ -13,7 +13,7 @@
                 </div>
                 <ul class="nav navbar-nav">
 {{--                    {{$route_name = \Illuminate\Support\Facades\Route::currentRouteName()}}--}}
-                    <li><a href="{{route('posts.create')}}">Добавить товар</a></li>
+                    <li><a href="{{route('create', ['route' => 'pots'])}}">Добавить товар</a></li>
                 </ul>
             </div>
         </div>

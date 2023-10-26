@@ -31,12 +31,10 @@ class LoginController extends Controller
           'password' => $request->all()['password'],
         ];
 
-//        dd();
-
         if (Auth::attempt($arr_data)){
             return redirect(route('admin'));
         }
 
-        return redirect(route('login'));
+        return redirect(route('login'))->withInput();
     }
 }

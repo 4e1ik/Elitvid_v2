@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\PostRequest;
 use App\Models\Image;
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Route;
 use Illuminate\Support\Facades\Storage;
 use function Sodium\compare;
 
@@ -21,18 +23,24 @@ class PostController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create(Request $request)
+    public function create()
     {
-        $req = \Illuminate\Support\Facades\Request::server('HTTP_REFERER');
-        $route_name = explode("/",$req)[4];
-
-        return view('includes.elitvid.admin.create_product', compact('route_name'));
+//        $req = \Illuminate\Support\Facades\Request::server('HTTP_REFERER');
+//        $route_name = explode("/",$req)[4];
+//
+////        $url = route('admin_pots');
+//
+////        $route_name = $route;
+//
+////        dd($route_name);
+//
+//        return view('includes.elitvid.admin.create_product', compact('route_name'));
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(PostRequest $request)
     {
         $data = $request->all();
 
@@ -62,9 +70,9 @@ class PostController extends Controller
             $route = 'admin_gallery';
         }
 
+//        dd($dataItem);
+
         return redirect(route($route));
-
-
     }
 
     /**
@@ -106,7 +114,7 @@ class PostController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Post $post)
+    public function update(PostRequest $request, Post $post)
     {
         $data = $request->all();
 

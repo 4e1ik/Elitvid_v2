@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\PostRequest;
 use App\Models\Image;
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class AdminController extends Controller
 {
@@ -58,6 +60,13 @@ class AdminController extends Controller
                 'pots_images','benches_images','post'
             )
         );
+    }
+
+    public function create($route){
+
+        $route_name = $route;
+
+        return view('includes.elitvid.admin.create_product', compact('route_name'));
     }
 
 }
