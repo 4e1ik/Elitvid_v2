@@ -12,7 +12,14 @@
                     </p>
                 </div>
                 <ul class="nav navbar-nav">
-                    <li><a href="{{route('create', ['route' => 'textures'])}}">Добавить товар</a></li>
+                    <a href="{{route('create', ['route' => 'textures'])}}">
+                        <button class="btn ripple btn-outline btn-primary">
+                            <div>
+                                <span>Добавить текстуру</span>
+                                <span class="ink"></span>
+                            </div>
+                        </button>
+                    </a>
                 </ul>
             </div>
         </div>
@@ -22,11 +29,13 @@
                     <div class="panel-heading"><h3>Натуральный камень</h3></div>
                     <div class="panel-body">
                         <div class="responsive-table">
-                            <table id="datatables-example" class="table table-striped table-bordered" width="100%" cellspacing="0">
+                            <table id="datatables-example" class="table table-striped table-bordered" width="100%"
+                                   cellspacing="0">
                                 <thead>
                                 <tr>
                                     <th>Название</th>
                                     <th>Картинка</th>
+{{--                                    <th>Описание картинки текстуры</th>--}}
                                     <th>Время создания</th>
                                     <th>Время редактирования</th>
                                     <th>Опубликован</th>
@@ -36,37 +45,54 @@
                                 </thead>
                                 <tbody>
                                 @foreach($natural_stones as $stone)
-                                <tr>
-                                    <td>{{$stone->title}}</td>
-                                    <td>
-                                        @foreach($stone->images as $image)
-                                            <img style="height: 200px" src="{{asset('storage/'.$image->image)}}" alt="">
-                                        @endforeach
-                                    </td>
-                                    <td>{{$stone->created_at}}</td>
-                                    <td>{{$stone->updated_at}}</td>
-                                    <td>
-                                        @if($stone->active == 1)
-                                            Да
-                                        @else
-                                            Нет
-                                        @endif
-                                    </td>
-                                    <td>
-                                        <a href="{{ route('posts.show', ['post' => $stone->id]) }}">
-                                            <input type="button" class=" btn btn-3d btn-primary" value="Редактировать">
-                                        </a>
-                                    </td>
-                                    <td>
-                                        <form action="{{ route('posts.destroy', ['post' => $stone->id]) }}" method="post">
-                                            @method('DELETE')
-                                            @csrf
-                                            <button type="submit" style="border: 0">
-                                                <input type="button" class="btn btn-3d btn-danger" value="Удалить">
-                                            </button>
-                                        </form>
-                                    </td>
-                                </tr>
+                                    @foreach($stone->images as $image)
+                                    <tr>
+                                        <td>{{$stone->texture_name}}</td>
+                                        <td>
+                                                <img style="height: 200px" src="{{asset('storage/'.$image->image)}}"
+                                                     alt="">
+                                        </td>
+{{--                                        <td>--}}
+{{--                                            <form--}}
+{{--                                                action="{{ route('texture_image_update', ['image' => $image]) }}"--}}
+{{--                                                method="post">--}}
+{{--                                                @method('PUT')--}}
+{{--                                                @csrf--}}
+{{--                                                <input type="text" name="description_image"--}}
+{{--                                                       value="{{$image->description_image}}">--}}
+{{--                                                <button type="submit" style="border: 0">--}}
+{{--                                                    <input type="button" class=" btn btn-3d btn-primary"--}}
+{{--                                                           value="Сохранить описание">--}}
+{{--                                                </button>--}}
+{{--                                            </form>--}}
+{{--                                        </td>--}}
+                                        <td>{{$stone->created_at}}</td>
+                                        <td>{{$stone->updated_at}}</td>
+                                        <td>
+                                            @if($stone->active == 1)
+                                                Да
+                                            @else
+                                                Нет
+                                            @endif
+                                        </td>
+                                        <td>
+                                            <a href="{{ route('textures.edit', ['texture' => $stone]) }}">
+                                                <input type="button" class=" btn btn-3d btn-primary"
+                                                       value="Редактировать">
+                                            </a>
+                                        </td>
+                                        <td>
+                                            <form action="{{ route('textures.destroy', ['texture' => $stone]) }}"
+                                                  method="post">
+                                                @method('DELETE')
+                                                @csrf
+                                                <button type="submit" style="border: 0">
+                                                    <input type="button" class="btn btn-3d btn-danger" value="Удалить">
+                                                </button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                    @endforeach
                                 @endforeach
                                 </tbody>
                             </table>
@@ -75,7 +101,8 @@
                     <div class="panel-heading"><h3>Лунный камень</h3></div>
                     <div class="panel-body">
                         <div class="responsive-table">
-                            <table id="datatables-example" class="table table-striped table-bordered" width="100%" cellspacing="0">
+                            <table id="datatables-example" class="table table-striped table-bordered" width="100%"
+                                   cellspacing="0">
                                 <thead>
                                 <tr>
                                     <th>Название</th>
@@ -89,37 +116,54 @@
                                 </thead>
                                 <tbody>
                                 @foreach($moon_stones as $stone)
-                                    <tr>
-                                        <td>{{$stone->title}}</td>
-                                        <td>
-                                            @foreach($stone->images as $image)
-                                                <img style="height: 200px" src="{{asset('storage/'.$image->image)}}" alt="">
-                                            @endforeach
-                                        </td>
-                                        <td>{{$stone->created_at}}</td>
-                                        <td>{{$stone->updated_at}}</td>
-                                        <td>
-                                            @if($stone->active == 1)
-                                                Да
-                                            @else
-                                                Нет
-                                            @endif
-                                        </td>
-                                        <td>
-                                            <a href="{{ route('posts.show', ['post' => $stone->id]) }}">
-                                                <input type="button" class=" btn btn-3d btn-primary" value="Редактировать">
-                                            </a>
-                                        </td>
-                                        <td>
-                                            <form action="{{ route('posts.destroy', ['post' => $stone->id]) }}" method="post">
-                                                @method('DELETE')
-                                                @csrf
-                                                <button type="submit" style="border: 0">
-                                                    <input type="button" class="btn btn-3d btn-danger" value="Удалить">
-                                                </button>
-                                            </form>
-                                        </td>
-                                    </tr>
+                                    @foreach($stone->images as $image)
+                                        <tr>
+                                            <td>{{$stone->texture_name}}</td>
+                                            <td>
+                                                <img style="height: 200px" src="{{asset('storage/'.$image->image)}}"
+                                                     alt="">
+                                            </td>
+{{--                                            <td>--}}
+{{--                                                <form--}}
+{{--                                                    action="{{ route('texture_image_update', ['image' => $image]) }}"--}}
+{{--                                                    method="post">--}}
+{{--                                                    @method('PUT')--}}
+{{--                                                    @csrf--}}
+{{--                                                    <input type="text" name="description_image"--}}
+{{--                                                           value="{{$image->description_image}}">--}}
+{{--                                                    <button type="submit" style="border: 0">--}}
+{{--                                                        <input type="button" class=" btn btn-3d btn-primary"--}}
+{{--                                                               value="Сохранить описание">--}}
+{{--                                                    </button>--}}
+{{--                                                </form>--}}
+{{--                                            </td>--}}
+                                            <td>{{$stone->created_at}}</td>
+                                            <td>{{$stone->updated_at}}</td>
+                                            <td>
+                                                @if($stone->active == 1)
+                                                    Да
+                                                @else
+                                                    Нет
+                                                @endif
+                                            </td>
+                                            <td>
+                                                <a href="{{ route('textures.edit', ['texture' => $stone]) }}">
+                                                    <input type="button" class=" btn btn-3d btn-primary"
+                                                           value="Редактировать">
+                                                </a>
+                                            </td>
+                                            <td>
+                                                <form action="{{ route('textures.destroy', ['texture' => $stone]) }}"
+                                                      method="post">
+                                                    @method('DELETE')
+                                                    @csrf
+                                                    <button type="submit" style="border: 0">
+                                                        <input type="button" class="btn btn-3d btn-danger" value="Удалить">
+                                                    </button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    @endforeach
                                 @endforeach
                                 </tbody>
                             </table>
@@ -128,7 +172,8 @@
                     <div class="panel-heading"><h3>Полированный камень</h3></div>
                     <div class="panel-body">
                         <div class="responsive-table">
-                            <table id="datatables-example" class="table table-striped table-bordered" width="100%" cellspacing="0">
+                            <table id="datatables-example" class="table table-striped table-bordered" width="100%"
+                                   cellspacing="0">
                                 <thead>
                                 <tr>
                                     <th>Название</th>
@@ -142,37 +187,54 @@
                                 </thead>
                                 <tbody>
                                 @foreach($polished_stones as $stone)
-                                    <tr>
-                                        <td>{{$stone->title}}</td>
-                                        <td>
-                                            @foreach($stone->images as $image)
-                                                <img style="height: 200px" src="{{asset('storage/'.$image->image)}}" alt="">
-                                            @endforeach
-                                        </td>
-                                        <td>{{$stone->created_at}}</td>
-                                        <td>{{$stone->updated_at}}</td>
-                                        <td>
-                                            @if($stone->active == 1)
-                                                Да
-                                            @else
-                                                Нет
-                                            @endif
-                                        </td>
-                                        <td>
-                                            <a href="{{ route('posts.show', ['post' => $stone->id]) }}">
-                                                <input type="button" class=" btn btn-3d btn-primary" value="Редактировать">
-                                            </a>
-                                        </td>
-                                        <td>
-                                            <form action="{{ route('posts.destroy', ['post' => $stone->id]) }}" method="post">
-                                                @method('DELETE')
-                                                @csrf
-                                                <button type="submit" style="border: 0">
-                                                    <input type="button" class="btn btn-3d btn-danger" value="Удалить">
-                                                </button>
-                                            </form>
-                                        </td>
-                                    </tr>
+                                    @foreach($stone->images as $image)
+                                        <tr>
+                                            <td>{{$stone->texture_name}}</td>
+                                            <td>
+                                                <img style="height: 200px" src="{{asset('storage/'.$image->image)}}"
+                                                     alt="">
+                                            </td>
+{{--                                            <td>--}}
+{{--                                                <form--}}
+{{--                                                    action="{{ route('texture_image_update', ['image' => $image]) }}"--}}
+{{--                                                    method="post">--}}
+{{--                                                    @method('PUT')--}}
+{{--                                                    @csrf--}}
+{{--                                                    <input type="text" name="description_image"--}}
+{{--                                                           value="{{$image->description_image}}">--}}
+{{--                                                    <button type="submit" style="border: 0">--}}
+{{--                                                        <input type="button" class=" btn btn-3d btn-primary"--}}
+{{--                                                               value="Сохранить описание">--}}
+{{--                                                    </button>--}}
+{{--                                                </form>--}}
+{{--                                            </td>--}}
+                                            <td>{{$stone->created_at}}</td>
+                                            <td>{{$stone->updated_at}}</td>
+                                            <td>
+                                                @if($stone->active == 1)
+                                                    Да
+                                                @else
+                                                    Нет
+                                                @endif
+                                            </td>
+                                            <td>
+                                                <a href="{{ route('textures.edit', ['texture' => $stone]) }}">
+                                                    <input type="button" class=" btn btn-3d btn-primary"
+                                                           value="Редактировать">
+                                                </a>
+                                            </td>
+                                            <td>
+                                                <form action="{{ route('textures.destroy', ['texture' => $stone]) }}"
+                                                      method="post">
+                                                    @method('DELETE')
+                                                    @csrf
+                                                    <button type="submit" style="border: 0">
+                                                        <input type="button" class="btn btn-3d btn-danger" value="Удалить">
+                                                    </button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    @endforeach
                                 @endforeach
                                 </tbody>
                             </table>
@@ -181,7 +243,8 @@
                     <div class="panel-heading"><h3>Породы дерева</h3></div>
                     <div class="panel-body">
                         <div class="responsive-table">
-                            <table id="datatables-example" class="table table-striped table-bordered" width="100%" cellspacing="0">
+                            <table id="datatables-example" class="table table-striped table-bordered" width="100%"
+                                   cellspacing="0">
                                 <thead>
                                 <tr>
                                     <th>Название</th>
@@ -194,38 +257,55 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @foreach($wood_species as $stone)
-                                    <tr>
-                                        <td>{{$stone->title}}</td>
-                                        <td>
-                                            @foreach($stone->images as $image)
-                                                <img style="height: 200px" src="{{asset('storage/'.$image->image)}}" alt="">
-                                            @endforeach
-                                        </td>
-                                        <td>{{$stone->created_at}}</td>
-                                        <td>{{$stone->updated_at}}</td>
-                                        <td>
-                                            @if($stone->active == 1)
-                                                Да
-                                            @else
-                                                Нет
-                                            @endif
-                                        </td>
-                                        <td>
-                                            <a href="{{ route('posts.show', ['post' => $stone->id]) }}">
-                                                <input type="button" class=" btn btn-3d btn-primary" value="Редактировать">
-                                            </a>
-                                        </td>
-                                        <td>
-                                            <form action="{{ route('posts.destroy', ['post' => $stone->id]) }}" method="post">
-                                                @method('DELETE')
-                                                @csrf
-                                                <button type="submit" style="border: 0">
-                                                    <input type="button" class="btn btn-3d btn-danger" value="Удалить">
-                                                </button>
-                                            </form>
-                                        </td>
-                                    </tr>
+                                @foreach($wood_species as $type)
+                                    @foreach($type->images as $image)
+                                        <tr>
+                                            <td>{{$type->texture_name}}</td>
+                                            <td>
+                                                <img style="height: 200px" src="{{asset('storage/'.$image->image)}}"
+                                                     alt="">
+                                            </td>
+{{--                                            <td>--}}
+{{--                                                <form--}}
+{{--                                                    action="{{ route('texture_image_update', ['image' => $image]) }}"--}}
+{{--                                                    method="post">--}}
+{{--                                                    @method('PUT')--}}
+{{--                                                    @csrf--}}
+{{--                                                    <input type="text" name="description_image"--}}
+{{--                                                           value="{{$image->description_image}}">--}}
+{{--                                                    <button type="submit" style="border: 0">--}}
+{{--                                                        <input type="button" class=" btn btn-3d btn-primary"--}}
+{{--                                                               value="Сохранить описание">--}}
+{{--                                                    </button>--}}
+{{--                                                </form>--}}
+{{--                                            </td>--}}
+                                            <td>{{$type->created_at}}</td>
+                                            <td>{{$type->updated_at}}</td>
+                                            <td>
+                                                @if($type->active == 1)
+                                                    Да
+                                                @else
+                                                    Нет
+                                                @endif
+                                            </td>
+                                            <td>
+                                                <a href="{{ route('textures.edit', ['texture' => $type]) }}">
+                                                    <input type="button" class=" btn btn-3d btn-primary"
+                                                           value="Редактировать">
+                                                </a>
+                                            </td>
+                                            <td>
+                                                <form action="{{ route('textures.destroy', ['texture' => $type]) }}"
+                                                      method="post">
+                                                    @method('DELETE')
+                                                    @csrf
+                                                    <button type="submit" style="border: 0">
+                                                        <input type="button" class="btn btn-3d btn-danger" value="Удалить">
+                                                    </button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    @endforeach
                                 @endforeach
                                 </tbody>
                             </table>
@@ -234,7 +314,8 @@
                     <div class="panel-heading"><h3>Пропитка</h3></div>
                     <div class="panel-body">
                         <div class="responsive-table">
-                            <table id="datatables-example" class="table table-striped table-bordered" width="100%" cellspacing="0">
+                            <table id="datatables-example" class="table table-striped table-bordered" width="100%"
+                                   cellspacing="0">
                                 <thead>
                                 <tr>
                                     <th>Название</th>
@@ -247,38 +328,41 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @foreach($wood_impregnation as $stone)
-                                    <tr>
-                                        <td>{{$stone->title}}</td>
-                                        <td>
-                                            @foreach($stone->images as $image)
-                                                <img style="height: 200px" src="{{asset('storage/'.$image->image)}}" alt="">
-                                            @endforeach
-                                        </td>
-                                        <td>{{$stone->created_at}}</td>
-                                        <td>{{$stone->updated_at}}</td>
-                                        <td>
-                                            @if($stone->active == 1)
-                                                Да
-                                            @else
-                                                Нет
-                                            @endif
-                                        </td>
-                                        <td>
-                                            <a href="{{ route('posts.show', ['post' => $stone->id]) }}">
-                                                <input type="button" class=" btn btn-3d btn-primary" value="Редактировать">
-                                            </a>
-                                        </td>
-                                        <td>
-                                            <form action="{{ route('posts.destroy', ['post' => $stone->id]) }}" method="post">
-                                                @method('DELETE')
-                                                @csrf
-                                                <button type="submit" style="border: 0">
-                                                    <input type="button" class="btn btn-3d btn-danger" value="Удалить">
-                                                </button>
-                                            </form>
-                                        </td>
-                                    </tr>
+                                @foreach($wood_impregnation as $item)
+                                    @foreach($item->images as $image)
+                                        <tr>
+                                            <td>{{$item->texture_name}}</td>
+                                            <td>
+                                                <img style="height: 200px" src="{{asset('storage/'.$image->image)}}"
+                                                     alt="">
+                                            </td>
+                                            <td>{{$item->created_at}}</td>
+                                            <td>{{$item->updated_at}}</td>
+                                            <td>
+                                                @if($item->active == 1)
+                                                    Да
+                                                @else
+                                                    Нет
+                                                @endif
+                                            </td>
+                                            <td>
+                                                <a href="{{ route('textures.edit', ['texture' => $item]) }}">
+                                                    <input type="button" class=" btn btn-3d btn-primary"
+                                                           value="Редактировать">
+                                                </a>
+                                            </td>
+                                            <td>
+                                                <form action="{{ route('textures.destroy', ['texture' => $item]) }}"
+                                                      method="post">
+                                                    @method('DELETE')
+                                                    @csrf
+                                                    <button type="submit" style="border: 0">
+                                                        <input type="button" class="btn btn-3d btn-danger" value="Удалить">
+                                                    </button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    @endforeach
                                 @endforeach
                                 </tbody>
                             </table>

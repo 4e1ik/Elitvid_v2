@@ -5,7 +5,7 @@ namespace App\Http\Requests;
 use App\Http\Controllers\PostController;
 use Illuminate\Foundation\Http\FormRequest;
 
-class PostRequest extends FormRequest
+class ProductRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,11 +23,10 @@ class PostRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title' => 'required|filled|min:3|max:100',
+            'title' => 'required|filled|min:3|max:30',
             'content' => 'required|filled|min:10|max:1000',
-            'item' => 'required|filled',
             'type' => 'required|filled',
-            'active' => 'required|filled|boolean',
+            'image.*.image' => 'required|image'
         ];
     }
 

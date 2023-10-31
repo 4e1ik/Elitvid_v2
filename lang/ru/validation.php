@@ -221,11 +221,12 @@ return [
 
     'attributes' => [
         'title' => 'заголовок',
+        'texture_name' => 'название текстуры',
         'content' => 'описание',
         'type' => 'раздел',
         'active' => 'видимость',
-        'type_img' => 'раздел картинки',
-        'description_img' => 'описание картинки',
+        'description_image' => 'описание картинки',
+        'image' => 'картинка',
     ],
 
 ];

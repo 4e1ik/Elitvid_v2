@@ -12,7 +12,14 @@
                     </p>
                 </div>
                 <ul class="nav navbar-nav">
-                    <li><a href="{{route('posts.create')}}">Добавить товар</a></li>
+                    <a href="{{route('posts.create')}}">
+                        <button class="btn ripple btn-outline btn-primary">
+                            <div>
+                                <span>Добавить товар</span>
+                                <span class="ink"></span>
+                            </div>
+                        </button>
+                    </a>
                 </ul>
             </div>
         </div>
@@ -22,7 +29,8 @@
                     <div class="panel-heading"><h3>Data Tables</h3></div>
                     <div class="panel-body">
                         <div class="responsive-table">
-                            <table id="datatables-example" class="table table-striped table-bordered" width="100%" cellspacing="0">
+                            <table id="datatables-example" class="table table-striped table-bordered" width="100%"
+                                   cellspacing="0">
                                 <thead>
                                 <tr>
                                     <th>Название</th>

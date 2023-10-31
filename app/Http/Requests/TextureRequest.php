@@ -3,9 +3,8 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Rules\Password;
 
-class UserRequest extends FormRequest
+class TextureRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,16 +22,9 @@ class UserRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'username' => 'required',
-            'email' => 'required|email|unique:users,email',
-            'password' => ['required', Password::min(10)->letters()->numbers()->mixedCase()],
-        ];
-    }
-
-    public function messages()
-    {
-        return [
-
+            'texture_name' => 'required|filled|min:3|max:30',
+            'type' => 'required|filled',
+            'image.*.image' => 'required|image'
         ];
     }
 }

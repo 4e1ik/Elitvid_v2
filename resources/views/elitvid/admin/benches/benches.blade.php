@@ -12,7 +12,14 @@
                     </p>
                 </div>
                 <ul class="nav navbar-nav">
-                    <li><a href="{{route('create', ['route' => 'benches'])}}">Добавить товар</a></li>
+                    <a href="{{route('create', ['route' => 'benches'])}}">
+                        <button class="btn ripple btn-outline btn-primary">
+                            <div>
+                                <span>Добавить товар</span>
+                                <span class="ink"></span>
+                            </div>
+                        </button>
+                    </a>
                 </ul>
             </div>
         </div>
@@ -22,7 +29,8 @@
                     <div class="panel-heading"><h3>Коллекция Stones</h3></div>
                     <div class="panel-body">
                         <div class="responsive-table">
-                            <table id="datatables-example" class="table table-striped table-bordered" width="100%" cellspacing="0">
+                            <table id="datatables-example" class="table table-striped table-bordered" width="100%"
+                                   cellspacing="0">
                                 <thead>
                                 <tr>
                                     <th>Название</th>
@@ -36,45 +44,48 @@
                                 </tr>
                                 </thead>
                                 <tbody>
+{{--                                @dd($benches_stones)--}}
                                 @foreach($benches_stones as $bench)
-                                <tr>
-                                    <td>{{$bench->title}}</td>
-                                    <td>{!! $bench->content !!}</td>
-                                    <td>
-                                        @if($bench->type == 9)
-                                            Коллекция Stones
-                                        @elseif($bench->type == 10)
-                                            Коллекция Radius
-                                        @elseif($bench->type == 11)
-                                            Коллекция Solo
-                                        @elseif($bench->type == 12)
-                                            Коллекция Outdoor
-                                        @endif
-                                    </td>
-                                    <td>{{$bench->created_at}}</td>
-                                    <td>{{$bench->updated_at}}</td>
-                                    <td>
-                                        @if($bench->active == 1)
-                                            Да
-                                        @else
-                                            Нет
-                                        @endif
-                                    </td>
-                                    <td>
-                                        <a href="{{route('posts.show', ['post' => $bench->id])}}">
-                                            <input type="button" class=" btn btn-3d btn-primary" value="Редактировать">
-                                        </a>
-                                    </td>
-                                    <td>
-                                        <form action="{{ route('posts.destroy', ['post' => $bench->id]) }}" method="post">
-                                            @method('DELETE')
-                                            @csrf
-                                            <button type="submit" style="border: 0">
-                                                <input type="button" class="btn btn-3d btn-danger" value="Удалить">
-                                            </button>
-                                        </form>
-                                    </td>
-                                </tr>
+                                    <tr>
+                                        <td>{{$bench->title}}</td>
+                                        <td>{!! $bench->content !!}</td>
+                                        <td>
+                                            @if($bench->type == 'Stones')
+                                                Коллекция Stones
+                                            @elseif($bench->type == 'Radius')
+                                                Коллекция Radius
+                                            @elseif($bench->type == 'Solo')
+                                                Коллекция Solo
+                                            @elseif($bench->type == 'Outdoor')
+                                                Коллекция Outdoor
+                                            @endif
+                                        </td>
+                                        <td>{{$bench->created_at}}</td>
+                                        <td>{{$bench->updated_at}}</td>
+                                        <td>
+                                            @if($bench->active == 1)
+                                                Да
+                                            @else
+                                                Нет
+                                            @endif
+                                        </td>
+                                        <td>
+                                            <a href="{{ route('products.edit', ['product' => $bench]) }}">
+                                                <input type="button" class=" btn btn-3d btn-primary"
+                                                       value="Редактировать">
+                                            </a>
+                                        </td>
+                                        <td>
+                                            <form action="{{ route('products.destroy', ['product' => $bench]) }}"
+                                                  method="post">
+                                                @method('DELETE')
+                                                @csrf
+                                                <button type="submit" style="border: 0">
+                                                    <input type="button" class="btn btn-3d btn-danger" value="Удалить">
+                                                </button>
+                                            </form>
+                                        </td>
+                                    </tr>
                                 @endforeach
                                 </tbody>
                             </table>
@@ -83,7 +94,8 @@
                     <div class="panel-heading"><h3>Коллекция Radius</h3></div>
                     <div class="panel-body">
                         <div class="responsive-table">
-                            <table id="datatables-example" class="table table-striped table-bordered" width="100%" cellspacing="0">
+                            <table id="datatables-example" class="table table-striped table-bordered" width="100%"
+                                   cellspacing="0">
                                 <thead>
                                 <tr>
                                     <th>Название</th>
@@ -102,13 +114,13 @@
                                         <td>{{$bench->title}}</td>
                                         <td>{!! $bench->content !!}</td>
                                         <td>
-                                            @if($bench->type == 9)
+                                            @if($bench->type == 'Stones')
                                                 Коллекция Stones
-                                            @elseif($bench->type == 10)
+                                            @elseif($bench->type == 'Radius')
                                                 Коллекция Radius
-                                            @elseif($bench->type == 11)
+                                            @elseif($bench->type == 'Solo')
                                                 Коллекция Solo
-                                            @elseif($bench->type == 12)
+                                            @elseif($bench->type == 'Outdoor')
                                                 Коллекция Outdoor
                                             @endif
                                         </td>
@@ -122,12 +134,14 @@
                                             @endif
                                         </td>
                                         <td>
-                                            <a href="{{route('posts.show', ['post' => $bench->id])}}">
-                                                <input type="button" class=" btn btn-3d btn-primary" value="Редактировать">
+                                            <a href="{{ route('products.edit', ['product' => $bench]) }}">
+                                                <input type="button" class=" btn btn-3d btn-primary"
+                                                       value="Редактировать">
                                             </a>
                                         </td>
                                         <td>
-                                            <form action="{{ route('posts.destroy', ['post' => $bench->id]) }}" method="post">
+                                            <form action="{{ route('products.destroy', ['product' => $bench]) }}"
+                                                  method="post">
                                                 @method('DELETE')
                                                 @csrf
                                                 <button type="submit" style="border: 0">
@@ -144,7 +158,8 @@
                     <div class="panel-heading"><h3>Коллекция Solo</h3></div>
                     <div class="panel-body">
                         <div class="responsive-table">
-                            <table id="datatables-example" class="table table-striped table-bordered" width="100%" cellspacing="0">
+                            <table id="datatables-example" class="table table-striped table-bordered" width="100%"
+                                   cellspacing="0">
                                 <thead>
                                 <tr>
                                     <th>Название</th>
@@ -163,13 +178,13 @@
                                         <td>{{$bench->title}}</td>
                                         <td>{!! $bench->content !!}</td>
                                         <td>
-                                            @if($bench->type == 9)
+                                            @if($bench->type == 'Stones')
                                                 Коллекция Stones
-                                            @elseif($bench->type == 10)
+                                            @elseif($bench->type == 'Radius')
                                                 Коллекция Radius
-                                            @elseif($bench->type == 11)
+                                            @elseif($bench->type == 'Solo')
                                                 Коллекция Solo
-                                            @elseif($bench->type == 12)
+                                            @elseif($bench->type == 'Outdoor')
                                                 Коллекция Outdoor
                                             @endif
                                         </td>
@@ -183,12 +198,14 @@
                                             @endif
                                         </td>
                                         <td>
-                                            <a href="{{route('posts.show', ['post' => $bench->id])}}">
-                                                <input type="button" class=" btn btn-3d btn-primary" value="Редактировать">
+                                            <a href="{{ route('products.edit', ['product' => $bench]) }}">
+                                                <input type="button" class=" btn btn-3d btn-primary"
+                                                       value="Редактировать">
                                             </a>
                                         </td>
                                         <td>
-                                            <form action="{{ route('posts.destroy', ['post' => $bench->id]) }}" method="post">
+                                            <form action="{{ route('products.destroy', ['product' => $bench]) }}"
+                                                  method="post">
                                                 @method('DELETE')
                                                 @csrf
                                                 <button type="submit" style="border: 0">
@@ -205,7 +222,8 @@
                     <div class="panel-heading"><h3>Коллекция Outdoor</h3></div>
                     <div class="panel-body">
                         <div class="responsive-table">
-                            <table id="datatables-example" class="table table-striped table-bordered" width="100%" cellspacing="0">
+                            <table id="datatables-example" class="table table-striped table-bordered" width="100%"
+                                   cellspacing="0">
                                 <thead>
                                 <tr>
                                     <th>Название</th>
@@ -224,13 +242,13 @@
                                         <td>{{$bench->title}}</td>
                                         <td>{!! $bench->content !!}</td>
                                         <td>
-                                            @if($bench->type == 9)
+                                            @if($bench->type == 'Stones')
                                                 Коллекция Stones
-                                            @elseif($bench->type == 10)
+                                            @elseif($bench->type == 'Radius')
                                                 Коллекция Radius
-                                            @elseif($bench->type == 11)
+                                            @elseif($bench->type == 'Solo')
                                                 Коллекция Solo
-                                            @elseif($bench->type == 12)
+                                            @elseif($bench->type == 'Outdoor')
                                                 Коллекция Outdoor
                                             @endif
                                         </td>
@@ -244,12 +262,14 @@
                                             @endif
                                         </td>
                                         <td>
-                                            <a href="{{route('posts.show', ['post' => $bench->id])}}">
-                                                <input type="button" class=" btn btn-3d btn-primary" value="Редактировать">
+                                            <a href="{{ route('products.edit', ['product' => $bench]) }}">
+                                                <input type="button" class=" btn btn-3d btn-primary"
+                                                       value="Редактировать">
                                             </a>
                                         </td>
                                         <td>
-                                            <form action="{{ route('posts.destroy', ['post' => $bench->id]) }}" method="post">
+                                            <form action="{{ route('products.destroy', ['product' => $bench]) }}"
+                                                  method="post">
                                                 @method('DELETE')
                                                 @csrf
                                                 <button type="submit" style="border: 0">

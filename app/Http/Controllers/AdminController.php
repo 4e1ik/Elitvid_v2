@@ -2,10 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\PostRequest;
+use App\Http\Requests\ProductRequest;
+use App\Models\Gallery;
 use App\Models\Image;
 use App\Models\Post;
+use App\Models\Product;
+use App\Models\Texture;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
 class AdminController extends Controller
@@ -18,46 +23,47 @@ class AdminController extends Controller
         return view('elitvid.admin.catalog');
     }
 
-    function benches(Post $post) {
-        $benches_stones = Post::where('item', 2)->where('type', 9)->get();
-        $benches_radius = Post::where('item', 2)->where('type', 10)->get();
-        $benches_solo = Post::where('item', 2)->where('type', 11)->get();
-        $benches_outdoor = Post::where('item', 2)->where('type', 12)->get();
+    function benches(Product $product) {
+
+        $benches_stones = Product::where('item', 'bench')->where('type', 'Stones')->get();
+        $benches_radius = Product::where('item', 'bench')->where('type', 'Radius')->get();
+        $benches_solo = Product::where('item', 'bench')->where('type', 'Solo')->get();
+        $benches_outdoor = Product::where('item', 'bench')->where('type', 'Outdoor')->get();
         return view('elitvid.admin.benches.benches',
-            compact('benches_stones','benches_radius','benches_solo', 'benches_outdoor',  'post')
+            compact('benches_stones','benches_radius','benches_solo', 'benches_outdoor',  'product')
         );
     }
 
-    function pots(Post $post) {
+    function pots(Product $product) {
 
-        $round_pots = Post::where('item', 1)->where('type', 2)->get();
-        $rectangular_pots = Post::where('item', 1)->where('type', 3)->get();
-        $square_pots = Post::where('item', 1)->where('type', 1)->get();
+        $round_pots = Product::where('item', 'pot')->where('type', 'Round')->get();
+        $rectangular_pots = Product::where('item', 'pot')->where('type', 'Rectangular')->get();
+        $square_pots = Product::where('item', 'pot')->where('type', 'Square')->get();
 
         return view('elitvid.admin.pots.pots',
-        compact('round_pots', 'rectangular_pots', 'square_pots', 'post')
+        compact('round_pots', 'rectangular_pots', 'square_pots', 'product')
         );
     }
 
-    function textures(Post $post) {
-        $natural_stones = Post::where('item', 4)->where('type', 4)->get();
-        $moon_stones = Post::where('item', 4)->where('type', 5)->get();
-        $polished_stones = Post::where('item', 4)->where('type', 6)->get();
-        $wood_species = Post::where('item', 4)->where('type', 7)->get();
-        $wood_impregnation = Post::where('item', 4)->where('type', 8)->get();
+    function textures(Texture $texture) {
+        $natural_stones = Texture::where('type', 'natural_stone')->get();
+        $moon_stones = Texture::where('type', 'moon_stone')->get();
+        $polished_stones = Texture::where('type', 'polished_stone')->get();
+        $wood_species = Texture::where('type', 'wood_species')->get();
+        $wood_impregnation = Texture::where('type', 'wood_impregnation')->get();
         return view(
             'elitvid.admin.textures', compact(
-            'natural_stones', 'moon_stones', 'polished_stones', 'wood_species', 'wood_impregnation', 'post'
+            'natural_stones', 'moon_stones', 'polished_stones', 'wood_species', 'wood_impregnation', 'texture'
             )
         );
     }
 
-    function gallery(Post $post) {
-        $pots_images = Image::where('type_img', 13)->get();
-        $benches_images = Image::where('type_img', 14)->get();
+    function gallery(Gallery $gallery) {
+        $pots_images = Gallery::where('type', 'pots')->get();
+        $benches_images = Gallery::where('type', 'benches')->get();
         return view(
             'elitvid.admin.gallery', compact(
-                'pots_images','benches_images','post'
+                'pots_images','benches_images','gallery'
             )
         );
     }
@@ -66,7 +72,14 @@ class AdminController extends Controller
 
         $route_name = $route;
 
+        if ($route_name == 'textures'){
+            return view('includes.elitvid.admin.create_texture', compact('route_name'));
+        } else if($route_name == 'gallery'){
+            return view('includes.elitvid.admin.create_gallery', compact('route_name'));
+        }
+
         return view('includes.elitvid.admin.create_product', compact('route_name'));
+
     }
 
 }

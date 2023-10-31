@@ -45,7 +45,7 @@
             </a>
 
             <ul class="nav navbar-nav navbar-right user-nav">
-                <li class="user-name"><span>Akihiko Avaron</span></li>
+                <li class="user-name"><span>{{\Illuminate\Support\Facades\Auth::user()['username']}}</span></li>
                 <li class="dropdown avatar-dropdown">
                     <img src="{{asset('/elitvid_assets/img/avatar.jpg')}}" class="img-circle avatar" alt="user name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"/>
                     <ul class="dropdown-menu user-dropdown">
@@ -84,27 +84,27 @@
                 </li>
                 <li class="ripple">
                     <a href="{{route('admin_catalog')}}" class="nav-header">
-                        <span class="fa-diamond fa"></span> Каталог
+                        <span class="icon-book-open icons"></span> Каталог
                     </a>
                 </li>
                 <li class="ripple">
                     <a href="{{route('admin_pots')}}" class="nav-header">
-                        <span class="fa-diamond fa"></span> Кашпо
+                        <span class="icon-drawar icons"></span> Кашпо
                     </a>
                 </li>
                 <li class="ripple">
                     <a href="{{route('admin_benches')}}" class="nav-header">
-                        <span class="fa-diamond fa"></span> Скамейки
+                        <span class="icon-vector icons"></span> Скамейки
                     </a>
                 </li>
                 <li class="ripple">
                     <a href="{{route('admin_textures')}}" class="nav-header">
-                        <span class="fa-diamond fa"></span> Текстуры
+                        <span class="fa-slack fa"></span> Текстуры
                     </a>
                 </li>
                 <li class="ripple">
                     <a href="{{route('admin_gallery')}}" class="nav-header">
-                        <span class="fa-diamond fa"></span> Примеры работ
+                        <span class="fa-image fa"></span> Примеры работ
                     </a>
                 </li>
 {{--                <li class="ripple">--}}

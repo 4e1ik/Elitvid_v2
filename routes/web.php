@@ -6,6 +6,9 @@ use App\Http\Controllers\MainController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\TexturesController;
+use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Auth;
@@ -41,27 +44,34 @@ Route::post('/login', [LoginController::class, 'login']);
 Route::get('/registration', [RegisterController::class, 'index'])->name('registration');
 Route::post('/registration', [RegisterController::class, 'registration'])->name('save');
 
-    Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
+Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
 
-Route::middleware('auth')->prefix('admin')->group(function (){
+Route::middleware('auth')->prefix('admin')->group(function () {
     Route::get('/', [AdminController::class, 'index'])->name('admin');
     Route::get('/catalog', [AdminController::class, 'catalog'])->name('admin_catalog');
     Route::get('/benches', [AdminController::class, 'benches'])->name('admin_benches');
     Route::get('/pots', [AdminController::class, 'pots'])->name('admin_pots');
-    Route::get('/textures', [AdminController::class, 'textures'])->name('admin_textures');
+    Route::get('/texture', [AdminController::class, 'textures'])->name('admin_textures');
     Route::get('/gallery', [AdminController::class, 'gallery'])->name('admin_gallery');
 
     Route::get('/create/{route}', [AdminController::class, 'create'])->name('create');
-//    Route::get('/test/store', [AdminController::class, 'store'])->name('store');
 
-    Route::delete('/images/{id}/{post}/delete', [ImageController::class, 'destroy'])->name('image_destory');
-    Route::put('/images/{id}/{post}/update', [ImageController::class, 'update'])->name('image_update');
-    Route::delete('/images/{id}/delete', [ImageController::class, 'gallery_image_destroy'])->name('gallery_image_destroy');
+    Route::delete('/gallery/images/{image}/{product}/delete', [ImageController::class, 'destroy'])->name('image_destroy');
+    Route::put('/gallery/images/{image}/{product}/update', [ImageController::class, 'update'])->name('image_update');
+
+    Route::delete('/images/{image}/{gallery}/delete', [ImageController::class, 'gallery_image_destroy'])->name('gallery_image_destroy');
     Route::put('/images/{image}/update', [ImageController::class, 'gallery_image_update'])->name('gallery_image_update');
-    Route::post('/images', [ImageController::class, 'store'])->name('image_create');
+
+    Route::delete('/textures/images/{image}/{texture}/delete', [ImageController::class, 'texture_image_destroy'])->name('texture_image_destroy');
+    Route::put('/textures/images/{image}/{texture}/update', [ImageController::class, 'texture_image_update'])->name('texture_image_update');
+
+//    Route::post('/images', [ImageController::class, 'store'])->name('image_create');
 
     Route::resources([
-            'posts' => PostController::class,
+        'posts' => PostController::class,
+        'products' =>  ProductController::class,
+        'textures' =>  TexturesController::class,
+        'galleries' => GalleryController::class,
     ]);
 });

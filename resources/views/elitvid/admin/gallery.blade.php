@@ -12,7 +12,14 @@
                     </p>
                 </div>
                 <ul class="nav navbar-nav">
-                    <li><a href="{{route('create', ['route' => 'gallery'])}}">Добавить товар</a></li>
+                    <a href="{{route('create', ['route' => 'gallery'])}}">
+                        <button class="btn ripple btn-outline btn-primary">
+                            <div>
+                                <span>Добавить картинки примеров работ</span>
+                                <span class="ink"></span>
+                            </div>
+                        </button>
+                    </a>
                 </ul>
             </div>
         </div>
@@ -35,43 +42,63 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @foreach($pots_images as $p_images)
-                                    <tr>
-                                        <td>
-                                            <img style="height: 200px" src="{{asset('storage/'.$p_images->image)}}"
-                                                 alt="">
-                                        </td>
-                                        <td>
-                                            <form action="{{ route('gallery_image_update', ['image' => $p_images->id]) }}"
-                                                  method="post">
-                                                @method('PUT')
-                                                @csrf
-                                                <input type="text" name="description_img" value="{{$p_images->description_img}}">
-                                                <button type="submit" style="border: 0">
-                                                    <input type="button" class=" btn btn-3d btn-primary" value="Сохранить описание">
-                                                </button>
-                                            </form>
-                                        </td>
-                                        <td>{{$p_images->created_at}}</td>
-                                        <td>{{$p_images->updated_at}}</td>
-                                        <td>
-                                            @if($p_images->active == 1)
-                                                Да
-                                            @else
-                                                Нет
-                                            @endif
-                                        </td>
-                                        <td>
-                                            <form action="{{ route('gallery_image_destroy', ['id' => $p_images->id]) }}"
-                                                  method="post">
-                                                @method('DELETE')
-                                                @csrf
-                                                <button type="submit" style="border: 0">
-                                                    <input type="button" class="btn btn-3d btn-danger" value="Удалить">
-                                                </button>
-                                            </form>
-                                        </td>
-                                    </tr>
+                                @foreach($pots_images as $pots_image)
+                                    @foreach($pots_image->images as  $image)
+                                        <tr>
+                                            <td>
+                                                <img style="height: 200px" src="{{asset('storage/'.$image->image)}}"
+                                                     alt="">
+                                            </td>
+                                            <td>
+                                                <form
+                                                    action="{{ route('gallery_image_update', ['image' => $image->id]) }}"
+                                                    method="post">
+                                                    @method('PUT')
+                                                    @csrf
+                                                    <input type="text" name="description_image"
+                                                           value="{{$image->description_image}}">
+                                                    <button type="submit" style="border: 0">
+                                                        <input type="button" class=" btn btn-3d btn-primary"
+                                                               value="Сохранить описание">
+                                                    </button>
+                                                </form>
+                                            </td>
+                                            <td>{{$pots_image->created_at}}</td>
+                                            <td>{{$pots_image->updated_at}}</td>
+                                            <td>
+                                                @if($pots_image->active == 1)
+                                                    Да
+                                                @else
+                                                    Нет
+                                                @endif
+                                            </td>
+                                            <td>
+                                                <form
+                                                    action="{{ route('gallery_image_destroy', ['image' => $image, 'gallery' => $pots_image]) }}"
+                                                    method="post">
+                                                    @method('DELETE')
+                                                    @csrf
+                                                    <button type="submit" style="border: 0">
+                                                        <input type="button" class="btn btn-3d btn-danger"
+                                                               value="Удалить">
+                                                    </button>
+                                                </form>
+                                            </td>
+{{--                                            <td>--}}
+{{--                                                {{$image->id}}--}}
+{{--                                                <form--}}
+{{--                                                    action="{{ route('galleries.destroy', ['gallery' => $pots_image, 'image' => $image]) }}"--}}
+{{--                                                    method="post">--}}
+{{--                                                    @method('DELETE')--}}
+{{--                                                    @csrf--}}
+{{--                                                    <button type="submit" style="border: 0">--}}
+{{--                                                        <input type="button" class="btn btn-3d btn-danger"--}}
+{{--                                                               value="Удалить">--}}
+{{--                                                    </button>--}}
+{{--                                                </form>--}}
+{{--                                            </td>--}}
+                                        </tr>
+                                    @endforeach
                                 @endforeach
                                 </tbody>
                             </table>
@@ -93,43 +120,51 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @foreach($benches_images as $b_images)
-                                    <tr>
-                                        <td>
-                                            <img style="height: 200px" src="{{asset('storage/'.$b_images->image)}}"
-                                                 alt="">
-                                        </td>
-                                        <td>
-                                            <form action="{{ route('gallery_image_update', ['image' => $b_images->id]) }}"
-                                                  method="post">
-                                                @method('PUT')
-                                                @csrf
-                                                <input type="text" name="description_img" value="{{$b_images->description_img}}">
-                                                <button type="submit" style="border: 0">
-                                                    <input type="button" class=" btn btn-3d btn-primary" value="Сохранить описание">
-                                                </button>
-                                            </form>
-                                        </td>
-                                        <td>{{$b_images->created_at}}</td>
-                                        <td>{{$b_images->updated_at}}</td>
-                                        <td>
-                                            @if($b_images->active == 1)
-                                                Да
-                                            @else
-                                                Нет
-                                            @endif
-                                        </td>
-                                        <td>
-                                            <form action="{{ route('gallery_image_destroy', ['id' => $b_images->id]) }}"
-                                                  method="post">
-                                                @method('DELETE')
-                                                @csrf
-                                                <button type="submit" style="border: 0">
-                                                    <input type="button" class="btn btn-3d btn-danger" value="Удалить">
-                                                </button>
-                                            </form>
-                                        </td>
-                                    </tr>
+                                @foreach($benches_images as $benches_image)
+                                    @foreach($benches_image->images as $image)
+                                        <tr>
+                                            <td>
+
+                                                <img style="height: 200px" src="{{asset('storage/'.$image->image)}}"
+                                                     alt="">
+                                            </td>
+                                            <td>
+                                                <form
+                                                    action="{{ route('gallery_image_update', ['image' => $image->id]) }}"
+                                                    method="post">
+                                                    @method('PUT')
+                                                    @csrf
+                                                    <input type="text" name="description_image"
+                                                           value="{{$image->description_image}}">
+                                                    <button type="submit" style="border: 0">
+                                                        <input type="button" class=" btn btn-3d btn-primary"
+                                                               value="Сохранить описание">
+                                                    </button>
+                                                </form>
+                                            </td>
+                                            <td>{{$benches_image->created_at}}</td>
+                                            <td>{{$benches_image->updated_at}}</td>
+                                            <td>
+                                                @if($benches_image->active == 1)
+                                                    Да
+                                                @else
+                                                    Нет
+                                                @endif
+                                            </td>
+                                            <td>
+                                                <form
+                                                    action="{{ route('gallery_image_destroy', ['id' => $image->id]) }}"
+                                                    method="post">
+                                                    @method('DELETE')
+                                                    @csrf
+                                                    <button type="submit" style="border: 0">
+                                                        <input type="button" class="btn btn-3d btn-danger"
+                                                               value="Удалить">
+                                                    </button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    @endforeach
                                 @endforeach
                                 </tbody>
                             </table>

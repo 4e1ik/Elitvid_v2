@@ -19,11 +19,17 @@
                         <span class="bar"></span>
                         <label>Email</label>
                     </div>
+                    @error('email')
+                    {{$message}}
+                    @enderror
                     <div class="form-group form-animate-text" style="margin-top:40px !important;">
                         <input type="password" name="password" class="form-text" required="">
                         <span class="bar"></span>
                         <label>Password</label>
                     </div>
+                    @error('password')
+                    {{$message}}
+                    @enderror
                     <label class="pull-left">
                         <div class="icheckbox_flat-aero" style="position: relative;"><input type="checkbox"
                                                                                             class="icheck pull-left"

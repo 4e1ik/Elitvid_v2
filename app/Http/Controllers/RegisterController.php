@@ -21,8 +21,9 @@ class RegisterController extends Controller
         if (Auth::check()){
             return redirect(route('admin'));
         }
-//        dd($request->all()['email']);
-        if (User::where('email', $request->all()['email'])){
+//        dd($request->all());
+//        dd(User::where('email', $request->all()['email'])->exists());
+        if (User::where('email', $request->all()['email'])->exists()){
             return redirect(route('registration'));
         }
         $user = User::create($request->all());

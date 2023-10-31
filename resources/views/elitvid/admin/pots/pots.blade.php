@@ -12,8 +12,15 @@
                     </p>
                 </div>
                 <ul class="nav navbar-nav">
-{{--                    {{$route_name = \Illuminate\Support\Facades\Route::currentRouteName()}}--}}
-                    <li><a href="{{route('create', ['route' => 'pots'])}}">Добавить товар</a></li>
+                    {{--                    {{$route_name = \Illuminate\Support\Facades\Route::currentRouteName()}}--}}
+                    <a href="{{route('create', ['route' => 'pots'])}}">
+                        <button class="btn ripple btn-outline btn-primary">
+                            <div>
+                                <span>Добавить товар</span>
+                                <span class="ink"></span>
+                            </div>
+                        </button>
+                    </a>
                 </ul>
             </div>
         </div>
@@ -23,12 +30,12 @@
                     <div class="panel-heading"><h3>Круглые кашпо</h3></div>
                     <div class="panel-body">
                         <div class="responsive-table">
-                            <table id="datatables-example" class="table table-striped table-bordered" width="100%" cellspacing="0">
+                            <table id="datatables-example" class="table table-striped table-bordered" width="100%"
+                                   cellspacing="0">
                                 <thead>
                                 <tr>
                                     <th>Название</th>
                                     <th>Описание</th>
-                                    <th>Коллекция</th>
                                     <th>Время создания</th>
                                     <th>Время редактирования</th>
                                     <th>Опубликован</th>
@@ -41,17 +48,6 @@
                                     <tr>
                                         <td>{{$pot->title}}</td>
                                         <td>{!! $pot->content!!}</td>
-                                        <td>
-                                            @if($pot->type == 9)
-                                                Коллекция Stones
-                                            @elseif($pot->type == 10)
-                                                Коллекция Radius
-                                            @elseif($pot->type == 11)
-                                                Коллекция Solo
-                                            @elseif($pot->type == 12)
-                                                Коллекция Outdoor
-                                            @endif
-                                        </td>
                                         <td>{{$pot->created_at}}</td>
                                         <td>{{$pot->updated_at}}</td>
                                         <td>
@@ -62,12 +58,14 @@
                                             @endif
                                         </td>
                                         <td>
-                                            <a href="{{ route('posts.show', ['post' => $pot->id]) }}">
-                                                <input type="button" class=" btn btn-3d btn-primary" value="Редактировать">
+                                            <a href="{{ route('products.edit', ['product' => $pot]) }}">
+                                                <input type="button" class=" btn btn-3d btn-primary"
+                                                       value="Редактировать">
                                             </a>
                                         </td>
                                         <td>
-                                            <form action="{{ route('posts.destroy', ['post' => $pot->id]) }}" method="post">
+                                            <form action="{{ route('products.destroy', ['product' => $pot]) }}"
+                                                  method="post">
                                                 @method('DELETE')
                                                 @csrf
                                                 <button type="submit" style="border: 0">
@@ -84,12 +82,12 @@
                     <div class="panel-heading"><h3>Прямоугольные кашпо</h3></div>
                     <div class="panel-body">
                         <div class="responsive-table">
-                            <table id="datatables-example" class="table table-striped table-bordered" width="100%" cellspacing="0">
+                            <table id="datatables-example" class="table table-striped table-bordered" width="100%"
+                                   cellspacing="0">
                                 <thead>
                                 <tr>
                                     <th>Название</th>
                                     <th>Описание</th>
-                                    <th>Коллекция</th>
                                     <th>Время создания</th>
                                     <th>Время редактирования</th>
                                     <th>Опубликован</th>
@@ -104,17 +102,7 @@
                                         <td>
                                             {!! $pot->content !!}
                                         </td>
-                                        <td>
-                                            @if($pot->type == 9)
-                                                Коллекция Stones
-                                            @elseif($pot->type == 10)
-                                                Коллекция Radius
-                                            @elseif($pot->type == 11)
-                                                Коллекция Solo
-                                            @elseif($pot->type == 12)
-                                                Коллекция Outdoor
-                                            @endif
-                                        </td>
+
                                         <td>{{$pot->created_at}}</td>
                                         <td>{{$pot->updated_at}}</td>
                                         <td>
@@ -125,12 +113,14 @@
                                             @endif
                                         </td>
                                         <td>
-                                            <a href="{{route('posts.show', ['post' => $pot->id])}}">
-                                                <input type="button" class=" btn btn-3d btn-primary" value="Редактировать">
+                                            <a href="{{ route('products.edit', ['product' => $pot]) }}">
+                                                <input type="button" class=" btn btn-3d btn-primary"
+                                                       value="Редактировать">
                                             </a>
                                         </td>
                                         <td>
-                                            <form action="{{ route('posts.destroy', ['post' => $pot->id]) }}" method="post">
+                                            <form action="{{ route('products.destroy', ['product' => $pot]) }}"
+                                                  method="post">
                                                 @method('DELETE')
                                                 @csrf
                                                 <button type="submit" style="border: 0">
@@ -147,12 +137,12 @@
                     <div class="panel-heading"><h3>Квадратные кашпо</h3></div>
                     <div class="panel-body">
                         <div class="responsive-table">
-                            <table id="datatables-example" class="table table-striped table-bordered" width="100%" cellspacing="0">
+                            <table id="datatables-example" class="table table-striped table-bordered" width="100%"
+                                   cellspacing="0">
                                 <thead>
                                 <tr>
                                     <th>Название</th>
                                     <th>Описание</th>
-                                    <th>Коллекция</th>
                                     <th>Время создания</th>
                                     <th>Время редактирования</th>
                                     <th>Опубликован</th>
@@ -165,17 +155,6 @@
                                     <tr>
                                         <td>{{$pot->title}}</td>
                                         <td>{!! $pot->content !!}</td>
-                                        <td>
-                                            @if($pot->type == 9)
-                                                Коллекция Stones
-                                            @elseif($pot->type == 10)
-                                                Коллекция Radius
-                                            @elseif($pot->type == 11)
-                                                Коллекция Solo
-                                            @elseif($pot->type == 12)
-                                                Коллекция Outdoor
-                                            @endif
-                                        </td>
                                         <td>{{$pot->created_at}}</td>
                                         <td>{{$pot->updated_at}}</td>
                                         <td>
@@ -186,12 +165,14 @@
                                             @endif
                                         </td>
                                         <td>
-                                            <a href="{{route('posts.show', ['post' => $pot->id])}}">
-                                                <input type="button" class=" btn btn-3d btn-primary" value="Редактировать">
+                                            <a href="{{ route('products.edit', ['product' => $pot]) }}">
+                                                <input type="button" class=" btn btn-3d btn-primary"
+                                                       value="Редактировать">
                                             </a>
                                         </td>
                                         <td>
-                                            <form action="{{ route('posts.destroy', ['post' => $pot->id]) }}" method="post">
+                                            <form action="{{ route('products.destroy', ['product' => $pot]) }}"
+                                                  method="post">
                                                 @method('DELETE')
                                                 @csrf
                                                 <button type="submit" style="border: 0">

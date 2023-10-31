@@ -26,10 +26,14 @@ class LoginController extends Controller
             return redirect(route('admin'));
         }
 
+//        dd($request->all());
+
         $arr_data = [
           'email' => $request->all()['email'],
           'password' => $request->all()['password'],
         ];
+
+//        dd(Auth::attempt($arr_data));
 
         if (Auth::attempt($arr_data)){
             return redirect(route('admin'));

@@ -23,9 +23,7 @@ class ImageRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'image' => 'image',
-            'description_img' => 'min:3|max:100',
-            //'type_img' => 'required|filled',
+            'description_image' => 'min:3|max:100',
         ];
     }
 
