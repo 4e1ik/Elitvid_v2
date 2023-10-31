@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Gallery;
 use App\Models\Image;
 use App\Models\Post;
+use App\Models\Product;
+use App\Models\Texture;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Route;
 
@@ -18,13 +21,13 @@ class MainController extends Controller
     }
 
     function benches() {
-        $stones_benches = Post::where('active', 1)->where('item', 2)->where('type', 9)->get();
-        $radius_benches = Post::where('active', 1)->where('item', 2)->where('type', 10)->get();
-        $solo_benches = Post::where('active', 1)->where('item', 2)->where('type', 11)->get();
-        $outdoor_benches = Post::where('active', 1)->where('item', 2)->where('type', 12)->get();
-        $wood_species = Post::where('active', 1)->where('item', 4)->where('type', 7)->get();
-        $wood_impregnation = Post::where('active', 1)->where('item', 4)->where('type', 8)->get();
-        $benches_gallery = Image::where('type_img', 14)->get();
+        $stones_benches = Product::where('active', 1)->where('item', 'bench')->where('type', 'Stones')->get();
+        $radius_benches = Product::where('active', 1)->where('item', 'bench')->where('type', 'Radius')->get();
+        $solo_benches = Product::where('active', 1)->where('item', 'bench')->where('type', 'Solo')->get();
+        $outdoor_benches = Product::where('active', 1)->where('item', 'bench')->where('type', 'Outdoor')->get();
+        $wood_species = Texture::where('active', 1)->where('type', 'wood_species')->get();
+        $wood_impregnation = Texture::where('active', 1)->where('type', 'wood_impregnation')->get();
+        $benches_gallery = Gallery::where('type', 'benches')->get();
         return view(
             'elitvid.site.benches', compact(
                 'wood_impregnation',
@@ -43,27 +46,26 @@ class MainController extends Controller
     }
 
     function pots() {
-
-        $natural_stone = Post::where('active', 1)->where('item', 4)->where('type', 4)->get();
-        $moon_stone = Post::where('active', 1)->where('item', 4)->where('type', 5)->get();
-        $mirror_stone = Post::where('active', 1)->where('item', 4)->where('type', 6)->get();
-        $pots_gallery = Image::where('type_img', 13)->get();
+        $natural_stone = Texture::where('active', 1)->where('type', 'natural_stone')->get();
+        $moon_stone = Texture::where('active', 1)->where('type', 'moon_stone')->get();
+        $mirror_stone = Texture::where('active', 1)->where('type', 'polished_stone')->get();
+        $pots_gallery = Gallery::where('type', 'pots')->get();
 
         return view('elitvid.site.pots', compact('natural_stone', 'moon_stone', 'mirror_stone', 'pots_gallery'));
     }
 
     function rectangular_pots() {
-        $rectangular_pots = Post::where('active', 1)->where('item', 1)->where('type', 3)->get();
+        $rectangular_pots = Product::where('active', 1)->where('type', 'Rectangular')->get();
         return view('elitvid.site.pots.rectangular_pots', compact('rectangular_pots'));
     }
 
     function square_pots() {
-        $square_pots = Post::where('active', 1)->where('item', 1)->where('type', 1)->get();
+        $square_pots = Product::where('active', 1)->where('type', 'Square')->get();
         return view('elitvid.site.pots.square_pots', compact('square_pots'));
     }
 
     function round_pots() {
-        $round_pots = Post::where('active', 1)->where('item', 1)->where('type', 2)->get();
+        $round_pots = Product::where('active', 1)->where('type', 'Round')->get();
         return view('elitvid.site.pots.round_pots', compact('round_pots'));
     }
 }

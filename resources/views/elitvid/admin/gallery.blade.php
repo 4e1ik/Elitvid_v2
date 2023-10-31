@@ -153,7 +153,7 @@
                                             </td>
                                             <td>
                                                 <form
-                                                    action="{{ route('gallery_image_destroy', ['id' => $image->id]) }}"
+                                                    action="{{ route('gallery_image_destroy', ['image' => $image, 'gallery' => $benches_image]) }}"
                                                     method="post">
                                                     @method('DELETE')
                                                     @csrf

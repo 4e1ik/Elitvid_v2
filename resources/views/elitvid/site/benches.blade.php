@@ -18,7 +18,7 @@
                                     <!-- Slides -->
                                     @foreach($bench->images as $image)
                                         <div class="swiper-slide">
-                                            <img src="{{ asset('storage/'.$image->image) }}" alt="{{$image->description_img}}">
+                                            <img src="{{ asset('storage/'.$image->image) }}" alt="{{$image->description_image}}">
                                         </div>
                                     @endforeach
                                 </div>
@@ -54,7 +54,7 @@
                                     <!-- Slides -->
                                     @foreach($bench->images as $image)
                                         <div class="swiper-slide">
-                                            <img src="{{ asset('storage/'.$image->image) }}" alt="{{$image->description_img}}">
+                                            <img src="{{ asset('storage/'.$image->image) }}" alt="{{$image->description_image}}">
                                         </div>
                                     @endforeach
                                 </div>
@@ -90,7 +90,7 @@
                                     <!-- Slides -->
                                     @foreach($bench->images as $image)
                                         <div class="swiper-slide">
-                                            <img src="{{ asset('storage/'.$image->image) }}" alt="{{$image->description_img}}">
+                                            <img src="{{ asset('storage/'.$image->image) }}" alt="{{$image->description_image}}">
                                         </div>
                                     @endforeach
                                 </div>
@@ -126,7 +126,7 @@
                                     <!-- Slides -->
                                     @foreach($bench->images as $image)
                                         <div class="swiper-slide">
-                                            <img src="{{ asset('storage/'.$image->image) }}" alt="{{$image->description_img}}">
+                                            <img src="{{ asset('storage/'.$image->image) }}" alt="{{$image->description_image}}">
                                         </div>
                                     @endforeach
                                 </div>
@@ -161,10 +161,10 @@
                 @foreach($wood_species as $specie)
                     <div class="texture__item-card">
                         @foreach($specie->images as $image)
-                            <img src="{{ asset('storage/'.$image->image) }}" alt="{{$image->description_img}}">
+                            <img src="{{ asset('storage/'.$image->image) }}" alt="{{$image->description_image}}">
                         @endforeach
                         <div class="texture__card-header">
-                            <h3><a href="">{{$specie->title}}</a></h3>
+                            <h3><a href="">{{$specie->texture_name}}</a></h3>
                         </div>
                     </div>
                 @endforeach
@@ -176,10 +176,10 @@
                 @foreach($wood_impregnation as $impregnation)
                     <div class="texture__item-card">
                         @foreach($impregnation->images as $image)
-                            <img src="{{ asset('storage/'.$image->image) }}" alt="{{$image->description_img}}">
+                            <img src="{{ asset('storage/'.$image->image) }}" alt="{{$image->description_image}}">
                         @endforeach
                         <div class="texture__card-header">
-                            <h3><a href="">{{$impregnation->title}}</a></h3>
+                            <h3><a href="">{{$impregnation->texture_name}}</a></h3>
                         </div>
                     </div>
                 @endforeach
@@ -192,11 +192,13 @@
                 <h2>Примеры работ</h2>
             </div>
             <div class="gallery__main-items">
-                @foreach($benches_gallery as $item)
+                @foreach($benches_gallery as $benches_images)
+                    @foreach($benches_images->images as $image)
                     <div class="gallery__item-card">
-                        <a href="{{ asset('storage/'.$item->image) }}" data-lightbox="pots-images"><img
-                                src="{{ asset('storage/'.$item->image) }}" alt="{{$item->description_img}}"></a>
+                        <a href="{{ asset('storage/'.$image->image) }}" data-lightbox="pots-images"><img
+                                src="{{ asset('storage/'.$image->image) }}" alt="{{$image->description_image}}"></a>
                     </div>
+                    @endforeach
                 @endforeach
             </div>
         </div>

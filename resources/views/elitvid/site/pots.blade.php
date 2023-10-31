@@ -46,10 +46,10 @@
                 @foreach($natural_stone as $stone)
                 <div class="texture__item-card">
                     @foreach($stone->images as $image)
-                            <img src="{{ asset('storage/'.$image->image) }}" alt="{{$image->description_img}}">
+                            <img src="{{ asset('storage/'.$image->image) }}" alt="{{$image->description_image}}">
                     @endforeach
                     <div class="texture__card-header">
-                        <h3><a href="">{{$stone->title}}</a></h3>
+                        <h3><a href="">{{$stone->texture_name}}</a></h3>
                     </div>
                 </div>
                 @endforeach
@@ -61,10 +61,10 @@
                 @foreach($moon_stone as $stone)
                     <div class="texture__item-card">
                         @foreach($stone->images as $image)
-                            <img src="{{ asset('storage/'.$image->image) }}" alt="{{$image->description_img}}">
+                            <img src="{{ asset('storage/'.$image->image) }}" alt="{{$image->description_image}}">
                         @endforeach
                         <div class="texture__card-header">
-                            <h3><a href="">{{$stone->title}}</a></h3>
+                            <h3><a href="">{{$stone->texture_name}}</a></h3>
                         </div>
                     </div>
                 @endforeach
@@ -76,10 +76,10 @@
                 @foreach($mirror_stone as $stone)
                     <div class="texture__item-card">
                         @foreach($stone->images as $image)
-                            <img src="{{ asset('storage/'.$image->image) }}" alt="{{$image->description_img}}">
+                            <img src="{{ asset('storage/'.$image->image) }}" alt="{{$image->description_image}}">
                         @endforeach
                         <div class="texture__card-header">
-                            <h3><a href="">{{$stone->title}}</a></h3>
+                            <h3><a href="">{{$stone->texture_name}}</a></h3>
                         </div>
                     </div>
                 @endforeach
@@ -92,11 +92,14 @@
                 <h2>Примеры работ</h2>
             </div>
             <div class="gallery__main-items">
-                @foreach($pots_gallery as $item)
+                @foreach($pots_gallery as $gallery_images)
+                    @foreach($gallery_images->images as $image)
                 <div class="gallery__item-card">
-                    <a href="{{ asset('storage/'.$item->image) }}" data-lightbox="pots-images"><img
-                            src="{{ asset('storage/'.$item->image) }}" alt=""></a>
+                    <a href="{{ asset('storage/'.$image->image) }}" data-lightbox="pots-images">
+                        <img src="{{ asset('storage/'.$image->image) }}" alt="">
+                    </a>
                 </div>
+                    @endforeach
                 @endforeach
             </div>
         </div>

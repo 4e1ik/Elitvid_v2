@@ -15,7 +15,7 @@
                                     <!-- Slides -->
                                     @foreach($pot->images as $image)
                                         <div class="swiper-slide">
-                                            <img src="{{ asset('storage/'.$image->image) }}" alt="{{ $image->description_img }}">
+                                            <img src="{{ asset('storage/'.$image->image) }}" alt="{{ $image->description_image }}">
                                         </div>
                                     @endforeach
                                 </div>
