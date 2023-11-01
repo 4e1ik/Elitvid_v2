@@ -203,4 +203,5 @@
             </div>
         </div>
     </section>
+    @include('includes.elitvid.form')
 @endsection
