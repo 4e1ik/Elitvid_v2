@@ -11,7 +11,9 @@ class LoginController extends Controller
 {
     public function index(){
         if (Auth::check()){
-            return redirect(route('admin'));
+            if (Auth::user()['is_admin'] == true) {
+                return redirect(route('admin'));
+            }
         }
         return view('includes.elitvid.admin.login');
     }
@@ -23,20 +25,20 @@ class LoginController extends Controller
 
     public function login(Request $request){
         if (Auth::check()){
-            return redirect(route('admin'));
+            if (Auth::user()['is_admin'] == true) {
+                return redirect(route('admin'));
+            }
         }
-
-//        dd($request->all());
 
         $arr_data = [
           'email' => $request->all()['email'],
           'password' => $request->all()['password'],
         ];
 
-//        dd(Auth::attempt($arr_data));
-
         if (Auth::attempt($arr_data)){
-            return redirect(route('admin'));
+            if (Auth::user()['is_admin'] == true){
+                return redirect(route('admin'));
+            }
         }
 
         return redirect(route('login'))->withInput();

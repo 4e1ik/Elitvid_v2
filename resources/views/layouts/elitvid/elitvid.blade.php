@@ -29,6 +29,9 @@
                 <div class="nav__burger">
                     <ul class="nav__list">
                         <li class="nav__item">
+                            <a id="open_form" class="phone-number">Заказать звонок</a>
+                        </li>
+                        <li class="nav__item">
                             <a href="{{route('about')}}">О нас</a>
                         </li>
                         <li class="nav__item">
@@ -232,6 +235,7 @@
     </div>
 </footer>
 <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+<script src="{{asset('/elitvid_assets/scripts/form.js')}}"></script>
 @if(\Illuminate\Support\Facades\Route::currentRouteName() == 'home')
     <script src="{{asset('/elitvid_assets/scripts/swiper.js')}}"></script>
     <script src="{{asset('/elitvid_assets/scripts/script.js')}}"></script>

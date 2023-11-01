@@ -3,7 +3,6 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\MainController;
-use App\Http\Controllers\PostController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\ProductController;
@@ -47,7 +46,9 @@ Route::post('/registration', [RegisterController::class, 'registration'])->name(
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
 
-Route::middleware('auth')->prefix('admin')->group(function () {
+Route::middleware('auth')->where([
+
+])->prefix('admin')->group(function () {
     Route::get('/', [AdminController::class, 'index'])->name('admin');
     Route::get('/catalog', [AdminController::class, 'catalog'])->name('admin_catalog');
     Route::get('/benches', [AdminController::class, 'benches'])->name('admin_benches');
@@ -69,7 +70,7 @@ Route::middleware('auth')->prefix('admin')->group(function () {
 //    Route::post('/images', [ImageController::class, 'store'])->name('image_create');
 
     Route::resources([
-        'posts' => PostController::class,
+//        'posts' => PostController::class,
         'products' =>  ProductController::class,
         'textures' =>  TexturesController::class,
         'galleries' => GalleryController::class,

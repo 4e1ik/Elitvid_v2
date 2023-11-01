@@ -59,5 +59,7 @@
         </div>
     </div>
 </section>
+
 @include('includes.elitvid.catalog')
+@include('includes.elitvid.form')
 @endsection
