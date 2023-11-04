@@ -8,24 +8,24 @@
             </div>
             <div class="catalog__main-items">
                 <div class="catalog__item-card">
+                    <img class="pots" src="{{asset('/elitvid_assets/images/main/pots/square.png')}}" alt="">
                     <a href="{{route('square_pots')}}">
-                        <img src="" alt="">
                         <div class="catalog__card-header">
                             <h3>Квадратные</h3>
                         </div>
                     </a>
                 </div>
                 <div class="catalog__item-card">
+                    <img class="pots" src="{{asset('/elitvid_assets/images/main/pots/round.png')}}" alt="">
                     <a href="{{route('round_pots')}}">
-                        <img src="" alt="">
                         <div class="catalog__card-header">
                             <h3>Круглые</h3>
                         </div>
                     </a>
                 </div>
                 <div class="catalog__item-card">
+                    <img class="pots" src="{{asset('/elitvid_assets/images/main/pots/reqtangular.png')}}" alt="">
                     <a href="{{route('rectangular_pots')}}">
-                        <img src="" alt="">
                         <div class="catalog__card-header">
                             <h3>Прямоугольные</h3>
                         </div>

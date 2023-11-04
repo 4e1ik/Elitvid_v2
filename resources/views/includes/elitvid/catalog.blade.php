@@ -5,7 +5,7 @@
         </div>
         <div class="catalog__main-items">
             <div class="catalog__item-card">
-                <img src="{{asset('/elitvid_assets/images/main/offer/pots.png')}}" alt="Картинка кашпо">
+                <img src="{{asset('/elitvid_assets/images/main/offer/pots.jpg')}}" alt="Картинка кашпо">
                 <a href="{{route('pots')}}">
                     <div class="catalog__card-header">
                         <h3>Кашпо</h3>
@@ -13,7 +13,7 @@
                 </a>
             </div>
             <div class="catalog__item-card">
-                <img src="{{asset('/elitvid_assets/images/main/offer/benches.png')}}" alt="Картинка скамеек">
+                <img src="{{asset('/elitvid_assets/images/main/offer/benches.jpg')}}" alt="Картинка скамеек">
                 <a href="{{route('benches')}}">
                     <div class="catalog__card-header">
                         <h3>Скамьи</h3>
@@ -21,7 +21,7 @@
                 </a>
             </div>
             <div class="catalog__item-card">
-                <img src="{{asset('/elitvid_assets/images/main/offer/rotunda.png')}}" alt="Картинка ротонды">
+                <img src="{{asset('/elitvid_assets/images/main/offer/rotunda.jpg')}}" alt="Картинка ротонды">
                 <a href="">
                     <div class="catalog__card-header">
                         <h3>Ротонды</h3>
@@ -29,7 +29,7 @@
                 </a>
             </div>
             <div class="catalog__item-card">
-                <img src="{{asset('/elitvid_assets/images/main/offer/LAF.png')}}" alt="Картинка малые архитектурные">
+                <img src="{{asset('/elitvid_assets/images/main/offer/LAF.jpg')}}" alt="Картинка малые архитектурные">
                 <a href="">
                     <div class="catalog__card-header">
                         <h3>Малые архитектурные формы</h3>
@@ -37,7 +37,7 @@
                 </a>
             </div>
             <div class="catalog__item-card">
-                <img src="{{asset('/elitvid_assets/images/main/offer/facade_decor.png')}}" alt="Картинка фасадного декора">
+                <img src="{{asset('/elitvid_assets/images/main/offer/facade_decor.jpg')}}" alt="Картинка фасадного декора">
                 <a href="">
                     <div class="catalog__card-header">
                         <h3>Фасадный декор</h3>
@@ -45,7 +45,7 @@
                 </a>
             </div>
             <div class="catalog__item-card">
-                <img src="{{asset('/elitvid_assets/images/main/offer/architectural_decoration_of_temples.png')}}"
+                <img src="{{asset('/elitvid_assets/images/main/offer/architectural_decoration_of_temples.jpg')}}"
                      alt="Картинка архитектурный декор храмов">
                 <a href="">
                     <div class="catalog__card-header">
@@ -54,7 +54,7 @@
                 </a>
             </div>
             <div class="catalog__item-card">
-                <img src="{{asset('/elitvid_assets/images/main/offer/decorative_fences_and_poles.png')}}"
+                <img src="{{asset('/elitvid_assets/images/main/offer/decorative_fences_and_poles.jpg')}}"
                      alt="Картинка декоративные ограждения и столбы">
                 <a href="">
                     <div class="catalog__card-header">
