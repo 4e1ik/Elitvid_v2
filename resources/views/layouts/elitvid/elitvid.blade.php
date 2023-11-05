@@ -28,12 +28,12 @@
             <nav class="header__menu">
                 <div class="nav__burger">
                     <ul class="nav__list">
-                        <li class="nav__item">
-                            <a id="open_form" class="phone-number">Заказать звонок</a>
-                        </li>
-                        <li class="nav__item">
-                            <a href="{{route('about')}}">О нас</a>
-                        </li>
+{{--                        <li class="nav__item">--}}
+{{--                            <a id="open_form" class="phone-number">Заказать звонок</a>--}}
+{{--                        </li>--}}
+{{--                        <li class="nav__item">--}}
+{{--                            <a href="{{route('about')}}">О нас</a>--}}
+{{--                        </li>--}}
                         <li class="nav__item">
                             <a href="{{route('catalog')}}">Каталог</a>
                             <ul class="nav__sublist">
@@ -54,15 +54,15 @@
                                 <li>
                                     <a href="{{route('benches')}}">Скамейки</a>
                                 </li>
-                                <li>
-                                    <a href="">Ротонды и коллонады</a>
-                                </li>
-                                <li>
-                                    <a href="">Lorem ipsum.</a>
-                                </li>
-                                <li>
-                                    <a href="">Lorem ipsum.</a>
-                                </li>
+{{--                                <li>--}}
+{{--                                    <a href="">Ротонды и коллонады</a>--}}
+{{--                                </li>--}}
+{{--                                <li>--}}
+{{--                                    <a href="">Lorem ipsum.</a>--}}
+{{--                                </li>--}}
+{{--                                <li>--}}
+{{--                                    <a href="">Lorem ipsum.</a>--}}
+{{--                                </li>--}}
                             </ul>
                         </li>
                     </ul>
@@ -208,15 +208,15 @@
                                 <li class="nav__item">
                                     <a href=""{{route('benches')}}">Скамейки</a>
                                 </li>
-                                <li class="nav__item">
-                                    <a href="">Ротонды</a>
-                                </li>
-                                <li class="nav__item">
-                                    <a href="">Lorem ipsum.</a>
-                                </li>
-                                <li class="nav__item">
-                                    <a href="">Lorem ipsum.</a>
-                                </li>
+{{--                                <li class="nav__item">--}}
+{{--                                    <a href="">Ротонды</a>--}}
+{{--                                </li>--}}
+{{--                                <li class="nav__item">--}}
+{{--                                    <a href="">Lorem ipsum.</a>--}}
+{{--                                </li>--}}
+{{--                                <li class="nav__item">--}}
+{{--                                    <a href="">Lorem ipsum.</a>--}}
+{{--                                </li>--}}
                             </ul>
                         </nav>
                     </div>
@@ -228,7 +228,7 @@
             </div>
             <div class="developed">
                 <h5>
-                    <a href="">Developed by Artemi Sevostian</a>
+                    <a href="https://4e1ik.github.io/Portfolio/src/index.html">Developed by Artemi Sevostian</a>
                 </h5>
             </div>
         </div>
