@@ -75,7 +75,11 @@
                 <br>
                 Файл должен быть не более 512 кб
                 <textarea name="item-form textarea" type="text" id="" rows="5" placeholder="  Комментарий"></textarea>
-                <button type="submit" class="popup__form-button">Заказать</button>
+                <button
+                    data-sitekey="reCAPTCHA_site_key"
+                    data-callback='onSubmit'
+                    data-action='submit'
+                    type="submit" class="popup__form-button g-recaptcha">Заказать</button>
             </form>
         </div>
     </div>

@@ -236,6 +236,7 @@
 </footer>
 <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
 <script src="{{asset('/elitvid_assets/scripts/form.js')}}"></script>
+<script src="https://www.google.com/recaptcha/api.js"></script>
 @if(\Illuminate\Support\Facades\Route::currentRouteName() == 'home')
     <script src="{{asset('/elitvid_assets/scripts/swiper.js')}}"></script>
     <script src="{{asset('/elitvid_assets/scripts/script.js')}}"></script>
@@ -243,5 +244,10 @@
     <script src="{{asset('/elitvid_assets/scripts/swiper-product.js')}}"></script>
     <script src="{{asset('/elitvid_assets/scripts/lightbox-plus-jquery.js')}}"></script>
 @endif
+<script>
+    function onSubmit(token) {
+        document.getElementById("demo-form").submit();
+    }
+</script>
 </body>
 </html>
