@@ -246,7 +246,7 @@
 @endif
 <script>
     function onSubmit(token) {
-        document.getElementById("demo-form").submit();
+        document.getElementById("mail_form").submit();
     }
 </script>
 </body>

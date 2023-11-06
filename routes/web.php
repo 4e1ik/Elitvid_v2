@@ -8,11 +8,8 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\TexturesController;
 use App\Http\Controllers\GalleryController;
-use App\Http\Controllers\ProfileController;
-use Illuminate\Foundation\Application;
-use Illuminate\Support\Facades\Auth;
+use \App\Http\Controllers\MailController;
 use Illuminate\Support\Facades\Route;
-use Inertia\Inertia;
 
 /*
 |--------------------------------------------------------------------------
@@ -45,6 +42,8 @@ Route::post('/registration', [RegisterController::class, 'registration'])->name(
 
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
+Route::post('/sendForm', [MailController::class, 'send'])->name('send_mail');
+
 
 Route::middleware('auth')->where([
 
@@ -70,7 +69,6 @@ Route::middleware('auth')->where([
 //    Route::post('/images', [ImageController::class, 'store'])->name('image_create');
 
     Route::resources([
-//        'posts' => PostController::class,
         'products' =>  ProductController::class,
         'textures' =>  TexturesController::class,
         'galleries' => GalleryController::class,

@@ -66,20 +66,17 @@
         </div>
         <div class="popup__form-form">
             <h4>Заказать звонок</h4>
-            <form action="" method="post" enctype="multipart/form-data">
+            <form action="{{route('send_mail')}}" method="post" enctype="multipart/form-data" id="mail_form">
+                @csrf
                 <input class="item-form" type="text" name="name" placeholder="  Ваше имя" required>
                 <input class="item-form" type="text" name="email" placeholder="  Ваша почта" required>
-                <input class="item-form" type="text" name="name-corp" placeholder="  Название организации">
-                <input class="item-form" type="text" name="phone" placeholder="  Номер телефона">
+                <input class="item-form" type="text" name="name_corp" placeholder="  Название организации">
+                <input class="item-form" type="text" name="phone" placeholder="  Номер телефона" required>
                 <input class="item-form" type="file" name="file" placeholder="">
                 <br>
                 Файл должен быть не более 512 кб
                 <textarea name="item-form textarea" type="text" id="" rows="5" placeholder="  Комментарий"></textarea>
-                <button
-                    data-sitekey="6LcvKfwoAAAAADMp4AMf6s2gMRuk3yslZFv9QKmM"
-                    data-callback='onSubmit'
-                    data-action='submit'
-                    type="submit" class="popup__form-button g-recaptcha">Заказать</button>
+                <button data-sitekey="{{config('services.recaptcha.site_key')}}" data-callback='onSubmit' data-action='mail_form' type="submit" class="popup__form-button g-recaptcha">Заказать</button>
             </form>
         </div>
     </div>
