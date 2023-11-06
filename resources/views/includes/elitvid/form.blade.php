@@ -69,7 +69,7 @@
             <h4>Заказать звонок</h4>
             <form action="" method="post" enctype="multipart/form-data">
                 <input class="item-form" type="text" name="name" placeholder="  Ваше имя" required>
-{{--                <input class="item-form" type="text" name="email" placeholder="  Ваша почта" required>--}}
+                <input class="item-form" type="text" name="email" placeholder="  Ваша почта" required>
                 <input class="item-form" type="text" name="name-corp" placeholder="  Название организации">
                 <input class="item-form" type="text" name="phone" placeholder="  Номер телефона">
                 <input class="item-form" type="file" name="file" placeholder="">
