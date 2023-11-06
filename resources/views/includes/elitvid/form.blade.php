@@ -59,7 +59,6 @@
         display: flex;
     }
 </style>
-
 <div class="popup__form" id="content">
     <div class="popup__form-content">
         <div class="popup__form-item" style="cursor: pointer;">
@@ -76,6 +75,7 @@
                 <br>
                 Файл должен быть не более 512 кб
                 <textarea name="item-form textarea" type="text" id="" rows="5" placeholder="  Комментарий"></textarea>
+                {!! htmlScriptTagJsApi() !!}
                 <button type="submit" class="popup__form-button">Заказать</button>
             </form>
         </div>

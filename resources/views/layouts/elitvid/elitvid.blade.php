@@ -5,7 +5,7 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-{{--    <meta name="csrf-token" content="{{ csrf_token() }}">--}}
+
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css">
     <link rel="shortcut icon" href="{{asset('/elitvid_assets/images/header/Logo_shortcut.png')}}">
     <link rel="stylesheet" href="{{asset('/elitvid_assets/reset.css')}}">
@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="{{asset('/elitvid_assets/dist/style.css')}}">
     <link rel="stylesheet" href="{{asset('/elitvid_assets/dist/lightbox.css')}}">
     <title>Elitvid</title>
-{{--    {!! htmlScriptTagJsApi() !!}--}}
+
 </head>
 <body>
 <header>
