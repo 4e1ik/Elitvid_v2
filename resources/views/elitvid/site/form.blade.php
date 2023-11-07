@@ -59,7 +59,7 @@
                                 {{$message}}
                             </div>
                             @enderror
-                            <input type="hidden" name="" id="g-recaptcha-response">
+                            <input type="hidden" name="g-recaptcha-response" id="g-recaptcha-response">
                             @error('g-recaptcha-response')
                             <div class="text-danger">
                                 {{$message}}
