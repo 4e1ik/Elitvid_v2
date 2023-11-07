@@ -59,7 +59,12 @@
                                 {{$message}}
                             </div>
                             @enderror
-                            <input type="hidden" name="g-recaptcha-response" id="g-recaptcha-response">
+                            <input type="hidden" name="" id="g-recaptcha-response">
+                            @error('g-recaptcha-response')
+                            <div class="text-danger">
+                                {{$message}}
+                            </div>
+                            @enderror
                             <button class="form__form-button" type="submit" onclick="onclick(event)">Заказать</button>
                         </form>
                     </div>
