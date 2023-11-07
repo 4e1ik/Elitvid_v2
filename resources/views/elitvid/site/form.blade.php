@@ -22,13 +22,43 @@
                         <form action="{{route('send_mail')}}" method="post" enctype="multipart/form-data" id="mail_form">
                             @csrf
                             <input class="item-form" type="text" name="name" placeholder="  Ваше имя" required>
+                            @error('name')
+                            <div class="text-danger">
+                                {{$message}}
+                            </div>
+                            @enderror
                             <input class="item-form" type="text" name="email" placeholder="  Ваша почта" required>
+                            @error('email')
+                            <div class="text-danger">
+                                {{$message}}
+                            </div>
+                            @enderror
                             <input class="item-form" type="text" name="name_corp" placeholder="  Название организации">
+                            @error('name_corp')
+                            <div class="text-danger">
+                                {{$message}}
+                            </div>
+                            @enderror
                             <input class="item-form" type="text" name="phone" placeholder="  Номер телефона" required>
+                            @error('phone')
+                            <div class="text-danger">
+                                {{$message}}
+                            </div>
+                            @enderror
                             <input class="item-form file" type="file" name="file" placeholder="">
+                            @error('file')
+                            <div class="text-danger">
+                                {{$message}}
+                            </div>
+                            @enderror
 {{--                            <br>--}}
                             Файл должен быть не более 512 кб
                             <textarea name="item-form textarea" type="text" id="" rows="5" placeholder="  Комментарий"></textarea>
+                            @error('textarea')
+                            <div class="text-danger">
+                                {{$message}}
+                            </div>
+                            @enderror
                             <button data-sitekey="{{config('services.recaptcha.site_key')}}" data-callback='onSubmit' data-action='mail_form' type="submit" class="form__form-button g-recaptcha">Заказать</button>
                         </form>
                     </div>
