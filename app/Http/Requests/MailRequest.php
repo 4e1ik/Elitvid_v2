@@ -30,12 +30,12 @@ class MailRequest extends FormRequest
             'file' => 'file|size:512',
             'textarea' => 'min:3|max:100',
             'g-recaptcha-response' => ['required', function (string $attribute, mixed $value, \Closure $fail){
-            $g_response = Http::asForm()->post('https://www.google.com/recaptcha/api/siteverify',[
+            $g_response = Http::asForm()->post("https://www.google.com/recaptcha/api/siteverify",[
                 'secret' => config('services.recaptcha.secret_key'),
                 'response' => $value,
                 'remoteip' => \request()->ip(),
             ]);
-
+            dd($g_response->json());
                 if (!$g_response->json('success')){
                     $fail('The {$attribute} is invalid');
                 }
