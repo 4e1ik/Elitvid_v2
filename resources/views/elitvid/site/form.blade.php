@@ -53,7 +53,7 @@
                             @enderror
 {{--                            <br>--}}
                             Файл должен быть не более 512 кб
-                            <textarea name="item-form textarea" type="text" id="" rows="5" placeholder="  Комментарий"></textarea>
+                            <textarea class="item-form textarea" name="textarea" type="text" id="" rows="5" placeholder="  Комментарий"></textarea>
                             @error('textarea')
                             <div class="text-danger">
                                 {{$message}}
