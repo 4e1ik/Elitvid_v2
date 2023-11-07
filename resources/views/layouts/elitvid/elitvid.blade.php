@@ -249,7 +249,7 @@
     function onClick(e) {
         e.preventDefault();
         grecaptcha.ready(function() {
-            grecaptcha.execute('{{config('services.recaptcha.site_key')}}', {action: 'mail_form'}).then(function(token) {
+            grecaptcha.execute('{{config('services.recaptcha.site_key')}}', {action: 'send_mail'}).then(function(token) {
                 document.getElementById('g-recaptcha-response').value = token;
                 document.getElementById('mail-form').submit();
             });
