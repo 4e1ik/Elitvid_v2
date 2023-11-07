@@ -28,6 +28,6 @@ class MailController extends Controller
         $textarea = $data['textarea'];
 //        dd($data);
         Mail::to('Elitvid.site@yandex.ru')->send(new FeedbackMail($name, $email, $name_corp, $phone, $file, $textarea));
-        redirect(route('home'));
+        return redirect(route('home'));
     }
 }
