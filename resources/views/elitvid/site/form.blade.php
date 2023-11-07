@@ -60,7 +60,7 @@
                             </div>
                             @enderror
                             <input type="hidden" name="g-recaptcha-response" id="g-recaptcha-response">
-                            <button class="form__form-button" type="button" onclick="onclick(event)">Заказать</button>
+                            <button class="form__form-button" type="submit" onclick="onclick(event)">Заказать</button>
                         </form>
                     </div>
                 </div>
