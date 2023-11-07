@@ -251,7 +251,7 @@
         grecaptcha.ready(function() {
             grecaptcha.execute('{{config('services.recaptcha.site_key')}}', {action: 'send_mail'}).then(function(token) {
                 document.getElementById('g-recaptcha-response').value = token;
-                document.getElementById('mail-form').submit();
+                document.getElementById('mail_form').submit();
             });
         });
     }
