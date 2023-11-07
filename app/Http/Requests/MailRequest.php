@@ -26,7 +26,7 @@ class MailRequest extends FormRequest
             'name' => 'required|min:3|max:30',
             'email' => 'required|email',
             'name_corp' => 'min:3|max:50',
-            'phone' => 'required|min:15|max:15',
+            'phone' => 'required',
             'file' => 'file|size:512',
             'textarea' => 'min:3|max:100',
             'g-recaptcha-response' => ['required', function (string $attribute, mixed $value, \Closure $fail){
