@@ -42,6 +42,7 @@ Route::post('/registration', [RegisterController::class, 'registration'])->name(
 
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
+Route::get('/form', [MailController::class, 'show_form'])->name('form');
 Route::post('/sendForm', [MailController::class, 'send'])->name('send_mail');
 
 

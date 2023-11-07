@@ -9,9 +9,16 @@ use Illuminate\Support\Facades\Mail;
 
 class MailController extends Controller
 {
+
+    public function show_form()
+    {
+        return view('elitvid.site.form');
+    }
+
     public function send(MailRequest $mailRequest)
     {
 //        dd($mailRequest);
+//        $route = \Illuminate\Support\Facades\Route::currentRouteName();
         $data = $mailRequest->all();
         $name = $data['name'];
         $email = $data['email'];
@@ -21,6 +28,6 @@ class MailController extends Controller
         $textarea = $data['textarea'];
 //        dd($data);
         Mail::to('Elitvid.site@yandex.ru')->send(new FeedbackMail($name, $email, $name_corp, $phone, $file, $textarea));
-//        redirect(route(''));
+        redirect(route('home'));
     }
 }
