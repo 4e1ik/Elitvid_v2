@@ -59,7 +59,8 @@
                                 {{$message}}
                             </div>
                             @enderror
-                            <button data-sitekey="{{config('services.recaptcha.site_key')}}" data-callback='onSubmit' data-action='mail_form' type="submit" class="form__form-button g-recaptcha">Заказать</button>
+                            <input type="hidden" name="g-recaptcha-response" id="g-recaptcha-response">
+                            <button class="form__form-button" type="button" onclick="onclick(event)">Заказать</button>
                         </form>
                     </div>
                 </div>

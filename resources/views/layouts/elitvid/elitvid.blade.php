@@ -237,6 +237,7 @@
 <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
 <script src="{{asset('/elitvid_assets/scripts/form.js')}}"></script>
 <script src="https://www.google.com/recaptcha/api.js"></script>
+<script src="https://www.google.com/recaptcha/api.js?render={{config('services.recaptcha.site_key')}}"></script>
 @if(\Illuminate\Support\Facades\Route::currentRouteName() == 'home')
     <script src="{{asset('/elitvid_assets/scripts/swiper.js')}}"></script>
     <script src="{{asset('/elitvid_assets/scripts/script.js')}}"></script>
@@ -245,8 +246,14 @@
     <script src="{{asset('/elitvid_assets/scripts/lightbox-plus-jquery.js')}}"></script>
 @endif
 <script>
-    function onSubmit(token) {
-        document.getElementById("mail_form").submit();
+    function onClick(e) {
+        e.preventDefault();
+        grecaptcha.ready(function() {
+            grecaptcha.execute('{{config('services.recaptcha.site_key')}}', {action: 'mail_form'}).then(function(token) {
+                document.getElementById('g-recaptcha-response').value = token;
+                document.getElementById('mail-form').submit();
+            });
+        });
     }
 </script>
 </body>
