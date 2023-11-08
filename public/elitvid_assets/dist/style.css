@@ -43,6 +43,9 @@ header {
   background: rgba(0, 0, 0, 0.4);
   border-radius: 1.3em;
 }
+.form__main-items .form__form-form {
+  padding: 1em;
+}
 .form__main-items form {
   display: flex;
   flex-direction: column;

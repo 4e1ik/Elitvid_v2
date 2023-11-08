@@ -120,6 +120,11 @@ class ProductController extends Controller
             $route = 'admin_benches';
         }
 
+        $images = $product->images()->where('product_id', $product->id)->get();
+        foreach ($images as $image) {
+            Storage::delete($image->image);
+        }
+
         $product->delete();
         return redirect(route($route));
     }

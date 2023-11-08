@@ -45,14 +45,13 @@
                                 {{$message}}
                             </div>
                             @enderror
-                            <input class="item-form file" type="file" name="file" placeholder="">
-                            @error('file')
-                            <div class="text-danger">
-                                {{$message}}
-                            </div>
-                            @enderror
-{{--                            <br>--}}
-                            Файл должен быть не более 512 кб
+{{--                            <input class="item-form file" type="file" name="file" placeholder="">--}}
+{{--                            @error('file')--}}
+{{--                            <div class="text-danger">--}}
+{{--                                {{$message}}--}}
+{{--                            </div>--}}
+{{--                            @enderror--}}
+{{--                            Файл должен быть не более 512 кб--}}
                             <textarea class="item-form textarea" name="textarea" type="text" id="" rows="5" placeholder="  Комментарий"></textarea>
                             @error('textarea')
                             <div class="text-danger">

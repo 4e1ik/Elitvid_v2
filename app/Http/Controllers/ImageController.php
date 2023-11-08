@@ -41,6 +41,8 @@ class ImageController extends Controller
 
     public function destroy(Image $image, Product $product) {
 
+        Storage::delete($image->image);
+
         $image->delete();
 
         return redirect(route('products.edit', ['product' => $product]));
@@ -48,7 +50,7 @@ class ImageController extends Controller
 
     public function gallery_image_destroy(Image $image, Gallery $gallery)
     {
-//        dd($gallery);
+        Storage::delete($image->image);
 
         $image->delete();
 
@@ -74,7 +76,7 @@ class ImageController extends Controller
 
     public function texture_image_destroy(Image $image, Texture $texture)
     {
-//        dd($image);
+        Storage::delete($image->image);
 
         $image->delete();
 
@@ -84,8 +86,6 @@ class ImageController extends Controller
     public function texture_image_update(Image $image, Texture $texture, Request $request)
     {
         $data = $request->all();
-
-//        dd($data);
 
         $image->fill($data)->save();
 

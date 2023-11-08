@@ -98,6 +98,11 @@ class TexturesController extends Controller
      */
     public function destroy(Texture $texture)
     {
+        $images = $texture->images()->where('texture_id', $texture->id)->get();
+        foreach ($images as $image) {
+            Storage::delete($image->image);
+        }
+
         $texture->delete();
 
         return redirect(route('admin_textures'));

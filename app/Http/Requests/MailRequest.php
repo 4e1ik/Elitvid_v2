@@ -27,7 +27,7 @@ class MailRequest extends FormRequest
             'email' => 'required|email',
             'name_corp' => 'max:50',
             'phone' => 'required',
-            'file' => 'file|max:512',
+//            'file' => 'file|max:512',
             'textarea' => 'max:100',
             'g-recaptcha-response' => ['required', function (string $attribute, mixed $value, \Closure $fail){
             $g_response = Http::asForm()->post("https://www.google.com/recaptcha/api/siteverify",[
