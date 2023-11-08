@@ -46,6 +46,9 @@
             @if (array_key_exists('textarea', $data))
                 <h4>Комментарий пользователя: <span>{{$data['textarea']}}</span>.</h4>
             @endif
+            @if (array_key_exists('file', $data))
+                <h4>Файл пользователя: <span>{{$data['file']}}</span>.</h4>
+            @endif
         </div>
     </div>
 </x-mail::message>

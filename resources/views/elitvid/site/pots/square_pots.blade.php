@@ -6,6 +6,7 @@
             <div class="square-pots__main-header section-header">
                 <h2>Квадратные кашпо</h2>
             </div>
+            @include('includes.elitvid.catalog_price_pots')
             <div class="product__main-items">
                 @foreach($square_pots as $pot)
                     <div class="product__item-card">

@@ -6,6 +6,7 @@
             <div class="pots__main-header section-header">
                 <h2>Кашпо и вазоны</h2>
             </div>
+            @include('includes.elitvid.catalog_price_pots')
             <div class="catalog__main-items">
                 <div class="catalog__item-card">
                     <img class="pots" src="{{asset('/elitvid_assets/images/main/pots/square.png')}}" alt="">

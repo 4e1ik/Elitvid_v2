@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\MailRequest;
 use App\Mail\FeedbackMail;
+use App\Models\Image;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Storage;
 
 class MailController extends Controller
 {
@@ -20,7 +22,19 @@ class MailController extends Controller
 //        dd($mailRequest);
 //        $route = \Illuminate\Support\Facades\Route::currentRouteName();
         $data = $mailRequest->all();
+
+//        dd($data);
+
+        if ($mailRequest->hasFile('file')) {
+            $name = $mailRequest->file('file')->getClientOriginalName();
+            $path = Storage::putFileAs('files', $mailRequest->file('file'), $name); // Даем путь к этому файлу
+            $data['file'] = $path;
+        }
+
+//        dd($data);
+
         Mail::to('Elitvid.site@yandex.ru')->send(new FeedbackMail($data));
+        Storage::delete($path);
         return redirect(route('home'));
     }
 }

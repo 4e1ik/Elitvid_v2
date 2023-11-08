@@ -46,6 +46,8 @@ class ProductController extends Controller
             }
         }
 
+//        dd($data);
+
         $dataItem = $product->attributesToArray()['item'];
         if ($dataItem == 'pot') {
             $route = 'admin_pots';

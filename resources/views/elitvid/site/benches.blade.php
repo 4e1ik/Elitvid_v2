@@ -6,6 +6,7 @@
             <div class="pots__main-header section-header">
                 <h2>Скамьи</h2>
             </div>
+            @include('includes.elitvid.catalog_price_benches')
             <div class="texture__name-header second_section-header">
                 <h3>Коллекция Stones</h3>
             </div>

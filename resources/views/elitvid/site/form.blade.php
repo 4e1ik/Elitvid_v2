@@ -45,27 +45,27 @@
                                 {{$message}}
                             </div>
                             @enderror
-{{--                            <input class="item-form file" type="file" name="file" placeholder="">--}}
-{{--                            @error('file')--}}
-{{--                            <div class="text-danger">--}}
-{{--                                {{$message}}--}}
-{{--                            </div>--}}
-{{--                            @enderror--}}
-{{--                            Файл должен быть не более 512 кб--}}
+                            <input class="item-form file" type="file" name="file" placeholder="">
+                            @error('file')
+                            <div class="text-danger">
+                                {{$message}}
+                            </div>
+                            @enderror
+                            Файл должен быть не более 512 кб
                             <textarea class="item-form textarea" name="textarea" type="text" id="" rows="5" placeholder="  Комментарий"></textarea>
                             @error('textarea')
                             <div class="text-danger">
                                 {{$message}}
                             </div>
                             @enderror
-                            <input type="hidden" name="g-recaptcha-response" id="g-recaptcha-response">
-                            @error('g-recaptcha-response')
-                            <div class="text-danger">
-                                {{$message}}
-                            </div>
-                            @enderror
-                            <button class="form__form-button" type="button" onclick="onClick(event)">Заказать</button>
-{{--                            <button class="form__form-button" type="submit">Заказать</button>--}}
+{{--                            <input type="hidden" name="g-recaptcha-response" id="g-recaptcha-response">--}}
+{{--                            @error('g-recaptcha-response')--}}
+{{--                            <div class="text-danger">--}}
+{{--                                {{$message}}--}}
+{{--                            </div>--}}
+{{--                            @enderror--}}
+{{--                            <button class="form__form-button" type="button" onclick="onClick(event)">Заказать</button>--}}
+                            <button class="form__form-button" type="submit">Заказать</button>
                         </form>
                     </div>
                 </div>
