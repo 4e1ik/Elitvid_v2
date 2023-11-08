@@ -25,10 +25,10 @@ class MailRequest extends FormRequest
         return [
             'name' => 'required|min:3|max:30',
             'email' => 'required|email',
-            'name_corp' => 'min:3|max:50',
+            'name_corp' => 'max:50',
             'phone' => 'required',
-            'file' => 'file|size:512',
-            'textarea' => 'min:3|max:100',
+            'file' => 'file|max:512',
+            'textarea' => 'max:100',
             'g-recaptcha-response' => ['required', function (string $attribute, mixed $value, \Closure $fail){
             $g_response = Http::asForm()->post("https://www.google.com/recaptcha/api/siteverify",[
                 'secret' => config('services.recaptcha.secret_key'),

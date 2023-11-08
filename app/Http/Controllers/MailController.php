@@ -20,14 +20,7 @@ class MailController extends Controller
 //        dd($mailRequest);
 //        $route = \Illuminate\Support\Facades\Route::currentRouteName();
         $data = $mailRequest->all();
-        $name = $data['name'];
-        $email = $data['email'];
-        $name_corp = $data['name_corp'];
-        $phone = $data['phone'];
-        $file = $data['file'];
-        $textarea = $data['textarea'];
-//        dd($data);
-        Mail::to('Elitvid.site@yandex.ru')->send(new FeedbackMail($name, $email, $name_corp, $phone, $file, $textarea));
+        Mail::to('Elitvid.site@yandex.ru')->send(new FeedbackMail($data));
         return redirect(route('home'));
     }
 }

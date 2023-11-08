@@ -13,20 +13,15 @@ class FeedbackMail extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $name, $email, $name_corp, $phone, $file, $textarea;
+    public $data;
 
     /**
      * Create a new message instance.
      */
-    public function __construct($name, $email, $name_corp, $phone, $file, $textarea)
+    public function __construct($data)
     {
-        //
-        $this->name = $name;
-        $this->email = $email;
-        $this->name_corp = $name_corp;
-        $this->phone = $phone;
-        $this->file = $file;
-        $this->textarea = $textarea;
+
+        $this->data = $data;
     }
 
     /**
