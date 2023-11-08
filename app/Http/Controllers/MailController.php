@@ -19,19 +19,14 @@ class MailController extends Controller
 
     public function send(MailRequest $mailRequest)
     {
-//        dd($mailRequest);
 //        $route = \Illuminate\Support\Facades\Route::currentRouteName();
         $data = $mailRequest->all();
-
-//        dd($data);
 
         if ($mailRequest->hasFile('file')) {
             $name = $mailRequest->file('file')->getClientOriginalName();
             $path = Storage::putFileAs('files', $mailRequest->file('file'), $name); // Даем путь к этому файлу
             $data['file'] = $path;
         }
-
-//        dd($data);
 
         Mail::to('Elitvid.site@yandex.ru')->send(new FeedbackMail($data));
         Storage::delete($path);
