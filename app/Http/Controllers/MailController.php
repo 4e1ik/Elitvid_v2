@@ -28,11 +28,11 @@ class MailController extends Controller
             $data['file'] = $path;
             Mail::to('Elitvid.site@yandex.ru')->send(new FeedbackMail($data));
             Storage::delete($path);
+        } else {
+            Mail::to('Elitvid.site@yandex.ru')->send(new FeedbackMail($data));
         }
 
 //        dd($data);
-
-        Mail::to('Elitvid.site@yandex.ru')->send(new FeedbackMail($data));
         return redirect(route('home'));
     }
 }
