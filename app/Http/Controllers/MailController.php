@@ -26,10 +26,13 @@ class MailController extends Controller
             $name = $mailRequest->file('file')->getClientOriginalName();
             $path = Storage::putFileAs('files', $mailRequest->file('file'), $name); // Даем путь к этому файлу
             $data['file'] = $path;
+            Mail::to('Elitvid.site@yandex.ru')->send(new FeedbackMail($data));
+            Storage::delete($path);
         }
 
+//        dd($data);
+
         Mail::to('Elitvid.site@yandex.ru')->send(new FeedbackMail($data));
-        Storage::delete($path);
         return redirect(route('home'));
     }
 }

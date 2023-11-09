@@ -52,7 +52,7 @@ class FeedbackMail extends Mailable
      */
     public function attachments(): array
     {
-        if(!$this->data['file']==null){
+        if(array_key_exists('file', $this->data)){
             return [
                 Attachment::fromStorage($this->data['file']),
             ];

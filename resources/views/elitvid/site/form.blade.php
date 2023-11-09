@@ -58,14 +58,14 @@
                                 {{$message}}
                             </div>
                             @enderror
-                            <input type="hidden" name="g-recaptcha-response" id="g-recaptcha-response">
-                            @error('g-recaptcha-response')
-                            <div class="text-danger">
-                                {{$message}}
-                            </div>
-                            @enderror
-                            <button class="form__form-button" type="button" onclick="onClick(event)">Заказать</button>
-{{--                            <button class="form__form-button" type="submit">Заказать</button>--}}
+{{--                            <input type="hidden" name="g-recaptcha-response" id="g-recaptcha-response">--}}
+{{--                            @error('g-recaptcha-response')--}}
+{{--                            <div class="text-danger">--}}
+{{--                                {{$message}}--}}
+{{--                            </div>--}}
+{{--                            @enderror--}}
+{{--                            <button class="form__form-button" type="button" onclick="onClick(event)">Заказать</button>--}}
+                            <button class="form__form-button" type="submit">Заказать</button>
                         </form>
                     </div>
                 </div>
