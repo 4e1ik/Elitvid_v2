@@ -52,8 +52,11 @@ class FeedbackMail extends Mailable
      */
     public function attachments(): array
     {
-        return [
-            Attachment::fromStorage($this->data['file']),
-        ];
+        if($this->data['file']){
+            return [
+                Attachment::fromStorage($this->data['file']),
+            ];
+        }
+        return [];
     }
 }

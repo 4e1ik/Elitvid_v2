@@ -1,32 +1,32 @@
 <x-mail::message>
-{{--    <div class="background" style="background-color: black; display: flex; flex-direction: column;">--}}
-{{--        Имя:--}}
-{{--        Почта:--}}
-{{--        Название компании:--}}
-{{--        Номер телефона:--}}
-{{--        @if (array_key_exists('file', $data))--}}
-{{--            Файл: {{$data['file']}}--}}
-{{--        @endif--}}
+    {{--    <div class="background" style="background-color: black; display: flex; flex-direction: column;">--}}
+    {{--        Имя:--}}
+    {{--        Почта:--}}
+    {{--        Название компании:--}}
+    {{--        Номер телефона:--}}
+    {{--        @if (array_key_exists('file', $data))--}}
+    {{--            Файл: {{$data['file']}}--}}
+    {{--        @endif--}}
 
-{{--    </div>--}}
+    {{--    </div>--}}
 
-{{--    <style>--}}
-{{--        .background {--}}
-{{--            background: rgba(0, 0, 0, 0.4);--}}
-{{--            border-radius: 15px;--}}
-{{--        }--}}
+    {{--    <style>--}}
+    {{--        .background {--}}
+    {{--            background: rgba(0, 0, 0, 0.4);--}}
+    {{--            border-radius: 15px;--}}
+    {{--        }--}}
 
-{{--        .background .content {--}}
-{{--            padding: 30px;--}}
-{{--            display:flex;--}}
-{{--            flex-direction: column;--}}
-{{--            align-items:center;--}}
-{{--        }--}}
+    {{--        .background .content {--}}
+    {{--            padding: 30px;--}}
+    {{--            display:flex;--}}
+    {{--            flex-direction: column;--}}
+    {{--            align-items:center;--}}
+    {{--        }--}}
 
-{{--        .background .content span {--}}
-{{--            font-weight: bold;--}}
-{{--        }--}}
-{{--    </style>--}}
+    {{--        .background .content span {--}}
+    {{--            font-weight: bold;--}}
+    {{--        }--}}
+    {{--    </style>--}}
 
     <div class="background" style="
             background: rgba(0, 0, 0, 0.4);
@@ -39,15 +39,20 @@
                 flex-direction: column;
                 align-items:center;
             ">
-            <h3>Пользователь <span>{{$data['name']}}</span> просит вас перезвонить ему.</h3>
-            <h4>Обратную  связь просит осуществить по почте: <span>{{$data['email']}}</span>.</h4>
-            <h4>Пользователь представляет компанию: <span>{{$data['name_corp']}}</span>.</h4>
-            <h4>Номер телефона пользователя для обратной связи: <span>{{$data['phone']}}</span>.</h4>
+            @if (array_key_exists('name', $data))
+                <h4>Комментарий пользователя: <span>{{$data['name']}}</span>.</h4>
+            @endif
+            @if (array_key_exists('email', $data))
+                <h4>Комментарий пользователя: <span>{{$data['email']}}</span>.</h4>
+            @endif
+            @if (array_key_exists('name_corp', $data))
+                <h4>Комментарий пользователя: <span>{{$data['name_corp']}}</span>.</h4>
+            @endif
+            @if (array_key_exists('phone', $data))
+                <h4>Комментарий пользователя: <span>{{$data['phone']}}</span>.</h4>
+            @endif
             @if (array_key_exists('textarea', $data))
                 <h4>Комментарий пользователя: <span>{{$data['textarea']}}</span>.</h4>
-            @endif
-            @if (array_key_exists('file', $data))
-                <h4>Файл пользователя: <span>{{$data['file']}}</span>.</h4>
             @endif
         </div>
     </div>
