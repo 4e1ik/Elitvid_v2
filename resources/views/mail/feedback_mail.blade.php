@@ -40,16 +40,16 @@
                 align-items:center;
             ">
             @if (array_key_exists('name', $data))
-                <h4>Комментарий пользователя: <span>{{$data['name']}}</span>.</h4>
+                <h4>Имя пользователя: <span>{{$data['name']}}</span>.</h4>
             @endif
             @if (array_key_exists('email', $data))
-                <h4>Комментарий пользователя: <span>{{$data['email']}}</span>.</h4>
+                <h4>Почта пользователя: <span>{{$data['email']}}</span>.</h4>
             @endif
             @if (array_key_exists('name_corp', $data))
-                <h4>Комментарий пользователя: <span>{{$data['name_corp']}}</span>.</h4>
+                <h4>Название компании пользователя: <span>{{$data['name_corp']}}</span>.</h4>
             @endif
             @if (array_key_exists('phone', $data))
-                <h4>Комментарий пользователя: <span>{{$data['phone']}}</span>.</h4>
+                <h4>Телефон для связи пользователя: <span>{{$data['phone']}}</span>.</h4>
             @endif
             @if (array_key_exists('textarea', $data))
                 <h4>Комментарий пользователя: <span>{{$data['textarea']}}</span>.</h4>
