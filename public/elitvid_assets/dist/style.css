@@ -57,13 +57,16 @@ header {
 .form__main-items .form__form-form {
   padding: 1em;
 }
+.form__main-items .item__form {
+  margin-top: 1em;
+}
 .form__main-items form {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 .form__main-items input {
-  margin-top: 1em;
+  margin: 0.3em 0 0.3em 0;
   width: 30em;
   height: 3em;
   border-radius: 1.3em;
@@ -80,6 +83,12 @@ header {
   justify-content: center;
 }
 .form__main-items .text__form p {
+  text-align: center;
+}
+.form__main-items .text-danger {
+  color: red;
+}
+.form__main-items .text-danger p {
   text-align: center;
 }
 .form__main-items button {
@@ -322,6 +331,7 @@ details .content-product {
 
   .form__main-items {
     margin: 2em 10em 0 10em;
+    font-size: 1.1em;
   }
   .form__main-items input {
     width: 20em;
@@ -330,10 +340,6 @@ details .content-product {
   .form__main-items textarea {
     width: 20em;
     height: 5em;
-  }
-  .form__main-items button {
-    width: 5em;
-    height: 2em;
   }
   .form__main-items .file {
     width: 20em;
@@ -385,8 +391,8 @@ details .content-product {
     height: 5em;
   }
   .form__main-items button {
-    width: 5em;
-    height: 2em;
+    width: 6em;
+    height: 3em;
   }
   .form__main-items .file {
     width: 10em;
@@ -418,10 +424,6 @@ details .content-product {
   .form__main-items textarea {
     width: 10em;
     height: 5em;
-  }
-  .form__main-items button {
-    width: 5em;
-    height: 2em;
   }
   .form__main-items .file {
     width: 5em;

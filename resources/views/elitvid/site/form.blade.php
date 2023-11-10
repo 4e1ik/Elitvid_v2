@@ -21,51 +21,88 @@
                     <div class="form__form-form">
                         <form action="{{route('send_mail')}}" method="post" enctype="multipart/form-data" id="mail_form">
                             @csrf
-                            <input class="item-form" type="text" name="name" placeholder="  Ваше имя" required>
-                            @error('name')
-                            <div class="text-danger">
-                                {{$message}}
+                            <div class="item__form">
+                                <div class="text__form">
+                                    <p>Ваше имя</p>
+                                </div>
+                                <input class="item-form" type="text" name="name" placeholder="  Ваше имя" required>
+                                @error('name')
+                                <div class="text-danger">
+                                    <p>{{$message}}</p>
+                                </div>
+                                @enderror
                             </div>
-                            @enderror
-                            <input class="item-form" type="text" name="email" placeholder="  Ваша почта" required>
-                            @error('email')
-                            <div class="text-danger">
-                                {{$message}}
+
+                            <div class="item__form">
+                                <div class="text__form">
+                                    <p>Ваша почта</p>
+                                </div>
+                                <input class="item-form" type="text" name="email" placeholder="  Ваша почта" required>
+                                @error('email')
+                                <div class="text-danger">
+                                    <p>{{$message}}</p>
+                                </div>
+                                @enderror
                             </div>
-                            @enderror
-                            <input class="item-form" type="text" name="name_corp" placeholder="  Название организации">
-                            @error('name_corp')
-                            <div class="text-danger">
-                                {{$message}}
+
+                            <div class="item__form">
+                                <div class="text__form">
+                                    <p>Название организации</p>
+                                </div>
+                                <input class="item-form" type="text" name="name_corp" placeholder="  Название организации">
+                                @error('name_corp')
+                                <div class="text-danger">
+                                    <p>{{$message}}</p>
+                                </div>
+                                @enderror
                             </div>
-                            @enderror
-                            <input class="item-form" type="text" name="phone" placeholder="  Номер телефона" required>
-                            @error('phone')
-                            <div class="text-danger">
-                                {{$message}}
+
+                            <div class="item__form">
+                                <div class="text__form">
+                                    <p>Ваш номер телефона</p>
+                                </div>
+                                <input class="item-form" type="text" name="phone" placeholder="  Номер телефона" required>
+                                @error('phone')
+                                <div class="text-danger">
+                                    <p>{{$message}}</p>
+                                </div>
+                                @enderror
                             </div>
-                            @enderror
-                            <input class="item-form file" type="file" name="file" placeholder="">
-                            @error('file')
-                            <div class="text-danger">
-                                {{$message}}
+
+                            <div class="item__form">
+                                <div class="text__form">
+                                    <p>Прикрепить файл</p>
+                                </div>
+                                <input class="item-form file" type="file" name="file" placeholder="">
+                                @error('file')
+                                <div class="text-danger">
+                                    <p>{{$message}}</p>
+                                </div>
+                                @enderror
                             </div>
-                            @enderror
                             <div class="text__form">
                                 <p>Файл должен быть не более 512 кб</p>
                             </div>
-                            <textarea class="item-form textarea" name="textarea" type="text" id="" rows="5" placeholder="  Комментарий"></textarea>
-                            @error('textarea')
-                            <div class="text-danger">
-                                {{$message}}
+
+                            <div class="item__form">
+                                <div class="text__form">
+                                    <p>Ваш комментарий</p>
+                                </div>
+                                <textarea class="item-form textarea" name="textarea" type="text" id="" rows="5" placeholder="  Комментарий"></textarea>
+                                @error('textarea')
+                                <div class="text-danger">
+                                    <p>{{$message}}</p>
+                                </div>
+                                @enderror
                             </div>
-                            @enderror
+
+
                             <input type="hidden" name="g-recaptcha-response" id="g-recaptcha-response">
-                            @error('g-recaptcha-response')
-                            <div class="text-danger">
-                                {{$message}}
-                            </div>
-                            @enderror
+{{--                            @error('g-recaptcha-response')--}}
+{{--                            <div class="text-danger">--}}
+{{--                                <p>{{$message}}</p>--}}
+{{--                            </div>--}}
+{{--                            @enderror--}}
                             <button class="form__form-button" type="button" onclick="onClick(event)">Заказать</button>
 {{--                            <button class="form__form-button" type="submit">Заказать</button>--}}
                         </form>
