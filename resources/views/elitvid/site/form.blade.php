@@ -51,7 +51,9 @@
                                 {{$message}}
                             </div>
                             @enderror
-                            Файл должен быть не более 512 кб
+                            <div class="text__form">
+                                <p>Файл должен быть не более 512 кб</p>
+                            </div>
                             <textarea class="item-form textarea" name="textarea" type="text" id="" rows="5" placeholder="  Комментарий"></textarea>
                             @error('textarea')
                             <div class="text-danger">

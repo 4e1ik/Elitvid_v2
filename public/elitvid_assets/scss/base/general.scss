@@ -91,6 +91,15 @@ header {
         resize: none;
     }
 
+    .text__form {
+        display: flex;
+        justify-content: center;
+
+        p {
+            text-align: center;
+        }
+    }
+
     button {
         margin-top: 1em;
         width: 6em;
@@ -379,6 +388,29 @@ details {
         font-size: 14px;
     }
 
+    .form__main-items {
+        margin: 2em 10em 0 10em;
+
+        input {
+            width: 20em;
+            height: 2em;
+        }
+
+        textarea {
+            width: 20em;
+            height: 5em;
+        }
+
+        button {
+            width: 5em;
+            height: 2em;
+        }
+
+        .file {
+            width: 20em;
+        }
+    }
+
     .catalog__card-header {
         width: 15em;
     }
@@ -422,6 +454,29 @@ details {
         font-size: 12px;
     }
 
+    .form__main-items {
+        margin: 2em 10em 0 10em;
+
+        input {
+            width: 15em;
+            height: 2em;
+        }
+
+        textarea {
+            width: 15em;
+            height: 5em;
+        }
+
+        button {
+            width: 5em;
+            height: 2em;
+        }
+
+        .file {
+            width: 10em;
+        }
+    }
+
     .section-header {
         margin-top: 7em;
     }
@@ -444,6 +499,29 @@ details {
 }
 
 @media (max-width: 621px) {
+
+    .form__main-items {
+        margin: 2em 5em 0 5em;
+
+        input {
+            width: 10em;
+            height: 2em;
+        }
+
+        textarea {
+            width: 10em;
+            height: 5em;
+        }
+
+        button {
+            width: 5em;
+            height: 2em;
+        }
+
+        .file {
+            width: 5em;
+        }
+    }
 
     .section-header {
         //margin-top: 8em;

@@ -75,6 +75,13 @@ header {
   border-radius: 1.3em;
   resize: none;
 }
+.form__main-items .text__form {
+  display: flex;
+  justify-content: center;
+}
+.form__main-items .text__form p {
+  text-align: center;
+}
 .form__main-items button {
   margin-top: 1em;
   width: 6em;
@@ -313,6 +320,25 @@ details .content-product {
     font-size: 14px;
   }
 
+  .form__main-items {
+    margin: 2em 10em 0 10em;
+  }
+  .form__main-items input {
+    width: 20em;
+    height: 2em;
+  }
+  .form__main-items textarea {
+    width: 20em;
+    height: 5em;
+  }
+  .form__main-items button {
+    width: 5em;
+    height: 2em;
+  }
+  .form__main-items .file {
+    width: 20em;
+  }
+
   .catalog__card-header {
     width: 15em;
   }
@@ -347,6 +373,25 @@ details .content-product {
     font-size: 12px;
   }
 
+  .form__main-items {
+    margin: 2em 10em 0 10em;
+  }
+  .form__main-items input {
+    width: 15em;
+    height: 2em;
+  }
+  .form__main-items textarea {
+    width: 15em;
+    height: 5em;
+  }
+  .form__main-items button {
+    width: 5em;
+    height: 2em;
+  }
+  .form__main-items .file {
+    width: 10em;
+  }
+
   .section-header {
     margin-top: 7em;
   }
@@ -363,6 +408,25 @@ details .content-product {
   }
 }
 @media (max-width: 621px) {
+  .form__main-items {
+    margin: 2em 5em 0 5em;
+  }
+  .form__main-items input {
+    width: 10em;
+    height: 2em;
+  }
+  .form__main-items textarea {
+    width: 10em;
+    height: 5em;
+  }
+  .form__main-items button {
+    width: 5em;
+    height: 2em;
+  }
+  .form__main-items .file {
+    width: 5em;
+  }
+
   .second_section-header {
     margin: 2em 5em 0 5em;
   }
