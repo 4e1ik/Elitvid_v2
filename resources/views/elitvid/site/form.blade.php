@@ -73,15 +73,13 @@
                                 <div class="text__form">
                                     <p>Прикрепить файл</p>
                                 </div>
+                                <p>Файл должен быть не более 512 кб</p>
                                 <input class="item-form file" type="file" name="file" placeholder="">
                                 @error('file')
                                 <div class="text-danger">
                                     <p>{{$message}}</p>
                                 </div>
                                 @enderror
-                            </div>
-                            <div class="text__form">
-                                <p>Файл должен быть не более 512 кб</p>
                             </div>
 
                             <div class="item__form">

@@ -62,7 +62,7 @@ header {
 
 
 .form__main-items {
-    margin: 2em 10em 0 10em;
+    margin: 2em 0em 0 0em;
     background: rgba(0, 0, 0, 0.4);
     border-radius: 1.3em;
 
@@ -401,7 +401,6 @@ details {
     }
 
     .form__main-items {
-        margin: 2em 10em 0 10em;
         font-size: 1.1em;
 
         input {
@@ -463,25 +462,26 @@ details {
     }
 
     .form__main-items {
-        margin: 2em 10em 0 10em;
+
+        font-size: 1.5em;
 
         input {
-            width: 15em;
-            height: 2em;
+            width: 20em;
+            height: 3em;
         }
 
         textarea {
-            width: 15em;
+            width: 20em;
             height: 5em;
         }
 
         button {
-            width: 6em;
-            height: 3em;
+            width: 10em;
+            height: 5em;
         }
 
         .file {
-            width: 10em;
+            width: 20em;
         }
     }
 
@@ -509,20 +509,26 @@ details {
 @media (max-width: 621px) {
 
     .form__main-items {
-        margin: 2em 5em 0 5em;
+
+        font-size: 1.5em;
 
         input {
-            width: 10em;
-            height: 2em;
+            width: 20em;
+            height: 3em;
         }
 
         textarea {
+            width: 20em;
+            height: 5em;
+        }
+
+        button {
             width: 10em;
             height: 5em;
         }
 
         .file {
-            width: 5em;
+            width: 20em;
         }
     }
 
@@ -554,6 +560,7 @@ details {
 }
 
 @media (max-width: 569px) {
+
     .gallery__main {
         .gallery__main-items {
 
@@ -570,6 +577,30 @@ details {
 @media (max-width: 480px) {
     body {
         font-size: 11px;
+
+        .form__main-items {
+
+            //font-size: 1.5em;
+
+            input {
+                width: 15em;
+                height: 3em;
+            }
+
+            textarea {
+                width: 15em;
+                height: 5em;
+            }
+
+            button {
+                width: 8em;
+                height: 5em;
+            }
+
+            .file {
+                width: 15em;
+            }
+        }
     }
 
     .second_section-header {

@@ -50,7 +50,7 @@ header {
 }
 
 .form__main-items {
-  margin: 2em 10em 0 10em;
+  margin: 2em 0em 0 0em;
   background: rgba(0, 0, 0, 0.4);
   border-radius: 1.3em;
 }
@@ -330,7 +330,6 @@ details .content-product {
   }
 
   .form__main-items {
-    margin: 2em 10em 0 10em;
     font-size: 1.1em;
   }
   .form__main-items input {
@@ -380,22 +379,22 @@ details .content-product {
   }
 
   .form__main-items {
-    margin: 2em 10em 0 10em;
+    font-size: 1.5em;
   }
   .form__main-items input {
-    width: 15em;
-    height: 2em;
+    width: 20em;
+    height: 3em;
   }
   .form__main-items textarea {
-    width: 15em;
+    width: 20em;
     height: 5em;
   }
   .form__main-items button {
-    width: 6em;
-    height: 3em;
+    width: 10em;
+    height: 5em;
   }
   .form__main-items .file {
-    width: 10em;
+    width: 20em;
   }
 
   .section-header {
@@ -415,18 +414,22 @@ details .content-product {
 }
 @media (max-width: 621px) {
   .form__main-items {
-    margin: 2em 5em 0 5em;
+    font-size: 1.5em;
   }
   .form__main-items input {
-    width: 10em;
-    height: 2em;
+    width: 20em;
+    height: 3em;
   }
   .form__main-items textarea {
+    width: 20em;
+    height: 5em;
+  }
+  .form__main-items button {
     width: 10em;
     height: 5em;
   }
   .form__main-items .file {
-    width: 5em;
+    width: 20em;
   }
 
   .second_section-header {
@@ -457,6 +460,21 @@ details .content-product {
 @media (max-width: 480px) {
   body {
     font-size: 11px;
+  }
+  body .form__main-items input {
+    width: 15em;
+    height: 3em;
+  }
+  body .form__main-items textarea {
+    width: 15em;
+    height: 5em;
+  }
+  body .form__main-items button {
+    width: 8em;
+    height: 5em;
+  }
+  body .form__main-items .file {
+    width: 15em;
   }
 
   .second_section-header {
