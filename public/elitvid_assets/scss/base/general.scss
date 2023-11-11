@@ -80,6 +80,12 @@ header {
         align-items: center;
     }
 
+    .item-form {
+        background: rgba(255, 255, 255, 0.4);
+        border: 0.1em solid;
+        color: #fff;
+    }
+
     input {
         margin: 0.3em 0 0.3em 0;
         width: 30em;
@@ -87,12 +93,27 @@ header {
         border-radius: 1.3em;
     }
 
+    input::-webkit-input-placeholder {
+        color: #fff;
+    }
+    input::-moz-placeholder {
+        color: #fff;
+    }
+
+
     textarea {
         margin-top: 1em;
         width: 30em;
         height: 6em;
         border-radius: 1.3em;
         resize: none;
+    }
+
+    textarea::-webkit-input-placeholder {
+        color: #fff;
+    }
+    textarea::-moz-placeholder {
+        color: #fff;
     }
 
     .text__form {
@@ -118,11 +139,16 @@ header {
         height: 3em;
         border-radius: 1.3em;
         cursor: pointer;
+        background: rgba(255, 255, 255, 0.4);
+        border: 0.1em solid;
+        color: #fff;
     }
 
     .file {
         width: 20em;
         border-radius: inherit;
+        background: none;
+        border: none;
     }
 }
 

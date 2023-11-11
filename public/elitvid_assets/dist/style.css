@@ -65,11 +65,22 @@ header {
   flex-direction: column;
   align-items: center;
 }
+.form__main-items .item-form {
+  background: rgba(255, 255, 255, 0.4);
+  border: 0.1em solid;
+  color: #fff;
+}
 .form__main-items input {
   margin: 0.3em 0 0.3em 0;
   width: 30em;
   height: 3em;
   border-radius: 1.3em;
+}
+.form__main-items input::-webkit-input-placeholder {
+  color: #fff;
+}
+.form__main-items input::-moz-placeholder {
+  color: #fff;
 }
 .form__main-items textarea {
   margin-top: 1em;
@@ -77,6 +88,12 @@ header {
   height: 6em;
   border-radius: 1.3em;
   resize: none;
+}
+.form__main-items textarea::-webkit-input-placeholder {
+  color: #fff;
+}
+.form__main-items textarea::-moz-placeholder {
+  color: #fff;
 }
 .form__main-items .text__form {
   display: flex;
@@ -97,10 +114,15 @@ header {
   height: 3em;
   border-radius: 1.3em;
   cursor: pointer;
+  background: rgba(255, 255, 255, 0.4);
+  border: 0.1em solid;
+  color: #fff;
 }
 .form__main-items .file {
   width: 20em;
   border-radius: inherit;
+  background: none;
+  border: none;
 }
 
 .catalog__main-items {
