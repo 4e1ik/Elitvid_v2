@@ -79,27 +79,27 @@
 {{--                                    <a href="">О нас</a>--}}
 {{--                                </li>--}}
                                 <li class="nav__item">
-                                    <a href="{{route('form')}}" class="phone-number">Заказать звонок</a>
+                                    <a href="{{route('form')}}" class="phone-number"><p>Заказать звонок</p></a>
                                 </li>
                                 <li class="nav__item">
-                                    <a href="{{route('catalog')}}">Каталог</a>
+                                    <a href="{{route('catalog')}}"><p>Каталог</p></a>
                                     <ul class="nav__sublist">
                                         <li>
-                                            <a href="{{route('pots')}}">Кашпо</a>
+                                            <a href="{{route('pots')}}"><p>Кашпо</p></a>
                                             <ul class="nav__sublist">
                                                 <li>
-                                                    <a href="{{route('square_pots')}}">Квадратные</a>
+                                                    <a href="{{route('square_pots')}}"><p>Квадратные</p></a>
                                                 </li>
                                                 <li>
-                                                    <a href="{{route('round_pots')}}">Круглые</a>
+                                                    <a href="{{route('round_pots')}}"><p>Круглые</p></a>
                                                 </li>
                                                 <li>
-                                                    <a href="{{route('rectangular_pots')}}">Прямоугольные</a>
+                                                    <a href="{{route('rectangular_pots')}}"><p>Прямоугольные</p></a>
                                                 </li>
                                             </ul>
                                         </li>
                                         <li>
-                                            <a href="{{route('benches')}}">Скамейки</a>
+                                            <a href="{{route('benches')}}"><p>Скамейки</p></a>
                                         </li>
 {{--                                        <li>--}}
 {{--                                            <a href="">Ротонды и коллонады</a>--}}
