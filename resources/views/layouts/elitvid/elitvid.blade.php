@@ -25,49 +25,55 @@
                 <img class="logo__main" src="{{asset('/elitvid_assets/images/header/Logo_shortcut.png')}}"
                      alt="Логотип Элитвид">
             </a>
-            <nav class="header__menu">
-                <div class="nav__burger">
-                    <ul class="nav__list">
-                        <li class="nav__item">
-                            <a href="{{route('form')}}" class="phone-number">Заказать звонок</a>
-                        </li>
-{{--                        <li class="nav__item">--}}
-{{--                            <a href="{{route('about')}}">О нас</a>--}}
-{{--                        </li>--}}
-                        <li class="nav__item">
-                            <a href="{{route('catalog')}}">Каталог</a>
-                            <ul class="nav__sublist">
-                                <li>
-                                    <a href="{{route('pots')}}">Кашпо</a>
-                                    <ul class="nav__sublist">
-                                        <li>
-                                            <a href="{{route('square_pots')}}">Квадратные</a>
-                                        </li>
-                                        <li>
-                                            <a href="{{route('round_pots')}}">Круглые</a>
-                                        </li>
-                                        <li>
-                                            <a href="{{route('rectangular_pots')}}">Прямоугольные</a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <a href="{{route('benches')}}">Скамейки</a>
-                                </li>
-{{--                                <li>--}}
-{{--                                    <a href="">Ротонды и коллонады</a>--}}
-{{--                                </li>--}}
-{{--                                <li>--}}
-{{--                                    <a href="">Lorem ipsum.</a>--}}
-{{--                                </li>--}}
-{{--                                <li>--}}
-{{--                                    <a href="">Lorem ipsum.</a>--}}
-{{--                                </li>--}}
-                            </ul>
-                        </li>
-                    </ul>
+            <div class="header__menu-main">
+                <div class="header__phones">
+                    <a href="tel:375297034014" class="phone-number">+375 29 703-40-14</a>
+                    <a href="tel:375297665012" class="phone-number">+375 29 766-50-12</a>
                 </div>
-            </nav>
+                <nav class="header__menu">
+                    <div class="nav__burger">
+                        <ul class="nav__list">
+                            <li class="nav__item">
+                                <a href="{{route('form')}}" class="phone-number">Заказать звонок</a>
+                            </li>
+                            {{--                        <li class="nav__item">--}}
+                            {{--                            <a href="{{route('about')}}">О нас</a>--}}
+                            {{--                        </li>--}}
+                            <li class="nav__item">
+                                <a href="{{route('catalog')}}">Каталог</a>
+                                <ul class="nav__sublist">
+                                    <li>
+                                        <a href="{{route('pots')}}">Кашпо</a>
+                                        <ul class="nav__sublist">
+                                            <li>
+                                                <a href="{{route('square_pots')}}">Квадратные</a>
+                                            </li>
+                                            <li>
+                                                <a href="{{route('round_pots')}}">Круглые</a>
+                                            </li>
+                                            <li>
+                                                <a href="{{route('rectangular_pots')}}">Прямоугольные</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a href="{{route('benches')}}">Скамейки</a>
+                                    </li>
+                                    {{--                                <li>--}}
+                                    {{--                                    <a href="">Ротонды и коллонады</a>--}}
+                                    {{--                                </li>--}}
+                                    {{--                                <li>--}}
+                                    {{--                                    <a href="">Lorem ipsum.</a>--}}
+                                    {{--                                </li>--}}
+                                    {{--                                <li>--}}
+                                    {{--                                    <a href="">Lorem ipsum.</a>--}}
+                                    {{--                                </li>--}}
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
             <nav class="header__mobile-menu">
                 <div class="nav__burger">
                     <ul class="nav__list">
@@ -75,9 +81,9 @@
                             <a href="">Меню</a>
                             <ul class="nav__sublist">
                                 <li>
-{{--                                <li class="nav__item">--}}
-{{--                                    <a href="">О нас</a>--}}
-{{--                                </li>--}}
+                                {{--                                <li class="nav__item">--}}
+                                {{--                                    <a href="">О нас</a>--}}
+                                {{--                                </li>--}}
                                 <li class="nav__item">
                                     <a href="{{route('form')}}" class="phone-number"><p>Заказать звонок</p></a>
                                 </li>
@@ -101,15 +107,15 @@
                                         <li>
                                             <a href="{{route('benches')}}"><p>Скамейки</p></a>
                                         </li>
-{{--                                        <li>--}}
-{{--                                            <a href="">Ротонды и коллонады</a>--}}
-{{--                                        </li>--}}
-{{--                                        <li>--}}
-{{--                                            <a href="">Lorem ipsum.</a>--}}
-{{--                                        </li>--}}
-{{--                                        <li>--}}
-{{--                                            <a href="">Lorem ipsum.</a>--}}
-{{--                                        </li>--}}
+                                        {{--                                        <li>--}}
+                                        {{--                                            <a href="">Ротонды и коллонады</a>--}}
+                                        {{--                                        </li>--}}
+                                        {{--                                        <li>--}}
+                                        {{--                                            <a href="">Lorem ipsum.</a>--}}
+                                        {{--                                        </li>--}}
+                                        {{--                                        <li>--}}
+                                        {{--                                            <a href="">Lorem ipsum.</a>--}}
+                                        {{--                                        </li>--}}
                                     </ul>
                                 </li>
                                 </li>
@@ -211,15 +217,15 @@
                                 <li class="nav__item">
                                     <a href=""{{route('benches')}}">Скамейки</a>
                                 </li>
-{{--                                <li class="nav__item">--}}
-{{--                                    <a href="">Ротонды</a>--}}
-{{--                                </li>--}}
-{{--                                <li class="nav__item">--}}
-{{--                                    <a href="">Lorem ipsum.</a>--}}
-{{--                                </li>--}}
-{{--                                <li class="nav__item">--}}
-{{--                                    <a href="">Lorem ipsum.</a>--}}
-{{--                                </li>--}}
+                                {{--                                <li class="nav__item">--}}
+                                {{--                                    <a href="">Ротонды</a>--}}
+                                {{--                                </li>--}}
+                                {{--                                <li class="nav__item">--}}
+                                {{--                                    <a href="">Lorem ipsum.</a>--}}
+                                {{--                                </li>--}}
+                                {{--                                <li class="nav__item">--}}
+                                {{--                                    <a href="">Lorem ipsum.</a>--}}
+                                {{--                                </li>--}}
                             </ul>
                         </nav>
                     </div>
@@ -250,8 +256,8 @@
 <script>
     function onClick(e) {
         e.preventDefault();
-        grecaptcha.ready(function() {
-            grecaptcha.execute('{{ config('services.recaptcha.site_key') }}', {action: 'send_mail'}).then(function(token) {
+        grecaptcha.ready(function () {
+            grecaptcha.execute('{{ config('services.recaptcha.site_key') }}', {action: 'send_mail'}).then(function (token) {
                 document.getElementById('g-recaptcha-response').value = token;
                 document.getElementById('mail_form').submit();
             });

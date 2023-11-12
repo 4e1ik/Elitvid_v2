@@ -18,6 +18,23 @@ ul {
     align-items: center;
 }
 
+.header__menu-main {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 25em;
+}
+
+.header__phones {
+    display: flex;
+    flex-direction: column;
+
+    .phone-number {
+        text-decoration: none;
+        color: #fff;
+    }
+}
+
 .header__mobile-menu {
     display: none;
 }
@@ -52,6 +69,7 @@ ul {
         text-align: center;
         cursor: pointer;
         display: inline-block;
+        font-weight: bold;
     }
 
     a:hover {
@@ -110,7 +128,7 @@ ul {
         }
     }
 
-    .header__menu {
+    .header__menu-main {
         display: none;
     }
 

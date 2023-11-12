@@ -44,9 +44,16 @@ header {
   margin-top: 1em;
   display: flex;
   justify-content: center;
+  font-size: 1.2em;
 }
 .catalog-price a {
+  display: flex;
+  align-items: center;
   color: #fff;
+  text-decoration: none;
+}
+.catalog-price a img {
+  width: 2em;
 }
 
 .form__main-items {
@@ -142,20 +149,24 @@ header {
   overflow: hidden;
 }
 .catalog__item-card img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   border-radius: 15px;
   object-fit: cover;
-  max-width: 300%;
+  max-width: 350%;
 }
 .catalog__item-card .pots {
-  max-width: 150%;
+  max-width: 200%;
 }
 .catalog__item-card a {
-  position: absolute;
+  position: relative;
   text-decoration: none;
   color: #ffffff;
   width: 15em;
 }
-.catalog__item-card a .catalog__card-header {
+.catalog__item-card .catalog__card-header {
   display: flex;
   justify-content: center;
   background: rgba(255, 255, 255, 0.4);
@@ -164,7 +175,7 @@ header {
   position: relative;
   cursor: pointer;
 }
-.catalog__item-card a h3 {
+.catalog__item-card h3 {
   text-align: center;
   padding: 0.75em 0.5em;
 }
@@ -548,6 +559,22 @@ ul {
   align-items: center;
 }
 
+.header__menu-main {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 25em;
+}
+
+.header__phones {
+  display: flex;
+  flex-direction: column;
+}
+.header__phones .phone-number {
+  text-decoration: none;
+  color: #fff;
+}
+
 .header__mobile-menu {
   display: none;
 }
@@ -582,6 +609,7 @@ ul {
   text-align: center;
   cursor: pointer;
   display: inline-block;
+  font-weight: bold;
 }
 .nav__list a:hover {
   background-color: #ffffff;
@@ -629,7 +657,7 @@ ul {
     font-size: 2em;
   }
 
-  .header__menu {
+  .header__menu-main {
     display: none;
   }
 
