@@ -7,6 +7,7 @@ use App\Models\Image;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use function Laravel\Prompts\warning;
 
 class ProductController extends Controller
 {
@@ -37,16 +38,7 @@ class ProductController extends Controller
 
         $data['product_id'] = $product->id;
 
-        if ($productRequest->hasFile('image')) {
-            foreach ($productRequest->file('image') as $file) {
-                $name = $file->getClientOriginalName();
-                $path = Storage::putFileAs('images', $file, $name); // Даем путь к этому файлу
-                $data['image'] = $path;
-                Image::create($data);
-            }
-        }
-
-//        dd($data);
+        save_image($productRequest);
 
         $dataItem = $product->attributesToArray()['item'];
         if ($dataItem == 'pot') {
@@ -90,14 +82,16 @@ class ProductController extends Controller
 
         $data['product_id'] = $product->id;
 
-        if ($productRequest->hasFile('image')) {
-            foreach ($productRequest->file('image') as $file) {
-                $name = $file->getClientOriginalName();
-                $path = Storage::putFileAs('images', $file, $name); // Даем путь к этому файлу
-                $data['image'] = $path;
-                Image::create($data);
-            }
-        }
+        save_image($productRequest);
+
+//        if ($productRequest->hasFile('image')) {
+//            foreach ($productRequest->file('image') as $file) {
+//                $name = $file->getClientOriginalName();
+//                $path = Storage::putFileAs('images', $file, $name); // Даем путь к этому файлу
+//                $data['image'] = $path;
+//                Image::create($data);
+//            }
+//        }
 
         $dataItem = $product->attributesToArray()['item'];
         if ($dataItem == 'pot') {

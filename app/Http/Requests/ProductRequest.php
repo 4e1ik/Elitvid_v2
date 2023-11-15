@@ -23,8 +23,8 @@ class ProductRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title' => 'required|filled|min:3|max:30',
-            'content' => 'required|filled|min:10|max:1000',
+            'title' => 'required|filled|min:3|max:100',
+            'content' => 'required|filled|min:10|max:10000',
             'type' => 'required|filled',
             'image.*.image' => 'required|image'
         ];

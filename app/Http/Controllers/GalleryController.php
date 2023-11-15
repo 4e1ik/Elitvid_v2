@@ -38,15 +38,16 @@ class GalleryController extends Controller
 
         $data['gallery_id'] = $gallery->id;
 
-        if ($galleryRequest->hasFile('image')) {
-            foreach ($galleryRequest->file('image') as $file) {
-                $name = $file->getClientOriginalName();
-                $path = Storage::putFileAs('images', $file, $name); // Даем путь к этому файлу
-                $data['image'] = $path;
-//                dd($data);
-                Image::create($data);
-            }
-        }
+        save_image($galleryRequest);
+
+//        if ($galleryRequest->hasFile('image')) {
+//            foreach ($galleryRequest->file('image') as $file) {
+//                $name = $file->getClientOriginalName();
+//                $path = Storage::putFileAs('images', $file, $name); // Даем путь к этому файлу
+//                $data['image'] = $path;
+//                Image::create($data);
+//            }
+//        }
 
         return redirect(route('admin_gallery'));
     }

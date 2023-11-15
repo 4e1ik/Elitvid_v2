@@ -22,7 +22,7 @@ class TextureRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'texture_name' => 'required|filled|min:3|max:30',
+            'texture_name' => 'required|filled|min:3|max:50',
             'type' => 'required|filled',
             'image.*.image' => 'required|image'
         ];
