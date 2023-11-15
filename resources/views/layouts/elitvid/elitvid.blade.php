@@ -144,6 +144,11 @@
                     </a>
                     <p>Воплотим ваши идеи в реальность!</p>
                 </div>
+                <div class="footer__text">
+                    <p>
+                        Приглашаем к сотрудничеству специалистов и дизайнеров
+                    </p>
+                </div>
                 <div class="footer__menu">
                     <div class="footer__contact">
                         <h4>Связаться с нами</h4>
