@@ -150,6 +150,11 @@
                     </p>
                 </div>
                 <div class="footer__menu">
+                    <div class="footer__text-mobile">
+                        <p>
+                            Приглашаем к сотрудничеству специалистов и дизайнеров
+                        </p>
+                    </div>
                     <div class="footer__contact">
                         <h4>Связаться с нами</h4>
                         <div class="footer__number">

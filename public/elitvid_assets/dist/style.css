@@ -707,6 +707,9 @@ footer .footer__logo p {
   font-size: 1.2em;
   margin-top: 0.5em;
 }
+footer .footer__text-mobile {
+  display: none;
+}
 footer .footer__menu {
   display: flex;
   justify-content: space-between;
@@ -839,6 +842,15 @@ footer .developed h5:hover {
 @media (max-width: 768px) {
   footer .footer__logo {
     display: none;
+  }
+  footer .footer__text {
+    display: none;
+  }
+  footer .footer__text-mobile {
+    display: block;
+  }
+  footer .footer__text-mobile p {
+    text-align: center;
   }
   footer .footer__menu {
     width: 100%;
