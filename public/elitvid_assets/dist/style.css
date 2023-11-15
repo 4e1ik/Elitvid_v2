@@ -325,6 +325,10 @@ header {
   line-height: 2em;
   text-transform: uppercase;
 }
+.product__card-header p {
+  text-align: center;
+}
+
 .content-product {
   width: 18em;
 }
