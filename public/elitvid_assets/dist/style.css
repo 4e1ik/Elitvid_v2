@@ -325,28 +325,8 @@ header {
   line-height: 2em;
   text-transform: uppercase;
 }
-details {
-  position: absolute;
-  color: #ffffff;
-  width: 90%;
-  height: 2em;
-  top: 18em;
-  left: 2em;
-  line-height: 2em;
-}
-details summary {
-  cursor: pointer;
+.content-product {
   width: 18em;
-}
-details .content-product {
-  position: absolute;
-  background-color: rgba(0, 0, 0, 0.7);
-  width: 100%;
-  left: -1em;
-  border-radius: 0 0 15px 15px;
-  padding: 1em;
-  z-index: 1;
-  font-size: 0.75em;
 }
 
 @media (max-width: 1600px) {
