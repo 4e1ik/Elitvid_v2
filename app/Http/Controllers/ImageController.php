@@ -18,16 +18,16 @@ class ImageController extends Controller
     {
         $data = $request->all();
 
-        save_image($request);
+//        save_image($request);
 
-//        if ($request->hasFile('image')) {
-//            foreach ($request->file('image') as $file) {
-//                $name = $file->getClientOriginalName();
-//                $path = Storage::putFileAs('images', $file, $name); // Даем путь к этому файлу
-//                $data['image'] = $path;
-//                Image::create($data);
-//            }
-//        }
+        if ($request->hasFile('image')) {
+            foreach ($request->file('image') as $file) {
+                $name = $file->getClientOriginalName();
+                $path = Storage::putFileAs('images', $file, save_image($file)); // Даем путь к этому файлу
+                $data['image'] = $path;
+                Image::create($data);
+            }
+        }
 
         return redirect(route('admin_gallery'));
     }

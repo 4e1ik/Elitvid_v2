@@ -31,15 +31,23 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="product__card-header">
-                            <p>{{$bench->title}}</p>
-                        </div>
-                        <details>
-                            <summary>Размеры</summary>
+                        <div class="product__card-content">
+                            <div class="product__card-header">
+                                <p>{{$bench->title}}</p>
+                            </div>
                             <div class="content-product">
                                 {!! $bench->content !!}
                             </div>
-                        </details>
+                        </div>
+{{--                        <div class="product__card-header">--}}
+{{--                            <p>{{$bench->title}}</p>--}}
+{{--                        </div>--}}
+{{--                        <details>--}}
+{{--                            <summary>Размеры</summary>--}}
+{{--                            <div class="content-product">--}}
+{{--                                {!! $bench->content !!}--}}
+{{--                            </div>--}}
+{{--                        </details>--}}
                     </div>
                 @endforeach
             </div>
@@ -67,15 +75,23 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="product__card-header">
-                            <p>{{$bench->title}}</p>
-                        </div>
-                        <details>
-                            <summary>Размеры</summary>
+                        <div class="product__card-content">
+                            <div class="product__card-header">
+                                <p>{{$bench->title}}</p>
+                            </div>
                             <div class="content-product">
                                 {!! $bench->content !!}
                             </div>
-                        </details>
+                        </div>
+{{--                        <div class="product__card-header">--}}
+{{--                            <p>{{$bench->title}}</p>--}}
+{{--                        </div>--}}
+{{--                        <details>--}}
+{{--                            <summary>Размеры</summary>--}}
+{{--                            <div class="content-product">--}}
+{{--                                {!! $bench->content !!}--}}
+{{--                            </div>--}}
+{{--                        </details>--}}
                     </div>
                 @endforeach
             </div>
@@ -103,15 +119,23 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="product__card-header">
-                            <p>{{$bench->title}}</p>
-                        </div>
-                        <details>
-                            <summary>Размеры</summary>
+                        <div class="product__card-content">
+                            <div class="product__card-header">
+                                <p>{{$bench->title}}</p>
+                            </div>
                             <div class="content-product">
                                 {!! $bench->content !!}
                             </div>
-                        </details>
+                        </div>
+{{--                        <div class="product__card-header">--}}
+{{--                            <p>{{$bench->title}}</p>--}}
+{{--                        </div>--}}
+{{--                        <details>--}}
+{{--                            <summary>Размеры</summary>--}}
+{{--                            <div class="content-product">--}}
+{{--                                {!! $bench->content !!}--}}
+{{--                            </div>--}}
+{{--                        </details>--}}
                     </div>
                 @endforeach
             </div>
@@ -139,15 +163,23 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="product__card-header">
-                            <p>{{$bench->title}}</p>
-                        </div>
-                        <details>
-                            <summary>Размеры</summary>
+                        <div class="product__card-content">
+                            <div class="product__card-header">
+                                <p>{{$bench->title}}</p>
+                            </div>
                             <div class="content-product">
                                 {!! $bench->content !!}
                             </div>
-                        </details>
+                        </div>
+{{--                        <div class="product__card-header">--}}
+{{--                            <p>{{$bench->title}}</p>--}}
+{{--                        </div>--}}
+{{--                        <details>--}}
+{{--                            <summary>Размеры</summary>--}}
+{{--                            <div class="content-product">--}}
+{{--                                {!! $bench->content !!}--}}
+{{--                            </div>--}}
+{{--                        </details>--}}
                     </div>
                 @endforeach
             </div>

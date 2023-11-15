@@ -38,7 +38,15 @@ class ProductController extends Controller
 
         $data['product_id'] = $product->id;
 
-        save_image($productRequest);
+//        save_image($productRequest);
+
+        if ($productRequest->hasFile('image')) {
+            foreach ($productRequest->file('image') as $file) {
+                $path = Storage::putFileAs('images', $file, save_image($file)); // Даем путь к этому файлу
+                $data['image'] = $path;
+                Image::create($data);
+            }
+        }
 
         $dataItem = $product->attributesToArray()['item'];
         if ($dataItem == 'pot') {
@@ -82,16 +90,15 @@ class ProductController extends Controller
 
         $data['product_id'] = $product->id;
 
-        save_image($productRequest);
+//        save_image($productRequest);
 
-//        if ($productRequest->hasFile('image')) {
-//            foreach ($productRequest->file('image') as $file) {
-//                $name = $file->getClientOriginalName();
-//                $path = Storage::putFileAs('images', $file, $name); // Даем путь к этому файлу
-//                $data['image'] = $path;
-//                Image::create($data);
-//            }
-//        }
+        if ($productRequest->hasFile('image')) {
+            foreach ($productRequest->file('image') as $file) {
+                $path = Storage::putFileAs('images', $file, save_image($file)); // Даем путь к этому файлу
+                $data['image'] = $path;
+                Image::create($data);
+            }
+        }
 
         $dataItem = $product->attributesToArray()['item'];
         if ($dataItem == 'pot') {

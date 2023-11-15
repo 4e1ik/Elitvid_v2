@@ -39,17 +39,13 @@ class TexturesController extends Controller
 
         $data['texture_id'] = $texture->id;
 
-        save_image($textureRequest);
-
-//        if ($textureRequest->hasFile('image')) {
-//            foreach ($textureRequest->file('image') as $file) {
-//                $name = $file->getClientOriginalName();
-//                $path = Storage::putFileAs('images', $file, $name); // Даем путь к этому файлу
-//                $data['image'] = $path;
-////                dd($data);
-//                Image::create($data);
-//            }
-//        }
+        if ($textureRequest->hasFile('image')) {
+            foreach ($textureRequest->file('image') as $file) {
+                $path = Storage::putFileAs('images', $file, save_image($file)); // Даем путь к этому файлу
+                $data['image'] = $path;
+                Image::create($data);
+            }
+        }
 
         return redirect(route('admin_textures'));
     }
@@ -83,16 +79,16 @@ class TexturesController extends Controller
 
         $data['texture_id'] = $texture->id;
 
-        save_image($textureRequest);
+//        save_image($textureRequest);
 
-//        if ($textureRequest->hasFile('image')) {
-//            foreach ($textureRequest->file('image') as $file) {
-//                $name = $file->getClientOriginalName();
-//                $path = Storage::putFileAs('images', $file, $name); // Даем путь к этому файлу
-//                $data['image'] = $path;
-//                Image::create($data);
-//            }
-//        }
+        if ($textureRequest->hasFile('image')) {
+            foreach ($textureRequest->file('image') as $file) {
+                $name = $file->getClientOriginalName();
+                $path = Storage::putFileAs('images', $file, save_image($file)); // Даем путь к этому файлу
+                $data['image'] = $path;
+                Image::create($data);
+            }
+        }
 
         return redirect(route('admin_textures'));
     }

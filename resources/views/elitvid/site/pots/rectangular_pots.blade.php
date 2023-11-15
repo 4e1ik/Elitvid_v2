@@ -28,15 +28,23 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="product__card-header">
-                            <p>{{$pot->title}}</p>
-                        </div>
-                        <details>
-                            <summary>Размеры</summary>
+                        <div class="product__card-content">
+                            <div class="product__card-header">
+                                <p>{{$pot->title}}</p>
+                            </div>
                             <div class="content-product">
                                 {!! $pot->content !!}
                             </div>
-                        </details>
+                        </div>
+{{--                        <div class="product__card-header">--}}
+{{--                            <p>{{$pot->title}}</p>--}}
+{{--                        </div>--}}
+{{--                        <details>--}}
+{{--                            <summary>Размеры</summary>--}}
+{{--                            <div class="content-product">--}}
+{{--                                {!! $pot->content !!}--}}
+{{--                            </div>--}}
+{{--                        </details>--}}
                     </div>
                 @endforeach
             </div>

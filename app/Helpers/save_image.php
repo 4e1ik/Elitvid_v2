@@ -3,10 +3,10 @@
 use App\Models\Image;
 use Illuminate\Support\Facades\Storage;
 
-function save_image($request)
+function save_image($file)
 {
-    if ($request->hasFile('image')) {
-        foreach ($request->file('image') as $file) {
+//    if ($request->hasFile('image')) {
+//        foreach ($request->file('image') as $file) {
 
             $name = $file->getClientOriginalName();
 
@@ -38,9 +38,11 @@ function save_image($request)
                 }
             }
 
-            $path = Storage::putFileAs('images', $file, $name); // Даем путь к этому файлу
-            $data['image'] = $path;
-            Image::create($data);
-        }
-    }
+            return $name;
+
+//            $path = Storage::putFileAs('images', $file, $name); // Даем путь к этому файлу
+//            $data['image'] = $path;
+//            return Image::create($data);
+//        }
+//    }
 }
