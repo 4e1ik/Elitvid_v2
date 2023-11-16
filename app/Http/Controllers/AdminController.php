@@ -25,10 +25,11 @@ class AdminController extends Controller
 
     function benches(Product $product) {
 
-        $benches_stones = Product::where('item', 'bench')->where('type', 'Stones')->get();
-        $benches_radius = Product::where('item', 'bench')->where('type', 'Radius')->get();
-        $benches_solo = Product::where('item', 'bench')->where('type', 'Solo')->get();
-        $benches_outdoor = Product::where('item', 'bench')->where('type', 'Outdoor')->get();
+        $benches = Product::query()->whereIn('item', ['bench'])->get();
+        $benches_stones = $benches->where('type', 'Stones');
+        $benches_radius = $benches->where('type', 'Radius');
+        $benches_solo = $benches->where('type', 'Solo');
+        $benches_outdoor = $benches->where('type', 'Outdoor');
         return view('elitvid.admin.benches.benches',
             compact('benches_stones','benches_radius','benches_solo', 'benches_outdoor',  'product')
         );
@@ -36,9 +37,10 @@ class AdminController extends Controller
 
     function pots(Product $product) {
 
-        $round_pots = Product::where('item', 'pot')->where('type', 'Round')->get();
-        $rectangular_pots = Product::where('item', 'pot')->where('type', 'Rectangular')->get();
-        $square_pots = Product::where('item', 'pot')->where('type', 'Square')->get();
+        $pots = Product::query()->whereIn('item', ['pot'])->get();
+        $round_pots = $pots->where('type', 'Round');
+        $rectangular_pots = $pots->where('type', 'Rectangular');
+        $square_pots = $pots->where('type', 'Square');
 
         return view('elitvid.admin.pots.pots',
         compact('round_pots', 'rectangular_pots', 'square_pots', 'product')
@@ -46,11 +48,13 @@ class AdminController extends Controller
     }
 
     function textures(Texture $texture) {
-        $natural_stones = Texture::where('type', 'natural_stone')->get();
-        $moon_stones = Texture::where('type', 'moon_stone')->get();
-        $polished_stones = Texture::where('type', 'polished_stone')->get();
-        $wood_species = Texture::where('type', 'wood_species')->get();
-        $wood_impregnation = Texture::where('type', 'wood_impregnation')->get();
+
+        $textures = Texture::query()->with(['images'])->get();
+        $natural_stones = $textures->where('type', 'natural_stone');
+        $moon_stones = $textures->where('type', 'moon_stone');
+        $polished_stones = $textures->where('type', 'polished_stone');
+        $wood_species = $textures->where('type', 'wood_species');
+        $wood_impregnation = $textures->where('type', 'wood_impregnation');
         return view(
             'elitvid.admin.textures', compact(
             'natural_stones', 'moon_stones', 'polished_stones', 'wood_species', 'wood_impregnation', 'texture'
@@ -59,8 +63,12 @@ class AdminController extends Controller
     }
 
     function gallery(Gallery $gallery) {
-        $pots_images = Gallery::where('type', 'pots')->get();
-        $benches_images = Gallery::where('type', 'benches')->get();
+//        $gallery = Gallery::query()->with(['images'])->get();
+//        $pots_images = $gallery->where('type', 'pots');
+//        $benches_images = $gallery->where('type', 'benches');
+
+        $pots_images = Gallery::query()->where('type', 'pots')->get();
+        $benches_images = Gallery::query()->where('type', 'benches')->get();
         return view(
             'elitvid.admin.gallery', compact(
                 'pots_images','benches_images','gallery'
