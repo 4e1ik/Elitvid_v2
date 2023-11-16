@@ -63,12 +63,10 @@ class AdminController extends Controller
     }
 
     function gallery(Gallery $gallery) {
-//        $gallery = Gallery::query()->with(['images'])->get();
-//        $pots_images = $gallery->where('type', 'pots');
-//        $benches_images = $gallery->where('type', 'benches');
+        $gallery = Gallery::query()->with(['images'])->get();
+        $pots_images = $gallery->where('type', 'pots');
+        $benches_images = $gallery->where('type', 'benches');
 
-        $pots_images = Gallery::query()->where('type', 'pots')->get();
-        $benches_images = Gallery::query()->where('type', 'benches')->get();
         return view(
             'elitvid.admin.gallery', compact(
                 'pots_images','benches_images','gallery'
