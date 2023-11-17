@@ -19,7 +19,9 @@
                                     <!-- Slides -->
                                     @foreach($bench->images as $image)
                                         <div class="swiper-slide">
-                                            <img src="{{ asset('storage/'.$image->image) }}" alt="{{$image->description_image}}">
+{{--                                            <img src="{{ asset('storage/'.$image->image) }}" alt="{{$image->description_image}}">--}}
+                                            <a href="{{ asset('storage/'.$image->image) }}" data-lightbox="pots-images"><img
+                                                    src="{{ asset('storage/'.$image->image) }}" alt="{{$image->description_image}}"></a>
                                         </div>
                                     @endforeach
                                 </div>

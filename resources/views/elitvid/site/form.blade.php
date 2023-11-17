@@ -106,6 +106,9 @@
 {{--                            @enderror--}}
                             <button class="form__form-button" type="button" onclick="onClick(event)">Заказать</button>
 {{--                            <button class="form__form-button" type="submit">Заказать</button>--}}
+                            <div class="text__form text" style="margin-top: 1em; text-align: center">
+                                <p>Нажимая кнопку Заказать вы даете согласие на обработку своих персональных данных</p>
+                            </div>
                         </form>
                     </div>
                 </div>
