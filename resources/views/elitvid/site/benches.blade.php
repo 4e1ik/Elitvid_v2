@@ -20,7 +20,7 @@
                                     @foreach($bench->images as $image)
                                         <div class="swiper-slide">
 {{--                                            <img src="{{ asset('storage/'.$image->image) }}" alt="{{$image->description_image}}">--}}
-                                            <a href="{{ asset('storage/'.$image->image) }}" data-lightbox="pots-images"><img
+                                            <a href="{{ asset('storage/'.$image->image) }}" data-lightbox="{{$bench->id}}-images"><img
                                                     src="{{ asset('storage/'.$image->image) }}" alt="{{$image->description_image}}"></a>
                                         </div>
                                     @endforeach
@@ -66,7 +66,7 @@
                                     @foreach($bench->images as $image)
                                         <div class="swiper-slide">
 {{--                                            <img src="{{ asset('storage/'.$image->image) }}" alt="{{$image->description_image}}">--}}
-                                            <a href="{{ asset('storage/'.$image->image) }}" data-lightbox="pots-images"><img
+                                            <a href="{{ asset('storage/'.$image->image) }}" data-lightbox="{{$bench->id}}-images"><img
                                                     src="{{ asset('storage/'.$image->image) }}" alt="{{$image->description_image}}"></a>
                                         </div>
                                     @endforeach
@@ -112,7 +112,7 @@
                                     @foreach($bench->images as $image)
                                         <div class="swiper-slide">
 {{--                                            <img src="{{ asset('storage/'.$image->image) }}" alt="{{$image->description_image}}">--}}
-                                            <a href="{{ asset('storage/'.$image->image) }}" data-lightbox="pots-images"><img
+                                            <a href="{{ asset('storage/'.$image->image) }}" data-lightbox="{{$bench->id}}-images"><img
                                                     src="{{ asset('storage/'.$image->image) }}" alt="{{$image->description_image}}"></a>
                                         </div>
                                     @endforeach
@@ -158,7 +158,7 @@
                                     @foreach($bench->images as $image)
                                         <div class="swiper-slide">
 {{--                                            <img src="{{ asset('storage/'.$image->image) }}" alt="{{$image->description_image}}">--}}
-                                            <a href="{{ asset('storage/'.$image->image) }}" data-lightbox="pots-images"><img
+                                            <a href="{{ asset('storage/'.$image->image) }}" data-lightbox="{{$bench->id}}-images"><img
                                                     src="{{ asset('storage/'.$image->image) }}" alt="{{$image->description_image}}"></a>
                                         </div>
                                     @endforeach
@@ -236,7 +236,7 @@
                 @foreach($benches_gallery as $benches_images)
                     @foreach($benches_images->images as $image)
                     <div class="gallery__item-card">
-                        <a href="{{ asset('storage/'.$image->image) }}" data-lightbox="pots-images"><img
+                        <a href="{{ asset('storage/'.$image->image) }}" data-lightbox="benches-images"><img
                                 src="{{ asset('storage/'.$image->image) }}" alt="{{$image->description_image}}"></a>
                     </div>
                     @endforeach

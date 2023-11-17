@@ -17,7 +17,7 @@
                                     @foreach($pot->images as $image)
                                         <div class="swiper-slide">
 {{--                                            <img src="{{ asset('storage/'.$image->image) }}" alt="{{ $image->description_image }}">--}}
-                                            <a href="{{ asset('storage/'.$image->image) }}" data-lightbox="pots-images"><img
+                                            <a href="{{ asset('storage/'.$image->image) }}" data-lightbox="{{$pot->id}}-images"><img
                                                     src="{{ asset('storage/'.$image->image) }}" alt="{{$image->description_image}}"></a>
                                         </div>
                                     @endforeach
