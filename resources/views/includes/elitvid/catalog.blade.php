@@ -1,7 +1,7 @@
 <section class="offer__main section-item">
     <div class="container">
         <div class="offer__main-header section-header">
-            <h2>Мы предлагаем</h2>
+            <h2>Мы производим</h2>
         </div>
         <div class="catalog__main-items">
             <div class="catalog__item-card">

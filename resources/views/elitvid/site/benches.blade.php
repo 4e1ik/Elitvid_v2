@@ -13,43 +13,38 @@
             <div class="product__main-items">
                 @foreach($stones_benches as $bench)
                     <div class="product__item-card">
-                        <div class="product__item-slider">
-                            <div class="swiper-product">
-                                <div class="swiper-wrapper">
-                                    <!-- Slides -->
-                                    @foreach($bench->images as $image)
+                        <a href="{{route('show_product', ['id' => $bench->id])}}">
+                            <div class="product__item-slider">
+                                <div class="swiper-product">
+                                    <div class="swiper-wrapper">
                                         <div class="swiper-slide">
-{{--                                            <img src="{{ asset('storage/'.$image->image) }}" alt="{{$image->description_image}}">--}}
-                                            <a href="{{ asset('storage/'.$image->image) }}" data-lightbox="{{$bench->id}}-images"><img
-                                                    src="{{ asset('storage/'.$image->image) }}" alt="{{$image->description_image}}"></a>
+                                            <img src="{{ asset('storage/'.$bench->images[0]->image) }}"
+                                                 alt="{{ $bench->images[0]->description_image }}">
                                         </div>
-                                    @endforeach
-                                </div>
-                                <div class="swiper-button-prev">
-                                    <img src="{{asset('/elitvid_assets/images/slider/prev.png')}}" alt="">
-                                </div>
-                                <div class="swiper-button-next">
-                                    <img src="{{asset('/elitvid_assets/images/slider/next.png')}}" alt="">
+                                        <!-- Slides -->
+{{--                                        @foreach($bench->images as $image)--}}
+{{--                                            <div class="swiper-slide">--}}
+{{--                                                <img src="{{ asset('storage/'.$image->image) }}"--}}
+{{--                                                     alt="{{ $image->description_image }}">--}}
+{{--                                                --}}{{--                                            <a href="{{ asset('storage/'.$image->image) }}"--}}
+{{--                                                --}}{{--                                               data-lightbox="{{$pot->id}}-images"><img--}}
+{{--                                                --}}{{--                                                    src="{{ asset('storage/'.$image->image) }}"--}}
+{{--                                                --}}{{--                                                    alt="{{$image->description_image}}"></a>--}}
+{{--                                            </div>--}}
+{{--                                        @endforeach--}}
+                                    </div>
+{{--                                    <div class="swiper-button-prev">--}}
+{{--                                        <img src="{{asset('/elitvid_assets/images/slider/prev.png')}}" alt="">--}}
+{{--                                    </div>--}}
+{{--                                    <div class="swiper-button-next">--}}
+{{--                                        <img src="{{asset('/elitvid_assets/images/slider/next.png')}}" alt="">--}}
+{{--                                    </div>--}}
                                 </div>
                             </div>
-                        </div>
-                        <div class="product__card-content">
                             <div class="product__card-header">
                                 <p>{{$bench->title}}</p>
                             </div>
-                            <div class="content-product">
-                                {!! $bench->content !!}
-                            </div>
-                        </div>
-{{--                        <div class="product__card-header">--}}
-{{--                            <p>{{$bench->title}}</p>--}}
-{{--                        </div>--}}
-{{--                        <details>--}}
-{{--                            <summary>Размеры</summary>--}}
-{{--                            <div class="content-product">--}}
-{{--                                {!! $bench->content !!}--}}
-{{--                            </div>--}}
-{{--                        </details>--}}
+                        </a>
                     </div>
                 @endforeach
             </div>
@@ -59,43 +54,22 @@
             <div class="product__main-items">
                 @foreach($radius_benches as $bench)
                     <div class="product__item-card">
-                        <div class="product__item-slider">
-                            <div class="swiper-product">
-                                <div class="swiper-wrapper">
-                                    <!-- Slides -->
-                                    @foreach($bench->images as $image)
+                        <a href="{{route('show_product', ['id' => $bench->id])}}">
+                            <div class="product__item-slider">
+                                <div class="swiper-product">
+                                    <div class="swiper-wrapper">
+                                        <!-- Slides -->
                                         <div class="swiper-slide">
-{{--                                            <img src="{{ asset('storage/'.$image->image) }}" alt="{{$image->description_image}}">--}}
-                                            <a href="{{ asset('storage/'.$image->image) }}" data-lightbox="{{$bench->id}}-images"><img
-                                                    src="{{ asset('storage/'.$image->image) }}" alt="{{$image->description_image}}"></a>
+                                            <img src="{{ asset('storage/'.$bench->images[0]->image) }}"
+                                                 alt="{{ $bench->images[0]->description_image }}">
                                         </div>
-                                    @endforeach
-                                </div>
-                                <div class="swiper-button-prev">
-                                    <img src="{{asset('/elitvid_assets/images/slider/prev.png')}}" alt="">
-                                </div>
-                                <div class="swiper-button-next">
-                                    <img src="{{asset('/elitvid_assets/images/slider/next.png')}}" alt="">
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="product__card-content">
                             <div class="product__card-header">
                                 <p>{{$bench->title}}</p>
                             </div>
-                            <div class="content-product">
-                                {!! $bench->content !!}
-                            </div>
-                        </div>
-{{--                        <div class="product__card-header">--}}
-{{--                            <p>{{$bench->title}}</p>--}}
-{{--                        </div>--}}
-{{--                        <details>--}}
-{{--                            <summary>Размеры</summary>--}}
-{{--                            <div class="content-product">--}}
-{{--                                {!! $bench->content !!}--}}
-{{--                            </div>--}}
-{{--                        </details>--}}
+                        </a>
                     </div>
                 @endforeach
             </div>
@@ -105,43 +79,22 @@
             <div class="product__main-items">
                 @foreach($solo_benches as $bench)
                     <div class="product__item-card">
-                        <div class="product__item-slider">
-                            <div class="swiper-product">
-                                <div class="swiper-wrapper">
-                                    <!-- Slides -->
-                                    @foreach($bench->images as $image)
+                        <a href="{{route('show_product', ['id' => $bench->id])}}">
+                            <div class="product__item-slider">
+                                <div class="swiper-product">
+                                    <div class="swiper-wrapper">
+                                        <!-- Slides -->
                                         <div class="swiper-slide">
-{{--                                            <img src="{{ asset('storage/'.$image->image) }}" alt="{{$image->description_image}}">--}}
-                                            <a href="{{ asset('storage/'.$image->image) }}" data-lightbox="{{$bench->id}}-images"><img
-                                                    src="{{ asset('storage/'.$image->image) }}" alt="{{$image->description_image}}"></a>
+                                            <img src="{{ asset('storage/'.$bench->images[0]->image) }}"
+                                                 alt="{{ $bench->images[0]->description_image }}">
                                         </div>
-                                    @endforeach
-                                </div>
-                                <div class="swiper-button-prev">
-                                    <img src="{{asset('/elitvid_assets/images/slider/prev.png')}}" alt="">
-                                </div>
-                                <div class="swiper-button-next">
-                                    <img src="{{asset('/elitvid_assets/images/slider/next.png')}}" alt="">
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="product__card-content">
                             <div class="product__card-header">
                                 <p>{{$bench->title}}</p>
                             </div>
-                            <div class="content-product">
-                                {!! $bench->content !!}
-                            </div>
-                        </div>
-{{--                        <div class="product__card-header">--}}
-{{--                            <p>{{$bench->title}}</p>--}}
-{{--                        </div>--}}
-{{--                        <details>--}}
-{{--                            <summary>Размеры</summary>--}}
-{{--                            <div class="content-product">--}}
-{{--                                {!! $bench->content !!}--}}
-{{--                            </div>--}}
-{{--                        </details>--}}
+                        </a>
                     </div>
                 @endforeach
             </div>
@@ -151,43 +104,22 @@
             <div class="product__main-items">
                 @foreach($outdoor_benches as $bench)
                     <div class="product__item-card">
-                        <div class="product__item-slider">
-                            <div class="swiper-product">
-                                <div class="swiper-wrapper">
-                                    <!-- Slides -->
-                                    @foreach($bench->images as $image)
+                        <a href="{{route('show_product', ['id' => $bench->id])}}">
+                            <div class="product__item-slider">
+                                <div class="swiper-product">
+                                    <div class="swiper-wrapper">
+                                        <!-- Slides -->
                                         <div class="swiper-slide">
-{{--                                            <img src="{{ asset('storage/'.$image->image) }}" alt="{{$image->description_image}}">--}}
-                                            <a href="{{ asset('storage/'.$image->image) }}" data-lightbox="{{$bench->id}}-images"><img
-                                                    src="{{ asset('storage/'.$image->image) }}" alt="{{$image->description_image}}"></a>
+                                            <img src="{{ asset('storage/'.$bench->images[0]->image) }}"
+                                                 alt="{{ $bench->images[0]->description_image }}">
                                         </div>
-                                    @endforeach
-                                </div>
-                                <div class="swiper-button-prev">
-                                    <img src="{{asset('/elitvid_assets/images/slider/prev.png')}}" alt="">
-                                </div>
-                                <div class="swiper-button-next">
-                                    <img src="{{asset('/elitvid_assets/images/slider/next.png')}}" alt="">
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="product__card-content">
                             <div class="product__card-header">
                                 <p>{{$bench->title}}</p>
                             </div>
-                            <div class="content-product">
-                                {!! $bench->content !!}
-                            </div>
-                        </div>
-{{--                        <div class="product__card-header">--}}
-{{--                            <p>{{$bench->title}}</p>--}}
-{{--                        </div>--}}
-{{--                        <details>--}}
-{{--                            <summary>Размеры</summary>--}}
-{{--                            <div class="content-product">--}}
-{{--                                {!! $bench->content !!}--}}
-{{--                            </div>--}}
-{{--                        </details>--}}
+                        </a>
                     </div>
                 @endforeach
             </div>
@@ -196,7 +128,7 @@
     <section class="texture__main section-item">
         <div class="container">
             <div class="texture__main-header section-header">
-                <h2>Порода для изготовления деревянных элементов скамьи</h2>
+                <h2>Деревянные элементы: сосна, лиственница</h2>
             </div>
             <div class="texture__main-items">
                 @foreach($wood_species as $specie)
@@ -210,21 +142,21 @@
                     </div>
                 @endforeach
             </div>
-            <div class="texture__name-header second_section-header">
-                <h3>Пропитка</h3>
-            </div>
-            <div class="texture__main-items">
-                @foreach($wood_impregnation as $impregnation)
-                    <div class="texture__item-card">
-                        @foreach($impregnation->images as $image)
-                            <img src="{{ asset('storage/'.$image->image) }}" alt="{{$image->description_image}}">
-                        @endforeach
-                        <div class="texture__card-header">
-                            <h3><a href="">{{$impregnation->texture_name}}</a></h3>
-                        </div>
-                    </div>
-                @endforeach
-            </div>
+{{--            <div class="texture__name-header second_section-header">--}}
+{{--                <h3>Пропитка</h3>--}}
+{{--            </div>--}}
+{{--            <div class="texture__main-items">--}}
+{{--                @foreach($wood_impregnation as $impregnation)--}}
+{{--                    <div class="texture__item-card">--}}
+{{--                        @foreach($impregnation->images as $image)--}}
+{{--                            <img src="{{ asset('storage/'.$image->image) }}" alt="{{$image->description_image}}">--}}
+{{--                        @endforeach--}}
+{{--                        <div class="texture__card-header">--}}
+{{--                            <h3><a href="">{{$impregnation->texture_name}}</a></h3>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                @endforeach--}}
+{{--            </div>--}}
         </div>
     </section>
     <section class="gallery__main section-item">

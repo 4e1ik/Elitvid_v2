@@ -37,6 +37,7 @@ Route::prefix('pots')->group(function () {
 Route::get('/login', [LoginController::class, 'index'])->name('login');
 Route::post('/login', [LoginController::class, 'login']);
 
+//Закомментировано для production.
 Route::get('/registration', [RegisterController::class, 'index'])->name('registration');
 Route::post('/registration', [RegisterController::class, 'registration'])->name('save');
 
@@ -44,6 +45,8 @@ Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
 Route::get('/form', [MailController::class, 'show_form'])->name('form');
 Route::post('/sendForm', [MailController::class, 'send'])->name('send_mail');
+
+Route::get('/product/{id}', [MainController::class, 'show_product'])->name('show_product');
 
 
 Route::middleware('auth')->where([

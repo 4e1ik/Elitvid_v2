@@ -61,4 +61,12 @@
 </section>
 
 @include('includes.elitvid.catalog')
+
+{{--<section class="offer__main section-item">--}}
+{{--    <div class="container">--}}
+{{--        <div class="offer__main-header section-header">--}}
+{{--            <h2>Наш проект</h2>--}}
+{{--        </div>--}}
+{{--    </div>--}}
+{{--</section>--}}
 @endsection

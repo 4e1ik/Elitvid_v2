@@ -21,6 +21,7 @@ return new class extends Migration
             $table->foreign ('gallery_id')->references('id')->on('galleries')->onDelete('cascade')->onUpdate('cascade');
             $table->string ('image', 255)->nullable('true');
             $table->text ('description_image')->nullable('true');
+            $table->text ('color')->nullable('true');
             $table->timestamps ();
         });
     }

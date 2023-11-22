@@ -33,7 +33,22 @@
                                     {{$message}}
                                 </div>
                                 @enderror
-                                <button type="submit" style="border: 0; margin-bottom: 20px;">
+                                @if($product->item == 'pot')
+                                <h3>Цвет</h3>
+                                <select class="form-control" name="color"
+                                        id="">
+                                    <option {{ $errors->has('type') ? '' : 'selected' }} disabled>Выберите цвет</option>
+                                    <option {{ old('type') == 'black' ? 'selected' : ''}} value="black">Черный</option>
+                                    <option {{ old('type') == 'grey' ? 'selected' : ''}} value="grey">Серый</option>
+                                    <option {{ old('type') == 'sandstone' ? 'selected' : ''}} value="sandstone">Песочный</option>
+                                </select>
+                                @error('type')
+                                <div class="text-danger">
+                                    {{$message}}
+                                </div>
+                                @enderror
+                                @endif
+                                <button type="submit" style="border: 0; margin-bottom: 20px; margin-top: 20px">
                                     <input type="button" class="btn btn-3d" value="Отредактировать описание">
                                 </button>
                             </form>

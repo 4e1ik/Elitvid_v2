@@ -10,39 +10,22 @@
             <div class="product__main-items">
                 @foreach($square_pots as $pot)
                     <div class="product__item-card">
-                        <div class="product__item-slider">
-                            <div class="swiper-product">
-                                <div class="swiper-wrapper">
-                                    <!-- Slides -->
-                                    @foreach($pot->images as $image)
+                        <a href="{{route('show_product', ['id' => $pot->id])}}">
+                            <div class="product__item-slider">
+                                <div class="swiper-product">
+                                    <div class="swiper-wrapper">
+                                        <!-- Slides -->
                                         <div class="swiper-slide">
-{{--                                            <img src="{{ asset('storage/'.$image->image) }}" alt="{{ $image->description_image }}">--}}
-                                            <a href="{{ asset('storage/'.$image->image) }}" data-lightbox="{{$pot->id}}-images"><img
-                                                    src="{{ asset('storage/'.$image->image) }}" alt="{{$image->description_image}}"></a>
+                                            <img src="{{ asset('storage/'.$pot->images[0]->image) }}"
+                                                 alt="{{ $pot->images[0]->description_image }}">
                                         </div>
-                                    @endforeach
-                                </div>
-                                <div class="swiper-button-prev">
-                                    <img src="{{asset('/elitvid_assets/images/slider/prev.png')}}" alt="">
-                                </div>
-                                <div class="swiper-button-next">
-                                    <img src="{{asset('/elitvid_assets/images/slider/next.png')}}" alt="">
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="product__card-content">
                             <div class="product__card-header">
                                 <p>{{$pot->title}}</p>
                             </div>
-                            <div class="content-product">
-                                {!! $pot->content !!}
-                            </div>
-                        </div>
-
-{{--                        <details>--}}
-{{--                            <summary>Размеры</summary>--}}
-
-{{--                        </details>--}}
+                        </a>
                     </div>
                 @endforeach
             </div>

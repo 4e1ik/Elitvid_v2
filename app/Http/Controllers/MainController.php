@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Gallery;
 use App\Models\Image;
-use App\Models\Post;
 use App\Models\Product;
 use App\Models\Texture;
 use Illuminate\Http\Request;
@@ -18,6 +17,13 @@ class MainController extends Controller
 
     function about() {
         return view('elitvid.site.about');
+    }
+
+    function show_product($id){
+        $product = Product::query()->with('images')->where('id', $id)->get();
+        $i = 1;
+        $j = 1;
+        return view('elitvid.site.product_page', compact('product', 'i', 'j'));
     }
 
     function benches() {
