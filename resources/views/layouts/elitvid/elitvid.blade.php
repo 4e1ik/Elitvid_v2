@@ -6,7 +6,6 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <!-- Yandex.Metrika counter -->
-    <!-- Yandex.Metrika counter -->
     <script type="text/javascript" >
         (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
             m[i].l=1*new Date();
@@ -21,8 +20,6 @@
             webvisor:true
         });
     </script>
-    <noscript><div><img src="https://mc.yandex.ru/watch/90164998" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
-    <!-- /Yandex.Metrika counter -->
     <noscript><div><img src="https://mc.yandex.ru/watch/90164998" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
     <!-- /Yandex.Metrika counter -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css">
@@ -283,16 +280,19 @@
     <script src="{{asset('/elitvid_assets/scripts/swiper-product.js')}}"></script>
     <script src="{{asset('/elitvid_assets/scripts/lightbox-plus-jquery.js')}}"></script>
 @endif
-<script>
-    function onClick(e) {
-        e.preventDefault();
-        grecaptcha.ready(function () {
-            grecaptcha.execute('{{ config('services.recaptcha.site_key') }}', {action: 'send_mail'}).then(function (token) {
-                document.getElementById('g-recaptcha-response').value = token;
-                document.getElementById('mail_form').submit();
+@if(\Illuminate\Support\Facades\Route::currentRouteName() == 'form')
+    <script>
+        function onClick(e) {
+            e.preventDefault();
+            grecaptcha.ready(function () {
+                grecaptcha.execute('{{ config('services.recaptcha.site_key') }}', {action: 'send_mail'}).then(function (token) {
+                    document.getElementById('g-recaptcha-response').value = token;
+                    document.getElementById('mail_form').submit();
+                });
             });
-        });
-    }
-</script>
+        }
+    </script>
+@endif
+
 </body>
 </html>
