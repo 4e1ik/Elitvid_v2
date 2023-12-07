@@ -95,7 +95,10 @@
                 <div class="nav__burger">
                     <ul class="nav__list">
                         <li class="nav__item">
-                            <a href="">Меню</a>
+                            <a href="{{route('form')}}">Заказать звонок</a>
+                        </li>
+                        <li class="nav__item">
+                            <a href="{{route('catalog')}}">Меню</a>
                             <ul class="nav__sublist">
                                 <li>
                                 {{--                                <li class="nav__item">--}}
@@ -242,7 +245,7 @@
                                     <a href="{{route('pots')}}">Кашпо</a>
                                 </li>
                                 <li class="nav__item">
-                                    <a href=""{{route('benches')}}">Скамейки</a>
+                                    <a href="{{route('benches')}}">Скамейки</a>
                                 </li>
                                 {{--                                <li class="nav__item">--}}
                                 {{--                                    <a href="">Ротонды</a>--}}

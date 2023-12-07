@@ -62,11 +62,15 @@
 
 @include('includes.elitvid.catalog')
 
-{{--<section class="offer__main section-item">--}}
-{{--    <div class="container">--}}
-{{--        <div class="offer__main-header section-header">--}}
-{{--            <h2>Наш проект</h2>--}}
-{{--        </div>--}}
-{{--    </div>--}}
-{{--</section>--}}
+<section class="offer__main section-item">
+    <div class="container">
+        <div class="offer__main-header section-header">
+            <h2>Наш проект</h2>
+        </div>
+        <div class="video__main-items">
+            <video src="{{asset('/elitvid_assets/video/project.mp4')}}"
+                   controls poster="{{asset('/elitvid_assets/images/main/slider/pots.png')}}"></video>
+        </div>
+    </div>
+</section>
 @endsection
