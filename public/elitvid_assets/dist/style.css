@@ -692,6 +692,17 @@ ul {
   justify-content: center;
   align-items: center;
 }
+.nav__list span {
+  color: white;
+  font-size: 1.1em;
+  text-decoration: none;
+  padding: 1.425em 1em;
+  width: 7em;
+  text-align: center;
+  cursor: pointer;
+  display: inline-block;
+  font-weight: bold;
+}
 .nav__list a {
   color: white;
   font-size: 1.1em;
@@ -746,6 +757,9 @@ ul {
 
 @media (max-width: 768px) {
   .nav__list a {
+    font-size: 2em;
+  }
+  .nav__list span {
     font-size: 2em;
   }
 

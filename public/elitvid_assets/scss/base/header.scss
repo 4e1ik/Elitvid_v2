@@ -60,6 +60,18 @@ ul {
     justify-content: center;
     align-items: center;
 
+    span {
+        color: white;
+        font-size: 1.1em;
+        text-decoration: none;
+        padding: 1.425em 1em;
+        width: 7em;
+        text-align: center;
+        cursor: pointer;
+        display: inline-block;
+        font-weight: bold;
+    }
+
     a {
         color: white;
         font-size: 1.1em;
@@ -124,6 +136,10 @@ ul {
 
     .nav__list {
         a {
+            font-size: 2em;
+        }
+
+        span {
             font-size: 2em;
         }
     }

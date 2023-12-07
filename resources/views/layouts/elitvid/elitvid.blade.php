@@ -94,11 +94,12 @@
             <nav class="header__mobile-menu">
                 <div class="nav__burger">
                     <ul class="nav__list">
+{{--                        <li class="nav__item">--}}
+{{--                            <a href="{{route('form')}}">Заказать звонок</a>--}}
+{{--                        </li>--}}
                         <li class="nav__item">
-                            <a href="{{route('form')}}">Заказать звонок</a>
-                        </li>
-                        <li class="nav__item">
-                            <a href="{{route('catalog')}}">Меню</a>
+                            <span>Меню</span>
+{{--                            <a href="{{route('catalog')}}">Меню</a>--}}
                             <ul class="nav__sublist">
                                 <li>
                                 {{--                                <li class="nav__item">--}}
