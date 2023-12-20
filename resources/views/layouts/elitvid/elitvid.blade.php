@@ -26,8 +26,8 @@
     <link rel="shortcut icon" href="{{asset('/elitvid_assets/images/header/Logo_shortcut.png')}}">
     <link rel="stylesheet" href="{{asset('/elitvid_assets/reset.css')}}">
 
-{{--    <link rel="stylesheet" href="{{asset('/elitvid_assets/dist/style.css')}}?v=1.1">--}}
-    @vite(['public/elitvid_assets/style.scss'])
+    <link rel="stylesheet" href="{{asset('/elitvid_assets/dist/style.css')}}?v=1.1">
+{{--    @vite(['public/elitvid_assets/style.scss'])--}}
 
     <link rel="stylesheet" href="{{asset('/elitvid_assets/dist/lightbox.css')}}">
     <title>Elitvid</title>
