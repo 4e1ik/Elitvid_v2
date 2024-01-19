@@ -7,6 +7,7 @@ use App\Models\Image;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Intervention\Image\ImageManager;
 use function Laravel\Prompts\warning;
 
 class ProductController extends Controller
@@ -40,11 +41,15 @@ class ProductController extends Controller
 
 //        save_image($productRequest);
 
+//        dd($data);
+
         if ($productRequest->hasFile('image')) {
             foreach ($productRequest->file('image') as $file) {
                 $path = Storage::putFileAs('images', $file, save_image($file)); // Даем путь к этому файлу
                 $data['image'] = $path;
                 Image::create($data);
+
+//                ImageManager::gd()->read($file)->scaleDown(100,  100)->save(storage_path('app/public/images/'.'test'.save_image($file)));
             }
         }
 
