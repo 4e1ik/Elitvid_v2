@@ -49,7 +49,7 @@ class ProductController extends Controller
                 $data['image'] = $path;
                 Image::create($data);
 
-//                ImageManager::gd()->read($file)->scaleDown(100,  100)->save(storage_path('app/public/images/'.'test'.save_image($file)));
+                ImageManager::gd()->read($file)->scaleDown(100,  100)->save(storage_path('app/public/images/'.'test'.save_image($file)));
             }
         }
 

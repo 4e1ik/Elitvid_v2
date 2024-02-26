@@ -9,6 +9,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\TexturesController;
 use App\Http\Controllers\GalleryController;
 use \App\Http\Controllers\MailController;
+use \App\Http\Controllers\NewDesign\NewDesignMainController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,6 +22,10 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::get('/test', [NewDesignMainController::class, 'index'])->name('new_home');
+
+
 
 Route::get('/', [MainController::class, 'index'])->name('home');
 Route::get('/about', [MainController::class, 'about'])->name('about');
@@ -37,7 +42,6 @@ Route::prefix('pots')->group(function () {
 Route::get('/login', [LoginController::class, 'index'])->name('login');
 Route::post('/login', [LoginController::class, 'login']);
 
-//Закомментировано для production.
 Route::get('/registration', [RegisterController::class, 'index'])->name('registration');
 Route::post('/registration', [RegisterController::class, 'registration'])->name('save');
 
