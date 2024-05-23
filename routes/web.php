@@ -23,9 +23,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/test', [NewDesignMainController::class, 'index'])->name('new_home');
-
-
 
 Route::get('/', [MainController::class, 'index'])->name('home');
 Route::get('/about', [MainController::class, 'about'])->name('about');

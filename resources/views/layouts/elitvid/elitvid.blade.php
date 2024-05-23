@@ -96,17 +96,10 @@
             <nav class="header__mobile-menu">
                 <div class="nav__burger">
                     <ul class="nav__list">
-{{--                        <li class="nav__item">--}}
-{{--                            <a href="{{route('form')}}">Заказать звонок</a>--}}
-{{--                        </li>--}}
                         <li class="nav__item">
                             <span>Меню</span>
-{{--                            <a href="{{route('catalog')}}">Меню</a>--}}
                             <ul class="nav__sublist">
                                 <li>
-                                {{--                                <li class="nav__item">--}}
-                                {{--                                    <a href="">О нас</a>--}}
-                                {{--                                </li>--}}
                                 <li class="nav__item">
                                     <a href="{{route('form')}}" class="phone-number"><p>Заказать звонок</p></a>
                                 </li>
@@ -130,17 +123,7 @@
                                         <li>
                                             <a href="{{route('benches')}}"><p>Скамейки</p></a>
                                         </li>
-                                        {{--                                        <li>--}}
-                                        {{--                                            <a href="">Ротонды и коллонады</a>--}}
-                                        {{--                                        </li>--}}
-                                        {{--                                        <li>--}}
-                                        {{--                                            <a href="">Lorem ipsum.</a>--}}
-                                        {{--                                        </li>--}}
-                                        {{--                                        <li>--}}
-                                        {{--                                            <a href="">Lorem ipsum.</a>--}}
-                                        {{--                                        </li>--}}
                                     </ul>
-                                </li>
                                 </li>
                             </ul>
                         </li>
