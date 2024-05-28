@@ -55,8 +55,8 @@ class MainController extends Controller
         );
     }
 
-    function catalog() {
-        return view('elitvid.site.catalog');
+    function directions() {
+        return view('elitvid.site.directions');
     }
 
     function pots() {
