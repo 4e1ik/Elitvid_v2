@@ -34,7 +34,7 @@
         <div class="logo"><a href="{{route('home')}}"><img class="logo-img" src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/logo/logo.svg')}}" alt="Логотип Элитвид"></a></div>
         <nav class="header-menu">
             <ul class="header-menu--list menu">
-                <li><a href="">Наши направления</a></li>
+                <li><a href="{{route('directions')}}">Наши направления</a></li>
                 <li>
                     <button class="call">Заказать звонок</button>
                 </li>
@@ -49,15 +49,7 @@
         </button>
     </div>
 </header>
-
-
-
-
 @yield('content')
-
-
-
-
 <footer>
     <div class="footer-section">
         <div class="logo-column">

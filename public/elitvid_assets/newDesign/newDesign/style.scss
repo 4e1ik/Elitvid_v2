@@ -465,12 +465,12 @@ header.open .header__burger span:nth-child(3) {
 }
 
 .download_catalog {
+    margin-top: 1em;
+    width: 16em;
     a {
         display: flex;
         align-items: center;
         gap: 0.875em;
-        //margin-top: 1.5em;
-        //padding: 1.5em 0em;
         width: 16em;
 
         svg {
@@ -1196,6 +1196,7 @@ main {
     }
 
     .prev_direction {
+        margin-top: 5em;
         flex-direction: column;
         gap: 3.125em;
 

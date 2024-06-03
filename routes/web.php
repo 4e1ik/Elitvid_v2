@@ -11,6 +11,7 @@ use App\Http\Controllers\GalleryController;
 use \App\Http\Controllers\MailController;
 use \App\Http\Controllers\NewDesign\NewDesignMainController;
 use Illuminate\Support\Facades\Route;
+use Tabuna\Breadcrumbs\Trail;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,16 +25,31 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::get('/', [MainController::class, 'index'])->name('home');
-Route::get('/about', [MainController::class, 'about'])->name('about');
-Route::get('/benches', [MainController::class, 'benches'])->name('benches');
-Route::get('/catalog', [MainController::class, 'catalog'])->name('catalog');
+Route::get('/', [MainController::class, 'index'])->name('home')->breadcrumbs(function (Trail $trail) {
+    return $trail->push(__('Главная'), route('home'));
+});
+//Route::get('/about', [MainController::class, 'about'])->name('about');
+Route::get('/directions', [MainController::class, 'directions'])->name('directions')->breadcrumbs(function (Trail $trail) {
+    return $trail->parent('home')->push('Наши направления', route('directions'));
+});
+Route::get('/benches', [MainController::class, 'benches'])->name('benches')->breadcrumbs(function (Trail $trail) {
+    return $trail->parent('directions')->push('Скамьи', route('benches'));
+});
+
 
 Route::prefix('pots')->group(function () {
-    Route::get('/', [MainController::class, 'pots'])->name('pots');
-    Route::get('/rectangular_pots', [MainController::class, 'rectangular_pots'])->name('rectangular_pots');
-    Route::get('/square_pots', [MainController::class, 'square_pots'])->name('square_pots');
-    Route::get('/round_pots', [MainController::class, 'round_pots'])->name('round_pots');
+    Route::get('/', [MainController::class, 'pots'])->name('pots')->breadcrumbs(function (Trail $trail) {
+        return $trail->parent('directions')->push('Кашпо', route('pots'));
+    });
+    Route::get('/rectangular_pots', [MainController::class, 'rectangular_pots'])->name('rectangular_pots')->breadcrumbs(function (Trail $trail) {
+        return $trail->parent('pots')->push('Прямоугольные кашпо', route('rectangular_pots'));
+    });
+    Route::get('/square_pots', [MainController::class, 'square_pots'])->name('square_pots')->breadcrumbs(function (Trail $trail) {
+        return $trail->parent('pots')->push('Квадратные кашпо', route('square_pots'));
+    });
+    Route::get('/round_pots', [MainController::class, 'round_pots'])->name('round_pots')->breadcrumbs(function (Trail $trail) {
+        return $trail->parent('pots')->push('Круглые кашпо', route('round_pots'));
+    });
 });
 
 Route::get('/login', [LoginController::class, 'index'])->name('login');
@@ -74,8 +90,8 @@ Route::middleware('auth')->where([
 //    Route::post('/images', [ImageController::class, 'store'])->name('image_create');
 
     Route::resources([
-        'products' =>  ProductController::class,
-        'textures' =>  TexturesController::class,
+        'products' => ProductController::class,
+        'textures' => TexturesController::class,
         'galleries' => GalleryController::class,
     ]);
 });

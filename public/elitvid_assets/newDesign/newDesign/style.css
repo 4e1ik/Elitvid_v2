@@ -308,23 +308,26 @@ header.open .header__burger span:nth-child(3) {
       margin-top: 1.25em;
       color: #A2A2A2; }
 
-.download_catalog a {
-  display: flex;
-  align-items: center;
-  gap: 0.875em;
+.download_catalog {
+  margin-top: 1em;
   width: 16em; }
-  .download_catalog a svg {
-    position: relative; }
-  .download_catalog a p {
-    position: relative; }
-.download_catalog a:hover svg {
-  animation-duration: 1s;
-  animation-name: svg-arrow;
-  animation-fill-mode: both; }
-.download_catalog a:hover p {
-  animation-duration: 1s;
-  animation-name: p-text;
-  animation-fill-mode: both; }
+  .download_catalog a {
+    display: flex;
+    align-items: center;
+    gap: 0.875em;
+    width: 16em; }
+    .download_catalog a svg {
+      position: relative; }
+    .download_catalog a p {
+      position: relative; }
+  .download_catalog a:hover svg {
+    animation-duration: 1s;
+    animation-name: svg-arrow;
+    animation-fill-mode: both; }
+  .download_catalog a:hover p {
+    animation-duration: 1s;
+    animation-name: p-text;
+    animation-fill-mode: both; }
 @keyframes svg-arrow {
   0% {
     left: 0; }
@@ -766,6 +769,7 @@ main {
         main .offered_products .offered_product_slider .arrow:hover #Line\ 1 {
           stroke: #1A1B20; }
   main .prev_direction {
+    margin-top: 5em;
     flex-direction: column;
     gap: 3.125em; }
     main .prev_direction .prev_directions__forms {
