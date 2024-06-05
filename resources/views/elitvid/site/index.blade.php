@@ -213,7 +213,7 @@
                             альтернативу натуральному камню.</p>
                     </div>
                     <div class="elements_main__button">
-                        <a href="decorations.html">
+                        <a href="{{route('decorations')}}">
                             <button>
                                 ПОДРОБНЕЕ
                             </button>

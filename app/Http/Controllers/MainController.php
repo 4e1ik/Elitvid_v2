@@ -59,6 +59,11 @@ class MainController extends Controller
         return view('elitvid.site.directions');
     }
 
+    function decorations()
+    {
+        return view('elitvid.site.decorations');
+    }
+
     function pots() {
 
         $textures = Texture::query()->whereIn('active', [1])->get();

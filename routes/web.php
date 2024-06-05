@@ -27,6 +27,8 @@ use Tabuna\Breadcrumbs\Trail;
 
 Route::get('/', [MainController::class, 'index'])->name('home');
 
+Route::get('/decorations', [MainController::class, 'decorations'])->name('decorations');
+
 Route::prefix('directions')->group(function () {
     Route::get('/', [MainController::class, 'directions'])->name('directions');
 
