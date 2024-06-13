@@ -35,7 +35,10 @@
                                 <thead>
                                 <tr>
                                     <th>Название</th>
-                                    <th>Описание</th>
+                                    <th>Материал</th>
+                                    <th>Размеры</th>
+                                    <th>Вес</th>
+                                    <th>Цена</th>
                                     <th>Время создания</th>
                                     <th>Время редактирования</th>
                                     <th>Опубликован</th>
@@ -46,8 +49,11 @@
                                 <tbody>
                                 @foreach($round_pots as $pot)
                                     <tr>
-                                        <td>{{$pot->title}}</td>
-                                        <td>{!! $pot->content!!}</td>
+                                        <td>{{$pot->name}}</td>
+                                        <td>{{ $pot->material}}</td>
+                                        <td>{{ $pot->size}}</td>
+                                        <td>{{ $pot->weight}}</td>
+                                        <td>{{ $pot->price}}</td>
                                         <td>{{$pot->created_at}}</td>
                                         <td>{{$pot->updated_at}}</td>
                                         <td>
@@ -58,13 +64,13 @@
                                             @endif
                                         </td>
                                         <td>
-                                            <a href="{{ route('products.edit', ['product' => $pot]) }}">
+                                            <a href="{{ route('potProducts.edit', ['potProduct' => $pot]) }}">
                                                 <input type="button" class=" btn btn-3d btn-primary"
                                                        value="Редактировать">
                                             </a>
                                         </td>
                                         <td>
-                                            <form action="{{ route('products.destroy', ['product' => $pot]) }}"
+                                            <form action="{{ route('potProducts.destroy', ['potProduct' => $pot]) }}"
                                                   method="post">
                                                 @method('DELETE')
                                                 @csrf
@@ -87,7 +93,10 @@
                                 <thead>
                                 <tr>
                                     <th>Название</th>
-                                    <th>Описание</th>
+                                    <th>Материал</th>
+                                    <th>Размеры</th>
+                                    <th>Вес</th>
+                                    <th>Цена</th>
                                     <th>Время создания</th>
                                     <th>Время редактирования</th>
                                     <th>Опубликован</th>
@@ -98,11 +107,11 @@
                                 <tbody>
                                 @foreach($rectangular_pots as $pot)
                                     <tr>
-                                        <td>{{$pot->title}}</td>
-                                        <td>
-                                            {!! $pot->content !!}
-                                        </td>
-
+                                        <td>{{$pot->name}}</td>
+                                        <td>{{ $pot->material}}</td>
+                                        <td>{{ $pot->size}}</td>
+                                        <td>{{ $pot->weight}}</td>
+                                        <td>{{ $pot->price}}</td>
                                         <td>{{$pot->created_at}}</td>
                                         <td>{{$pot->updated_at}}</td>
                                         <td>
@@ -113,13 +122,13 @@
                                             @endif
                                         </td>
                                         <td>
-                                            <a href="{{ route('products.edit', ['product' => $pot]) }}">
+                                            <a href="{{ route('potProducts.edit', ['potProduct' => $pot]) }}">
                                                 <input type="button" class=" btn btn-3d btn-primary"
                                                        value="Редактировать">
                                             </a>
                                         </td>
                                         <td>
-                                            <form action="{{ route('products.destroy', ['product' => $pot]) }}"
+                                            <form action="{{ route('potProducts.destroy', ['potProduct' => $pot]) }}"
                                                   method="post">
                                                 @method('DELETE')
                                                 @csrf
@@ -142,7 +151,10 @@
                                 <thead>
                                 <tr>
                                     <th>Название</th>
-                                    <th>Описание</th>
+                                    <th>Материал</th>
+                                    <th>Размеры</th>
+                                    <th>Вес</th>
+                                    <th>Цена</th>
                                     <th>Время создания</th>
                                     <th>Время редактирования</th>
                                     <th>Опубликован</th>
@@ -153,8 +165,11 @@
                                 <tbody>
                                 @foreach($square_pots as $pot)
                                     <tr>
-                                        <td>{{$pot->title}}</td>
-                                        <td>{!! $pot->content !!}</td>
+                                        <td>{{$pot->name}}</td>
+                                        <td>{{ $pot->material}}</td>
+                                        <td>{{ $pot->size}}</td>
+                                        <td>{{ $pot->weight}}</td>
+                                        <td>{{ $pot->price}}</td>
                                         <td>{{$pot->created_at}}</td>
                                         <td>{{$pot->updated_at}}</td>
                                         <td>
@@ -165,13 +180,13 @@
                                             @endif
                                         </td>
                                         <td>
-                                            <a href="{{ route('products.edit', ['product' => $pot]) }}">
+                                            <a href="{{ route('potProducts.edit', ['potProduct' => $pot]) }}">
                                                 <input type="button" class=" btn btn-3d btn-primary"
                                                        value="Редактировать">
                                             </a>
                                         </td>
                                         <td>
-                                            <form action="{{ route('products.destroy', ['product' => $pot]) }}"
+                                            <form action="{{ route('potProducts.destroy', ['potProduct' => $pot]) }}"
                                                   method="post">
                                                 @method('DELETE')
                                                 @csrf

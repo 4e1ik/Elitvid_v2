@@ -5,6 +5,7 @@ use App\Http\Controllers\ImageController;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\PotProductController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\TexturesController;
 use App\Http\Controllers\GalleryController;
@@ -87,7 +88,7 @@ Route::middleware('auth')->where([
 //    Route::post('/images', [ImageController::class, 'store'])->name('image_create');
 
     Route::resources([
-        'products' => ProductController::class,
+        'potProducts' => PotProductController::class,
         'textures' => TexturesController::class,
         'galleries' => GalleryController::class,
     ]);

@@ -6,6 +6,7 @@ use App\Http\Requests\ProductRequest;
 use App\Models\Gallery;
 use App\Models\Image;
 use App\Models\Post;
+use App\Models\PotProduct;
 use App\Models\Product;
 use App\Models\Texture;
 use App\Models\User;
@@ -35,16 +36,21 @@ class AdminController extends Controller
         );
     }
 
-    function pots(Product $product) {
+    function pots(PotProduct $PotProduct) {
 
-        $pots = Product::query()->whereIn('item', ['pot'])->get();
-        $round_pots = $pots->where('type', 'Round');
-        $rectangular_pots = $pots->where('type', 'Rectangular');
-        $square_pots = $pots->where('type', 'Square');
+//        $pots = PotProduct::query()->whereIn('item', ['pot'])->get();
+//        $round_pots = PotProduct::where('collection', 'Round');
+        $round_pots = PotProduct::query()->where('collection', 'Round')->get();
+        $rectangular_pots = PotProduct::query()->where('collection', 'Rectangular')->get();
+        $square_pots = PotProduct::query()->where('collection','Square')->get();
+//        dd($square_pots);
+//        dd($round_pots);
+//        $rectangular_pots = PotProduct::where('collection', 'Rectangular');
+//        $square_pots = PotProduct::where('collection', 'Square');
 
-        return view('elitvid.admin.pots.pots',
-        compact('round_pots', 'rectangular_pots', 'square_pots', 'product')
-        );
+
+        return view('elitvid.admin.pots.pots', compact('round_pots', 'rectangular_pots', 'square_pots', 'PotProduct'));
+//        return view('elitvid.admin.pots.pots');
     }
 
     function textures(Texture $texture) {
@@ -82,9 +88,13 @@ class AdminController extends Controller
             return view('includes.elitvid.admin.create_texture', compact('route_name'));
         } else if($route_name == 'gallery'){
             return view('includes.elitvid.admin.create_gallery', compact('route_name'));
+        } else if($route_name == 'pots'){
+            return view('includes.elitvid.admin.create_pot_product', compact('route_name'));
+        } else if($route_name == 'benches'){
+            return view('includes.elitvid.admin.create_bench_product', compact('route_name'));
         }
 
-        return view('includes.elitvid.admin.create_product', compact('route_name'));
+//        return view('includes.elitvid.admin.create_product', compact('route_name'));
 
     }
 
