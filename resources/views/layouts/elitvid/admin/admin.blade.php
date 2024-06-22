@@ -678,6 +678,7 @@
 
 <!-- custom -->
 <script src="{{asset('/elitvid_assets/js/main.js')}}"></script>
+<script src="{{asset('/elitvid_assets/newDesign/newDesign/js/rowTableProduct.js')}}"></script>
 
 <script type="text/javascript">
     $(document).ready(function(){

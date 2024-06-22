@@ -33,6 +33,16 @@ class MailController extends Controller
         }
 
 //        dd($data);
-        return redirect(route('home'));
+//        return redirect(route('home'));
+    }
+
+    public function order_call(MailRequest $mailRequest)
+    {
+        $data = $mailRequest->all();
+
+        dd($data);
+
+        Mail::to('Elitvid.site@yandex.ru')->send(new FeedbackMail($data));
+
     }
 }

@@ -3,7 +3,7 @@
 use App\Models\Image;
 use Illuminate\Support\Facades\Storage;
 
-function save_image($file)
+function save_image($file, $image)
 {
 //    if ($request->hasFile('image')) {
 //        foreach ($request->file('image') as $file) {
@@ -12,7 +12,9 @@ function save_image($file)
 
             $tmp_name = explode('.', $name);
 
-            $img_names_arr = Image::query()->pluck('image');
+            $img_names_arr = $image->pluck('image');
+
+//            dd($img_names_arr);
 
             $img_names_arr_explode = [];
             $i = 0;
@@ -33,6 +35,8 @@ function save_image($file)
                         while (in_array($name, $img_names_arr_explode)) {
                             $i++;
                             $name = $tmp_name[0] . '(' . $i . ').' . $tmp_name[1];
+
+//                            dd($name);
                         }
                     }
                 }
