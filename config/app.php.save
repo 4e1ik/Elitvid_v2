@@ -171,7 +171,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         App\Providers\BreadcrumbsServiceProvider::class,
     ])->toArray(),
-    /*
+    /*cd 
     |--------------------------------------------------------------------------
     | Class Aliases
     |--------------------------------------------------------------------------
