@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\MailCallRequest;
 use App\Http\Requests\MailRequest;
 use App\Mail\FeedbackMail;
-use App\Models\Image;
-use Illuminate\Http\Request;
+use App\Mail\FeedbackCall;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
 
@@ -19,8 +19,8 @@ class MailController extends Controller
 
     public function send(MailRequest $mailRequest)
     {
-//        $route = \Illuminate\Support\Facades\Route::currentRouteName();
         $data = $mailRequest->all();
+        $data['country'] = mb_substr($data['country'], 3);
 
         if ($mailRequest->hasFile('file')) {
             $name = $mailRequest->file('file')->getClientOriginalName();
@@ -36,11 +36,11 @@ class MailController extends Controller
 //        return redirect(route('home'));
     }
 
-    public function order_call(MailRequest $mailRequest)
+    public function order_call(MailCallRequest $mailRequest)
     {
         $data = $mailRequest->all();
 
-        dd($data);
+//        dd($data);
 
         Mail::to('Elitvid.site@yandex.ru')->send(new FeedbackMail($data));
 

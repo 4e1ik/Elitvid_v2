@@ -1,6 +1,6 @@
 <div class="popup popup_application">
     <div class="popup__body popup__body_application">
-        <form class="popup__form" action="{{route('send_mail')}}" method="post" enctype="multipart/form-data">
+        <form class="popup__form" action="{{route('send_mail')}}" method="post" enctype="multipart/form-data" id="mail_form">
             @csrf
             <div class="popup__cross popup__cross_application">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -33,7 +33,6 @@
                         <p>Номер телефона</p>
                         <div class="poop">
                             <select name="country">
-                                <option disabled>Выберите страну</option>
                                 <option class="by">🇧🇾 +375</option>
                                 <option class="ru">🇷🇺 +7</option>
                                 <option class="kz">🇰🇿 +7</option>
@@ -66,6 +65,9 @@
                     </div>
                     @enderror
                 </div>
+
+                <input type="hidden" name="g-recaptcha-response" id="g-recaptcha-response">
+
                 <div class="popup_content_inputs__file-button">
                     <div class="popup__input file">
                         <label for="file1">
@@ -84,8 +86,10 @@
                         @enderror
                         <p>Прикрепить файл, он должен быть не более 512 кб</p>
                     </div>
+
                     <div class="submit__button">
-                        <button type="submit">Оставить заявку</button>
+                        <button class="form__form-button" type="button" onclick="onClick(event)">Оставить заявку</button>
+{{--                        <button type="submit">Оставить заявку</button>--}}
                         <p>Отправляя заявку, вы даете согласие на обработку своих персональных данных в соответствии
                             с Политикой конфиденциальности.</p>
                     </div>
