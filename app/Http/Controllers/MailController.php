@@ -22,8 +22,6 @@ class MailController extends Controller
 //        $route = \Illuminate\Support\Facades\Route::currentRouteName();
         $data = $mailRequest->all();
 
-//        $data['country'] = mb_str
-
         if ($mailRequest->hasFile('file')) {
             $name = $mailRequest->file('file')->getClientOriginalName();
             $path = Storage::putFileAs('files', $mailRequest->file('file'), $name); // Даем путь к этому файлу
