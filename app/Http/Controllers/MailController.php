@@ -40,7 +40,7 @@ class MailController extends Controller
     {
         $data = $mailRequest->all();
 
-        dd($data);
+//        dd($data);
 
         Mail::to('Elitvid.site@yandex.ru')->send(new FeedbackMail($data));
 
