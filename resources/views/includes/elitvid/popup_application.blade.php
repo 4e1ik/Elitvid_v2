@@ -1,6 +1,6 @@
 <div class="popup popup_application">
     <div class="popup__body popup__body_application">
-        <form class="popup__form" action="{{route('send_mail')}}" method="post" enctype="multipart/form-data">
+        <form class="popup__form" action="{{route('send_mail')}}" method="post" enctype="multipart/form-data" id="mail_form">
             @csrf
             <div class="popup__cross popup__cross_application">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -84,8 +84,17 @@
                         @enderror
                         <p>Прикрепить файл, он должен быть не более 512 кб</p>
                     </div>
+
+                    <input type="hidden" name="g-recaptcha-response" id="g-recaptcha-response">
+                    @error('g-recaptcha-response')
+                    <div class="text-danger">
+                        <p>{{$message}}</p>
+                    </div>
+                    @enderror
+
                     <div class="submit__button">
-                        <button type="submit">Оставить заявку</button>
+                        <button class="form__form-button" type="button" onclick="onClick(event)">Заказать</button>
+{{--                        <button type="submit">Оставить заявку</button>--}}
                         <p>Отправляя заявку, вы даете согласие на обработку своих персональных данных в соответствии
                             с Политикой конфиденциальности.</p>
                     </div>

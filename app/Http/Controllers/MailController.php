@@ -22,6 +22,8 @@ class MailController extends Controller
 //        $route = \Illuminate\Support\Facades\Route::currentRouteName();
         $data = $mailRequest->all();
 
+//        $data['country'] = mb_str
+
         if ($mailRequest->hasFile('file')) {
             $name = $mailRequest->file('file')->getClientOriginalName();
             $path = Storage::putFileAs('files', $mailRequest->file('file'), $name); // Даем путь к этому файлу
@@ -34,15 +36,5 @@ class MailController extends Controller
 
 //        dd($data);
 //        return redirect(route('home'));
-    }
-
-    public function order_call(MailRequest $mailRequest)
-    {
-        $data = $mailRequest->all();
-
-        dd($data);
-
-        Mail::to('Elitvid.site@yandex.ru')->send(new FeedbackMail($data));
-
     }
 }
