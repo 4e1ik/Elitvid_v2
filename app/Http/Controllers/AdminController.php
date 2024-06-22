@@ -2,16 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\ProductRequest;
+use App\Models\BenchProduct;
 use App\Models\Gallery;
-use App\Models\Image;
-use App\Models\Post;
-use App\Models\Product;
-use App\Models\Texture;
-use App\Models\User;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Storage;
+use App\Models\PotProduct;
 
 class AdminController extends Controller
 {
@@ -23,43 +16,26 @@ class AdminController extends Controller
         return view('elitvid.admin.catalog');
     }
 
-    function benches(Product $product) {
+    function benches(BenchProduct $benchProduct) {
 
-        $benches = Product::query()->whereIn('item', ['bench'])->get();
-        $benches_stones = $benches->where('type', 'Stones');
-        $benches_radius = $benches->where('type', 'Radius');
-        $benches_solo = $benches->where('type', 'Solo');
-        $benches_outdoor = $benches->where('type', 'Outdoor');
+        $benches = BenchProduct::query()->whereIn('collection', ['Verona', 'Stones', 'lines', 'Solo', 'Street_furniture'])->get();
+//        dd($benches);
+        $benches_verona = BenchProduct::query()->where('collection', 'Verona')->get();
+        $benches_stones = BenchProduct::query()->where('collection', 'Stones')->get();
+        $benches_solo = BenchProduct::query()->where('collection', 'Solo')->get();
+        $benches_lines = BenchProduct::query()->where('collection', 'lines')->get();
+        $benches_street_furniture = BenchProduct::query()->where('collection', 'Street_furniture')->get();
         return view('elitvid.admin.benches.benches',
-            compact('benches_stones','benches_radius','benches_solo', 'benches_outdoor',  'product')
+            compact('benches_stones', 'benches_lines', 'benches_solo', 'benches_street_furniture', 'benches_verona','benches')
         );
     }
 
-    function pots(Product $product) {
+    function pots(PotProduct $PotProduct) {
+        $round_pots = PotProduct::query()->where('collection', 'Round')->get();
+        $rectangular_pots = PotProduct::query()->where('collection', 'Rectangular')->get();
+        $square_pots = PotProduct::query()->where('collection','Square')->get();
 
-        $pots = Product::query()->whereIn('item', ['pot'])->get();
-        $round_pots = $pots->where('type', 'Round');
-        $rectangular_pots = $pots->where('type', 'Rectangular');
-        $square_pots = $pots->where('type', 'Square');
-
-        return view('elitvid.admin.pots.pots',
-        compact('round_pots', 'rectangular_pots', 'square_pots', 'product')
-        );
-    }
-
-    function textures(Texture $texture) {
-
-        $textures = Texture::query()->with(['images'])->get();
-        $natural_stones = $textures->where('type', 'natural_stone');
-        $moon_stones = $textures->where('type', 'moon_stone');
-        $polished_stones = $textures->where('type', 'polished_stone');
-        $wood_species = $textures->where('type', 'wood_species');
-        $wood_impregnation = $textures->where('type', 'wood_impregnation');
-        return view(
-            'elitvid.admin.textures', compact(
-            'natural_stones', 'moon_stones', 'polished_stones', 'wood_species', 'wood_impregnation', 'texture'
-            )
-        );
+        return view('elitvid.admin.pots.pots', compact('round_pots', 'rectangular_pots', 'square_pots', 'PotProduct'));
     }
 
     function gallery(Gallery $gallery) {
@@ -78,13 +54,13 @@ class AdminController extends Controller
 
         $route_name = $route;
 
-        if ($route_name == 'textures'){
-            return view('includes.elitvid.admin.create_texture', compact('route_name'));
-        } else if($route_name == 'gallery'){
+        if ($route_name == 'gallery'){
             return view('includes.elitvid.admin.create_gallery', compact('route_name'));
+        } else if($route_name == 'pots'){
+            return view('includes.elitvid.admin.create_pot_product', compact('route_name'));
+        } else if($route_name == 'benches'){
+            return view('includes.elitvid.admin.create_bench_product', compact('route_name'));
         }
-
-        return view('includes.elitvid.admin.create_product', compact('route_name'));
 
     }
 

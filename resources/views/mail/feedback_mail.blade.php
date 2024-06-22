@@ -12,7 +12,7 @@
             ">
             <h4>Имя пользователя: <span>{{$data['name']}}</span>.</h4>
             <h4>Почта пользователя: <span>{{$data['email']}}</span>.</h4>
-            <h4>Телефон для связи пользователя: <span>{{$data['phone']}}</span>.</h4>
+            <h4>Телефон для связи пользователя: <span>{{$data['country'].$data['phone']}}</span>.</h4>
             @if (!$data['name_corp'] == null)
                 <h4>Название компании пользователя: <span>{{$data['name_corp']}}</span>.</h4>
             @endif

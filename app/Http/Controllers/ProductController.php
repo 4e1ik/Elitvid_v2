@@ -7,6 +7,7 @@ use App\Models\Image;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Intervention\Image\ImageManager;
 use function Laravel\Prompts\warning;
 
 class ProductController extends Controller
@@ -30,25 +31,29 @@ class ProductController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(ProductRequest $productRequest)
+    public function store(ProductRequest $ProductRequest)
     {
-        $data = $productRequest->all();
+        $data = $ProductRequest->all();
 
-        $product = Product::create($data);
+        $Product = Product::create($data);
 
-        $data['product_id'] = $product->id;
+        $data['Product_id'] = $Product->id;
 
-//        save_image($productRequest);
+//        save_image($ProductRequest);
 
-        if ($productRequest->hasFile('image')) {
-            foreach ($productRequest->file('image') as $file) {
+//        dd($data);
+
+        if ($ProductRequest->hasFile('image')) {
+            foreach ($ProductRequest->file('image') as $file) {
                 $path = Storage::putFileAs('images', $file, save_image($file)); // Даем путь к этому файлу
                 $data['image'] = $path;
                 Image::create($data);
+
+                ImageManager::gd()->read($file)->scaleDown(360,  275)->save(storage_path('app/public/images/'.'test'.save_image($file)));
             }
         }
 
-        $dataItem = $product->attributesToArray()['item'];
+        $dataItem = $Product->attributesToArray()['item'];
         if ($dataItem == 'pot') {
             $route = 'admin_pots';
         } else if ($dataItem == 'bench') {
@@ -61,7 +66,7 @@ class ProductController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Product $product)
+    public function show(Product $Product)
     {
 
     }
@@ -69,38 +74,38 @@ class ProductController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Product $product)
+    public function edit(Product $Product)
     {
         $req = \Illuminate\Support\Facades\Request::server('HTTP_REFERER');
         $route_name = explode("/",$req)[4];
 
-        $images = Image::where('product_id', $product->id)->get();
+        $images = Image::where('Product_id', $Product->id)->get();
 
-        return view('includes.elitvid.admin.update_product', compact( 'product', 'images', 'route_name'));
+        return view('includes.elitvid.admin.update_Product', compact( 'Product', 'images', 'route_name'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(ProductRequest $productRequest, Product $product)
+    public function update(ProductRequest $ProductRequest, Product $Product)
     {
-        $data = $productRequest->all();
+        $data = $ProductRequest->all();
 
-        $product->fill($data)->save();
+        $Product->fill($data)->save();
 
-        $data['product_id'] = $product->id;
+        $data['Product_id'] = $Product->id;
 
-//        save_image($productRequest);
+//        save_image($ProductRequest);
 
-        if ($productRequest->hasFile('image')) {
-            foreach ($productRequest->file('image') as $file) {
+        if ($ProductRequest->hasFile('image')) {
+            foreach ($ProductRequest->file('image') as $file) {
                 $path = Storage::putFileAs('images', $file, save_image($file)); // Даем путь к этому файлу
                 $data['image'] = $path;
                 Image::create($data);
             }
         }
 
-        $dataItem = $product->attributesToArray()['item'];
+        $dataItem = $Product->attributesToArray()['item'];
         if ($dataItem == 'pot') {
             $route = 'admin_pots';
         } else if ($dataItem == 'bench') {
@@ -113,9 +118,9 @@ class ProductController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Product $product)
+    public function destroy(Product $Product)
     {
-        $dataItem = $product->attributesToArray()['item'];
+        $dataItem = $Product->attributesToArray()['item'];
 
         if ($dataItem =='pot') {
             $route = 'admin_pots';
@@ -123,12 +128,12 @@ class ProductController extends Controller
             $route = 'admin_benches';
         }
 
-        $images = $product->images()->where('product_id', $product->id)->get();
+        $images = $Product->images()->where('Product_id', $Product->id)->get();
         foreach ($images as $image) {
             Storage::delete($image->image);
         }
 
-        $product->delete();
+        $Product->delete();
         return redirect(route($route));
     }
 }

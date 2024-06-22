@@ -26,6 +26,66 @@
         <div class="col-md-12 top-20 padding-0">
             <div class="col-md-12">
                 <div class="panel">
+                    <div class="panel-heading"><h3>Коллекция Verona</h3></div>
+                    <div class="panel-body">
+                        <div class="responsive-table">
+                            <table id="datatables-example" class="table table-striped table-bordered" width="100%"
+                                   cellspacing="0">
+                                <thead>
+                                <tr>
+                                    <th>Название</th>
+                                    <th>Материал</th>
+                                    <th>Размеры</th>
+                                    <th>Вес</th>
+                                    <th>Цена</th>
+                                    <th>Время создания</th>
+                                    <th>Время редактирования</th>
+                                    <th>Опубликован</th>
+                                    <th>Редактировать</th>
+                                    <th>Удалить</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+{{--                                @if($benches_verona->isNotEmpty())--}}
+                                    @foreach($benches_verona as $bench)
+                                        <tr>
+                                            <td>{{$bench->name}}</td>
+                                            <td>{{ $bench->material}}</td>
+                                            <td>{{ $bench->size}}</td>
+                                            <td>{{ $bench->weight}}</td>
+                                            <td>{{ $bench->price}}</td>
+                                            <td>{{$bench->created_at}}</td>
+                                            <td>{{$bench->updated_at}}</td>
+                                            <td>
+                                                @if($bench->active == 1)
+                                                    Да
+                                                @else
+                                                    Нет
+                                                @endif
+                                            </td>
+                                            <td>
+                                                <a href="{{ route('benchProducts.edit', ['benchProduct' => $bench]) }}">
+                                                    <input type="button" class=" btn btn-3d btn-primary"
+                                                           value="Редактировать">
+                                                </a>
+                                            </td>
+                                            <td>
+                                                <form action="{{ route('benchProducts.destroy', ['benchProduct' => $bench]) }}"
+                                                      method="post">
+                                                    @method('DELETE')
+                                                    @csrf
+                                                    <button type="submit" style="border: 0">
+                                                        <input type="button" class="btn btn-3d btn-danger" value="Удалить">
+                                                    </button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+{{--                                @endif--}}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                     <div class="panel-heading"><h3>Коллекция Stones</h3></div>
                     <div class="panel-body">
                         <div class="responsive-table">
@@ -34,8 +94,10 @@
                                 <thead>
                                 <tr>
                                     <th>Название</th>
-                                    <th>Описание</th>
-                                    <th>Коллекция</th>
+                                    <th>Материал</th>
+                                    <th>Размеры</th>
+                                    <th>Вес</th>
+                                    <th>Цена</th>
                                     <th>Время создания</th>
                                     <th>Время редактирования</th>
                                     <th>Опубликован</th>
@@ -44,113 +106,42 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-{{--                                @dd($benches_stones)--}}
-                                @foreach($benches_stones as $bench)
-                                    <tr>
-                                        <td>{{$bench->title}}</td>
-                                        <td>{!! $bench->content !!}</td>
-                                        <td>
-                                            @if($bench->type == 'Stones')
-                                                Коллекция Stones
-                                            @elseif($bench->type == 'Radius')
-                                                Коллекция Radius
-                                            @elseif($bench->type == 'Solo')
-                                                Коллекция Solo
-                                            @elseif($bench->type == 'Outdoor')
-                                                Коллекция Outdoor
-                                            @endif
-                                        </td>
-                                        <td>{{$bench->created_at}}</td>
-                                        <td>{{$bench->updated_at}}</td>
-                                        <td>
-                                            @if($bench->active == 1)
-                                                Да
-                                            @else
-                                                Нет
-                                            @endif
-                                        </td>
-                                        <td>
-                                            <a href="{{ route('products.edit', ['product' => $bench]) }}">
-                                                <input type="button" class=" btn btn-3d btn-primary"
-                                                       value="Редактировать">
-                                            </a>
-                                        </td>
-                                        <td>
-                                            <form action="{{ route('products.destroy', ['product' => $bench]) }}"
-                                                  method="post">
-                                                @method('DELETE')
-                                                @csrf
-                                                <button type="submit" style="border: 0">
-                                                    <input type="button" class="btn btn-3d btn-danger" value="Удалить">
-                                                </button>
-                                            </form>
-                                        </td>
-                                    </tr>
-                                @endforeach
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                    <div class="panel-heading"><h3>Коллекция Radius</h3></div>
-                    <div class="panel-body">
-                        <div class="responsive-table">
-                            <table id="datatables-example" class="table table-striped table-bordered" width="100%"
-                                   cellspacing="0">
-                                <thead>
-                                <tr>
-                                    <th>Название</th>
-                                    <th>Описание</th>
-                                    <th>Коллекция</th>
-                                    <th>Время создания</th>
-                                    <th>Время редактирования</th>
-                                    <th>Опубликован</th>
-                                    <th>Редактировать</th>
-                                    <th>Удалить</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                @foreach($benches_radius as $bench)
-                                    <tr>
-                                        <td>{{$bench->title}}</td>
-                                        <td>{!! $bench->content !!}</td>
-                                        <td>
-                                            @if($bench->type == 'Stones')
-                                                Коллекция Stones
-                                            @elseif($bench->type == 'Radius')
-                                                Коллекция Radius
-                                            @elseif($bench->type == 'Solo')
-                                                Коллекция Solo
-                                            @elseif($bench->type == 'Outdoor')
-                                                Коллекция Outdoor
-                                            @endif
-                                        </td>
-                                        <td>{{$bench->created_at}}</td>
-                                        <td>{{$bench->updated_at}}</td>
-                                        <td>
-                                            @if($bench->active == 1)
-                                                Да
-                                            @else
-                                                Нет
-                                            @endif
-                                        </td>
-                                        <td>
-                                            <a href="{{ route('products.edit', ['product' => $bench]) }}">
-                                                <input type="button" class=" btn btn-3d btn-primary"
-                                                       value="Редактировать">
-                                            </a>
-                                        </td>
-                                        <td>
-                                            <form action="{{ route('products.destroy', ['product' => $bench]) }}"
-                                                  method="post">
-                                                @method('DELETE')
-                                                @csrf
-                                                <button type="submit" style="border: 0">
-                                                    <input type="button" class="btn btn-3d btn-danger" value="Удалить">
-                                                </button>
-                                            </form>
-                                        </td>
-                                    </tr>
-                                @endforeach
+                                @if($benches_stones->isNotEmpty())
+                                    @foreach($benches_stones as $bench)
+                                        <tr>
+                                            <td>{{$bench->name}}</td>
+                                            <td>{{ $bench->material}}</td>
+                                            <td>{{ $bench->size}}</td>
+                                            <td>{{ $bench->weight}}</td>
+                                            <td>{{ $bench->price}}</td>
+                                            <td>{{$bench->created_at}}</td>
+                                            <td>{{$bench->updated_at}}</td>
+                                            <td>
+                                                @if($bench->active == 1)
+                                                    Да
+                                                @else
+                                                    Нет
+                                                @endif
+                                            </td>
+                                            <td>
+                                                <a href="{{ route('benchProducts.edit', ['benchProduct' => $bench]) }}">
+                                                    <input type="button" class=" btn btn-3d btn-primary"
+                                                           value="Редактировать">
+                                                </a>
+                                            </td>
+                                            <td>
+                                                <form action="{{ route('benchProducts.destroy', ['benchProduct' => $bench]) }}"
+                                                      method="post">
+                                                    @method('DELETE')
+                                                    @csrf
+                                                    <button type="submit" style="border: 0">
+                                                        <input type="button" class="btn btn-3d btn-danger" value="Удалить">
+                                                    </button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                @endif
                                 </tbody>
                             </table>
                         </div>
@@ -163,8 +154,10 @@
                                 <thead>
                                 <tr>
                                     <th>Название</th>
-                                    <th>Описание</th>
-                                    <th>Коллекция</th>
+                                    <th>Материал</th>
+                                    <th>Размеры</th>
+                                    <th>Вес</th>
+                                    <th>Цена</th>
                                     <th>Время создания</th>
                                     <th>Время редактирования</th>
                                     <th>Опубликован</th>
@@ -173,53 +166,47 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @foreach($benches_solo as $bench)
-                                    <tr>
-                                        <td>{{$bench->title}}</td>
-                                        <td>{!! $bench->content !!}</td>
-                                        <td>
-                                            @if($bench->type == 'Stones')
-                                                Коллекция Stones
-                                            @elseif($bench->type == 'Radius')
-                                                Коллекция Radius
-                                            @elseif($bench->type == 'Solo')
-                                                Коллекция Solo
-                                            @elseif($bench->type == 'Outdoor')
-                                                Коллекция Outdoor
-                                            @endif
-                                        </td>
-                                        <td>{{$bench->created_at}}</td>
-                                        <td>{{$bench->updated_at}}</td>
-                                        <td>
-                                            @if($bench->active == 1)
-                                                Да
-                                            @else
-                                                Нет
-                                            @endif
-                                        </td>
-                                        <td>
-                                            <a href="{{ route('products.edit', ['product' => $bench]) }}">
-                                                <input type="button" class=" btn btn-3d btn-primary"
-                                                       value="Редактировать">
-                                            </a>
-                                        </td>
-                                        <td>
-                                            <form action="{{ route('products.destroy', ['product' => $bench]) }}"
-                                                  method="post">
-                                                @method('DELETE')
-                                                @csrf
-                                                <button type="submit" style="border: 0">
-                                                    <input type="button" class="btn btn-3d btn-danger" value="Удалить">
-                                                </button>
-                                            </form>
-                                        </td>
-                                    </tr>
-                                @endforeach
+                                @if($benches_solo->isNotEmpty())
+                                    @foreach($benches_solo as $bench)
+                                        <tr>
+                                            <td>{{$bench->name}}</td>
+                                            <td>{{ $bench->material}}</td>
+                                            <td>{{ $bench->size}}</td>
+                                            <td>{{ $bench->weight}}</td>
+                                            <td>{{ $bench->price}}</td>
+                                            <td>{{$bench->created_at}}</td>
+                                            <td>{{$bench->updated_at}}</td>
+                                            <td>
+                                                @if($bench->active == 1)
+                                                    Да
+                                                @else
+                                                    Нет
+                                                @endif
+                                            </td>
+                                            <td>
+                                                <a href="{{ route('benchProducts.edit', ['benchProduct' => $bench]) }}">
+                                                    <input type="button" class=" btn btn-3d btn-primary"
+                                                           value="Редактировать">
+                                                </a>
+                                            </td>
+                                            <td>
+                                                <form action="{{ route('benchProducts.destroy', ['benchProduct' => $bench]) }}"
+                                                      method="post">
+                                                    @method('DELETE')
+                                                    @csrf
+                                                    <button type="submit" style="border: 0">
+                                                        <input type="button" class="btn btn-3d btn-danger" value="Удалить">
+                                                    </button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                @endif
                                 </tbody>
                             </table>
                         </div>
                     </div>
-                    <div class="panel-heading"><h3>Коллекция Outdoor</h3></div>
+                    <div class="panel-heading"><h3>Коллекция lines</h3></div>
                     <div class="panel-body">
                         <div class="responsive-table">
                             <table id="datatables-example" class="table table-striped table-bordered" width="100%"
@@ -227,8 +214,10 @@
                                 <thead>
                                 <tr>
                                     <th>Название</th>
-                                    <th>Описание</th>
-                                    <th>Коллекция</th>
+                                    <th>Материал</th>
+                                    <th>Размеры</th>
+                                    <th>Вес</th>
+                                    <th>Цена</th>
                                     <th>Время создания</th>
                                     <th>Время редактирования</th>
                                     <th>Опубликован</th>
@@ -237,48 +226,102 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @foreach($benches_outdoor as $bench)
-                                    <tr>
-                                        <td>{{$bench->title}}</td>
-                                        <td>{!! $bench->content !!}</td>
-                                        <td>
-                                            @if($bench->type == 'Stones')
-                                                Коллекция Stones
-                                            @elseif($bench->type == 'Radius')
-                                                Коллекция Radius
-                                            @elseif($bench->type == 'Solo')
-                                                Коллекция Solo
-                                            @elseif($bench->type == 'Outdoor')
-                                                Коллекция Outdoor
-                                            @endif
-                                        </td>
-                                        <td>{{$bench->created_at}}</td>
-                                        <td>{{$bench->updated_at}}</td>
-                                        <td>
-                                            @if($bench->active == 1)
-                                                Да
-                                            @else
-                                                Нет
-                                            @endif
-                                        </td>
-                                        <td>
-                                            <a href="{{ route('products.edit', ['product' => $bench]) }}">
-                                                <input type="button" class=" btn btn-3d btn-primary"
-                                                       value="Редактировать">
-                                            </a>
-                                        </td>
-                                        <td>
-                                            <form action="{{ route('products.destroy', ['product' => $bench]) }}"
-                                                  method="post">
-                                                @method('DELETE')
-                                                @csrf
-                                                <button type="submit" style="border: 0">
-                                                    <input type="button" class="btn btn-3d btn-danger" value="Удалить">
-                                                </button>
-                                            </form>
-                                        </td>
-                                    </tr>
-                                @endforeach
+                                @if($benches_lines->isNotEmpty())
+                                    @foreach($benches_lines as $bench)
+                                        <tr>
+                                            <td>{{$bench->name}}</td>
+                                            <td>{{ $bench->material}}</td>
+                                            <td>{{ $bench->size}}</td>
+                                            <td>{{ $bench->weight}}</td>
+                                            <td>{{ $bench->price}}</td>
+                                            <td>{{$bench->created_at}}</td>
+                                            <td>{{$bench->updated_at}}</td>
+                                            <td>
+                                                @if($bench->active == 1)
+                                                    Да
+                                                @else
+                                                    Нет
+                                                @endif
+                                            </td>
+                                            <td>
+                                                <a href="{{ route('benchProducts.edit', ['benchProduct' => $bench]) }}">
+                                                    <input type="button" class=" btn btn-3d btn-primary"
+                                                           value="Редактировать">
+                                                </a>
+                                            </td>
+                                            <td>
+                                                <form action="{{ route('benchProducts.destroy', ['benchProduct' => $bench]) }}"
+                                                      method="post">
+                                                    @method('DELETE')
+                                                    @csrf
+                                                    <button type="submit" style="border: 0">
+                                                        <input type="button" class="btn btn-3d btn-danger" value="Удалить">
+                                                    </button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                @endif
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="panel-heading"><h3>Коллекция Street furniture</h3></div>
+                    <div class="panel-body">
+                        <div class="responsive-table">
+                            <table id="datatables-example" class="table table-striped table-bordered" width="100%"
+                                   cellspacing="0">
+                                <thead>
+                                <tr>
+                                    <th>Название</th>
+                                    <th>Материал</th>
+                                    <th>Размеры</th>
+                                    <th>Вес</th>
+                                    <th>Цена</th>
+                                    <th>Время создания</th>
+                                    <th>Время редактирования</th>
+                                    <th>Опубликован</th>
+                                    <th>Редактировать</th>
+                                    <th>Удалить</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                @if($benches_street_furniture->isNotEmpty())
+                                    @foreach($benches_street_furniture as $bench)
+                                        <tr>
+                                            <td>{{$bench->name}}</td>
+                                            <td>{{ $bench->material}}</td>
+                                            <td>{{ $bench->size}}</td>
+                                            <td>{{ $bench->weight}}</td>
+                                            <td>{{ $bench->price}}</td>
+                                            <td>{{$bench->created_at}}</td>
+                                            <td>{{$bench->updated_at}}</td>
+                                            <td>
+                                                @if($bench->active == 1)
+                                                    Да
+                                                @else
+                                                    Нет
+                                                @endif
+                                            </td>
+                                            <td>
+                                                <a href="{{ route('benchProducts.edit', ['benchProduct' => $bench]) }}">
+                                                    <input type="button" class=" btn btn-3d btn-primary"
+                                                           value="Редактировать">
+                                                </a>
+                                            </td>
+                                            <td>
+                                                <form action="{{ route('benchProducts.destroy', ['benchProduct' => $bench]) }}"
+                                                      method="post">
+                                                    @method('DELETE')
+                                                    @csrf
+                                                    <button type="submit" style="border: 0">
+                                                        <input type="button" class="btn btn-3d btn-danger" value="Удалить">
+                                                    </button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                @endif
                                 </tbody>
                             </table>
                         </div>
