@@ -47,40 +47,42 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @foreach($round_pots as $pot)
-                                    <tr>
-                                        <td>{{$pot->name}}</td>
-                                        <td>{{ $pot->material}}</td>
-                                        <td>{{ $pot->size}}</td>
-                                        <td>{{ $pot->weight}}</td>
-                                        <td>{{ $pot->price}}</td>
-                                        <td>{{$pot->created_at}}</td>
-                                        <td>{{$pot->updated_at}}</td>
-                                        <td>
-                                            @if($pot->active == 1)
-                                                Да
-                                            @else
-                                                Нет
-                                            @endif
-                                        </td>
-                                        <td>
-                                            <a href="{{ route('potProducts.edit', ['potProduct' => $pot]) }}">
-                                                <input type="button" class=" btn btn-3d btn-primary"
-                                                       value="Редактировать">
-                                            </a>
-                                        </td>
-                                        <td>
-                                            <form action="{{ route('potProducts.destroy', ['potProduct' => $pot]) }}"
-                                                  method="post">
-                                                @method('DELETE')
-                                                @csrf
-                                                <button type="submit" style="border: 0">
-                                                    <input type="button" class="btn btn-3d btn-danger" value="Удалить">
-                                                </button>
-                                            </form>
-                                        </td>
-                                    </tr>
-                                @endforeach
+                                @if($round_pots->isNotEmpty())
+                                    @foreach($round_pots as $pot)
+                                        <tr>
+                                            <td>{{$pot->name}}</td>
+                                            <td>{{ $pot->material}}</td>
+                                            <td>{{ $pot->size}}</td>
+                                            <td>{{ $pot->weight}}</td>
+                                            <td>{{ $pot->price}}</td>
+                                            <td>{{$pot->created_at}}</td>
+                                            <td>{{$pot->updated_at}}</td>
+                                            <td>
+                                                @if($pot->active == 1)
+                                                    Да
+                                                @else
+                                                    Нет
+                                                @endif
+                                            </td>
+                                            <td>
+                                                <a href="{{ route('potProducts.edit', ['potProduct' => $pot]) }}">
+                                                    <input type="button" class=" btn btn-3d btn-primary"
+                                                           value="Редактировать">
+                                                </a>
+                                            </td>
+                                            <td>
+                                                <form action="{{ route('potProducts.destroy', ['potProduct' => $pot]) }}"
+                                                      method="post">
+                                                    @method('DELETE')
+                                                    @csrf
+                                                    <button type="submit" style="border: 0">
+                                                        <input type="button" class="btn btn-3d btn-danger" value="Удалить">
+                                                    </button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                @endif
                                 </tbody>
                             </table>
                         </div>
@@ -105,40 +107,42 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @foreach($rectangular_pots as $pot)
-                                    <tr>
-                                        <td>{{$pot->name}}</td>
-                                        <td>{{ $pot->material}}</td>
-                                        <td>{{ $pot->size}}</td>
-                                        <td>{{ $pot->weight}}</td>
-                                        <td>{{ $pot->price}}</td>
-                                        <td>{{$pot->created_at}}</td>
-                                        <td>{{$pot->updated_at}}</td>
-                                        <td>
-                                            @if($pot->active == 1)
-                                                Да
-                                            @else
-                                                Нет
-                                            @endif
-                                        </td>
-                                        <td>
-                                            <a href="{{ route('potProducts.edit', ['potProduct' => $pot]) }}">
-                                                <input type="button" class=" btn btn-3d btn-primary"
-                                                       value="Редактировать">
-                                            </a>
-                                        </td>
-                                        <td>
-                                            <form action="{{ route('potProducts.destroy', ['potProduct' => $pot]) }}"
-                                                  method="post">
-                                                @method('DELETE')
-                                                @csrf
-                                                <button type="submit" style="border: 0">
-                                                    <input type="button" class="btn btn-3d btn-danger" value="Удалить">
-                                                </button>
-                                            </form>
-                                        </td>
-                                    </tr>
-                                @endforeach
+                                @if($rectangular_pots->isNotEmpty())
+                                    @foreach($rectangular_pots as $pot)
+                                        <tr>
+                                            <td>{{$pot->name}}</td>
+                                            <td>{{ $pot->material}}</td>
+                                            <td>{{ $pot->size}}</td>
+                                            <td>{{ $pot->weight}}</td>
+                                            <td>{{ $pot->price}}</td>
+                                            <td>{{$pot->created_at}}</td>
+                                            <td>{{$pot->updated_at}}</td>
+                                            <td>
+                                                @if($pot->active == 1)
+                                                    Да
+                                                @else
+                                                    Нет
+                                                @endif
+                                            </td>
+                                            <td>
+                                                <a href="{{ route('potProducts.edit', ['potProduct' => $pot]) }}">
+                                                    <input type="button" class=" btn btn-3d btn-primary"
+                                                           value="Редактировать">
+                                                </a>
+                                            </td>
+                                            <td>
+                                                <form action="{{ route('potProducts.destroy', ['potProduct' => $pot]) }}"
+                                                      method="post">
+                                                    @method('DELETE')
+                                                    @csrf
+                                                    <button type="submit" style="border: 0">
+                                                        <input type="button" class="btn btn-3d btn-danger" value="Удалить">
+                                                    </button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                @endif
                                 </tbody>
                             </table>
                         </div>
@@ -163,40 +167,42 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @foreach($square_pots as $pot)
-                                    <tr>
-                                        <td>{{$pot->name}}</td>
-                                        <td>{{ $pot->material}}</td>
-                                        <td>{{ $pot->size}}</td>
-                                        <td>{{ $pot->weight}}</td>
-                                        <td>{{ $pot->price}}</td>
-                                        <td>{{$pot->created_at}}</td>
-                                        <td>{{$pot->updated_at}}</td>
-                                        <td>
-                                            @if($pot->active == 1)
-                                                Да
-                                            @else
-                                                Нет
-                                            @endif
-                                        </td>
-                                        <td>
-                                            <a href="{{ route('potProducts.edit', ['potProduct' => $pot]) }}">
-                                                <input type="button" class=" btn btn-3d btn-primary"
-                                                       value="Редактировать">
-                                            </a>
-                                        </td>
-                                        <td>
-                                            <form action="{{ route('potProducts.destroy', ['potProduct' => $pot]) }}"
-                                                  method="post">
-                                                @method('DELETE')
-                                                @csrf
-                                                <button type="submit" style="border: 0">
-                                                    <input type="button" class="btn btn-3d btn-danger" value="Удалить">
-                                                </button>
-                                            </form>
-                                        </td>
-                                    </tr>
-                                @endforeach
+                                @if($square_pots->isNotEmpty())
+                                    @foreach($square_pots as $pot)
+                                        <tr>
+                                            <td>{{$pot->name}}</td>
+                                            <td>{{ $pot->material}}</td>
+                                            <td>{{ $pot->size}}</td>
+                                            <td>{{ $pot->weight}}</td>
+                                            <td>{{ $pot->price}}</td>
+                                            <td>{{$pot->created_at}}</td>
+                                            <td>{{$pot->updated_at}}</td>
+                                            <td>
+                                                @if($pot->active == 1)
+                                                    Да
+                                                @else
+                                                    Нет
+                                                @endif
+                                            </td>
+                                            <td>
+                                                <a href="{{ route('potProducts.edit', ['potProduct' => $pot]) }}">
+                                                    <input type="button" class=" btn btn-3d btn-primary"
+                                                           value="Редактировать">
+                                                </a>
+                                            </td>
+                                            <td>
+                                                <form action="{{ route('potProducts.destroy', ['potProduct' => $pot]) }}"
+                                                      method="post">
+                                                    @method('DELETE')
+                                                    @csrf
+                                                    <button type="submit" style="border: 0">
+                                                        <input type="button" class="btn btn-3d btn-danger" value="Удалить">
+                                                    </button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                @endif
                                 </tbody>
                             </table>
                         </div>

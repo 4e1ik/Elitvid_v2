@@ -1,3 +1,4 @@
+
 @extends('layouts.elitvid.elitvid')
 
 @section('content')
@@ -85,24 +86,26 @@
     <section class="not_main_page produce">
         <h2>Выберите форму</h2>
         <div class="not_main_page directions">
-            <div class="direction">
-                <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/pots/forms/circle_pot.png')}}" alt="Фотография направления кашпо">
-                <a href="">
-                    <button>Cylider</button>
-                </a>
-            </div>
-            <div class="direction">
-                <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/pots/forms/circle_pot.png')}}" alt="Фотография направления кашпо">
-                <a href="">
-                    <button>Cylider</button>
-                </a>
-            </div>
-            <div class="direction">
-                <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/pots/forms/circle_pot.png')}}" alt="Фотография направления кашпо">
-                <a href="">
-                    <button>Cylider</button>
-                </a>
-            </div>
+            @foreach($round_pots as $product)
+                <div class="direction">
+                    <img src="{{asset('storage/'.$product->pot_images[0]->image)}}" alt="Фотография направления кашпо">
+                    <a href="{{route('show_pot_product', ['id' => $product->id])}}">
+                        <button>{{$product->name}}</button>
+                    </a>
+                </div>
+            @endforeach
+{{--            <div class="direction">--}}
+{{--                <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/pots/forms/circle_pot.png')}}" alt="Фотография направления кашпо">--}}
+{{--                <a href="">--}}
+{{--                    <button>Cylider</button>--}}
+{{--                </a>--}}
+{{--            </div>--}}
+{{--            <div class="direction">--}}
+{{--                <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/pots/forms/circle_pot.png')}}" alt="Фотография направления кашпо">--}}
+{{--                <a href="">--}}
+{{--                    <button>Cylider</button>--}}
+{{--                </a>--}}
+{{--            </div>--}}
         </div>
     </section>
 </main>

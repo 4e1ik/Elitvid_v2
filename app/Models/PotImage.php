@@ -9,5 +9,5 @@ class PotImage extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['pot_product_id', 'image', 'color', 'description_image'];
+    protected $fillable = ['pot_product_id', 'image', 'color', 'texture', 'description_image'];
 }

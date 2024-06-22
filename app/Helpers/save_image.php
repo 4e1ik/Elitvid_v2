@@ -10,6 +10,8 @@ function save_image($file)
 
             $name = $file->getClientOriginalName();
 
+//            dd($name);
+
             $tmp_name = explode('.', $name);
 
             $img_names_arr = Image::query()->pluck('image');
@@ -33,6 +35,8 @@ function save_image($file)
                         while (in_array($name, $img_names_arr_explode)) {
                             $i++;
                             $name = $tmp_name[0] . '(' . $i . ').' . $tmp_name[1];
+
+                            dd($name);
                         }
                     }
                 }

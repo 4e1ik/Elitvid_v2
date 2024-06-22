@@ -221,7 +221,9 @@ return [
 
     'attributes' => [
         'title' => 'заголовок',
-        'texture_name' => 'название текстуры',
+        'weight' =>  'вес',
+        'price' =>  'цена',
+        'size' =>  'размер',
         'content' => 'описание',
         'type' => 'раздел',
         'active' => 'видимость',

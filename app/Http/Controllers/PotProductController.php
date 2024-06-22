@@ -36,7 +36,10 @@ class PotProductController extends Controller
     {
         $data = $PotProductRequest->all();
 
-        for ($i = 2;  $i<=5; $i++){
+//        dd($data);
+//        dd(phpinfo());
+
+        for ($i = 1;  $i<=5; $i++){
             $data['size'] = $data['size'].'|'.$data['size'.$i];
             unset($data['size'.$i]);
             $data['weight'] = $data['weight'].'|'.$data['weight'.$i];
@@ -45,26 +48,32 @@ class PotProductController extends Controller
             unset($data['price'.$i]);
         }
 
+        $data['size'] = trim($data['size'],  '|');
+        $data['weight'] = trim($data['weight'],  '|');
+        $data['price'] = trim($data['price'],  '|');
+
+//        dd(hash('sha256', $data['image'][0]->getClientOriginalName()));
+//        hash('sha256', $data['image'][0]->getClientOriginalName());
+//        $originalName = $data['image'][0]->getClientOriginalName();
+//        $hashName = hash('sha256', $data['image'][0]->getClientOriginalName());
+//        dd($data['image'][0]);
+
         $potProduct = PotProduct::create($data);
 
         $data['pot_product_id'] = $potProduct->id;
 
         if ($PotProductRequest->hasFile('image')) {
             foreach ($PotProductRequest->file('image') as $file) {
-                $path = Storage::putFileAs('images', $file, save_image($file)); // Даем путь к этому файлу
+//                dd($file->hashName());
+                $path = Storage::putFileAs('images', $file, $file->hashName()); // Даем путь к этому файлу
                 $data['image'] = $path;
-                PotImage::create($data);
 
-                ImageManager::gd()->read($file)->scaleDown(360,  275)->save(storage_path('app/public/images/'.'test'.save_image($file)));
+                ImageManager::gd()->read($file)->scaleDown(360,  360)->save(storage_path('app/public/images/'.$file));
+//                dd($data);
+
+                PotImage::create($data);
             }
         }
-
-//        $dataItem = $PotProduct->attributesToArray()['item'];
-//        if ($dataItem == 'pot') {
-//            $route = 'admin_pots';
-//        } else if ($dataItem == 'bench') {
-//            $route = 'admin_benches';
-//        }
 
         return redirect(route('admin_pots'));
     }
@@ -80,14 +89,18 @@ class PotProductController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(PotProduct $PotProduct)
+    public function edit(PotProduct $potProduct)
     {
-        $req = \Illuminate\Support\Facades\Request::server('HTTP_REFERER');
-        $route_name = explode("/",$req)[4];
+        $potImages = PotImage::query()->where('pot_product_id', $potProduct->id)->get();
 
-        $images = Image::where('pot_product_id', $PotProduct->id)->get();
 
-        return view('includes.elitvid.admin.update_PotProduct', compact( 'PotProduct', 'images', 'route_name'));
+        $sizes = explode('|', $potProduct->getAttribute('size'));
+        $weights = explode('|', $potProduct->getAttribute('weight'));
+        $prices = explode('|', $potProduct->getAttribute('price'));
+
+//        dd($sizes[0]);
+
+        return view('includes.elitvid.admin.update_pot_product', compact( 'potProduct', 'potImages', 'sizes', 'weights', 'prices'));
     }
 
     /**
@@ -97,26 +110,35 @@ class PotProductController extends Controller
     {
         $data = $PotProductRequest->all();
 
+        for ($i = 1;  $i<=5; $i++){
+            $data['size'] = $data['size'].'|'.$data['size'.$i];
+            unset($data['size'.$i]);
+            $data['weight'] = $data['weight'].'|'.$data['weight'.$i];
+            unset($data['weight'.$i]);
+            $data['price'] = $data['price'].'|'.$data['price'.$i];
+            unset($data['price'.$i]);
+        }
+
+        $data['size'] = trim($data['size'],  '|');
+        $data['weight'] = trim($data['weight'],  '|');
+        $data['price'] = trim($data['price'],  '|');
+
+//        dd($data);
+
         $potProduct->fill($data)->save();
 
         $data['pot_product_id'] = $potProduct->id;
 
-//        save_image($PotProductRequest);
-
         if ($PotProductRequest->hasFile('image')) {
             foreach ($PotProductRequest->file('image') as $file) {
-                $path = Storage::putFileAs('images', $file, save_image($file)); // Даем путь к этому файлу
+//                dd($file->hashName());
+                $path = Storage::putFileAs('images', $file, $file->hashName()); // Даем путь к этому файлу
                 $data['image'] = $path;
-                Image::create($data);
+                PotImage::create($data);
+
+                ImageManager::gd()->read($file)->scaleDown(360,  275)->save(storage_path('app/public/images/'.$file));
             }
         }
-
-//        $dataItem = $PotProduct->attributesToArray()['item'];
-//        if ($dataItem == 'pot') {
-//            $route = 'admin_pots';
-//        } else if ($dataItem == 'bench') {
-//            $route = 'admin_benches';
-//        }
 
         return redirect(route('admin_pots'));
     }
@@ -126,22 +148,12 @@ class PotProductController extends Controller
      */
     public function destroy(PotProduct $potProduct)
     {
-//        $dataItem = $PotProduct->attributesToArray()['item'];
-
-//        if ($dataItem =='pot') {
-//            $route = 'admin_pots';
-//        } else if ($dataItem == 'bench') {
-//            $route = 'admin_benches';
-//        }
-
-//        dd($potProduct->attributesToArray()['id']);
+//        dd($potProduct->query()->where('id', 4));
 
         $images = $potProduct->pot_images()->where('pot_product_id', $potProduct->attributesToArray()['id'])->get();
         foreach ($images as $image) {
             Storage::delete($image->image);
         }
-
-//        dd($potProduct);
 
         $potProduct->delete();
         return redirect(route('admin_pots'));

@@ -18,80 +18,13 @@
                                     <input type="file" name="image[]" multiple="multiple"
                                            class="dropzone dz-clickable col-md-12"
                                            id="my-awesome-dropzone">
-                                    @error('image')
-                                    <div class="text-danger">
-                                        {{$message}}
-                                    </div>
-                                    @enderror
+{{--                                    @error('image')--}}
+{{--                                    <div class="text-danger">--}}
+{{--                                        {{$message}}--}}
+{{--                                    </div>--}}
+{{--                                    @enderror--}}
                                 </div>
                             </div>
-{{--                            <div class="col-md-6">--}}
-{{--                                <div class="col-md-6 padding-0">--}}
-{{--                                    <h3>Название товара</h3>--}}
-{{--                                    <div class="col-md-11 padding-0">--}}
-{{--                                        <input class="form-control {{$errors->has('name') ? 'danger' : ''}}"--}}
-{{--                                               type="text"--}}
-{{--                                               name="name" value="{{old('name')}}">--}}
-{{--                                    </div>--}}
-{{--                                    @error('name')--}}
-{{--                                    <div class="text-danger">--}}
-{{--                                        {{$message}}--}}
-{{--                                    </div>--}}
-{{--                                    @enderror--}}
-{{--                                </div>--}}
-{{--                                <div class="col-md-6 padding-0">--}}
-{{--                                    <h3>Материал</h3>--}}
-{{--                                    <div class="col-md-11 padding-0">--}}
-{{--                                        <input class="form-control {{$errors->has('material') ? 'danger' : ''}}"--}}
-{{--                                               type="text"--}}
-{{--                                               name="material" value="{{old('material')}}">--}}
-{{--                                    </div>--}}
-{{--                                    @error('material')--}}
-{{--                                    <div class="text-danger">--}}
-{{--                                        {{$message}}--}}
-{{--                                    </div>--}}
-{{--                                    @enderror--}}
-{{--                                </div>--}}
-{{--                                <div class="col-md-6 padding-0">--}}
-{{--                                    <h3>Размер</h3>--}}
-{{--                                    <div class="col-md-11 padding-0">--}}
-{{--                                        <input class="form-control {{$errors->has('size') ? 'danger' : ''}}"--}}
-{{--                                               type="text"--}}
-{{--                                               name="size" value="{{old('size')}}">--}}
-{{--                                    </div>--}}
-{{--                                    @error('size')--}}
-{{--                                    <div class="text-danger">--}}
-{{--                                        {{$message}}--}}
-{{--                                    </div>--}}
-{{--                                    @enderror--}}
-{{--                                </div>--}}
-{{--                                <div class="col-md-6 padding-0">--}}
-{{--                                    <h3>Вес</h3>--}}
-{{--                                    <div class="col-md-11 padding-0">--}}
-{{--                                        <input class="form-control {{$errors->has('weight') ? 'danger' : ''}}"--}}
-{{--                                               type="text"--}}
-{{--                                               name="weight" value="{{old('weight')}}">--}}
-{{--                                    </div>--}}
-{{--                                    @error('weight')--}}
-{{--                                    <div class="text-danger">--}}
-{{--                                        {{$message}}--}}
-{{--                                    </div>--}}
-{{--                                    @enderror--}}
-{{--                                </div>--}}
-{{--                                <div class="col-md-6 padding-0">--}}
-{{--                                    <h3>Цена</h3>--}}
-{{--                                    <div class="col-md-11 padding-0">--}}
-{{--                                        <input class="form-control {{$errors->has('price') ? 'danger' : ''}}"--}}
-{{--                                               type="text"--}}
-{{--                                               name="price" value="{{old('price')}}">--}}
-{{--                                    </div>--}}
-{{--                                    @error('price')--}}
-{{--                                    <div class="text-danger">--}}
-{{--                                        {{$message}}--}}
-{{--                                    </div>--}}
-{{--                                    @enderror--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
                         </div>
                     </div>
                 </div>
@@ -136,49 +69,10 @@
                 <div class="col-md-12">
                     <div class="panel">
                         <div class="panel-body">
-                            <div class="col-md-12">
-                                <h4 style="margin-bottom: -15px">Строка 1</h4>
-                                <div class="col-md-4 padding-0">
-                                    <h3>Размер</h3>
-                                    <div class="col-md-11 padding-0">
-                                        <input class="form-control {{$errors->has('size') ? 'danger' : ''}}"
-                                               type="text"
-                                               name="size" value="{{old('size')}}">
-                                    </div>
-                                    @error('size')
-                                    <div class="text-danger">
-                                        {{$message}}
-                                    </div>
-                                    @enderror
-                                </div>
-                                <div class="col-md-4 padding-0">
-                                    <h3>Вес</h3>
-                                    <div class="col-md-11 padding-0">
-                                        <input class="form-control {{$errors->has('weight') ? 'danger' : ''}}"
-                                               type="text"
-                                               name="weight" value="{{old('weight')}}">
-                                    </div>
-                                    @error('weight')
-                                    <div class="text-danger">
-                                        {{$message}}
-                                    </div>
-                                    @enderror
-                                </div>
-                                <div class="col-md-4 padding-0">
-                                    <h3>Цена</h3>
-                                    <div class="col-md-11 padding-0">
-                                        <input class="form-control {{$errors->has('price') ? 'danger' : ''}}"
-                                               type="text"
-                                               name="price" value="{{old('price')}}">
-                                    </div>
-                                    @error('price')
-                                    <div class="text-danger">
-                                        {{$message}}
-                                    </div>
-                                    @enderror
-                                </div>
-                            </div>
-                            @for($i=2; $i<=5;  $i++)
+                            <input name="size" type="hidden" value="">
+                            <input name="weight" type="hidden" value="">
+                            <input name="price" type="hidden" value="">
+                            @for($i=1; $i<=5;  $i++)
                                 <div style="margin-top: 20px" class="col-md-12">
                                     <h4 style="margin-bottom: -15px">Строка {{$i}}</h4>
                                     <div class="col-md-4 padding-0">
@@ -240,7 +134,7 @@
                                             <option {{ old('type') == 'Round' ? 'selected' : ''}}  value="Round">Круглое кашпо</option>
                                             <option {{ old('type') == 'Rectangular' ? 'selected' : ''}} value="Rectangular">Прямоугольные кашпо</option>
                                     </select>
-                                    @error('type')
+                                    @error('collection')
                                     <div class="text-danger">
                                         {{$message}}
                                     </div>

@@ -17,6 +17,7 @@ return new class extends Migration
             $table->foreign ('pot_product_id')->references('id')->on('pot_products')->onDelete('cascade')->onUpdate('cascade');
             $table->string ('image', 255)->nullable('true');
             $table->text ('color')->nullable('true');
+            $table->text ('texture')->nullable('true');
             $table->text ('description_image')->nullable('true');
             $table->timestamps ();
         });
