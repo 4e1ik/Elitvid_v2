@@ -1,7 +1,7 @@
 
 <div class="popup popup_call">
     <div class="popup__body popup__body_call">
-        <form class="popup__form" action="{{route('order_call')}}" method="post" enctype="multipart/form-data">
+        <form class="popup__form" action="{{route('order_call')}}" method="post" enctype="multipart/form-data" id="mail_form">
             @csrf
             <div class="popup__cross popup__cross_call">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -17,6 +17,9 @@
                         <p>Ваше имя</p>
                         <input class="item-form name" type="text" name="name" placeholder="Имя*" required>
                     </div>
+
+                    <input type="hidden" name="g-recaptcha-response" id="g-recaptcha-response">
+
                     <div class="popup__input country">
                         <p>Номер телефона</p>
                         <div class="poop">
@@ -35,8 +38,10 @@
                         </div>
                     </div>
                 </div>
+
                 <div class="submit__button">
-                    <button type="submit">Заказать звонок</button>
+                    <button class="form__form-button" type="button" onclick="onClick(event)">Заказать звонок</button>
+{{--                    <button type="submit">Заказать звонок</button>--}}
                     <p>Отправляя заявку, вы даете согласие на обработку своих персональных данных в соответствии
                         с Политикой конфиденциальности.</p>
                 </div>
