@@ -19,9 +19,6 @@
             @if (!$data['textarea'] == null)
                 <h4>Комментарий пользователя: <span>{{$data['textarea']}}</span>.</h4>
             @endif
-{{--            @if (!$data['file'] == null)--}}
-{{--                <a href=""></a>--}}
-{{--            @endif--}}
         </div>
     </div>
 </x-mail::message>

@@ -1,6 +1,7 @@
 <div class="popup popup_application">
     <div class="popup__body popup__body_application">
-        <form class="popup__form" action="">
+        <form class="popup__form" action="{{route('send_mail')}}" method="post" enctype="multipart/form-data">
+            @csrf
             <div class="popup__cross popup__cross_application">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                     <path d="M3.21897 4.28097C3.14924 4.21124 3.09392 4.12846 3.05619 4.03735C3.01845 3.94624 2.99902 3.84859 2.99902 3.74997C2.99902 3.65135 3.01845 3.5537 3.05619 3.4626C3.09392 3.37149 3.14924 3.2887 3.21897 3.21897C3.2887 3.14924 3.37149 3.09392 3.4626 3.05619C3.5537 3.01845 3.65135 2.99902 3.74997 2.99902C3.84859 2.99902 3.94624 3.01845 4.03735 3.05619C4.12846 3.09392 4.21124 3.14924 4.28097 3.21897L12 10.9395L19.719 3.21897C19.7887 3.14924 19.8715 3.09392 19.9626 3.05619C20.0537 3.01845 20.1514 2.99902 20.25 2.99902C20.3486 2.99902 20.4462 3.01845 20.5373 3.05619C20.6285 3.09392 20.7112 3.14924 20.781 3.21897C20.8507 3.2887 20.906 3.37149 20.9438 3.4626C20.9815 3.5537 21.0009 3.65135 21.0009 3.74997C21.0009 3.84859 20.9815 3.94624 20.9438 4.03735C20.906 4.12846 20.8507 4.21124 20.781 4.28097L13.0605 12L20.781 19.719C20.8507 19.7887 20.906 19.8715 20.9438 19.9626C20.9815 20.0537 21.0009 20.1514 21.0009 20.25C21.0009 20.3486 20.9815 20.4462 20.9438 20.5373C20.906 20.6285 20.8507 20.7112 20.781 20.781C20.7112 20.8507 20.6285 20.906 20.5373 20.9438C20.4462 20.9815 20.3486 21.0009 20.25 21.0009C20.1514 21.0009 20.0537 20.9815 19.9626 20.9438C19.8715 20.906 19.7887 20.8507 19.719 20.781L12 13.0605L4.28097 20.781C4.21124 20.8507 4.12846 20.906 4.03735 20.9438C3.94624 20.9815 3.84859 21.0009 3.74997 21.0009C3.65135 21.0009 3.5537 20.9815 3.4626 20.9438C3.37149 20.906 3.2887 20.8507 3.21897 20.781C3.14924 20.7112 3.09392 20.6285 3.05619 20.5373C3.01845 20.4462 2.99902 20.3486 2.99902 20.25C2.99902 20.1514 3.01845 20.0537 3.05619 19.9626C3.09392 19.8715 3.14924 19.7887 3.21897 19.719L10.9395 12L3.21897 4.28097Z"
@@ -13,10 +14,20 @@
                     <div class="popup__input">
                         <p>Ваше имя</p>
                         <input class="item-form name" type="text" name="name" placeholder="Имя*" required>
+                        @error('name')
+                        <div class="text-danger">
+                            <p>{{$message}}</p>
+                        </div>
+                        @enderror
                     </div>
                     <div class="popup__input">
                         <p>Ваш E-mail</p>
                         <input class="item-form" type="text" name="email" placeholder="E-mail*" required>
+                        @error('email')
+                        <div class="text-danger">
+                            <p>{{$message}}</p>
+                        </div>
+                        @enderror
                     </div>
                     <div class="popup__input country">
                         <p>Номер телефона</p>
@@ -25,19 +36,35 @@
                                 <option disabled>Выберите страну</option>
                                 <option class="by">🇧🇾 +375</option>
                                 <option class="ru">🇷🇺 +7</option>
+                                <option class="kz">🇰🇿 +7</option>
                             </select>
                             <input class="item-form" type="text" name="phone" required>
+                            @error('phone')
+                            <div class="text-danger">
+                                <p>{{$message}}</p>
+                            </div>
+                            @enderror
                         </div>
                     </div>
                     <div class="popup__input">
                         <p>Название организации</p>
                         <input class="item-form" type="text" name="name_corp" placeholder="Название">
+                        @error('name_corp')
+                        <div class="text-danger">
+                            <p>{{$message}}</p>
+                        </div>
+                        @enderror
                     </div>
                 </div>
                 <div class="popup_content_inputs__comment popup__input">
                     <p>Интересует что-то конкретное?</p>
                     <textarea class="item-form textarea" name="textarea" type="text" rows="5"
                               placeholder="Ваш комментарий..."></textarea>
+                    @error('textarea')
+                    <div class="text-danger">
+                        <p>{{$message}}</p>
+                    </div>
+                    @enderror
                 </div>
                 <div class="popup_content_inputs__file-button">
                     <div class="popup__input file">
@@ -50,6 +77,11 @@
                         </label>
                         <input style="display: none" id="file1" class="item-form file" type="file" name="file"
                                placeholder="">
+                        @error('file')
+                        <div class="text-danger">
+                            <p>{{$message}}</p>
+                        </div>
+                        @enderror
                         <p>Прикрепить файл, он должен быть не более 512 кб</p>
                     </div>
                     <div class="submit__button">

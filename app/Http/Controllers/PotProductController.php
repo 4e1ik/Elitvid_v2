@@ -52,24 +52,16 @@ class PotProductController extends Controller
         $data['weight'] = trim($data['weight'],  '|');
         $data['price'] = trim($data['price'],  '|');
 
-//        dd(hash('sha256', $data['image'][0]->getClientOriginalName()));
-//        hash('sha256', $data['image'][0]->getClientOriginalName());
-//        $originalName = $data['image'][0]->getClientOriginalName();
-//        $hashName = hash('sha256', $data['image'][0]->getClientOriginalName());
-//        dd($data['image'][0]);
-
         $potProduct = PotProduct::create($data);
 
         $data['pot_product_id'] = $potProduct->id;
 
         if ($PotProductRequest->hasFile('image')) {
             foreach ($PotProductRequest->file('image') as $file) {
-//                dd($file->hashName());
-                $path = Storage::putFileAs('images', $file, $file->hashName()); // Даем путь к этому файлу
+                $path = Storage::putFileAs('images', $file, save_image($file, PotImage::query())); // Даем путь к этому файлу
                 $data['image'] = $path;
 
-                ImageManager::gd()->read($file)->scaleDown(360,  360)->save(storage_path('app/public/images/'.$file));
-//                dd($data);
+                ImageManager::gd()->read($file)->scaleDown(360,  360)->save(storage_path('app/public/images/'.save_image($file, PotImage::query())));
 
                 PotImage::create($data);
             }
@@ -132,11 +124,11 @@ class PotProductController extends Controller
         if ($PotProductRequest->hasFile('image')) {
             foreach ($PotProductRequest->file('image') as $file) {
 //                dd($file->hashName());
-                $path = Storage::putFileAs('images', $file, $file->hashName()); // Даем путь к этому файлу
+                $path = Storage::putFileAs('images', $file, save_image($file, PotImage::query())); // Даем путь к этому файлу
                 $data['image'] = $path;
                 PotImage::create($data);
 
-                ImageManager::gd()->read($file)->scaleDown(360,  275)->save(storage_path('app/public/images/'.$file));
+                ImageManager::gd()->read($file)->scaleDown(360,  275)->save(storage_path('app/public/images/'.save_image($file, PotImage::query())));
             }
         }
 

@@ -3,12 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ImageRequest;
-use App\Models\PotImage;
-use App\Models\PotProduct;
+use App\Models\BenchImage;
+use App\Models\BenchProduct;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\ImageManager;
 
-class PotImageController extends Controller
+class BenchImageController extends Controller
 {
     public function pot_image_store(ImageRequest $request)
     {
@@ -29,31 +29,31 @@ class PotImageController extends Controller
 //        return redirect(route('admin_pots'));
     }
 
-    public function pot_image_update(PotImage $potImage, PotProduct $potProduct, ImageRequest $request)
+    public function bench_image_update(BenchImage $benchImage, BenchProduct $benchProduct, ImageRequest $request)
     {
         $data = $request->all();
 
         if ($request->hasFile('image')) {
             foreach ($request->file('image') as $file) {
-                $path = Storage::putFileAs('images', $file, save_image($file, PotImage::query())); // Даем путь к этому файлу
+                $path = Storage::putFileAs('images', $file, save_image($file, BenchImage::query())); // Даем путь к этому файлу
                 $data['image'] = $path;
-                PotImage::create($data);
+                BenchImage::create($data);
 
-                ImageManager::gd()->read($file)->scaleDown(360,  275)->save(storage_path('app/public/images/'.'test'.save_image($file, PotImage::query())));
+                ImageManager::gd()->read($file)->scaleDown(360,  275)->save(storage_path('app/public/images/'.save_image($file, BenchImage::query())));
             }
         }
 
-        $potImage->fill($data)->save();
+        $benchImage->fill($data)->save();
 
-        return redirect(route('potProducts.edit', ['potProduct' => $potProduct]));
+        return redirect(route('benchProducts.edit', ['benchProduct' => $benchProduct]));
     }
 
-    public function pot_image_destroy(PotImage $potImage, PotProduct $potProduct)
+    public function bench_image_destroy(BenchImage $benchImage, BenchProduct $benchProduct)
     {
-        Storage::delete($potImage->image);
+        Storage::delete($benchImage->image);
 
-        $potImage->delete();
+        $benchImage->delete();
 
-        return redirect(route('potProducts.edit', ['potProduct' => $potProduct]));
+        return redirect(route('benchProducts.edit', ['benchProduct' => $benchProduct]));
     }
 }

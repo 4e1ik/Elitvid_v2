@@ -3,18 +3,18 @@
 use App\Models\Image;
 use Illuminate\Support\Facades\Storage;
 
-function save_image($file)
+function save_image($file, $image)
 {
 //    if ($request->hasFile('image')) {
 //        foreach ($request->file('image') as $file) {
 
             $name = $file->getClientOriginalName();
 
-//            dd($name);
-
             $tmp_name = explode('.', $name);
 
-            $img_names_arr = Image::query()->pluck('image');
+            $img_names_arr = $image->pluck('image');
+
+//            dd($img_names_arr);
 
             $img_names_arr_explode = [];
             $i = 0;
@@ -36,7 +36,7 @@ function save_image($file)
                             $i++;
                             $name = $tmp_name[0] . '(' . $i . ').' . $tmp_name[1];
 
-                            dd($name);
+//                            dd($name);
                         }
                     }
                 }

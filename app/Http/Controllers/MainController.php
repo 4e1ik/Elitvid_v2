@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\BenchProduct;
 use App\Models\Gallery;
 use App\Models\Image;
 use App\Models\PotProduct;
@@ -32,7 +33,10 @@ class MainController extends Controller
             $p_price = explode("|", $product->price);
 
 
-            for ($key = 0; $key <= 4; $key++){
+            $count = min(count($p_price), count($p_weight), count($p_size));
+
+
+            for ($key = 0; $key < $count; $key++){
                 if ($p_size[$key]){
                     if ($p_weight[$key]){
                         if ($p_price[$key]){
@@ -52,23 +56,84 @@ class MainController extends Controller
         return view('elitvid.site.pots.pot_product_page', compact('products', 'i', 'j', 'rows', 'count'));
     }
 
-    function benches() {
-//        $benches = Product::query()->whereIn('active', [1])->whereIn('item', ['bench'])->with(['images'])->get();
-//        $stones_benches = $benches->where('type', 'Stones');
-//        $radius_benches = $benches->where('type', 'Radius');
-//        $solo_benches = $benches->where('type', 'Solo');
-//        $outdoor_benches = $benches->where('type', 'Outdoor');
-//
-//
-//        $textures = Texture::query()->whereIn('active', [1])->get();
-//        $wood_species = $textures->where('type', 'wood_species');
-//        $wood_impregnation = $textures->where('type', 'wood_impregnation');
-//
-//
-//        $benches_gallery = Gallery::query()->where('type', 'benches')->with(['images'])->get();
+    function show_bench_product($id){
+//        dd($product->where('id', $id)->collect());
+        $products = benchProduct::query()->with('bench_images')->where('id', $id)->get();
+        $i = 1;
+        $j = 1;
 
+        $rows = [];
+        foreach ($products as $product) {
+            $p_size = explode("|", $product->size);
+            $p_weight = explode("|", $product->weight);
+            $p_price = explode("|", $product->price);
+
+            $count = min(count($p_price), count($p_weight), count($p_size));
+
+
+            for ($key = 0; $key < $count; $key++){
+                if ($p_size[$key]){
+                    if ($p_weight[$key]){
+                        if ($p_price[$key]){
+                            $rows[$key] = $p_size[$key].'|'.$p_weight[$key].'|'.$p_price[$key];
+                        }
+                    }
+                }
+            }
+        }
+
+//        dd($rows);
+
+        $count = count($rows);
+
+//        dd($count);
+
+        return view('elitvid.site.benches.bench_product_page', compact('products', 'i', 'j', 'rows', 'count'));
+    }
+
+    function benches() {
 
         return view('elitvid.site.benches');
+    }
+
+    function street_furniture_benches() {
+
+        $benches = BenchProduct::query()->whereIn('active', [1])->with(['bench_images'])->get();
+        $street_furniture_benches = $benches->where('collection', 'Street_furniture');
+
+        return view('elitvid.site.benches.street_furniture_benches', compact('street_furniture_benches'));
+    }
+
+    function verona_benches() {
+
+        $benches = BenchProduct::query()->whereIn('active', [1])->with(['bench_images'])->get();
+        $verona_benches = $benches->where('collection', 'Verona');
+
+        return view('elitvid.site.benches.verona_benches', compact('verona_benches'));
+    }
+
+    function stones_benches() {
+
+        $benches = BenchProduct::query()->whereIn('active', [1])->with(['bench_images'])->get();
+        $stones_benches = $benches->where('collection', 'Stones');
+
+        return view('elitvid.site.benches.stones_benches', compact('stones_benches'));
+    }
+
+    function solo_benches() {
+
+        $benches = BenchProduct::query()->whereIn('active', [1])->with(['bench_images'])->get();
+        $solo_benches = $benches->where('collection', 'Solo');
+
+        return view('elitvid.site.benches.solo_benches', compact('solo_benches'));
+    }
+
+    function lines_benches() {
+
+        $benches = BenchProduct::query()->whereIn('active', [1])->with(['bench_images'])->get();
+        $lines_benches = $benches->where('collection', 'Line');
+
+        return view('elitvid.site.benches.lines_benches', compact('lines_benches'));
     }
 
     function directions() {

@@ -66,7 +66,7 @@
                             <div class="horizontal-line"></div>
                         </div>
                     </div>
-                    <a href="">
+                    <a href="{{route('verona_benches')}}">
                         <button class="look-collection">Смотреть коллекцию</button>
                     </a>
                 </div>
@@ -82,7 +82,7 @@
                             <div class="horizontal-line"></div>
                         </div>
                     </div>
-                    <a href="">
+                    <a href="{{route('stones_benches')}}">
                         <button class="look-collection">Смотреть коллекцию</button>
                     </a>
                 </div>
@@ -98,7 +98,7 @@
                             <div class="horizontal-line"></div>
                         </div>
                     </div>
-                    <a href="">
+                    <a href="{{route('lines_benches')}}">
                         <button class="look-collection">Смотреть коллекцию</button>
                     </a>
                 </div>
@@ -114,7 +114,7 @@
                             <div class="horizontal-line"></div>
                         </div>
                     </div>
-                    <a href="">
+                    <a href="{{route('solo_benches')}}">
                         <button class="look-collection">Смотреть коллекцию</button>
                     </a>
                 </div>
@@ -131,7 +131,7 @@
                             <div class="horizontal-line"></div>
                         </div>
                     </div>
-                    <a href="">
+                    <a href="{{route('street_furniture_benches')}}">
                         <button class="look-collection">Смотреть коллекцию</button>
                     </a>
                 </div>
