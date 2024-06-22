@@ -120,7 +120,6 @@ Route::post('/sendForm', [MailController::class, 'send'])->name('send_mail');
 
 
 
-
 Route::middleware('auth')->where([
 
 ])->prefix('admin')->group(function () {

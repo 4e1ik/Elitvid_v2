@@ -33,6 +33,7 @@
                         <p>Номер телефона</p>
                         <div class="poop">
                             <select name="country">
+                                <option disabled>Выберите страну</option>
                                 <option class="by">🇧🇾 +375</option>
                                 <option class="ru">🇷🇺 +7</option>
                                 <option class="kz">🇰🇿 +7</option>
@@ -65,9 +66,6 @@
                     </div>
                     @enderror
                 </div>
-
-                <input type="hidden" name="g-recaptcha-response" id="g-recaptcha-response">
-
                 <div class="popup_content_inputs__file-button">
                     <div class="popup__input file">
                         <label for="file1">
@@ -87,8 +85,15 @@
                         <p>Прикрепить файл, он должен быть не более 512 кб</p>
                     </div>
 
+                    <input type="hidden" name="g-recaptcha-response" id="g-recaptcha-response">
+                    @error('g-recaptcha-response')
+                    <div class="text-danger">
+                        <p>{{$message}}</p>
+                    </div>
+                    @enderror
+
                     <div class="submit__button">
-                        <button class="form__form-button" type="button" onclick="onClick(event)">Оставить заявку</button>
+                        <button class="form__form-button" type="button" onclick="onClick(event)">Заказать</button>
 {{--                        <button type="submit">Оставить заявку</button>--}}
                         <p>Отправляя заявку, вы даете согласие на обработку своих персональных данных в соответствии
                             с Политикой конфиденциальности.</p>
