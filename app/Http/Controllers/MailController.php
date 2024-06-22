@@ -36,13 +36,13 @@ class MailController extends Controller
 //        return redirect(route('home'));
     }
 
-//    public function order_call(MailCallRequest $mailRequest)
-//    {
-//        $data = $mailRequest->all();
-//
-////        dd($data);
-//
-//        Mail::to('Elitvid.site@yandex.ru')->send(new FeedbackMail($data));
-//
-//    }
+    public function order_call(MailCallRequest $mailRequest)
+    {
+        $data = $mailRequest->all();
+
+//        dd($data);
+
+        Mail::to('Elitvid.site@yandex.ru')->send(new FeedbackMail($data));
+
+    }
 }
