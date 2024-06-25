@@ -87,6 +87,6 @@ Breadcrumbs::for('round_pots', fn (Trail $trail) =>
     $trail->parent('pots')->push('Круглые кашпо', route('round_pots'))
 );
 
-Breadcrumbs::for('show_bench_product', fn (Trail $trail, $id) =>
+Breadcrumbs::for('show_pot_product', fn (Trail $trail, $id) =>
 $trail->parent('round_pots')->push(PotProduct::query()->with('pot_images')->where('id', $id)->get()[0]['name'], route('show_pot_product', $id))
 );
