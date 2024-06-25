@@ -62,9 +62,9 @@ class PotProductController extends Controller
                 $path = Storage::putFileAs('images', $file, save_image($file, PotImage::query())); // Даем путь к этому файлу
                 $data['image'] = $path;
 
-                dd(save_image($file, PotImage::query()));
+                dd(storage_path('/app'.save_image($file, PotImage::query())));
 
-                ImageManager::gd()->read($file)->scaleDown(360,  360)->save(storage_path('/app'));
+                ImageManager::gd()->read($file)->scaleDown(360,  360)->save();
 
 //                dd();
                 PotImage::create($data);
