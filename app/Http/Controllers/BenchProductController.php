@@ -55,11 +55,10 @@ class BenchProductController extends Controller
         if ($benchProductRequest->hasFile('image')) {
             foreach ($benchProductRequest->file('image') as $file) {
 //                dd($file);
-                $name= save_image($file, BenchImage::query());
-                $path = Storage::putFileAs('public/images', $file, $name); // Даем путь к этому файлу
+                $path = Storage::putFileAs('images', $file, save_image($file, BenchImage::query())); // Даем путь к этому файлу
                 $data['image'] = $path;
 
-//                ImageManager::gd()->read($file)->scaleDown(360,  290)->save(storage_path('app/public/images/'.save_image($file, BenchImage::query())));
+                ImageManager::gd()->read($file)->scaleDown(360,  290)->save(storage_path('app/public/images/'.save_image($file, BenchImage::query())));
 
                 BenchImage::create($data);
             }
@@ -88,7 +87,7 @@ class BenchProductController extends Controller
         $weights = explode('|', $benchProduct->getAttribute('weight'));
         $prices = explode('|', $benchProduct->getAttribute('price'));
 
-//        return view('includes.elitvid.admin.update_bench_product', compact( 'benchImages', 'benchProduct', 'sizes', 'weights', 'prices'));
+        return view('includes.elitvid.admin.update_bench_product', compact( 'benchImages', 'benchProduct', 'sizes', 'weights', 'prices'));
     }
 
     /**
@@ -122,7 +121,7 @@ class BenchProductController extends Controller
                 $data['image'] = $path;
                 BenchImage::create($data);
 
-//                ImageManager::gd()->read($file)->scaleDown(360,  290)->save(storage_path('app/public/images/'.save_image($file, BenchImage::query())));
+                ImageManager::gd()->read($file)->scaleDown(360,  290)->save(storage_path('app/public/images/'.save_image($file, BenchImage::query())));
             }
         }
 
