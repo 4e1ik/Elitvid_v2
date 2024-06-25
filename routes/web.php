@@ -43,10 +43,10 @@ Route::prefix('directions')->group(function () {
         Route::get('/', [MainController::class, 'benches'])->name('benches');
 
 
-        Route::prefix('verona_benches')->group(function () {
-            Route::get('/', [MainController::class, 'verona_benches'])->name('verona_benches');
-            Route::get('/{id}', [MainController::class, 'show_bench_product'])->name('show_bench_product');
-        });
+//        Route::prefix('verona_benches')->group(function () {
+//            Route::get('/', [MainController::class, 'verona_benches'])->name('verona_benches');
+//            Route::get('/{id}', [MainController::class, 'show_bench_product'])->name('show_bench_product');
+//        });
 
         Route::prefix('verona_benches')->group(function () {
             Route::get('/', [MainController::class, 'verona_benches'])->name('verona_benches');
@@ -111,7 +111,7 @@ Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
 //Route::get('/form', [MailController::class, 'show_form'])->name('form');
 Route::post('/sendForm', [MailController::class, 'send'])->name('send_mail');
-Route::post('/orderCall', [MailController::class, 'order_call'])->name('order_call');
+//Route::post('/orderCall', [MailController::class, 'order_call'])->name('order_call');
 
 
 
