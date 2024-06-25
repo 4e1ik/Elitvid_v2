@@ -158,23 +158,20 @@ class MainController extends Controller
     }
 
     function rectangular_pots() {
-//        $pots = Product::query()->whereIn('active', [1])->whereIn('item', ['pot'])->with(['images'])->get();
-//        $rectangular_pots = $pots->where('type', 'Rectangular');
-//        return view('elitvid.site.pots.rectangular_pots', compact('rectangular_pots'));
+        $pots = Product::query()->whereIn('active', [1])->whereIn('item', ['pot'])->with(['images'])->get();
+        $rectangular_pots = $pots->where('type', 'Rectangular');
+        return view('elitvid.site.pots.rectangular_pots', compact('rectangular_pots'));
     }
 
     function square_pots() {
-//        $pots = Product::query()->whereIn('active', [1])->whereIn('item', ['pot'])->with(['images'])->get();
-//        $square_pots = $pots->where('type', 'Square');
-//        return view('elitvid.site.pots.square_pots', compact('square_pots'));
+        $pots = Product::query()->whereIn('active', [1])->whereIn('item', ['pot'])->with(['images'])->get();
+        $square_pots = $pots->where('type', 'Square');
+        return view('elitvid.site.pots.square_pots', compact('square_pots'));
     }
 
     function round_pots() {
-//        $pots = PotProduct::query()->whereIn('active', [1])->with(['pot_images'])->get();
-//        $round_pots = $pots->where('type', 'Round');
         $pots = PotProduct::query()->whereIn('active', [1])->with(['pot_images'])->get();
         $round_pots = $pots->where('collection', 'Round');
-//        dd($pots = Product::query()->get());
         return view('elitvid.site.pots.round_pots', compact('round_pots'));
     }
 }

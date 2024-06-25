@@ -85,9 +85,9 @@
                         <p>Прикрепить файл, он должен быть не более 512 кб</p>
                     </div>
 
-                    {{Route::currentRouteName()}}
+{{--                    {{Route::currentRouteName()}}--}}
 
-                    <input type="hidden" name="route" value="">
+{{--                    <input type="hidden" name="route" value="">--}}
 
 
                     <input type="hidden" name="g-recaptcha-response" id="g-recaptcha-response">
