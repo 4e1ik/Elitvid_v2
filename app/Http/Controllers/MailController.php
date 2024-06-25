@@ -19,10 +19,10 @@ class MailController extends Controller
 
     public function send(MailRequest $mailRequest)
     {
-        $route = \Illuminate\Support\Facades\Route::currentRouteName();
+//        $route = \Illuminate\Support\Facades\Route::currentRouteName();
         $data = $mailRequest->all();
-        dd($route);
-
+        dd($data);
+//
         if ($mailRequest->hasFile('file')) {
             $name = $mailRequest->file('file')->getClientOriginalName();
             $path = Storage::putFileAs('files', $mailRequest->file('file'), $name); // Даем путь к этому файлу
