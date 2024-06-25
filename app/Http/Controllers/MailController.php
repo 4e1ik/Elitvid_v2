@@ -19,7 +19,7 @@ class MailController extends Controller
 
     public function send(MailRequest $mailRequest)
     {
-        $route = \Illuminate\Support\Facades\Route::currentRouteName();
+//        $route = \Illuminate\Support\Facades\Route::currentRouteName();
         $data = $mailRequest->all();
 //        dd($data);
 
