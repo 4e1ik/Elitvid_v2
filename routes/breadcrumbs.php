@@ -72,7 +72,7 @@ Breadcrumbs::for('rectangular_pots', fn (Trail $trail) =>
 );
 
 Breadcrumbs::for('show_bench_product', fn (Trail $trail, $id) =>
-$trail->parent('rectangular_pots')->push(PotProduct::query()->with('bench_images')->where('id', $id)->get()[0]['name'], route('show_bench_product', $id))
+$trail->parent('rectangular_pots')->push(PotProduct::query()->with('pot_images')->where('id', $id)->get()[0]['name'], route('show_pot_product', $id))
 );
 
 Breadcrumbs::for('square_pots', fn (Trail $trail) =>
@@ -80,7 +80,7 @@ Breadcrumbs::for('square_pots', fn (Trail $trail) =>
 );
 
 Breadcrumbs::for('show_bench_product', fn (Trail $trail, $id) =>
-$trail->parent('square_pots')->push(PotProduct::query()->with('bench_images')->where('id', $id)->get()[0]['name'], route('show_bench_product', $id))
+$trail->parent('square_pots')->push(PotProduct::query()->with('pot_images')->where('id', $id)->get()[0]['name'], route('show_pot_product', $id))
 );
 
 Breadcrumbs::for('round_pots', fn (Trail $trail) =>
@@ -88,5 +88,5 @@ Breadcrumbs::for('round_pots', fn (Trail $trail) =>
 );
 
 Breadcrumbs::for('show_bench_product', fn (Trail $trail, $id) =>
-$trail->parent('round_pots')->push(PotProduct::query()->with('bench_images')->where('id', $id)->get()[0]['name'], route('show_bench_product', $id))
+$trail->parent('round_pots')->push(PotProduct::query()->with('pot_images')->where('id', $id)->get()[0]['name'], route('show_pot_product', $id))
 );
