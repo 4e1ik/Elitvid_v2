@@ -34,6 +34,6 @@ class MailController extends Controller
         }
 
 //        dd($data);
-        return redirect(route($route));
+//        return redirect(route($route));
     }
 }
