@@ -17,11 +17,11 @@ class MailController extends Controller
         return view('elitvid.site.form');
     }
 
-    public function order_call(MailRequest $mailRequest)
+    public function send(MailRequest $mailRequest)
     {
 //        $route = \Illuminate\Support\Facades\Route::currentRouteName();
         $data = $mailRequest->all();
-        dd($data);
+//        dd($data);
 
         if ($mailRequest->hasFile('file')) {
             $name = $mailRequest->file('file')->getClientOriginalName();
