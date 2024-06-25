@@ -147,13 +147,6 @@ class MainController extends Controller
 
     function pots() {
 
-//        $textures = Texture::query()->whereIn('active', [1])->get();
-//        $natural_stone = $textures->where('type', 'natural_stone');
-//        $moon_stone = $textures->where('type', 'moon_stone');
-//        $mirror_stone = $textures->where('type', 'polished_stone');
-
-//        $pots_gallery = Gallery::query()->where('type', 'pots')->with(['images'])->get();
-
         return view('elitvid.site.pots');
     }
 
