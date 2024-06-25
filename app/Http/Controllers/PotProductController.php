@@ -55,7 +55,7 @@ class PotProductController extends Controller
         $potProduct = PotProduct::create($data);
 
         $data['pot_product_id'] = $potProduct->id;
-        dd($data);
+//        dd($data);
 
         if ($PotProductRequest->hasFile('image')) {
             foreach ($PotProductRequest->file('image') as $file) {
