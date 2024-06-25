@@ -2,36 +2,6 @@
 @extends('layouts.elitvid.elitvid')
 
 @section('content')
-    {{--    <section class="round-benchs__main section-item">--}}
-    {{--        <div class="container">--}}
-    {{--            <div class="square-benchs__main-header section-header">--}}
-    {{--                <h2>Круглые кашпо</h2>--}}
-    {{--            </div>--}}
-    {{--            @include('includes.elitvid.catalog_price_benchs')--}}
-    {{--            <div class="product__main-items">--}}
-    {{--                @foreach($round_benchs as $bench)--}}
-    {{--                    <div class="product__item-card">--}}
-    {{--                        <a href="{{route('show_product', ['id' => $bench->id])}}">--}}
-    {{--                            <div class="product__item-slider">--}}
-    {{--                                <div class="swiper-product">--}}
-    {{--                                    <div class="swiper-wrapper">--}}
-    {{--                                        <!-- Slides -->--}}
-    {{--                                        <div class="swiper-slide">--}}
-    {{--                                            <img src="{{ asset('storage/'.$bench->images[0]->image) }}"--}}
-    {{--                                                 alt="{{ $bench->images[0]->description_image }}">--}}
-    {{--                                        </div>--}}
-    {{--                                    </div>--}}
-    {{--                                </div>--}}
-    {{--                            </div>--}}
-    {{--                            <div class="product__card-header">--}}
-    {{--                                <p>{{$bench->title}}</p>--}}
-    {{--                            </div>--}}
-    {{--                        </a>--}}
-    {{--                    </div>--}}
-    {{--                @endforeach--}}
-    {{--            </div>--}}
-    {{--        </div>--}}
-    {{--    </section>--}}
     <main>
         @include('includes.elitvid.popup_call')
         @include('includes.elitvid.popup_application')

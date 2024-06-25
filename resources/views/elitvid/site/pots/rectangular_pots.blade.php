@@ -1,36 +1,6 @@
 @extends('layouts.elitvid.elitvid')
 
 @section('content')
-{{--    <section class="rectangle-pots__main section-item">--}}
-{{--        <div class="container">--}}
-{{--            <div class="square-pots__main-header section-header">--}}
-{{--                <h2>Прямоугольные кашпо</h2>--}}
-{{--            </div>--}}
-{{--            @include('includes.elitvid.catalog_price_pots')--}}
-{{--            <div class="product__main-items">--}}
-{{--                @foreach($rectangular_pots as $pot)--}}
-{{--                    <div class="product__item-card">--}}
-{{--                        <a href="{{route('show_product', ['id' => $pot->id])}}">--}}
-{{--                            <div class="product__item-slider">--}}
-{{--                                <div class="swiper-product">--}}
-{{--                                    <div class="swiper-wrapper">--}}
-{{--                                        <!-- Slides -->--}}
-{{--                                        <div class="swiper-slide">--}}
-{{--                                            <img src="{{ asset('storage/'.$pot->images[0]->image) }}"--}}
-{{--                                                 alt="{{ $pot->images[0]->description_image }}">--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                            <div class="product__card-header">--}}
-{{--                                <p>{{$pot->title}}</p>--}}
-{{--                            </div>--}}
-{{--                        </a>--}}
-{{--                    </div>--}}
-{{--                @endforeach--}}
-{{--            </div>--}}
-{{--        </div>--}}
-{{--    </section>--}}
 <main>
     @include('includes.elitvid.popup_call')
     @include('includes.elitvid.popup_application')
@@ -84,18 +54,14 @@
     <section class="not_main_page produce">
         <h2>Выберите форму</h2>
         <div class="not_main_page directions">
-            <div class="direction">
-                <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/pots/forms/circle_pot.png')}}" alt="Фотография направления кашпо">
-                <a href="">
-                    <button>Cylider</button>
-                </a>
-            </div>
-            <div class="direction">
-                <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/pots/forms/circle_pot.png')}}" alt="Фотография направления кашпо">
-                <a href="">
-                    <button>Cylider</button>
-                </a>
-            </div>
+            @foreach($rectangular_pots as $product)
+                <div class="direction">
+                    <img src="{{asset('storage/'.$product->pot_images[0]->image)}}" alt="Фотография направления кашпо">
+                    <a href="{{route('show_pot_product', ['id' => $product->id])}}">
+                        <button>{{$product->name}}</button>
+                    </a>
+                </div>
+            @endforeach
         </div>
     </section>
 </main>
