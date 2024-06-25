@@ -39,7 +39,7 @@ class PotImageController extends Controller
                 $data['image'] = $path;
                 PotImage::create($data);
 
-                ImageManager::gd()->read($file)->scaleDown(360,  290)->save(storage_path('app/public/images/'.'test'.save_image($file, PotImage::query())));
+                ImageManager::gd()->read($file)->scaleDown(360,  290)->save(storage_path('app//images/'.'test'.save_image($file, PotImage::query())));
             }
         }
 

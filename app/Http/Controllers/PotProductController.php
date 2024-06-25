@@ -64,7 +64,7 @@ class PotProductController extends Controller
 
 //                dd($data);
 
-                ImageManager::gd()->read($file)->scaleDown(360,  360)->save(storage_path('app/public/images/'.save_image($file, PotImage::query())));
+                ImageManager::gd()->read($file)->scaleDown(360,  360)->save(storage_path('app/images/'.save_image($file, PotImage::query())));
 
 //                dd();
                 PotImage::create($data);
@@ -132,7 +132,7 @@ class PotProductController extends Controller
                 $data['image'] = $path;
                 PotImage::create($data);
 
-                ImageManager::gd()->read($file)->scaleDown(360,  290)->save(storage_path('app/public/images/'.save_image($file, PotImage::query())));
+                ImageManager::gd()->read($file)->scaleDown(360,  290)->save(storage_path('app/images/'.save_image($file, PotImage::query())));
             }
         }
 
