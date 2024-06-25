@@ -67,11 +67,11 @@ Breadcrumbs::for('pots', fn (Trail $trail) =>
     $trail->parent('directions')->push('Кашпо', route('pots'))
 );
 
-Breadcrumbs::for('rectangular_pots', fn (Trail $trail) =>
+Breadcrumbs::for('show_pot_product', fn (Trail $trail) =>
     $trail->parent('pots')->push('Прямоугольные кашпо', route('rectangular_pots'))
 );
 
-Breadcrumbs::for('show_bench_product', fn (Trail $trail, $id) =>
+Breadcrumbs::for('show_pot_product', fn (Trail $trail, $id) =>
 $trail->parent('rectangular_pots')->push(PotProduct::query()->with('pot_images')->where('id', $id)->get()[0]['name'], route('show_pot_product', $id))
 );
 
@@ -79,7 +79,7 @@ Breadcrumbs::for('square_pots', fn (Trail $trail) =>
     $trail->parent('pots')->push('Квадратные кашпо', route('square_pots'))
 );
 
-Breadcrumbs::for('show_bench_product', fn (Trail $trail, $id) =>
+Breadcrumbs::for('show_pot_product', fn (Trail $trail, $id) =>
 $trail->parent('square_pots')->push(PotProduct::query()->with('pot_images')->where('id', $id)->get()[0]['name'], route('show_pot_product', $id))
 );
 
