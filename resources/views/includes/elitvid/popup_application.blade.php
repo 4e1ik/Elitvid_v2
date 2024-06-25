@@ -84,6 +84,7 @@
                         @enderror
                         <p>Прикрепить файл, он должен быть не более 512 кб</p>
                     </div>
+
                     <input value="{{Route::currentRouteName()}}" type="hidden" name="route">
 
 
