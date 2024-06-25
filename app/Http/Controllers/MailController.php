@@ -19,9 +19,9 @@ class MailController extends Controller
 
     public function send(MailRequest $mailRequest)
     {
-//        $route = \Illuminate\Support\Facades\Route::currentRouteName();
+        $route = \Illuminate\Support\Facades\Route::currentRouteName();
         $data = $mailRequest->all();
-//        dd($data);
+        dd($route);
 
         if ($mailRequest->hasFile('file')) {
             $name = $mailRequest->file('file')->getClientOriginalName();
@@ -34,6 +34,6 @@ class MailController extends Controller
         }
 
 //        dd($data);
-//        return redirect(route($route));
+        return redirect(route($route));
     }
 }
