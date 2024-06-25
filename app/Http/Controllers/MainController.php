@@ -131,7 +131,7 @@ class MainController extends Controller
     function lines_benches() {
 
         $benches = BenchProduct::query()->whereIn('active', [1])->with(['bench_images'])->get();
-        $lines_benches = $benches->where('collection', 'line');
+        $lines_benches = $benches->where('collection', 'lines');
 
         return view('elitvid.site.benches.lines_benches', compact('lines_benches'));
     }
