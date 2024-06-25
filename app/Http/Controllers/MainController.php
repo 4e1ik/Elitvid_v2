@@ -158,13 +158,13 @@ class MainController extends Controller
     }
 
     function rectangular_pots() {
-        $pots = Product::query()->whereIn('active', [1])->whereIn('item', ['pot'])->with(['images'])->get();
+        $pots = PotProduct::query()->whereIn('active', [1])->with(['pot_images'])->get();
         $rectangular_pots = $pots->where('type', 'Rectangular');
         return view('elitvid.site.pots.rectangular_pots', compact('rectangular_pots'));
     }
 
     function square_pots() {
-        $pots = Product::query()->whereIn('active', [1])->whereIn('item', ['pot'])->with(['images'])->get();
+        $pots = PotProduct::query()->whereIn('active', [1])->with(['pot_images'])->get();
         $square_pots = $pots->where('type', 'Square');
         return view('elitvid.site.pots.square_pots', compact('square_pots'));
     }
