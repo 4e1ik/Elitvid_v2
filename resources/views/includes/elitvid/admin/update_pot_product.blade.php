@@ -19,7 +19,7 @@
                                             @method('DELETE')
                                             @csrf
                                             <img style="height: 200px; border-radius:15px"
-                                                 src="{{asset('storage/'.str_replace('public/','',$product->bench_images[0]->image))}}" alt="">
+                                                 src="{{asset('storage/'.str_replace('public/','',$potImage->image))}}" alt="">
                                             <button type="submit" style="border: 0;">
                                                 <input type="button" class="btn btn-3d btn-danger" value="Удалить">
                                             </button>
