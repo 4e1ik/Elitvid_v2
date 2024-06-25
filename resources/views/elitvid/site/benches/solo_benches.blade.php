@@ -57,7 +57,7 @@
             <div class="not_main_page directions">
                 @foreach($solo_benches as $product)
                     <div class="direction">
-                        <img src="{{asset(str_replace('public/','',$product->bench_images[0]->image))}}" alt="Фотография направления">
+                        <img src="{{asset('storage/'.str_replace('public/','',$product->bench_images[0]->image))}}" alt="Фотография направления">
                         <a href="{{route('show_bench_product', ['id' => $product->id])}}">
                             <button>{{$product->name}}</button>
                         </a>
