@@ -111,7 +111,7 @@ Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
 //Route::get('/form', [MailController::class, 'show_form'])->name('form');
 Route::post('/sendForm', [MailController::class, 'send'])->name('send_mail');
-//Route::post('/orderCall', [MailController::class, 'order_call'])->name('order_call');
+Route::post('/orderCall', [MailController::class, 'order_call'])->name('order_call');
 
 
 
