@@ -1,7 +1,7 @@
 
 <div class="popup popup_call">
     <div class="popup__body popup__body_call">
-        <form class="popup__form" action="{{route('order_call')}}" method="post" enctype="multipart/form-data" id="mail_form">
+        <form class="popup__form" action="" method="post" enctype="multipart/form-data" id="mail_form">
             @csrf
             <div class="popup__cross popup__cross_call">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">

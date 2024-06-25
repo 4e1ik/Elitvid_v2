@@ -39,10 +39,6 @@ Route::get('/decorations', [MainController::class, 'decorations'])->name('decora
 Route::prefix('directions')->group(function () {
     Route::get('/', [MainController::class, 'directions'])->name('directions');
 
-//    Route::prefix('benches')->group(function () {
-//        Route::get('/', [MainController::class, 'benches'])->name('benches');
-//    });
-
     Route::prefix('benches')->group(function () {
         Route::get('/', [MainController::class, 'benches'])->name('benches');
 
@@ -120,9 +116,7 @@ Route::post('/sendForm', [MailController::class, 'send'])->name('send_mail');
 
 
 
-Route::middleware('auth')->where([
-
-])->prefix('admin')->group(function () {
+Route::middleware('auth')->where([])->prefix('admin')->group(function () {
     Route::get('/', [AdminController::class, 'index'])->name('admin');
     Route::get('/catalog', [AdminController::class, 'catalog'])->name('admin_catalog');
     Route::get('/benches', [AdminController::class, 'benches'])->name('admin_benches');
