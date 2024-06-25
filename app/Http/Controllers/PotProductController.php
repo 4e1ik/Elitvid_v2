@@ -59,12 +59,12 @@ class PotProductController extends Controller
 
         if ($PotProductRequest->hasFile('image')) {
             foreach ($PotProductRequest->file('image') as $file) {
-                $path = Storage::putFileAs('/app/public/', $file, save_image($file, PotImage::query())); // Даем путь к этому файлу
+                $path = Storage::putFileAs('images', $file, save_image($file, PotImage::query())); // Даем путь к этому файлу
                 $data['image'] = $path;
 
 //                dd($data);
 
-                ImageManager::gd()->read($file)->scaleDown(360,  360)->save(storage_path('/app/public/'.save_image($file, PotImage::query())));
+                ImageManager::gd()->read($file)->scaleDown(360,  360)->save(storage_path('/app/public/images/'.save_image($file, PotImage::query())));
 
 //                dd();
                 PotImage::create($data);
