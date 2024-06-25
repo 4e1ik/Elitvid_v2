@@ -58,7 +58,7 @@
         <div class="not_main_page directions">
             @foreach($round_pots as $product)
                 <div class="direction">
-                    <img src="{{asset('storage/'.$product->pot_images[0]->image)}}" alt="Фотография направления кашпо">
+                    <img src="{{asset('storage/'.str_replace('public/','',$product->pot_images[0]->image))}}" alt="Фотография направления кашпо">
                     <a href="{{route('show_pot_product', ['id' => $product->id])}}">
                         <button>{{$product->name}}</button>
                     </a>

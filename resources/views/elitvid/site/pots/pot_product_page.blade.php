@@ -39,7 +39,7 @@
                             </div>
                         </div>
                         <div class="content_images__main-image">
-                            <img id="first_image" src="{{asset('storage/'.$product->pot_images[0]->image)}}" alt="">
+                            <img id="first_image" src="{{asset('storage/'.str_replace('public/','',$product->pot_images[0]->image))}}" alt="">
                             <img id="image" src="{{asset('storage/images/'.$product->name)}}" alt="">
                         </div>
                         <div class="content_images__colors">

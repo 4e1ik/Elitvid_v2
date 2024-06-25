@@ -46,7 +46,7 @@
                             </div>
                         </div>
                         <div class="content_images__main-image">
-                            <img src="{{asset('storage/'.$product->bench_images[0]->image)}}" alt="">
+                            <img src="{{asset(str_replace('public/','',$product->bench_images[0]->image))}}" alt="">
                             {{--                            <img id="image" src="{{asset('storage/images/'.$product->name)}}" alt="">--}}
                         </div>
                         <div class="content_images__colors">

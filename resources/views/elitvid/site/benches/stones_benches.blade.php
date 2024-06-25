@@ -57,24 +57,12 @@
             <div class="not_main_page directions">
                 @foreach($stones_benches as $product)
                     <div class="direction">
-                        <img src="{{asset('storage/'.$product->bench_images[0]->image)}}" alt="Фотография направления">
+                        <img src="{{asset(str_replace('public/','',$product->bench_images[0]->image))}}" alt="Фотография направления">
                         <a href="{{route('show_bench_product', ['id' => $product->id])}}">
                             <button>{{$product->name}}</button>
                         </a>
                     </div>
                 @endforeach
-                {{--            <div class="direction">--}}
-                {{--                <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/benchs/forms/circle_bench.png')}}" alt="Фотография направления кашпо">--}}
-                {{--                <a href="">--}}
-                {{--                    <button>Cylider</button>--}}
-                {{--                </a>--}}
-                {{--            </div>--}}
-                {{--            <div class="direction">--}}
-                {{--                <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/benchs/forms/circle_bench.png')}}" alt="Фотография направления кашпо">--}}
-                {{--                <a href="">--}}
-                {{--                    <button>Cylider</button>--}}
-                {{--                </a>--}}
-                {{--            </div>--}}
             </div>
         </section>
     </main>
