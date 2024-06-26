@@ -99,11 +99,11 @@
                                     <div class="table_row__vertical-line"></div>
                                     <div class="table_row__weight">
                                         <p>Вес</p>
-                                        <p class="thumbnail">{{explode('|',$row)[1]}} кг</p>
+                                        <p class="thumbnail">{{explode('|',$row)[1]}}</p>
                                     </div>
                                     <div class="table_row__price">
                                         <p>Цена</p>
-                                        <p class="thumbnail price">от {{explode('|',$row)[2]}}</p>
+                                        <p class="thumbnail price">от {{explode('/', explode('|',$row)[2])[0]}}</p>
                                         <p class="thumbnail mobile-price">от {{explode('/', explode('|',$row)[2])[0]}}</p>
                                     </div>
                                 </div>
