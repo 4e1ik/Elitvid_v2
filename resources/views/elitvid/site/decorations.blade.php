@@ -108,7 +108,7 @@
                     <p>04 Бронза</p>
                 </div>
             </div>
-            <img class="background-img" src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/decorations/wild_plant.png')}}" alt="">
+            <img class="background-img" src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/decorations.png')}}" alt="">
         </section>
         <section class="ornament">
             <h2>Орнамент</h2>
