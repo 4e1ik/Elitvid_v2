@@ -71,22 +71,27 @@ Breadcrumbs::for('rectangular_pots', fn (Trail $trail) =>
     $trail->parent('pots')->push('Прямоугольные кашпо', route('rectangular_pots'))
 );
 
-Breadcrumbs::for('show_pot_product', fn (Trail $trail, $id) =>
-$trail->parent('rectangular_pots')->push(PotProduct::query()->with('pot_images')->where('id', $id)->get()[0]['name'], route('show_pot_product', $id))
-);
+//Breadcrumbs::for('show_pot_product', fn (Trail $trail, $id) =>
+//$trail->parent('rectangular_pots')->push(PotProduct::query()->with('pot_images')->where('id', $id)->get()[0]['name'], route('show_pot_product', $id))
+//);
 
 Breadcrumbs::for('square_pots', fn (Trail $trail) =>
     $trail->parent('pots')->push('Квадратные кашпо', route('square_pots'))
 );
 
-Breadcrumbs::for('show_pot_product', fn (Trail $trail, $id) =>
-$trail->parent('square_pots')->push(PotProduct::query()->with('pot_images')->where('id', $id)->get()[0]['name'], route('show_pot_product', $id))
-);
+//Breadcrumbs::for('show_pot_product', fn (Trail $trail, $id) =>
+//$trail->parent('square_pots')->push(PotProduct::query()->with('pot_images')->where('id', $id)->get()[0]['name'], route('show_pot_product', $id))
+//);
 
 Breadcrumbs::for('round_pots', fn (Trail $trail) =>
     $trail->parent('pots')->push('Круглые кашпо', route('round_pots'))
 );
 
+
+
 Breadcrumbs::for('show_pot_product', fn (Trail $trail, $id) =>
-$trail->parent('round_pots')->push(PotProduct::query()->with('pot_images')->where('id', $id)->get()[0]['name'], route('show_pot_product', $id))
+$trail->parent(Route::getRoutes()->match(request()->create(url()->previousPath()))->getName() == 'round_pots' ? 'round_pots' :
+                    (Route::getRoutes()->match(request()->create(url()->previousPath()))->getName() == 'square_pots' ? 'square_pots' :
+                    (Route::getRoutes()->match(request()->create(url()->previousPath()))->getName() == 'rectangular_pots' ? 'rectangular_pots' : ''))
+                )->push(PotProduct::query()->with('pot_images')->where('id', $id)->get()[0]['name'], route('show_pot_product', $id))
 );
