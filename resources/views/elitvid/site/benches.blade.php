@@ -144,12 +144,12 @@
                     <!-- Additional required wrapper -->
                     <div class="main-swiper-wrapper__slider swiper-wrapper">
                         <!-- Slides -->
-                        <div class="swiper-slide"><img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/main_page/slider/1180x592.png')}}" alt=""></div>
-                        <div class="swiper-slide"><img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/main_page/slider/1180x592.png')}}" alt=""></div>
-                        <div class="swiper-slide"><img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/main_page/slider/1180x592.png')}}" alt=""></div>
-                        <div class="swiper-slide"><img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/main_page/slider/1180x592.png')}}" alt=""></div>
-                        <div class="swiper-slide"><img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/main_page/slider/1180x592.png')}}" alt=""></div>
-                        <div class="swiper-slide"><img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/main_page/slider/1180x592.png')}}" alt=""></div>
+                        <div class="swiper-slide"><img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/gallery/photo7.jpg')}}" alt=""></div>
+                        <div class="swiper-slide"><img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/gallery/photo11.jpg')}}" alt=""></div>
+                        <div class="swiper-slide"><img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/gallery/photo10.jpg')}}" alt=""></div>
+                        <div class="swiper-slide"><img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/gallery/photo9.jpg')}}" alt=""></div>
+                        <div class="swiper-slide"><img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/gallery/photo8.jpg')}}" alt=""></div>
+                        <div class="swiper-slide"><img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/gallery/photo5.jpg')}}" alt=""></div>
                     </div>
 
                     <!-- If we need navigation buttons -->
@@ -165,17 +165,18 @@
                                   stroke-linecap="round"/>
                         </svg>
                     </div>
+
                 </div>
                 <div class="thumbs__slider swiper">
                     <!-- Additional required wrapper -->
                     <div class="main-swiper-wrapper__slider swiper-wrapper">
                         <!-- Slides -->
-                        <div class="swiper-slide"><img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/main_page/slider/1180x592.png')}}" alt=""></div>
-                        <div class="swiper-slide"><img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/main_page/slider/1180x592.png')}}" alt=""></div>
-                        <div class="swiper-slide"><img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/main_page/slider/1180x592.png')}}" alt=""></div>
-                        <div class="swiper-slide"><img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/main_page/slider/1180x592.png')}}" alt=""></div>
-                        <div class="swiper-slide"><img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/main_page/slider/1180x592.png')}}" alt=""></div>
-                        <div class="swiper-slide"><img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/main_page/slider/1180x592.png')}}" alt=""></div>
+                        <div class="swiper-slide"><img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/gallery/photo7.jpg')}}" alt=""></div>
+                        <div class="swiper-slide"><img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/gallery/photo11.jpg')}}" alt=""></div>
+                        <div class="swiper-slide"><img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/gallery/photo10.jpg')}}" alt=""></div>
+                        <div class="swiper-slide"><img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/gallery/photo9.jpg')}}" alt=""></div>
+                        <div class="swiper-slide"><img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/gallery/photo8.jpg')}}" alt=""></div>
+                        <div class="swiper-slide"><img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/gallery/photo5.jpg')}}" alt=""></div>
                     </div>
                 </div>
             </div>

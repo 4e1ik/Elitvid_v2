@@ -59,6 +59,7 @@
                 </div>
                 <div class="slogan__direction">
                     <div class="slogan__direction-text">
+                        <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/main_page/img.png')}}" alt="">
                         <h4>Мы воплотим в реальность любую вашу идею!</h4>
                         <p>Работаем по индивидуальным размерам, эскизам и чертежам. Гарантируем качественное и
                             профессиональное

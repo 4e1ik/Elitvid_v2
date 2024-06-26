@@ -597,7 +597,7 @@ main {
       grid-column-end: 4; }
       main .produce .slogan__direction .slogan__direction-text {
         width: 35em; }
-      main .produce .slogan__direction svg {
+      main .produce .slogan__direction img {
         width: 30em;
         position: absolute;
         top: -5em;
@@ -1083,8 +1083,6 @@ footer {
 @media (max-width: 1280px) {
   body {
     font-size: 14px; }
-    body main .produce .slogan__direction svg {
-      top: -7em; }
     body main .product .product__content .product_content__images .content_images__colors .images_colors__images [data-title]::after {
       bottom: 2.8em; }
 
@@ -1099,8 +1097,6 @@ footer {
 @media (max-width: 1210px) {
   body {
     font-size: 13px; }
-    body main .produce .slogan__direction svg {
-      top: -8em; }
 
   header {
     padding: 0.25em 4em; }
@@ -1119,8 +1115,6 @@ footer {
 
   body {
     font-size: 11px; }
-    body main .produce .slogan__direction svg {
-      top: -11em; }
     body main .product .product__content .product_content__images .content_images__colors .images_colors__images [data-title]::after {
       bottom: 3em; }
 
@@ -1135,8 +1129,6 @@ footer {
 @media (max-width: 900px) {
   body {
     font-size: 10px; }
-    body main .produce .slogan__direction svg {
-      top: -13em; }
     body main .advantages .main-page-center {
       left: 0em; }
     body main .product .product__content .product_content__images .content_images__colors .images_colors__images [data-title]::after {
@@ -1161,8 +1153,6 @@ footer {
 
   body {
     font-size: 9px; }
-    body main .produce .slogan__direction svg {
-      top: -15em; }
     body main .ornament p {
       width: 75%; }
 
@@ -1232,7 +1222,7 @@ footer {
     font-size: 13px; }
     body .not_main_page {
       margin: 0; }
-    body main .produce .slogan__direction svg {
+    body main .produce .slogan__direction img {
       display: none; }
     body main .product .product__content {
       flex-direction: column; }
