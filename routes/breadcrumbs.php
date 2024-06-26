@@ -26,40 +26,45 @@ Breadcrumbs::for('verona_benches', fn (Trail $trail) =>
 $trail->parent('benches')->push('Коллекция Verona', route('verona_benches'))
 );
 
-Breadcrumbs::for('show_bench_product', fn (Trail $trail, $id) =>
-$trail->parent('verona_benches')->push(BenchProduct::query()->with('bench_images')->where('id', $id)->get()[0]['name'], route('show_bench_product', $id))
-);
+//Breadcrumbs::for('show_bench_product', fn (Trail $trail, $id) =>
+//$trail->parent('verona_benches')->push(BenchProduct::query()->with('bench_images')->where('id', $id)->get()[0]['name'], route('show_bench_product', $id))
+//);
 
 Breadcrumbs::for('street_furniture_benches', fn (Trail $trail) =>
 $trail->parent('benches')->push('Коллекция Street Furniture', route('street_furniture_benches'))
 );
 
-Breadcrumbs::for('show_bench_product', fn (Trail $trail, $id) =>
-$trail->parent('street_furniture_benches')->push(BenchProduct::query()->with('bench_images')->where('id', $id)->get()[0]['name'], route('show_bench_product', $id))
-);
+//Breadcrumbs::for('show_bench_product', fn (Trail $trail, $id) =>
+//$trail->parent('street_furniture_benches')->push(BenchProduct::query()->with('bench_images')->where('id', $id)->get()[0]['name'], route('show_bench_product', $id))
+//);
 
 Breadcrumbs::for('solo_benches', fn (Trail $trail) =>
 $trail->parent('benches')->push('Коллекция Solo', route('solo_benches'))
 );
 
-Breadcrumbs::for('show_bench_product', fn (Trail $trail, $id) =>
-$trail->parent('solo_benches')->push(BenchProduct::query()->with('bench_images')->where('id', $id)->get()[0]['name'], route('show_bench_product', $id))
-);
+//Breadcrumbs::for('show_bench_product', fn (Trail $trail, $id) =>
+//$trail->parent('solo_benches')->push(BenchProduct::query()->with('bench_images')->where('id', $id)->get()[0]['name'], route('show_bench_product', $id))
+//);
 
 Breadcrumbs::for('lines_benches', fn (Trail $trail) =>
 $trail->parent('benches')->push('Коллекция Lines', route('lines_benches'))
 );
 
-Breadcrumbs::for('show_bench_product', fn (Trail $trail, $id) =>
-$trail->parent('lines_benches')->push(BenchProduct::query()->with('bench_images')->where('id', $id)->get()[0]['name'], route('show_bench_product', $id))
-);
+//Breadcrumbs::for('show_bench_product', fn (Trail $trail, $id) =>
+//$trail->parent('lines_benches')->push(BenchProduct::query()->with('bench_images')->where('id', $id)->get()[0]['name'], route('show_bench_product', $id))
+//);
 
 Breadcrumbs::for('stones_benches', fn (Trail $trail) =>
 $trail->parent('benches')->push('Коллекция Stones', route('stones_benches'))
 );
 
-Breadcrumbs::for('show_bench_product', fn (Trail $trail, $id) =>
-$trail->parent('stones_benches')->push(BenchProduct::query()->with('bench_images')->where('id', $id)->get()[0]['name'], route('show_bench_product', $id))
+Breadcrumbs::for('show_pot_product', fn (Trail $trail, $id) =>
+$trail->parent(Route::getRoutes()->match(request()->create(url()->previousPath()))->getName() == 'verona_benches' ? 'verona_benches' :
+        (Route::getRoutes()->match(request()->create(url()->previousPath()))->getName() == 'street_furniture_benches' ? 'street_furniture_benches' :
+        (Route::getRoutes()->match(request()->create(url()->previousPath()))->getName() == 'solo_benches' ? 'solo_benches' :
+        (Route::getRoutes()->match(request()->create(url()->previousPath()))->getName() == 'lines_benches' ? 'lines_benches' :
+        (Route::getRoutes()->match(request()->create(url()->previousPath()))->getName() == 'stones_benches' ? 'stones_benches' : ''))))
+)->push(BenchProduct::query()->with('bench_images')->where('id', $id)->get()[0]['name'], route('show_bench_product', $id))
 );
 
 
