@@ -447,6 +447,10 @@ main {
       gap: 0.5em; }
     main .breadcrumbs a {
       font-size: 0.75em; }
+  main .stub {
+    padding: 20em 10em;
+    display: flex;
+    justify-content: center; }
   main .main {
     padding-top: 7.5em;
     position: relative; }

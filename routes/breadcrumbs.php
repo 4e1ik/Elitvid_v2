@@ -18,41 +18,45 @@ Breadcrumbs::for('decorations', fn (Trail $trail) =>
 $trail->parent('home')->push('Декоративные элементы', route('decorations'))
 );
 
+Breadcrumbs::for('bollards_and_fencing', fn (Trail $trail) =>
+$trail->parent('directions')->push('Болларды и ограждения', route('bollards_and_fencing'))
+);
+
+Breadcrumbs::for('facade_stucco_molding_and_panels', fn (Trail $trail) =>
+$trail->parent('directions')->push('Фасадная лепнина и панели', route('facade_stucco_molding_and_panels'))
+);
+
+Breadcrumbs::for('parklets_and_canopies', fn (Trail $trail) =>
+$trail->parent('directions')->push('Парклеты, навесы', route('parklets_and_canopies'))
+);
+
+Breadcrumbs::for('pillars_and_covers', fn (Trail $trail) =>
+$trail->parent('directions')->push('Парклеты, навесы', route('pillars_and_covers'))
+);
+
+Breadcrumbs::for('rotundas_and_colonnades', fn (Trail $trail) =>
+$trail->parent('directions')->push('Ротонды и коллонады', route('rotundas_and_colonnades'))
+);
+
 Breadcrumbs::for('benches', fn (Trail $trail) =>
-    $trail->parent('directions')->push('Скамьи', route('benches'))
+$trail->parent('directions')->push('Скамьи', route('benches'))
 );
 
 Breadcrumbs::for('verona_benches', fn (Trail $trail) =>
 $trail->parent('benches')->push('Коллекция Verona', route('verona_benches'))
 );
 
-//Breadcrumbs::for('show_bench_product', fn (Trail $trail, $id) =>
-//$trail->parent('verona_benches')->push(BenchProduct::query()->with('bench_images')->where('id', $id)->get()[0]['name'], route('show_bench_product', $id))
-//);
-
 Breadcrumbs::for('street_furniture_benches', fn (Trail $trail) =>
 $trail->parent('benches')->push('Коллекция Street Furniture', route('street_furniture_benches'))
 );
-
-//Breadcrumbs::for('show_bench_product', fn (Trail $trail, $id) =>
-//$trail->parent('street_furniture_benches')->push(BenchProduct::query()->with('bench_images')->where('id', $id)->get()[0]['name'], route('show_bench_product', $id))
-//);
 
 Breadcrumbs::for('solo_benches', fn (Trail $trail) =>
 $trail->parent('benches')->push('Коллекция Solo', route('solo_benches'))
 );
 
-//Breadcrumbs::for('show_bench_product', fn (Trail $trail, $id) =>
-//$trail->parent('solo_benches')->push(BenchProduct::query()->with('bench_images')->where('id', $id)->get()[0]['name'], route('show_bench_product', $id))
-//);
-
 Breadcrumbs::for('lines_benches', fn (Trail $trail) =>
 $trail->parent('benches')->push('Коллекция Lines', route('lines_benches'))
 );
-
-//Breadcrumbs::for('show_bench_product', fn (Trail $trail, $id) =>
-//$trail->parent('lines_benches')->push(BenchProduct::query()->with('bench_images')->where('id', $id)->get()[0]['name'], route('show_bench_product', $id))
-//);
 
 Breadcrumbs::for('stones_benches', fn (Trail $trail) =>
 $trail->parent('benches')->push('Коллекция Stones', route('stones_benches'))
@@ -76,17 +80,9 @@ Breadcrumbs::for('rectangular_pots', fn (Trail $trail) =>
     $trail->parent('pots')->push('Прямоугольные кашпо', route('rectangular_pots'))
 );
 
-//Breadcrumbs::for('show_pot_product', fn (Trail $trail, $id) =>
-//$trail->parent('rectangular_pots')->push(PotProduct::query()->with('pot_images')->where('id', $id)->get()[0]['name'], route('show_pot_product', $id))
-//);
-
 Breadcrumbs::for('square_pots', fn (Trail $trail) =>
     $trail->parent('pots')->push('Квадратные кашпо', route('square_pots'))
 );
-
-//Breadcrumbs::for('show_pot_product', fn (Trail $trail, $id) =>
-//$trail->parent('square_pots')->push(PotProduct::query()->with('pot_images')->where('id', $id)->get()[0]['name'], route('show_pot_product', $id))
-//);
 
 Breadcrumbs::for('round_pots', fn (Trail $trail) =>
     $trail->parent('pots')->push('Круглые кашпо', route('round_pots'))
