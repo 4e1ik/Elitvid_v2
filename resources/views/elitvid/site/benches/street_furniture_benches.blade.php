@@ -9,7 +9,7 @@
         <section class="main">
             <div class="description">
                 <div class="description-text">
-                    <h1>Коллекция<br>street_furniture</h1>
+                    <h1>Коллекция<br>street furniture</h1>
                     <p>Удобна для детских площадок и аллей. Прекрасно впишется в ваш уютный двор.</p>
                 </div>
                 <div class="submit-application">
