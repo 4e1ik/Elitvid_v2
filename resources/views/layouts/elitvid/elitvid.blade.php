@@ -35,9 +35,9 @@
         <nav class="header-menu">
             <ul class="header-menu--list menu">
                 <li><a href="{{route('directions')}}">Наши направления</a></li>
-                <li>
-                    <button class="call">Заказать звонок</button>
-                </li>
+{{--                <li>--}}
+{{--                    <button class="call">Заказать звонок</button>--}}
+{{--                </li>--}}
                 <li><a href="tel:375297034014" class="phone-number">+375 (29) 350 71 71</a></li>
                 <li><a href="tel:375297665012" class="phone-number">+7 (991) 711 08 81</a></li>
             </ul>
@@ -62,11 +62,11 @@
                 <div class="tagline">
                     <p>Воплотим ваши идеи в реальность!</p>
                 </div>
-                <div class="request-phone">
-                    <button class="request-phone--button call1">
-                        Заказать звонок
-                    </button>
-                </div>
+{{--                <div class="request-phone">--}}
+{{--                    <button class="request-phone--button call1">--}}
+{{--                        Заказать звонок--}}
+{{--                    </button>--}}
+{{--                </div>--}}
             </div>
         </div>
         <div class="information-column">
