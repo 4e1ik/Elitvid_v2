@@ -58,7 +58,7 @@ Breadcrumbs::for('stones_benches', fn (Trail $trail) =>
 $trail->parent('benches')->push('Коллекция Stones', route('stones_benches'))
 );
 
-Breadcrumbs::for('show_pot_product', fn (Trail $trail, $id) =>
+Breadcrumbs::for('show_bench_product', fn (Trail $trail, $id) =>
 $trail->parent(Route::getRoutes()->match(request()->create(url()->previousPath()))->getName() == 'verona_benches' ? 'verona_benches' :
         (Route::getRoutes()->match(request()->create(url()->previousPath()))->getName() == 'street_furniture_benches' ? 'street_furniture_benches' :
         (Route::getRoutes()->match(request()->create(url()->previousPath()))->getName() == 'solo_benches' ? 'solo_benches' :
