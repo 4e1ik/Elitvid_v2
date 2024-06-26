@@ -63,7 +63,7 @@ $trail->parent(Route::getRoutes()->match(request()->create(url()->previousPath()
         (Route::getRoutes()->match(request()->create(url()->previousPath()))->getName() == 'street_furniture_benches' ? 'street_furniture_benches' :
         (Route::getRoutes()->match(request()->create(url()->previousPath()))->getName() == 'solo_benches' ? 'solo_benches' :
         (Route::getRoutes()->match(request()->create(url()->previousPath()))->getName() == 'lines_benches' ? 'lines_benches' :
-        (Route::getRoutes()->match(request()->create(url()->previousPath()))->getName() == 'stones_benches' ? 'stones_benches' : ''))))
+        (Route::getRoutes()->match(request()->create(url()->previousPath()))->getName() == 'stones_benches' ? 'stones_benches' : 'benches'))))
 )->push(BenchProduct::query()->with('bench_images')->where('id', $id)->get()[0]['name'], route('show_bench_product', $id))
 );
 
