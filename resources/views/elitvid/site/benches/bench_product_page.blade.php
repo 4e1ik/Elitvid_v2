@@ -209,33 +209,17 @@
                     <!-- Additional required wrapper -->
                     <div class="offered_product-swiper-wrapper__slider swiper-wrapper">
                         <!-- Slides -->
-                        <div class="swiper-slide">
-                            <div class="direction">
-                                <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/pots/forms/circle_pot.png')}}"
-                                     alt="Фотография направления кашпо">
-                                <a href="">
-                                    <button>Cylider</button>
-                                </a>
+                        @foreach($rand_products as $rand_product)
+                            <div class="swiper-slide">
+                                <div class="direction">
+                                    <img src="{{asset('storage/'.str_replace('public/','',$rand_product->bench_images[0]->image))}}"
+                                         alt="Фотография направления кашпо">
+                                    <a href="">
+                                        <button>{{$rand_product->name}}</button>
+                                    </a>
+                                </div>
                             </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="direction">
-                                <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/pots/forms/rectangular_pot.png')}}"
-                                     alt="Фотография направления кашпо">
-                                <a href="">
-                                    <button>Cylider</button>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="direction">
-                                <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/pots/forms/square_pot.png')}}"
-                                     alt="Фотография направления кашпо">
-                                <a href="">
-                                    <button>Cylider</button>
-                                </a>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
 
                     <div class="swiper-button-prev arrow-left arrow">
