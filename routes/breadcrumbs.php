@@ -97,6 +97,6 @@ Breadcrumbs::for('round_pots', fn (Trail $trail) =>
 Breadcrumbs::for('show_pot_product', fn (Trail $trail, $id) =>
 $trail->parent(Route::getRoutes()->match(request()->create(url()->previousPath()))->getName() == 'round_pots' ? 'round_pots' :
                     (Route::getRoutes()->match(request()->create(url()->previousPath()))->getName() == 'square_pots' ? 'square_pots' :
-                    (Route::getRoutes()->match(request()->create(url()->previousPath()))->getName() == 'rectangular_pots' ? 'rectangular_pots' : 'crfvtqrf'))
+                    (Route::getRoutes()->match(request()->create(url()->previousPath()))->getName() == 'rectangular_pots' ? 'rectangular_pots' : 'pots'))
                 )->push(PotProduct::query()->with('pot_images')->where('id', $id)->get()[0]['name'], route('show_pot_product', $id))
 );
