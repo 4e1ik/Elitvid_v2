@@ -448,7 +448,8 @@ main {
     main .breadcrumbs a {
       font-size: 0.75em; }
   main .stub {
-    padding: 20em 10em;
+    padding-bottom: 20em;
+    padding-top: 20em;
     display: flex;
     justify-content: center; }
   main .main {

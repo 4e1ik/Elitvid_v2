@@ -82,7 +82,7 @@
                         <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/main_page/directions/rotundas.png')}}"
                              alt="Фотография направления ротонд и коллонад">
                     </div>
-                    <a href="">
+                    <a href="{{route('rotundas_and_colonnades')}}">
                         <button>Ротонды и коллонады</button>
                     </a>
                 </div>
@@ -91,7 +91,7 @@
                         <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/main_page/directions/parklets.png')}}"
                              alt="Фотография направления парклетов и навесов">
                     </div>
-                    <a href="">
+                    <a href="{{route('parklets_and_canopies')}}">
                         <button>Парклеты, навесы</button>
                     </a>
                 </div>
@@ -100,7 +100,7 @@
                         <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/main_page/directions/bollards.png')}}"
                              alt="Фотография направления боллард и ограждений">
                     </div>
-                    <a href="">
+                    <a href="{{route('bollards_and_fencing')}}">
                         <button>Болларды и ограждения</button>
                     </a>
                 </div>
@@ -109,7 +109,7 @@
                         <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/main_page/directions/pillars.png')}}"
                              alt="Фотография направления столбов и накрывок">
                     </div>
-                    <a href="">
+                    <a href="{{route('pillars_and_covers')}}">
                         <button>Столбы и накрывки</button>
                     </a>
                 </div>
@@ -118,7 +118,7 @@
                         <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/main_page/directions/facade_stucco.png')}}"
                              alt="Фотография направления фасадной лепнины и панелей">
                     </div>
-                    <a href="">
+                    <a href="{{route('facade_stucco_molding_and_panels')}}">
                         <button>Фасадная лепнина и панели</button>
                     </a>
                 </div>
