@@ -214,7 +214,7 @@
                                 <div class="direction">
                                     <img src="{{asset('storage/'.str_replace('public/','',$rand_product->bench_images[0]->image))}}"
                                          alt="Фотография направления кашпо">
-                                    <a href="">
+                                    <a href="{{route('show_bench_product', ['id' => $product->id])}}">
                                         <button>{{$rand_product->name}}</button>
                                     </a>
                                 </div>
