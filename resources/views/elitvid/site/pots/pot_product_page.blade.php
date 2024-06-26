@@ -129,7 +129,7 @@
         <section class="offered_products">
             <h2>Другие формы</h2>
             <div class="offered_product_slider">
-                <div class="offered_product__slider swiper">
+                <div style="height: 25em" class="offered_product__slider swiper">
                     <!-- Additional required wrapper -->
                     <div class="offered_product-swiper-wrapper__slider swiper-wrapper">
                         <!-- Slides -->
