@@ -104,7 +104,7 @@
                                     <div class="table_row__price">
                                         <p>Цена</p>
                                         <p class="thumbnail price">от {{explode('|',$row)[2]}}</p>
-                                        <p class="thumbnail mobile-price">от {{explode('/', explode('|',$row)[2])[0]}} / <br> {{explode('/', explode('|',$row)[2])[1]}}</p>
+                                        <p class="thumbnail mobile-price">от {{explode('/', explode('|',$row)[2])[0]}}</p>
                                     </div>
                                 </div>
                             @endforeach
@@ -133,30 +133,17 @@
                     <!-- Additional required wrapper -->
                     <div class="offered_product-swiper-wrapper__slider swiper-wrapper">
                         <!-- Slides -->
-                        <div class="swiper-slide">
-                            <div class="direction">
-                                <img src="./{{asset('/elitvid_assets/newDesign/newDesign/imgs/pots/forms/circle_pot.png')}}" alt="Фотография направления кашпо">
-                                <a href="">
-                                    <button>Cylider</button>
-                                </a>
+                        @foreach($rand_products as $rand_product)
+                            <div class="swiper-slide">
+                                <div class="direction">
+                                    <img src="{{asset('storage/'.str_replace('public/','',$rand_product->pot_images[0]->image))}}"
+                                         alt="Фотография направления кашпо">
+                                    <a href="{{route('show_pot_product', ['id' => $rand_product->id])}}">
+                                        <button>{{$rand_product->name}}</button>
+                                    </a>
+                                </div>
                             </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="direction">
-                                <img src="./{{asset('/elitvid_assets/newDesign/newDesign/imgs/pots/forms/rectangular_pot.png')}}" alt="Фотография направления кашпо">
-                                <a href="">
-                                    <button>Cylider</button>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="direction">
-                                <img src="./{{asset('/elitvid_assets/newDesign/newDesign/imgs/pots/forms/square_pot.png')}}" alt="Фотография направления кашпо">
-                                <a href="">
-                                    <button>Cylider</button>
-                                </a>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
 
                     <div class="swiper-button-prev arrow-left arrow">

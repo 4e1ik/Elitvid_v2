@@ -23,6 +23,7 @@ class MainController extends Controller
 
     function show_pot_product($id){
         $products = PotProduct::query()->with('pot_images')->where('id', $id)->get();
+        $rand_products = PotProduct::query()->with('pot_images')->inRandomOrder()->limit(5)->get();
         $i = 1;
         $j = 1;
 
@@ -53,7 +54,7 @@ class MainController extends Controller
 
 //        dd($count);
 
-        return view('elitvid.site.pots.pot_product_page', compact('products', 'i', 'j', 'rows', 'count'));
+        return view('elitvid.site.pots.pot_product_page', compact('products', 'i', 'j', 'rows', 'count', 'rand_products'));
     }
 
     function show_bench_product($id){
