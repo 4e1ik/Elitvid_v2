@@ -139,7 +139,7 @@
                                         <div class="table_row__vertical-line"></div>
                                         <div class="table_row__weight">
                                             <p>Вес</p>
-                                            <p class="thumbnail">{{explode('|',$row)[1]}} кг</p>
+                                            <p class="thumbnail">{{explode('|',$row)[1]}}</p>
                                         </div>
                                         <div class="table_row__price">
                                             <p>Цена</p>

@@ -17,6 +17,26 @@ class MainController extends Controller
         return view('elitvid.site.index');
     }
 
+    function bollards_and_fencing() {
+        return view('elitvid.site.bollards_and_fencing');
+    }
+
+    function facade_stucco_molding_and_panels() {
+        return view('elitvid.site.facade_stucco_molding_and_panels');
+    }
+
+    function parklets_and_canopies() {
+        return view('elitvid.site.parklets_and_canopies');
+    }
+
+    function pillars_and_covers() {
+        return view('elitvid.site.pillars_and_covers');
+    }
+
+    function rotundas_and_colonnades() {
+        return view('elitvid.site.rotundas_and_colonnades');
+    }
+
     function about() {
         return view('elitvid.site.about');
     }

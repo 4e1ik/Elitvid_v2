@@ -39,6 +39,12 @@ Route::get('/decorations', [MainController::class, 'decorations'])->name('decora
 Route::prefix('directions')->group(function () {
     Route::get('/', [MainController::class, 'directions'])->name('directions');
 
+    Route::get('/bollards_and_fencing', [MainController::class, 'bollards_and_fencing'])->name('bollards_and_fencing');
+    Route::get('/facade_stucco_molding_and_panels', [MainController::class, 'facade_stucco_molding_and_panels'])->name('facade_stucco_molding_and_panels');
+    Route::get('/parklets_and_canopies', [MainController::class, 'parklets_and_canopies'])->name('parklets_and_canopies');
+    Route::get('/pillars_and_covers', [MainController::class, 'pillars_and_covers'])->name('pillars_and_covers');
+    Route::get('/rotundas_and_colonnades', [MainController::class, 'rotundas_and_colonnades'])->name('rotundas_and_colonnades');
+
     Route::prefix('benches')->group(function () {
         Route::get('/', [MainController::class, 'benches'])->name('benches');
 
