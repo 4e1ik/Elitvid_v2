@@ -19,7 +19,7 @@
             </div>
             <div class="stages">
                 <div class="image">
-                    <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/main_page/main_page_up.png')}}" alt="Фотография три кашпо в ряд"
+                    <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/decorations.png')}}" alt="Фотография три кашпо в ряд"
                          class="main-page-up">
                 </div>
                 <div class="submit-application submit-application--mobile">
@@ -108,7 +108,7 @@
                     <p>04 Бронза</p>
                 </div>
             </div>
-            <img class="background-img" src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/decorations.png')}}" alt="">
+            <img class="background-img" src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/decorations/wild_plant.png')}}" alt="">
         </section>
         <section class="ornament">
             <h2>Орнамент</h2>
