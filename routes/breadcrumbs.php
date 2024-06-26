@@ -67,7 +67,7 @@ Breadcrumbs::for('pots', fn (Trail $trail) =>
     $trail->parent('directions')->push('Кашпо', route('pots'))
 );
 
-Breadcrumbs::for('show_pot_product', fn (Trail $trail) =>
+Breadcrumbs::for('rectangular_pots', fn (Trail $trail) =>
     $trail->parent('pots')->push('Прямоугольные кашпо', route('rectangular_pots'))
 );
 
