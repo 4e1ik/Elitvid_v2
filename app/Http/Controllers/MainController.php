@@ -43,7 +43,8 @@ class MainController extends Controller
 
     function show_pot_product($id){
         $products = PotProduct::query()->with('pot_images')->where('id', $id)->get();
-        $rand_products = PotProduct::query()->with('pot_images')->inRandomOrder()->limit(5)->get();
+//        $rand_products = PotProduct::query()->with('pot_images')->inRandomOrder()->limit(5)->get();
+        $rand_products = PotProduct::query()->with('pot_images');
         $i = 1;
         $j = 1;
 
@@ -80,6 +81,7 @@ class MainController extends Controller
     function show_bench_product($id){
 //        dd($product->where('id', $id)->collect());
         $products = benchProduct::query()->with('bench_images')->where('id', $id)->get();
+//        $rand_products = benchProduct::query()->with('bench_images')->inRandomOrder()->limit(5)->get();
         $rand_products = benchProduct::query()->with('bench_images');
         $i = 1;
         $j = 1;
