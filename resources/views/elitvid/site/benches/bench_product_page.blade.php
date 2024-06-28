@@ -222,17 +222,17 @@
 {{--                            </div>--}}
 {{--                        @endforeach--}}
 
-                        @for($i = 0; $i <= 4 ; $i++)
+                        @foreach($rand_products->where('collection', $product->collection)->inRandomOrder()->limit(5) as $rand_product)
                             <div class="swiper-slide">
                                 <div class="direction">
-                                    <img src="{{asset('storage/'.str_replace('public/','',$product->inRandomOrder()->where('collection', $product->collection)->bench_images[0]->image))}}"
+                                    <img src="{{asset('storage/'.str_replace('public/','',$rand_product->bench_images[0]->image))}}"
                                          alt="Фотография направления кашпо">
-                                    <a href="{{route('show_bench_product', ['id' => $product->id])}}">
-                                        <button>{{$product->name}}</button>
+                                    <a href="{{route('show_bench_product', ['id' => $rand_product->id])}}">
+                                        <button>{{$rand_product->name}}</button>
                                     </a>
                                 </div>
                             </div>
-                        @endfor
+                        @endforeach
                     </div>
 
                     <div class="swiper-button-prev arrow-left arrow">
