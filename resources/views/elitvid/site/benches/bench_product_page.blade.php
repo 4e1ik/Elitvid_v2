@@ -210,7 +210,7 @@
                     <!-- Additional required wrapper -->
                     <div class="offered_product-swiper-wrapper__slider swiper-wrapper">
                         <!-- Slides -->
-                        @foreach($rand_products as $rand_product->where('collection', $rand_product->collection))
+                        @foreach($rand_products as $rand_product)
                             {{}}
                             <div class="swiper-slide">
                                 <div class="direction">
