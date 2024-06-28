@@ -20,6 +20,8 @@ document.addEventListener('DOMContentLoaded', () => {
     textures.forEach(img => {
         img.addEventListener('click', () => {
             firstImage.style.display = 'none';
+            firstImage.setStyles('-webkit-display', 'none');
+            firstImage.setStyles('-moz-display', 'none');
             currentTexture = img.getAttribute('data-texture');
             updateImage();
         });
