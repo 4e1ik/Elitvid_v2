@@ -210,7 +210,8 @@
                     <!-- Additional required wrapper -->
                     <div class="offered_product-swiper-wrapper__slider swiper-wrapper">
                         <!-- Slides -->
-                        @foreach($rand_products as $rand_product)
+                        @foreach($rand_products as $rand_product->where('collection', $rand_product->collection))
+                            {{}}
                             <div class="swiper-slide">
                                 <div class="direction">
                                     <img src="{{asset('storage/'.str_replace('public/','',$rand_product->bench_images[0]->image))}}"
