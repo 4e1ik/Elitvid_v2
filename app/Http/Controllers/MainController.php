@@ -80,7 +80,7 @@ class MainController extends Controller
     function show_bench_product($id){
 //        dd($product->where('id', $id)->collect());
         $products = benchProduct::query()->with('bench_images')->where('id', $id)->get();
-        $rand_products = benchProduct::query()->with('bench_images')->get();
+        $rand_products = benchProduct::query()->with('bench_images');
         $i = 1;
         $j = 1;
 

@@ -222,7 +222,7 @@
 {{--                            </div>--}}
 {{--                        @endforeach--}}
 
-                        @foreach($rand_products->where('collection', $product->collection)->inRandomOrder()->limit(5) as $rand_product)
+                        @foreach($rand_products->where('collection', $product->collection)->inRandomOrder()->limit(5)->get() as $rand_product)
                             <div class="swiper-slide">
                                 <div class="direction">
                                     <img src="{{asset('storage/'.str_replace('public/','',$rand_product->bench_images[0]->image))}}"
