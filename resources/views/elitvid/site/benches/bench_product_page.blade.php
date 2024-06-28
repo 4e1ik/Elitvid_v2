@@ -225,7 +225,7 @@
                         @for($i = 0; $i <= 4 ; $i++)
                             <div class="swiper-slide">
                                 <div class="direction">
-                                    <img src="{{asset('storage/'.str_replace('public/','',$product->where('collection', $product->collection)->bench_images[0]->image))}}"
+                                    <img src="{{asset('storage/'.str_replace('public/','',$product->inRandomOrder()->where('collection', $product->collection)->bench_images[0]->image))}}"
                                          alt="Фотография направления кашпо">
                                     <a href="{{route('show_bench_product', ['id' => $product->id])}}">
                                         <button>{{$product->name}}</button>
