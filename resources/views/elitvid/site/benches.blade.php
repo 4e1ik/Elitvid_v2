@@ -124,12 +124,11 @@
                     <!-- Additional required wrapper -->
                     <div class="main-swiper-wrapper__slider swiper-wrapper">
                         <!-- Slides -->
-                        <div class="swiper-slide"><img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/gallery/photo7.jpg')}}" alt=""></div>
-                        <div class="swiper-slide"><img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/gallery/photo11.jpg')}}" alt=""></div>
-                        <div class="swiper-slide"><img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/gallery/photo10.jpg')}}" alt=""></div>
-                        <div class="swiper-slide"><img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/gallery/photo9.jpg')}}" alt=""></div>
-                        <div class="swiper-slide"><img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/gallery/photo8.jpg')}}" alt=""></div>
-                        <div class="swiper-slide"><img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/gallery/photo5.jpg')}}" alt=""></div>
+                        @foreach($benches_images as $item)
+                            @foreach($item->gallery_images as $image)
+                                <div class="swiper-slide"><img src="{{asset('storage/'.$image->image)}}" alt="{{$image->description_image}}"></div>
+                            @endforeach
+                        @endforeach
                     </div>
 
                     <!-- If we need navigation buttons -->
@@ -151,12 +150,11 @@
                     <!-- Additional required wrapper -->
                     <div class="main-swiper-wrapper__slider swiper-wrapper">
                         <!-- Slides -->
-                        <div class="swiper-slide"><img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/gallery/photo7.jpg')}}" alt=""></div>
-                        <div class="swiper-slide"><img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/gallery/photo11.jpg')}}" alt=""></div>
-                        <div class="swiper-slide"><img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/gallery/photo10.jpg')}}" alt=""></div>
-                        <div class="swiper-slide"><img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/gallery/photo9.jpg')}}" alt=""></div>
-                        <div class="swiper-slide"><img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/gallery/photo8.jpg')}}" alt=""></div>
-                        <div class="swiper-slide"><img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/gallery/photo5.jpg')}}" alt=""></div>
+                        @foreach($benches_images as $item)
+                            @foreach($item->gallery_images as $image)
+                                <div class="swiper-slide"><img src="{{asset('storage/'.$image->image)}}" alt="{{$image->description_image}}"></div>
+                            @endforeach
+                        @endforeach
                     </div>
                 </div>
             </div>

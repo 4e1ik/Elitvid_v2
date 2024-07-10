@@ -82,11 +82,11 @@
                     <h1 class="animated fadeInLeft">21:00</h1>
                     <p class="animated fadeInRight">Sat,October 1st 2029</p>
                 </li>
-                <li class="ripple">
-                    <a href="{{route('admin_catalog')}}" class="nav-header">
-                        <span class="icon-book-open icons"></span> Каталог
-                    </a>
-                </li>
+{{--                <li class="ripple">--}}
+{{--                    <a href="{{route('admin_catalog')}}" class="nav-header">--}}
+{{--                        <span class="icon-book-open icons"></span> Каталог--}}
+{{--                    </a>--}}
+{{--                </li>--}}
                 <li class="ripple">
                     <a href="{{route('admin_pots')}}" class="nav-header">
                         <span class="icon-drawar icons"></span> Кашпо
@@ -97,11 +97,11 @@
                         <span class="icon-vector icons"></span> Скамейки
                     </a>
                 </li>
-                <li class="ripple">
-                    <a href="{{route('admin_textures')}}" class="nav-header">
-                        <span class="fa-slack fa"></span> Текстуры
-                    </a>
-                </li>
+{{--                <li class="ripple">--}}
+{{--                    <a href="{{route('admin_textures')}}" class="nav-header">--}}
+{{--                        <span class="fa-slack fa"></span> Текстуры--}}
+{{--                    </a>--}}
+{{--                </li>--}}
                 <li class="ripple">
                     <a href="{{route('admin_gallery')}}" class="nav-header">
                         <span class="fa-image fa"></span> Примеры работ
@@ -623,11 +623,11 @@
     <div class="mimin-mobile-menu-list">
         <div class="col-md-12 sub-mimin-mobile-menu-list animated fadeInLeft">
             <ul class="nav nav-list">
-                <li class="ripple">
-                    <a href="{{route('admin_catalog')}}" class="nav-header">
-                        <span class="icon-book-open icons"></span> Каталог
-                    </a>
-                </li>
+{{--                <li class="ripple">--}}
+{{--                    <a href="{{route('admin_catalog')}}" class="nav-header">--}}
+{{--                        <span class="icon-book-open icons"></span> Каталог--}}
+{{--                    </a>--}}
+{{--                </li>--}}
                 <li class="ripple">
                     <a href="{{route('admin_pots')}}" class="nav-header">
                         <span class="icon-drawar icons"></span> Кашпо
@@ -638,11 +638,11 @@
                         <span class="icon-vector icons"></span> Скамейки
                     </a>
                 </li>
-                <li class="ripple">
-                    <a href="{{route('admin_textures')}}" class="nav-header">
-                        <span class="fa-slack fa"></span> Текстуры
-                    </a>
-                </li>
+{{--                <li class="ripple">--}}
+{{--                    <a href="{{route('admin_textures')}}" class="nav-header">--}}
+{{--                        <span class="fa-slack fa"></span> Текстуры--}}
+{{--                    </a>--}}
+{{--                </li>--}}
                 <li class="ripple">
                     <a href="{{route('admin_gallery')}}" class="nav-header">
                         <span class="fa-image fa"></span> Примеры работ

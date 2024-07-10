@@ -11,7 +11,7 @@ class Gallery extends Model
 
     protected $fillable = ['type', 'active'];
 
-    public function images(){
-        return $this->hasMany(Image::class, 'gallery_id', 'id');
+    public function gallery_images(){
+        return $this->hasMany(GalleryImage::class, 'gallery_image_id', 'id');
     }
 }

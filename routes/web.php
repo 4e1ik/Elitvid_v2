@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\PotImageController;
 use App\Http\Controllers\BenchImageController;
@@ -124,10 +125,10 @@ Route::post('/send_mail', [MailController::class, 'send'])->name('send_mail');
 
 Route::middleware('auth')->where([])->prefix('admin')->group(function () {
     Route::get('/', [AdminController::class, 'index'])->name('admin');
-    Route::get('/catalog', [AdminController::class, 'catalog'])->name('admin_catalog');
+//    Route::get('/catalog', [AdminController::class, 'catalog'])->name('admin_catalog');
     Route::get('/benches', [AdminController::class, 'benches'])->name('admin_benches');
     Route::get('/pots', [AdminController::class, 'pots'])->name('admin_pots');
-    Route::get('/texture', [AdminController::class, 'textures'])->name('admin_textures');
+//    Route::get('/texture', [AdminController::class, 'textures'])->name('admin_textures');
     Route::get('/gallery', [AdminController::class, 'gallery'])->name('admin_gallery');
 
     Route::get('/create/{route}', [AdminController::class, 'create'])->name('create');
@@ -153,6 +154,6 @@ Route::middleware('auth')->where([])->prefix('admin')->group(function () {
         'potProducts' => PotProductController::class,
         'benchProducts' => BenchProductController::class,
 //        'textures' => TexturesController::class,
-//        'galleries' => GalleryController::class,
+        'galleries' => GalleryController::class,
     ]);
 });

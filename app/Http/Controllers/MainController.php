@@ -14,7 +14,9 @@ use Illuminate\Routing\Route;
 class MainController extends Controller
 {
     function index() {
-        return view('elitvid.site.index');
+        $gallery = Gallery::query()->with(['gallery_images'])->get();
+        $main_page_images = $gallery->where('type', 'main_page');
+        return view('elitvid.site.index', compact( 'main_page_images'));
     }
 
     function bollards_and_fencing() {
@@ -117,7 +119,10 @@ class MainController extends Controller
 
     function benches() {
 
-        return view('elitvid.site.benches');
+        $gallery = Gallery::query()->with(['gallery_images'])->get();
+        $benches_images = $gallery->where('type', 'benches');
+
+        return view('elitvid.site.benches', compact('benches_images'));
     }
 
     function street_furniture_benches() {
@@ -166,12 +171,17 @@ class MainController extends Controller
 
     function decorations()
     {
-        return view('elitvid.site.decorations');
+        $gallery = Gallery::query()->with(['gallery_images'])->get();
+        $decorative_elements_images = $gallery->where('type', 'decorative_elements');
+        return view('elitvid.site.decorations', compact('decorative_elements_images'));
     }
 
     function pots() {
 
-        return view('elitvid.site.pots');
+        $gallery = Gallery::query()->with(['gallery_images'])->get();
+        $pots_images = $gallery->where('type', 'pots');
+
+        return view('elitvid.site.pots', compact('pots_images'));
     }
 
     function rectangular_pots() {

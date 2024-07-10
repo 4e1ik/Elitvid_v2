@@ -29,6 +29,13 @@
                                 <option {{ $errors->has('type') ? '' : 'selected' }} disabled>Выберите раздел</option>
                                 <option {{ old('type') == 'pots' ? 'selected' : ''}} value="pots">Кашпо</option>
                                 <option {{ old('type') == 'benches' ? 'selected' : ''}} value="benches">Скамейки</option>
+                                <option {{ old('type') == 'main_page' ? 'selected' : ''}} value="main_page">Главная страница</option>
+                                <option {{ old('type') == 'decorative_elements' ? 'selected' : ''}} value="decorative_elements">Декоративные элементы</option>
+                                <option {{ old('type') == 'bollards' ? 'selected' : ''}} value="bollards">Болларды</option>
+                                <option {{ old('type') == 'parklets_and_naves' ? 'selected' : ''}} value="parklets_and_naves">Парклеты и навесы</option>
+                                <option {{ old('type') == 'columns_and_panels' ? 'selected' : ''}} value="columns_and_panels">Столбы и накрывки</option>
+                                <option {{ old('type') == 'facade_walls' ? 'selected' : ''}} value="facade_walls">Фасадная лепнина</option>
+                                <option {{ old('type') == 'rotundas' ? 'selected' : ''}} value="rotundas">Ротонды</option>
                             </select>
                             @error('type')
                             <div class="text-danger">

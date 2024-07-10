@@ -10,24 +10,6 @@ use Intervention\Image\ImageManager;
 
 class BenchImageController extends Controller
 {
-    public function pot_image_store(ImageRequest $request)
-    {
-//        $data = $request->all();
-//
-////        save_image($request);
-//
-//        if ($request->hasFile('image')) {
-//            foreach ($request->file('image') as $file) {
-//                $path = Storage::putFileAs('images', $file, save_image($file)); // Даем путь к этому файлу
-//                $data['image'] = $path;
-//                PotImage::create($data);
-//
-//                ImageManager::gd()->read($file)->scaleDown(360,  275)->save(storage_path('app/public/images/'.'test'.save_image($file)));
-//            }
-//        }
-//
-//        return redirect(route('admin_pots'));
-    }
 
     public function bench_image_update(BenchImage $benchImage, BenchProduct $benchProduct, ImageRequest $request)
     {
@@ -40,7 +22,7 @@ class BenchImageController extends Controller
                 $data['image'] = $path;
                 BenchImage::create($data);
 
-//                ImageManager::gd()->read($file)->scaleDown(360,  290)->save(storage_path('app/images/'.save_image($file, BenchImage::query())));
+                ImageManager::gd()->read($file)->scaleDown(360,  290)->save(storage_path('app/images/'.save_image($file, BenchImage::query())));
             }
         }
 
