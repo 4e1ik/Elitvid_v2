@@ -94,7 +94,7 @@
                         <!-- Slides -->
                         @foreach($pots_images as $item)
                             @foreach($item->gallery_images as $image)
-                                <div class="swiper-slide"><img src="{{asset('storage/'.$image->image)}}" alt="{{$image->description_image}}"></div>
+                                <div class="swiper-slide"><img src="{{asset('storage/'.str_replace('public/','',$image->image))}}" alt="{{$image->description_image}}"></div>
                             @endforeach
                         @endforeach
                     </div>
@@ -120,7 +120,7 @@
                         <!-- Slides -->
                         @foreach($pots_images as $item)
                             @foreach($item->gallery_images as $image)
-                                <div class="swiper-slide"><img src="{{asset('storage/'.$image->image)}}" alt="{{$image->description_image}}"></div>
+                                <div class="swiper-slide"><img src="{{asset('storage/'.str_replace('public/','',$image->image))}}" alt="{{$image->description_image}}"></div>
                             @endforeach
                         @endforeach
                     </div>

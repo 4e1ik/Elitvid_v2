@@ -46,8 +46,8 @@
                                     @foreach($item->gallery_images as $image)
                                         <tr>
                                             <td>
-                                                <img style="height: 200px" src="{{asset('storage/'.$image->image)}}"
-                                                     alt="">
+                                                {{--                                                <img style="height: 200px" src="{{asset('storage/'.$image->image)}}" alt="">--}}
+                                                <img style="height: 200px" src="{{asset('storage/'.str_replace('public/','',$image->image))}}" alt="">
                                             </td>
                                             <td>
                                                 <form
@@ -111,8 +111,8 @@
                                     @foreach($item->gallery_images as $image)
                                         <tr>
                                             <td>
-                                                <img style="height: 200px" src="{{asset('storage/'.$image->image)}}"
-                                                     alt="">
+                                                {{--                                                <img style="height: 200px" src="{{asset('storage/'.$image->image)}}" alt="">--}}
+                                                <img style="height: 200px" src="{{asset('storage/'.str_replace('public/','',$image->image))}}" alt="">
                                             </td>
                                             <td>
                                                 <form
@@ -176,7 +176,7 @@
                                     @foreach($item->gallery_images as $image)
                                         <tr>
                                             <td>
-{{--                                                <img style="height: 200px" src="{{asset('storage/'.$image->image)}}" alt="">--}}
+                                                {{--                                                <img style="height: 200px" src="{{asset('storage/'.$image->image)}}" alt="">--}}
                                                 <img style="height: 200px" src="{{asset('storage/'.str_replace('public/','',$image->image))}}" alt="">
                                             </td>
                                             <td>
@@ -241,8 +241,8 @@
                                     @foreach($item->gallery_images as $image)
                                         <tr>
                                             <td>
-                                                <img style="height: 200px" src="{{asset('storage/'.$image->image)}}"
-                                                     alt="">
+                                                {{--                                                <img style="height: 200px" src="{{asset('storage/'.$image->image)}}" alt="">--}}
+                                                <img style="height: 200px" src="{{asset('storage/'.str_replace('public/','',$image->image))}}" alt="">
                                             </td>
                                             <td>
                                                 <form
@@ -306,8 +306,8 @@
                                     @foreach($item->gallery_images as $image)
                                         <tr>
                                             <td>
-                                                <img style="height: 200px" src="{{asset('storage/'.$image->image)}}"
-                                                     alt="">
+                                                {{--                                                <img style="height: 200px" src="{{asset('storage/'.$image->image)}}" alt="">--}}
+                                                <img style="height: 200px" src="{{asset('storage/'.str_replace('public/','',$image->image))}}" alt="">
                                             </td>
                                             <td>
                                                 <form
@@ -371,8 +371,8 @@
                                     @foreach($item->gallery_images as $image)
                                         <tr>
                                             <td>
-                                                <img style="height: 200px" src="{{asset('storage/'.$image->image)}}"
-                                                     alt="">
+                                                {{--                                                <img style="height: 200px" src="{{asset('storage/'.$image->image)}}" alt="">--}}
+                                                <img style="height: 200px" src="{{asset('storage/'.str_replace('public/','',$image->image))}}" alt="">
                                             </td>
                                             <td>
                                                 <form
@@ -436,8 +436,8 @@
                                     @foreach($item->gallery_images as $image)
                                         <tr>
                                             <td>
-                                                <img style="height: 200px" src="{{asset('storage/'.$image->image)}}"
-                                                     alt="">
+                                                {{--                                                <img style="height: 200px" src="{{asset('storage/'.$image->image)}}" alt="">--}}
+                                                <img style="height: 200px" src="{{asset('storage/'.str_replace('public/','',$image->image))}}" alt="">
                                             </td>
                                             <td>
                                                 <form
@@ -501,8 +501,8 @@
                                     @foreach($item->gallery_images as $image)
                                         <tr>
                                             <td>
-                                                <img style="height: 200px" src="{{asset('storage/'.$image->image)}}"
-                                                     alt="">
+                                                {{--                                                <img style="height: 200px" src="{{asset('storage/'.$image->image)}}" alt="">--}}
+                                                <img style="height: 200px" src="{{asset('storage/'.str_replace('public/','',$image->image))}}" alt="">
                                             </td>
                                             <td>
                                                 <form
@@ -566,8 +566,8 @@
                                     @foreach($item->gallery_images as $image)
                                         <tr>
                                             <td>
-                                                <img style="height: 200px" src="{{asset('storage/'.$image->image)}}"
-                                                     alt="">
+                                                {{--                                                <img style="height: 200px" src="{{asset('storage/'.$image->image)}}" alt="">--}}
+                                                <img style="height: 200px" src="{{asset('storage/'.str_replace('public/','',$image->image))}}" alt="">
                                             </td>
                                             <td>
                                                 <form
