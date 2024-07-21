@@ -77,7 +77,7 @@ class MainController extends Controller
 
     function show_bench_product($id){
         $products = benchProduct::query()->with('bench_images')->where('id', $id)->get();
-        $rand_products = benchProduct::query()->with('bench_images')->limit(17)->get();
+        $rand_products = benchProduct::query()->with('bench_images')->get();
 //        dd($rand_products);
         $i = 1;
         $j = 1;
