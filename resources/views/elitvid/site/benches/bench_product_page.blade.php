@@ -201,7 +201,7 @@
                     </button>
                 </div>
             </div>
-            </div>
+{{--            </div>--}}
         </section>
         <section class="offered_products">
             <h2>Другие формы</h2>
@@ -222,17 +222,17 @@
 {{--                            </div>--}}
 {{--                        @endforeach--}}
 
-                        @foreach($rand_products->where('collection', $product->collection) as $rand_product)
-                            <div class="swiper-slide">
-                                <div class="direction">
-                                    <img src="{{asset('storage/'.str_replace('public/','',$rand_product->bench_images[0]->image))}}"
-                                         alt="Фотография направления кашпо">
-                                    <a href="{{route('show_bench_product', ['id' => $rand_product->id])}}">
-                                        <button>{{$rand_product->name}}</button>
-                                    </a>
-                                </div>
-                            </div>
-                        @endforeach
+{{--                        @foreach($rand_products->where('collection', $product->collection) as $rand_product)--}}
+{{--                            <div class="swiper-slide">--}}
+{{--                                <div class="direction">--}}
+{{--                                    <img src="{{asset('storage/'.str_replace('public/','',$rand_product->bench_images[0]->image))}}"--}}
+{{--                                         alt="Фотография направления кашпо">--}}
+{{--                                    <a href="{{route('show_bench_product', ['id' => $rand_product->id])}}">--}}
+{{--                                        <button>{{$rand_product->name}}</button>--}}
+{{--                                    </a>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        @endforeach--}}
                     </div>
 
                     <div class="swiper-button-prev arrow-left arrow">
