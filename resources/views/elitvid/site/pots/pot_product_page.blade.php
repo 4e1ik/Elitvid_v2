@@ -43,10 +43,10 @@
 {{--                            <img id="image" src="{{asset('storage/images/'.$product->name)}}" alt="{{$product->pot_images[0]->description_image}}">--}}
 {{--                        </div>--}}
                         <div id="product-images" class="content_images__main-image">
-                            <img id="first_image" src="{{asset('storage/'.$product->pot_images[0]->image)}}" alt="{{$product->pot_images[0]->description_image}}">
+                            <img id="first_image" src="{{asset('storage/'.str_replace('public/','',$product->pot_images[0]->image))}}" alt="{{$product->pot_images[0]->description_image}}">
                             @foreach($product->pot_images as $image)
 {{--                                <img data-texture="{{ $image->texture }}" data-color="{{ $image->color }}" class="main-image__image" src="{{asset('storage/'.str_replace('public/','',$image->image))}}" alt="{{$image->description_image}}">--}}
-                                <img id="image" data-texture="{{ $image->texture }}" data-color="{{ $image->color }}" class="main-image__image" src="{{asset('storage/'.$image->image)}}" alt="{{$image->description_image}}">
+                                <img id="image" data-texture="{{ $image->texture }}" data-color="{{ $image->color }}" class="main-image__image" src="{{asset('storage/'.str_replace('public/','',$image->image))}}" alt="{{$image->description_image}}">
                             @endforeach
                         </div>
                         <div class="content_images__colors">
