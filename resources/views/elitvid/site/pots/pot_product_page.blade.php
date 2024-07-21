@@ -16,69 +16,76 @@
                             <p class="images_textures__text">Выберите фактуру и цвет для визуализации кашпо</p>
                             <div class="images_textures__images">
                                 <div class="image_texture">
-                                    <img data-texture="пористый" src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/pots/textures/texture-porous.png')}}" alt="">
+                                    <img data-texture="porous" src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/pots/textures/texture-porous.png')}}" alt="">
                                     <p>Пористая</p>
-                                    <img data-texture="пористый" class="texture_popup__image" src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/pots/textures/texture-porous.png')}}"
+                                    <img data-texture="porous" class="texture_popup__image" src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/pots/textures/texture-porous.png')}}"
                                          alt="">
                                     <p class="texture_popup__text">Пористая</p>
                                 </div>
                                 <div class="image_texture">
-                                    <img data-texture="гладкий" src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/pots/textures/texture-smooth.png')}}" alt="">
+                                    <img data-texture="smooth" src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/pots/textures/texture-smooth.png')}}" alt="">
                                     <p>Гладкая</p>
-                                    <img data-texture="гладкий" class="texture_popup__image" src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/pots/textures/texture-smooth.png')}}"
+                                    <img data-texture="smooth" class="texture_popup__image" src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/pots/textures/texture-smooth.png')}}"
                                          alt="">
                                     <p class="texture_popup__text">Гладкая</p>
                                 </div>
                                 <div class="image_texture">
-                                    <img data-texture="мрамор" src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/pots/textures/texture-marble.png')}}" alt="">
+                                    <img data-texture="marble" src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/pots/textures/texture-marble.png')}}" alt="">
                                     <p>Мрамор</p>
-                                    <img data-texture="мрамор" class="texture_popup__image" src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/pots/textures/texture-marble.png')}}"
+                                    <img data-texture="marble" class="texture_popup__image" src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/pots/textures/texture-marble.png')}}"
                                          alt="">
                                     <p class="texture_popup__text">Мрамор</p>
                                 </div>
                             </div>
                         </div>
-                        <div class="content_images__main-image">
-                            <img id="first_image" src="{{asset('storage/'.str_replace('public/','',$product->pot_images[0]->image))}}" alt="">
-                            <img id="image" src="{{asset('storage/images/'.$product->name)}}" alt="">
+{{--                        <div class="content_images__main-image">--}}
+{{--                            <img id="first_image" src="{{asset('storage/'.str_replace('public/','',$product->pot_images[0]->image))}}" alt="{{$product->pot_images[0]->description_image}}">--}}
+{{--                            <img id="image" src="{{asset('storage/images/'.$product->name)}}" alt="{{$product->pot_images[0]->description_image}}">--}}
+{{--                        </div>--}}
+                        <div id="product-images" class="content_images__main-image">
+                            <img id="first_image" src="{{asset('storage/'.$product->pot_images[0]->image)}}" alt="{{$product->pot_images[0]->description_image}}">
+                            @foreach($product->pot_images as $image)
+{{--                                <img data-texture="{{ $image->texture }}" data-color="{{ $image->color }}" class="main-image__image" src="{{asset('storage/'.str_replace('public/','',$image->image))}}" alt="{{$image->description_image}}">--}}
+                                <img id="image" data-texture="{{ $image->texture }}" data-color="{{ $image->color }}" class="main-image__image" src="{{asset('storage/'.$image->image)}}" alt="{{$image->description_image}}">
+                            @endforeach
                         </div>
                         <div class="content_images__colors">
                             <h4>Цвета</h4>
                             <div class="images_colors__images">
-                                <div data-color="серый%20бетон" data-title="Серый бетон" class="image_color">
+                                <div data-color="grey" data-title="Серый бетон" class="image_color">
                                     <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/pots/colors/grey_concrete_color.png')}}" alt="">
                                 </div>
-                                <div data-color="графит" data-title="Графит" class="image_color">
+                                <div data-color="graphite" data-title="Графит" class="image_color">
                                     <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/pots/colors/graphite_color.png')}}" alt="">
                                 </div>
-                                <div data-color="черный" data-title="Черный" class="image_color">
+                                <div data-color="black" data-title="Черный" class="image_color">
                                     <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/pots/colors/black_color.png')}}" alt="">
                                 </div>
-                                <div data-color="белый" data-title="Белый" class="image_color">
+                                <div data-color="white" data-title="Белый" class="image_color">
                                     <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/pots/colors/white_color.png')}}" alt="">
                                 </div>
-                                <div data-color="слоновая%20кость" data-title="Слоновая кость" class="image_color">
+                                <div data-color="ivory" data-title="Слоновая кость" class="image_color">
                                     <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/pots/colors/ivory_color.png')}}" alt="">
                                 </div>
-                                <div data-color="песочный" data-title="Песочный" class="image_color">
+                                <div data-color="sand" data-title="Песочный" class="image_color">
                                     <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/pots/colors/sand_color.png')}}" alt="">
                                 </div>
-                                <div data-color="оранжевый" data-title="Оранжевый" class="image_color">
+                                <div data-color="orange" data-title="Оранжевый" class="image_color">
                                     <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/pots/colors/orange_color.png')}}" alt="">
                                 </div>
-                                <div data-color="оливка" data-title="Оливка" class="image_color">
+                                <div data-color="olive" data-title="Оливка" class="image_color">
                                     <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/pots/colors/olive_color.png')}}" alt="">
                                 </div>
-                                <div data-color="малахит" data-title="Малахит" class="image_color">
+                                <div data-color="malachite" data-title="Малахит" class="image_color">
                                     <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/pots/colors/malachite_color.png')}}" alt="">
                                 </div>
-                                <div data-color="голубой" data-title="Голубой" class="image_color">
+                                <div data-color="white_blue" data-title="Голубой" class="image_color">
                                     <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/pots/colors/white-blue_color.png')}}" alt="">
                                 </div>
-                                <div data-color="синий" data-title="Синий" class="image_color">
+                                <div data-color="blue" data-title="Синий" class="image_color">
                                     <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/pots/colors/blue_color.png')}}" alt="">
                                 </div>
-                                <div data-color="бронза" data-title="Бронза" class="image_color">
+                                <div data-color="bronze" data-title="Бронза" class="image_color">
                                     <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/pots/colors/bronze_color.png')}}" alt="">
                                 </div>
                             </div>
@@ -133,17 +140,17 @@
                     <!-- Additional required wrapper -->
                     <div class="offered_product-swiper-wrapper__slider swiper-wrapper">
                         <!-- Slides -->
-                        @foreach($rand_products as $rand_product)
-                            <div class="swiper-slide">
-                                <div class="direction">
-                                    <img src="{{asset('storage/'.str_replace('public/','',$rand_product->pot_images[0]->image))}}"
-                                         alt="Фотография направления кашпо">
-                                    <a href="{{route('show_pot_product', ['id' => $rand_product->id])}}">
-                                        <button>{{$rand_product->name}}</button>
-                                    </a>
-                                </div>
-                            </div>
-                        @endforeach
+{{--                        @foreach($rand_products as $rand_product)--}}
+{{--                            <div class="swiper-slide">--}}
+{{--                                <div class="direction">--}}
+{{--                                    <img src="{{asset('storage/'.str_replace('public/','',$rand_product->pot_images[0]->image))}}"--}}
+{{--                                         alt="Фотография направления кашпо">--}}
+{{--                                    <a href="{{route('show_pot_product', ['id' => $rand_product->id])}}">--}}
+{{--                                        <button>{{$rand_product->name}}</button>--}}
+{{--                                    </a>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        @endforeach--}}
 
 {{--                        @foreach($rand_products->where('collection', $product->collection)->get() as $rand_product)--}}
 {{--                            <div class="swiper-slide">--}}

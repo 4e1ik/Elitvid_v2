@@ -120,6 +120,8 @@ Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::post('/send_mail', [MailController::class, 'send'])->name('send_mail');
 //Route::post('/orderCall', [MailController::class, 'order_call'])->name('order_call');
 
+Route::post('/get-product-image', [PotImageController::class, 'getProductImage'])->name('getProductImage');
+
 
 
 

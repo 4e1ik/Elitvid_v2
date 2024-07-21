@@ -148,7 +148,7 @@
 <script defer src="{{asset('/elitvid_assets/newDesign/newDesign/js/popupSubmitApplication.js')}}"></script>
 <script defer src="{{asset('/elitvid_assets/newDesign/newDesign/js/popupRequestCall.js')}}"></script>
 <script defer src="{{asset('/elitvid_assets/newDesign/newDesign/js/burgerMenu.js')}}"></script>
-<script defer src="{{asset('/elitvid_assets/newDesign/newDesign/js/test.js')}}"></script>
+<script defer src="{{asset('/elitvid_assets/newDesign/newDesign/js/imageUpdater.js')}}"></script>
 
 </body>
 </html>
