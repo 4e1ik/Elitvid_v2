@@ -4,12 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\BenchProduct;
 use App\Models\Gallery;
-use App\Models\Image;
 use App\Models\PotProduct;
-use App\Models\Product;
-use App\Models\Texture;
-use Illuminate\Http\Request;
-use Illuminate\Routing\Route;
 
 class MainController extends Controller
 {
@@ -81,10 +76,8 @@ class MainController extends Controller
     }
 
     function show_bench_product($id){
-//        dd($product->where('id', $id)->collect());
         $products = benchProduct::query()->with('bench_images')->where('id', $id)->get();
-        $rand_products = benchProduct::query()->with('bench_images')->inRandomOrder()->get();
-//        $rand_products = benchProduct::query()->with('bench_images');
+        $rand_products = benchProduct::query()->with('bench_images')->get();
         $i = 1;
         $j = 1;
 
