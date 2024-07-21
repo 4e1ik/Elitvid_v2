@@ -30,10 +30,6 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/', [MainController::class, 'index'])->name('home');
-//Route::get('/test', function (){
-//    $a = 1;
-//    return  $a;
-//});
 
 Route::get('/decorations', [MainController::class, 'decorations'])->name('decorations');
 
@@ -48,12 +44,6 @@ Route::prefix('directions')->group(function () {
 
     Route::prefix('benches')->group(function () {
         Route::get('/', [MainController::class, 'benches'])->name('benches');
-
-
-//        Route::prefix('verona_benches')->group(function () {
-//            Route::get('/', [MainController::class, 'verona_benches'])->name('verona_benches');
-//            Route::get('/{id}', [MainController::class, 'show_bench_product'])->name('show_bench_product');
-//        });
 
         Route::prefix('verona_benches')->group(function () {
             Route::get('/', [MainController::class, 'verona_benches'])->name('verona_benches');
@@ -79,14 +69,6 @@ Route::prefix('directions')->group(function () {
             Route::get('/', [MainController::class, 'stones_benches'])->name('stones_benches');
             Route::get('/{id}', [MainController::class, 'show_bench_product'])->name('show_bench_product');
         });
-//        Route::prefix('square_pots')->group(function () {
-//            Route::get('/', [MainController::class, 'square_pots'])->name('square_pots');
-//            Route::get('/{id}', [MainController::class, 'show_bench_product'])->name('show_bench_product');
-//        });
-//        Route::prefix('round_pots')->group(function () {
-//            Route::get('/', [MainController::class, 'round_pots'])->name('round_pots');
-//            Route::get('/{id}', [MainController::class, 'show_bench_product'])->name('show_bench_product');
-//        });
     });
 
     Route::prefix('pots')->group(function () {
@@ -116,21 +98,14 @@ Route::post('/registration', [RegisterController::class, 'registration'])->name(
 
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
-//Route::get('/form', [MailController::class, 'show_form'])->name('form');
 Route::post('/send_mail', [MailController::class, 'send'])->name('send_mail');
 //Route::post('/orderCall', [MailController::class, 'order_call'])->name('order_call');
-
-Route::post('/get-product-image', [PotImageController::class, 'getProductImage'])->name('getProductImage');
-
-
 
 
 Route::middleware('auth')->where([])->prefix('admin')->group(function () {
     Route::get('/', [AdminController::class, 'index'])->name('admin');
-//    Route::get('/catalog', [AdminController::class, 'catalog'])->name('admin_catalog');
     Route::get('/benches', [AdminController::class, 'benches'])->name('admin_benches');
     Route::get('/pots', [AdminController::class, 'pots'])->name('admin_pots');
-//    Route::get('/texture', [AdminController::class, 'textures'])->name('admin_textures');
     Route::get('/gallery', [AdminController::class, 'gallery'])->name('admin_gallery');
 
     Route::get('/create/{route}', [AdminController::class, 'create'])->name('create');
@@ -143,19 +118,9 @@ Route::middleware('auth')->where([])->prefix('admin')->group(function () {
     Route::delete('/bench/images/{benchImage}/{benchProduct}/delete', [BenchImageController::class, 'bench_image_destroy'])->name('bench_image_destroy');
     Route::put('/bench/images/{benchImage}/{benchProduct}/update', [BenchImageController::class, 'bench_image_update'])->name('bench_image_update');
 
-//    Route::delete('/images/{image}/{gallery}/delete', [ImageController::class, 'gallery_image_destroy'])->name('gallery_image_destroy');
-//    Route::put('/images/{image}/update', [ImageController::class, 'gallery_image_update'])->name('gallery_image_update');
-
-
-//    Route::delete('/textures/images/{image}/{texture}/delete', [ImageController::class, 'texture_image_destroy'])->name('texture_image_destroy');
-//    Route::put('/textures/images/{image}/{texture}/update', [ImageController::class, 'texture_image_update'])->name('texture_image_update');
-
-//    Route::post('/images', [ImageController::class, 'store'])->name('image_create');
-
     Route::resources([
         'potProducts' => PotProductController::class,
         'benchProducts' => BenchProductController::class,
-//        'textures' => TexturesController::class,
         'galleries' => GalleryController::class,
     ]);
 });

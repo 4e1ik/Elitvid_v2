@@ -38,14 +38,9 @@
                                 </div>
                             </div>
                         </div>
-{{--                        <div class="content_images__main-image">--}}
-{{--                            <img id="first_image" src="{{asset('storage/'.str_replace('public/','',$product->pot_images[0]->image))}}" alt="{{$product->pot_images[0]->description_image}}">--}}
-{{--                            <img id="image" src="{{asset('storage/images/'.$product->name)}}" alt="{{$product->pot_images[0]->description_image}}">--}}
-{{--                        </div>--}}
                         <div id="product-images" class="content_images__main-image">
                             <img id="first_image" src="{{asset('storage/'.str_replace('public/','',$product->pot_images[0]->image))}}" alt="{{$product->pot_images[0]->description_image}}">
                             @foreach($product->pot_images as $image)
-{{--                                <img data-texture="{{ $image->texture }}" data-color="{{ $image->color }}" class="main-image__image" src="{{asset('storage/'.str_replace('public/','',$image->image))}}" alt="{{$image->description_image}}">--}}
                                 <img id="image" data-texture="{{ $image->texture }}" data-color="{{ $image->color }}" class="main-image__image" src="{{asset('storage/'.str_replace('public/','',$image->image))}}" alt="{{$image->description_image}}">
                             @endforeach
                         </div>
@@ -138,9 +133,12 @@
             <div class="offered_product_slider">
                 <div style="height: 25em" class="offered_product__slider swiper">
                     <!-- Additional required wrapper -->
+{{--                    @dd($rand_products)--}}
                     <div class="offered_product-swiper-wrapper__slider swiper-wrapper">
                         <!-- Slides -->
 {{--                        @foreach($rand_products as $rand_product)--}}
+{{--                            {{$product->collection}}--}}
+{{--                            {{$rand_product->collection}}--}}
 {{--                            <div class="swiper-slide">--}}
 {{--                                <div class="direction">--}}
 {{--                                    <img src="{{asset('storage/'.str_replace('public/','',$rand_product->pot_images[0]->image))}}"--}}
@@ -152,17 +150,17 @@
 {{--                            </div>--}}
 {{--                        @endforeach--}}
 
-{{--                        @foreach($rand_products->where('collection', $product->collection)->get() as $rand_product)--}}
-{{--                            <div class="swiper-slide">--}}
-{{--                                <div class="direction">--}}
-{{--                                    <img src="{{asset('storage/'.str_replace('public/','',$rand_product->pot_images[0]->image))}}"--}}
-{{--                                         alt="Фотография направления кашпо">--}}
-{{--                                    <a href="{{route('show_pot_product', ['id' => $rand_product->id])}}">--}}
-{{--                                        <button>{{$rand_product->name}}</button>--}}
-{{--                                    </a>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                        @endforeach--}}
+                        @foreach($rand_products->where('collection', $product->collection) as $rand_product)
+                            <div class="swiper-slide">
+                                <div class="direction">
+                                    <img src="{{asset('storage/'.str_replace('public/','',$rand_product->pot_images[0]->image))}}"
+                                         alt="Фотография направления кашпо">
+                                    <a href="{{route('show_pot_product', ['id' => $rand_product->id])}}">
+                                        <button>{{$rand_product->name}}</button>
+                                    </a>
+                                </div>
+                            </div>
+                        @endforeach
                     </div>
 
                     <div class="swiper-button-prev arrow-left arrow">
