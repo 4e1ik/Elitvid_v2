@@ -975,6 +975,20 @@ main .prev_direction .prev_directions__forms .prev_directions__form .lines-decor
 main .prev_direction .prev_directions__forms .prev_directions__form a {
   align-self: end;
 }
+main .prev_direction .prev_directions__forms .prev_directions__form .submit-application {
+  align-self: end;
+}
+main .prev_direction .prev_directions__forms .prev_directions__form .submit-application button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  border: 2px solid #979797;
+  background: #22242A;
+  color: #FFFFFF;
+  cursor: pointer;
+  transition: 0.2s;
+}
 main .product {
   display: flex;
   flex-direction: column;
@@ -1748,6 +1762,12 @@ footer .request-phone--button:hover {
     width: 37em;
   }
   body .prev_direction .prev_directions__forms .prev_directions__form a .look-collection {
+    width: 100%;
+  }
+  body .prev_direction .prev_directions__forms .prev_directions__form .submit-application {
+    width: 100%;
+  }
+  body .prev_direction .prev_directions__forms .prev_directions__form .submit-application button {
     width: 100%;
   }
   body .technique-blitz .content__decorative-textures {

@@ -18,28 +18,28 @@ class AdminController extends Controller
 
     function benches(BenchProduct $benchProduct) {
 
-        $benches = BenchProduct::query()->whereIn('collection', ['Verona', 'Stones', 'lines', 'Solo', 'Street_furniture'])->get();
+        $benches = BenchProduct::query()->whereIn('collection', ['Verona', 'Stones', 'lines', 'Solo', 'Street_furniture'])->latest()->get();
 //        dd($benches);
-        $benches_verona = BenchProduct::query()->where('collection', 'Verona')->get();
-        $benches_stones = BenchProduct::query()->where('collection', 'Stones')->get();
-        $benches_solo = BenchProduct::query()->where('collection', 'Solo')->get();
-        $benches_lines = BenchProduct::query()->where('collection', 'lines')->get();
-        $benches_street_furniture = BenchProduct::query()->where('collection', 'Street_furniture')->get();
+        $benches_verona = BenchProduct::query()->where('collection', 'Verona')->latest()->get();
+        $benches_stones = BenchProduct::query()->where('collection', 'Stones')->latest()->get();
+        $benches_solo = BenchProduct::query()->where('collection', 'Solo')->latest()->get();
+        $benches_lines = BenchProduct::query()->where('collection', 'lines')->latest()->get();
+        $benches_street_furniture = BenchProduct::query()->where('collection', 'Street_furniture')->latest()->get();
         return view('elitvid.admin.benches.benches',
             compact('benches_stones', 'benches_lines', 'benches_solo', 'benches_street_furniture', 'benches_verona','benches')
         );
     }
 
     function pots(PotProduct $PotProduct) {
-        $round_pots = PotProduct::query()->where('collection', 'Round')->get();
-        $rectangular_pots = PotProduct::query()->where('collection', 'Rectangular')->get();
-        $square_pots = PotProduct::query()->where('collection','Square')->get();
+        $round_pots = PotProduct::query()->where('collection', 'Round')->latest()->get();
+        $rectangular_pots = PotProduct::query()->where('collection', 'Rectangular')->latest()->get();
+        $square_pots = PotProduct::query()->where('collection','Square')->latest()->get();
 
         return view('elitvid.admin.pots.pots', compact('round_pots', 'rectangular_pots', 'square_pots', 'PotProduct'));
     }
 
     function gallery(Gallery $gallery) {
-        $gallery = Gallery::query()->with(['gallery_images'])->get();
+        $gallery = Gallery::query()->with(['gallery_images'])->latest()->get();
         $pots_images = $gallery->where('type', 'pots');
         $benches_images = $gallery->where('type', 'benches');
         $main_page_images = $gallery->where('type', 'main_page');

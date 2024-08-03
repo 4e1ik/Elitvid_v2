@@ -3,13 +3,24 @@ let menuBtn1 = document.querySelector('.open_popup_application1');
 let popup = document.querySelector('.popup_application');
 let crossBtn = document.querySelector('.popup__cross_application');
 
-menuBtn.onclick = function () {
-    popup.style.display = 'block';
-};
 
-menuBtn1.onclick = function () {
-    popup.style.display = 'block';
-};
+document.addEventListener('DOMContentLoaded', function () {
+    var menuBtn = document.querySelectorAll('.open_popup_application');
+    menuBtn.forEach(function (element) {
+        element.addEventListener('click', function () {
+            popup.style.display = 'block';
+        });
+    })
+})
+
+document.addEventListener('DOMContentLoaded', function () {
+    var menuBtn1 = document.querySelectorAll('.open_popup_application1');
+    menuBtn.forEach(function (element) {
+        element.addEventListener('click', function () {
+            popup.style.display = 'block';
+        });
+    })
+})
 
 crossBtn.onclick = function () {
     popup.style.display = 'none';
