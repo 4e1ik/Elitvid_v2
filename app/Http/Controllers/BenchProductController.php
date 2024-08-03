@@ -121,7 +121,7 @@ class BenchProductController extends Controller
                 $data['image'] = $path;
                 BenchImage::create($data);
 
-                ImageManager::gd()->read($file)->scaleDown(360,  290)->save(storage_path('app/public/images/'.save_image($file, BenchImage::query())));
+                ImageManager::gd()->read($file)->scaleDown(100,  100)->save(storage_path('app/public/images/'.save_image($file, BenchImage::query())));
             }
         }
 
