@@ -36,9 +36,6 @@ class PotProductController extends Controller
     {
         $data = $PotProductRequest->all();
 
-//        dd($data);
-//        dd(phpinfo());
-
         for ($i = 1;  $i<=5; $i++){
             $data['size'] = $data['size'].'|'.$data['size'.$i];
             unset($data['size'.$i]);
@@ -55,20 +52,12 @@ class PotProductController extends Controller
         $potProduct = PotProduct::create($data);
 
         $data['pot_product_id'] = $potProduct->id;
-//        dd($data);
 
         if ($PotProductRequest->hasFile('image')) {
             foreach ($PotProductRequest->file('image') as $file) {
                 $name= save_image($file, PotImage::query());
-//                dd($name);
                 $path = Storage::putFileAs('public/images', $file, $name); // Даем путь к этому файлу
                 $data['image'] = $path;
-
-//                dd();
-
-//                ImageManager::gd()->read($file)->scaleDown(360,  360)->save('/images/'.storage_path(''.$name));
-//
-//                dd();
                 PotImage::create($data);
             }
         }
@@ -95,8 +84,6 @@ class PotProductController extends Controller
         $sizes = explode('|', $potProduct->getAttribute('size'));
         $weights = explode('|', $potProduct->getAttribute('weight'));
         $prices = explode('|', $potProduct->getAttribute('price'));
-
-//        dd($sizes[0]);
 
         return view('includes.elitvid.admin.update_pot_product', compact( 'potProduct', 'potImages', 'sizes', 'weights', 'prices'));
     }
@@ -147,8 +134,6 @@ class PotProductController extends Controller
      */
     public function destroy(PotProduct $potProduct)
     {
-//        dd($potProduct->query()->where('id', 4));
-
         $images = $potProduct->pot_images()->where('pot_product_id', $potProduct->attributesToArray()['id'])->get();
         foreach ($images as $image) {
             Storage::delete($image->image);

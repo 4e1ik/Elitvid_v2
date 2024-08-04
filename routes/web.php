@@ -2,7 +2,6 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\GalleryController;
-use App\Http\Controllers\ImageController;
 use App\Http\Controllers\PotImageController;
 use App\Http\Controllers\BenchImageController;
 use App\Http\Controllers\MainController;
@@ -10,12 +9,8 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\PotProductController;
 use App\Http\Controllers\BenchProductController;
-use App\Http\Controllers\ProductController;
-//use App\Http\Controllers\TexturesController;
-//use App\Http\Controllers\GalleryController;
 use \App\Http\Controllers\MailController;
 use Illuminate\Support\Facades\Route;
-//use Tabuna\Breadcrumbs\Trail;
 
 /*
 |--------------------------------------------------------------------------
@@ -114,7 +109,7 @@ Route::middleware('auth')->where([])->prefix('admin')->group(function () {
     Route::delete('/pot/images/{potImage}/{potProduct}/delete', [PotImageController::class, 'pot_image_destroy'])->name('pot_image_destroy');
     Route::put('/pot/images/{potImage}/{potProduct}/update', [PotImageController::class, 'pot_image_update'])->name('pot_image_update');
 
-    // Кашпо
+    // Скамейки
     Route::delete('/bench/images/{benchImage}/{benchProduct}/delete', [BenchImageController::class, 'bench_image_destroy'])->name('bench_image_destroy');
     Route::put('/bench/images/{benchImage}/{benchProduct}/update', [BenchImageController::class, 'bench_image_update'])->name('bench_image_update');
 

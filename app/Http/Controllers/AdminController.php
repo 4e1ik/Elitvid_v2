@@ -19,7 +19,6 @@ class AdminController extends Controller
     function benches(BenchProduct $benchProduct) {
 
         $benches = BenchProduct::query()->whereIn('collection', ['Verona', 'Stones', 'lines', 'Solo', 'Street_furniture'])->latest()->get();
-//        dd($benches);
         $benches_verona = BenchProduct::query()->where('collection', 'Verona')->latest()->get();
         $benches_stones = BenchProduct::query()->where('collection', 'Stones')->latest()->get();
         $benches_solo = BenchProduct::query()->where('collection', 'Solo')->latest()->get();

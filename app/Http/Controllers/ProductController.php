@@ -39,10 +39,6 @@ class ProductController extends Controller
 
         $data['Product_id'] = $Product->id;
 
-//        save_image($ProductRequest);
-
-//        dd($data);
-
         if ($ProductRequest->hasFile('image')) {
             foreach ($ProductRequest->file('image') as $file) {
                 $path = Storage::putFileAs('images', $file, save_image($file)); // Даем путь к этому файлу

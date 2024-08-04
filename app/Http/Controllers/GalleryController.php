@@ -38,16 +38,12 @@ class GalleryController extends Controller
             foreach ($galleryRequest->file('image') as $file) {
                 $gallery = Gallery::create($data);
                 $data['gallery_image_id'] = $gallery->id;
-//                dd($file);
                 $name = save_image($file, GalleryImage::query());
-//                dd($name);
-//                $path = Storage::putFileAs('images', $file, $name); // Даем путь к этому файлу
                 $path = Storage::putFileAs('public/images', $file, $name); // Даем путь к этому файлу
-//                dd($path);
                 $data['image'] = $path;
                 GalleryImage::create($data);
 
-                ImageManager::gd()->read($file)->scaleDown(100,  100)->save(storage_path('app/public/images/'.save_image($file, GalleryImage::query())));
+                ImageManager::gd()->read($file)->scaleDown(100,  100)->save(storage_path('public/images/'.save_image($file, GalleryImage::query())));
             }
         }
 
@@ -90,7 +86,6 @@ class GalleryController extends Controller
     public function destroy(Gallery $gallery)
     {
         $images = $gallery->gallery_images()->where('gallery_image_id', $gallery->attributesToArray()['id'])->get();
-//        dd($images);
         foreach ($images as $image) {
             Storage::delete($image->image);
         }
