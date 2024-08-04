@@ -6,9 +6,7 @@ use App\Http\Requests\GalleryRequest;
 use App\Http\Requests\ImageRequest;
 use App\Models\Gallery;
 use App\Models\GalleryImage;
-use App\Models\Image;
-use App\Models\Texture;
-use Illuminate\Http\Request;
+use Intervention\Image\ImageManager;
 use Illuminate\Support\Facades\Storage;
 
 class GalleryController extends Controller
@@ -48,6 +46,8 @@ class GalleryController extends Controller
 //                dd($path);
                 $data['image'] = $path;
                 GalleryImage::create($data);
+
+                ImageManager::gd()->read($file)->scaleDown(100,  100)->save(storage_path('app/images/'.save_image($file, GalleryImage::query())));
             }
         }
 
