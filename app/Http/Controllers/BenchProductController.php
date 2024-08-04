@@ -60,7 +60,7 @@ class BenchProductController extends Controller
 
                 BenchImage::create($data);
 
-                ImageManager::gd()->read($file)->scaleDown(360,  290)->save(storage_path('app/public/images/'.$name));
+                ImageManager::gd()->read($file)->scaleDown(480,  400)->save(storage_path('app/public/images/'.$name));
             }
         }
 
@@ -121,7 +121,7 @@ class BenchProductController extends Controller
                 $data['image'] = $path;
                 BenchImage::create($data);
 
-                ImageManager::gd()->read($file)->scaleDown(360,  290)->save(storage_path('app/public/images/'.$name));
+                ImageManager::gd()->read($file)->scaleDown(480,  400)->save(storage_path('app/public/images/'.$name));
             }
         }
 
