@@ -75,11 +75,7 @@ class MainController extends Controller
             }
         }
 
-//        dd($rows);
-
         $count = count($rows);
-
-//        dd($count);
 
         return view('elitvid.site.pots.pot_product_page', compact('products', 'i', 'j', 'rows', 'count', 'rand_products'));
     }
@@ -110,11 +106,7 @@ class MainController extends Controller
             }
         }
 
-//        dd($rows);
-
         $count = count($rows);
-
-//        dd($count);
 
         return view('elitvid.site.benches.bench_product_page', compact('products', 'i', 'j', 'rows', 'count', 'rand_products'));
     }

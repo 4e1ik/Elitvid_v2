@@ -39,17 +39,10 @@ class GalleryController extends Controller
                 $gallery = Gallery::create($data);
                 $data['gallery_image_id'] = $gallery->id;
                 $name = save_image($file, GalleryImage::query());
-//                dd($name);
-//                dd(storage_path('app/public/images/'.save_image($file, GalleryImage::query())));
-//                $path = storage_path('app/public/images/'.$name);
-//                ImageManager::gd()->read($file)->scaleDown(100,  100)->save($path);
                 $path = Storage::putFileAs('public/images', $file, $name); // Даем путь к этому файлу
-//                ImageManager::gd()->read($file)->scaleDown(100,  100)->save($path); ; // Даем путь к этому файлу
-//                dd($path);
                 $data['image'] = $path;
                 GalleryImage::create($data);
 
-//                ImageManager::gd()->read($file)->scaleDown(100,  100)->save(storage_path('app/public/images/'.save_image($file, GalleryImage::query())));
                 ImageManager::gd()->read($file)->scaleDown(1180,  592)->save(storage_path('app/public/images/'.$name));
             }
         }

@@ -108,21 +108,18 @@ class PotProductController extends Controller
         $data['weight'] = trim($data['weight'],  '|');
         $data['price'] = trim($data['price'],  '|');
 
-//        dd($data);
-
         $potProduct->fill($data)->save();
 
         $data['pot_product_id'] = $potProduct->id;
 
         if ($PotProductRequest->hasFile('image')) {
             foreach ($PotProductRequest->file('image') as $file) {
-//                dd($file->hashName());
                 $name= save_image($file, PotImage::query());
                 $path = Storage::putFileAs('public/images', $file, $name); // Даем путь к этому файлу
                 $data['image'] = $path;
                 PotImage::create($data);
 
-//                ImageManager::gd()->read($file)->scaleDown(360,  290)->save(storage_path('app/public/images/'.save_image($file, PotImage::query())));
+                ImageManager::gd()->read($file)->scaleDown(360,  290)->save(storage_path('app/images/'.$name));
             }
         }
 
