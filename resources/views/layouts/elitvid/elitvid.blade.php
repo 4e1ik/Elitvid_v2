@@ -23,7 +23,7 @@
     <link rel="stylesheet" href="{{asset('/elitvid_assets/newDesign/newDesign/reset.css')}}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
     <!--    <link rel="stylesheet" href="newDesign/newDesign/dist/style.css">-->
-    <link rel="stylesheet" href="{{asset('/elitvid_assets/newDesign/newDesign/style.css')}}?v1.1">
+    <link rel="stylesheet" href="{{asset('/elitvid_assets/newDesign/newDesign/style.css')}}?v1.2">
     <link rel="shortcut icon" href="{{asset('/elitvid_assets/newDesign/newDesign/imgs/logo/logo.svg')}}">
 
     <title>Elitvid</title>
