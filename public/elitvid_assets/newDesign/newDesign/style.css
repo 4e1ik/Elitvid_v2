@@ -27,6 +27,10 @@
   font-style: normal;
   font-display: swap;
 }
+.grecaptcha-badge {
+  visibility: hidden;
+}
+
 h1 {
   font-size: 3.4375em;
   font-family: "Merriweather";

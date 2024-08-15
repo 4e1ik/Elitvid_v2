@@ -76,6 +76,10 @@ $input--radius: 5px;
 //Время трансформации
 $transition-duration: 0.2s;
 
+.grecaptcha-badge {
+    visibility: hidden;
+}
+
 
 h1 {
     font-size: 3.4375em;
