@@ -82,57 +82,47 @@
                     <h1 class="animated fadeInLeft">21:00</h1>
                     <p class="animated fadeInRight">Sat,October 1st 2029</p>
                 </li>
-{{--                <li class="ripple">--}}
-{{--                    <a href="{{route('admin_catalog')}}" class="nav-header">--}}
-{{--                        <span class="icon-book-open icons"></span> Каталог--}}
-{{--                    </a>--}}
-{{--                </li>--}}
                 <li class="ripple">
-                    <a href="{{route('admin_pots')}}" class="nav-header">
+                    <a class="tree-toggle nav-header">
                         <span class="icon-drawar icons"></span> Кашпо
+                        <span class="fa-angle-right fa right-arrow text-right"></span>
                     </a>
+                    <ul class="nav nav-list tree" style="display: none;">
+                        <li><a href="{{route('admin_round_pots')}}">Круглые кашпо</a></li>
+                        <li><a href="{{route('admin_square_pots')}}">Квадратные кашпо</a></li>
+                        <li><a href="{{route('admin_rectangular_pots')}}">Прямоугольные кашпо</a></li>
+                    </ul>
                 </li>
                 <li class="ripple">
-                    <a href="{{route('admin_benches')}}" class="nav-header">
+                    <a class="tree-toggle nav-header">
                         <span class="icon-vector icons"></span> Скамейки
+                        <span class="fa-angle-right fa right-arrow text-right"></span>
                     </a>
+                    <ul class="nav nav-list tree" style="display: none;">
+                        <li><a href="{{route('admin_benches_verona')}}">Коллекция Verona</a></li>
+                        <li><a href="{{route('admin_benches_stones')}}">Коллекция Stones</a></li>
+                        <li><a href="{{route('admin_benches_solo')}}">Коллекция Solo</a></li>
+                        <li><a href="{{route('admin_benches_lines')}}">Коллекция lines</a></li>
+                        <li><a href="{{route('admin_benches_street_furniture')}}">Коллекция Street furniture</a></li>
+                    </ul>
                 </li>
-{{--                <li class="ripple">--}}
-{{--                    <a href="{{route('admin_textures')}}" class="nav-header">--}}
-{{--                        <span class="fa-slack fa"></span> Текстуры--}}
-{{--                    </a>--}}
-{{--                </li>--}}
                 <li class="ripple">
-                    <a href="{{route('admin_gallery')}}" class="nav-header">
+                    <a class="tree-toggle nav-header">
                         <span class="fa-image fa"></span> Примеры работ
+                        <span class="fa-angle-right fa right-arrow text-right"></span>
                     </a>
+                    <ul class="nav nav-list tree" style="display: none;">
+                        <li><a href="{{route('admin_pots_images')}}">Картинки страницы кашпо</a></li>
+                        <li><a href="{{route('admin_benches_images')}}">Картинки страницы скамеек</a></li>
+                        <li><a href="{{route('admin_main_page_images')}}">Картинки главной страницы</a></li>
+                        <li><a href="{{route('admin_decorative_elements_images')}}">Картинки страницы декоративных элементов</a></li>
+                        <li><a href="{{route('admin_bollards_images')}}">Картинки страницы боллард</a></li>
+                        <li><a href="{{route('admin_parklets_and_naves_images')}}">Картинки страницы парклетов и навесов</a></li>
+                        <li><a href="{{route('admin_columns_and_panels_images')}}">Картинки страницы столбов и накрывок</a></li>
+                        <li><a href="{{route('admin_facade_walls_images')}}">Картинки страницы фасадных лепнин и панелей</a></li>
+                        <li><a href="{{route('admin_rotundas_images')}}">Картинки страницы ротонд и коллонад</a></li>
+                    </ul>
                 </li>
-{{--                <li class="ripple">--}}
-{{--                    <a class="tree-toggle nav-header">--}}
-{{--                        <span class="fa-diamond fa"></span> Кашпо--}}
-{{--                        <span class="fa-angle-right fa right-arrow text-right"></span>--}}
-{{--                    </a>--}}
-{{--                    <ul class="nav nav-list tree">--}}
-{{--                        <li><a href="{{route('admin_round_pots')}}">Круглые кашпо</a></li>--}}
-{{--                        <li><a href="{{route('admin_square_pots')}}">Квадратные кашпо</a></li>--}}
-{{--                        <li><a href="{{route('admin_rectangular_pots')}}">Прямоугольные кашпо</a></li>--}}
-{{--                        <li><a href="{{route('admin_pots')}}">Все кашпо</a></li>--}}
-{{--                        <li><a href="{{route('admin_pots_gallery')}}">Примеры работ</a></li>--}}
-{{--                        <li><a href="{{route('admin_pots_textures')}}">Текстуры</a></li>--}}
-
-{{--                    </ul>--}}
-{{--                </li>--}}
-{{--                <li class="ripple">--}}
-{{--                    <a class="tree-toggle nav-header">--}}
-{{--                        <span class="fa-diamond fa"></span> Скамейки--}}
-{{--                        <span class="fa-angle-right fa right-arrow text-right"></span>--}}
-{{--                    </a>--}}
-{{--                    <ul class="nav nav-list tree">--}}
-{{--                        <li><a href="{{route('admin_benches')}}">Все скамейки</a></li>--}}
-{{--                        <li><a href="{{route('admin_benches_gallery')}}">Примеры работ</a></li>--}}
-{{--                        <li><a href="{{route('admin_benches_textures')}}">Текстуры</a></li>--}}
-{{--                    </ul>--}}
-{{--                </li>--}}
             </ul>
         </div>
     </div>
@@ -623,30 +613,46 @@
     <div class="mimin-mobile-menu-list">
         <div class="col-md-12 sub-mimin-mobile-menu-list animated fadeInLeft">
             <ul class="nav nav-list">
-{{--                <li class="ripple">--}}
-{{--                    <a href="{{route('admin_catalog')}}" class="nav-header">--}}
-{{--                        <span class="icon-book-open icons"></span> Каталог--}}
-{{--                    </a>--}}
-{{--                </li>--}}
                 <li class="ripple">
-                    <a href="{{route('admin_pots')}}" class="nav-header">
+                    <a class="tree-toggle nav-header">
                         <span class="icon-drawar icons"></span> Кашпо
+                        <span class="fa-angle-right fa right-arrow text-right"></span>
                     </a>
+                    <ul class="nav nav-list tree" style="display: none;">
+                        <li><a href="{{route('admin_round_pots')}}">Круглые кашпо</a></li>
+                        <li><a href="{{route('admin_square_pots')}}">Квадратные кашпо</a></li>
+                        <li><a href="{{route('admin_rectangular_pots')}}">Прямоугольные кашпо</a></li>
+                    </ul>
                 </li>
                 <li class="ripple">
-                    <a href="{{route('admin_benches')}}" class="nav-header">
+                    <a class="tree-toggle nav-header">
                         <span class="icon-vector icons"></span> Скамейки
+                        <span class="fa-angle-right fa right-arrow text-right"></span>
                     </a>
+                    <ul class="nav nav-list tree" style="display: none;">
+                        <li><a href="{{route('admin_benches_verona')}}">Коллекция Verona</a></li>
+                        <li><a href="{{route('admin_benches_stones')}}">Коллекция Stones</a></li>
+                        <li><a href="{{route('admin_benches_solo')}}">Коллекция Solo</a></li>
+                        <li><a href="{{route('admin_benches_lines')}}">Коллекция lines</a></li>
+                        <li><a href="{{route('admin_benches_street_furniture')}}">Коллекция Street furniture</a></li>
+                    </ul>
                 </li>
-{{--                <li class="ripple">--}}
-{{--                    <a href="{{route('admin_textures')}}" class="nav-header">--}}
-{{--                        <span class="fa-slack fa"></span> Текстуры--}}
-{{--                    </a>--}}
-{{--                </li>--}}
                 <li class="ripple">
-                    <a href="{{route('admin_gallery')}}" class="nav-header">
+                    <a class="tree-toggle nav-header">
                         <span class="fa-image fa"></span> Примеры работ
+                        <span class="fa-angle-right fa right-arrow text-right"></span>
                     </a>
+                    <ul class="nav nav-list tree" style="display: none;">
+                        <li><a href="{{route('admin_pots_images')}}">Картинки страницы кашпо</a></li>
+                        <li><a href="{{route('admin_benches_images')}}">Картинки страницы скамеек</a></li>
+                        <li><a href="{{route('admin_main_page_images')}}">Картинки главной страницы</a></li>
+                        <li><a href="{{route('admin_decorative_elements_images')}}">Картинки страницы декоративных элементов</a></li>
+                        <li><a href="{{route('admin_bollards_images')}}">Картинки страницы боллард</a></li>
+                        <li><a href="{{route('admin_parklets_and_naves_images')}}">Картинки страницы парклетов и навесов</a></li>
+                        <li><a href="{{route('admin_columns_and_panels_images')}}">Картинки страницы столбов и накрывок</a></li>
+                        <li><a href="{{route('admin_facade_walls_images')}}">Картинки страницы фасадных лепнин и панелей</a></li>
+                        <li><a href="{{route('admin_rotundas_images')}}">Картинки страницы ротонд и коллонад</a></li>
+                    </ul>
                 </li>
             </ul>
         </div>

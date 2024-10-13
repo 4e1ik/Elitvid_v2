@@ -99,9 +99,35 @@ Route::post('/send_mail', [MailController::class, 'send'])->name('send_mail');
 
 Route::middleware('auth')->where([])->prefix('admin')->group(function () {
     Route::get('/', [AdminController::class, 'index'])->name('admin');
-    Route::get('/benches', [AdminController::class, 'benches'])->name('admin_benches');
-    Route::get('/pots', [AdminController::class, 'pots'])->name('admin_pots');
-    Route::get('/gallery', [AdminController::class, 'gallery'])->name('admin_gallery');
+
+//    Route::get('/benches', [AdminController::class, 'benches'])->name('admin_benches');
+    Route::prefix('benches')->group(function (){
+        Route::get('/benches_verona', [AdminController::class, 'benches_verona'])->name('admin_benches_verona');
+        Route::get('/benches_stones', [AdminController::class, 'benches_stones'])->name('admin_benches_stones');
+        Route::get('/benches_solo', [AdminController::class, 'benches_solo'])->name('admin_benches_solo');
+        Route::get('/benches_lines', [AdminController::class, 'benches_lines'])->name('admin_benches_lines');
+        Route::get('/benches_street_furniture', [AdminController::class, 'benches_street_furniture'])->name('admin_benches_street_furniture');
+    });
+
+//    Route::get('/pots', [AdminController::class, 'pots'])->name('admin_pots');
+    Route::prefix('pots')->group(function (){
+        Route::get('/round_pots', [AdminController::class, 'round_pots'])->name('admin_round_pots');
+        Route::get('/rectangular_pots', [AdminController::class, 'rectangular_pots'])->name('admin_rectangular_pots');
+        Route::get('/square_pots', [AdminController::class, 'square_pots'])->name('admin_square_pots');
+    });
+
+//    Route::get('/gallery', [AdminController::class, 'gallery'])->name('admin_gallery');
+    Route::prefix('gallery')->group(function (){
+        Route::get('/pots_images', [AdminController::class, 'pots_images'])->name('admin_pots_images');
+        Route::get('/benches_images', [AdminController::class, 'benches_images'])->name('admin_benches_images');
+        Route::get('/main_page_images', [AdminController::class, 'main_page_images'])->name('admin_main_page_images');
+        Route::get('/decorative_elements_images', [AdminController::class, 'decorative_elements_images'])->name('admin_decorative_elements_images');
+        Route::get('/bollards_images', [AdminController::class, 'bollards_images'])->name('admin_bollards_images');
+        Route::get('/parklets_and_naves_images', [AdminController::class, 'parklets_and_naves_images'])->name('admin_parklets_and_naves_images');
+        Route::get('/columns_and_panels_images', [AdminController::class, 'columns_and_panels_images'])->name('admin_columns_and_panels_images');
+        Route::get('/facade_walls_images', [AdminController::class, 'facade_walls_images'])->name('admin_facade_walls_images');
+        Route::get('/rotundas_images', [AdminController::class, 'rotundas_images'])->name('admin_rotundas_images');
+    });
 
     Route::get('/create/{route}', [AdminController::class, 'create'])->name('create');
 
