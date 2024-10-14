@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 document.addEventListener('DOMContentLoaded', function () {
     var menuBtn1 = document.querySelectorAll('.open_popup_application1');
-    menuBtn.forEach(function (element) {
+    menuBtn1.forEach(function (element) {
         element.addEventListener('click', function () {
             popup.style.display = 'block';
         });

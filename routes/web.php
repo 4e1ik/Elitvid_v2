@@ -100,7 +100,7 @@ Route::post('/send_mail', [MailController::class, 'send'])->name('send_mail');
 Route::middleware('auth')->where([])->prefix('admin')->group(function () {
     Route::get('/', [AdminController::class, 'index'])->name('admin');
 
-//    Route::get('/benches', [AdminController::class, 'benches'])->name('admin_benches');
+    // Скамейки в панели администратора
     Route::prefix('benches')->group(function (){
         Route::get('/benches_verona', [AdminController::class, 'benches_verona'])->name('admin_benches_verona');
         Route::get('/benches_stones', [AdminController::class, 'benches_stones'])->name('admin_benches_stones');
@@ -109,14 +109,14 @@ Route::middleware('auth')->where([])->prefix('admin')->group(function () {
         Route::get('/benches_street_furniture', [AdminController::class, 'benches_street_furniture'])->name('admin_benches_street_furniture');
     });
 
-//    Route::get('/pots', [AdminController::class, 'pots'])->name('admin_pots');
+    // Кашпо в панели администратора
     Route::prefix('pots')->group(function (){
         Route::get('/round_pots', [AdminController::class, 'round_pots'])->name('admin_round_pots');
         Route::get('/rectangular_pots', [AdminController::class, 'rectangular_pots'])->name('admin_rectangular_pots');
         Route::get('/square_pots', [AdminController::class, 'square_pots'])->name('admin_square_pots');
     });
 
-//    Route::get('/gallery', [AdminController::class, 'gallery'])->name('admin_gallery');
+    // Примеры работ в панели администратора
     Route::prefix('gallery')->group(function (){
         Route::get('/pots_images', [AdminController::class, 'pots_images'])->name('admin_pots_images');
         Route::get('/benches_images', [AdminController::class, 'benches_images'])->name('admin_benches_images');
