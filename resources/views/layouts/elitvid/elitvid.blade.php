@@ -23,7 +23,7 @@
     <link rel="stylesheet" href="{{asset('/elitvid_assets/newDesign/newDesign/reset.css')}}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
     <!--    <link rel="stylesheet" href="newDesign/newDesign/dist/style.css">-->
-    <link rel="stylesheet" href="{{asset('/elitvid_assets/newDesign/newDesign/style.css')}}?v1.2">
+    <link rel="stylesheet" href="{{asset('/elitvid_assets/newDesign/newDesign/style.css')}}?v1.3">
     <link rel="shortcut icon" href="{{asset('/elitvid_assets/newDesign/newDesign/imgs/logo/logo.svg')}}">
 
     <title>Elitvid</title>
@@ -129,6 +129,9 @@
                 </div>
             </div>
         </div>
+    </div>
+    <div class="my_site">
+        <h5>Developed by <a href="https://www.instagram.com/artemi.sevostian?igsh=djFyeWRnaTBwNGNl">Artemi Sevostian</a></h5>
     </div>
 </footer>
 <script src="https://www.google.com/recaptcha/api.js?render={{config('services.recaptcha.site_key')}}"></script>

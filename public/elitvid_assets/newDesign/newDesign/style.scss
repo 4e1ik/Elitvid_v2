@@ -1645,6 +1645,17 @@ footer {
     padding: 3.75em 8.125em;
     border-top: 1px solid $stroke-main--color;
 
+    .my_site {
+        display: flex;
+        justify-content: center;
+        color: #2e2e2e;
+
+        a {
+            color: #53555a;;
+        }
+
+    }
+
     .footer-section {
         display: flex;
         justify-content: space-between;
@@ -1963,6 +1974,12 @@ footer {
 
     footer {
         padding: 3.75em 3.125em;
+
+        .my_site {
+            h5 {
+                font-size: 1em;
+            }
+        }
     }
 }
 
