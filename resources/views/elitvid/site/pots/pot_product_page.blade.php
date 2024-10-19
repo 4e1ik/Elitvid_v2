@@ -105,8 +105,8 @@
                                     </div>
                                     <div class="table_row__price">
                                         <p>Цена</p>
-                                        <p class="thumbnail price">от {{explode('/', explode('|',$row)[2])[0]}}</p>
-                                        <p class="thumbnail mobile-price">от {{explode('/', explode('|',$row)[2])[0]}}</p>
+                                        <p class="thumbnail price">от {{explode('|',$row)[2]}}</p>
+                                        <p class="thumbnail mobile-price">от {{explode('|',$row)[2]}}</p>
                                     </div>
                                 </div>
                             @endforeach
@@ -136,20 +136,6 @@
 {{--                    @dd($rand_products)--}}
                     <div class="offered_product-swiper-wrapper__slider swiper-wrapper">
                         <!-- Slides -->
-{{--                        @foreach($rand_products as $rand_product)--}}
-{{--                            {{$product->collection}}--}}
-{{--                            {{$rand_product->collection}}--}}
-{{--                            <div class="swiper-slide">--}}
-{{--                                <div class="direction">--}}
-{{--                                    <img src="{{asset('storage/'.str_replace('public/','',$rand_product->pot_images[0]->image))}}"--}}
-{{--                                         alt="Фотография направления кашпо">--}}
-{{--                                    <a href="{{route('show_pot_product', ['id' => $rand_product->id])}}">--}}
-{{--                                        <button>{{$rand_product->name}}</button>--}}
-{{--                                    </a>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                        @endforeach--}}
-
                         @foreach($rand_products->where('collection', $product->collection) as $rand_product)
                             <div class="swiper-slide">
                                 <div class="direction">

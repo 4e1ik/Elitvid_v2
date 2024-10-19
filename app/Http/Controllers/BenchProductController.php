@@ -64,7 +64,17 @@ class BenchProductController extends Controller
             }
         }
 
-        return redirect(route('admin_benches'));
+        $collection = $data['collection'];
+
+        $benchRoutes = [
+            'Verona' => route('admin_benches_verona'),
+            'Stones' => route('admin_benches_stones'),
+            'lines' => route('admin_benches_solo'),
+            'Solo' => route('admin_benches_lines'),
+            'Street_furniture' => route('admin_benches_street_furniture'),
+        ];
+
+        return redirect($benchRoutes[$collection]);
     }
 
     /**
@@ -125,7 +135,17 @@ class BenchProductController extends Controller
             }
         }
 
-        return redirect(route('admin_benches'));
+        $collection = $data['collection'];
+
+        $benchRoutes = [
+            'Verona' => route('admin_benches_verona'),
+            'Stones' => route('admin_benches_stones'),
+            'lines' => route('admin_benches_solo'),
+            'Solo' => route('admin_benches_lines'),
+            'Street_furniture' => route('admin_benches_street_furniture'),
+        ];
+
+        return redirect($benchRoutes[$collection]);
     }
 
     /**
@@ -139,6 +159,6 @@ class BenchProductController extends Controller
         }
 
         $benchProduct->delete();
-        return redirect(route('admin_benches'));
+        return back();
     }
 }

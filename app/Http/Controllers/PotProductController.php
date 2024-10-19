@@ -65,7 +65,15 @@ class PotProductController extends Controller
             }
         }
 
-        return redirect(route('admin_pots'));
+        $collection = $data['collection'];
+
+        $potsRoutes = [
+            'Square' => route('admin_square_pots'),
+            'Round' => route('admin_round_pots'),
+            'Rectangular' => route('admin_rectangular_pots'),
+        ];
+
+        return redirect($potsRoutes[$collection]);
     }
 
     /**
@@ -126,7 +134,15 @@ class PotProductController extends Controller
             }
         }
 
-        return redirect(route('admin_pots'));
+        $collection = $data['collection'];
+
+        $potsRoutes = [
+            'Square' => route('admin_square_pots'),
+            'Round' => route('admin_round_pots'),
+            'Rectangular' => route('admin_rectangular_pots'),
+        ];
+
+        return redirect($potsRoutes[$collection]);
     }
 
     /**
@@ -140,6 +156,6 @@ class PotProductController extends Controller
         }
 
         $potProduct->delete();
-        return redirect(route('admin_pots'));
+        return back();
     }
 }

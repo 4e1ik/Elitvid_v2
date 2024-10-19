@@ -145,8 +145,8 @@
                                             <p>Цена</p>
                                             <p class="thumbnail price">от {{explode('|',$row)[2]}}</p>
                                             <p class="thumbnail mobile-price">
-                                                от {{explode('/', explode('|',$row)[2])[0]}} /
-                                                <br> {{explode('/', explode('|',$row)[2])[1]}}</p>
+                                                от {{explode('|',$row)[2]}}
+                                            </p>
                                         </div>
                                     </div>
                                 @endforeach
@@ -201,7 +201,6 @@
                     </button>
                 </div>
             </div>
-{{--            </div>--}}
         </section>
         <section class="offered_products">
             <h2>Другие формы</h2>
@@ -211,7 +210,6 @@
                     <div class="offered_product-swiper-wrapper__slider swiper-wrapper">
                         <!-- Slides -->
                         @foreach($rand_products->where('collection', $product->collection) as $rand_product)
-{{--                            @dd($rand_product)--}}
                             <div class="swiper-slide">
                                 <div class="direction">
                                     <img src="{{asset('storage/'.str_replace('public/','',$rand_product->bench_images[0]->image))}}"

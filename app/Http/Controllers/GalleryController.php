@@ -47,7 +47,21 @@ class GalleryController extends Controller
             }
         }
 
-        return redirect(route('admin_gallery'));
+        $collection = $data['type'];
+
+        $potsRoutes = [
+            'pots' => route('admin_pots_images'),
+            'benches' => route('admin_benches_images'),
+            'main_page' => route('admin_main_page_images'),
+            'decorative_elements' => route('admin_decorative_elements_images'),
+            'bollards' => route('admin_bollards_images'),
+            'parklets_and_naves' => route('admin_parklets_and_naves_images'),
+            'columns_and_panels' => route('admin_columns_and_panels_images'),
+            'facade_walls' => route('admin_facade_walls_images'),
+            'rotundas' => route('admin_rotundas_images'),
+        ];
+
+        return redirect($potsRoutes[$collection]);
     }
 
     /**
@@ -77,7 +91,7 @@ class GalleryController extends Controller
             $image->fill($data)->save();
         }
 
-        return redirect(route('admin_gallery'));
+        return back();
     }
 
     /**
@@ -91,6 +105,6 @@ class GalleryController extends Controller
         }
         $gallery->delete();
 
-        return redirect(route('admin_gallery'));
+        return back();
     }
 }
