@@ -31,7 +31,7 @@
                 {{--                @include('includes.elitvid.mobile_catalog_price_benches')--}}
             </div>
         </section>
-        @if($facade_walls->first())
+        @if($facade_walls_images->first())
             <section class="works">
                 <h2>Примеры работ</h2>
                 <div class="works-examples">
@@ -65,7 +65,7 @@
                         <!-- Additional required wrapper -->
                         <div class="main-swiper-wrapper__slider swiper-wrapper">
                             <!-- Slides -->
-                            @foreach($bollards_and_fencing_images as $item)
+                            @foreach($facade_walls_images as $item)
                                 @foreach($item->gallery_images as $image)
                                     <div class="swiper-slide"><img src="{{asset('storage/'.str_replace('public/','',$image->image))}}" alt="{{$image->description_image}}"></div>
                                 @endforeach

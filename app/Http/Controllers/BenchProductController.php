@@ -34,18 +34,17 @@ class BenchProductController extends Controller
     {
         $data = $benchProductRequest->all();
 
+        $data['size'] = [];
+        $data['weight'] = [];
+        $data['price'] = [];
         for ($i = 1;  $i<=5; $i++){
-            $data['size'] = $data['size'].'|'.$data['size'.$i];
-            unset($data['size'.$i]);
-            $data['weight'] = $data['weight'].'|'.$data['weight'.$i];
-            unset($data['weight'.$i]);
-            $data['price'] = $data['price'].'|'.$data['price'.$i];
-            unset($data['price'.$i]);
+            $data['size'][$i] = $data['size'.$i];
+            $data['weight'][$i] = $data['weight'.$i];
+            $data['price'][$i] = $data['price'.$i];
         }
-
-        $data['size'] = trim($data['size'],  '|');
-        $data['weight'] = trim($data['weight'],  '|');
-        $data['price'] = trim($data['price'],  '|');
+        $data['size'] = implode('|', $data['size']);
+        $data['weight'] = implode('|', $data['weight']);
+        $data['price'] = implode('|', $data['price']);
 
         $benchProduct = BenchProduct::create($data);
 
@@ -107,18 +106,17 @@ class BenchProductController extends Controller
     {
         $data = $benchProductRequest->all();
 
+        $data['size'] = [];
+        $data['weight'] = [];
+        $data['price'] = [];
         for ($i = 1;  $i<=5; $i++){
-            $data['size'] = $data['size'].'|'.$data['size'.$i];
-            unset($data['size'.$i]);
-            $data['weight'] = $data['weight'].'|'.$data['weight'.$i];
-            unset($data['weight'.$i]);
-            $data['price'] = $data['price'].'|'.$data['price'.$i];
-            unset($data['price'.$i]);
+            $data['size'][$i] = $data['size'.$i];
+            $data['weight'][$i] = $data['weight'.$i];
+            $data['price'][$i] = $data['price'.$i];
         }
-
-        $data['size'] = trim($data['size'],  '|');
-        $data['weight'] = trim($data['weight'],  '|');
-        $data['price'] = trim($data['price'],  '|');
+        $data['size'] = implode('|', $data['size']);
+        $data['weight'] = implode('|', $data['weight']);
+        $data['price'] = implode('|', $data['price']);
 
         $benchProduct->fill($data)->save();
 

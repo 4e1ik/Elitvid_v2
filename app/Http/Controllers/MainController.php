@@ -22,26 +22,26 @@ class MainController extends Controller
 
     function facade_stucco_molding_and_panels() {
         $gallery = Gallery::query()->with(['gallery_images'])->latest()->get();
-        $facade_walls = $gallery->where('type', 'facade_walls');
-        return view('elitvid.site.facade_stucco_molding_and_panels', compact('facade_walls'));
+        $facade_walls_images = $gallery->where('type', 'facade_walls');
+        return view('elitvid.site.facade_stucco_molding_and_panels', compact('facade_walls_images'));
     }
 
     function parklets_and_canopies() {
         $gallery = Gallery::query()->with(['gallery_images'])->latest()->get();
-        $parklets_and_naves = $gallery->where('type', 'parklets_and_naves');
-        return view('elitvid.site.parklets_and_canopies',compact('parklets_and_naves'));
+        $parklets_and_naves_images = $gallery->where('type', 'parklets_and_naves');
+        return view('elitvid.site.parklets_and_canopies',compact('parklets_and_naves_images'));
     }
 
     function pillars_and_covers() {
         $gallery = Gallery::query()->with(['gallery_images'])->latest()->get();
-        $columns_and_panels = $gallery->where('type', 'columns_and_panels');
-        return view('elitvid.site.pillars_and_covers', compact('columns_and_panels'));
+        $columns_and_panels_images = $gallery->where('type', 'columns_and_panels');
+        return view('elitvid.site.pillars_and_covers', compact('columns_and_panels_images'));
     }
 
     function rotundas_and_colonnades() {
         $gallery = Gallery::query()->with(['gallery_images'])->latest()->get();
-        $rotundas_and_colonnades = $gallery->where('type', '$rotundas_and_colonnades');
-        return view('elitvid.site.rotundas_and_colonnades', compact('rotundas_and_colonnades'));
+        $rotundas_and_colonnades_images = $gallery->where('type', '$rotundas_and_colonnades');
+        return view('elitvid.site.rotundas_and_colonnades', compact('rotundas_and_colonnades_images'));
     }
 
     function about() {
@@ -55,23 +55,33 @@ class MainController extends Controller
         $j = 1;
 
         $rows = [];
+        $arr_size = ['','','','',''];
+        $arr_weight = ['','','','',''];
+        $arr_price = ['','','','',''];
         foreach ($products as $product) {
             $p_size = explode("|", $product->size);
             $p_weight = explode("|", $product->weight);
             $p_price = explode("|", $product->price);
 
-
-            $count = min(count($p_price), count($p_weight), count($p_size));
-
-
-            for ($key = 0; $key < $count; $key++){
-                if ($p_size[$key]){
-                    if ($p_weight[$key]){
-                        if ($p_price[$key]){
-                            $rows[$key] = $p_size[$key].'|'.$p_weight[$key].'|'.$p_price[$key];
-                        }
-                    }
+            for($i=0;$i<5;$i++){
+                if(empty($p_size[$i])) {
+                    $arr_size[$i] = '';
+                }  else {
+                    $arr_size[$i] = $p_size[$i];
                 }
+
+                if(empty($p_weight[$i])){
+                    $arr_weight[$i] = '';
+                }  else {
+                    $arr_weight[$i] = $p_weight[$i];
+                }
+
+                if(empty($p_price[$i])){
+                    $arr_price[$i] = '';
+                }  else {
+                    $arr_price[$i] = $p_price[$i];
+                }
+                $rows[$i] = (empty($product->size) ? '' : $arr_size[$i]).'|'.(empty($product->weight) ? '' : $arr_weight[$i]).'|'.(empty($product->price) ? '' : $arr_price[$i]);
             }
         }
 
@@ -87,22 +97,33 @@ class MainController extends Controller
         $j = 1;
 
         $rows = [];
+        $arr_size = ['','','','',''];
+        $arr_weight = ['','','','',''];
+        $arr_price = ['','','','',''];
         foreach ($products as $product) {
             $p_size = explode("|", $product->size);
             $p_weight = explode("|", $product->weight);
             $p_price = explode("|", $product->price);
 
-            $count = min(count($p_price), count($p_weight), count($p_size));
-
-
-            for ($key = 0; $key < $count; $key++){
-                if ($p_size[$key]){
-                    if ($p_weight[$key]){
-                        if ($p_price[$key]){
-                            $rows[$key] = $p_size[$key].'|'.$p_weight[$key].'|'.$p_price[$key];
-                        }
-                    }
+            for($i=0;$i<5;$i++){
+                if(empty($p_size[$i])) {
+                    $arr_size[$i] = '';
+                }  else {
+                    $arr_size[$i] = $p_size[$i];
                 }
+
+                if(empty($p_weight[$i])){
+                    $arr_weight[$i] = '';
+                }  else {
+                    $arr_weight[$i] = $p_weight[$i];
+                }
+
+                if(empty($p_price[$i])){
+                    $arr_price[$i] = '';
+                }  else {
+                    $arr_price[$i] = $p_price[$i];
+                }
+                $rows[$i] = (empty($product->size) ? '' : $arr_size[$i]).'|'.(empty($product->weight) ? '' : $arr_weight[$i]).'|'.(empty($product->price) ? '' : $arr_price[$i]);
             }
         }
 

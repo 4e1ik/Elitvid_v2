@@ -40,7 +40,7 @@
                         <!-- Additional required wrapper -->
                         <div class="main-swiper-wrapper__slider swiper-wrapper">
                             <!-- Slides -->
-                            @foreach($bollards_and_fencing_images as $item)
+                            @foreach($rotundas_and_colonnades_images as $item)
                                 @foreach($item->gallery_images as $image)
                                     <div class="swiper-slide"><img src="{{asset('storage/'.str_replace('public/','',$image->image))}}" alt="{{$image->description_image}}"></div>
                                 @endforeach
@@ -66,7 +66,7 @@
                         <!-- Additional required wrapper -->
                         <div class="main-swiper-wrapper__slider swiper-wrapper">
                             <!-- Slides -->
-                            @foreach($bollards_and_fencing_images as $item)
+                            @foreach($rotundas_and_colonnades_images as $item)
                                 @foreach($item->gallery_images as $image)
                                     <div class="swiper-slide"><img src="{{asset('storage/'.str_replace('public/','',$image->image))}}" alt="{{$image->description_image}}"></div>
                                 @endforeach

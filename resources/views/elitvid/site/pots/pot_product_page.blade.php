@@ -93,22 +93,34 @@
                         </div>
                         <div class="content_table__table">
                             @foreach($rows  as  $row)
-                                <div class="table__row">
-                                    <div class="table_row__size">
-                                        <p>Размер</p>
-                                        <p>{{explode('|',$row)[0]}}</p>
+                                @if(!empty(explode('|',$row)[0]) || !empty(explode('|',$row)[1]) || !empty(explode('|',$row)[2]))
+                                    <div class="table__row">
+                                        @if(!empty(explode('|',$row)[0]))
+                                            <div class="table_row__size">
+                                                <p>Размер</p>
+                                                <p>{{explode('|',$row)[0]}}</p>
+                                            </div>
+                                        @endif
+                                        @if(!empty(explode('|',$row)[0]) && !empty(explode('|',$row)[1]))
+                                            <div class="table_row__vertical-line"></div>
+                                        @endif
+                                        @if(!empty(explode('|',$row)[1]))
+                                            <div class="table_row__weight">
+                                                <p>Вес</p>
+                                                <p class="thumbnail">{{explode('|',$row)[1]}}</p>
+                                            </div>
+                                        @endif
+                                        @if(!empty(explode('|',$row)[2]))
+                                            <div class="table_row__price">
+                                                <p>Цена</p>
+                                                <p class="thumbnail price">от {{explode('|',$row)[2]}}</p>
+                                                <p class="thumbnail mobile-price">
+                                                    от {{explode('|',$row)[2]}}
+                                                </p>
+                                            </div>
+                                        @endif
                                     </div>
-                                    <div class="table_row__vertical-line"></div>
-                                    <div class="table_row__weight">
-                                        <p>Вес</p>
-                                        <p class="thumbnail">{{explode('|',$row)[1]}}</p>
-                                    </div>
-                                    <div class="table_row__price">
-                                        <p>Цена</p>
-                                        <p class="thumbnail price">от {{explode('|',$row)[2]}}</p>
-                                        <p class="thumbnail mobile-price">от {{explode('|',$row)[2]}}</p>
-                                    </div>
-                                </div>
+                                @endif
                             @endforeach
                         </div>
                         <div class="content_table__description">
