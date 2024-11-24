@@ -31,7 +31,7 @@
                 {{--                @include('includes.elitvid.mobile_catalog_price_benches')--}}
             </div>
         </section>
-        @if($parklets_and_naves->first())
+        @if($parklets_and_naves_images->first())
             <section class="works">
                 <h2>Примеры работ</h2>
                 <div class="works-examples">
