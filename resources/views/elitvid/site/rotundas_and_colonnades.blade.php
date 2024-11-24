@@ -32,7 +32,7 @@
                 {{--                @include('includes.elitvid.mobile_catalog_price_benches')--}}
             </div>
         </section>
-{{--        @if($rotundas_and_colonnades->first())--}}
+{{--        @if($rotundas_and_colonnades_images->first())--}}
             <section class="works">
                 <h2>Примеры работ</h2>
                 <div class="works-examples">
