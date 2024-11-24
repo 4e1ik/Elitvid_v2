@@ -40,7 +40,7 @@ class MainController extends Controller
 
     function rotundas_and_colonnades() {
         $gallery = Gallery::query()->with(['gallery_images'])->latest()->get();
-        $rotundas_and_colonnades_images = $gallery->where('type', '$rotundas_and_colonnades');
+        $rotundas_and_colonnades_images = $gallery->where('type', 'rotundas');
         return view('elitvid.site.rotundas_and_colonnades', compact('rotundas_and_colonnades_images'));
     }
 
