@@ -215,7 +215,7 @@ class MainController extends Controller
         $metaTags = MetaTag::where('page', 'directions')->get();
         $metaTitle = $metaTags[0]->title;
         $metaDescription = $metaTags[0]->description;
-        return view('elitvid.site.directions', 'metaTitle', 'metaDescription');
+        return view('elitvid.site.directions', compact('metaTitle', 'metaDescription'));
     }
 
     function decorations()
