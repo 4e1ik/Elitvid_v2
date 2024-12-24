@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\BenchProduct;
 use App\Models\Gallery;
+use App\Models\MetaTag;
 use App\Models\PotProduct;
 
 class MainController extends Controller
@@ -11,37 +12,55 @@ class MainController extends Controller
     function index() {
         $gallery = Gallery::query()->with(['gallery_images'])->latest()->get();
         $main_page_images = $gallery->where('type', 'main_page');
-        return view('elitvid.site.index', compact( 'main_page_images'));
+        $metaTags = MetaTag::where('page', 'main')->get();
+        $metaTitle = $metaTags[0]->title;
+        $metaDescription = $metaTags[0]->description;
+        return view('elitvid.site.index', compact( 'main_page_images', 'metaTitle', 'metaDescription'));
     }
 
     function bollards_and_fencing() {
         $gallery = Gallery::query()->with(['gallery_images'])->latest()->get();
         $bollards_and_fencing_images = $gallery->where('type', 'bollards');
-        return view('elitvid.site.bollards_and_fencing', compact('bollards_and_fencing_images'));
+        $metaTags = MetaTag::where('page', 'bollards_and_fencing')->get();
+        $metaTitle = $metaTags[0]->title;
+        $metaDescription = $metaTags[0]->description;
+        return view('elitvid.site.bollards_and_fencing', compact('bollards_and_fencing_images', 'metaTitle', 'metaDescription'));
     }
 
     function facade_stucco_molding_and_panels() {
         $gallery = Gallery::query()->with(['gallery_images'])->latest()->get();
         $facade_walls_images = $gallery->where('type', 'facade_walls');
-        return view('elitvid.site.facade_stucco_molding_and_panels', compact('facade_walls_images'));
+        $metaTags = MetaTag::where('page', 'facade_stucco_molding_and_panels')->get();
+        $metaTitle = $metaTags[0]->title;
+        $metaDescription = $metaTags[0]->description;
+        return view('elitvid.site.facade_stucco_molding_and_panels', compact('facade_walls_images', 'metaTitle', 'metaDescription'));
     }
 
     function parklets_and_canopies() {
         $gallery = Gallery::query()->with(['gallery_images'])->latest()->get();
         $parklets_and_naves_images = $gallery->where('type', 'parklets_and_naves');
-        return view('elitvid.site.parklets_and_canopies',compact('parklets_and_naves_images'));
+        $metaTags = MetaTag::where('page', 'parklets_and_canopies')->get();
+        $metaTitle = $metaTags[0]->title;
+        $metaDescription = $metaTags[0]->description;
+        return view('elitvid.site.parklets_and_canopies',compact('parklets_and_naves_images', 'metaTitle', 'metaDescription'));
     }
 
     function pillars_and_covers() {
         $gallery = Gallery::query()->with(['gallery_images'])->latest()->get();
         $columns_and_panels_images = $gallery->where('type', 'columns_and_panels');
-        return view('elitvid.site.pillars_and_covers', compact('columns_and_panels_images'));
+        $metaTags = MetaTag::where('page', 'pillars_and_covers')->get();
+        $metaTitle = $metaTags[0]->title;
+        $metaDescription = $metaTags[0]->description;
+        return view('elitvid.site.pillars_and_covers', compact('columns_and_panels_images', 'metaTitle', 'metaDescription'));
     }
 
     function rotundas_and_colonnades() {
         $gallery = Gallery::query()->with(['gallery_images'])->latest()->get();
         $rotundas_and_colonnades_images = $gallery->where('type', 'rotundas');
-        return view('elitvid.site.rotundas_and_colonnades', compact('rotundas_and_colonnades_images'));
+        $metaTags = MetaTag::where('page', 'rotundas_and_colonnades')->get();
+        $metaTitle = $metaTags[0]->title;
+        $metaDescription = $metaTags[0]->description;
+        return view('elitvid.site.rotundas_and_colonnades', compact('rotundas_and_colonnades_images', 'metaTitle', 'metaDescription'));
     }
 
     function about() {
@@ -136,84 +155,113 @@ class MainController extends Controller
 
         $gallery = Gallery::query()->with(['gallery_images'])->latest()->get();
         $benches_images = $gallery->where('type', 'benches');
-
-        return view('elitvid.site.benches', compact('benches_images'));
+        $metaTags = MetaTag::where('page', 'benches')->get();
+        $metaTitle = $metaTags[0]->title;
+        $metaDescription = $metaTags[0]->description;
+        return view('elitvid.site.benches', compact('benches_images', 'metaTitle', 'metaDescription'));
     }
 
     function street_furniture_benches() {
 
         $benches = BenchProduct::query()->whereIn('active', [1])->with(['bench_images'])->latest()->get();
         $street_furniture_benches = $benches->where('collection', 'Street_furniture');
-
-        return view('elitvid.site.benches.street_furniture_benches', compact('street_furniture_benches'));
+        $metaTags = MetaTag::where('page', 'street_furniture_benches')->get();
+        $metaTitle = $metaTags[0]->title;
+        $metaDescription = $metaTags[0]->description;
+        return view('elitvid.site.benches.street_furniture_benches', compact('street_furniture_benches', 'metaTitle', 'metaDescription'));
     }
 
     function verona_benches() {
 
         $benches = BenchProduct::query()->whereIn('active', [1])->with(['bench_images'])->latest()->get();
         $verona_benches = $benches->where('collection', 'Verona');
-
-        return view('elitvid.site.benches.verona_benches', compact('verona_benches'));
+        $metaTags = MetaTag::where('page', 'verona_benches')->get();
+        $metaTitle = $metaTags[0]->title;
+        $metaDescription = $metaTags[0]->description;
+        return view('elitvid.site.benches.verona_benches', compact('verona_benches', 'metaTitle', 'metaDescription'));
     }
 
     function stones_benches() {
 
         $benches = BenchProduct::query()->whereIn('active', [1])->with(['bench_images'])->latest()->get();
         $stones_benches = $benches->where('collection', 'Stones');
-
-        return view('elitvid.site.benches.stones_benches', compact('stones_benches'));
+        $metaTags = MetaTag::where('page', 'stones_benches')->get();
+        $metaTitle = $metaTags[0]->title;
+        $metaDescription = $metaTags[0]->description;
+        return view('elitvid.site.benches.stones_benches', compact('stones_benches', 'metaTitle', 'metaDescription'));
     }
 
     function solo_benches() {
 
         $benches = BenchProduct::query()->whereIn('active', [1])->with(['bench_images'])->latest()->get();
         $solo_benches = $benches->where('collection', 'Solo');
-
-        return view('elitvid.site.benches.solo_benches', compact('solo_benches'));
+        $metaTags = MetaTag::where('page', 'solo_benches')->get();
+        $metaTitle = $metaTags[0]->title;
+        $metaDescription = $metaTags[0]->description;
+        return view('elitvid.site.benches.solo_benches', compact('solo_benches', 'metaTitle', 'metaDescription'));
     }
 
     function lines_benches() {
 
         $benches = BenchProduct::query()->whereIn('active', [1])->with(['bench_images'])->latest()->get();
         $lines_benches = $benches->where('collection', 'lines');
-
-        return view('elitvid.site.benches.lines_benches', compact('lines_benches'));
+        $metaTags = MetaTag::where('page', 'lines_benches')->get();
+        $metaTitle = $metaTags[0]->title;
+        $metaDescription = $metaTags[0]->description;
+        return view('elitvid.site.benches.lines_benches', compact('lines_benches', 'metaTitle', 'metaDescription'));
     }
 
     function directions() {
-        return view('elitvid.site.directions');
+        $metaTags = MetaTag::where('page', 'directions')->get();
+        $metaTitle = $metaTags[0]->title;
+        $metaDescription = $metaTags[0]->description;
+        return view('elitvid.site.directions', 'metaTitle', 'metaDescription');
     }
 
     function decorations()
     {
         $gallery = Gallery::query()->with(['gallery_images'])->latest()->get();
         $decorative_elements_images = $gallery->where('type', 'decorative_elements');
-        return view('elitvid.site.decorations', compact('decorative_elements_images'));
+        $metaTags = MetaTag::where('page', 'decorations')->get();
+        $metaTitle = $metaTags[0]->title;
+        $metaDescription = $metaTags[0]->description;
+        return view('elitvid.site.decorations', compact('decorative_elements_images', 'metaTitle', 'metaDescription'));
     }
 
     function pots() {
 
         $gallery = Gallery::query()->with(['gallery_images'])->latest()->get();
         $pots_images = $gallery->where('type', 'pots');
-
-        return view('elitvid.site.pots', compact('pots_images'));
+        $metaTags = MetaTag::where('page', 'pots')->get();
+        $metaTitle = $metaTags[0]->title;
+        $metaDescription = $metaTags[0]->description;
+        return view('elitvid.site.pots', compact('pots_images', 'metaTitle', 'metaDescription'));
     }
 
     function rectangular_pots() {
         $pots = PotProduct::query()->whereIn('active', [1])->with(['pot_images'])->latest()->get();
         $rectangular_pots = $pots->where('collection', 'Rectangular');
-        return view('elitvid.site.pots.rectangular_pots', compact('rectangular_pots'));
+        $metaTags = MetaTag::where('page', 'rectangular_pots')->get();
+        $metaTitle = $metaTags[0]->title;
+        $metaDescription = $metaTags[0]->description;
+        return view('elitvid.site.pots.rectangular_pots', compact('rectangular_pots', 'metaTitle', 'metaDescription'));
     }
 
     function square_pots() {
         $pots = PotProduct::query()->whereIn('active', [1])->with(['pot_images'])->latest()->get();
         $square_pots = $pots->where('collection', 'Square');
-        return view('elitvid.site.pots.square_pots', compact('square_pots'));
+        $metaTags = MetaTag::where('page', 'square_pots')->get();
+        $metaTitle = $metaTags[0]->title;
+        $metaDescription = $metaTags[0]->description;
+        return view('elitvid.site.pots.square_pots', compact('square_pots', 'metaTitle', 'metaDescription'));
     }
 
     function round_pots() {
         $pots = PotProduct::query()->whereIn('active', [1])->with(['pot_images'])->latest()->get();
         $round_pots = $pots->where('collection', 'Round');
-        return view('elitvid.site.pots.round_pots', compact('round_pots'));
+        $metaTags = MetaTag::where('page', 'round_pots')->get();
+        $metaTitle = $metaTags[0]->title;
+        $metaDescription = $metaTags[0]->description;
+        return view('elitvid.site.pots.round_pots', compact('round_pots', 'metaTitle', 'metaDescription'));
     }
 }

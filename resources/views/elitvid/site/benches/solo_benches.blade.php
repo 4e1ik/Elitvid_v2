@@ -9,7 +9,7 @@
         <section class="main">
             <div class="description">
                 <div class="description-text">
-                    <h1>Коллекция<br>solo</h1>
+                    <h1>Коллекция <br>solo</h1>
                     <p>Подойдёт для торговых центров, стильно впишется в любой дизайн-проект. Модели можно комбинировать между собой.</p>
                 </div>
                 <div class="submit-application">

@@ -8,7 +8,7 @@
     <section class="main">
         <div class="description">
             <div class="description-text">
-                <h1>Прямоугольные<br>кашпо</h1>
+                <h1>Прямоугольные <br>кашпо</h1>
                 <p>Композиция в таких формах смотрится очень стильно. Есть возможность добавить подсветку растений.</p>
             </div>
             <div class="submit-application">

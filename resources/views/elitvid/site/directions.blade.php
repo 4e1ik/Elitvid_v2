@@ -8,7 +8,7 @@
         <section class="main">
             <div class="description">
                 <div class="description-text">
-                    <h1>Наши<br>направления</h1>
+                    <h1>Наши <br>направления</h1>
                     <p>Доверьте нам свои идеи, и мы поможем Вам воплотить их в жизнь. Свяжитесь с нами сегодня и начните реализацию своего проекта!</p>
                 </div>
                 <div class="submit-application">
@@ -49,13 +49,39 @@
         </section>
         <section class="not_main_page produce">
             <div class="directions">
+                <style>
+                    h3{
+                        font-size: 1em;
+                        font-family: "Merriweather";
+                        text-transform: uppercase;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        font-weight: normal;
+                    }
+
+                    h3 button{
+                        font-family: "Montserrat-Medium";
+                        color: #FFFFFF;
+                        margin-top: 1.5em;
+                        width: 22.9375em;
+                        height: 3.875em;
+                        padding: 0.625em 0;
+                        border-radius: 8px;
+                        border: 1px solid #979797;
+                        background: #22242A;
+                        cursor: pointer;
+                        transition: 0.2s;
+                        text-transform: uppercase;
+                    }
+                </style>
                 <div class="direction">
                     <div class="direction__image">
                         <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/main_page/directions/pots.png')}}" alt="Фотография направления кашпо">
                     </div>
-                    <a href="{{route('pots')}}">
+                    <h3><a href="{{route('pots')}}">
                         <button>Кашпо</button>
-                    </a>
+                    </a></h3>
                 </div>
                 <div class="slogan__direction">
                     <div class="slogan__direction-text">
@@ -68,60 +94,59 @@
                             свои
                             идеи, и мы поможем воплотить их в жизнь.</p>
                     </div>
-
                 </div>
                 <div class="direction">
                     <div class="direction__image">
                         <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/main_page/directions/benches.png')}}" alt="Фотография направления скамеек">
                     </div>
-                    <a href="{{route('benches')}}">
+                    <h3><a href="{{route('benches')}}">
                         <button>Скамьи</button>
-                    </a>
+                    </a></h3>
                 </div>
                 <div class="direction">
                     <div class="direction__image">
                         <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/main_page/directions/rotundas.png')}}"
-                             alt="Фотография направления ротонд и коллонад">
+                             alt="Фотография направления ротонд и колонн">
                     </div>
-                    <a href="{{route('rotundas_and_colonnades')}}">
-                        <button>Ротонды и коллонады</button>
-                    </a>
+                    <h3><a href="{{route('rotundas_and_colonnades')}}">
+                        <button>Ротонды и колонны</button>
+                    </a></h3>
                 </div>
                 <div class="direction">
                     <div class="direction__image">
                         <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/main_page/directions/parklets.png')}}"
                              alt="Фотография направления парклетов и навесов">
                     </div>
-                    <a href="{{route('parklets_and_canopies')}}">
+                    <h3><a href="{{route('parklets_and_canopies')}}">
                         <button>Парклеты, навесы</button>
-                    </a>
+                    </a></h3>
                 </div>
                 <div class="direction">
                     <div class="direction__image">
                         <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/main_page/directions/bollards.png')}}"
                              alt="Фотография направления боллард и ограждений">
                     </div>
-                    <a href="{{route('bollards_and_fencing')}}">
+                    <h3><a href="{{route('bollards_and_fencing')}}">
                         <button>Болларды и ограждения</button>
-                    </a>
+                    </a></h3>
                 </div>
                 <div class="direction">
                     <div class="direction__image">
                         <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/main_page/directions/pillars.png')}}"
                              alt="Фотография направления столбов и накрывок">
                     </div>
-                    <a href="{{route('pillars_and_covers')}}">
+                    <h3><a href="{{route('pillars_and_covers')}}">
                         <button>Столбы и накрывки</button>
-                    </a>
+                    </a></h3>
                 </div>
                 <div class="direction">
                     <div class="direction__image">
                         <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/main_page/directions/facade_stucco.png')}}"
                              alt="Фотография направления фасадной лепнины и панелей">
                     </div>
-                    <a href="{{route('facade_stucco_molding_and_panels')}}">
+                    <h3><a href="{{route('facade_stucco_molding_and_panels')}}">
                         <button>Фасадная лепнина и панели</button>
-                    </a>
+                    </a></h3>
                 </div>
             </div>
         </section>

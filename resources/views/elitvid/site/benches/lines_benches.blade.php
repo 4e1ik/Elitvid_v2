@@ -9,7 +9,7 @@
         <section class="main">
             <div class="description">
                 <div class="description-text">
-                    <h1>Коллекция<br>lines</h1>
+                    <h1>Коллекция <br>lines</h1>
                     <p>Подходят для создания различных композиций в торговых центрах и на улице.</p>
                 </div>
                 <div class="submit-application">

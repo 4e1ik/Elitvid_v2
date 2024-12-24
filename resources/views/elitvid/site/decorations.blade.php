@@ -8,7 +8,7 @@
         <section class="main">
             <div class="description">
                 <div class="description-text">
-                    <h1>декоративные<br>элементы</h1>
+                    <h1>декоративные <br>элементы</h1>
                     <p>Изготовим изделие любой сложности с арнаментом, логотипом, металлической вставкой по Вашему эскизу или чертежу!</p>
                 </div>
                 <div class="submit-application">

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\GalleryController;
+use App\Http\Controllers\MetaTagController;
 use App\Http\Controllers\PotImageController;
 use App\Http\Controllers\BenchImageController;
 use App\Http\Controllers\MainController;
@@ -138,6 +139,10 @@ Route::middleware('auth')->where([])->prefix('admin')->group(function () {
     // Скамейки
     Route::delete('/bench/images/{benchImage}/{benchProduct}/delete', [BenchImageController::class, 'bench_image_destroy'])->name('bench_image_destroy');
     Route::put('/bench/images/{benchImage}/{benchProduct}/update', [BenchImageController::class, 'bench_image_update'])->name('bench_image_update');
+
+    //Мета-теги
+    Route::get('/metatags', [AdminController::class, 'metaTags'])->name('admin_metatags');
+    Route::put('/metatags/{metaTag}/update', [MetaTagController::class, 'update'])->name('meta_tags_update');
 
     Route::resources([
         'potProducts' => PotProductController::class,

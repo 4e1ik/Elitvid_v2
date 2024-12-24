@@ -26,7 +26,8 @@
     <link rel="stylesheet" href="{{asset('/elitvid_assets/newDesign/newDesign/style.css')}}?v1.3">
     <link rel="shortcut icon" href="{{asset('/elitvid_assets/newDesign/newDesign/imgs/logo/logo.svg')}}">
 
-    <title>Elitvid</title>
+    <title>{{$metaTitle}}</title>
+    <meta name="description" content="{{ $metaDescription ?? 'Default Description' }}">
 </head>
 <body>
 <header>
@@ -39,7 +40,7 @@
 {{--                    <button class="call">Заказать звонок</button>--}}
 {{--                </li>--}}
                 <li><a href="tel:375297034014" class="phone-number">+375 (29) 350 71 71</a></li>
-                <li><a href="tel:375297665012" class="phone-number">+7 (991) 711 08 81</a></li>
+                <li><a href="tel:79917110881" class="phone-number">+7 (991) 711 08 81</a></li>
             </ul>
         </nav>
         <button class="header__burger" id="burger">
@@ -78,8 +79,8 @@
                         <li>el_vid@mail.ru</li>
                         <li><a href="tel:375297034014" class="phone-number">+375 (29) 703 40 14</a></li>
                         <li><a href="tel:375297665012" class="phone-number">+375 (29) 766 50 12</a></li>
-                        <li><a href="tel:375297665012" class="phone-number">+375 (29) 350 71 71</a></li>
-                        <li><a href="tel:375297665012" class="phone-number">+7 (991) 711 08 81</a></li>
+                        <li><a href="tel:375293507171" class="phone-number">+375 (29) 350 71 71</a></li>
+                        <li><a href="tel:79917110881" class="phone-number">+7 (991) 711 08 81</a></li>
                     </ul>
                 </div>
 {{--                <div class="contacts-icons">--}}
@@ -117,13 +118,23 @@
                     <h4>Каталог</h4>
                     <nav class="footer-menu">
                         <ul class="catalog-text--list menu">
-                            <li><a href="{{route('pots')}}">Кашпо</a></li>
-                            <li><a href="{{route('benches')}}">Скамьи</a></li>
-                            <li><a href="{{route('rotundas_and_colonnades')}}">Ротонды и коллонады</a></li>
-                            <li><a href="{{route('parklets_and_canopies')}}">Парклет, навесы</a></li>
-                            <li><a href="{{route('bollards_and_fencing')}}">Болларды и ограждения</a></li>
-                            <li><a href="{{route('pillars_and_covers')}}">Столбы и накрывки</a></li>
-                            <li><a href="{{route('facade_stucco_molding_and_panels')}}">Фасадная лепнина и панели</a></li>
+                            <style>
+                                h5{
+                                    text-decoration: none;
+                                    cursor: pointer;
+                                    color: #FFFFFF;
+                                    margin: 0;
+                                    font-weight: normal;
+                                    font-size: 1em;
+                                }
+                            </style>
+                            <li><h5><a href="{{route('pots')}}">Кашпо</a></h5></li>
+                            <li><h5><a href="{{route('benches')}}">Скамьи</a></h5></li>
+                            <li><h5><a href="{{route('rotundas_and_colonnades')}}">Ротонды и коллонады</a></h5></li>
+                            <li><h5><a href="{{route('parklets_and_canopies')}}">Парклет, навесы</a></h5></li>
+                            <li><h5><a href="{{route('bollards_and_fencing')}}">Болларды и ограждения</a></h5></li>
+                            <li><h5><a href="{{route('pillars_and_covers')}}">Столбы и накрывки</a></h5></li>
+                            <li><h5><a href="{{route('facade_stucco_molding_and_panels')}}">Фасадная лепнина и панели</a></h5></li>
                         </ul>
                     </nav>
                 </div>
@@ -131,7 +142,7 @@
         </div>
     </div>
     <div class="my_site">
-        <h5>Developed by <a href="https://www.instagram.com/artemi.sevostian?igsh=djFyeWRnaTBwNGNl">Artemi Sevostian</a></h5>
+        <div class="h5">Developed by <a href="https://www.instagram.com/artemi.sevostian?igsh=djFyeWRnaTBwNGNl">Artemi Sevostian</a></div>
     </div>
 </footer>
 <script src="https://www.google.com/recaptcha/api.js?render={{config('services.recaptcha.site_key')}}"></script>

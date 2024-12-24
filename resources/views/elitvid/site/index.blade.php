@@ -7,7 +7,7 @@
         <section class="main">
             <div class="description">
                 <div class="description-text">
-                    <h1>современные<br>малые формы</h1>
+                    <h1>Изделия из полистоуна <br>от производителя</h1>
                     <p>Наш опыт и знания позволяют нам реализовать самые сложные и
                         оригинальные задачи по Вашим размерам, эскизам и чертежам.</p>
                 </div>
@@ -50,7 +50,7 @@
                          class="main-page-center">
                 </div>
                 <div class="description-text">
-                    <h2>Почему мы?</h2>
+                    <h2>Почему выбирают изделия из полистоуна у нас?</h2>
                     <h4>Изготовление и производство по индивидуальному проекту заказчика.</h4>
                     <div class="description-text--materials">
                         <h4>Качественные материалы</h4>
@@ -70,17 +70,24 @@
                     </div>
                 </div>
             </div>
+            <style>
+                .company-advantages .advantage .h3 {
+                    font-size: 1.75em;
+                    font-family: 'Merriweather';
+                    text-transform: uppercase;
+                }
+            </style>
             <div class="company-advantages">
                 <div class="advantage">
-                    <h3>15 +</h3>
+                    <div class="h3">15 +</div>
                     <p>лет на рынке</p>
                 </div>
                 <div class="advantage">
-                    <h3>120 +</h3>
+                    <div class="h3">120 +</div>
                     <p>успешных проектов</p>
                 </div>
                 <div class="advantage">
-                    <h3>100 +</h3>
+                    <div class="h3">100 +</div>
                     <p>довольных клиентов</p>
                 </div>
             </div>
@@ -109,20 +116,52 @@
             </div>
         </section>
         <section class="produce">
-            <h2>Наши направления</h2>
+            <h2>Каталог изделий из полистоуна</h2>
             <div class="directions">
+                <style>
+                    h3{
+                        font-size: 1em;
+                        font-family: "Merriweather";
+                        text-transform: uppercase;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        font-weight: normal;
+                    }
+
+                    h3 button{
+                        font-family: "Montserrat-Medium";
+                        color: #FFFFFF;
+                        margin-top: 1.5em;
+                        width: 22.9375em;
+                        height: 3.875em;
+                        padding: 0.625em 0;
+                        border-radius: 8px;
+                        border: 1px solid #979797;
+                        background: #22242A;
+                        cursor: pointer;
+                        transition: 0.2s;
+                        text-transform: uppercase;
+                    }
+                </style>
                 <div class="direction">
                     <div class="direction__image">
                         <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/main_page/directions/pots.png')}} " alt="Фотография направления кашпо">
                     </div>
-                    <a href="{{route('pots')}}">
+                    <h3><a href="{{route('pots')}}">
                         <button>Кашпо</button>
-                    </a>
+                    </a></h3>
                 </div>
+                <style>
+                    .slogan__direction .slogan__direction-text .h4{
+                        font-size: 1.125em;
+                        font-family: 'Montserrat-SemiBold';
+                    }
+                </style>
                 <div class="slogan__direction">
                     <div class="slogan__direction-text">
                         <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/main_page/img.png')}}" alt="">
-                        <h4>Мы воплотим в реальность любую вашу идею!</h4>
+                        <div class="h4">Мы воплотим в реальность любую вашу идею!</div>
                         <p>Работаем по индивидуальным размерам, эскизам и чертежам. Гарантируем качественное и
                             профессиональное
                             выполнение проекта. Наш опыт и знания позволяют реализовывать сложные и оригинальные задачи. Мы
@@ -136,46 +175,45 @@
                     <div class="direction__image">
                         <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/main_page/directions/benches.png')}}" alt="Фотография направления скамеек">
                     </div>
-                    <a href="{{route('benches')}}">
+                    <h3><a href="{{route('benches')}}">
                         <button>Скамьи</button>
-                    </a>
+                        </a></h3>
                 </div>
                 <div class="direction">
                     <div class="direction__image">
                         <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/main_page/directions/rotundas.png')}}"
-                             alt="Фотография направления ротонд и коллонад">
+                             alt="Фотография направления ротонд и колонн">
                     </div>
-                    <a href="{{route('rotundas_and_colonnades')}}">
-                        <button>Ротонды и коллонады</button>
-                    </a>
+                    <h3><a href="{{route('rotundas_and_colonnades')}}">
+                        <button>Ротонды и колонны</button>
+                    </a></h3>
                 </div>
                 <div class="direction">
                     <div class="direction__image">
                         <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/main_page/directions/parklets.png')}}"
                              alt="Фотография направления парклетов и навесов">
                     </div>
-
-                    <a href="{{route('parklets_and_canopies')}}">
+                    <h3><a href="{{route('parklets_and_canopies')}}">
                         <button>Парклеты, навесы</button>
-                    </a>
+                        </a></h3>
                 </div>
                 <div class="direction">
                     <div class="direction__image">
                         <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/main_page/directions/bollards.png')}}"
                              alt="Фотография направления боллард и ограждений">
                     </div>
-                    <a href="{{route('bollards_and_fencing')}}">
+                    <h3><a href="{{route('bollards_and_fencing')}}">
                         <button>Болларды и ограждения</button>
-                    </a>
+                        </a></h3>
                 </div>
                 <div class="direction">
                     <div class="direction__image">
                         <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/main_page/directions/pillars.png')}}"
                              alt="Фотография направления столбов и накрывок">
                     </div>
-                    <a href="{{route('pillars_and_covers')}}">
+                    <h3><a href="{{route('pillars_and_covers')}}">
                         <button>Столбы и накрывки</button>
-                    </a>
+                    </a></h3>
                 </div>
                 <div class="direction">
 
@@ -183,9 +221,9 @@
                         <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/main_page/directions/facade_stucco.png')}}"
                              alt="Фотография направления фасадной лепнины и панелей">
                     </div>
-                    <a href="{{route('facade_stucco_molding_and_panels')}}">
+                    <h3><a href="{{route('facade_stucco_molding_and_panels')}}">
                         <button>Фасадная лепнина и панели</button>
-                    </a>
+                    </a></h3>
                 </div>
             </div>
         </section>
@@ -198,7 +236,7 @@
             <div class="decorative_elements__main">
                 <div class="decorative_elements__description">
                     <div class="elements_main__headers">
-                        <h2>Декоративные элементы</h2>
+                        <h2>Декоративные элементы из полистоуна</h2>
                         <h4>Изготовление и производство по индивидуальному проекту заказчика.</h4>
                     </div>
                     <div class="elements_main__paragraphs">

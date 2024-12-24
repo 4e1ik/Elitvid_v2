@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\BenchProduct;
 use App\Models\Gallery;
+use App\Models\MetaTag;
 use App\Models\PotProduct;
 
 class AdminController extends Controller
@@ -14,6 +15,12 @@ class AdminController extends Controller
 
     function catalog() {
         return view('elitvid.admin.catalog');
+    }
+
+    function metaTags()
+    {
+        $metaTags = MetaTag::all();
+        return view('elitvid.admin.meta_tags', compact('metaTags'));
     }
 
     function benches_verona(BenchProduct $benchProduct) {

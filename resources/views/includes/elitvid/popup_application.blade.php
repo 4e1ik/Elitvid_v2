@@ -8,7 +8,15 @@
                           fill="#7F7F7F"/>
                 </svg>
             </div>
-            <h2>Здесь можно оставить вашу заявку</h2>
+            <style>
+                .h2 {
+                    font-size: 2.25em;
+                    font-family: 'Merriweather';
+                    text-transform: uppercase;
+                    font-weight: 300;
+                }
+            </style>
+            <div class="h2">Здесь можно оставить вашу заявку</div>
             <div class="popup__content">
                 <div class="popup_content__inputs">
                     <div class="popup__input">
@@ -90,7 +98,6 @@
                         <p>{{$message}}</p>
                     </div>
                     @enderror
-
                     <div class="submit__button">
                         <button class="form__form-button" type="button" onclick="onClick(event)">Заказать</button>
 {{--                        <button type="submit">Оставить заявку</button>--}}

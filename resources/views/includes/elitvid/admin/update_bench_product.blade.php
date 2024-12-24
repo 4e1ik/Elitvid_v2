@@ -37,81 +37,6 @@
                                                 {{$message}}
                                             </div>
                                             @enderror
-{{--                                            <h3>Цвет</h3>--}}
-{{--                                            <select class="form-control" name="color"--}}
-{{--                                                    id="">--}}
-{{--                                                <option {{ $errors->has('type') ? '' : 'selected' }} disabled>Выберите--}}
-{{--                                                    цвет--}}
-{{--                                                </option>--}}
-{{--                                                <option {{ $benchImage->color == 'grey' ? 'selected' : ''}} value="grey">--}}
-{{--                                                    Серый--}}
-{{--                                                </option>--}}
-{{--                                                <option {{ $benchImage->color == 'graphite' ? 'selected' : ''}} value="graphite">--}}
-{{--                                                    Графит--}}
-{{--                                                </option>--}}
-{{--                                                <option {{ $benchImage->color == 'black' ? 'selected' : ''}} value="black">--}}
-{{--                                                    Черный--}}
-{{--                                                </option>--}}
-{{--                                                <option {{ $benchImage->color == 'white' ? 'selected' : ''}} value="white">--}}
-{{--                                                    Белый--}}
-{{--                                                </option>--}}
-{{--                                                <option {{ $benchImage->color == 'ivory' ? 'selected' : ''}} value="ivory">--}}
-{{--                                                    Слоновая кость--}}
-{{--                                                </option>--}}
-{{--                                                <option {{ $benchImage->color == 'sand' ? 'selected' : ''}} value="sand">--}}
-{{--                                                    Песочный--}}
-{{--                                                </option>--}}
-{{--                                                <option {{ $benchImage->color == 'orange' ? 'selected' : ''}} value="orange">--}}
-{{--                                                    Оранжевый--}}
-{{--                                                </option>--}}
-{{--                                                <option {{ $benchImage->color == 'olive' ? 'selected' : ''}} value="olive">--}}
-{{--                                                    Оливка--}}
-{{--                                                </option>--}}
-{{--                                                <option {{ $benchImage->color == 'malachite' ? 'selected' : ''}} value="malachite">--}}
-{{--                                                    Малахит--}}
-{{--                                                </option>--}}
-{{--                                                <option {{ $benchImage->color == 'white_blue' ? 'selected' : ''}} value="white_blue">--}}
-{{--                                                    Голубой--}}
-{{--                                                </option>--}}
-{{--                                                <option {{ $benchImage->color == 'blue' ? 'selected' : ''}} value="blue">--}}
-{{--                                                    Синий--}}
-{{--                                                </option>--}}
-{{--                                                <option {{ $benchImage->color == 'bronze' ? 'selected' : ''}} value="bronze">--}}
-{{--                                                    Бронза--}}
-{{--                                                </option>--}}
-{{--                                            </select>--}}
-{{--                                            @error('color')--}}
-{{--                                            <div class="text-danger">--}}
-{{--                                                {{$message}}--}}
-{{--                                            </div>--}}
-{{--                                            @enderror--}}
-{{--                                            <h3>Текстура</h3>--}}
-{{--                                            <select class="form-control" name="texture" id="">--}}
-{{--                                                <option {{ $errors->has('texture') ? '' : 'selected' }} disabled>Выберите--}}
-{{--                                                    текстуру--}}
-{{--                                                </option>--}}
-{{--                                                <option {{ $benchImage->texture == 'porous' ? 'selected' : ''}} value="porous">--}}
-{{--                                                    Пористая--}}
-{{--                                                </option>--}}
-{{--                                                <option {{ $benchImage->texture == 'smooth' ? 'selected' : ''}} value="smooth">--}}
-{{--                                                    Гладкая--}}
-{{--                                                </option>--}}
-{{--                                                --}}{{--                                    <option {{ old('texture') == 'smooth' ? 'selected' : ''}} value="smooth">Гладкая</option>--}}
-{{--                                                <option {{ $benchImage->texture == 'marble' ? 'selected' : ''}} value="marble">--}}
-{{--                                                    Мрамор--}}
-{{--                                                </option>--}}
-{{--                                                <option {{ $benchImage->texture == 'blitz' ? 'selected' : ''}} value="blitz">--}}
-{{--                                                    Блиц--}}
-{{--                                                </option>--}}
-{{--                                                <option {{ $benchImage->texture == 'wild' ? 'selected' : ''}} value="wild">--}}
-{{--                                                    Дикий камень--}}
-{{--                                                </option>--}}
-{{--                                            </select>--}}
-{{--                                            @error('texture')--}}
-{{--                                            <div class="text-danger">--}}
-{{--                                                {{$message}}--}}
-{{--                                            </div>--}}
-{{--                                            @enderror--}}
                                             <button type="submit" style="border: 0; margin-bottom: 20px; margin-top: 20px">
                                                 <input type="button" class="btn btn-3d" value="Отредактировать описание">
                                             </button>
@@ -132,18 +57,14 @@
                 <div class="col-md-12">
                     <div class="panel">
                         <div class="panel-body">
-                            <div class="col-md-6">
-                                <h3>Добавить картинку</h3>
-                                <div class="col-md-11">
-                                    <input type="file" name="image[]" multiple="multiple"
-                                           class="dropzone dz-clickable col-md-12"
-                                           id="my-awesome-dropzone">
-                                    @error('image')
-                                    <div class="text-danger">
-                                        {{$message}}
-                                    </div>
-                                    @enderror
-                                </div>
+                            <div class="col-md-3">
+                                <h3>Картинка</h3>
+                                <label style="display: flex; justify-content: center; align-items: center;"
+                                       for="images" class="dropzone dz-clickable">
+                                    <span>Переместите файлы сюда для загрузки</span>
+                                </label>
+                                <input style="display: none" id="images" type="file" name="image[]"
+                                       multiple="multiple" accept="image/*">
                             </div>
                         </div>
                     </div>

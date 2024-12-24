@@ -9,7 +9,7 @@
         <section class="main">
             <div class="description">
                 <div class="description-text">
-                    <h1>Коллекция<br>Verona</h1>
+                    <h1>Коллекция <br>Verona</h1>
                     <p>Коллекция с потрясающими природными формами, гармонично впишется в любой ландшафт. Включает в себя кашпо и мебель.</p>
                 </div>
                 <div class="submit-application">

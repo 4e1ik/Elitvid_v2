@@ -8,7 +8,7 @@
     <section class="main">
         <div class="description">
             <div class="description-text">
-                <h1>Квадратные<br>кашпо</h1>
+                <h1>Квадратные <br>кашпо</h1>
                 <p>Стильные кашпо, которые украсят Вашу террасу и приусадебный участок. Подойдут как для лиственных так и для хвойных культур.</p>
             </div>
             <div class="submit-application">

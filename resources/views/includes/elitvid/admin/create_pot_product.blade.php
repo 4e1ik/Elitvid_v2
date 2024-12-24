@@ -12,18 +12,14 @@
                 <div class="col-md-12">
                     <div class="panel">
                         <div class="panel-body">
-                            <div class="col-md-6">
+                            <div class="col-md-3">
                                 <h3>Картинка</h3>
-                                <div class="col-md-11">
-                                    <input type="file" name="image[]" multiple="multiple"
-                                           class="dropzone dz-clickable col-md-12"
-                                           id="my-awesome-dropzone">
-{{--                                    @error('image')--}}
-{{--                                    <div class="text-danger">--}}
-{{--                                        {{$message}}--}}
-{{--                                    </div>--}}
-{{--                                    @enderror--}}
-                                </div>
+                                <label style="display: flex; justify-content: center; align-items: center;"
+                                       for="images" class="dropzone dz-clickable">
+                                    <span>Переместите файлы сюда для загрузки</span>
+                                </label>
+                                <input style="display: none" id="images" type="file" name="image[]"
+                                       multiple="multiple" accept="image/*">
                             </div>
                         </div>
                     </div>

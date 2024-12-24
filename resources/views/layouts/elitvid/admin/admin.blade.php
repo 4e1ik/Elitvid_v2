@@ -123,6 +123,7 @@
                         <li><a href="{{route('admin_rotundas_images')}}">Картинки страницы ротонд и коллонад</a></li>
                     </ul>
                 </li>
+                <li><a href="{{route('admin_metatags')}}"><span class="icons icon-tag"></span>Мета-теги</a></li>
             </ul>
         </div>
     </div>
@@ -654,6 +655,7 @@
                         <li><a href="{{route('admin_rotundas_images')}}">Картинки страницы ротонд и коллонад</a></li>
                     </ul>
                 </li>
+                <li><a href="{{route('admin_metatags')}}"><span class="icons icon-tag"></span>Мета-теги</a></li>
             </ul>
         </div>
     </div>

@@ -9,7 +9,7 @@
         <section class="main">
             <div class="description">
                 <div class="description-text">
-                    <h1>Коллекция<br>stones</h1>
+                    <h1>Коллекция <br>stones</h1>
                     <p>Идеальна для создания стильных пространств возле офисов и в парковых зонах.</p>
                 </div>
                 <div class="submit-application">
