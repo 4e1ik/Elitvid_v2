@@ -26,8 +26,8 @@
     <link rel="stylesheet" href="{{asset('/elitvid_assets/newDesign/newDesign/style.css')}}?v1.3">
     <link rel="shortcut icon" href="{{asset('/elitvid_assets/newDesign/newDesign/imgs/logo/logo.svg')}}">
 
-    <title>{{$metaTitle ?? 'Default title'}}</title>
-    <meta name="description" content="{{ $metaDescription ?? 'Default Description' }}">
+    <title>{{$metaTitle ?? 'Изделия из полистоуна от производителя на заказ - Elitvid.com'}}</title>
+    <meta name="description" content="{{ $metaDescription ?? 'Качественные изделия из полистоуна от производителя Elitvid.com. В нашем каталоге широкий выбор декоративных элементов для интерьера и экстерьера. Надежность, эстетика и доступные цены – только у нас!' }}">
 </head>
 <body>
 <header>
