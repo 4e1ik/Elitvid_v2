@@ -26,7 +26,7 @@
     <link rel="stylesheet" href="{{asset('/elitvid_assets/newDesign/newDesign/style.css')}}?v1.3">
     <link rel="shortcut icon" href="{{asset('/elitvid_assets/newDesign/newDesign/imgs/logo/logo.svg')}}">
 
-    <title>{{$metaTitle}}</title>
+    <title>{{$metaTitle ?? 'Default title'}}</title>
     <meta name="description" content="{{ $metaDescription ?? 'Default Description' }}">
 </head>
 <body>
