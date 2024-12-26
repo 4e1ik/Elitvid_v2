@@ -8,7 +8,7 @@
         <section class="main">
             <div class="description">
                 <div class="description-text">
-                    <h1>Скамьи</h1>
+                    <h1>Скамьи <br> из камня</h1>
                     <p>Доверьте нам свои идеи, и мы поможем Вам воплотить их в жизнь. Свяжитесь с нами сегодня и начните реализацию своего проекта!</p>
                 </div>
                 <div class="submit-application">
@@ -31,14 +31,21 @@
                 @include('includes.elitvid.mobile_catalog_price_benches')
             </div>
         </section>
+        <style>
+            .text--description > h3 {
+                font-size: 18px;
+                font-family: "Montserrat-SemiBold";
+                text-transform: revert;
+            }
+        </style>
         <section class="prev_direction">
-            <h2>Коллекции</h2>
+            <h2>Коллекции каменных скамеек</h2>
             <div class="prev_directions__forms">
                 <div class="prev_directions__form">
                     <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/benches/collections/verona/main_verona.png')}}" alt="">
                     <div class="prev_directions_form--text">
                         <div class="text--description">
-                            <h4>Verona</h4>
+                            <h3>Verona</h3>
                             <p>Коллекция с потрясающими природными формами, гармонично впишется в любой ландшафт.</p>
                         </div>
                         <div class="lines-decor">
@@ -54,7 +61,7 @@
                     <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/benches/collections/stones/main_stones.png')}}" alt="">
                     <div class="prev_directions_form--text">
                         <div class="text--description">
-                            <h4>Stones</h4>
+                            <h3>Stones</h3>
                             <p>Идеальна для создания стильных пространств возле офисов и в парковых зонах.</p>
                         </div>
                         <div class="lines-decor">
@@ -70,7 +77,7 @@
                     <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/benches/collections/lines/main_lines.png')}}" alt="">
                     <div class="prev_directions_form--text">
                         <div class="text--description">
-                            <h4>lines</h4>
+                            <h3>lines</h3>
                             <p>Подходят для создания различных композиций в торговых центрах и на улице.</p>
                         </div>
                         <div class="lines-decor">
@@ -86,7 +93,7 @@
                     <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/benches/collections/solo/main_solo.png')}}" alt="">
                     <div class="prev_directions_form--text">
                         <div class="text--description">
-                            <h4>Solo</h4>
+                            <h3>Solo</h3>
                             <p>Подойдёт для торговых центров, стильно впишется в любой дизайн-проект.</p>
                         </div>
                         <div class="lines-decor">
@@ -102,7 +109,7 @@
                     <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/benches/collections/street_furniture/main_street_furniture.png')}}" alt="">
                     <div class="prev_directions_form--text">
                         <div class="text--description">
-                            <h4>Street furniture</h4>
+                            <h3>Street furniture</h3>
                             <p>Удобна для детских площадок и аллей. Прекрасно впишется
                                 в ваш уютный двор.</p>
                         </div>
@@ -119,7 +126,7 @@
         </section>
         @if($benches_images->first())
             <section class="works">
-                <h2>Примеры работ</h2>
+                <h2>Наши скамейки из камня</h2>
                 <div class="works-examples">
                     <div class="main__slider swiper">
                         <!-- Additional required wrapper -->

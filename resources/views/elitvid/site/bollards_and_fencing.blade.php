@@ -8,8 +8,7 @@
         <section class="main">
             <div class="description">
                 <div class="description-text">
-                    <h1>Болларды <br>
-                        и ограждения</h1>
+                    <h1>Болларды <br> и ограждения <br> из камня</h1>
                     <p>Обладают противотаранными свойствами поэтому идеально подходят для защиты зданий и площадей.</p>
                     <p>Есть возможность нанести орнамент или логотип на ваше изделие.</p>
                     <p>А также же разместить металлическую вставку.</p>
@@ -34,14 +33,21 @@
 {{--                @include('includes.elitvid.mobile_catalog_price_benches')--}}
             </div>
         </section>
+        <style>
+            .text--description > h3 {
+                font-size: 18px;
+                font-family: "Montserrat-SemiBold";
+                text-transform: revert;
+            }
+        </style>
         <section class="prev_direction">
-            <h2>Формы</h2>
+            <h2>Формы каменных ограждений</h2>
             <div class="prev_directions__forms">
                 <div class="prev_directions__form">
                     <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/bollards/BL-1.png')}}" alt="">
                     <div class="prev_directions_form--text">
                         <div class="text--description">
-                            <h4>Боллард BL-1</h4>
+                            <h3>Боллард BL-1</h3>
                             <p>Защитный боллард</p>
                         </div>
                         <div class="lines-decor">
@@ -59,7 +65,7 @@
                     <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/bollards/BL-2.png')}}" alt="">
                     <div class="prev_directions_form--text">
                         <div class="text--description">
-                            <h4>Боллард BL-2</h4>
+                            <h3>Боллард BL-2</h3>
                             <p>Защитный боллард</p>
                         </div>
                         <div class="lines-decor">
@@ -77,7 +83,7 @@
                     <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/bollards/BL-3.png')}}" alt="">
                     <div class="prev_directions_form--text">
                         <div class="text--description">
-                            <h4>Боллард BL-3</h4>
+                            <h3>Боллард BL-3</h3>
                             <p>Защитный боллард</p>
                         </div>
                         <div class="lines-decor">
@@ -95,7 +101,7 @@
                     <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/bollards/BL-4.png')}}" alt="">
                     <div class="prev_directions_form--text">
                         <div class="text--description">
-                            <h4>Боллард BL-4</h4>
+                            <h3>Боллард BL-4</h3>
                             <p>Защитный боллард</p>
                         </div>
                         <div class="lines-decor">
@@ -113,7 +119,7 @@
                     <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/bollards/BL-5.png')}}" alt="">
                     <div class="prev_directions_form--text">
                         <div class="text--description">
-                            <h4>Боллард BL-5</h4>
+                            <h3>Боллард BL-5</h3>
                             <p>Защитный боллард</p>
                         </div>
                         <div class="lines-decor">
@@ -131,7 +137,7 @@
                     <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/bollards/BL-6.png')}}" alt="">
                     <div class="prev_directions_form--text">
                         <div class="text--description">
-                            <h4>Боллард BL-6</h4>
+                            <h3>Боллард BL-6</h3>
                             <p>Защитный боллард</p>
                         </div>
                         <div class="lines-decor">
@@ -149,7 +155,7 @@
                     <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/bollards/BL-7.png')}}" alt="">
                     <div class="prev_directions_form--text">
                         <div class="text--description">
-                            <h4>Боллард BL-7</h4>
+                            <h3>Боллард BL-7</h3>
                             <p>Защитный боллард</p>
                         </div>
                         <div class="lines-decor">
@@ -167,7 +173,7 @@
                     <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/bollards/BL-8.png')}}" alt="">
                     <div class="prev_directions_form--text">
                         <div class="text--description">
-                            <h4>Боллард BL-8</h4>
+                            <h3>Боллард BL-8</h3>
                             <p>Защитный боллард</p>
                         </div>
                         <div class="lines-decor">

@@ -8,7 +8,7 @@
         <section class="main">
             <div class="description">
                 <div class="description-text">
-                    <h1>Парклеты<br> и навесы</h1>
+                    <h1>Каменные <br> навесы <br> и парклеты</h1>
                     <p>Работаем по индивидуальным размерам, эскизам и чертежам, а также предоставляем Каталог готовых изделий </p>
                 </div>
                 <div class="submit-application">

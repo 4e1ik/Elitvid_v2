@@ -8,7 +8,7 @@
         <section class="main">
             <div class="description">
                 <div class="description-text">
-                    <h1>Вазоны<br>и кашпо</h1>
+                    <h1>Вазоны<br>и кашпо <br> из полистоуна</h1>
                     <p>Работаем по индивидуальным размерам, эскизам и чертежам, а также предоставляем Каталог готовых
                         изделий </p>
                 </div>
@@ -33,7 +33,7 @@
             </div>
         </section>
         <section class="prev_direction">
-            <h2>Формы</h2>
+            <h2>Формы ваз из полистоуна</h2>
             <div class="prev_directions__forms">
                 <div class="prev_directions__form">
                     <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/pots/forms/circle_pot.png')}}" alt="">
@@ -87,7 +87,7 @@
         </section>
         @if($pots_images->first())
             <section class="works">
-                <h2>Примеры работ</h2>
+                <h2>Примеры вазонов из искусственного камня</h2>
                 <div class="works-examples">
                     <div class="main__slider swiper">
                         <!-- Additional required wrapper -->
