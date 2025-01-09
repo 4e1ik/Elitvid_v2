@@ -6,6 +6,7 @@ use App\Models\BenchProduct;
 use App\Models\Gallery;
 use App\Models\MetaTag;
 use App\Models\PotProduct;
+use Illuminate\Support\Facades\Response;
 
 class MainController extends Controller
 {
@@ -16,6 +17,17 @@ class MainController extends Controller
         $metaTitle = $metaTags[0]->title;
         $metaDescription = $metaTags[0]->description;
         return view('elitvid.site.index', compact( 'main_page_images', 'metaTitle', 'metaDescription'));
+    }
+
+    function sitemap()
+    {
+        $filePath = public_path('sitemap.xml');
+        if (!file_exists($filePath)) {
+            abort(404, 'Sitemap not found.');
+        }
+        return Response::file($filePath, [
+            'Content-Type' => 'application/xml',
+        ]);
     }
 
     function bollards_and_fencing() {
@@ -106,7 +118,10 @@ class MainController extends Controller
 
         $count = count($rows);
 
-        return view('elitvid.site.pots.pot_product_page', compact('products', 'i', 'j', 'rows', 'count', 'rand_products'));
+        $metaTitle = $products->first()->meta_title;
+        $metaDescription = $products->first()->meta_description;
+
+        return view('elitvid.site.pots.pot_product_page', compact('products', 'i', 'j', 'rows', 'count', 'rand_products', 'metaTitle', 'metaDescription'));
     }
 
     function show_bench_product($id){
@@ -148,7 +163,10 @@ class MainController extends Controller
 
         $count = count($rows);
 
-        return view('elitvid.site.benches.bench_product_page', compact('products', 'i', 'j', 'rows', 'count', 'rand_products'));
+        $metaTitle = $products->first()->meta_title;
+        $metaDescription = $products->first()->meta_description;
+
+        return view('elitvid.site.benches.bench_product_page', compact('products', 'i', 'j', 'rows', 'count', 'rand_products', 'metaTitle', 'metaDescription'));
     }
 
     function benches() {

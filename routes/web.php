@@ -27,6 +27,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [MainController::class, 'index'])->name('home');
 
+Route::get('/sitemap', [MainController::class, 'sitemap'])->name('sitemap');
+
 Route::get('/decorations', [MainController::class, 'decorations'])->name('decorations');
 
 Route::prefix('directions')->group(function () {

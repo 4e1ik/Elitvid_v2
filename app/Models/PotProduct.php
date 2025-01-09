@@ -9,7 +9,7 @@ class PotProduct extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'material', 'size', 'weight', 'price', 'collection', 'active'];
+    protected $fillable = ['name', 'material', 'size', 'weight', 'price', 'collection', 'active', 'meta_title', 'meta_description'];
 
     public function pot_images(){
         return $this->hasMany(PotImage::class, 'pot_product_id', 'id');

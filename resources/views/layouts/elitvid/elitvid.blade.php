@@ -29,6 +29,7 @@
 
         gtag('config', 'G-27WP3P8931');
     </script>
+    <meta name="yandex-verification" content="3d561315259a84fe" />
     <link rel="stylesheet" href="{{asset('/elitvid_assets/newDesign/newDesign/reset.css')}}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
     <!--    <link rel="stylesheet" href="newDesign/newDesign/dist/style.css">-->

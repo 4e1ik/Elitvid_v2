@@ -8,7 +8,7 @@
         @include('includes.elitvid.breadcrumbs')
         <section class="product">
             @foreach($products as $product)
-                <h2>{{$product->name}}</h2>
+                <h1 style="font-size: 2.25em; font-family:'Merriweather'; text-transform: uppercase; font-weight: 300;">{{$product->name}}</h1>
                 <div class="product__content">
                     <div class="product_content__images">
                         <div class="content_images__textures">

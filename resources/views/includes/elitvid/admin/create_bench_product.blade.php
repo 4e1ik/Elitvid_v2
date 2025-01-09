@@ -166,6 +166,43 @@
                 <div class="col-md-12">
                     <div class="panel">
                         <div class="panel-body">
+                            <div class="col-md-12">
+                                <div class="col-md-3 padding-0">
+                                    <h3>Meta Title</h3>
+                                    <div class="col-md-11 padding-0">
+                                        <input class="form-control {{$errors->has('meta_title') ? 'danger' : ''}}"
+                                               type="text"
+                                               name="meta_title" value="{{old('meta_title')}}">
+                                    </div>
+                                    @error('meta_title')
+                                    <div class="text-danger">
+                                        {{$message}}
+                                    </div>
+                                    @enderror
+                                </div>
+                                <div class="col-md-8 padding-0">
+                                    <div class="col-md-12">
+                                        <div class="col-md-8 padding-0">
+                                            <h3>Meta Description</h3>
+                                            <textarea name="meta_description" style="width: 100%;" rows="10" type="text"
+                                                      placeholder="Введите описание товара">{{$errors->has('meta_description') ? 'danger' : old('meta_description')}}</textarea>
+                                            @error('meta_description')
+                                            <div class="text-danger">
+                                                {{$message}}
+                                            </div>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12 padding-0">
+                <div class="col-md-12">
+                    <div class="panel">
+                        <div class="panel-body">
                             <input type="submit" class="btn  btn-3d btn-success" value="Создать">
                         </div>
                     </div>
