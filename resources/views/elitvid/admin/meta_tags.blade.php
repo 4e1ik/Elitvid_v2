@@ -62,6 +62,8 @@
                                                         Страница столбы и накрывки
                                                     @elseif($metaTag->page == 'rotundas_and_colonnades')
                                                         Страница ротонды и коллоны
+                                                    @elseif($metaTag->page == 'blog')
+                                                        Страница постов блога
                                                     @endif
                                                 </h3>
                                             </div>

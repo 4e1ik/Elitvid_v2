@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\BenchProduct;
+use App\Models\Blog;
 use App\Models\Gallery;
 use App\Models\MetaTag;
 use App\Models\PotProduct;
@@ -266,7 +267,7 @@ class MainController extends Controller
     }
 
     function square_pots() {
-        $pots = PotProduct::query()->whereIn('active', [1])->with(['pot_images'])->latest()->get();
+        $pots = PotProduct::whereIn('active', [1])->latest()->get();
         $square_pots = $pots->where('collection', 'Square');
         $metaTags = MetaTag::where('page', 'square_pots')->get();
         $metaTitle = $metaTags[0]->title;
@@ -281,5 +282,22 @@ class MainController extends Controller
         $metaTitle = $metaTags[0]->title;
         $metaDescription = $metaTags[0]->description;
         return view('elitvid.site.pots.round_pots', compact('round_pots', 'metaTitle', 'metaDescription'));
+    }
+
+    function blog_posts()
+    {
+        $blogs = Blog::whereIn('active', [1])->latest()->get();
+        $metaTags = MetaTag::where('page', 'blog')->get();
+        $metaTitle = $metaTags[0]->title;
+        $metaDescription = $metaTags[0]->description;
+        return view('elitvid.site.blog.blog', compact('blogs', 'metaTitle', 'metaDescription'));
+    }
+
+    function show_blog_post($id){
+        $blog = Blog::where('id', $id)->get();
+        $metaTitle = $blog->first()->meta_title;
+        $metaDescription = $blog->first()->meta_description;
+
+        return view('elitvid.site.blog.blog_post', compact('blog', 'metaTitle', 'metaDescription'));
     }
 }

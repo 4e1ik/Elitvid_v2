@@ -305,7 +305,7 @@
                                     <div class="col-md-11 padding-0">
                                         <input class="form-control {{$errors->has('meta_title') ? 'danger' : ''}}"
                                                type="text"
-                                               name="meta_title" value="{{$potProduct->meta_title}}">
+                                               name="meta_title" value="{{$errors->has('meta_title') ? old('meta_title') : $potProduct->meta_title}}">
                                     </div>
                                     @error('meta_title')
                                     <div class="text-danger">
@@ -318,7 +318,7 @@
                                         <div class="col-md-8 padding-0">
                                             <h3>Meta Description</h3>
                                             <textarea name="meta_description" style="width: 100%;" rows="10" type="text"
-                                                      placeholder="Введите описание товара">{{$errors->has('meta_description') ? 'danger' : $potProduct->meta_description}}</textarea>
+                                                      placeholder="Введите описание товара">{{$errors->has('meta_description') ? old('meta_description') : $potProduct->meta_description}}</textarea>
                                             @error('meta_description')
                                             <div class="text-danger">
                                                 {{$message}}

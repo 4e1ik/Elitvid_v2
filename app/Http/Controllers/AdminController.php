@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\BenchProduct;
+use App\Models\Blog;
 use App\Models\Gallery;
 use App\Models\MetaTag;
 use App\Models\PotProduct;
@@ -15,6 +16,12 @@ class AdminController extends Controller
 
     function catalog() {
         return view('elitvid.admin.catalog');
+    }
+
+    function blog_posts()
+    {
+        $blog_posts = Blog::all();
+        return view('elitvid.admin.blog.blog_posts', compact('blog_posts'));
     }
 
     function metaTags()

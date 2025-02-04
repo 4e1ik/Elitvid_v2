@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\BlogController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\MetaTagController;
 use App\Http\Controllers\PotImageController;
@@ -86,6 +87,11 @@ Route::prefix('directions')->group(function () {
             Route::get('/{id}', [MainController::class, 'show_pot_product'])->name('show_pot_product');
         });
     });
+
+    Route::prefix('blog')->group(function () {
+        Route::get('/', [MainController::class, 'blog_posts'])->name('blog_posts');
+        Route::get('/post/{id}', [MainController::class, 'show_blog_post'])->name('show_blog_post');
+    });
 });
 
 Route::get('/login', [LoginController::class, 'index'])->name('login');
@@ -132,6 +138,11 @@ Route::middleware('auth')->where([])->prefix('admin')->group(function () {
         Route::get('/rotundas_images', [AdminController::class, 'rotundas_images'])->name('admin_rotundas_images');
     });
 
+    //Блог
+    Route::prefix('blog')->group(function () {
+        Route::get('/', [AdminController::class, 'blog_posts'])->name('admin_blog');
+    });
+
     Route::get('/create/{route}', [AdminController::class, 'create'])->name('create');
 
     // Кашпо
@@ -150,5 +161,6 @@ Route::middleware('auth')->where([])->prefix('admin')->group(function () {
         'potProducts' => PotProductController::class,
         'benchProducts' => BenchProductController::class,
         'galleries' => GalleryController::class,
+        'blogs' => BlogController::class,
     ]);
 });

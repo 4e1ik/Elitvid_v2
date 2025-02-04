@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\BenchProduct;
+use App\Models\Blog;
 use App\Models\PotProduct;
 use Tabuna\Breadcrumbs\Breadcrumbs;
 use Tabuna\Breadcrumbs\Trail;
@@ -60,6 +61,14 @@ $trail->parent('benches')->push('Коллекция Lines', route('lines_benches
 
 Breadcrumbs::for('stones_benches', fn (Trail $trail) =>
 $trail->parent('benches')->push('Коллекция Stones', route('stones_benches'))
+);
+
+Breadcrumbs::for('blog_posts', fn (Trail $trail) =>
+$trail->parent('home')->push('Новости', route('blog_posts'))
+);
+
+Breadcrumbs::for('show_blog_post', fn (Trail $trail, $id) =>
+$trail->parent('blog_posts')->push(Blog::where('id', $id)->get()[0]['title'], route('show_blog_post', $id))
 );
 
 Breadcrumbs::for('show_bench_product', fn (Trail $trail, $id) =>

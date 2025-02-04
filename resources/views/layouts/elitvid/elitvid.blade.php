@@ -46,6 +46,7 @@
         <nav class="header-menu">
             <ul class="header-menu--list menu">
                 <li><a href="{{route('directions')}}">Наши направления</a></li>
+                <li><a href="{{route('blog_posts')}}">Блог</a></li>
 {{--                <li>--}}
 {{--                    <button class="call">Заказать звонок</button>--}}
 {{--                </li>--}}
@@ -138,6 +139,7 @@
                                     font-size: 1em;
                                 }
                             </style>
+                            <li><h5><a href="{{route('blog_posts')}}">Блог</a></h5></li>
                             <li><h5><a href="{{route('pots')}}">Кашпо</a></h5></li>
                             <li><h5><a href="{{route('benches')}}">Скамьи</a></h5></li>
                             <li><h5><a href="{{route('rotundas_and_colonnades')}}">Ротонды и коллонады</a></h5></li>
