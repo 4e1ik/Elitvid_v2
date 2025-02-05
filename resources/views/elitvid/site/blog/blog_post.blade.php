@@ -133,17 +133,22 @@
             </section>
 
         @endforeach
-{{--        <section class="navigation">--}}
-{{--            <h3>--}}
-{{--                <a href="#">--}}
-{{--                    <button>Предыдущая статья</button>--}}
-{{--                </a>--}}
-{{--            </h3>--}}
-{{--            <h3>--}}
-{{--                <a href="#">--}}
-{{--                    <button>Следующая статья</button>--}}
-{{--                </a>--}}
-{{--            </h3>--}}
-{{--        </section>--}}
+        <section class="navigation">
+{{--            {{$prevPost->id}}--}}
+            @if($prevPost)
+            <h3>
+                <a href="{{route('show_blog_post', ['id' => $prevPost->id])}}">
+                    <button>Предыдущая статья</button>
+                </a>
+            </h3>
+            @endif
+            @if($nextPost)
+            <h3>
+                <a href="{{route('show_blog_post', ['id' => $nextPost->id])}}">
+                    <button>Следующая статья</button>
+                </a>
+            </h3>
+            @endif
+        </section>
     </main>
 @endsection

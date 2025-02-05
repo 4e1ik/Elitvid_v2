@@ -295,9 +295,12 @@ class MainController extends Controller
 
     function show_blog_post($id){
         $blog = Blog::where('id', $id)->get();
+        $nextPost =Blog::where('created_at', '<', $blog[0]->created_at)->latest()->first();
+        $prevPost =Blog::where('created_at', '>', $blog[0]->created_at)->latest()->first();
+//        dd($prevPost);
         $metaTitle = $blog->first()->meta_title;
         $metaDescription = $blog->first()->meta_description;
 
-        return view('elitvid.site.blog.blog_post', compact('blog', 'metaTitle', 'metaDescription'));
+        return view('elitvid.site.blog.blog_post', compact('blog', 'metaTitle', 'metaDescription', 'nextPost', 'prevPost'));
     }
 }
