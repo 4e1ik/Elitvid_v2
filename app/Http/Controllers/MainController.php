@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\BenchProduct;
 use App\Models\Blog;
+use App\Models\Category;
 use App\Models\Gallery;
 use App\Models\MetaTag;
 use App\Models\PotProduct;
@@ -17,7 +18,10 @@ class MainController extends Controller
         $metaTags = MetaTag::where('page', 'main')->get();
         $metaTitle = $metaTags[0]->title;
         $metaDescription = $metaTags[0]->description;
-        return view('elitvid.site.index', compact( 'main_page_images', 'metaTitle', 'metaDescription'));
+        $categories = Category::where('page', 'main')->get();
+        $category = $categories[0]->description;
+//        dd($category);
+        return view('elitvid.site.index', compact( 'main_page_images', 'metaTitle', 'metaDescription', 'category'));
     }
 
     function sitemap()

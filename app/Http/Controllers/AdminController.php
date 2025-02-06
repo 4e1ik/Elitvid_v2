@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\BenchProduct;
 use App\Models\Blog;
+use App\Models\Category;
 use App\Models\Gallery;
 use App\Models\MetaTag;
 use App\Models\PotProduct;

@@ -39,6 +39,10 @@
                             text-transform: uppercase;
                         }
 
+                        main .navigation a button:hover {
+                            background-color: #FFFFFF;
+                            color: #1A1B20;
+                        }
 
                         h1 {
                             padding-top: 0.6em;
@@ -134,7 +138,6 @@
 
         @endforeach
         <section class="navigation">
-{{--            {{$prevPost->id}}--}}
             @if($prevPost)
             <h3>
                 <a href="{{route('show_blog_post', ['id' => $prevPost->id])}}">

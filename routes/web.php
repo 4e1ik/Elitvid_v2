@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\MetaTagController;
 use App\Http\Controllers\PotImageController;
@@ -157,10 +158,15 @@ Route::middleware('auth')->where([])->prefix('admin')->group(function () {
     Route::get('/metatags', [AdminController::class, 'metaTags'])->name('admin_metatags');
     Route::put('/metatags/{metaTag}/update', [MetaTagController::class, 'update'])->name('meta_tags_update');
 
+    //Категории
+//    Route::get('/categories', [AdminController::class, 'categories'])->name('admin_categories');
+//    Route::put('/categories/{category}/update', [CategoryController::class, 'update'])->name('category_update');
+
     Route::resources([
         'potProducts' => PotProductController::class,
         'benchProducts' => BenchProductController::class,
         'galleries' => GalleryController::class,
         'blogs' => BlogController::class,
+        'categories' => CategoryController::class,
     ]);
 });

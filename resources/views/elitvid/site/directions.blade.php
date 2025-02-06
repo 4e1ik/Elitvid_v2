@@ -167,5 +167,12 @@
                 </div>
             </div>
         </section>
+        @if($category)
+            <section class="description">
+                <div class="text">
+                    {!! $category !!}
+                </div>
+            </section>
+        @endif
     </main>
 @endsection
