@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('categories', function (Blueprint $table) {
             $table->id();
-            $table->longText ('description')->default('111')->nullable('true');
+            $table->longText ('description')->nullable('true');
             $table->string ('page','255')->nullable('false');
             $table->timestamps();
         });
