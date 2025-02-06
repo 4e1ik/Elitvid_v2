@@ -20,7 +20,6 @@ class MainController extends Controller
         $metaDescription = $metaTags[0]->description;
         $categories = Category::where('page', 'main')->get();
         $category = $categories[0]->description;
-//        dd($category);
         return view('elitvid.site.index', compact( 'main_page_images', 'metaTitle', 'metaDescription', 'category'));
     }
 
@@ -41,7 +40,9 @@ class MainController extends Controller
         $metaTags = MetaTag::where('page', 'bollards_and_fencing')->get();
         $metaTitle = $metaTags[0]->title;
         $metaDescription = $metaTags[0]->description;
-        return view('elitvid.site.bollards_and_fencing', compact('bollards_and_fencing_images', 'metaTitle', 'metaDescription'));
+        $categories = Category::where('page', 'main')->get();
+        $category = $categories[0]->description;
+        return view('elitvid.site.bollards_and_fencing', compact('bollards_and_fencing_images', 'metaTitle', 'metaDescription', 'category'));
     }
 
     function facade_stucco_molding_and_panels() {
@@ -50,7 +51,9 @@ class MainController extends Controller
         $metaTags = MetaTag::where('page', 'facade_stucco_molding_and_panels')->get();
         $metaTitle = $metaTags[0]->title;
         $metaDescription = $metaTags[0]->description;
-        return view('elitvid.site.facade_stucco_molding_and_panels', compact('facade_walls_images', 'metaTitle', 'metaDescription'));
+        $categories = Category::where('page', 'main')->get();
+        $category = $categories[0]->description;
+        return view('elitvid.site.facade_stucco_molding_and_panels', compact('facade_walls_images', 'metaTitle', 'metaDescription', 'category'));
     }
 
     function parklets_and_canopies() {
@@ -59,7 +62,9 @@ class MainController extends Controller
         $metaTags = MetaTag::where('page', 'parklets_and_canopies')->get();
         $metaTitle = $metaTags[0]->title;
         $metaDescription = $metaTags[0]->description;
-        return view('elitvid.site.parklets_and_canopies',compact('parklets_and_naves_images', 'metaTitle', 'metaDescription'));
+        $categories = Category::where('page', 'main')->get();
+        $category = $categories[0]->description;
+        return view('elitvid.site.parklets_and_canopies',compact('parklets_and_naves_images', 'metaTitle', 'metaDescription', 'category'));
     }
 
     function pillars_and_covers() {
@@ -68,7 +73,9 @@ class MainController extends Controller
         $metaTags = MetaTag::where('page', 'pillars_and_covers')->get();
         $metaTitle = $metaTags[0]->title;
         $metaDescription = $metaTags[0]->description;
-        return view('elitvid.site.pillars_and_covers', compact('columns_and_panels_images', 'metaTitle', 'metaDescription'));
+        $categories = Category::where('page', 'main')->get();
+        $category = $categories[0]->description;
+        return view('elitvid.site.pillars_and_covers', compact('columns_and_panels_images', 'metaTitle', 'metaDescription', 'category'));
     }
 
     function rotundas_and_colonnades() {
@@ -77,7 +84,9 @@ class MainController extends Controller
         $metaTags = MetaTag::where('page', 'rotundas_and_colonnades')->get();
         $metaTitle = $metaTags[0]->title;
         $metaDescription = $metaTags[0]->description;
-        return view('elitvid.site.rotundas_and_colonnades', compact('rotundas_and_colonnades_images', 'metaTitle', 'metaDescription'));
+        $categories = Category::where('page', 'main')->get();
+        $category = $categories[0]->description;
+        return view('elitvid.site.rotundas_and_colonnades', compact('rotundas_and_colonnades_images', 'metaTitle', 'metaDescription', 'category'));
     }
 
     function about() {
@@ -125,7 +134,6 @@ class MainController extends Controller
 
         $metaTitle = $products->first()->meta_title;
         $metaDescription = $products->first()->meta_description;
-
         return view('elitvid.site.pots.pot_product_page', compact('products', 'i', 'j', 'rows', 'count', 'rand_products', 'metaTitle', 'metaDescription'));
     }
 
@@ -170,7 +178,6 @@ class MainController extends Controller
 
         $metaTitle = $products->first()->meta_title;
         $metaDescription = $products->first()->meta_description;
-
         return view('elitvid.site.benches.bench_product_page', compact('products', 'i', 'j', 'rows', 'count', 'rand_products', 'metaTitle', 'metaDescription'));
     }
 
@@ -181,7 +188,9 @@ class MainController extends Controller
         $metaTags = MetaTag::where('page', 'benches')->get();
         $metaTitle = $metaTags[0]->title;
         $metaDescription = $metaTags[0]->description;
-        return view('elitvid.site.benches', compact('benches_images', 'metaTitle', 'metaDescription'));
+        $categories = Category::where('page', 'main')->get();
+        $category = $categories[0]->description;
+        return view('elitvid.site.benches', compact('benches_images', 'metaTitle', 'metaDescription', 'category'));
     }
 
     function street_furniture_benches() {
@@ -191,7 +200,9 @@ class MainController extends Controller
         $metaTags = MetaTag::where('page', 'street_furniture_benches')->get();
         $metaTitle = $metaTags[0]->title;
         $metaDescription = $metaTags[0]->description;
-        return view('elitvid.site.benches.street_furniture_benches', compact('street_furniture_benches', 'metaTitle', 'metaDescription'));
+        $categories = Category::where('page', 'main')->get();
+        $category = $categories[0]->description;
+        return view('elitvid.site.benches.street_furniture_benches', compact('street_furniture_benches', 'metaTitle', 'metaDescription', 'category'));
     }
 
     function verona_benches() {
@@ -201,7 +212,9 @@ class MainController extends Controller
         $metaTags = MetaTag::where('page', 'verona_benches')->get();
         $metaTitle = $metaTags[0]->title;
         $metaDescription = $metaTags[0]->description;
-        return view('elitvid.site.benches.verona_benches', compact('verona_benches', 'metaTitle', 'metaDescription'));
+        $categories = Category::where('page', 'main')->get();
+        $category = $categories[0]->description;
+        return view('elitvid.site.benches.verona_benches', compact('verona_benches', 'metaTitle', 'metaDescription', 'category'));
     }
 
     function stones_benches() {
@@ -211,7 +224,9 @@ class MainController extends Controller
         $metaTags = MetaTag::where('page', 'stones_benches')->get();
         $metaTitle = $metaTags[0]->title;
         $metaDescription = $metaTags[0]->description;
-        return view('elitvid.site.benches.stones_benches', compact('stones_benches', 'metaTitle', 'metaDescription'));
+        $categories = Category::where('page', 'main')->get();
+        $category = $categories[0]->description;
+        return view('elitvid.site.benches.stones_benches', compact('stones_benches', 'metaTitle', 'metaDescription', 'category'));
     }
 
     function solo_benches() {
@@ -221,7 +236,9 @@ class MainController extends Controller
         $metaTags = MetaTag::where('page', 'solo_benches')->get();
         $metaTitle = $metaTags[0]->title;
         $metaDescription = $metaTags[0]->description;
-        return view('elitvid.site.benches.solo_benches', compact('solo_benches', 'metaTitle', 'metaDescription'));
+        $categories = Category::where('page', 'main')->get();
+        $category = $categories[0]->description;
+        return view('elitvid.site.benches.solo_benches', compact('solo_benches', 'metaTitle', 'metaDescription', 'category'));
     }
 
     function lines_benches() {
@@ -231,14 +248,18 @@ class MainController extends Controller
         $metaTags = MetaTag::where('page', 'lines_benches')->get();
         $metaTitle = $metaTags[0]->title;
         $metaDescription = $metaTags[0]->description;
-        return view('elitvid.site.benches.lines_benches', compact('lines_benches', 'metaTitle', 'metaDescription'));
+        $categories = Category::where('page', 'main')->get();
+        $category = $categories[0]->description;
+        return view('elitvid.site.benches.lines_benches', compact('lines_benches', 'metaTitle', 'metaDescription', 'category'));
     }
 
     function directions() {
         $metaTags = MetaTag::where('page', 'directions')->get();
         $metaTitle = $metaTags[0]->title;
         $metaDescription = $metaTags[0]->description;
-        return view('elitvid.site.directions', compact('metaTitle', 'metaDescription'));
+        $categories = Category::where('page', 'main')->get();
+        $category = $categories[0]->description;
+        return view('elitvid.site.directions', compact('metaTitle', 'metaDescription', 'category'));
     }
 
     function decorations()
@@ -248,7 +269,9 @@ class MainController extends Controller
         $metaTags = MetaTag::where('page', 'decorations')->get();
         $metaTitle = $metaTags[0]->title;
         $metaDescription = $metaTags[0]->description;
-        return view('elitvid.site.decorations', compact('decorative_elements_images', 'metaTitle', 'metaDescription'));
+        $categories = Category::where('page', 'main')->get();
+        $category = $categories[0]->description;
+        return view('elitvid.site.decorations', compact('decorative_elements_images', 'metaTitle', 'metaDescription', 'category'));
     }
 
     function pots() {
@@ -258,7 +281,9 @@ class MainController extends Controller
         $metaTags = MetaTag::where('page', 'pots')->get();
         $metaTitle = $metaTags[0]->title;
         $metaDescription = $metaTags[0]->description;
-        return view('elitvid.site.pots', compact('pots_images', 'metaTitle', 'metaDescription'));
+        $categories = Category::where('page', 'main')->get();
+        $category = $categories[0]->description;
+        return view('elitvid.site.pots', compact('pots_images', 'metaTitle', 'metaDescription', 'category'));
     }
 
     function rectangular_pots() {
@@ -267,7 +292,9 @@ class MainController extends Controller
         $metaTags = MetaTag::where('page', 'rectangular_pots')->get();
         $metaTitle = $metaTags[0]->title;
         $metaDescription = $metaTags[0]->description;
-        return view('elitvid.site.pots.rectangular_pots', compact('rectangular_pots', 'metaTitle', 'metaDescription'));
+        $categories = Category::where('page', 'main')->get();
+        $category = $categories[0]->description;
+        return view('elitvid.site.pots.rectangular_pots', compact('rectangular_pots', 'metaTitle', 'metaDescription', 'category'));
     }
 
     function square_pots() {
@@ -276,7 +303,9 @@ class MainController extends Controller
         $metaTags = MetaTag::where('page', 'square_pots')->get();
         $metaTitle = $metaTags[0]->title;
         $metaDescription = $metaTags[0]->description;
-        return view('elitvid.site.pots.square_pots', compact('square_pots', 'metaTitle', 'metaDescription'));
+        $categories = Category::where('page', 'main')->get();
+        $category = $categories[0]->description;
+        return view('elitvid.site.pots.square_pots', compact('square_pots', 'metaTitle', 'metaDescription', 'category'));
     }
 
     function round_pots() {
@@ -285,7 +314,9 @@ class MainController extends Controller
         $metaTags = MetaTag::where('page', 'round_pots')->get();
         $metaTitle = $metaTags[0]->title;
         $metaDescription = $metaTags[0]->description;
-        return view('elitvid.site.pots.round_pots', compact('round_pots', 'metaTitle', 'metaDescription'));
+        $categories = Category::where('page', 'main')->get();
+        $category = $categories[0]->description;
+        return view('elitvid.site.pots.round_pots', compact('round_pots', 'metaTitle', 'metaDescription', 'category'));
     }
 
     function blog_posts()
@@ -294,14 +325,15 @@ class MainController extends Controller
         $metaTags = MetaTag::where('page', 'blog')->get();
         $metaTitle = $metaTags[0]->title;
         $metaDescription = $metaTags[0]->description;
-        return view('elitvid.site.blog.blog', compact('blogs', 'metaTitle', 'metaDescription'));
+        $categories = Category::where('page', 'main')->get();
+        $category = $categories[0]->description;
+        return view('elitvid.site.blog.blog', compact('blogs', 'metaTitle', 'metaDescription', 'category'));
     }
 
     function show_blog_post($id){
         $blog = Blog::where('id', $id)->get();
         $nextPost =Blog::where('created_at', '<', $blog[0]->created_at)->latest()->first();
         $prevPost =Blog::where('created_at', '>', $blog[0]->created_at)->latest()->first();
-//        dd($prevPost);
         $metaTitle = $blog->first()->meta_title;
         $metaDescription = $blog->first()->meta_description;
 
