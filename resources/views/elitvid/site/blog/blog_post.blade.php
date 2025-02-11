@@ -25,6 +25,14 @@
                             padding: 0.25em 0em;
                         }
 
+                        .decorative_elements > h3 {
+                            font-size: 1.75em;
+                            font-family: "Merriweather";
+                            text-transform: uppercase;
+                            display: block;
+                            padding: 0;
+                        }
+
                         main .navigation a button {
                             color: #FFFFFF;
                             margin-top: 1.5em;
