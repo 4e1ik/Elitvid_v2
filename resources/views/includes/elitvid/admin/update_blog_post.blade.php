@@ -3,7 +3,7 @@
 @section('admin_content')
     <div id="content">
         <div class="panel box-shadow-none content-header">
-            <h1>Страница создания скамеек</h1>
+            <h1>Страница редактирования поста</h1>
             {{$errors}}
         </div>
         <form action="{{ route('blogs.update', ['blog' => $blog])}}"
@@ -21,7 +21,7 @@
 {{--                                    @method('DELETE')--}}
 {{--                                    @csrf--}}
                                     <img style="height: 200px; border-radius:15px"
-                                         src="{{asset('storage/'.str_replace('public/','',$blog->main_image))}}" alt="qqqqqqq">
+                                         src="{{asset('storage/'.str_replace('public/','',$blog->main_image))}}" alt="Картинка поста">
 {{--                                    <button type="submit" style="border: 0;">--}}
 {{--                                        <input type="button" class="btn btn-3d btn-danger" value="Удалить">--}}
 {{--                                    </button>--}}

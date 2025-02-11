@@ -3,7 +3,7 @@
 @section('admin_content')
     <div id="content">
         <div class="panel box-shadow-none content-header">
-            <h1>Страница создания скамеек</h1>
+            <h1>Страница создания поста</h1>
             {{$errors}}
         </div>
         <form action="{{ route('blogs.store')}}"
