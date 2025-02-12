@@ -658,8 +658,10 @@
                     </ul>
                 </li>
                 <li><a href="{{route('admin_metatags')}}"><span class="icons icon-tag"></span>Мета-теги</a></li>
+                <li><a href="{{route('admin_blog')}}"><span class="fa fa-newspaper-o"></span>Блог</a></li>
                 <li><a href="{{route('categories.index')}}"><span class="icons icon-list"></span>Описание категорий</a></li>
                 <li><a href="{{route('admin_blog')}}"><span class="fa fa-newspaper-o"></span>Блог</a></li>
+
             </ul>
         </div>
     </div>
