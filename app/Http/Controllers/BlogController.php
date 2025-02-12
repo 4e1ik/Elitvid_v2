@@ -31,7 +31,7 @@ class BlogController extends Controller
     public function store(BlogRequest $request)
     {
         $data = $request->all();
-        dd($data);
+//        dd($data);
         if ($request->hasFile('main_image')) {
             $image = $request->file('main_image');
             dd($image);
