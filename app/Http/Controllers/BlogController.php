@@ -67,6 +67,14 @@ class BlogController extends Controller
     {
         $data = $request->all();
 
+        if ($request->hasFile('main_image')) {
+            $image = $request->file('main_image');
+            $extension = $image->getClientOriginalExtension();
+            $name = hash('md5', $image->getClientOriginalName());
+            $path = Storage::putFileAs('public/images', $image, $name.'.'.$extension); // Даем путь к этому файлу
+            $data['main_image'] = $path;
+        }
+
         $blog->fill($data)->save();
 
         return redirect(route('admin_blog'));
