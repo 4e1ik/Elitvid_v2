@@ -34,7 +34,7 @@ class BlogController extends Controller
 //        dd($data);
         if ($request->hasFile('main_image')) {
             $image = $request->file('main_image');
-            dd($image);
+//            dd($image);
             $extension = $image->getClientOriginalExtension();
             $name = hash('md5', $image->getClientOriginalName());
             $path = Storage::putFileAs('public/images', $image, $name.'.'.$extension); // Даем путь к этому файлу
