@@ -27,7 +27,8 @@
     <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-    <script src="https://cdn.tiny.cloud/1/mdjp1eslo1j3haievd435v10sarfluypkdbgvsfg9v49pt1e/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+{{--    <script src="https://cdn.tiny.cloud/1/mdjp1eslo1j3haievd435v10sarfluypkdbgvsfg9v49pt1e/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>--}}
+    <script src="https://cdn.tiny.cloud/1/5tqxeiuo652g8b1elyvstf5y8cvuzvr9c3oduhku638ncvqs/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
 </head>
 
 <body id="mimin" class="dashboard">
