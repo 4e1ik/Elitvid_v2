@@ -128,7 +128,7 @@
                     <div class="article">
                         <div class="article__image">
 {{--                            <img src="{{asset('storage/'.str_replace('public/','',$item->main_image))}}" alt="Фотография cтатьи">--}}
-                            <img src="{{asset('storage/'.str_replace('public/','',$blog->main_image))}}" alt="Фотография cтатьи">
+                            <img src="{{asset('storage/'.str_replace('public/','',$item->main_image))}}" alt="Фотография cтатьи">
                         </div>
                         <p class="text__h3">{{$item->created_at}}</p>
                     </div>
