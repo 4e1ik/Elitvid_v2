@@ -123,12 +123,12 @@
                 </style>
                 <div class="news">
                     <div class="direction__image">
-                        <a href="#">
+                        <a href="{{route('show_blog_post', ['id' => $blog->id])}}">
                             <img src="{{asset('storage/'.str_replace('public/','',$blog->main_image))}}"
                                  alt="Фотография cтатьи">
                         </a>
                     </div>
-                    <a href="#">
+                    <a href="{{route('show_blog_post', ['id' => $blog->id])}}">
                         <h3 class="text__h3">{{$blog->title}}</h3>
                     </a>
                     <p>{{$blog->description}}</p>
