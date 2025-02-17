@@ -1239,6 +1239,13 @@ main .ornament .decor {
 main .ornament .decor_pot {
   width: 38%;
 }
+main .description .text ul {
+  padding-left: 40px;
+  margin: 15px 0;
+}
+main .description .text ul li {
+  list-style-type: initial;
+}
 
 footer {
   padding: 3.75em 8.125em;
