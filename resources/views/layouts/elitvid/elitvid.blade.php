@@ -31,9 +31,9 @@
     </script>
     <meta name="yandex-verification" content="3d561315259a84fe" />
     <link rel="stylesheet" href="{{asset('/elitvid_assets/newDesign/newDesign/reset.css')}}">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
-    <!--    <link rel="stylesheet" href="newDesign/newDesign/dist/style.css">-->
+{{--    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>--}}
     <link rel="stylesheet" href="{{asset('/elitvid_assets/newDesign/newDesign/style.css')}}?v1.3">
+    <link rel="stylesheet" href="{{asset('/elitvid_assets/newDesign/newDesign/swiper.min.css')}}"/>
     <link rel="shortcut icon" href="{{asset('/elitvid_assets/newDesign/newDesign/imgs/logo/logo.svg')}}">
 
     <title>{{$metaTitle ?? 'Изделия из полистоуна от производителя на заказ - Elitvid.com'}}</title>
@@ -169,7 +169,11 @@
         });
     }
 </script>
-<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+{{--<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>--}}
+{{--<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>--}}
+<script src="{{asset('/elitvid_assets/newDesign/newDesign/js/jquery-3.7.1.min.js')}}"></script>
+<script src="{{asset('/elitvid_assets/newDesign/newDesign/js/jquery-migrate-1.4.1.min.js')}}"></script>
+<script src="{{asset('/elitvid_assets/newDesign/newDesign/swiper.min.js')}}"></script>
 <script defer src="{{asset('/elitvid_assets/newDesign/newDesign/js/sliders/main_slider.js')}}"></script>
 <script defer src="{{asset('/elitvid_assets/newDesign/newDesign/js/popupSubmitApplication.js')}}"></script>
 <script defer src="{{asset('/elitvid_assets/newDesign/newDesign/js/popupRequestCall.js')}}"></script>
