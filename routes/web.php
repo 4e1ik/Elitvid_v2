@@ -29,6 +29,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [MainController::class, 'index'])->name('home');
 
+Route::fallback(function () {
+    return view('errors.404');
+});
+
 Route::get('/sitemap', [MainController::class, 'sitemap'])->name('sitemap');
 
 Route::get('/decorations', [MainController::class, 'decorations'])->name('decorations');

@@ -660,6 +660,33 @@ header {
     }
 }
 
+.stub {
+    padding-bottom: 20em;
+    padding-top: 20em;
+    display: flex;
+    justify-content: center;
+
+    a:after {
+        display: block;
+        left: 0; /*изменить на right:0;, чтобы изменить направление подчёркивания */
+        width: 0; /*задаём длинну линии до наведения курсора*/
+        height: 1px; /*задаём ширину линии*/
+        background-color: $text--color; /*задаём цвет линии*/
+        content: "";
+        transition: 0.3s; /*задаём время анимации*/
+    }
+
+    a:hover:after,
+    a:focus:after {
+        width: 100%; /*устанавливаем значение 100% чтобы ссылка подчёркивалась полностью*/
+    }
+
+    a:hover {
+        transition: $transition-duration;
+        text-shadow: 0 0 .65px
+    }
+}
+
 main {
     padding: 0 8.125em;
     position: relative;
@@ -688,13 +715,6 @@ main {
         a {
             font-size: 0.75em;
         }
-    }
-
-    .stub {
-        padding-bottom: 20em;
-        padding-top: 20em;
-        display: flex;
-        justify-content: center;
     }
 
     .main {

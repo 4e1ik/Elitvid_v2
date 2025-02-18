@@ -503,6 +503,30 @@ header .header-menu--list {
   gap: 1.5625em;
 }
 
+.stub {
+  padding-bottom: 20em;
+  padding-top: 20em;
+  display: flex;
+  justify-content: center;
+}
+.stub a:after {
+  display: block;
+  left: 0; /*изменить на right:0;, чтобы изменить направление подчёркивания */
+  width: 0; /*задаём длинну линии до наведения курсора*/
+  height: 1px; /*задаём ширину линии*/
+  background-color: #FFFFFF; /*задаём цвет линии*/
+  content: "";
+  transition: 0.3s; /*задаём время анимации*/
+}
+.stub a:hover:after,
+.stub a:focus:after {
+  width: 100%; /*устанавливаем значение 100% чтобы ссылка подчёркивалась полностью*/
+}
+.stub a:hover {
+  transition: 0.2s;
+  text-shadow: 0 0 0.65px;
+}
+
 main {
   padding: 0 8.125em;
   position: relative;
@@ -527,12 +551,6 @@ main .breadcrumbs .breadcrumbs__links {
 }
 main .breadcrumbs a {
   font-size: 0.75em;
-}
-main .stub {
-  padding-bottom: 20em;
-  padding-top: 20em;
-  display: flex;
-  justify-content: center;
 }
 main .main {
   padding-top: 7.5em;
