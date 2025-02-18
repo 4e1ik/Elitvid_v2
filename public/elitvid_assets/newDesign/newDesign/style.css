@@ -1425,6 +1425,12 @@ footer .request-phone--button:hover {
   body main .product .product__content .product_content__images .content_images__colors .images_colors__images [data-title]::after {
     bottom: 3em;
   }
+  body main .description .text p {
+    font-size: 1.3em;
+  }
+  body main .description .text ul li {
+    font-size: 1.5em;
+  }
   main {
     padding: 0 5.625em;
   }

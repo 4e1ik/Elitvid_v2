@@ -1663,14 +1663,11 @@ main {
     .description {
         .text {
 
-            //all: initial; !important;
-
             ul {
                 padding-left: 40px;
                 margin: 15px 0;
                 li {
                     list-style-type: initial;
-
                 }
 
             }
@@ -1944,6 +1941,20 @@ footer {
                                 }
                             }
                         }
+                    }
+                }
+            }
+
+            .description {
+                .text {
+                    p {
+                        font-size: 1.3em;
+                    }
+                    ul {
+                        li {
+                            font-size: 1.5em;
+                        }
+
                     }
                 }
             }
