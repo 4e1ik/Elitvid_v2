@@ -143,14 +143,7 @@
                 {!! $item->content !!}
             </section>
             <style>
-                .blog {
-                    li, ul {
-                        list-style-type: initial;
-                    }
 
-                    flex-direction: column;
-                    align-items: flex-start;
-                }
             </style>
 
         @endforeach

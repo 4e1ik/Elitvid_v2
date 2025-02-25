@@ -1674,6 +1674,20 @@ main {
         }
     }
 
+    .blog {
+        li, ul {
+            list-style-type: initial;
+        }
+
+        ul {
+            padding-left: 40px;
+            margin: 15px 0;
+        }
+
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
 
 }
 
