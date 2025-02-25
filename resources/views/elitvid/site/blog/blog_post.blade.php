@@ -6,7 +6,7 @@
         @include('includes.elitvid.popup_application')
         @include('includes.elitvid.breadcrumbs')
         @foreach($blog as $item)
-            <section class="produce">
+            <section style="margin: 5em" class="produce">
                 <div class="description">
                     <div class="description-text">
                         <h1>{{$item->title}}</h1>
@@ -146,10 +146,10 @@
                 .blog {
                     li, ul {
                         list-style-type: initial;
-                        /*margin: 16px 0 16px 40px;*/
-                        /*padding: 0;*/
-
                     }
+
+                    flex-direction: column;
+                    align-items: flex-start;
                 }
             </style>
 
