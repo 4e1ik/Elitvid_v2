@@ -139,9 +139,19 @@
                     <div class="vertical-line-2--decor"></div>
                 </div>
             </section>
-            <section class="decorative_elements">
+            <section id="blog" class="blog">
                 {!! $item->content !!}
             </section>
+            <style>
+                .blog {
+                    li, ul {
+                        list-style-type: initial;
+                        /*margin: 16px 0 16px 40px;*/
+                        /*padding: 0;*/
+
+                    }
+                }
+            </style>
 
         @endforeach
         <section class="navigation">
