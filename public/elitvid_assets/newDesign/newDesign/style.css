@@ -1448,6 +1448,9 @@ footer .request-phone--button:hover {
   body main .blog li {
     font-size: 1.5em;
   }
+  body main .blog h3 {
+    font-size: 1.5em;
+  }
   main {
     padding: 0 5.625em;
   }
