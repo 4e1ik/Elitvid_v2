@@ -1442,6 +1442,12 @@ footer .request-phone--button:hover {
   body main .description .text ul li {
     font-size: 1.5em;
   }
+  body main .blog p {
+    font-size: 1.3em;
+  }
+  body main .blog li {
+    font-size: 1.5em;
+  }
   main {
     padding: 0 5.625em;
   }
