@@ -19,6 +19,13 @@
             webvisor:true
         });
     </script>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+                new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-N2MNKNDW');</script>
+    <!-- End Google Tag Manager -->
     <noscript><div><img src="https://mc.yandex.ru/watch/90164998" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-27WP3P8931"></script>
@@ -41,6 +48,10 @@
     <meta name="description" content="{{ $metaDescription ?? 'Качественные изделия из полистоуна от производителя Elitvid.com. В нашем каталоге широкий выбор декоративных элементов для интерьера и экстерьера. Надежность, эстетика и доступные цены – только у нас!' }}">
 </head>
 <body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N2MNKNDW"
+                  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
 <header>
     <div class="header--section">
         <div class="logo"><a href="{{route('home')}}"><img class="logo-img" src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/logo/logo.svg')}}" alt="Логотип Элитвид"></a></div>
