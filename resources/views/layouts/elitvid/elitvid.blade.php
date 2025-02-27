@@ -62,8 +62,11 @@
 {{--                <li>--}}
 {{--                    <button class="call">Заказать звонок</button>--}}
 {{--                </li>--}}
-                <li><a href="tel:375297034014" class="phone-number">+375 (29) 350 71 71</a></li>
+                <li><a href="tel:79104184777" class="phone-number">+7 (910) 418 47 77</a></li>
                 <li><a href="tel:79917110881" class="phone-number">+7 (991) 711 08 81</a></li>
+                <li><a href="tel:375297665012" class="phone-number">+375 (29) 766 50 12</a></li>
+                <li><a href="tel:375297034014" class="phone-number">+375 (29) 703 40 14</a></li>
+                <li><a href="tel:+375293507171" class="phone-number">+375 (29) 350 71 71</a></li>
             </ul>
         </nav>
         <button class="header__burger" id="burger">
@@ -100,10 +103,11 @@
                     <ul class="contacts-text--list">
                         <li>Пн-пт: 8.00-17.00</li>
                         <li>el_vid@mail.ru</li>
-                        <li><a href="tel:375297034014" class="phone-number">+375 (29) 703 40 14</a></li>
-                        <li><a href="tel:375297665012" class="phone-number">+375 (29) 766 50 12</a></li>
-                        <li><a href="tel:375293507171" class="phone-number">+375 (29) 350 71 71</a></li>
+                        <li><a href="tel:79104184777" class="phone-number">+7 (910) 418 47 77</a></li>
                         <li><a href="tel:79917110881" class="phone-number">+7 (991) 711 08 81</a></li>
+                        <li><a href="tel:375297665012" class="phone-number">+375 (29) 766 50 12</a></li>
+                        <li><a href="tel:375297034014" class="phone-number">+375 (29) 703 40 14</a></li>
+                        <li><a href="tel:+375293507171" class="phone-number">+375 (29) 350 71 71</a></li>
                     </ul>
                 </div>
 {{--                <div class="contacts-icons">--}}
