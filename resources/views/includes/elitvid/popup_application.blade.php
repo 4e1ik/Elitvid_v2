@@ -22,20 +22,34 @@
                     <div class="popup__input">
                         <p>Ваше имя</p>
                         <input class="item-form name" type="text" name="name" placeholder="Имя*" required>
-                        @error('name')
-                        <div class="text-danger">
-                            <p>{{$message}}</p>
+{{--                        @error('name')--}}
+{{--                        <div class="text-danger">--}}
+{{--                            <p>{{$message}}</p>--}}
+{{--                        </div>--}}
+{{--                        @enderror--}}
+                        <div style="position: absolute; margin:0;" class="form_error">
+                            @error('name')
+                            <div class="text-danger">
+                                {{$message}}
+                            </div>
+                            @enderror
                         </div>
-                        @enderror
                     </div>
                     <div class="popup__input">
                         <p>Ваш E-mail</p>
                         <input class="item-form" type="text" name="email" placeholder="E-mail*" required>
-                        @error('email')
-                        <div class="text-danger">
-                            <p>{{$message}}</p>
+{{--                        @error('email')--}}
+{{--                        <div class="text-danger">--}}
+{{--                            <p>{{$message}}</p>--}}
+{{--                        </div>--}}
+{{--                        @enderror--}}
+                        <div style="position: absolute; margin:0;" class="form_error">
+                            @error('email')
+                            <div class="text-danger">
+                                {{$message}}
+                            </div>
+                            @enderror
                         </div>
-                        @enderror
                     </div>
                     <div class="popup__input country">
                         <p>Номер телефона</p>
@@ -47,32 +61,53 @@
                                 <option class="kz">🇰🇿 +7</option>
                             </select>
                             <input class="item-form" type="text" name="phone" required>
-                            @error('phone')
-                            <div class="text-danger">
-                                <p>{{$message}}</p>
+{{--                            @error('phone')--}}
+{{--                            <div class="text-danger">--}}
+{{--                                <p>{{$message}}</p>--}}
+{{--                            </div>--}}
+{{--                            @enderror--}}
+                            <div style="position: absolute; margin:0;" class="form_error">
+                                @error('phone')
+                                <div class="text-danger">
+                                    {{$message}}
+                                </div>
+                                @enderror
                             </div>
-                            @enderror
                         </div>
                     </div>
                     <div class="popup__input">
                         <p>Название организации</p>
                         <input class="item-form" type="text" name="name_corp" placeholder="Название">
-                        @error('name_corp')
-                        <div class="text-danger">
-                            <p>{{$message}}</p>
+{{--                        @error('name_corp')--}}
+{{--                        <div class="text-danger">--}}
+{{--                            <p>{{$message}}</p>--}}
+{{--                        </div>--}}
+{{--                        @enderror--}}
+                        <div style="position: absolute; margin:0;" class="form_error">
+                            @error('name_corp')
+                            <div class="text-danger">
+                                {{$message}}
+                            </div>
+                            @enderror
                         </div>
-                        @enderror
                     </div>
                 </div>
                 <div class="popup_content_inputs__comment popup__input">
                     <p>Интересует что-то конкретное?</p>
                     <textarea class="item-form textarea" name="textarea" type="text" rows="5"
                               placeholder="Ваш комментарий..."></textarea>
-                    @error('textarea')
-                    <div class="text-danger">
-                        <p>{{$message}}</p>
+{{--                    @error('textarea')--}}
+{{--                    <div class="text-danger">--}}
+{{--                        <p>{{$message}}</p>--}}
+{{--                    </div>--}}
+{{--                    @enderror--}}
+                    <div style="position: absolute; margin:0;" class="form_error">
+                        @error('textarea')
+                        <div class="text-danger">
+                            {{$message}}
+                        </div>
+                        @enderror
                     </div>
-                    @enderror
                 </div>
                 <div class="popup_content_inputs__file-button">
                     <div class="popup__input file">
@@ -85,19 +120,26 @@
                         </label>
                         <input style="display: none" id="file1" class="item-form file" type="file" name="file"
                                placeholder="">
-                        @error('file')
-                        <div class="text-danger">
-                            <p>{{$message}}</p>
-                        </div>
-                        @enderror
+{{--                        @error('file')--}}
+{{--                        <div class="text-danger">--}}
+{{--                            <p>{{$message}}</p>--}}
+{{--                        </div>--}}
+{{--                        @enderror--}}
                         <p>Прикрепить файл, он должен быть не более 512 кб</p>
+                        <div style="position: absolute; margin:0;" class="form_error">
+                            @error('file')
+                            <div class="text-danger">
+                                {{$message}}
+                            </div>
+                            @enderror
+                        </div>
                     </div>
                     <input type="hidden" name="g-recaptcha-response" id="g-recaptcha-response">
-                    @error('g-recaptcha-response')
-                    <div class="text-danger">
-                        <p>{{$message}}</p>
-                    </div>
-                    @enderror
+{{--                    @error('g-recaptcha-response')--}}
+{{--                    <div class="text-danger">--}}
+{{--                        <p>{{$message}}</p>--}}
+{{--                    </div>--}}
+{{--                    @enderror--}}
                     <div class="submit__button">
                         <button class="form__form-button" type="button" onclick="onClick(event)">Заказать</button>
 {{--                        <button type="submit">Оставить заявку</button>--}}

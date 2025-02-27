@@ -29,6 +29,6 @@ class MailController extends Controller
         } else {
             Mail::to('Elitvid.site@yandex.ru')->send(new FeedbackMail($data));
         }
-        return redirect(route('home'));
+        return back();
     }
 }

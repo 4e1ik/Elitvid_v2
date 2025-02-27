@@ -303,13 +303,34 @@ header.open .header__burger span:nth-child(3) {
         display: flex;
         flex-direction: column;
         gap: 1.25em;
+        width: 100%;
     }
 
     .popup_content__inputs {
         display: flex;
         justify-content: space-between;
         flex-wrap: wrap;
-        gap: 2.25em;
+        gap: 1.25em;
+
+        .popup__input {
+
+            .poop {
+                .form_error {
+                    font-size: 0.9em;
+                    color: #9e2929;
+                    //left: 7em;
+                    top: 3.6em;
+                }
+
+            }
+
+            .form_error {
+                color: #9e2929;
+                font-size: 0.9em;
+                //left: 7em;
+                //top: 1.2em;
+            }
+        }
 
         input {
             width: 30.625em;
@@ -390,6 +411,11 @@ header.open .header__burger span:nth-child(3) {
     .popup_content_inputs__comment {
         p {
             //font-size: 1.25em;
+        }
+
+        .form_error {
+            color: #9e2929;
+            font-size: 0.9em;
         }
     }
 
