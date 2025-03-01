@@ -252,13 +252,19 @@
 
         // Показываем новые ошибки
         Object.entries(errors).forEach(([field, messages]) => {
-            const errorContainer = document.querySelector(`input[name="${field}"]`)
-                .closest('.popup__input')
-                .querySelector('.form_error');
-            if (errorContainer) {
-                errorContainer.innerHTML = messages.map(message => `
+            // Ищем input или textarea по имени
+            const inputOrTextarea = document.querySelector(`input[name="${field}"], textarea[name="${field}"]`);
+
+            if (inputOrTextarea) {
+                // Находим контейнер для ошибок
+                const errorContainer = inputOrTextarea.closest('.popup__input')?.querySelector('.form_error');
+
+                if (errorContainer) {
+                    // Вставляем сообщения об ошибках
+                    errorContainer.innerHTML = messages.map(message => `
                 <div class="text-danger">${message}</div>
             `).join('');
+                }
             }
         });
     }
