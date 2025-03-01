@@ -36,7 +36,7 @@ class MailRequest extends FormRequest
                 'remoteip' => \request()->ip(),
             ]);
                 if (!$g_response->json('success')){
-                    $fail('The {$attribute} is invalid');
+                    $fail('Похоже, что вы - Робот!');
                 }
             }],
         ];

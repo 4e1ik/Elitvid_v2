@@ -23,6 +23,11 @@ class MainController extends Controller
         return view('elitvid.site.index', compact( 'main_page_images', 'metaTitle', 'metaDescription', 'category'));
     }
 
+    function test()
+    {
+        return view('elitvid.site.test');
+    }
+
     function sitemap()
     {
         $filePath = public_path('sitemap.xml');

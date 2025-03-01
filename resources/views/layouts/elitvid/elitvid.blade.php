@@ -175,14 +175,97 @@
 </footer>
 <script src="https://www.google.com/recaptcha/api.js?render={{config('services.recaptcha.site_key')}}"></script>
 <script>
-    function onClick(e) {
+    {{--function onClick(e) {--}}
+    {{--    e.preventDefault();--}}
+    {{--    grecaptcha.ready(function () {--}}
+    {{--        grecaptcha.execute('{{ config('services.recaptcha.site_key') }}', {action: 'send_mail'}).then(function (token) {--}}
+    {{--            document.getElementById('g-recaptcha-response').value = token;--}}
+    {{--            document.getElementById('mail_form').submit();--}}
+    {{--        });--}}
+    {{--    });--}}
+    {{--}--}}
+
+    async function onClick(e) {
         e.preventDefault();
-        grecaptcha.ready(function () {
-            grecaptcha.execute('{{ config('services.recaptcha.site_key') }}', {action: 'send_mail'}).then(function (token) {
-                document.getElementById('g-recaptcha-response').value = token;
-                document.getElementById('mail_form').submit();
+        // console.log();
+        try {
+            // Получаем токен reCAPTCHA
+            const token = await new Promise((resolve, reject) => {
+                grecaptcha.ready(async () => {
+                    try {
+                        const token = await grecaptcha.execute('{{ config('services.recaptcha.site_key') }}', {
+                            action: 'send_mail'
+                        });
+                        resolve(token);
+                    } catch (error) {
+                        reject(error);
+                    }
+                });
             });
+
+            // Устанавливаем токен в скрытое поле формы
+            document.getElementById('g-recaptcha-response').value = token;
+
+            // Отправляем форму через Fetch API
+            const form = document.getElementById('mail_form');
+            const formData = new FormData(form);
+
+            const response = await fetch('/send_mail', {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'X-Requested-With': 'XMLHttpRequest',
+                    'Accept': 'application/json',
+                    'X-CSRF-TOKEN': document.getElementsByName('_token')[0].value
+                }
+            });
+
+            const data = await response.json();
+
+            if (!response.ok) {
+                if (response.status === 422 && data.errors) {
+                    // Ошибки валидации
+                    showErrors(data.errors);
+                } else {
+                    // Другие ошибки
+                    throw new Error(data.message || 'Произошла ошибка при отправке');
+                }
+                return;
+            }
+
+            // Успешная отправка
+            alert(data.message || 'Письмо успешно отправлено!');
+            form.reset(); // Сброс формы
+            clearErrors(); // Очистка ошибок
+
+        } catch (error) {
+            // Обработка ошибок
+            console.error('Ошибка:', error);
+            alert(error.message || 'Произошла ошибка при отправке письма');
+        }
+    }
+
+    // Функция для отображения ошибок
+    function showErrors(errors) {
+        // Очищаем предыдущие ошибки
+        clearErrors();
+
+        // Показываем новые ошибки
+        Object.entries(errors).forEach(([field, messages]) => {
+            const errorContainer = document.querySelector(`input[name="${field}"]`)
+                .closest('.popup__input')
+                .querySelector('.form_error');
+            if (errorContainer) {
+                errorContainer.innerHTML = messages.map(message => `
+                <div class="text-danger">${message}</div>
+            `).join('');
+            }
         });
+    }
+
+    // Функция для очистки ошибок
+    function clearErrors() {
+        document.querySelectorAll('.form_error').forEach(el => el.innerHTML = '');
     }
 </script>
 {{--<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>--}}
@@ -193,9 +276,10 @@
 <script src="{{asset('/elitvid_assets/newDesign/newDesign/swiper-bundle.min.js')}}"></script>
 <script defer src="{{asset('/elitvid_assets/newDesign/newDesign/js/sliders/main_slider.js')}}"></script>
 <script defer src="{{asset('/elitvid_assets/newDesign/newDesign/js/popupSubmitApplication.js')}}"></script>
-<script defer src="{{asset('/elitvid_assets/newDesign/newDesign/js/popupRequestCall.js')}}"></script>
+{{--<script defer src="{{asset('/elitvid_assets/newDesign/newDesign/js/popupRequestCall.js')}}"></script>--}}
 <script defer src="{{asset('/elitvid_assets/newDesign/newDesign/js/burgerMenu.js')}}"></script>
 <script defer src="{{asset('/elitvid_assets/newDesign/newDesign/js/imageUpdater.js')}}"></script>
+<script defer src="{{asset('/elitvid_assets/newDesign/newDesign/js/test.js')}}"></script>
 
 </body>
 </html>
