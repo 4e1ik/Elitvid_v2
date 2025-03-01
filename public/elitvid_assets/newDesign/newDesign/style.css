@@ -1957,6 +1957,9 @@ footer .request-phone--button:hover {
     font-size: 1.5em;
     margin: -0.2em 0 0 0;
   }
+  .popup .popup_content__inputs .popup__input #name-corp {
+    width: 20.625em;
+  }
   .popup .popup_content__inputs input {
     width: 20.625em;
   }
