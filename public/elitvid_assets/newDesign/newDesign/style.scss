@@ -318,8 +318,9 @@ header.open .header__burger span:nth-child(3) {
                 .form_error {
                     font-size: 0.9em;
                     color: #9e2929;
-                    //left: 7em;
                     top: 3.6em;
+                    margin: 0;
+                    position: absolute;
                 }
 
             }
@@ -327,9 +328,13 @@ header.open .header__burger span:nth-child(3) {
             .form_error {
                 color: #9e2929;
                 font-size: 0.9em;
-                //left: 7em;
-                //top: 1.2em;
+                margin: 0;
+                position: absolute;
             }
+        }
+
+        #name-corp {
+            width: 30.625em;
         }
 
         input {
@@ -441,6 +446,16 @@ header.open .header__burger span:nth-child(3) {
         display: flex;
         align-items: flex-start;
         gap: 3.25em;
+
+        .file {
+            .form_error {
+                color: #9e2929;
+                font-size: 0.9em;
+                width: 30em;
+                margin: 6em 0 0 0;
+                position: absolute;
+            }
+        }
     }
 
     .file {
@@ -448,6 +463,7 @@ header.open .header__burger span:nth-child(3) {
         align-items: center;
         gap: 1.25em;
         width: 30.625em;
+
 
         label {
             display: flex;
@@ -497,6 +513,7 @@ header.open .header__burger span:nth-child(3) {
 .download_catalog {
     margin-top: 1em;
     width: 16em;
+
     a {
         display: flex;
         align-items: center;
@@ -1692,6 +1709,7 @@ main {
             ul {
                 padding-left: 40px;
                 margin: 15px 0;
+
                 li {
                     list-style-type: initial;
                 }
@@ -1990,6 +2008,7 @@ footer {
                     p {
                         font-size: 1.3em;
                     }
+
                     ul {
                         li {
                             font-size: 1.5em;
@@ -2223,6 +2242,10 @@ footer {
 @media (max-width: 640px) {
 
     .popup {
+
+        .name-corp-error {
+            margin-bottom: 2em;
+        }
 
         .poop {
             select {
@@ -2798,7 +2821,29 @@ footer {
 
     .popup {
 
+        .name-corp-error {
+            margin-bottom: 5em;
+        }
+
         .popup_content__inputs {
+            .popup__input {
+
+                .poop {
+                    .form_error {
+                        font-size: 1.5em;
+                        color: #9e2929;
+                        margin: -0.5em 0 0 0;
+                    }
+
+                }
+
+                .form_error {
+                    color: #9e2929;
+                    font-size: 1.5em;
+                    margin: -0.2em 0 0 0;
+                }
+            }
+
             input {
                 width: 20.625em;
             }
@@ -2822,7 +2867,31 @@ footer {
 
         .popup__content {
             gap: 2.25em;
+
+            .popup_content_inputs__comment {
+                .form_error {
+                    color: #9e2929;
+                    font-size: 1.5em;
+                }
+            }
+
+            .popup_content_inputs__file-button {
+                .file {
+                    .form_error {
+                        font-size: 1.5em;
+                        margin: 6em 0 0 0;
+                        position: absolute;
+                        width: 21em;
+                    }
+                }
+            }
+
+            .file-error {
+                gap: 6.25em;
+            }
+
         }
+
 
         .submit__button {
 

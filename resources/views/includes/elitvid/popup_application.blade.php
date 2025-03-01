@@ -22,7 +22,7 @@
                     <div class="popup__input">
                         <p>Ваше имя</p>
                         <input class="item-form name" type="text" name="name" placeholder="Имя*" required>
-                        <div style="position: absolute; margin:0;" class="form_error">
+                        <div class="form_error">
                             @error('name')
                             <div class="text-danger">
                                 {{$message}}
@@ -33,7 +33,7 @@
                     <div class="popup__input">
                         <p>Ваш E-mail</p>
                         <input class="item-form" type="text" name="email" placeholder="E-mail*" required>
-                        <div style="position: absolute; margin:0;" class="form_error">
+                        <div  class="form_error">
                             @error('email')
                             <div class="text-danger">
                                 {{$message}}
@@ -51,7 +51,7 @@
                                 <option class="kz">🇰🇿 +7</option>
                             </select>
                             <input class="item-form" type="text" name="phone" required>
-                            <div style="position: absolute; margin:0;" class="form_error">
+                            <div  class="form_error">
                                 @error('phone')
                                 <div class="text-danger">
                                     {{$message}}
@@ -60,10 +60,10 @@
                             </div>
                         </div>
                     </div>
-                    <div class="popup__input">
+                    <div class="popup__input name-corp">
                         <p>Название организации</p>
-                        <input class="item-form" type="text" name="name_corp" placeholder="Название">
-                        <div style="position: absolute; margin:0;" class="form_error">
+                        <input id="name-corp" class="item-form" type="text" name="name_corp" placeholder="Название">
+                        <div id="name-corp" class="form_error">
                             @error('name_corp')
                             <div class="text-danger">
                                 {{$message}}
@@ -74,9 +74,9 @@
                 </div>
                 <div class="popup_content_inputs__comment popup__input">
                     <p>Интересует что-то конкретное?</p>
-                    <textarea class="item-form textarea" name="textarea" type="text" rows="5"
+                    <textarea id="textarea-input" class="item-form textarea" name="textarea" type="text" rows="5"
                               placeholder="Ваш комментарий..."></textarea>
-                    <div style="position: absolute; margin:0;" class="form_error">
+                    <div  class="form_error">
                         @error('textarea')
                         <div class="text-danger">
                             {{$message}}
@@ -85,7 +85,7 @@
                     </div>
                 </div>
                 <div class="popup_content_inputs__file-button">
-                    <div class="popup__input file">
+                    <div id="file-input" class="popup__input file">
                         <label for="file1">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 12 24"
                                  fill="none">
@@ -96,7 +96,7 @@
                         <input style="display: none" id="file1" class="item-form file" type="file" name="file"
                                placeholder="">
                         <p>Прикрепить файл, он должен быть не более 512 кб</p>
-                        <div style="position: absolute; margin:0;" class="form_error">
+                        <div class="form_error">
                             @error('file')
                             <div class="text-danger">
                                 {{$message}}
@@ -139,7 +139,7 @@
 {{--                    <div class="popup__input">--}}
 {{--                        <p>Ваше имя</p>--}}
 {{--                        <input class="item-form name" type="text" name="name" placeholder="Имя*" required>--}}
-{{--                        <div style="position: absolute; margin:0;" class="form_error">--}}
+{{--                        <div  class="form_error">--}}
 {{--                            @error('name')--}}
 {{--                            <div class="text-danger">--}}
 {{--                                {{$message}}--}}
