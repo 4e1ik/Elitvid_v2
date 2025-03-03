@@ -63,7 +63,7 @@
     {{--    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>--}}
     <link rel="stylesheet" href="{{asset('/elitvid_assets/newDesign/newDesign/swiper.min.css')}}"/>
     <link rel="stylesheet" href="{{asset('/elitvid_assets/newDesign/newDesign/swiper-bundle.min.css')}}"/>
-    <link rel="stylesheet" href="{{asset('/elitvid_assets/newDesign/newDesign/style.css')}}?v1.6">
+    <link rel="stylesheet" href="{{asset('/elitvid_assets/newDesign/newDesign/style.css')}}?v=1.5">
     <link rel="shortcut icon" href="{{asset('/elitvid_assets/newDesign/newDesign/imgs/logo/logo.svg')}}">
 
     <title>{{$metaTitle ?? 'Изделия из полистоуна от производителя на заказ - Elitvid.com'}}</title>
@@ -217,7 +217,6 @@
 
     async function onClick(e) {
         e.preventDefault();
-        // console.log();
         try {
             // Получаем токен reCAPTCHA
             const token = await new Promise((resolve, reject) => {
