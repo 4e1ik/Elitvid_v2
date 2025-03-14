@@ -1,4 +1,8 @@
 @extends('layouts.elitvid.elitvid')
+@section('404')
+<meta name="robots" content="noindex, nofollow">
+@parent
+@endsection
 
 @section('content')
     <section class="stub">
