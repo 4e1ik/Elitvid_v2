@@ -5,9 +5,50 @@
     <main>
         @include('includes.elitvid.popup_call')
         @include('includes.elitvid.popup_application')
-        @include('includes.elitvid.breadcrumbs')
+        {{-- @include('includes.elitvid.breadcrumbs') --}}
+        @foreach($products as $product)
+        <section class="breadcrumbs">
+            <div class="breadcrumbs__links">
+                <a href="{{route('home')}}">Главная</a>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="17" viewBox="0 0 16 17" fill="none">
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                          d="M4.64592 2.14689C4.69236 2.10033 4.74754 2.06339 4.80828 2.03818C4.86903 2.01297 4.93415 2 4.99992 2C5.06568 2 5.13081 2.01297 5.19155 2.03818C5.2523 2.06339 5.30747 2.10033 5.35392 2.14689L11.3539 8.14689C11.4005 8.19334 11.4374 8.24852 11.4626 8.30926C11.4878 8.37001 11.5008 8.43513 11.5008 8.50089C11.5008 8.56666 11.4878 8.63178 11.4626 8.69253C11.4374 8.75327 11.4005 8.80845 11.3539 8.85489L5.35392 14.8549C5.26003 14.9488 5.13269 15.0015 4.99992 15.0015C4.86714 15.0015 4.7398 14.9488 4.64592 14.8549C4.55203 14.761 4.49929 14.6337 4.49929 14.5009C4.49929 14.3681 4.55203 14.2408 4.64592 14.1469L10.2929 8.50089L4.64592 2.85489C4.59935 2.80845 4.56241 2.75327 4.5372 2.69253C4.512 2.63178 4.49902 2.56666 4.49902 2.50089C4.49902 2.43513 4.512 2.37001 4.5372 2.30926C4.56241 2.24852 4.59935 2.19334 4.64592 2.14689Z"
+                          fill="white"/>
+                </svg>
+                <a href="{{route('directions')}}">Наши направления</a>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="17" viewBox="0 0 16 17" fill="none">
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                          d="M4.64592 2.14689C4.69236 2.10033 4.74754 2.06339 4.80828 2.03818C4.86903 2.01297 4.93415 2 4.99992 2C5.06568 2 5.13081 2.01297 5.19155 2.03818C5.2523 2.06339 5.30747 2.10033 5.35392 2.14689L11.3539 8.14689C11.4005 8.19334 11.4374 8.24852 11.4626 8.30926C11.4878 8.37001 11.5008 8.43513 11.5008 8.50089C11.5008 8.56666 11.4878 8.63178 11.4626 8.69253C11.4374 8.75327 11.4005 8.80845 11.3539 8.85489L5.35392 14.8549C5.26003 14.9488 5.13269 15.0015 4.99992 15.0015C4.86714 15.0015 4.7398 14.9488 4.64592 14.8549C4.55203 14.761 4.49929 14.6337 4.49929 14.5009C4.49929 14.3681 4.55203 14.2408 4.64592 14.1469L10.2929 8.50089L4.64592 2.85489C4.59935 2.80845 4.56241 2.75327 4.5372 2.69253C4.512 2.63178 4.49902 2.56666 4.49902 2.50089C4.49902 2.43513 4.512 2.37001 4.5372 2.30926C4.56241 2.24852 4.59935 2.19334 4.64592 2.14689Z"
+                          fill="white"/>
+                </svg>
+                <a href="{{route('pots')}}">Кашпо</a>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="17" viewBox="0 0 16 17" fill="none">
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                          d="M4.64592 2.14689C4.69236 2.10033 4.74754 2.06339 4.80828 2.03818C4.86903 2.01297 4.93415 2 4.99992 2C5.06568 2 5.13081 2.01297 5.19155 2.03818C5.2523 2.06339 5.30747 2.10033 5.35392 2.14689L11.3539 8.14689C11.4005 8.19334 11.4374 8.24852 11.4626 8.30926C11.4878 8.37001 11.5008 8.43513 11.5008 8.50089C11.5008 8.56666 11.4878 8.63178 11.4626 8.69253C11.4374 8.75327 11.4005 8.80845 11.3539 8.85489L5.35392 14.8549C5.26003 14.9488 5.13269 15.0015 4.99992 15.0015C4.86714 15.0015 4.7398 14.9488 4.64592 14.8549C4.55203 14.761 4.49929 14.6337 4.49929 14.5009C4.49929 14.3681 4.55203 14.2408 4.64592 14.1469L10.2929 8.50089L4.64592 2.85489C4.59935 2.80845 4.56241 2.75327 4.5372 2.69253C4.512 2.63178 4.49902 2.56666 4.49902 2.50089C4.49902 2.43513 4.512 2.37001 4.5372 2.30926C4.56241 2.24852 4.59935 2.19334 4.64592 2.14689Z"
+                          fill="white"/>
+                </svg>
+                <a href="{{route($product->collection == 'Square' ?
+                    'square_pots':($product->collection == 'Round' ?
+                        'round_pots': ($product->collection == 'Rectangular' ?
+                            'rectangular_pots' : '')))}}">
+                                    {{ $product->collection == 'Square' ?
+                                    'Квадратные кашпо':($product->collection == 'Round' ?
+                                        'Круглые кашпо': ($product->collection == 'Rectangular' ?
+                                            'Прямоугольные кашпо' : '')) }}
+                                    </a>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="17" viewBox="0 0 16 17" fill="none">
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                          d="M4.64592 2.14689C4.69236 2.10033 4.74754 2.06339 4.80828 2.03818C4.86903 2.01297 4.93415 2 4.99992 2C5.06568 2 5.13081 2.01297 5.19155 2.03818C5.2523 2.06339 5.30747 2.10033 5.35392 2.14689L11.3539 8.14689C11.4005 8.19334 11.4374 8.24852 11.4626 8.30926C11.4878 8.37001 11.5008 8.43513 11.5008 8.50089C11.5008 8.56666 11.4878 8.63178 11.4626 8.69253C11.4374 8.75327 11.4005 8.80845 11.3539 8.85489L5.35392 14.8549C5.26003 14.9488 5.13269 15.0015 4.99992 15.0015C4.86714 15.0015 4.7398 14.9488 4.64592 14.8549C4.55203 14.761 4.49929 14.6337 4.49929 14.5009C4.49929 14.3681 4.55203 14.2408 4.64592 14.1469L10.2929 8.50089L4.64592 2.85489C4.59935 2.80845 4.56241 2.75327 4.5372 2.69253C4.512 2.63178 4.49902 2.56666 4.49902 2.50089C4.49902 2.43513 4.512 2.37001 4.5372 2.30926C4.56241 2.24852 4.59935 2.19334 4.64592 2.14689Z"
+                          fill="white"/>
+                </svg>
+                <a href="{{route('show_bench_product', ['collection' => ($product->collection == 'Square' ?
+                    'square_pots':($product->collection == 'Round' ?
+                        'round_pots': ($product->collection == 'Rectangular' ?
+                            'rectangular_pots': ''))), 'id' => $product->id])}}">{{ $product->name}}</a>
+            </div>
+        </section>
         <section class="product">
-            @foreach($products as $product)
+            
                 <h1 style="font-size: 2.25em; font-family:'Merriweather'; text-transform: uppercase; font-weight: 300;">{{$product->name}}</h1>
                 <div class="product__content">
                     <div class="product_content__images">
@@ -138,8 +179,9 @@
                         Оставить заявку
                     </button>
                 </div>
-            @endforeach
+            
         </section>
+        @endforeach
         <section class="offered_products">
             <h2>Другие формы</h2>
             <div class="offered_product_slider">
@@ -153,7 +195,10 @@
                                 <div class="direction">
                                     <img src="{{asset('storage/'.str_replace('public/','',$rand_product->pot_images[0]->image))}}"
                                          alt="Фотография направления кашпо">
-                                    <a href="{{route('show_pot_product', ['id' => $rand_product->id])}}">
+                                    <a href="{{route('show_pot_product', ['collection' => ($product->collection == 'Square' ?
+                                                                                'square_pots':($product->collection == 'Round' ?
+                                                                                    'round_pots': ($product->collection == 'Rectangular' ?
+                                                                                        'rectangular_pots' : ''))), 'id' => $rand_product->id])}}">
                                         <button>{{$rand_product->name}}</button>
                                     </a>
                                 </div>

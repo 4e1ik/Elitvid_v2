@@ -13,6 +13,7 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\PotProductController;
 use App\Http\Controllers\BenchProductController;
 use \App\Http\Controllers\MailController;
+use App\Http\Controllers\SitemapController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -34,9 +35,14 @@ Route::fallback(function () {
     return view('errors.404');
 });
 
-Route::get('/sitemap', [MainController::class, 'sitemap'])->name('sitemap');
+Route::get('/sitemap', [SitemapController::class, 'index'])->name('index');
 
 Route::get('/decorations', [MainController::class, 'decorations'])->name('decorations');
+
+Route::prefix('blog')->group(function () {
+    Route::get('/', [MainController::class, 'blog_posts'])->name('blog_posts');
+    Route::get('/post/{id}', [MainController::class, 'show_blog_post'])->name('show_blog_post');
+});
 
 Route::prefix('directions')->group(function () {
     Route::get('/', [MainController::class, 'directions'])->name('directions');
@@ -49,54 +55,43 @@ Route::prefix('directions')->group(function () {
 
     Route::prefix('benches')->group(function () {
         Route::get('/', [MainController::class, 'benches'])->name('benches');
+        Route::get('/{collection}/{id}', [MainController::class, 'show_bench_product'])->name('show_bench_product');
 
         Route::prefix('verona_benches')->group(function () {
             Route::get('/', [MainController::class, 'verona_benches'])->name('verona_benches');
-            Route::get('/{id}', [MainController::class, 'show_bench_product'])->name('show_bench_product');
         });
 
         Route::prefix('street_furniture_benches')->group(function () {
             Route::get('/', [MainController::class, 'street_furniture_benches'])->name('street_furniture_benches');
-            Route::get('/{id}', [MainController::class, 'show_bench_product'])->name('show_bench_product');
         });
 
         Route::prefix('solo_benches')->group(function () {
             Route::get('/', [MainController::class, 'solo_benches'])->name('solo_benches');
-            Route::get('/{id}', [MainController::class, 'show_bench_product'])->name('show_bench_product');
         });
 
         Route::prefix('lines_benches')->group(function () {
             Route::get('/', [MainController::class, 'lines_benches'])->name('lines_benches');
-            Route::get('/{id}', [MainController::class, 'show_bench_product'])->name('show_bench_product');
         });
 
         Route::prefix('stones_benches')->group(function () {
             Route::get('/', [MainController::class, 'stones_benches'])->name('stones_benches');
-            Route::get('/{id}', [MainController::class, 'show_bench_product'])->name('show_bench_product');
+
         });
     });
 
     Route::prefix('pots')->group(function () {
         Route::get('/', [MainController::class, 'pots'])->name('pots');
-
+        Route::get('/{collection}/{id}', [MainController::class, 'show_pot_product'])->name('show_pot_product');
 
         Route::prefix('rectangular_pots')->group(function () {
             Route::get('/', [MainController::class, 'rectangular_pots'])->name('rectangular_pots');
-            Route::get('/{id}', [MainController::class, 'show_pot_product'])->name('show_pot_product');
         });
         Route::prefix('square_pots')->group(function () {
             Route::get('/', [MainController::class, 'square_pots'])->name('square_pots');
-            Route::get('/{id}', [MainController::class, 'show_pot_product'])->name('show_pot_product');
         });
         Route::prefix('round_pots')->group(function () {
             Route::get('/', [MainController::class, 'round_pots'])->name('round_pots');
-            Route::get('/{id}', [MainController::class, 'show_pot_product'])->name('show_pot_product');
         });
-    });
-
-    Route::prefix('blog')->group(function () {
-        Route::get('/', [MainController::class, 'blog_posts'])->name('blog_posts');
-        Route::get('/post/{id}', [MainController::class, 'show_blog_post'])->name('show_blog_post');
     });
 });
 
@@ -109,8 +104,6 @@ Route::post('/registration', [RegisterController::class, 'registration'])->name(
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
 Route::post('/send_mail', [MailController::class, 'send'])->name('send_mail');
-//Route::post('/orderCall', [MailController::class, 'order_call'])->name('order_call');
-
 
 Route::middleware('auth')->where([])->prefix('admin')->group(function () {
     Route::get('/', [AdminController::class, 'index'])->name('admin');

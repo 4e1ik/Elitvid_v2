@@ -98,7 +98,7 @@ class MainController extends Controller
         return view('elitvid.site.about');
     }
 
-    function show_pot_product($id){
+    function show_pot_product($collection, $id){
         $products = PotProduct::query()->with('pot_images')->where('id', $id)->latest()->get();
         $rand_products = PotProduct::query()->with('pot_images')->where('active', '1')->inRandomOrder()->get();
         $i = 1;
@@ -142,7 +142,7 @@ class MainController extends Controller
         return view('elitvid.site.pots.pot_product_page', compact('products', 'i', 'j', 'rows', 'count', 'rand_products', 'metaTitle', 'metaDescription'));
     }
 
-    function show_bench_product($id){
+    function show_bench_product($collection, $id){
         $products = benchProduct::query()->with('bench_images')->where('id', $id)->latest()->get();
         $rand_products = benchProduct::query()->with('bench_images')->where('active', '1')->inRandomOrder()->get();
         $i = 1;

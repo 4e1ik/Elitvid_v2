@@ -71,14 +71,14 @@ Breadcrumbs::for('show_blog_post', fn (Trail $trail, $id) =>
 $trail->parent('blog_posts')->push(Blog::where('id', $id)->get()[0]['title'], route('show_blog_post', $id))
 );
 
-Breadcrumbs::for('show_bench_product', fn (Trail $trail, $id) =>
-$trail->parent(Route::getRoutes()->match(request()->create(url()->previousPath()))->getName() == 'verona_benches' ? 'verona_benches' :
-        (Route::getRoutes()->match(request()->create(url()->previousPath()))->getName() == 'street_furniture_benches' ? 'street_furniture_benches' :
-        (Route::getRoutes()->match(request()->create(url()->previousPath()))->getName() == 'solo_benches' ? 'solo_benches' :
-        (Route::getRoutes()->match(request()->create(url()->previousPath()))->getName() == 'lines_benches' ? 'lines_benches' :
-        (Route::getRoutes()->match(request()->create(url()->previousPath()))->getName() == 'stones_benches' ? 'stones_benches' : 'benches'))))
-)->push(BenchProduct::query()->with('bench_images')->where('id', $id)->get()[0]['name'], route('show_bench_product', $id))
-);
+// Breadcrumbs::for('show_bench_product', fn (Trail $trail, $id) =>
+// $trail->parent(Route::getRoutes()->match(request()->create(url()->previousPath()))->getName() == 'verona_benches' ? 'verona_benches' :
+//        (Route::getRoutes()->match(request()->create(url()->previousPath()))->getName() == 'street_furniture_benches' ? 'street_furniture_benches' :
+//        (Route::getRoutes()->match(request()->create(url()->previousPath()))->getName() == 'solo_benches' ? 'solo_benches' :
+//        (Route::getRoutes()->match(request()->create(url()->previousPath()))->getName() == 'lines_benches' ? 'lines_benches' :
+//        (Route::getRoutes()->match(request()->create(url()->previousPath()))->getName() == 'stones_benches' ? 'stones_benches' : 'benches'))))
+// )->push(BenchProduct::query()->with('bench_images')->where('id', $id)->get(), route('show_bench_product', $id))
+// );
 
 
 Breadcrumbs::for('pots', fn (Trail $trail) =>
@@ -99,9 +99,9 @@ Breadcrumbs::for('round_pots', fn (Trail $trail) =>
 
 
 
-Breadcrumbs::for('show_pot_product', fn (Trail $trail, $id) =>
-$trail->parent(Route::getRoutes()->match(request()->create(url()->previousPath()))->getName() == 'round_pots' ? 'round_pots' :
-                    (Route::getRoutes()->match(request()->create(url()->previousPath()))->getName() == 'square_pots' ? 'square_pots' :
-                    (Route::getRoutes()->match(request()->create(url()->previousPath()))->getName() == 'rectangular_pots' ? 'rectangular_pots' : 'pots'))
-                )->push(PotProduct::query()->with('pot_images')->where('id', $id)->get()[0]['name'], route('show_pot_product', $id))
-);
+// Breadcrumbs::for('show_pot_product', fn (Trail $trail, $id) =>
+// $trail->parent(Route::getRoutes()->match(request()->create(url()->previousPath()))->getName() == 'round_pots' ? 'round_pots' :
+//                     (Route::getRoutes()->match(request()->create(url()->previousPath()))->getName() == 'square_pots' ? 'square_pots' :
+//                     (Route::getRoutes()->match(request()->create(url()->previousPath()))->getName() == 'rectangular_pots' ? 'rectangular_pots' : 'pots'))
+//                 )->push(PotProduct::query()->with('pot_images')->where('id', $id)->get()[0]['name'], route('show_pot_product', $id))
+// );

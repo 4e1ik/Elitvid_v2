@@ -38,7 +38,7 @@
                 @foreach($solo_benches as $product)
                     <div class="direction">
                         <img src="{{asset('storage/'.str_replace('public/','',$product->bench_images[0]->image))}}" alt="Фотография направления">
-                        <a href="{{route('show_bench_product', ['id' => $product->id])}}">
+                        <a href="{{route('show_bench_product', ['collection' => 'solo_benches', 'id' => $product->id])}}">
                             <button>{{$product->name}}</button>
                         </a>
                     </div>
