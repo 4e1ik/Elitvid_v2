@@ -202,9 +202,9 @@ class SitemapController extends Controller
         foreach ($pots as $pot) {
             $collection = $pot->collection;
             $potRoutes = [
-                'Square' => route('rectangular_pots'),
-                'Round' => route('square_pots'),
-                'Rectangular' => route('round_pots'),
+                'Square' => route('square_pots'),
+                'Round' => route('round_pots'),
+                'Rectangular' => route('rectangular_pots'),
             ];
 
             $urls[] = [
