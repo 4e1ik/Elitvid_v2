@@ -215,7 +215,6 @@
     {{--        });--}}
     {{--    });--}}
     {{--}--}}
-
     async function onClick(e) {
         e.preventDefault();
         try {

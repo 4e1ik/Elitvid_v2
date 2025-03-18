@@ -32,7 +32,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [MainController::class, 'index'])->name('home');
 //Route::get('/test', [MainController::class, 'test'])->name('test');
 Route::get('/thank_you', function (Request $request){
-    return view('elitvid.includes.elitvid.thank_you', [
+    return view('includes.elitvid.thank_you', [
         'referrer' => $request->query('referrer', '/')
     ]);
 })->name('thank-you');
