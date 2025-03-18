@@ -14,6 +14,7 @@ use App\Http\Controllers\PotProductController;
 use App\Http\Controllers\BenchProductController;
 use \App\Http\Controllers\MailController;
 use App\Http\Controllers\SitemapController;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -29,7 +30,12 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/', [MainController::class, 'index'])->name('home');
-Route::get('/test', [MainController::class, 'test'])->name('test');
+//Route::get('/test', [MainController::class, 'test'])->name('test');
+Route::get('/thank_you', function (Request $request){
+    return view('elitvid.includes.elitvid.thank_you', [
+        'referrer' => $request->query('referrer', '/')
+    ]);
+})->name('thank-you');
 
 Route::get('/sitemap', [SitemapController::class, 'index'])->name('index');
 
