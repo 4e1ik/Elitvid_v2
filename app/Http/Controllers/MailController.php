@@ -40,10 +40,10 @@ class MailController extends Controller
                 $name = $mailRequest->file('file')->getClientOriginalName();
                 $path = Storage::putFileAs('files', $mailRequest->file('file'), $name);
                 $data['file'] = $path;
-                Mail::to('Elitvid.site@yandex.ru')->send(new FeedbackMail($data));
+                Mail::to('el_vid@mail.ru')->send(new FeedbackMail($data));
                 Storage::delete($path);
             } else {
-                Mail::to('Elitvid.site@yandex.ru')->send(new FeedbackMail($data));
+                Mail::to('el_vid@mail.ru')->send(new FeedbackMail($data));
             }
 
             // Успешный ответ
