@@ -64,7 +64,7 @@
     <link rel="stylesheet" href="{{asset('/elitvid_assets/newDesign/newDesign/swiper.min.css')}}"/>
     <link rel="stylesheet" href="{{asset('/elitvid_assets/newDesign/newDesign/swiper-bundle.min.css')}}"/>
     <link rel="stylesheet" href="{{asset('/elitvid_assets/newDesign/newDesign/style.css')}}?v=1.5">
-    <link rel="shortcut icon" href="{{asset('/elitvid_assets/newDesign/newDesign/imgs/logo/logo.svg')}}">
+    <link type="image/x-icon" rel="shortcut icon" href="{{asset('/elitvid_assets/newDesign/newDesign/imgs/logo/logo.svg')}}">
 
     <title>{{$metaTitle ?? 'Изделия из полистоуна от производителя на заказ - Elitvid.com'}}</title>
     <meta name="description"
