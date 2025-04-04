@@ -66,8 +66,8 @@
     <link rel="stylesheet" href="{{asset('/elitvid_assets/newDesign/newDesign/style.css')}}?v=1.5">
 
     <link rel="shortcut icon" type="image/x-icon" href="{{asset('/elitvid_assets/newDesign/newDesign/imgs/logo/logo.svg')}}" >
-    <link rel="shortcut icon" href="{{asset('/favicon.ico')}}">
-    <link rel="icon" type="image/svg+xml" href="{{asset('/favicon.svg')}}?v=2" >
+    <link rel="shortcut icon" href="{{asset('/favicon.ico')}}" sizes="16x16">
+    <link rel="icon" type="image/svg+xml" href="{{asset('/favicon.svg')}}" sizes="16x16">
 
     <title>{{$metaTitle ?? 'Изделия из полистоуна от производителя на заказ - Elitvid.com'}}</title>
     <meta name="description"
