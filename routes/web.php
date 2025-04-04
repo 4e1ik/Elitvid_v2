@@ -37,7 +37,7 @@ Route::get('/thank_you', function (Request $request){
     ]);
 })->name('thank-you');
 
-Route::get('/sitemap', [SitemapController::class, 'index'])->name('index');
+Route::get('/sitemap.xml', [SitemapController::class, 'index'])->name('index');
 
 Route::get('/decorations', [MainController::class, 'decorations'])->name('decorations');
 

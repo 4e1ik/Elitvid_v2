@@ -230,7 +230,8 @@ class SitemapController extends Controller
         $xml = $this->generateSitemap($urls);
 
         return response($xml, 200)
-            ->header('Content-Type', 'application/xml');
+//            ->header('Content-Type', 'application/xml');
+            ->header('Content-Type', 'text/xml; charset=utf-8');
     }
 
     private function generateSitemap($urls)
