@@ -1,3 +1,4 @@
 User-agent: *
 Disallow: /admin
+Disallow: /index.php*
 Sitemap: https://elitvid.com/sitemap.xml

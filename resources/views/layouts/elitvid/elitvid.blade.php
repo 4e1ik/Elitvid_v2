@@ -203,7 +203,7 @@
         </div>
     </div>
     <div class="my_site">
-        <div class="h5">Developed by <a href="https://www.instagram.com/artemi.sevostian?igsh=djFyeWRnaTBwNGNl">Artemi
+        <div class="h5">Developed by <a rel="nofollow" href="https://www.instagram.com/artemi.sevostian?igsh=djFyeWRnaTBwNGNl">Artemi
                 Sevostian</a></div>
     </div>
 </footer>
