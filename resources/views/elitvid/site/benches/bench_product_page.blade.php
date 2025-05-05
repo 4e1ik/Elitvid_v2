@@ -49,7 +49,7 @@
             </div>
         </section>
         <section class="product">
-            
+
                 <h1 style="font-size: 2.25em; font-family:'Merriweather'; text-transform: uppercase; font-weight: 300;">{{$product->name}}</h1>
                 <div class="product__content">
                     <div class="product_content__images">
@@ -59,39 +59,39 @@
                                 <div class="image_texture">
                                     <img data-texture="пористый"
                                          src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/pots/textures/texture-porous.png')}}"
-                                         alt="">
+                                         alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/pots/textures/texture-porous.png']}}">
                                     <p>Пористая</p>
                                     <img data-texture="пористый" class="texture_popup__image"
                                          src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/pots/textures/texture-porous.png')}}"
-                                         alt="">
+                                         alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/pots/textures/texture-porous.png']}}">
                                     <p class="texture_popup__text">Пористая</p>
                                 </div>
                                 <div class="image_texture">
                                     <img data-texture="гладкий"
                                          src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/pots/textures/texture-smooth.png')}}"
-                                         alt="">
+                                         alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/pots/textures/texture-smooth.png']}}">
                                     <p>Гладкая</p>
                                     <img data-texture="гладкий" class="texture_popup__image"
                                          src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/pots/textures/texture-smooth.png')}}"
-                                         alt="">
+                                         alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/pots/textures/texture-smooth.png']}}">
                                     <p class="texture_popup__text">Гладкая</p>
                                 </div>
                                 <div class="image_texture">
                                     <img data-texture="мрамор"
                                          src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/pots/textures/texture-marble.png')}}"
-                                         alt="">
+                                         alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/pots/textures/texture-marble.png']}}">
                                     <p>Мрамор</p>
                                     <img data-texture="мрамор" class="texture_popup__image"
                                          src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/pots/textures/texture-marble.png')}}"
-                                         alt="">
+                                         alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/pots/textures/texture-marble.png']}}">
                                     <p class="texture_popup__text">Мрамор</p>
                                 </div>
                             </div>
                         </div>
                         <div class="content_images__main-image">
                             <img src="{{asset('storage/'.str_replace('public/','',$product->bench_images[0]->image))}}"
-                                 alt="">
-                            {{--                            <img id="image" src="{{asset('storage/images/'.$product->name)}}" alt="">--}}
+                                 alt="{{$product->bench_images[0]->description_image}}">
+                            {{--                            <img id="image" src="{{asset('storage/images/'.$product->name)}}" alt="{{$static_images_arr[]}}">--}}
                         </div>
                         <div class="content_images__colors">
                             <h4>Цвета</h4>
@@ -99,62 +99,62 @@
                                 <div data-color="серый бетон" data-title="Серый бетон" class="image_color">
                                     <img
                                         src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/pots/colors/grey_concrete_color.png')}}"
-                                        alt="">
+                                        alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/pots/colors/grey_concrete_color.png']}}">
                                 </div>
                                 <div data-color="графит" data-title="Графит" class="image_color">
                                     <img
                                         src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/pots/colors/graphite_color.png')}}"
-                                        alt="">
+                                        alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/pots/colors/graphite_color.png']}}">
                                 </div>
                                 <div data-color="чёрный" data-title="Черный" class="image_color">
                                     <img
                                         src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/pots/colors/black_color.png')}}"
-                                        alt="">
+                                        alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/pots/colors/black_color.png']}}">
                                 </div>
                                 <div data-color="белый" data-title="Белый" class="image_color">
                                     <img
                                         src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/pots/colors/white_color.png')}}"
-                                        alt="">
+                                        alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/pots/colors/white_color.png']}}">
                                 </div>
                                 <div data-color="слоновая кость" data-title="Слоновая кость" class="image_color">
                                     <img
                                         src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/pots/colors/ivory_color.png')}}"
-                                        alt="">
+                                        alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/pots/colors/ivory_color.png']}}">
                                 </div>
                                 <div data-color="песочный" data-title="Песочный" class="image_color">
                                     <img
                                         src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/pots/colors/sand_color.png')}}"
-                                        alt="">
+                                        alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/pots/colors/sand_color.png']}}">
                                 </div>
                                 <div data-color="оранжевый" data-title="Оранжевый" class="image_color">
                                     <img
                                         src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/pots/colors/orange_color.png')}}"
-                                        alt="">
+                                        alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/pots/colors/orange_color.png']}}">
                                 </div>
                                 <div data-color="оливка" data-title="Оливка" class="image_color">
                                     <img
                                         src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/pots/colors/olive_color.png')}}"
-                                        alt="">
+                                        alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/pots/colors/olive_color.png']}}">
                                 </div>
                                 <div data-color="малахит" data-title="Малахит" class="image_color">
                                     <img
                                         src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/pots/colors/malachite_color.png')}}"
-                                        alt="">
+                                        alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/pots/colors/malachite_color.png']}}">
                                 </div>
                                 <div data-color="голубой" data-title="Голубой" class="image_color">
                                     <img
                                         src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/pots/colors/white-blue_color.png')}}"
-                                        alt="">
+                                        alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/pots/colors/white-blue_color.png']}}">
                                 </div>
                                 <div data-color="синий" data-title="Синий" class="image_color">
                                     <img
                                         src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/pots/colors/blue_color.png')}}"
-                                        alt="">
+                                        alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/pots/colors/blue_color.png']}}">
                                 </div>
                                 <div data-color="бронза" data-title="Бронза" class="image_color">
                                     <img
                                         src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/pots/colors/bronze_color.png')}}"
-                                        alt="">
+                                        alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/pots/colors/bronze_color.png']}}">
                                 </div>
                             </div>
                         </div>
@@ -164,42 +164,42 @@
                                 <div data-title="Белый" class="image_color">
                                     <img
                                         src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/benches/colors/white.png')}}"
-                                        alt="">
+                                        alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/benches/colors/white.png']}}">
                                 </div>
                                 <div data-title="Серый" class="image_color">
                                     <img
                                         src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/benches/colors/grey.png')}}"
-                                        alt="">
+                                        alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/benches/colors/grey.png']}}">
                                 </div>
                                 <div data-title="Бесцветный" class="image_color">
                                     <img
                                         src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/benches/colors/no_color.png')}}"
-                                        alt="">
+                                        alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/benches/colors/no_color.png']}}">
                                 </div>
                                 <div data-title="Сосна" class="image_color">
                                     <img
                                         src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/benches/colors/pine.png')}}"
-                                        alt="">
+                                        alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/benches/colors/pine.png']}}">
                                 </div>
                                 <div data-title="Тик" class="image_color">
                                     <img
                                         src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/benches/colors/teak.png')}}"
-                                        alt="">
+                                        alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/benches/colors/teak.png']}}">
                                 </div>
                                 <div data-title="Мерабу" class="image_color">
                                     <img
                                         src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/benches/colors/merabu.png')}}"
-                                        alt="">
+                                        alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/benches/colors/merabu.png']}}">
                                 </div>
                                 <div data-title="Дуб" class="image_color">
                                     <img
                                         src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/benches/colors/oak.png')}}"
-                                        alt="">
+                                        alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/benches/colors/oak.png']}}">
                                 </div>
                                 <div data-title="Палисандр" class="image_color">
                                     <img
                                         src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/benches/colors/rosewood.png')}}"
-                                        alt="">
+                                        alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/benches/colors/rosewood.png']}}">
                                 </div>
                             </div>
                         </div>
@@ -253,48 +253,48 @@
                                 <div data-title="Белый" class="image_color">
                                     <img
                                         src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/benches/colors/white.png')}}"
-                                        alt="">
+                                        alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/benches/colors/white.png']}}">
                                 </div>
                                 <div data-title="Серый" class="image_color">
                                     <img
                                         src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/benches/colors/grey.png')}}"
-                                        alt="">
+                                        alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/benches/colors/grey.png']}}">
                                 </div>
                                 <div data-title="Бесцветный" class="image_color">
                                     <img
                                         src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/benches/colors/no_color.png')}}"
-                                        alt="">
+                                        alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/benches/colors/no_color.png']}}">
                                 </div>
                                 <div data-title="Сосна" class="image_color">
                                     <img
                                         src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/benches/colors/pine.png')}}"
-                                        alt="">
+                                        alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/benches/colors/pine.png']}}">
                                 </div>
                                 <div data-title="Тик" class="image_color">
                                     <img
                                         src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/benches/colors/teak.png')}}"
-                                        alt="">
+                                        alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/benches/colors/teak.png']}}">
                                 </div>
                                 <div data-title="Мерабу" class="image_color">
                                     <img
                                         src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/benches/colors/merabu.png')}}"
-                                        alt="">
+                                        alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/benches/colors/merabu.png']}}">
                                 </div>
                                 <div data-title="Дуб" class="image_color">
                                     <img
                                         src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/benches/colors/oak.png')}}"
-                                        alt="">
+                                        alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/benches/colors/oak.png']}}">
                                 </div>
                                 <div data-title="Палисандр" class="image_color">
                                     <img
                                         src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/benches/colors/rosewood.png')}}"
-                                        alt="">
+                                        alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/benches/colors/rosewood.png']}}">
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            
+
             <div class="product__content_buttons">
                 <div class="submit-application">
                     <button class="submit-application--button open_popup_application">

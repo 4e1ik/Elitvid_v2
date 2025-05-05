@@ -20,7 +20,8 @@
             </div>
             <div class="stages">
                 <div class="image">
-                    <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/benches.png')}}" alt="Фотография три кашпо в ряд"
+                    <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/benches.png')}}"
+                         alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/benches.png']}}"
                          class="main-page-up">
                 </div>
                 <div class="submit-application submit-application--mobile">
@@ -42,7 +43,8 @@
             <h2>Коллекции каменных скамеек</h2>
             <div class="prev_directions__forms">
                 <div class="prev_directions__form">
-                    <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/benches/collections/verona/main_verona.png')}}" alt="">
+                    <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/benches/collections/verona/main_verona.png')}}"
+                         alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/benches/collections/verona/main_verona.png']}}">
                     <div class="prev_directions_form--text">
                         <div class="text--description">
                             <h3>Verona</h3>
@@ -58,7 +60,8 @@
                     </a>
                 </div>
                 <div class="prev_directions__form">
-                    <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/benches/collections/stones/main_stones.png')}}" alt="">
+                    <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/benches/collections/stones/main_stones.png')}}"
+                         alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/benches/collections/stones/main_stones.png']}}">
                     <div class="prev_directions_form--text">
                         <div class="text--description">
                             <h3>Stones</h3>
@@ -74,7 +77,8 @@
                     </a>
                 </div>
                 <div class="prev_directions__form">
-                    <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/benches/collections/lines/main_lines.png')}}" alt="">
+                    <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/benches/collections/lines/main_lines.png')}}"
+                         alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/benches/collections/lines/main_lines.png']}}">
                     <div class="prev_directions_form--text">
                         <div class="text--description">
                             <h3>lines</h3>
@@ -90,7 +94,8 @@
                     </a>
                 </div>
                 <div class="prev_directions__form">
-                    <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/benches/collections/solo/main_solo.png')}}" alt="">
+                    <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/benches/collections/solo/main_solo.png')}}"
+                         alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/benches/collections/solo/main_solo.png']}}">
                     <div class="prev_directions_form--text">
                         <div class="text--description">
                             <h3>Solo</h3>
@@ -106,7 +111,8 @@
                     </a>
                 </div>
                 <div class="prev_directions__form">
-                    <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/benches/collections/street_furniture/main_street_furniture.png')}}" alt="">
+                    <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/benches/collections/street_furniture/main_street_furniture.png')}}"
+                         alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/benches/collections/street_furniture/main_street_furniture.png']}}">
                     <div class="prev_directions_form--text">
                         <div class="text--description">
                             <h3>Street furniture</h3>

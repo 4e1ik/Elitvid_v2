@@ -22,7 +22,7 @@
             </div>
             <div class="stages">
                 <div class="image">
-                    <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/rotundas/rotundas.png')}}" alt="Фотография три кашпо в ряд"
+                    <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/rotundas/rotundas.png')}}" alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/rotundas/rotundas.png']}}"
                          class="main-page-up">
                 </div>
                 <div class="submit-application submit-application--mobile">

@@ -30,7 +30,7 @@
             <div class="stages">
                 <div class="image">
                     <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/directions.png')}}"
-                         alt="Фотография три кашпо в ряд"
+                         alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/directions.png']}}"
                          class="main-page-up">
                 </div>
                 <div class="submit-application submit-application--mobile">
@@ -85,7 +85,7 @@
                 <div class="direction">
                     <div class="direction__image">
                         <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/main_page/directions/pots.png')}}"
-                             alt="Фотография направления кашпо">
+                             alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/main_page/directions/pots.png']}}">
                     </div>
                     <h3><a href="{{route('pots')}}">
                             <button>Кашпо</button>
@@ -93,7 +93,7 @@
                 </div>
                 <div class="slogan__direction">
                     <div class="slogan__direction-text">
-                        <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/main_page/img.png')}}" alt="">
+                        <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/main_page/img.png')}}" alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/main_page/img.png']}}">
                         <h4>Мы воплотим в реальность любую вашу идею!</h4>
                         <p>Работаем по индивидуальным размерам, эскизам и чертежам. Гарантируем качественное и
                             профессиональное
@@ -109,7 +109,7 @@
                     <div class="direction__image">
                         <img
                             src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/main_page/directions/benches.png')}}"
-                            alt="Фотография направления скамеек">
+                            alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/main_page/directions/benches.png']}}">
                     </div>
                     <h3><a href="{{route('benches')}}">
                             <button>Скамьи</button>
@@ -119,7 +119,7 @@
                     <div class="direction__image">
                         <img
                             src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/main_page/directions/rotundas.png')}}"
-                            alt="Фотография направления ротонд и колонн">
+                            alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/main_page/directions/rotundas.png']}}">
                     </div>
                     <h3><a href="{{route('rotundas_and_colonnades')}}">
                             <button>Ротонды и колонны</button>
@@ -129,7 +129,7 @@
                     <div class="direction__image">
                         <img
                             src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/main_page/directions/parklets.png')}}"
-                            alt="Фотография направления парклетов и навесов">
+                            alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/main_page/directions/parklets.png']}}">
                     </div>
                     <h3><a href="{{route('parklets_and_canopies')}}">
                             <button>Парклеты, навесы</button>
@@ -139,7 +139,7 @@
                     <div class="direction__image">
                         <img
                             src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/main_page/directions/bollards.png')}}"
-                            alt="Фотография направления боллард и ограждений">
+                            alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/main_page/directions/bollards.png']}}">
                     </div>
                     <h3><a href="{{route('bollards_and_fencing')}}">
                             <button>Болларды и ограждения</button>
@@ -149,7 +149,7 @@
                     <div class="direction__image">
                         <img
                             src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/main_page/directions/pillars.png')}}"
-                            alt="Фотография направления столбов и накрывок">
+                            alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/main_page/directions/pillars.png']}}">
                     </div>
                     <h3><a href="{{route('pillars_and_covers')}}">
                             <button>Столбы и накрывки</button>
@@ -159,7 +159,7 @@
                     <div class="direction__image">
                         <img
                             src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/main_page/directions/facade_stucco.png')}}"
-                            alt="Фотография направления фасадной лепнины и панелей">
+                            alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/main_page/directions/facade_stucco.png']}}">
                     </div>
                     <h3><a href="{{route('facade_stucco_molding_and_panels')}}">
                             <button>Фасадная лепнина и панели</button>

@@ -26,7 +26,6 @@ class MainController extends Controller
         foreach ($static_images as $static_image) {
             $static_images_arr[$static_image->image] = $static_image->description_image;
         }
-//        dd($static_images_arr);
         return view('elitvid.site.index', compact( 'main_page_images', 'metaTitle', 'metaDescription', 'category', 'static_images_arr'));
     }
 
@@ -54,7 +53,12 @@ class MainController extends Controller
         $metaDescription = $metaTags[0]->description;
         $categories = Category::where('page', 'bollards_and_fencing')->get();
         $category = $categories[0]->description;
-        return view('elitvid.site.bollards_and_fencing', compact('bollards_and_fencing_images', 'metaTitle', 'metaDescription', 'category'));
+        $static_images = StaticImages::where('page', 'bollards_and_fencing')->get();
+        $static_images_arr = [];
+        foreach ($static_images as $static_image) {
+            $static_images_arr[$static_image->image] = $static_image->description_image;
+        }
+        return view('elitvid.site.bollards_and_fencing', compact('bollards_and_fencing_images', 'metaTitle', 'metaDescription', 'category', 'static_images_arr'));
     }
 
     function facade_stucco_molding_and_panels() {
@@ -65,7 +69,12 @@ class MainController extends Controller
         $metaDescription = $metaTags[0]->description;
         $categories = Category::where('page', 'facade_stucco_molding_and_panels')->get();
         $category = $categories[0]->description;
-        return view('elitvid.site.facade_stucco_molding_and_panels', compact('facade_walls_images', 'metaTitle', 'metaDescription', 'category'));
+        $static_images = StaticImages::where('page', 'facade_stucco_molding_and_panels')->get();
+        $static_images_arr = [];
+        foreach ($static_images as $static_image) {
+            $static_images_arr[$static_image->image] = $static_image->description_image;
+        }
+        return view('elitvid.site.facade_stucco_molding_and_panels', compact('facade_walls_images', 'metaTitle', 'metaDescription', 'category', 'static_images_arr'));
     }
 
     function parklets_and_canopies() {
@@ -76,7 +85,12 @@ class MainController extends Controller
         $metaDescription = $metaTags[0]->description;
         $categories = Category::where('page', 'parklets_and_canopies')->get();
         $category = $categories[0]->description;
-        return view('elitvid.site.parklets_and_canopies',compact('parklets_and_naves_images', 'metaTitle', 'metaDescription', 'category'));
+        $static_images = StaticImages::where('page', 'parklets_and_canopies')->get();
+        $static_images_arr = [];
+        foreach ($static_images as $static_image) {
+            $static_images_arr[$static_image->image] = $static_image->description_image;
+        }
+        return view('elitvid.site.parklets_and_canopies',compact('parklets_and_naves_images', 'metaTitle', 'metaDescription', 'category', 'static_images_arr'));
     }
 
     function pillars_and_covers() {
@@ -87,7 +101,12 @@ class MainController extends Controller
         $metaDescription = $metaTags[0]->description;
         $categories = Category::where('page', 'pillars_and_covers')->get();
         $category = $categories[0]->description;
-        return view('elitvid.site.pillars_and_covers', compact('columns_and_panels_images', 'metaTitle', 'metaDescription', 'category'));
+        $static_images = StaticImages::where('page', 'pillars_and_covers')->get();
+        $static_images_arr = [];
+        foreach ($static_images as $static_image) {
+            $static_images_arr[$static_image->image] = $static_image->description_image;
+        }
+        return view('elitvid.site.pillars_and_covers', compact('columns_and_panels_images', 'metaTitle', 'metaDescription', 'category', 'static_images_arr'));
     }
 
     function rotundas_and_colonnades() {
@@ -98,7 +117,12 @@ class MainController extends Controller
         $metaDescription = $metaTags[0]->description;
         $categories = Category::where('page', 'rotundas_and_colonnades')->get();
         $category = $categories[0]->description;
-        return view('elitvid.site.rotundas_and_colonnades', compact('rotundas_and_colonnades_images', 'metaTitle', 'metaDescription', 'category'));
+        $static_images = StaticImages::where('page', 'rotundas_and_colonnades')->get();
+        $static_images_arr = [];
+        foreach ($static_images as $static_image) {
+            $static_images_arr[$static_image->image] = $static_image->description_image;
+        }
+        return view('elitvid.site.rotundas_and_colonnades', compact('rotundas_and_colonnades_images', 'metaTitle', 'metaDescription', 'category', 'static_images_arr'));
     }
 
     function about() {
@@ -146,7 +170,12 @@ class MainController extends Controller
 
         $metaTitle = $products->first()->meta_title;
         $metaDescription = $products->first()->meta_description;
-        return view('elitvid.site.pots.pot_product_page', compact('products', 'i', 'j', 'rows', 'count', 'rand_products', 'metaTitle', 'metaDescription'));
+        $static_images = StaticImages::where('page', 'pot_product_page')->get();
+        $static_images_arr = [];
+        foreach ($static_images as $static_image) {
+            $static_images_arr[$static_image->image] = $static_image->description_image;
+        }
+        return view('elitvid.site.pots.pot_product_page', compact('products', 'i', 'j', 'rows', 'count', 'rand_products', 'metaTitle', 'metaDescription', 'static_images_arr'));
     }
 
     function show_bench_product($collection, $id){
@@ -190,7 +219,12 @@ class MainController extends Controller
 
         $metaTitle = $products->first()->meta_title;
         $metaDescription = $products->first()->meta_description;
-        return view('elitvid.site.benches.bench_product_page', compact('products', 'i', 'j', 'rows', 'count', 'rand_products', 'metaTitle', 'metaDescription'));
+        $static_images = StaticImages::where('page', 'bench_product_page')->get();
+        $static_images_arr = [];
+        foreach ($static_images as $static_image) {
+            $static_images_arr[$static_image->image] = $static_image->description_image;
+        }
+        return view('elitvid.site.benches.bench_product_page', compact('products', 'i', 'j', 'rows', 'count', 'rand_products', 'metaTitle', 'metaDescription', 'static_images_arr'));
     }
 
     function benches() {
@@ -202,7 +236,12 @@ class MainController extends Controller
         $metaDescription = $metaTags[0]->description;
         $categories = Category::where('page', 'benches')->get();
         $category = $categories[0]->description;
-        return view('elitvid.site.benches', compact('benches_images', 'metaTitle', 'metaDescription', 'category'));
+        $static_images = StaticImages::where('page', 'benches')->get();
+        $static_images_arr = [];
+        foreach ($static_images as $static_image) {
+            $static_images_arr[$static_image->image] = $static_image->description_image;
+        }
+        return view('elitvid.site.benches', compact('benches_images', 'metaTitle', 'metaDescription', 'category', 'static_images_arr'));
     }
 
     function street_furniture_benches() {
@@ -214,7 +253,12 @@ class MainController extends Controller
         $metaDescription = $metaTags[0]->description;
         $categories = Category::where('page', 'street_furniture_benches')->get();
         $category = $categories[0]->description;
-        return view('elitvid.site.benches.street_furniture_benches', compact('street_furniture_benches', 'metaTitle', 'metaDescription', 'category'));
+        $static_images = StaticImages::where('page', 'street_furniture_benches')->get();
+        $static_images_arr = [];
+        foreach ($static_images as $static_image) {
+            $static_images_arr[$static_image->image] = $static_image->description_image;
+        }
+        return view('elitvid.site.benches.street_furniture_benches', compact('street_furniture_benches', 'metaTitle', 'metaDescription', 'category', 'static_images_arr'));
     }
 
     function verona_benches() {
@@ -226,7 +270,12 @@ class MainController extends Controller
         $metaDescription = $metaTags[0]->description;
         $categories = Category::where('page', 'verona_benches')->get();
         $category = $categories[0]->description;
-        return view('elitvid.site.benches.verona_benches', compact('verona_benches', 'metaTitle', 'metaDescription', 'category'));
+        $static_images = StaticImages::where('page', 'verona_benches')->get();
+        $static_images_arr = [];
+        foreach ($static_images as $static_image) {
+            $static_images_arr[$static_image->image] = $static_image->description_image;
+        }
+        return view('elitvid.site.benches.verona_benches', compact('verona_benches', 'metaTitle', 'metaDescription', 'category', 'static_images_arr'));
     }
 
     function stones_benches() {
@@ -238,7 +287,12 @@ class MainController extends Controller
         $metaDescription = $metaTags[0]->description;
         $categories = Category::where('page', 'stones_benches')->get();
         $category = $categories[0]->description;
-        return view('elitvid.site.benches.stones_benches', compact('stones_benches', 'metaTitle', 'metaDescription', 'category'));
+        $static_images = StaticImages::where('page', 'stones_benches')->get();
+        $static_images_arr = [];
+        foreach ($static_images as $static_image) {
+            $static_images_arr[$static_image->image] = $static_image->description_image;
+        }
+        return view('elitvid.site.benches.stones_benches', compact('stones_benches', 'metaTitle', 'metaDescription', 'category', 'static_images_arr'));
     }
 
     function solo_benches() {
@@ -250,7 +304,12 @@ class MainController extends Controller
         $metaDescription = $metaTags[0]->description;
         $categories = Category::where('page', 'solo_benches')->get();
         $category = $categories[0]->description;
-        return view('elitvid.site.benches.solo_benches', compact('solo_benches', 'metaTitle', 'metaDescription', 'category'));
+        $static_images = StaticImages::where('page', 'solo_benches')->get();
+        $static_images_arr = [];
+        foreach ($static_images as $static_image) {
+            $static_images_arr[$static_image->image] = $static_image->description_image;
+        }
+        return view('elitvid.site.benches.solo_benches', compact('solo_benches', 'metaTitle', 'metaDescription', 'category', 'static_images_arr'));
     }
 
     function lines_benches() {
@@ -262,7 +321,12 @@ class MainController extends Controller
         $metaDescription = $metaTags[0]->description;
         $categories = Category::where('page', 'lines_benches')->get();
         $category = $categories[0]->description;
-        return view('elitvid.site.benches.lines_benches', compact('lines_benches', 'metaTitle', 'metaDescription', 'category'));
+        $static_images = StaticImages::where('page', 'lines_benches')->get();
+        $static_images_arr = [];
+        foreach ($static_images as $static_image) {
+            $static_images_arr[$static_image->image] = $static_image->description_image;
+        }
+        return view('elitvid.site.benches.lines_benches', compact('lines_benches', 'metaTitle', 'metaDescription', 'category', 'static_images_arr'));
     }
 
     function directions() {
@@ -271,7 +335,12 @@ class MainController extends Controller
         $metaDescription = $metaTags[0]->description;
         $categories = Category::where('page', 'directions')->get();
         $category = $categories[0]->description;
-        return view('elitvid.site.directions', compact('metaTitle', 'metaDescription', 'category'));
+        $static_images = StaticImages::where('page', 'directions')->get();
+        $static_images_arr = [];
+        foreach ($static_images as $static_image) {
+            $static_images_arr[$static_image->image] = $static_image->description_image;
+        }
+        return view('elitvid.site.directions', compact('metaTitle', 'metaDescription', 'category', 'static_images_arr'));
     }
 
     function decorations()
@@ -283,7 +352,12 @@ class MainController extends Controller
         $metaDescription = $metaTags[0]->description;
         $categories = Category::where('page', 'decorations')->get();
         $category = $categories[0]->description;
-        return view('elitvid.site.decorations', compact('decorative_elements_images', 'metaTitle', 'metaDescription', 'category'));
+        $static_images = StaticImages::where('page', 'decorations')->get();
+        $static_images_arr = [];
+        foreach ($static_images as $static_image) {
+            $static_images_arr[$static_image->image] = $static_image->description_image;
+        }
+        return view('elitvid.site.decorations', compact('decorative_elements_images', 'metaTitle', 'metaDescription', 'category', 'static_images_arr'));
     }
 
     function pots() {
@@ -295,7 +369,12 @@ class MainController extends Controller
         $metaDescription = $metaTags[0]->description;
         $categories = Category::where('page', 'pots')->get();
         $category = $categories[0]->description;
-        return view('elitvid.site.pots', compact('pots_images', 'metaTitle', 'metaDescription', 'category'));
+        $static_images = StaticImages::where('page', 'pots')->get();
+        $static_images_arr = [];
+        foreach ($static_images as $static_image) {
+            $static_images_arr[$static_image->image] = $static_image->description_image;
+        }
+        return view('elitvid.site.pots', compact('pots_images', 'metaTitle', 'metaDescription', 'category', 'static_images_arr'));
     }
 
     function rectangular_pots() {
@@ -306,7 +385,12 @@ class MainController extends Controller
         $metaDescription = $metaTags[0]->description;
         $categories = Category::where('page', 'rectangular_pots')->get();
         $category = $categories[0]->description;
-        return view('elitvid.site.pots.rectangular_pots', compact('rectangular_pots', 'metaTitle', 'metaDescription', 'category'));
+        $static_images = StaticImages::where('page', 'rectangular_pots')->get();
+        $static_images_arr = [];
+        foreach ($static_images as $static_image) {
+            $static_images_arr[$static_image->image] = $static_image->description_image;
+        }
+        return view('elitvid.site.pots.rectangular_pots', compact('rectangular_pots', 'metaTitle', 'metaDescription', 'category', 'static_images_arr'));
     }
 
     function square_pots() {
@@ -317,7 +401,12 @@ class MainController extends Controller
         $metaDescription = $metaTags[0]->description;
         $categories = Category::where('page', 'square_pots')->get();
         $category = $categories[0]->description;
-        return view('elitvid.site.pots.square_pots', compact('square_pots', 'metaTitle', 'metaDescription', 'category'));
+        $static_images = StaticImages::where('page', 'square_pots')->get();
+        $static_images_arr = [];
+        foreach ($static_images as $static_image) {
+            $static_images_arr[$static_image->image] = $static_image->description_image;
+        }
+        return view('elitvid.site.pots.square_pots', compact('square_pots', 'metaTitle', 'metaDescription', 'category', 'static_images_arr'));
     }
 
     function round_pots() {
@@ -328,7 +417,12 @@ class MainController extends Controller
         $metaDescription = $metaTags[0]->description;
         $categories = Category::where('page', 'round_pots')->get();
         $category = $categories[0]->description;
-        return view('elitvid.site.pots.round_pots', compact('round_pots', 'metaTitle', 'metaDescription', 'category'));
+        $static_images = StaticImages::where('page', 'round_pots')->get();
+        $static_images_arr = [];
+        foreach ($static_images as $static_image) {
+            $static_images_arr[$static_image->image] = $static_image->description_image;
+        }
+        return view('elitvid.site.pots.round_pots', compact('round_pots', 'metaTitle', 'metaDescription', 'category', 'static_images_arr'));
     }
 
     function blog_posts()

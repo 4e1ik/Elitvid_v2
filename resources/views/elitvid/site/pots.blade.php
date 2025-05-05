@@ -21,7 +21,7 @@
             </div>
             <div class="stages">
                 <div class="image">
-                    <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/pots.png')}}" alt="Фотография три кашпо в ряд"
+                    <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/pots.png')}}" alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/pots.png']}}"
                          class="main-page-up">
                 </div>
                 <div class="submit-application submit-application--mobile">
@@ -36,7 +36,7 @@
             <h2>Формы ваз из полистоуна</h2>
             <div class="prev_directions__forms">
                 <div class="prev_directions__form">
-                    <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/pots/forms/circle_pot.png')}}" alt="">
+                    <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/pots/forms/circle_pot.png')}}" alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/pots/forms/circle_pot.png']}}">
                     <div class="prev_directions_form--text">
                         <div class="text--description">
                             <h4>Круглые</h4>
@@ -52,7 +52,7 @@
                     </a>
                 </div>
                 <div class="prev_directions__form">
-                    <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/pots/forms/square_pot.png')}}" alt="">
+                    <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/pots/forms/square_pot.png')}}" alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/pots/forms/square_pot.png']}}">
                     <div class="prev_directions_form--text">
                         <div class="text--description">
                             <h4>Квадратные</h4>
@@ -68,7 +68,7 @@
                     </a>
                 </div>
                 <div class="prev_directions__form">
-                    <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/pots/forms/rectangular_pot.png')}}" alt="">
+                    <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/pots/forms/rectangular_pot.png')}}" alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/pots/forms/rectangular_pot.png']}}">
                     <div class="prev_directions_form--text">
                         <div class="text--description">
                             <h4>Прямоугольные</h4>

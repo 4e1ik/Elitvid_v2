@@ -20,7 +20,7 @@
         </div>
         <div class="stages">
             <div class="image">
-                <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/rectangular_pots.png')}}" alt="Фотография три кашпо в ряд"
+                <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/rectangular_pots.png')}}" alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/rectangular_pots.png']}}"
                      class="main-page-up">
             </div>
             <div class="submit-application submit-application--mobile">
@@ -36,7 +36,7 @@
         <div class="not_main_page directions">
             @foreach($rectangular_pots as $product)
                 <div class="direction">
-                    <img src="{{asset('storage/'.str_replace('public/','',$product->pot_images[0]->image))}}" alt="Фотография направления кашпо">
+                    <img src="{{asset('storage/'.str_replace('public/','',$product->pot_images[0]->image))}}" alt="{{$product->pot_images[0]->description_image}}">
                     <a href="{{route('show_pot_product', ['collection' => 'rectangular_pots', 'id' => $product->id])}}">
                         <button>{{$product->name}}</button>
                     </a>

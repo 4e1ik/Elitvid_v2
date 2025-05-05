@@ -20,7 +20,7 @@
             </div>
             <div class="stages">
                 <div class="image">
-                    <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/parklets/parklets.png')}}" alt="Фотография три кашпо в ряд"
+                    <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/parklets/parklets.png')}}" alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/parklets/parklets.png']}}"
                          class="main-page-up">
                 </div>
                 <div class="submit-application submit-application--mobile">

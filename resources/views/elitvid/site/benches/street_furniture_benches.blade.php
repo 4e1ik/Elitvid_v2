@@ -21,7 +21,8 @@
             </div>
             <div class="stages">
                 <div class="image">
-                    <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/benches/collections/street_furniture/street_furniture.png')}}" alt="Фотография три кашпо в ряд"
+                    <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/benches/collections/street_furniture/street_furniture.png')}}"
+                         alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/benches/collections/street_furniture/street_furniture.png']}}"
                          class="main-page-up">
                 </div>
                 <div class="submit-application submit-application--mobile">
@@ -37,7 +38,7 @@
             <div class="not_main_page directions">
                 @foreach($street_furniture_benches as $product)
                     <div class="direction">
-                        <img src="{{asset('storage/'.str_replace('public/','',$product->bench_images[0]->image))}}" alt="Фотография направления">
+                        <img src="{{asset('storage/'.str_replace('public/','',$product->bench_images[0]->image))}}" alt="{{$product->bench_images[0]->description_image}}">
                         <a href="{{route('show_bench_product', ['collection' => 'street_furniture_benches', 'id' => $product->id])}}">
                             <button>{{$product->name}}</button>
                         </a>
