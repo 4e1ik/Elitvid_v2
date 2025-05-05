@@ -14,6 +14,7 @@ use App\Http\Controllers\PotProductController;
 use App\Http\Controllers\BenchProductController;
 use \App\Http\Controllers\MailController;
 use App\Http\Controllers\SitemapController;
+use App\Http\Controllers\StaticImagesController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -139,7 +140,15 @@ Route::middleware('auth')->where([])->prefix('admin')->group(function () {
         Route::get('/rotundas_images', [AdminController::class, 'rotundas_images'])->name('admin_rotundas_images');
     });
 
-    //Блог
+
+    /*
+     * Статические картинки сайта
+     */
+    Route::prefix('static_images')->group(function (){
+        Route::get('/{page}', [AdminController::class, 'static_images'])->name('admin_static_images');
+    });
+
+    //Блог в панели администратора
     Route::prefix('blog')->group(function () {
         Route::get('/', [AdminController::class, 'blog_posts'])->name('admin_blog');
     });
@@ -168,5 +177,6 @@ Route::middleware('auth')->where([])->prefix('admin')->group(function () {
         'galleries' => GalleryController::class,
         'blogs' => BlogController::class,
         'categories' => CategoryController::class,
+        'static_images' => StaticImagesController::class,
     ]);
 });

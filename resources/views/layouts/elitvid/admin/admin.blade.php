@@ -124,6 +124,34 @@
                         <li><a href="{{route('admin_rotundas_images')}}">Картинки страницы ротонд и коллонад</a></li>
                     </ul>
                 </li>
+                <li class="ripple">
+                    <a class="tree-toggle nav-header">
+                        <span class="fa-image fa"></span> Картинки
+                        <span class="fa-angle-right fa right-arrow text-right"></span>
+                    </a>
+                    <ul class="nav nav-list tree" style="display: none;">
+                        <li><a href="{{route('admin_static_images', ['page' => 'index'])}}">Главная страница</a></li>
+                        <li><a href="{{route('admin_static_images', ['page' => 'benches'])}}">Скамейки</a></li>
+                        <li><a href="{{route('admin_static_images', ['page' => 'bench_product_page'])}}">Страница товара скамейки</a></li>
+                        <li><a href="{{route('admin_static_images', ['page' => 'lines_benches'])}}">Коллекция lines</a></li>
+                        <li><a href="{{route('admin_static_images', ['page' => 'solo_benches'])}}">Коллекция Solo</a></li>
+                        <li><a href="{{route('admin_static_images', ['page' => 'stones_benches'])}}">Коллекция Stones</a></li>
+                        <li><a href="{{route('admin_static_images', ['page' => 'verona_benches'])}}">Коллекция Verona</a></li>
+                        <li><a href="{{route('admin_static_images', ['page' => 'street_furniture_benches'])}}">Коллекция Street furniture</a></li>
+                        <li><a href="{{route('admin_static_images', ['page' => 'bollards_and_fencing'])}}">Болларды и ограждения</a></li>
+                        <li><a href="{{route('admin_static_images', ['page' => 'decorations'])}}">Декоративные элементы</a></li>
+                        <li><a href="{{route('admin_static_images', ['page' => 'directions'])}}">Наши направления</a></li>
+                        <li><a href="{{route('admin_static_images', ['page' => 'facade_stucco_molding_and_panels'])}}">Фасадная лепнина и панели</a></li>
+                        <li><a href="{{route('admin_static_images', ['page' => 'parklets_and_canopies'])}}">Парклеты, навесы</a></li>
+                        <li><a href="{{route('admin_static_images', ['page' => 'pillars_and_covers'])}}">Столбы, накрывки</a></li>
+                        <li><a href="{{route('admin_static_images', ['page' => 'rotundas_and_colonnades'])}}">Ротонды и колоны</a></li>
+                        <li><a href="{{route('admin_static_images', ['page' => 'pots'])}}">Кашпо</a></li>
+                        <li><a href="{{route('admin_static_images', ['page' => 'pot_product_page'])}}">Страница товара кашпо</a></li>
+                        <li><a href="{{route('admin_static_images', ['page' => 'rectangular_pots'])}}">Прямоугольные кашпо</a></li>
+                        <li><a href="{{route('admin_static_images', ['page' => 'round_pots'])}}">Круглые кашпо</a></li>
+                        <li><a href="{{route('admin_static_images', ['page' => 'square_pots'])}}">Квадратные кашпо</a></li>
+                    </ul>
+                </li>
                 <li><a href="{{route('admin_metatags')}}"><span class="icons icon-tag"></span>Мета-теги</a></li>
                 <li><a href="{{route('categories.index')}}"><span class="icons icon-list"></span>Описание категорий</a></li>
                 <li><a href="{{route('admin_blog')}}"><span class="fa fa-newspaper-o"></span>Блог</a></li>
@@ -656,6 +684,34 @@
                         <li><a href="{{route('admin_columns_and_panels_images')}}">Картинки страницы столбов и накрывок</a></li>
                         <li><a href="{{route('admin_facade_walls_images')}}">Картинки страницы фасадных лепнин и панелей</a></li>
                         <li><a href="{{route('admin_rotundas_images')}}">Картинки страницы ротонд и коллонад</a></li>
+                    </ul>
+                </li>
+                <li class="ripple">
+                    <a class="tree-toggle nav-header">
+                        <span class="fa-image fa"></span> Картинки
+                        <span class="fa-angle-right fa right-arrow text-right"></span>
+                    </a>
+                    <ul class="nav nav-list tree" style="display: none;">
+                        <li><a href="{{route('admin_static_images', ['page' => 'index'])}}">Главная страница</a></li>
+                        <li><a href="{{route('admin_static_images', ['page' => 'benches'])}}">Скамейки</a></li>
+                        <li><a href="{{route('admin_static_images', ['page' => 'bench_product_page'])}}">Страница товара скамейки</a></li>
+                        <li><a href="{{route('admin_static_images', ['page' => 'lines_benches'])}}">Коллекция lines</a></li>
+                        <li><a href="{{route('admin_static_images', ['page' => 'solo_benches'])}}">Коллекция Solo</a></li>
+                        <li><a href="{{route('admin_static_images', ['page' => 'stones_benches'])}}">Коллекция Stones</a></li>
+                        <li><a href="{{route('admin_static_images', ['page' => 'verona_benches'])}}">Коллекция Verona</a></li>
+                        <li><a href="{{route('admin_static_images', ['page' => 'street_furniture_benches'])}}">Коллекция Street furniture</a></li>
+                        <li><a href="{{route('admin_static_images', ['page' => 'bollards_and_fencing'])}}">Болларды и ограждения</a></li>
+                        <li><a href="{{route('admin_static_images', ['page' => 'decorations'])}}">Декоративные элементы</a></li>
+                        <li><a href="{{route('admin_static_images', ['page' => 'directions'])}}">Наши направления</a></li>
+                        <li><a href="{{route('admin_static_images', ['page' => 'facade_stucco_molding_and_panels'])}}">Фасадная лепнина и панели</a></li>
+                        <li><a href="{{route('admin_static_images', ['page' => 'parklets_and_canopies'])}}">Парклеты, навесы</a></li>
+                        <li><a href="{{route('admin_static_images', ['page' => 'pillars_and_covers'])}}">Столбы, накрывки</a></li>
+                        <li><a href="{{route('admin_static_images', ['page' => 'rotundas_and_colonnades'])}}">Ротонды и колоны</a></li>
+                        <li><a href="{{route('admin_static_images', ['page' => 'pots'])}}">Кашпо</a></li>
+                        <li><a href="{{route('admin_static_images', ['page' => 'pot_product_page'])}}">Страница товара кашпо</a></li>
+                        <li><a href="{{route('admin_static_images', ['page' => 'rectangular_pots'])}}">Прямоугольные кашпо</a></li>
+                        <li><a href="{{route('admin_static_images', ['page' => 'round_pots'])}}">Круглые кашпо</a></li>
+                        <li><a href="{{route('admin_static_images', ['page' => 'square_pots'])}}">Квадратные кашпо</a></li>
                     </ul>
                 </li>
                 <li><a href="{{route('admin_metatags')}}"><span class="icons icon-tag"></span>Мета-теги</a></li>

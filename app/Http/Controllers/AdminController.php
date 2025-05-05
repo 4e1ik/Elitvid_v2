@@ -8,30 +8,32 @@ use App\Models\Category;
 use App\Models\Gallery;
 use App\Models\MetaTag;
 use App\Models\PotProduct;
+use App\Models\StaticImages;
 
 class AdminController extends Controller
 {
-    function index() {
+    public function index() {
         return view('elitvid.admin.admin');
     }
 
-    function catalog() {
-        return view('elitvid.admin.catalog');
+    public function static_images($page) {
+        $static_images = StaticImages::where('page', $page)->get();
+        return view('elitvid.admin.static_images.index', compact('static_images'));
     }
 
-    function blog_posts()
+    public function blog_posts()
     {
         $blog_posts = Blog::all();
         return view('elitvid.admin.blog.blog_posts', compact('blog_posts'));
     }
 
-    function metaTags()
+    public function metaTags()
     {
         $metaTags = MetaTag::all();
         return view('elitvid.admin.meta_tags', compact('metaTags'));
     }
 
-    function benches_verona(BenchProduct $benchProduct) {
+    public function benches_verona(BenchProduct $benchProduct) {
 
         $benches = BenchProduct::query()->whereIn('collection', ['Verona'])->latest()->get();
         $benches_verona = BenchProduct::query()->where('collection', 'Verona')->latest()->get();
@@ -40,7 +42,7 @@ class AdminController extends Controller
         );
     }
 
-    function benches_stones(BenchProduct $benchProduct) {
+    public function benches_stones(BenchProduct $benchProduct) {
 
         $benches = BenchProduct::query()->whereIn('collection', ['Stones'])->latest()->get();
         $benches_stones = BenchProduct::query()->where('collection', 'Stones')->latest()->get();
@@ -49,7 +51,7 @@ class AdminController extends Controller
         );
     }
 
-    function benches_solo(BenchProduct $benchProduct) {
+    public function benches_solo(BenchProduct $benchProduct) {
 
         $benches = BenchProduct::query()->whereIn('collection', ['Solo'])->latest()->get();
         $benches_solo = BenchProduct::query()->where('collection', 'Solo')->latest()->get();
@@ -58,7 +60,7 @@ class AdminController extends Controller
         );
     }
 
-    function benches_lines(BenchProduct $benchProduct) {
+    public function benches_lines(BenchProduct $benchProduct) {
 
         $benches = BenchProduct::query()->whereIn('collection', ['lines'])->latest()->get();
         $benches_lines = BenchProduct::query()->where('collection', 'lines')->latest()->get();
@@ -67,7 +69,7 @@ class AdminController extends Controller
         );
     }
 
-    function benches_street_furniture(BenchProduct $benchProduct) {
+    public function benches_street_furniture(BenchProduct $benchProduct) {
 
         $benches = BenchProduct::query()->whereIn('collection', ['Street_furniture'])->latest()->get();
         $benches_street_furniture = BenchProduct::query()->where('collection', 'Street_furniture')->latest()->get();
@@ -76,25 +78,25 @@ class AdminController extends Controller
         );
     }
 
-    function round_pots(PotProduct $PotProduct) {
+    public function round_pots(PotProduct $PotProduct) {
         $round_pots = PotProduct::query()->where('collection', 'Round')->latest()->get();
 
         return view('elitvid.admin.pots.round_pots', compact('round_pots', 'PotProduct'));
     }
 
-    function rectangular_pots(PotProduct $PotProduct) {
+    public function rectangular_pots(PotProduct $PotProduct) {
         $rectangular_pots = PotProduct::query()->where('collection', 'Rectangular')->latest()->get();
 
         return view('elitvid.admin.pots.rectangular_pots', compact( 'rectangular_pots', 'PotProduct'));
     }
 
-    function square_pots(PotProduct $PotProduct) {
+    public function square_pots(PotProduct $PotProduct) {
         $square_pots = PotProduct::query()->where('collection','Square')->latest()->get();
 
         return view('elitvid.admin.pots.square_pots', compact( 'square_pots', 'PotProduct'));
     }
 
-    function pots_images(Gallery $gallery) {
+    public function pots_images(Gallery $gallery) {
         $gallery = Gallery::query()->with(['gallery_images'])->latest()->get();
         $pots_images = $gallery->where('type', 'pots');
 
@@ -105,7 +107,7 @@ class AdminController extends Controller
         );
     }
 
-    function benches_images(Gallery $gallery) {
+    public function benches_images(Gallery $gallery) {
         $gallery = Gallery::query()->with(['gallery_images'])->latest()->get();
         $benches_images = $gallery->where('type', 'benches');
 
@@ -116,7 +118,7 @@ class AdminController extends Controller
         );
     }
 
-    function main_page_images(Gallery $gallery) {
+    public function main_page_images(Gallery $gallery) {
         $gallery = Gallery::query()->with(['gallery_images'])->latest()->get();
         $main_page_images = $gallery->where('type', 'main_page');
 
@@ -127,7 +129,7 @@ class AdminController extends Controller
         );
     }
 
-    function decorative_elements_images(Gallery $gallery) {
+    public function decorative_elements_images(Gallery $gallery) {
         $gallery = Gallery::query()->with(['gallery_images'])->latest()->get();
         $decorative_elements_images = $gallery->where('type', 'decorative_elements');
 
@@ -138,7 +140,7 @@ class AdminController extends Controller
         );
     }
 
-    function bollards_images(Gallery $gallery) {
+    public function bollards_images(Gallery $gallery) {
         $gallery = Gallery::query()->with(['gallery_images'])->latest()->get();
         $bollards_images = $gallery->where('type', 'bollards');
 
@@ -149,7 +151,7 @@ class AdminController extends Controller
         );
     }
 
-    function parklets_and_naves_images(Gallery $gallery) {
+    public function parklets_and_naves_images(Gallery $gallery) {
         $gallery = Gallery::query()->with(['gallery_images'])->latest()->get();
         $parklets_and_naves_images = $gallery->where('type', 'parklets_and_naves');
 
@@ -160,7 +162,7 @@ class AdminController extends Controller
         );
     }
 
-    function columns_and_panels_images(Gallery $gallery) {
+    public function columns_and_panels_images(Gallery $gallery) {
         $gallery = Gallery::query()->with(['gallery_images'])->latest()->get();
         $columns_and_panels_images = $gallery->where('type', 'columns_and_panels');
 
@@ -171,7 +173,7 @@ class AdminController extends Controller
         );
     }
 
-    function facade_walls_images(Gallery $gallery) {
+    public function facade_walls_images(Gallery $gallery) {
         $gallery = Gallery::query()->with(['gallery_images'])->latest()->get();
         $facade_walls_images = $gallery->where('type', 'facade_walls');
 
@@ -182,7 +184,7 @@ class AdminController extends Controller
         );
     }
 
-    function rotundas_images(Gallery $gallery) {
+    public function rotundas_images(Gallery $gallery) {
         $gallery = Gallery::query()->with(['gallery_images'])->latest()->get();
         $rotundas_images = $gallery->where('type', 'rotundas');
 
