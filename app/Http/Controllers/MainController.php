@@ -8,6 +8,7 @@ use App\Models\Category;
 use App\Models\Gallery;
 use App\Models\MetaTag;
 use App\Models\PotProduct;
+use App\Models\StaticImages;
 use Illuminate\Support\Facades\Response;
 
 class MainController extends Controller
@@ -20,7 +21,13 @@ class MainController extends Controller
         $metaDescription = $metaTags[0]->description;
         $categories = Category::where('page', 'main')->get();
         $category = $categories[0]->description;
-        return view('elitvid.site.index', compact( 'main_page_images', 'metaTitle', 'metaDescription', 'category'));
+        $static_images = StaticImages::where('page', 'index')->get();
+        $static_images_arr = [];
+        foreach ($static_images as $static_image) {
+            $static_images_arr[$static_image->image] = $static_image->description_image;
+        }
+//        dd($static_images_arr);
+        return view('elitvid.site.index', compact( 'main_page_images', 'metaTitle', 'metaDescription', 'category', 'static_images_arr'));
     }
 
     function test()

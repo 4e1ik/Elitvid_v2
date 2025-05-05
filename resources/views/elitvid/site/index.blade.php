@@ -23,7 +23,7 @@
             <div class="stages">
                 <div class="image">
                     <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/main_page/main_page_up.png')}}"
-                         alt="Фотография три кашпо в ряд"
+                         alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/main_page/main_page_up.png']}}"
                          class="main-page-up">
                 </div>
                 <div class="stages--text">
@@ -48,7 +48,7 @@
             <div class="description">
                 <div class="image">
                     <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/main_page/main_page_center.png')}}"
-                         alt="Фотография кашпо по центру"
+                         alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/main_page/main_page_center.png']}}"
                          class="main-page-center">
                 </div>
                 <div class="description-text">
@@ -103,28 +103,28 @@
                         <!-- Slides -->
                         <div class="swiper-slide"><img
                                     src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/main_page/partners/game_stream.jpg')}}"
-                                    alt=""></div>
+                                    alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/main_page/partners/game_stream.jpg']}}"></div>
                         <div class="swiper-slide"><img
                                     src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/main_page/partners/a100.jpg')}}"
-                                    alt=""></div>
+                                    alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/main_page/partners/a100.jpg']}}"></div>
                         <div class="swiper-slide"><img
                                     src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/main_page/partners/Belorusneft.jpg')}}"
-                                    alt=""></div>
+                                    alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/main_page/partners/Belorusneft.jpg']}}"></div>
                         <div class="swiper-slide"><img
                                     src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/main_page/partners/development_bank.jpg')}}"
-                                    alt=""></div>
+                                    alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/main_page/partners/development_bank.jpg']}}"></div>
                         <div class="swiper-slide"><img
                                     src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/main_page/partners/green_haven.jpg')}}"
-                                    alt=""></div>
+                                    alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/main_page/partners/green_haven.jpg']}}"></div>
                         <div class="swiper-slide"><img
                                     src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/main_page/partners/tobacco_invest.jpg')}}"
-                                    alt=""></div>
+                                    alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/main_page/partners/tobacco_invest.jpg']}}"></div>
                         <div class="swiper-slide"><img
                                     src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/main_page/partners/unisoil.jpg')}}"
-                                    alt=""></div>
+                                    alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/main_page/partners/unisoil.jpg']}}"></div>
                         <div class="swiper-slide"><img
                                     src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/main_page/partners/vds.jpg')}}"
-                                    alt=""></div>
+                                    alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/main_page/partners/vds.jpg']}}"></div>
                     </div>
                 </div>
             </div>
@@ -165,7 +165,7 @@
                 <div class="direction">
                     <div class="direction__image">
                         <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/main_page/directions/pots.png')}} "
-                             alt="Фотография направления кашпо">
+                             alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/main_page/directions/pots.png']}}">
                     </div>
                     <h3><a href="{{route('pots')}}">
                             <button>Кашпо</button>
@@ -183,7 +183,7 @@
                 </style>
                 <div class="slogan__direction">
                     <div class="slogan__direction-text">
-                        <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/main_page/img.png')}}" alt="">
+                        <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/main_page/img.png')}}" alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/main_page/img.png']}}">
                         <div class="h4">Мы воплотим в реальность любую вашу идею!</div>
                         <p>Работаем по индивидуальным размерам, эскизам и чертежам. Гарантируем качественное и
                             профессиональное
@@ -199,7 +199,7 @@
                 <div class="direction">
                     <div class="direction__image">
                         <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/main_page/directions/benches.png')}}"
-                             alt="Фотография направления скамеек">
+                             alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/main_page/directions/benches.png']}}">
                     </div>
                     <h3>
                         <a href="{{route('benches')}}">
@@ -210,7 +210,7 @@
                 <div class="direction">
                     <div class="direction__image">
                         <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/main_page/directions/rotundas.png')}}"
-                             alt="Фотография направления ротонд и колонн">
+                             alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/main_page/directions/rotundas.png']}}">
                     </div>
                     <h3>
                         <a href="{{route('rotundas_and_colonnades')}}">
@@ -221,7 +221,7 @@
                 <div class="direction">
                     <div class="direction__image">
                         <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/main_page/directions/parklets.png')}}"
-                             alt="Фотография направления парклетов и навесов">
+                             alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/main_page/directions/parklets.png']}}">
                     </div>
                     <h3>
                         <a href="{{route('parklets_and_canopies')}}">
@@ -232,7 +232,7 @@
                 <div class="direction">
                     <div class="direction__image">
                         <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/main_page/directions/bollards.png')}}"
-                             alt="Фотография направления боллард и ограждений">
+                             alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/main_page/directions/bollards.png']}}">
                     </div>
                     <h3>
                         <a href="{{route('bollards_and_fencing')}}">
@@ -243,7 +243,7 @@
                 <div class="direction">
                     <div class="direction__image">
                         <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/main_page/directions/pillars.png')}}"
-                             alt="Фотография направления столбов и накрывок">
+                             alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/main_page/directions/pillars.png']}}">
                     </div>
                     <h3>
                         <a href="{{route('pillars_and_covers')}}">
@@ -255,7 +255,7 @@
 
                     <div class="direction__image">
                         <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/main_page/directions/facade_stucco.png')}}"
-                             alt="Фотография направления фасадной лепнины и панелей">
+                             alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/main_page/directions/facade_stucco.png']}}">
                     </div>
                     <h3>
                         <a href="{{route('facade_stucco_molding_and_panels')}}">
@@ -294,7 +294,7 @@
                 </div>
                 <div class="decorative_elements__image">
                     <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/main_page/decor.png')}}"
-                         alt="Картинка, описывающая декорации для продукции">
+                         alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/main_page/decor.png']}}">
                 </div>
             </div>
         </section>
