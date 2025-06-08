@@ -1,5 +1,9 @@
 @extends('layouts.elitvid.elitvid')
 
+@section('cannonicalUrl')
+    <link rel="canonical" href="{{$canonicalUrl}}">
+@endsection
+
 @section('content')
 
     <main>

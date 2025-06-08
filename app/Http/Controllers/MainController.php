@@ -172,10 +172,22 @@ class MainController extends Controller
         $metaDescription = $products->first()->meta_description;
         $static_images = StaticImages::where('page', 'pot_product_page')->get();
         $static_images_arr = [];
+        $canonicalUrl = route('show_pot_product', ['collection' => $collection,'id' => $id]);
         foreach ($static_images as $static_image) {
             $static_images_arr[$static_image->image] = $static_image->description_image;
         }
-        return view('elitvid.site.pots.pot_product_page', compact('products', 'i', 'j', 'rows', 'count', 'rand_products', 'metaTitle', 'metaDescription', 'static_images_arr'));
+        return view('elitvid.site.pots.pot_product_page',
+            compact('products',
+                'i',
+                'j',
+                'rows',
+                'count',
+                'rand_products',
+                'metaTitle',
+                'metaDescription',
+                'static_images_arr',
+                'canonicalUrl'
+            ));
     }
 
     function show_bench_product($collection, $id){
@@ -221,10 +233,22 @@ class MainController extends Controller
         $metaDescription = $products->first()->meta_description;
         $static_images = StaticImages::where('page', 'bench_product_page')->get();
         $static_images_arr = [];
+        $canonicalUrl = route('show_bench_product', ['collection' => $collection,'id' => $id]);
         foreach ($static_images as $static_image) {
             $static_images_arr[$static_image->image] = $static_image->description_image;
         }
-        return view('elitvid.site.benches.bench_product_page', compact('products', 'i', 'j', 'rows', 'count', 'rand_products', 'metaTitle', 'metaDescription', 'static_images_arr'));
+        return view('elitvid.site.benches.bench_product_page',
+            compact('products',
+                'i',
+                'j',
+                'rows',
+                'count',
+                'rand_products',
+                'metaTitle',
+                'metaDescription',
+                'static_images_arr',
+                'canonicalUrl',
+            ));
     }
 
     function benches() {
