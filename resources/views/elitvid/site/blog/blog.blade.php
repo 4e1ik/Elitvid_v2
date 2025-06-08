@@ -28,6 +28,7 @@
                     .text__h3 {
                         text-transform: none;
                         font-size: 1.5em;
+                        height: 5em;
                     }
 
                     main .produce a {
@@ -64,10 +65,22 @@
                             /* height: 22.5em; */
                             width: 22.5em;
                             justify-self: center;
+
+                            img {
+                                max-height:12.6875em ;
+                            }
+
+                            p{
+                                height: 7.219em;
+                            }
                         }
                     }
 
                     @media (max-width: 640px) {
+
+                        .text__h3 {
+                            height: 4em;
+                        }
 
                         main .produce .blok_news {
                             display: flex;
@@ -95,7 +108,8 @@
                                 }
 
                                 img {
-                                    width: 37em;
+                                    width: 100%;
+                                    max-height: 100%;
                                 }
                             }
                         }
@@ -110,12 +124,9 @@
                                 width: 100%;
                                 height: 100%;
 
-                                img {
-                                    width: 100%;
-                                }
-
                                 .text__h3 {
                                     font-size: 2em;
+                                    height: 3em;
                                 }
                             }
                         }
