@@ -8,10 +8,8 @@
         <section class="main">
             <div class="description">
                 <div class="description-text">
-                    <h1>Болларды <br> и ограждения <br> из камня</h1>
-                    <p>Обладают противотаранными свойствами поэтому идеально подходят для защиты зданий и площадей.</p>
-                    <p>Есть возможность нанести орнамент или логотип на ваше изделие.</p>
-                    <p>А также же разместить металлическую вставку.</p>
+                    <h1>{!! $staticPage->title ?? 'Болларды <br> и ограждения <br> из камня' !!}</h1>
+                    <p>{!! $staticPage->description ?? 'Обладают противотаранными свойствами поэтому идеально подходят для защиты зданий и площадей. Есть возможность нанести орнамент или логотип на ваше изделие. А также же разместить металлическую вставку.' !!}</p>
                 </div>
                 <div class="submit-application">
                     <button class="submit-application--button open_popup_application">
@@ -22,7 +20,7 @@
             </div>
             <div class="stages">
                 <div class="image">
-                    <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/bollards/main_bollards.png')}}" alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/bollards/main_bollards.png']}}"
+                    <img src="{{asset($staticPage->main_image ?? '/elitvid_assets/newDesign/newDesign/imgs/bollards/main_bollards.png')}}" alt="{{$staticPage->alt_image ?? $static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/bollards/main_bollards.png'] ?? 'Болларды и ограждения'}}"
                          class="main-page-up">
                 </div>
                 <div class="submit-application submit-application--mobile">

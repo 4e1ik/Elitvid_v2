@@ -8,10 +8,8 @@
         <section class="main">
             <div class="description">
                 <div class="description-text">
-                    <h1>Малые <br> архитектурные <br> формы</h1>
-                    <p>Малые архитектурные формы (МАФ) - это элементы благоустройства и озеленения, которые дополняют и украшают пространство.
-                        К ним относятся скамейки, урны, вазоны, фонтаны, арки, перголы и другие декоративные элементы. <br><br>
-                        МАФ создают уютную атмосферу, зонируют пространство и делают его более функциональным и привлекательным.</p>
+                    <h1>{!! $staticPage->title ?? 'Малые <br> архитектурные <br> формы' !!}</h1>
+                    <p>{!! $staticPage->description ?? 'Малые архитектурные формы (МАФ) - это элементы благоустройства и озеленения, которые дополняют и украшают пространство. К ним относятся скамейки, урны, вазоны, фонтаны, арки, перголы и другие декоративные элементы. <br><br> МАФ создают уютную атмосферу, зонируют пространство и делают его более функциональным и привлекательным.' !!}</p>
                 </div>
                 <div class="submit-application">
                     <button class="submit-application--button open_popup_application">
@@ -21,7 +19,7 @@
             </div>
             <div class="stages">
                 <div class="image">
-                    <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/maf/maf.webp')}}" alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/maf/maf.png'] ?? 'Малые архитектурные формы'}}"
+                    <img src="{{asset($staticPage->main_image ?? '/elitvid_assets/newDesign/newDesign/imgs/maf/maf.webp')}}" alt="{{$staticPage->alt_image ?? $static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/maf/maf.webp'] ?? 'Малые архитектурные формы'}}"
                          class="main-page-up">
                 </div>
                 <div class="submit-application submit-application--mobile">

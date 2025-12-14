@@ -15,6 +15,7 @@ use App\Http\Controllers\BenchProductController;
 use \App\Http\Controllers\MailController;
 use App\Http\Controllers\SitemapController;
 use App\Http\Controllers\StaticImagesController;
+use App\Http\Controllers\StaticPageController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -180,5 +181,6 @@ Route::middleware('auth')->where([])->prefix('admin')->group(function () {
         'blogs' => BlogController::class,
         'categories' => CategoryController::class,
         'static_images' => StaticImagesController::class,
+        'static_pages' => StaticPageController::class,
     ]);
 });

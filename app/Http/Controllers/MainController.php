@@ -9,6 +9,7 @@ use App\Models\Gallery;
 use App\Models\MetaTag;
 use App\Models\PotProduct;
 use App\Models\StaticImages;
+use App\Models\StaticPage;
 use Illuminate\Support\Facades\Response;
 
 class MainController extends Controller
@@ -58,7 +59,12 @@ class MainController extends Controller
         foreach ($static_images as $static_image) {
             $static_images_arr[$static_image->image] = $static_image->description_image;
         }
-        return view('elitvid.site.bollards_and_fencing', compact('bollards_and_fencing_images', 'metaTitle', 'metaDescription', 'category', 'static_images_arr'));
+        try {
+            $staticPage = StaticPage::where('page', 'bollards_and_fencing')->first();
+        } catch (\Exception $e) {
+            $staticPage = null;
+        }
+        return view('elitvid.site.bollards_and_fencing', compact('bollards_and_fencing_images', 'metaTitle', 'metaDescription', 'category', 'static_images_arr', 'staticPage'));
     }
 
     function facade_stucco_molding_and_panels() {
@@ -74,7 +80,12 @@ class MainController extends Controller
         foreach ($static_images as $static_image) {
             $static_images_arr[$static_image->image] = $static_image->description_image;
         }
-        return view('elitvid.site.facade_stucco_molding_and_panels', compact('facade_walls_images', 'metaTitle', 'metaDescription', 'category', 'static_images_arr'));
+        try {
+            $staticPage = StaticPage::where('page', 'facade_stucco_molding_and_panels')->first();
+        } catch (\Exception $e) {
+            $staticPage = null;
+        }
+        return view('elitvid.site.facade_stucco_molding_and_panels', compact('facade_walls_images', 'metaTitle', 'metaDescription', 'category', 'static_images_arr', 'staticPage'));
     }
 
     function parklets_and_canopies() {
@@ -90,7 +101,12 @@ class MainController extends Controller
         foreach ($static_images as $static_image) {
             $static_images_arr[$static_image->image] = $static_image->description_image;
         }
-        return view('elitvid.site.parklets_and_canopies',compact('parklets_and_naves_images', 'metaTitle', 'metaDescription', 'category', 'static_images_arr'));
+        try {
+            $staticPage = StaticPage::where('page', 'parklets_and_canopies')->first();
+        } catch (\Exception $e) {
+            $staticPage = null;
+        }
+        return view('elitvid.site.parklets_and_canopies',compact('parklets_and_naves_images', 'metaTitle', 'metaDescription', 'category', 'static_images_arr', 'staticPage'));
     }
 
     function pillars_and_covers() {
@@ -106,7 +122,12 @@ class MainController extends Controller
         foreach ($static_images as $static_image) {
             $static_images_arr[$static_image->image] = $static_image->description_image;
         }
-        return view('elitvid.site.pillars_and_covers', compact('columns_and_panels_images', 'metaTitle', 'metaDescription', 'category', 'static_images_arr'));
+        try {
+            $staticPage = StaticPage::where('page', 'pillars_and_covers')->first();
+        } catch (\Exception $e) {
+            $staticPage = null;
+        }
+        return view('elitvid.site.pillars_and_covers', compact('columns_and_panels_images', 'metaTitle', 'metaDescription', 'category', 'static_images_arr', 'staticPage'));
     }
 
     function rotundas_and_colonnades() {
@@ -122,7 +143,12 @@ class MainController extends Controller
         foreach ($static_images as $static_image) {
             $static_images_arr[$static_image->image] = $static_image->description_image;
         }
-        return view('elitvid.site.rotundas_and_colonnades', compact('rotundas_and_colonnades_images', 'metaTitle', 'metaDescription', 'category', 'static_images_arr'));
+        try {
+            $staticPage = StaticPage::where('page', 'rotundas_and_colonnades')->first();
+        } catch (\Exception $e) {
+            $staticPage = null;
+        }
+        return view('elitvid.site.rotundas_and_colonnades', compact('rotundas_and_colonnades_images', 'metaTitle', 'metaDescription', 'category', 'static_images_arr', 'staticPage'));
     }
 
     function about() {
@@ -487,6 +513,11 @@ class MainController extends Controller
         foreach ($static_images as $static_image) {
             $static_images_arr[$static_image->image] = $static_image->description_image;
         }
-        return view('elitvid.site.small_architectural_forms', compact('small_architectural_forms_images', 'metaTitle', 'metaDescription', 'category', 'static_images_arr'));
+        try {
+            $staticPage = StaticPage::where('page', 'small_architectural_forms')->first();
+        } catch (\Exception $e) {
+            $staticPage = null;
+        }
+        return view('elitvid.site.small_architectural_forms', compact('small_architectural_forms_images', 'metaTitle', 'metaDescription', 'category', 'static_images_arr', 'staticPage'));
     }
 }

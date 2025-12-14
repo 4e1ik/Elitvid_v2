@@ -8,10 +8,8 @@
         <section class="main">
             <div class="description">
                 <div class="description-text">
-                    <h1>Каменные <br> ротонды <br> и колонны</h1>
-                    <p>Ротонда -  это разновидность достаточно крупных и заметных малых архитектурных форм, которые служат местом для приятного времяпрепровождения.
-                        Всегда имеет круглую форму, колоннаду и купол. <br><br>
-                        Беседка – ротонда является эксклюзивных элементом оформления садов и парков. Дополнив её скамейками, Вы получаете место для комфортного отдыха.</p>
+                    <h1>{!! $staticPage->title ?? 'Каменные <br> ротонды <br> и колонны' !!}</h1>
+                    <p>{!! $staticPage->description ?? 'Ротонда - это разновидность достаточно крупных и заметных малых архитектурных форм, которые служат местом для приятного времяпрепровождения. Всегда имеет круглую форму, колоннаду и купол. <br><br> Беседка – ротонда является эксклюзивных элементом оформления садов и парков. Дополнив её скамейками, Вы получаете место для комфортного отдыха.' !!}</p>
                 </div>
                 <div class="submit-application">
                     <button class="submit-application--button open_popup_application">
@@ -22,7 +20,7 @@
             </div>
             <div class="stages">
                 <div class="image">
-                    <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/rotundas/rotundas.png')}}" alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/rotundas/rotundas.png']}}"
+                    <img src="{{asset($staticPage->main_image ?? '/elitvid_assets/newDesign/newDesign/imgs/rotundas/rotundas.png')}}" alt="{{$staticPage->alt_image ?? $static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/rotundas/rotundas.png'] ?? 'Ротонды и колонны'}}"
                          class="main-page-up">
                 </div>
                 <div class="submit-application submit-application--mobile">

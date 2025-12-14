@@ -8,8 +8,8 @@
         <section class="main">
             <div class="description">
                 <div class="description-text">
-                    <h1>Фасадная лепнина <br> и панели из камня</h1>
-                    <p>Работаем по индивидуальным размерам, эскизам и чертежам, а также предоставляем Каталог готовых изделий </p>
+                    <h1>{!! $staticPage->title ?? 'Фасадная лепнина <br> и панели из камня' !!}</h1>
+                    <p>{!! $staticPage->description ?? 'Работаем по индивидуальным размерам, эскизам и чертежам, а также предоставляем Каталог готовых изделий' !!}</p>
                 </div>
                 <div class="submit-application">
                     <button class="submit-application--button open_popup_application">
@@ -20,7 +20,7 @@
             </div>
             <div class="stages">
                 <div class="image">
-                    <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/facades/facades.png')}}" alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/facades/facades.png']}}"
+                    <img src="{{asset($staticPage->main_image ?? '/elitvid_assets/newDesign/newDesign/imgs/facades/facades.png')}}" alt="{{$staticPage->alt_image ?? $static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/facades/facades.png'] ?? 'Фасадная лепнина и панели'}}"
                          class="main-page-up">
                 </div>
                 <div class="submit-application submit-application--mobile">

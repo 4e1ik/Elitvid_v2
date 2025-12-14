@@ -127,8 +127,8 @@
     </div>
     <div class="direction">
         <div class="direction__image">
-            <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/main_page/directions/facade_stucco.png')}}"
-                 alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/main_page/directions/facade_stucco.png']}}">
+            <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/main_page/directions/maf.webp')}}"
+                 alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/main_page/directions/maf.webp']}}">
         </div>
         <h3>
             <a href="{{route('small_architectural_forms')}}">
