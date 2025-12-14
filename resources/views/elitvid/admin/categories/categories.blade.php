@@ -62,6 +62,8 @@
                                                         Страница столбы и накрывки
                                                     @elseif($category->page == 'rotundas_and_colonnades')
                                                         Страница ротонды и коллоны
+                                                    @elseif($category->page == 'small_architectural_forms')
+                                                        Страница малые архитектурные формы
                                                     @elseif($category->page == 'blog')
                                                         Страница постов блога
                                                     @endif

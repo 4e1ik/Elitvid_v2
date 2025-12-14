@@ -39,6 +39,10 @@ Breadcrumbs::for('rotundas_and_colonnades', fn (Trail $trail) =>
 $trail->parent('directions')->push('Ротонды и коллонады', route('rotundas_and_colonnades'))
 );
 
+Breadcrumbs::for('small_architectural_forms', fn (Trail $trail) =>
+$trail->parent('directions')->push('Малые архитектурные формы', route('small_architectural_forms'))
+);
+
 Breadcrumbs::for('benches', fn (Trail $trail) =>
 $trail->parent('directions')->push('Скамьи', route('benches'))
 );

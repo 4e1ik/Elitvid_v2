@@ -145,6 +145,7 @@
                         <li><a href="{{route('admin_static_images', ['page' => 'parklets_and_canopies'])}}">Парклеты, навесы</a></li>
                         <li><a href="{{route('admin_static_images', ['page' => 'pillars_and_covers'])}}">Столбы, накрывки</a></li>
                         <li><a href="{{route('admin_static_images', ['page' => 'rotundas_and_colonnades'])}}">Ротонды и колоны</a></li>
+                        <li><a href="{{route('admin_static_images', ['page' => 'small_architectural_forms'])}}">Малые архитектурные формы</a></li>
                         <li><a href="{{route('admin_static_images', ['page' => 'pots'])}}">Кашпо</a></li>
                         <li><a href="{{route('admin_static_images', ['page' => 'pot_product_page'])}}">Страница товара кашпо</a></li>
                         <li><a href="{{route('admin_static_images', ['page' => 'rectangular_pots'])}}">Прямоугольные кашпо</a></li>
@@ -707,6 +708,7 @@
                         <li><a href="{{route('admin_static_images', ['page' => 'parklets_and_canopies'])}}">Парклеты, навесы</a></li>
                         <li><a href="{{route('admin_static_images', ['page' => 'pillars_and_covers'])}}">Столбы, накрывки</a></li>
                         <li><a href="{{route('admin_static_images', ['page' => 'rotundas_and_colonnades'])}}">Ротонды и колоны</a></li>
+                        <li><a href="{{route('admin_static_images', ['page' => 'small_architectural_forms'])}}">Малые архитектурные формы</a></li>
                         <li><a href="{{route('admin_static_images', ['page' => 'pots'])}}">Кашпо</a></li>
                         <li><a href="{{route('admin_static_images', ['page' => 'pot_product_page'])}}">Страница товара кашпо</a></li>
                         <li><a href="{{route('admin_static_images', ['page' => 'rectangular_pots'])}}">Прямоугольные кашпо</a></li>

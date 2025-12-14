@@ -24,7 +24,7 @@ class TextureRequest extends FormRequest
         return [
             'texture_name' => 'required|filled|min:3|max:50',
             'type' => 'required|filled',
-            'image.*.image' => 'required|image'
+            'image.*' => 'required|image|mimes:jpeg,jpg,png,webp'
         ];
     }
 }

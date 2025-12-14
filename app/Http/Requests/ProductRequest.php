@@ -26,7 +26,7 @@ class ProductRequest extends FormRequest
             'title' => 'required|filled|min:3|max:100',
             'content' => 'required|filled|min:10|max:10000',
             'type' => 'required|filled',
-            'image.*.image' => 'required|image'
+            'image.*' => 'required|image|mimes:jpeg,jpg,png,webp'
         ];
     }
 

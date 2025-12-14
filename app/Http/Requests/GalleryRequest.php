@@ -23,7 +23,7 @@ class GalleryRequest extends FormRequest
     {
         return [
             'type' => 'required|filled',
-            'image.*.image' => 'required|image'
+            'image.*' => 'required|image|mimes:jpeg,jpg,png,webp'
         ];
     }
 }

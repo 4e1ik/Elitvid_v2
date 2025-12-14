@@ -42,6 +42,7 @@
                                 <option {{ old('type') == 'columns_and_panels' ? 'selected' : ''}} value="columns_and_panels">Столбы и накрывки</option>
                                 <option {{ old('type') == 'facade_walls' ? 'selected' : ''}} value="facade_walls">Фасадная лепнина</option>
                                 <option {{ old('type') == 'rotundas' ? 'selected' : ''}} value="rotundas">Ротонды</option>
+                                <option {{ old('type') == 'maf' ? 'selected' : ''}} value="maf">Малые архитектурные формы</option>
                             </select>
                             @error('type')
                             <div class="text-danger">

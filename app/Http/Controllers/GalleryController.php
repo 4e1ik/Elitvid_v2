@@ -59,6 +59,7 @@ class GalleryController extends Controller
             'columns_and_panels' => route('admin_columns_and_panels_images'),
             'facade_walls' => route('admin_facade_walls_images'),
             'rotundas' => route('admin_rotundas_images'),
+            'maf' => route('admin_maf_images'),
         ];
 
         return redirect($potsRoutes[$collection]);

@@ -120,13 +120,12 @@ class BenchProductController extends Controller
 
         $benchProduct->fill($data)->save();
 
-        $data['pot_product_id'] = $benchProduct->id;
-
         if ($benchProductRequest->hasFile('image')) {
             foreach ($benchProductRequest->file('image') as $file) {
                 $name= save_image($file, BenchImage::query());
                 $path = Storage::putFileAs('public/images', $file, $name); // Даем путь к этому файлу
                 $data['image'] = $path;
+                $data['bench_product_id'] = $benchProduct->id;
                 BenchImage::create($data);
 
                 ImageManager::gd()->read($file)->scaleDown(480,  400)->save(storage_path('app/public/images/'.$name));

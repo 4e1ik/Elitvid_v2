@@ -195,6 +195,17 @@ class AdminController extends Controller
         );
     }
 
+    public function maf_images(Gallery $gallery) {
+        $gallery = Gallery::query()->with(['gallery_images'])->latest()->get();
+        $maf_images = $gallery->where('type', 'maf');
+
+        return view(
+            'elitvid.admin.gallery.maf_images', compact(
+                'gallery',  'maf_images'
+            )
+        );
+    }
+
     public function create($route){
 
         $route_name = $route;

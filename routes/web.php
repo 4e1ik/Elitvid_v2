@@ -55,6 +55,7 @@ Route::prefix('directions')->group(function () {
     Route::get('/parklets_and_canopies', [MainController::class, 'parklets_and_canopies'])->name('parklets_and_canopies');
     Route::get('/pillars_and_covers', [MainController::class, 'pillars_and_covers'])->name('pillars_and_covers');
     Route::get('/rotundas_and_colonnades', [MainController::class, 'rotundas_and_colonnades'])->name('rotundas_and_colonnades');
+    Route::get('/maf', [MainController::class, 'small_architectural_forms'])->name('small_architectural_forms');
 
     Route::prefix('benches')->group(function () {
         Route::get('/', [MainController::class, 'benches'])->name('benches');
@@ -138,6 +139,7 @@ Route::middleware('auth')->where([])->prefix('admin')->group(function () {
         Route::get('/columns_and_panels_images', [AdminController::class, 'columns_and_panels_images'])->name('admin_columns_and_panels_images');
         Route::get('/facade_walls_images', [AdminController::class, 'facade_walls_images'])->name('admin_facade_walls_images');
         Route::get('/rotundas_images', [AdminController::class, 'rotundas_images'])->name('admin_rotundas_images');
+        Route::get('/maf_images', [AdminController::class, 'maf_images'])->name('admin_maf_images');
     });
 
 

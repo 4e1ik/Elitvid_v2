@@ -44,7 +44,7 @@ class PotProductRequest extends FormRequest
             'price4' => 'max:50',
             'price5' => 'max:50',
             'collection' => 'required|filled',
-            'image.*.image' => 'required|image',
+            'image.*' => 'required|image|mimes:jpeg,jpg,png,webp',
         ];
     }
 
