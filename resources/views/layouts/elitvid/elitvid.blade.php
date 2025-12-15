@@ -133,7 +133,7 @@
         <div class="information-column">
             <div class="contacts">
                 <div class="contacts-text">
-                    <h4>Контакты</h4>
+                    <div class="heading-4">Контакты</div>
                     <ul class="contacts-text--list">
                         <li>Пн-пт: 8.00-17.00</li>
                         <li>el_vid@mail.ru</li>
@@ -176,28 +176,18 @@
             </div>
             <div class="catalog">
                 <div class="catalog-text">
-                    <h4>Каталог</h4>
+                    <div class="heading-4">Каталог</div>
                     <nav class="footer-menu">
                         <ul class="catalog-text--list menu">
-                            <style>
-                                h5 {
-                                    text-decoration: none;
-                                    cursor: pointer;
-                                    color: #FFFFFF;
-                                    margin: 0;
-                                    font-weight: normal;
-                                    font-size: 1em;
-                                }
-                            </style>
-                            <li><h5><a href="{{route('blog_posts')}}">Блог</a></h5></li>
-                            <li><h5><a href="{{route('pots')}}">Кашпо</a></h5></li>
-                            <li><h5><a href="{{route('benches')}}">Скамьи</a></h5></li>
-                            <li><h5><a href="{{route('rotundas_and_colonnades')}}">Ротонды и коллонады</a></h5></li>
-                            <li><h5><a href="{{route('parklets_and_canopies')}}">Парклет, навесы</a></h5></li>
-                            <li><h5><a href="{{route('bollards_and_fencing')}}">Болларды и ограждения</a></h5></li>
-                            <li><h5><a href="{{route('pillars_and_covers')}}">Столбы и накрывки</a></h5></li>
-                            <li><h5><a href="{{route('facade_stucco_molding_and_panels')}}">Фасадная лепнина и
-                                        панели</a></h5></li>
+                            <li><div class="heading-5"><a href="{{route('blog_posts')}}">Блог</a></div></li>
+                            <li><div class="heading-5"><a href="{{route('pots')}}">Кашпо</a></div></li>
+                            <li><div class="heading-5"><a href="{{route('benches')}}">Скамьи</a></div></li>
+                            <li><div class="heading-5"><a href="{{route('rotundas_and_colonnades')}}">Ротонды и коллонады</a></div></li>
+                            <li><div class="heading-5"><a href="{{route('parklets_and_canopies')}}">Парклет, навесы</a></div></li>
+                            <li><div class="heading-5"><a href="{{route('bollards_and_fencing')}}">Болларды и ограждения</a></div></li>
+                            <li><div class="heading-5"><a href="{{route('pillars_and_covers')}}">Столбы и накрывки</a></div></li>
+                            <li><div class="heading-5"><a href="{{route('facade_stucco_molding_and_panels')}}">Фасадная лепнина и
+                                        панели</a></div></li>
                         </ul>
                     </nav>
                 </div>

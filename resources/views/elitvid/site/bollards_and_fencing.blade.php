@@ -22,6 +22,7 @@
                 <div class="image">
                     <img src="{{asset($staticPage->main_image ?? '/elitvid_assets/newDesign/newDesign/imgs/bollards/main_bollards.png')}}" alt="{{$staticPage->alt_image ?? $static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/bollards/main_bollards.png'] ?? 'Болларды и ограждения'}}"
                          class="main-page-up">
+                    <div class="image-gradient-overlay"></div>
                 </div>
                 <div class="submit-application submit-application--mobile">
                     <button class="submit-application--button open_popup_application1 submit-application-button--mobile">

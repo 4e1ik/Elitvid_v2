@@ -800,6 +800,19 @@ main {
         .stages {
             display: flex;
             flex-direction: column;
+
+            .image {
+                .image-gradient-overlay {
+                    position: absolute;
+                    top: 2em;
+                    right: calc(56.5625em * 0.75 - 8em);
+                    width: calc(56.5625em * 0.25);
+                    height: calc(100% - 2em);
+                    background: linear-gradient(to right, $background--color 0%, rgba($background--color, 0) 100%);
+                    z-index: -1;
+                    pointer-events: none;
+                }
+            }
         }
 
         .main-page-up {
@@ -807,7 +820,7 @@ main {
             width: 56.5625em;
             top: 2em;
             right: -8em;
-            z-index: -1;
+            z-index: -2;
         }
 
         .stages--text {
@@ -2099,8 +2112,32 @@ footer {
         padding: 3.75em 3.125em;
 
         .my_site {
-            h5 {
+            h5,
+            .heading-5 {
                 font-size: 1em;
+            }
+        }
+        
+        .contacts-text,
+        .catalog-text {
+            h4,
+            .heading-4 {
+                font-size: 1.125em;
+                font-family: 'Montserrat-SemiBold';
+            }
+        }
+        
+        .heading-5 {
+            text-decoration: none;
+            cursor: pointer;
+            color: #FFFFFF;
+            margin: 0;
+            font-weight: normal;
+            font-size: 1em;
+            
+            a {
+                text-decoration: none;
+                color: inherit;
             }
         }
     }
@@ -2469,6 +2506,12 @@ footer {
                 flex-direction: column;
                 gap: 2em;
 
+                .image {
+                    .image-gradient-overlay {
+                        display: none;
+                    }
+                }
+
                 .main-page-up {
                     position: relative;
                     top: 0;
@@ -2794,7 +2837,8 @@ footer {
 
             .contacts-text {
 
-                h4 {
+                h4,
+                .heading-4 {
                     font-size: 1.2em;
                 }
 
@@ -2805,7 +2849,8 @@ footer {
 
             .catalog-text {
 
-                h4 {
+                h4,
+                .heading-4 {
                     font-size: 1.2em;
                 }
 
@@ -3264,13 +3309,15 @@ footer {
 
         footer {
             .catalog-text {
-                h4 {
+                h4,
+                .heading-4 {
                     font-size: 1.77em;
                 }
             }
 
             .contacts-text {
-                h4 {
+                h4,
+                .heading-4 {
                     font-size: 1.77em;
                 }
             }

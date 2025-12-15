@@ -611,12 +611,22 @@ main .main .stages {
   display: flex;
   flex-direction: column;
 }
+main .main .stages .image .image-gradient-overlay {
+  position: absolute;
+  top: 2em;
+  right: 34.421875em;
+  width: 14.140625em;
+  height: calc(100% - 2em);
+  background: linear-gradient(to right, #1A1B20 0%, rgba(26, 27, 32, 0) 100%);
+  z-index: -1;
+  pointer-events: none;
+}
 main .main .main-page-up {
   position: absolute;
   width: 56.5625em;
   top: 2em;
   right: -8em;
-  z-index: -1;
+  z-index: -2;
 }
 main .main .stages--text {
   display: flex;
@@ -1508,8 +1518,28 @@ footer .request-phone--button:hover {
   footer {
     padding: 3.75em 3.125em;
   }
-  footer .my_site h5 {
+  footer .my_site h5,
+  footer .my_site .heading-5 {
     font-size: 1em;
+  }
+  footer .contacts-text h4,
+  footer .contacts-text .heading-4,
+  footer .catalog-text h4,
+  footer .catalog-text .heading-4 {
+    font-size: 1.125em;
+    font-family: "Montserrat-SemiBold";
+  }
+  footer .heading-5 {
+    text-decoration: none;
+    cursor: pointer;
+    color: #FFFFFF;
+    margin: 0;
+    font-weight: normal;
+    font-size: 1em;
+  }
+  footer .heading-5 a {
+    text-decoration: none;
+    color: inherit;
   }
 }
 @media (max-width: 835px) {
@@ -1730,6 +1760,9 @@ footer .request-phone--button:hover {
     flex-direction: column;
     gap: 2em;
   }
+  body .main .stages .image .image-gradient-overlay {
+    display: none;
+  }
   body .main .stages .main-page-up {
     position: relative;
     top: 0;
@@ -1930,13 +1963,15 @@ footer .request-phone--button:hover {
     padding-top: 1em;
     margin-right: 0.75em;
   }
-  body footer .contacts-text h4 {
+  body footer .contacts-text h4,
+  body footer .contacts-text .heading-4 {
     font-size: 1.2em;
   }
   body footer .contacts-text li {
     font-size: 1.2em;
   }
-  body footer .catalog-text h4 {
+  body footer .catalog-text h4,
+  body footer .catalog-text .heading-4 {
     font-size: 1.2em;
   }
   body footer .catalog-text li {
@@ -2179,10 +2214,12 @@ footer .request-phone--button:hover {
   body main .offered_products .offered_product_slider .swiper-slide {
     height: 30em;
   }
-  body footer .catalog-text h4 {
+  body footer .catalog-text h4,
+  body footer .catalog-text .heading-4 {
     font-size: 1.77em;
   }
-  body footer .contacts-text h4 {
+  body footer .contacts-text h4,
+  body footer .contacts-text .heading-4 {
     font-size: 1.77em;
   }
   footer .logo {
