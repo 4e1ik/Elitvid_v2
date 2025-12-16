@@ -23,7 +23,7 @@
             <div class="stages">
                 <div class="image">
                     <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/main_page/main_page_up.png')}}"
-                         alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/main_page/main_page_up.png']}}"
+                         alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/main_page/main_page_up.png'] ?? ''}}"
                          class="main-page-up">
                 </div>
                 <div class="stages--text">
@@ -48,7 +48,7 @@
             <div class="description">
                 <div class="image">
                     <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/main_page/main_page_center.png')}}"
-                         alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/main_page/main_page_center.png']}}"
+                         alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/main_page/main_page_center.png'] ?? ''}}"
                          class="main-page-center">
                 </div>
                 <div class="description-text">
@@ -103,28 +103,28 @@
                         <!-- Slides -->
                         <div class="swiper-slide"><img
                                     src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/main_page/partners/game_stream.jpg')}}"
-                                    alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/main_page/partners/game_stream.jpg']}}"></div>
+                                    alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/main_page/partners/game_stream.jpg'] ?? ''}}"></div>
                         <div class="swiper-slide"><img
                                     src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/main_page/partners/a100.jpg')}}"
-                                    alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/main_page/partners/a100.jpg']}}"></div>
+                                    alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/main_page/partners/a100.jpg'] ?? ''}}"></div>
                         <div class="swiper-slide"><img
                                     src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/main_page/partners/Belorusneft.jpg')}}"
-                                    alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/main_page/partners/Belorusneft.jpg']}}"></div>
+                                    alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/main_page/partners/Belorusneft.jpg'] ?? ''}}"></div>
                         <div class="swiper-slide"><img
                                     src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/main_page/partners/development_bank.jpg')}}"
-                                    alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/main_page/partners/development_bank.jpg']}}"></div>
+                                    alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/main_page/partners/development_bank.jpg'] ?? ''}}"></div>
                         <div class="swiper-slide"><img
                                     src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/main_page/partners/green_haven.jpg')}}"
-                                    alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/main_page/partners/green_haven.jpg']}}"></div>
+                                    alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/main_page/partners/green_haven.jpg'] ?? ''}}"></div>
                         <div class="swiper-slide"><img
                                     src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/main_page/partners/tobacco_invest.jpg')}}"
-                                    alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/main_page/partners/tobacco_invest.jpg']}}"></div>
+                                    alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/main_page/partners/tobacco_invest.jpg'] ?? ''}}"></div>
                         <div class="swiper-slide"><img
                                     src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/main_page/partners/unisoil.jpg')}}"
-                                    alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/main_page/partners/unisoil.jpg']}}"></div>
+                                    alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/main_page/partners/unisoil.jpg'] ?? ''}}"></div>
                         <div class="swiper-slide"><img
                                     src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/main_page/partners/vds.jpg')}}"
-                                    alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/main_page/partners/vds.jpg']}}"></div>
+                                    alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/main_page/partners/vds.jpg'] ?? ''}}"></div>
                     </div>
                 </div>
             </div>
@@ -166,7 +166,7 @@
                 </div>
                 <div class="decorative_elements__image">
                     <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/main_page/decor.png')}}"
-                         alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/main_page/decor.png']}}">
+                         alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/main_page/decor.png'] ?? ''}}">
                 </div>
             </div>
         </section>

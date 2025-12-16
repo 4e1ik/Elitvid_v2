@@ -28,7 +28,7 @@
     <div class="direction">
         <div class="direction__image">
             <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/main_page/directions/pots.png')}} "
-                 alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/main_page/directions/pots.png']}}">
+                 alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/main_page/directions/pots.png'] ?? ''}}">
         </div>
         <h3><a href="{{route('pots')}}">
                 <button>Кашпо</button>
@@ -46,7 +46,7 @@
     </style>
     <div class="slogan__direction">
         <div class="slogan__direction-text">
-            <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/main_page/img.png')}}" alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/main_page/img.png']}}">
+            <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/main_page/img.png')}}" alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/main_page/img.png'] ?? ''}}">
             <div class="h4">Мы воплотим в реальность любую вашу идею!</div>
             <p>Работаем по индивидуальным размерам, эскизам и чертежам. Гарантируем качественное и
                 профессиональное
@@ -62,7 +62,7 @@
     <div class="direction">
         <div class="direction__image">
             <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/main_page/directions/benches.png')}}"
-                 alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/main_page/directions/benches.png']}}">
+                 alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/main_page/directions/benches.png'] ?? ''}}">
         </div>
         <h3>
             <a href="{{route('benches')}}">
@@ -73,7 +73,7 @@
     <div class="direction">
         <div class="direction__image">
             <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/main_page/directions/rotundas.png')}}"
-                 alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/main_page/directions/rotundas.png']}}">
+                 alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/main_page/directions/rotundas.png'] ?? ''}}">
         </div>
         <h3>
             <a href="{{route('rotundas_and_colonnades')}}">
@@ -84,7 +84,7 @@
     <div class="direction">
         <div class="direction__image">
             <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/main_page/directions/parklets.png')}}"
-                 alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/main_page/directions/parklets.png']}}">
+                 alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/main_page/directions/parklets.png'] ?? ''}}">
         </div>
         <h3>
             <a href="{{route('parklets_and_canopies')}}">
@@ -95,7 +95,7 @@
     <div class="direction">
         <div class="direction__image">
             <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/main_page/directions/bollards.png')}}"
-                 alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/main_page/directions/bollards.png']}}">
+                 alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/main_page/directions/bollards.png'] ?? ''}}">
         </div>
         <h3>
             <a href="{{route('bollards_and_fencing')}}">
@@ -106,7 +106,7 @@
     <div class="direction">
         <div class="direction__image">
             <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/main_page/directions/pillars.png')}}"
-                 alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/main_page/directions/pillars.png']}}">
+                 alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/main_page/directions/pillars.png'] ?? ''}}">
         </div>
         <h3>
             <a href="{{route('pillars_and_covers')}}">
@@ -117,7 +117,7 @@
     <div class="direction">
         <div class="direction__image">
             <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/main_page/directions/facade_stucco.png')}}"
-                 alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/main_page/directions/facade_stucco.png']}}">
+                 alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/main_page/directions/facade_stucco.png'] ?? ''}}">
         </div>
         <h3>
             <a href="{{route('facade_stucco_molding_and_panels')}}">
