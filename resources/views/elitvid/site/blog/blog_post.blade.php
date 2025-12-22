@@ -5,11 +5,10 @@
         @include('includes.elitvid.popup_call')
         @include('includes.elitvid.popup_application')
         @include('includes.elitvid.breadcrumbs')
-        @foreach($blog as $item)
             <section style="margin: 5em" class="produce">
                 <div class="description">
                     <div class="description-text">
-                        <h1>{{$item->title}}</h1>
+                        <h1>{{$blog->title}}</h1>
                     </div>
                 </div>
                 <div class="blok_news">
@@ -127,7 +126,7 @@
                     </style>
                     <div class="article">
                         <div class="article__image">
-                            <img src="{{asset('storage/'.str_replace('public/','',$item->main_image))}}" alt="Фотография cтатьи">
+                            <img src="{{asset('storage/'.str_replace('public/','',$blog->main_image))}}" alt="Фотография cтатьи">
                         </div>
                     </div>
                 </div>
@@ -140,13 +139,8 @@
                 </div>
             </section>
             <section id="blog" class="blog">
-                {!! $item->content !!}
+                {!! $blog->content !!}
             </section>
-            <style>
-
-            </style>
-
-        @endforeach
         <section class="navigation">
             @if($prevPost)
             <h3>

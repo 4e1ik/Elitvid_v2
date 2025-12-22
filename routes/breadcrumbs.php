@@ -72,7 +72,10 @@ $trail->parent('home')->push('Новости', route('blog_posts'))
 );
 
 Breadcrumbs::for('show_blog_post', fn (Trail $trail, $id) =>
-$trail->parent('blog_posts')->push(Blog::where('id', $id)->get()[0]['title'], route('show_blog_post', $id))
+$trail->parent('blog_posts')->push(
+    Blog::where('id', $id)->first()?->title ?? 'Статья',
+    route('show_blog_post', $id)
+)
 );
 
 // Breadcrumbs::for('show_bench_product', fn (Trail $trail, $id) =>
