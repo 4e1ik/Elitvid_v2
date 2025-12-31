@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin\Benches;
 
+use App\Http\Controllers\Controller;
 use App\Http\Requests\BenchProductRequest;
 use App\Models\BenchImage;
 use App\Models\BenchProduct;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\ImageManager;
-use function Laravel\Prompts\warning;
 
 class BenchProductController extends Controller
 {

@@ -1,19 +1,19 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
-use App\Models\Category;
+use App\Http\Controllers\Controller;
+use App\Models\StaticImages;
 use Illuminate\Http\Request;
 
-class CategoryController extends Controller
+class StaticImagesController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $categories = Category::all();
-        return view('elitvid.admin.categories.categories', compact('categories'));
+        //
     }
 
     /**
@@ -35,7 +35,7 @@ class CategoryController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Category $category)
+    public function show(StaticImages $staticImages)
     {
         //
     }
@@ -43,7 +43,7 @@ class CategoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Category $category)
+    public function edit(StaticImages $staticImages)
     {
         //
     }
@@ -51,17 +51,17 @@ class CategoryController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Category $category)
+    public function update(Request $request, StaticImages $static_image)
     {
         $data = $request->all();
-        $category->fill($data)->save();
-        return back();
+        $static_image->update($data);
+        return redirect()->back();
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Category $category)
+    public function destroy(StaticImages $staticImages)
     {
         //
     }

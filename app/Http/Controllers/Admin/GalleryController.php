@@ -1,13 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Http\Requests\GalleryRequest;
 use App\Http\Requests\ImageRequest;
 use App\Models\Gallery;
 use App\Models\GalleryImage;
-use Intervention\Image\ImageManager;
 use Illuminate\Support\Facades\Storage;
+use Intervention\Image\ImageManager;
 
 class GalleryController extends Controller
 {

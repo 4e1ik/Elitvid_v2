@@ -1,21 +1,29 @@
 <?php
 
-use App\Http\Controllers\AdminController;
-use App\Http\Controllers\BlogController;
-use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\GalleryController;
-use App\Http\Controllers\MetaTagController;
-use App\Http\Controllers\PotImageController;
-use App\Http\Controllers\BenchImageController;
+use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\Auth\LoginController;
+use App\Http\Controllers\Admin\Auth\RegisterController;
+use App\Http\Controllers\Admin\Benches\BenchImageController;
+use App\Http\Controllers\Admin\Benches\BenchProductController;
+use App\Http\Controllers\Admin\BlogController;
+use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\GalleryController;
+use App\Http\Controllers\Admin\MailController;
+use App\Http\Controllers\Admin\MetaTagController;
+use App\Http\Controllers\Admin\Pots\PotImageController;
+use App\Http\Controllers\Admin\Pots\PotProductController;
+use App\Http\Controllers\Admin\StaticImagesController;
+use App\Http\Controllers\Admin\StaticPageController;
+use App\Http\Controllers\BenchController;
+use App\Http\Controllers\BollardsAndFencingController;
+use App\Http\Controllers\FacadeStuccoMoldingAndPanelsController;
+use App\Http\Controllers\MafController;
 use App\Http\Controllers\MainController;
-use App\Http\Controllers\LoginController;
-use App\Http\Controllers\RegisterController;
-use App\Http\Controllers\PotProductController;
-use App\Http\Controllers\BenchProductController;
-use \App\Http\Controllers\MailController;
+use App\Http\Controllers\ParkletsAndCanopiesController;
+use App\Http\Controllers\PillarsAndCoversController;
+use App\Http\Controllers\PotController;
+use App\Http\Controllers\RotundasAndColonnadesController;
 use App\Http\Controllers\SitemapController;
-use App\Http\Controllers\StaticImagesController;
-use App\Http\Controllers\StaticPageController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -51,51 +59,51 @@ Route::prefix('blog')->group(function () {
 Route::prefix('directions')->group(function () {
     Route::get('/', [MainController::class, 'directions'])->name('directions');
 
-    Route::get('/bollards_and_fencing', [MainController::class, 'bollards_and_fencing'])->name('bollards_and_fencing');
-    Route::get('/facade_stucco_molding_and_panels', [MainController::class, 'facade_stucco_molding_and_panels'])->name('facade_stucco_molding_and_panels');
-    Route::get('/parklets_and_canopies', [MainController::class, 'parklets_and_canopies'])->name('parklets_and_canopies');
-    Route::get('/pillars_and_covers', [MainController::class, 'pillars_and_covers'])->name('pillars_and_covers');
-    Route::get('/rotundas_and_colonnades', [MainController::class, 'rotundas_and_colonnades'])->name('rotundas_and_colonnades');
-    Route::get('/maf', [MainController::class, 'small_architectural_forms'])->name('small_architectural_forms');
+    Route::get('/bollards_and_fencing', [BollardsAndFencingController::class, 'bollards_and_fencing'])->name('bollards_and_fencing');
+    Route::get('/facade_stucco_molding_and_panels', [FacadeStuccoMoldingAndPanelsController::class, 'facade_stucco_molding_and_panels'])->name('facade_stucco_molding_and_panels');
+    Route::get('/parklets_and_canopies', [ParkletsAndCanopiesController::class, 'parklets_and_canopies'])->name('parklets_and_canopies');
+    Route::get('/pillars_and_covers', [PillarsAndCoversController::class, 'pillars_and_covers'])->name('pillars_and_covers');
+    Route::get('/rotundas_and_colonnades', [RotundasAndColonnadesController::class, 'rotundas_and_colonnades'])->name('rotundas_and_colonnades');
+    Route::get('/maf', [MafController::class, 'small_architectural_forms'])->name('small_architectural_forms');
 
     Route::prefix('benches')->group(function () {
-        Route::get('/', [MainController::class, 'benches'])->name('benches');
-        Route::get('/{collection}/{id}', [MainController::class, 'show_bench_product'])->name('show_bench_product');
+        Route::get('/', [BenchController::class, 'benches'])->name('benches');
+        Route::get('/{collection}/{id}', [BenchController::class, 'show_bench_product'])->name('show_bench_product');
 
         Route::prefix('verona_benches')->group(function () {
-            Route::get('/', [MainController::class, 'verona_benches'])->name('verona_benches');
+            Route::get('/', [BenchController::class, 'verona_benches'])->name('verona_benches');
         });
 
         Route::prefix('street_furniture_benches')->group(function () {
-            Route::get('/', [MainController::class, 'street_furniture_benches'])->name('street_furniture_benches');
+            Route::get('/', [BenchController::class, 'street_furniture_benches'])->name('street_furniture_benches');
         });
 
         Route::prefix('solo_benches')->group(function () {
-            Route::get('/', [MainController::class, 'solo_benches'])->name('solo_benches');
+            Route::get('/', [BenchController::class, 'solo_benches'])->name('solo_benches');
         });
 
         Route::prefix('lines_benches')->group(function () {
-            Route::get('/', [MainController::class, 'lines_benches'])->name('lines_benches');
+            Route::get('/', [BenchController::class, 'lines_benches'])->name('lines_benches');
         });
 
         Route::prefix('stones_benches')->group(function () {
-            Route::get('/', [MainController::class, 'stones_benches'])->name('stones_benches');
+            Route::get('/', [BenchController::class, 'stones_benches'])->name('stones_benches');
 
         });
     });
 
     Route::prefix('pots')->group(function () {
-        Route::get('/', [MainController::class, 'pots'])->name('pots');
-        Route::get('/{collection}/{id}', [MainController::class, 'show_pot_product'])->name('show_pot_product');
+        Route::get('/', [PotController::class, 'pots'])->name('pots');
+        Route::get('/{collection}/{id}', [PotController::class, 'show_pot_product'])->name('show_pot_product');
 
         Route::prefix('rectangular_pots')->group(function () {
-            Route::get('/', [MainController::class, 'rectangular_pots'])->name('rectangular_pots');
+            Route::get('/', [PotController::class, 'rectangular_pots'])->name('rectangular_pots');
         });
         Route::prefix('square_pots')->group(function () {
-            Route::get('/', [MainController::class, 'square_pots'])->name('square_pots');
+            Route::get('/', [PotController::class, 'square_pots'])->name('square_pots');
         });
         Route::prefix('round_pots')->group(function () {
-            Route::get('/', [MainController::class, 'round_pots'])->name('round_pots');
+            Route::get('/', [PotController::class, 'round_pots'])->name('round_pots');
         });
     });
 });
@@ -109,6 +117,8 @@ Route::post('/registration', [RegisterController::class, 'registration'])->name(
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
 Route::post('/send_mail', [MailController::class, 'send'])->name('send_mail');
+
+
 
 Route::middleware('auth')->where([])->prefix('admin')->group(function () {
     Route::get('/', [AdminController::class, 'index'])->name('admin');
@@ -142,7 +152,6 @@ Route::middleware('auth')->where([])->prefix('admin')->group(function () {
         Route::get('/rotundas_images', [AdminController::class, 'rotundas_images'])->name('admin_rotundas_images');
         Route::get('/maf_images', [AdminController::class, 'maf_images'])->name('admin_maf_images');
     });
-
 
     /*
      * Статические картинки сайта

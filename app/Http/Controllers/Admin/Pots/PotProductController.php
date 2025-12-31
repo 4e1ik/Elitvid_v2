@@ -1,15 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin\Pots;
 
+use App\Http\Controllers\Controller;
 use App\Http\Requests\PotProductRequest;
 use App\Models\Image;
 use App\Models\PotImage;
 use App\Models\PotProduct;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\ImageManager;
-use function Laravel\Prompts\warning;
 
 class PotProductController extends Controller
 {

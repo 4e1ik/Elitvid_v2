@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Models\BenchProduct;
 use App\Models\Blog;
-use App\Models\Category;
 use App\Models\Gallery;
 use App\Models\MetaTag;
 use App\Models\PotProduct;
