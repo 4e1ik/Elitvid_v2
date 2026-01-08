@@ -44,6 +44,8 @@
                                                 Ротонды и колонны
                                             @elseif($staticPage->page == 'small_architectural_forms')
                                                 Малые архитектурные формы
+                                            @elseif($staticPage->page == 'concrete_products')
+                                                Изделия из бетона
                                             @else
                                                 {{$staticPage->page}}
                                             @endif

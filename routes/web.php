@@ -24,6 +24,7 @@ use App\Http\Controllers\PillarsAndCoversController;
 use App\Http\Controllers\PotController;
 use App\Http\Controllers\RotundasAndColonnadesController;
 use App\Http\Controllers\SitemapController;
+use App\Http\Controllers\ConcreteProductsController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -65,6 +66,7 @@ Route::prefix('directions')->group(function () {
     Route::get('/pillars_and_covers', [PillarsAndCoversController::class, 'pillars_and_covers'])->name('pillars_and_covers');
     Route::get('/rotundas_and_colonnades', [RotundasAndColonnadesController::class, 'rotundas_and_colonnades'])->name('rotundas_and_colonnades');
     Route::get('/maf', [MafController::class, 'small_architectural_forms'])->name('small_architectural_forms');
+    Route::get('/izdelia_iz_betona', [ConcreteProductsController::class, 'concrete_products'])->name('concrete_products');
 
     Route::prefix('benches')->group(function () {
         Route::get('/', [BenchController::class, 'benches'])->name('benches');
@@ -151,6 +153,7 @@ Route::middleware('auth')->where([])->prefix('admin')->group(function () {
         Route::get('/facade_walls_images', [AdminController::class, 'facade_walls_images'])->name('admin_facade_walls_images');
         Route::get('/rotundas_images', [AdminController::class, 'rotundas_images'])->name('admin_rotundas_images');
         Route::get('/maf_images', [AdminController::class, 'maf_images'])->name('admin_maf_images');
+        Route::get('/concrete_products_images', [AdminController::class, 'concrete_products_images'])->name('admin_concrete_products_images');
     });
 
     /*

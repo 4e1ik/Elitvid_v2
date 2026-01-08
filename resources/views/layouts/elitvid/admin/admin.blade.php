@@ -122,6 +122,8 @@
                         <li><a href="{{route('admin_columns_and_panels_images')}}">Картинки страницы столбов и накрывок</a></li>
                         <li><a href="{{route('admin_facade_walls_images')}}">Картинки страницы фасадных лепнин и панелей</a></li>
                         <li><a href="{{route('admin_rotundas_images')}}">Картинки страницы ротонд и коллонад</a></li>
+                        <li><a href="{{route('admin_maf_images')}}">Картинки страницы малых архитектурных форм</a></li>
+                        <li><a href="{{route('admin_concrete_products_images')}}">Картинки страницы изделий из бетона</a></li>
                     </ul>
                 </li>
                 <li class="ripple">
@@ -686,6 +688,8 @@
                         <li><a href="{{route('admin_columns_and_panels_images')}}">Картинки страницы столбов и накрывок</a></li>
                         <li><a href="{{route('admin_facade_walls_images')}}">Картинки страницы фасадных лепнин и панелей</a></li>
                         <li><a href="{{route('admin_rotundas_images')}}">Картинки страницы ротонд и коллонад</a></li>
+                        <li><a href="{{route('admin_maf_images')}}">Картинки страницы малых архитектурных форм</a></li>
+                        <li><a href="{{route('admin_concrete_products_images')}}">Картинки страницы изделий из бетона</a></li>
                     </ul>
                 </li>
                 <li class="ripple">

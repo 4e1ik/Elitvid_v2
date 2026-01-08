@@ -43,6 +43,7 @@
                                 <option {{ old('type') == 'facade_walls' ? 'selected' : ''}} value="facade_walls">Фасадная лепнина</option>
                                 <option {{ old('type') == 'rotundas' ? 'selected' : ''}} value="rotundas">Ротонды</option>
                                 <option {{ old('type') == 'maf' ? 'selected' : ''}} value="maf">Малые архитектурные формы</option>
+                                <option {{ old('type') == 'concrete_products' ? 'selected' : ''}} value="concrete_products">Изделия из бетона</option>
                             </select>
                             @error('type')
                             <div class="text-danger">

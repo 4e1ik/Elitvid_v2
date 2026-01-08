@@ -101,6 +101,13 @@ class SitemapController extends Controller
         ];
 
         $urls[] = [
+            'loc' => URL::to(route('concrete_products')),
+            'lastmod' => Carbon::now()->toAtomString(),
+            'changefreq' => 'daily',
+            'priority' => '0.8'
+        ];
+
+        $urls[] = [
             'loc' => URL::to(route('decorations')),
             'lastmod' => Carbon::now()->toAtomString(),
             'changefreq' => 'daily',

@@ -206,6 +206,17 @@ class AdminController extends Controller
         );
     }
 
+    public function concrete_products_images(Gallery $gallery) {
+        $gallery = Gallery::query()->with(['gallery_images'])->latest()->get();
+        $concrete_products_images = $gallery->where('type', 'concrete_products');
+
+        return view(
+            'elitvid.admin.gallery.concrete_products_images', compact(
+                'gallery', 'concrete_products_images'
+            )
+        );
+    }
+
     public function create($route){
 
         $route_name = $route;
