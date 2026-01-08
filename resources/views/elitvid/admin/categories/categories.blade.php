@@ -64,6 +64,8 @@
                                                         Страница ротонды и коллоны
                                                     @elseif($category->page == 'small_architectural_forms')
                                                         Страница малые архитектурные формы
+                                                    @elseif($category->page == 'concrete_products')
+                                                        Страница малые архитектурные формы
                                                     @elseif($category->page == 'blog')
                                                         Страница постов блога
                                                     @endif
