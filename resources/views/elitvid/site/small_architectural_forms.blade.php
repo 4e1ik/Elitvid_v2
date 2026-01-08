@@ -30,6 +30,13 @@
                 </div>
             </div>
         </section>
+        @if($category)
+            <section class="description">
+                <div class="text">
+                    {!! $category !!}
+                </div>
+            </section>
+        @endif
         @if($small_architectural_forms_images->first())
             <section class="works">
                 <h2>Наши малые архитектурные формы</h2>
@@ -71,13 +78,6 @@
                             @endforeach
                         </div>
                     </div>
-                </div>
-            </section>
-        @endif
-        @if($category)
-            <section class="description">
-                <div class="text">
-                    {!! $category !!}
                 </div>
             </section>
         @endif

@@ -188,6 +188,13 @@
                 </div>
             </div>
         </section>
+        @if($category)
+            <section class="description">
+                <div class="text">
+                    {!! $category !!}
+                </div>
+            </section>
+        @endif
         @if($bollards_and_fencing_images->first())
             <section class="works">
                 <h2>Примеры работ</h2>
@@ -229,13 +236,6 @@
                             @endforeach
                         </div>
                     </div>
-                </div>
-            </section>
-        @endif
-        @if($category)
-            <section class="description">
-                <div class="text">
-                    {!! $category !!}
                 </div>
             </section>
         @endif

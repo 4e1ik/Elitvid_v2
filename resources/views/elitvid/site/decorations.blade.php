@@ -118,6 +118,13 @@
                 <img class="decor_pot" src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/decorations/decor_pot.png')}}" alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/decorations/decor_pot.png']}}">
             </div>
         </section>
+        @if($category)
+            <section class="description">
+                <div class="text">
+                    {!! $category !!}
+                </div>
+            </section>
+        @endif
         @if($decorative_elements_images->first())
             <section class="works">
                 <h2>Примеры работ</h2>
@@ -159,13 +166,6 @@
                             @endforeach
                         </div>
                     </div>
-                </div>
-            </section>
-        @endif
-        @if($category)
-            <section class="description">
-                <div class="text">
-                    {!! $category !!}
                 </div>
             </section>
         @endif
