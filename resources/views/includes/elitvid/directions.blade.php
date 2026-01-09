@@ -138,8 +138,8 @@
     </div>
     <div class="direction">
         <div class="direction__image">
-            <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/main_page/directions/concrete_products.webp')}}"
-                 alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/main_page/directions/concrete_products.webp'] ?? ''}}">
+            <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/main_page/directions/concrete_products1.webp')}}"
+                 alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/main_page/directions/concrete_products1.webp'] ?? ''}}">
         </div>
         <h3>
             <a href="{{route('concrete_products')}}">

@@ -78,7 +78,7 @@
                                 <div class="panel box-v1" style="cursor: pointer; transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
                                     <div class="panel-heading bg-white border-none">
                                         <div class="col-md-6 col-sm-6 col-xs-6 text-left padding-0">
-                                            <h4 class="text-left">Галереи</h4>
+                                            <h4 class="text-left">Изображения галерей</h4>
                                         </div>
                                         <div class="col-md-6 col-sm-6 col-xs-6 text-right">
                                             <h4>
@@ -240,7 +240,7 @@
                                         <span class="icon-picture icons" style="font-size:2em;"></span>
                                     </div>
                                     <div class="media-body">
-                                        <h5 class="media-heading">Галереи</h5>
+                                        <h5 class="media-heading">Изображения галерей</h5>
                                         <div class="progress progress-mini">
                                             <div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
                                                 <span class="sr-only">100%</span>
@@ -271,15 +271,21 @@
                     <div class="col-md-12 padding-0">
                         <div class="panel bg-light-blue">
                             <div class="panel-body text-white">
-                                <p class="animated fadeInUp quote">Lorem ipsum dolor sit amet, consectetuer adipiscing elit Ut wisi..."</p>
-                                <div class="col-md-12 padding-0">
-                                    <div class="text-left col-md-7 col-xs-12 col-sm-7 padding-0">
-                                        <span class="fa fa-twitter fa-2x"></span>
-                                        <span>22 May, 2015 via mobile</span>
+                                <h4 class="animated fadeInUp" style="color: white; margin-top: 0;">
+                                    <span class="fa fa-info-circle fa-2x"></span> Информация о системе
+                                </h4>
+                                <div class="col-md-12 padding-0" style="margin-top: 15px;">
+                                    <div class="col-md-4 col-sm-4 col-xs-12 text-center" style="padding: 10px;">
+                                        <h3 style="color: white; margin: 0;">{{$stats['static_pages']}}</h3>
+                                        <small style="color: rgba(255,255,255,0.8);">Статических страниц</small>
                                     </div>
-                                    <div style="padding-top:8px;" class="text-right col-md-5 col-xs-12 col-sm-5 padding-0">
-                                        <span class="fa fa-retweet"></span> 2000
-                                        <span class="fa fa-star"></span> 3000
+                                    <div class="col-md-4 col-sm-4 col-xs-12 text-center" style="padding: 10px;">
+                                        <h3 style="color: white; margin: 0;">{{$stats['static_images']}}</h3>
+                                        <small style="color: rgba(255,255,255,0.8);">Статических изображений</small>
+                                    </div>
+                                    <div class="col-md-4 col-sm-4 col-xs-12 text-center" style="padding: 10px;">
+                                        <h3 style="color: white; margin: 0;">{{now()->format('d.m.Y')}}</h3>
+                                        <small style="color: rgba(255,255,255,0.8);">Сегодня</small>
                                     </div>
                                 </div>
                             </div>
