@@ -13,7 +13,15 @@ return new class extends Migration
     {
         Schema::create('benches', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('product_id');
+            $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
+            $table->json('data')->nullable();
+            $table->string('material', 255)->nullable();
+            $table->string('collection', 255)->nullable();
             $table->timestamps();
+
+            $table->index('product_id');
+            $table->index('collection');
         });
     }
 

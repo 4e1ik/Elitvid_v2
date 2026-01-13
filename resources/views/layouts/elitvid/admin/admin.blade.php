@@ -933,29 +933,29 @@
 
         window.onload = function(){
             if ($(".line-chart").length > 0) {
-                var ctx2 = $(".line-chart")[0].getContext("2d");
-                window.myLine = new Chart(ctx2).Line(lineChartData, {
-                    responsive: true,
-                    showTooltips: true,
-                    multiTooltipTemplate: "<%= value %>",
-                    maintainAspectRatio: false
-                });
+            var ctx2 = $(".line-chart")[0].getContext("2d");
+            window.myLine = new Chart(ctx2).Line(lineChartData, {
+                responsive: true,
+                showTooltips: true,
+                multiTooltipTemplate: "<%= value %>",
+                maintainAspectRatio: false
+            });
             }
 
             if ($(".bar-chart").length > 0) {
-                var ctx3 = $(".bar-chart")[0].getContext("2d");
+            var ctx3 = $(".bar-chart")[0].getContext("2d");
                 window.myBar = new Chart(ctx3).Bar(barChartData, {
-                    responsive: true,
-                    showTooltips: true
-                });
+                responsive: true,
+                showTooltips: true
+            });
             }
 
             if ($(".doughnut-chart2").length > 0 && doughnutData2.length > 0) {
-                var ctx4 = $(".doughnut-chart2")[0].getContext("2d");
-                window.myDoughnut2 = new Chart(ctx4).Doughnut(doughnutData2, {
-                    responsive : true,
-                    showTooltips: true
-                });
+            var ctx4 = $(".doughnut-chart2")[0].getContext("2d");
+            window.myDoughnut2 = new Chart(ctx4).Doughnut(doughnutData2, {
+                responsive : true,
+                showTooltips: true
+            });
             }
 
         };

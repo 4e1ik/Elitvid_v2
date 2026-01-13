@@ -13,16 +13,10 @@ return new class extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
-
             $table->string('name', 255);
-            $table->string('material', 255);
-
-            $table->json('variants')->nullable();
-
             $table->boolean('active')->default(true);
             $table->string('meta_title', 255)->nullable();
             $table->text('meta_description')->nullable();
-
             $table->timestamps();
             $table->softDeletes();
 

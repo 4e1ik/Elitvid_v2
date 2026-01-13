@@ -32,38 +32,38 @@
                         <div class="col-md-6">
                             <a href="{{route('admin_blog')}}" style="text-decoration: none; color: inherit;">
                                 <div class="panel box-v1" style="cursor: pointer; transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
-                                    <div class="panel-heading bg-white border-none">
-                                        <div class="col-md-6 col-sm-6 col-xs-6 text-left padding-0">
+                                <div class="panel-heading bg-white border-none">
+                                    <div class="col-md-6 col-sm-6 col-xs-6 text-left padding-0">
                                             <h4 class="text-left">Блог</h4>
-                                        </div>
-                                        <div class="col-md-6 col-sm-6 col-xs-6 text-right">
-                                            <h4>
-                                                <span class="icon-notebook icons icon text-right"></span>
-                                            </h4>
-                                        </div>
                                     </div>
-                                    <div class="panel-body text-center">
-                                        <h1>{{$stats['blog_posts']}}</h1>
-                                        <p>Всего постов ({{$stats['active_blog_posts']}} активных)</p>
-                                        <hr/>
+                                    <div class="col-md-6 col-sm-6 col-xs-6 text-right">
+                                        <h4>
+                                                <span class="icon-notebook icons icon text-right"></span>
+                                        </h4>
                                     </div>
                                 </div>
+                                <div class="panel-body text-center">
+                                        <h1>{{$stats['blog_posts']}}</h1>
+                                        <p>Всего постов ({{$stats['active_blog_posts']}} активных)</p>
+                                    <hr/>
+                                </div>
+                            </div>
                             </a>
                         </div>
                         <div class="col-md-6">
                             <a href="{{route('admin_benches_verona')}}" style="text-decoration: none; color: inherit;">
                                 <div class="panel box-v1" style="cursor: pointer; transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
-                                    <div class="panel-heading bg-white border-none">
-                                        <div class="col-md-6 col-sm-6 col-xs-6 text-left padding-0">
+                                <div class="panel-heading bg-white border-none">
+                                    <div class="col-md-6 col-sm-6 col-xs-6 text-left padding-0">
                                             <h4 class="text-left">Продукты</h4>
-                                        </div>
-                                        <div class="col-md-6 col-sm-6 col-xs-6 text-right">
-                                            <h4>
-                                                <span class="icon-basket-loaded icons icon text-right"></span>
-                                            </h4>
-                                        </div>
                                     </div>
-                                    <div class="panel-body text-center">
+                                    <div class="col-md-6 col-sm-6 col-xs-6 text-right">
+                                        <h4>
+                                            <span class="icon-basket-loaded icons icon text-right"></span>
+                                        </h4>
+                                    </div>
+                                </div>
+                                <div class="panel-body text-center">
                                         <h1>{{$stats['bench_products'] + $stats['pot_products']}}</h1>
                                         <p>Всего продуктов ({{$stats['active_bench_products'] + $stats['active_pot_products']}} активных)</p>
                                         <hr/>
@@ -89,9 +89,9 @@
                                     <div class="panel-body text-center">
                                         <h1>{{$stats['galleries']}}</h1>
                                         <p>Галерей изображений</p>
-                                        <hr/>
-                                    </div>
+                                    <hr/>
                                 </div>
+                            </div>
                             </a>
                         </div>
                         <div class="col-md-6">
@@ -136,9 +136,9 @@
                                         </div>
                                     @endforeach
                                 @else
-                                    <div class="col-md-12 col-xs-12 col-md-12 padding-0 box-v4-alert">
+                                <div class="col-md-12 col-xs-12 col-md-12 padding-0 box-v4-alert">
                                         <p>Нет постов в блоге</p>
-                                    </div>
+                                </div>
                                 @endif
                             </div>
                         </div>

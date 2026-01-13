@@ -57,15 +57,16 @@
                 <div class="col-md-12">
                     <div class="panel">
                         <div class="panel-body">
-                            <div class="col-md-3">
-                                <h3>Картинка</h3>
-                                <label style="display: flex; justify-content: center; align-items: center;"
+                            <h3>Добавить новые картинки</h3>
+                            <div class="col-md-12" style="margin-bottom: 20px;">
+                                <label style="display: flex; justify-content: center; align-items: center; padding: 20px; border: 2px dashed #ddd; border-radius: 5px; cursor: pointer; background: #fafafa;"
                                        for="images" class="dropzone dz-clickable">
                                     <span>Переместите файлы сюда для загрузки</span>
                                 </label>
                                 <input style="display: none" id="images" type="file" name="image[]"
                                        multiple="multiple" accept="image/*">
                             </div>
+                            <div id="image-preview-container" class="col-md-12" style="margin-top: 20px; display: flex; flex-wrap: wrap; gap: 20px; min-height: 50px;"></div>
                         </div>
                     </div>
                 </div>
@@ -273,4 +274,6 @@
             </div>
         </form>
     </div>
+
+    <script src="{{asset('/elitvid_assets/newDesign/newDesign/js/update_bench_product.js')}}"></script>
 @endsection

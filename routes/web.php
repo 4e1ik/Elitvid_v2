@@ -12,6 +12,7 @@ use App\Http\Controllers\Admin\MailController;
 use App\Http\Controllers\Admin\MetaTagController;
 use App\Http\Controllers\Admin\Pots\PotImageController;
 use App\Http\Controllers\Admin\Pots\PotProductController;
+use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\StaticImagesController;
 use App\Http\Controllers\Admin\StaticPageController;
 use App\Http\Controllers\BenchController;
@@ -194,5 +195,6 @@ Route::middleware('auth')->where([])->prefix('admin')->group(function () {
         'categories' => CategoryController::class,
         'static_images' => StaticImagesController::class,
         'static_pages' => StaticPageController::class,
+        'products' => ProductController::class,
     ]);
 });

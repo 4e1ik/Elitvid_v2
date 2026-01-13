@@ -7,5 +7,21 @@ use Illuminate\Database\Eloquent\Model;
 
 class Pot extends Model
 {
-    use HasFactory;
+    protected $table = 'pots';
+
+    protected $fillable = [
+        'product_id',
+        'data',
+        'material',
+        'collection'
+    ];
+
+    protected $casts = [
+        'data' => 'array', // Laravel автоматически преобразует JSON ↔ массив
+    ];
+
+    public function product()
+    {
+        return $this->belongsTo(Product::class);
+    }
 }

@@ -5,22 +5,23 @@
         <div class="panel box-shadow-none content-header">
             <h1>Страница создания скамеек</h1>
         </div>
-        <form action="{{ route('benchProducts.store')}}"
+        <form action="{{ route('products.store')}}"
               enctype="multipart/form-data" method="post">
             @csrf
             <div class="col-md-12 padding-0">
                 <div class="col-md-12">
                     <div class="panel">
                         <div class="panel-body">
-                            <div class="col-md-3">
-                                <h3>Картинка</h3>
-                                <label style="display: flex; justify-content: center; align-items: center;"
+                            <h3>Картинки</h3>
+                            <div class="col-md-12" style="margin-bottom: 20px;">
+                                <label style="display: flex; justify-content: center; align-items: center; padding: 20px; border: 2px dashed #ddd; border-radius: 5px; cursor: pointer; background: #fafafa;"
                                        for="images" class="dropzone dz-clickable">
                                     <span>Переместите файлы сюда для загрузки</span>
                                 </label>
                                 <input style="display: none" id="images" type="file" name="image[]"
                                        multiple="multiple" accept="image/*">
                             </div>
+                            <div id="image-preview-container" class="col-md-12" style="margin-top: 20px; display: flex; flex-wrap: wrap; gap: 20px; min-height: 50px;"></div>
                         </div>
                     </div>
                 </div>
@@ -64,58 +65,92 @@
             <div class="col-md-12 padding-0">
                 <div class="col-md-12">
                     <div class="panel">
-                        <div class="panel-body">
-                            <input name="size" type="hidden" value="">
-                            <input name="weight" type="hidden" value="">
-                            <input name="price" type="hidden" value="">
-                            @for($i=1; $i<=5;  $i++)
-                                <div style="margin-top: 20px" class="col-md-12">
-                                    <h4 style="margin-bottom: -15px">Строка {{$i}}</h4>
-                                    <div class="col-md-4 padding-0">
-                                        <h3>Размер</h3>
-                                        <div class="col-md-11 padding-0">
-                                            <input class="form-control {{$errors->has('size'.$i) ? 'danger' : ''}}"
-                                                   type="text"
-                                                   name="size{{$i}}" value="{{old('size'.$i)}}">
-                                        </div>
-                                        @error('size'.$i)
-                                        <div class="text-danger">
-                                            {{$message}}
-                                        </div>
-                                        @enderror
-                                    </div>
-                                    <div class="col-md-4 padding-0">
-                                        <h3>Вес</h3>
-                                        <div class="col-md-11 padding-0">
-                                            <input class="form-control {{$errors->has('weight'.$i) ? 'danger' : ''}}"
-                                                   type="text"
-                                                   name="weight{{$i}}" value="{{old('weight'.$i)}}">
-                                        </div>
-                                        @error('weight'.$i)
-                                        <div class="text-danger">
-                                            {{$message}}
-                                        </div>
-                                        @enderror
-                                    </div>
-                                    <div class="col-md-4 padding-0">
-                                        <h3>Цена</h3>
-                                        <div class="col-md-11 padding-0">
-                                            <input class="form-control {{$errors->has('price'.$i) ? 'danger' : ''}}"
-                                                   type="text"
-                                                   name="price{{$i}}" value="{{old('price'.$i)}}">
-                                        </div>
-                                        @error('price'.$i)
-                                        <div class="text-danger">
-                                            {{$message}}
-                                        </div>
-                                        @enderror
-                                    </div>
-                                </div>
-                            @endfor
+                        <div class="panel-body" id="panel-body">
+                            <h3 style="margin-bottom: 20px;">Варианты товара</h3>
+
+                            @php
+                                $oldVariants = old('variants', [['size' => '', 'weight' => '', 'price' => '']]);
+                                if (empty($oldVariants) || !is_array($oldVariants)) {
+                                    $oldVariants = [['size' => '', 'weight' => '', 'price' => '']];
+                                }
+                            @endphp
+
+                            <div class="responsive-table">
+                                <table class="table table-striped table-bordered" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>Размер</th>
+                                            <th>Вес</th>
+                                            <th>Цена</th>
+                                            <th style="width: 80px; text-align: center;">Действия</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="variants-tbody">
+                                        @foreach($oldVariants as $index => $variant)
+                                            <tr class="variant-row">
+                                                <td>
+                                                    <input class="form-control {{$errors->has('variants.'.$index.'.size') ? 'danger' : ''}}"
+                                                           type="text"
+                                                           name="variants[{{$index}}][size]"
+                                                           value="{{ old('variants.'.$index.'.size', $variant['size'] ?? '') }}">
+                                                    @error('variants.'.$index.'.size')
+                                                    <div class="text-danger" style="font-size: 11px; margin-top: 4px;">
+                                                        {{$message}}
+                                                    </div>
+                                                    @enderror
+                                                </td>
+                                                <td>
+                                                    <input class="form-control {{$errors->has('variants.'.$index.'.weight') ? 'danger' : ''}}"
+                                                           type="text"
+                                                           name="variants[{{$index}}][weight]"
+                                                           value="{{ old('variants.'.$index.'.weight', $variant['weight'] ?? '') }}">
+                                                    @error('variants.'.$index.'.weight')
+                                                    <div class="text-danger" style="font-size: 11px; margin-top: 4px;">
+                                                        {{$message}}
+                                                    </div>
+                                                    @enderror
+                                                </td>
+                                                <td>
+                                                    <input class="form-control {{$errors->has('variants.'.$index.'.price') ? 'danger' : ''}}"
+                                                           type="text"
+                                                           name="variants[{{$index}}][price]"
+                                                           value="{{ old('variants.'.$index.'.price', $variant['price'] ?? '') }}">
+                                                    @error('variants.'.$index.'.price')
+                                                    <div class="text-danger" style="font-size: 11px; margin-top: 4px;">
+                                                        {{$message}}
+                                                    </div>
+                                                    @enderror
+                                                </td>
+                                                <td style="text-align: center;">
+                                                    <button type="button" 
+                                                            class="btn btn-danger btn-sm closeButton" 
+                                                            title="Удалить вариант">
+                                                        <span class="fa fa-trash"></span>
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <div style="margin-top: 15px;" id="add-variant-container">
+                                <button type="button" class="btn btn-success addButton">
+                                    <span class="fa fa-plus"></span> Добавить вариант
+                                </button>
+                            </div>
+
+                            @error('variants')
+                            <div class="text-danger" style="margin-top: 10px; font-size: 13px;">
+                                {{$message}}
+                            </div>
+                            @enderror
                         </div>
                     </div>
                 </div>
             </div>
+
+    <script src="{{asset('/elitvid_assets/newDesign/newDesign/js/create_bench_product.js')}}"></script>
             <div class="col-md-12 padding-0">
                 <div class="col-md-12">
                     <div class="panel">

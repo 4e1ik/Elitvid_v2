@@ -11,15 +11,12 @@ class Product extends Model
 
     protected $fillable = [
         'name',
-        'material',
-        'variants',
         'active',
         'meta_title',
         'meta_description',
     ];
 
     protected $casts = [
-        'variants' => 'array', // Laravel автоматически преобразует JSON ↔ массив
         'active' => 'boolean',
     ];
 
