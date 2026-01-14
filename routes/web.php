@@ -15,6 +15,9 @@ use App\Http\Controllers\Admin\Pots\PotProductController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\StaticImagesController;
 use App\Http\Controllers\Admin\StaticPageController;
+use \App\Http\Controllers\Admin\PotController as AdminPotController;
+
+
 use App\Http\Controllers\BenchController;
 use App\Http\Controllers\BollardsAndFencingController;
 use App\Http\Controllers\FacadeStuccoMoldingAndPanelsController;
@@ -137,9 +140,9 @@ Route::middleware('auth')->where([])->prefix('admin')->group(function () {
 
     // Кашпо в панели администратора
     Route::prefix('pots')->group(function (){
-        Route::get('/round_pots', [AdminController::class, 'round_pots'])->name('admin_round_pots');
-        Route::get('/rectangular_pots', [AdminController::class, 'rectangular_pots'])->name('admin_rectangular_pots');
-        Route::get('/square_pots', [AdminController::class, 'square_pots'])->name('admin_square_pots');
+        Route::get('/round_pots', [AdminPotController::class, 'round_pots'])->name('admin_round_pots');
+        Route::get('/rectangular_pots', [AdminPotController::class, 'rectangular_pots'])->name('admin_rectangular_pots');
+        Route::get('/square_pots', [AdminPotController::class, 'square_pots'])->name('admin_square_pots');
     });
 
     // Примеры работ в панели администратора

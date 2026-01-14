@@ -21,7 +21,6 @@ class ProductController
     public function store(CreateProductRequest $request)
     {
         $data = $request->all();
-//        dd($data);
 
         $product = Product::create($data);
 
@@ -40,7 +39,7 @@ class ProductController
                 ];
                 break;
 
-            case 'fitting':
+            case 'pot':
                 Pot::create($data);
 
                 $routes = [
@@ -52,8 +51,17 @@ class ProductController
         }
 
         if ($request->hasFile('image')) {
-            foreach ($request->file('image') as $file) {
-                $this->imageService->save(file: $file, model: $product);
+            $images = $request->file('image');
+            $imageData = $request->input('image_data', []);
+
+            foreach ($images as $index => $file) {
+                $imageDataForFile = $imageData[$index] ?? [];
+
+                $this->imageService->save(
+                    file: $file,
+                    model: $product,
+                    data: $imageDataForFile
+                );
             }
         }
 
@@ -61,5 +69,15 @@ class ProductController
 
 
         return redirect($routes[$collection]);
+    }
+
+    public function update()
+    {
+
+    }
+
+    public function delete()
+    {
+
     }
 }

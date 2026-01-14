@@ -31,31 +31,31 @@ class AdminController extends Controller
             'static_pages' => StaticPage::count(),
             'static_images' => StaticImages::count(),
         ];
-        
+
         $recent_blogs = Blog::latest()->take(5)->get();
-        
+
         // Данные для графиков - последние 6 месяцев
         $months = [];
         $blog_data = [];
         $products_data = [];
         $images_data = [];
-        
+
         for ($i = 5; $i >= 0; $i--) {
             $date = now()->subMonths($i);
             $monthName = $date->format('M');
             $months[] = $monthName;
-            
+
             $startOfMonth = $date->copy()->startOfMonth();
             $endOfMonth = $date->copy()->endOfMonth();
-            
+
             $blog_data[] = Blog::whereBetween('created_at', [$startOfMonth, $endOfMonth])->count();
-            $products_data[] = BenchProduct::whereBetween('created_at', [$startOfMonth, $endOfMonth])->count() + 
+            $products_data[] = BenchProduct::whereBetween('created_at', [$startOfMonth, $endOfMonth])->count() +
                               PotProduct::whereBetween('created_at', [$startOfMonth, $endOfMonth])->count();
             $images_data[] = GalleryImage::whereBetween('created_at', [$startOfMonth, $endOfMonth])->count() +
                             BenchImage::whereBetween('created_at', [$startOfMonth, $endOfMonth])->count() +
                             PotImage::whereBetween('created_at', [$startOfMonth, $endOfMonth])->count();
         }
-        
+
         // Данные для круговой диаграммы (распределение по типам)
         $chart_data = [
             'months' => $months,
@@ -69,7 +69,7 @@ class AdminController extends Controller
                 'galleries' => $stats['galleries'],
             ]
         ];
-        
+
         return view('elitvid.admin.admin', compact('stats', 'recent_blogs', 'chart_data'));
     }
 
@@ -133,24 +133,6 @@ class AdminController extends Controller
         return view('elitvid.admin.benches.benches_street_furniture',
             compact('benches_street_furniture', 'benches')
         );
-    }
-
-    public function round_pots(PotProduct $PotProduct) {
-        $round_pots = PotProduct::query()->where('collection', 'Round')->latest()->get();
-
-        return view('elitvid.admin.pots.round_pots', compact('round_pots', 'PotProduct'));
-    }
-
-    public function rectangular_pots(PotProduct $PotProduct) {
-        $rectangular_pots = PotProduct::query()->where('collection', 'Rectangular')->latest()->get();
-
-        return view('elitvid.admin.pots.rectangular_pots', compact( 'rectangular_pots', 'PotProduct'));
-    }
-
-    public function square_pots(PotProduct $PotProduct) {
-        $square_pots = PotProduct::query()->where('collection','Square')->latest()->get();
-
-        return view('elitvid.admin.pots.square_pots', compact( 'square_pots', 'PotProduct'));
     }
 
     public function pots_images(Gallery $gallery) {

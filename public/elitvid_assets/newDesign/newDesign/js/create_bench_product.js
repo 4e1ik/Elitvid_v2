@@ -9,66 +9,81 @@ document.addEventListener('DOMContentLoaded', () => {
     const imageFiles = [];
     let imageIndex = 0;
 
+    // Функция для создания превью изображения
+    function createImagePreview(file, index) {
+        return new Promise((resolve) => {
+            const reader = new FileReader();
+            reader.onload = function(event) {
+                const previewDiv = document.createElement('div');
+                previewDiv.className = 'image-preview-item';
+                previewDiv.style.cssText = 'width: 250px; margin-bottom: 20px; padding: 15px; border: 1px solid #ddd; border-radius: 5px; background: #fafafa;';
+                previewDiv.setAttribute('data-image-index', index);
+                
+                previewDiv.innerHTML = `
+                    <div style="margin-bottom: 10px; position: relative;">
+                        <img src="${event.target.result}" style="width: 100%; height: 200px; object-fit: cover; border-radius: 5px; border: 1px solid #ddd;" alt="Preview">
+                    </div>
+                    <div style="margin-bottom: 10px;">
+                        <label style="font-size: 13px; font-weight: 500; display: block; margin-bottom: 5px;">Описание</label>
+                        <input type="text" class="form-control" name="image_data[${index}][description_image]" placeholder="Описание изображения">
+                    </div>
+                    <button type="button" class="btn btn-danger btn-sm remove-image" style="width: 100%;">
+                        <span class="fa fa-trash"></span> Удалить
+                    </button>
+                `;
+                
+                // Обработчик удаления изображения
+                previewDiv.querySelector('.remove-image').addEventListener('click', function() {
+                    const indexToRemove = parseInt(previewDiv.getAttribute('data-image-index'));
+                    imageFiles.splice(indexToRemove, 1);
+                    previewDiv.remove();
+                    
+                    // Пересоздаем все превью с правильными индексами
+                    refreshImagePreviews();
+                });
+                
+                resolve(previewDiv);
+            };
+            reader.readAsDataURL(file);
+        });
+    }
+    
+    // Функция для обновления всех превью с правильными индексами
+    async function refreshImagePreviews() {
+        imagePreviewContainer.innerHTML = '';
+        imageIndex = 0;
+        
+        // Обновляем input file
+        const dt = new DataTransfer();
+        imageFiles.forEach(f => dt.items.add(f));
+        imagesInput.files = dt.files;
+        
+        // Пересоздаем все превью
+        for (let i = 0; i < imageFiles.length; i++) {
+            const previewDiv = await createImagePreview(imageFiles[i], i);
+            imagePreviewContainer.appendChild(previewDiv);
+            imageIndex++;
+        }
+    }
+    
     // Обработка загрузки изображений
     if (imagesInput && imagePreviewContainer) {
-        imagesInput.addEventListener('change', function(e) {
+        imagesInput.addEventListener('change', async function(e) {
             const newFiles = Array.from(e.target.files);
             
+            // Очищаем старые данные
+            imageFiles.length = 0;
+            imageIndex = 0;
+            
+            // Добавляем все новые файлы
             newFiles.forEach((file) => {
                 if (file.type.startsWith('image/')) {
-                    const currentIndex = imageIndex;
                     imageFiles.push(file);
-                    
-                    const reader = new FileReader();
-                    reader.onload = function(event) {
-                        const previewDiv = document.createElement('div');
-                        previewDiv.className = 'image-preview-item';
-                        previewDiv.style.cssText = 'width: 250px; margin-bottom: 20px; padding: 15px; border: 1px solid #ddd; border-radius: 5px; background: #fafafa;';
-                        previewDiv.setAttribute('data-image-index', currentIndex);
-                        
-                        previewDiv.innerHTML = `
-                            <div style="margin-bottom: 10px; position: relative;">
-                                <img src="${event.target.result}" style="width: 100%; height: 200px; object-fit: cover; border-radius: 5px; border: 1px solid #ddd;" alt="Preview">
-                            </div>
-                            <div style="margin-bottom: 10px;">
-                                <label style="font-size: 13px; font-weight: 500; display: block; margin-bottom: 5px;">Описание</label>
-                                <input type="text" class="form-control" name="image_data[${currentIndex}][description_image]" placeholder="Описание изображения">
-                            </div>
-                            <button type="button" class="btn btn-danger btn-sm remove-image" style="width: 100%;">
-                                <span class="fa fa-trash"></span> Удалить
-                            </button>
-                        `;
-                        
-                        imagePreviewContainer.appendChild(previewDiv);
-                        
-                        // Обработчик удаления изображения
-                        previewDiv.querySelector('.remove-image').addEventListener('click', function() {
-                            const indexToRemove = parseInt(previewDiv.getAttribute('data-image-index'));
-                            imageFiles.splice(indexToRemove, 1);
-                            previewDiv.remove();
-                            
-                            // Обновляем все индексы в оставшихся элементах
-                            imagePreviewContainer.querySelectorAll('.image-preview-item').forEach((item, newIndex) => {
-                                item.setAttribute('data-image-index', newIndex);
-                                item.querySelectorAll('input, select').forEach(input => {
-                                    const name = input.getAttribute('name');
-                                    if (name) {
-                                        input.setAttribute('name', name.replace(/image_data\[\d+\]/, `image_data[${newIndex}]`));
-                                    }
-                                });
-                            });
-                            
-                            // Обновляем input file
-                            const dt = new DataTransfer();
-                            imageFiles.forEach(f => dt.items.add(f));
-                            imagesInput.files = dt.files;
-                        });
-                        
-                        imageIndex++;
-                    };
-                    reader.readAsDataURL(file);
                 }
             });
+            
+            // Пересоздаем все превью с правильными индексами
+            await refreshImagePreviews();
         });
     }
 
@@ -92,9 +107,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
 
                 // Обновляем имена полей с новым индексом
-                newRow.querySelectorAll('input[name*="variants"]').forEach((input) => {
+                newRow.querySelectorAll('input[name*="data"]').forEach((input) => {
                     const name = input.getAttribute('name');
-                    input.setAttribute('name', name.replace(/variants\[\d+\]/, 'variants[' + variantIndex + ']'));
+                    input.setAttribute('name', name.replace(/data\[\d+\]/, 'data[' + variantIndex + ']'));
                 });
 
                 // Добавляем новую строку в tbody
@@ -113,9 +128,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
                     // Обновляем индексы в именах полей
                     tbody.querySelectorAll('.variant-row').forEach((row, index) => {
-                        row.querySelectorAll('input[name*="variants"]').forEach((input) => {
+                        row.querySelectorAll('input[name*="data"]').forEach((input) => {
                             const name = input.getAttribute('name');
-                            const newName = name.replace(/variants\[\d+\]/, 'variants[' + index + ']');
+                            const newName = name.replace(/data\[\d+\]/, 'data[' + index + ']');
                             input.setAttribute('name', newName);
                         });
                     });
