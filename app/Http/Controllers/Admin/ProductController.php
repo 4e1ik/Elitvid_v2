@@ -53,7 +53,7 @@ class ProductController
 
         if ($request->hasFile('image')) {
             foreach ($request->file('image') as $file) {
-                $this->imageService->save(file: $file, product: $product);
+                $this->imageService->save(file: $file, model: $product);
             }
         }
 

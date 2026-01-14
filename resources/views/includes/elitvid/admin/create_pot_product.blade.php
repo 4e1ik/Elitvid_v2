@@ -87,40 +87,40 @@
                                         </tr>
                                     </thead>
                                     <tbody id="variants-tbody">
-                                        @foreach($oldVariants as $index => $variant)
+                            @foreach($oldVariants as $index => $variant)
                                             <tr class="variant-row">
                                                 <td>
-                                                    <input class="form-control {{$errors->has('variants.'.$index.'.size') ? 'danger' : ''}}"
-                                                           type="text"
-                                                           name="variants[{{$index}}][size]"
-                                                           value="{{ old('variants.'.$index.'.size', $variant['size'] ?? '') }}">
-                                                    @error('variants.'.$index.'.size')
+                                            <input class="form-control {{$errors->has('variants.'.$index.'.size') ? 'danger' : ''}}"
+                                                   type="text"
+                                                   name="variants[{{$index}}][size]"
+                                                   value="{{ old('variants.'.$index.'.size', $variant['size'] ?? '') }}">
+                                        @error('variants.'.$index.'.size')
                                                     <div class="text-danger" style="font-size: 11px; margin-top: 4px;">
-                                                        {{$message}}
-                                                    </div>
-                                                    @enderror
+                                            {{$message}}
+                                        </div>
+                                        @enderror
                                                 </td>
                                                 <td>
-                                                    <input class="form-control {{$errors->has('variants.'.$index.'.weight') ? 'danger' : ''}}"
-                                                           type="text"
-                                                           name="variants[{{$index}}][weight]"
-                                                           value="{{ old('variants.'.$index.'.weight', $variant['weight'] ?? '') }}">
-                                                    @error('variants.'.$index.'.weight')
+                                            <input class="form-control {{$errors->has('variants.'.$index.'.weight') ? 'danger' : ''}}"
+                                                   type="text"
+                                                   name="variants[{{$index}}][weight]"
+                                                   value="{{ old('variants.'.$index.'.weight', $variant['weight'] ?? '') }}">
+                                        @error('variants.'.$index.'.weight')
                                                     <div class="text-danger" style="font-size: 11px; margin-top: 4px;">
-                                                        {{$message}}
-                                                    </div>
-                                                    @enderror
+                                            {{$message}}
+                                        </div>
+                                        @enderror
                                                 </td>
                                                 <td>
-                                                    <input class="form-control {{$errors->has('variants.'.$index.'.price') ? 'danger' : ''}}"
-                                                           type="text"
-                                                           name="variants[{{$index}}][price]"
-                                                           value="{{ old('variants.'.$index.'.price', $variant['price'] ?? '') }}">
-                                                    @error('variants.'.$index.'.price')
+                                            <input class="form-control {{$errors->has('variants.'.$index.'.price') ? 'danger' : ''}}"
+                                                   type="text"
+                                                   name="variants[{{$index}}][price]"
+                                                   value="{{ old('variants.'.$index.'.price', $variant['price'] ?? '') }}">
+                                        @error('variants.'.$index.'.price')
                                                     <div class="text-danger" style="font-size: 11px; margin-top: 4px;">
-                                                        {{$message}}
-                                                    </div>
-                                                    @enderror
+                                            {{$message}}
+                                        </div>
+                                        @enderror
                                                 </td>
                                                 <td style="text-align: center;">
                                                     <button type="button"
@@ -130,10 +130,10 @@
                                                     </button>
                                                 </td>
                                             </tr>
-                                        @endforeach
+                            @endforeach
                                     </tbody>
                                 </table>
-                            </div>
+                                </div>
 
                             <div style="margin-top: 15px;" id="add-variant-container">
                                 <button type="button" class="btn btn-success addButton">

@@ -23,7 +23,7 @@ function save_image($file, $image)
     $i = 1;
     while (in_array($hashedName, $tmp_arr)) {
         $i++;
-        $hashedName = hash('md5', $name . '(' . $i . ')') . '.' . $extension;
+        $name = $name . '(' . $i . ')' . '.' . $extension;
     }
 
     return $hashedName;

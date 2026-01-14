@@ -11,6 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
+        Schema::dropIfExists('images');
+
         Schema::create('images', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('imageable_id');
