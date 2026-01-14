@@ -129,6 +129,7 @@
               method="post">
             @method('PUT')
             @csrf
+            <input type="hidden" name="product_type" value="pot">
             <div class="col-md-12 padding-0">
                 <div class="col-md-12">
                     <div class="panel">

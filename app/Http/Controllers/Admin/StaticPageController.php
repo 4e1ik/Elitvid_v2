@@ -39,7 +39,7 @@ class StaticPageController extends Controller
             try {
                 ImageManager::gd()
                     ->read($file)
-                    ->toWebp(90)
+                    ->toWebp(100)
                     ->save(storage_path('app/public/images/' . $name));
 
                 $data['main_image'] = 'storage/images/' . $name;

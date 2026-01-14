@@ -3,54 +3,63 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Requests\CreateProductRequest;
+use App\Models\Bench;
+use App\Models\Pot;
 use App\Models\PotImage;
 use App\Models\PotProduct;
+use App\Models\Product;
+use App\Services\ImageService;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\ImageManager;
 
 class ProductController
 {
+    public function __construct(
+        public ImageService $imageService,
+    ){}
+
     public function store(CreateProductRequest $request)
     {
         $data = $request->all();
-        dd($data);
+//        dd($data);
 
-        $data['size'] = [];
-        $data['weight'] = [];
-        $data['price'] = [];
-        for ($i = 1;  $i<=5; $i++){
-            $data['size'][$i] = $data['size'.$i];
-            $data['weight'][$i] = $data['weight'.$i];
-            $data['price'][$i] = $data['price'.$i];
+        $product = Product::create($data);
+
+        $data['product_id'] = $product->id;
+
+        switch ($data['product_type']) {
+            case 'bench':
+                Bench::create($data);
+
+                $routes = [
+                    'Verona' => route('admin_benches_verona'),
+                    'Stones' => route('admin_benches_stones'),
+                    'lines' => route('admin_benches_solo'),
+                    'Solo' => route('admin_benches_lines'),
+                    'Street_furniture' => route('admin_benches_street_furniture'),
+                ];
+                break;
+
+            case 'fitting':
+                Pot::create($data);
+
+                $routes = [
+                    'Square' => route('admin_square_pots'),
+                    'Round' => route('admin_round_pots'),
+                    'Rectangular' => route('admin_rectangular_pots'),
+                ];
+                break;
         }
-        $data['size'] = implode('|', $data['size']);
-        $data['weight'] = implode('|', $data['weight']);
-        $data['price'] = implode('|', $data['price']);
-
-        $potProduct = PotProduct::create($data);
-
-        $data['pot_product_id'] = $potProduct->id;
 
         if ($request->hasFile('image')) {
             foreach ($request->file('image') as $file) {
-                $name= save_image($file, PotImage::query());
-                $path = Storage::putFileAs('public/images', $file, $name); // Даем путь к этому файлу
-                $data['image'] = $path;
-                PotImage::create($data);
-
-                ImageManager::gd()->read($file)->scaleDown(480,  400)->save(storage_path('app/public/images/'.$name));
-
+                $this->imageService->save(file: $file, product: $product);
             }
         }
 
         $collection = $data['collection'];
 
-        $potsRoutes = [
-            'Square' => route('admin_square_pots'),
-            'Round' => route('admin_round_pots'),
-            'Rectangular' => route('admin_rectangular_pots'),
-        ];
 
-        return redirect($potsRoutes[$collection]);
+        return redirect($routes[$collection]);
     }
 }

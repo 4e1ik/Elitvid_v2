@@ -8,6 +8,7 @@
         <form action="{{ route('products.store')}}"
               enctype="multipart/form-data" method="post">
             @csrf
+            <input type="hidden" name="product_type" value="pot">
             <div class="col-md-12 padding-0">
                 <div class="col-md-12">
                     <div class="panel">
@@ -122,8 +123,8 @@
                                                     @enderror
                                                 </td>
                                                 <td style="text-align: center;">
-                                                    <button type="button" 
-                                                            class="btn btn-danger btn-sm closeButton" 
+                                                    <button type="button"
+                                                            class="btn btn-danger btn-sm closeButton"
                                                             title="Удалить вариант">
                                                         <span class="fa fa-trash"></span>
                                                     </button>
@@ -149,8 +150,6 @@
                     </div>
                 </div>
             </div>
-
-    <script src="{{asset('/elitvid_assets/newDesign/newDesign/js/create_pot_product.js')}}"></script>
             <div class="col-md-12 padding-0">
                 <div class="col-md-12">
                     <div class="panel">
@@ -243,4 +242,5 @@
             </div>
         </form>
     </div>
+    <script src="{{asset('/elitvid_assets/newDesign/newDesign/js/create_pot_product.js')}}"></script>
 @endsection

@@ -8,6 +8,7 @@
         <form action="{{ route('products.store')}}"
               enctype="multipart/form-data" method="post">
             @csrf
+            <input type="hidden" name="product_type" value="bench">
             <div class="col-md-12 padding-0">
                 <div class="col-md-12">
                     <div class="panel">
@@ -90,13 +91,13 @@
                                             <tr class="variant-row">
                                                 <td>
                                                     <input class="form-control {{$errors->has('variants.'.$index.'.size') ? 'danger' : ''}}"
-                                                           type="text"
+                                                   type="text"
                                                            name="variants[{{$index}}][size]"
                                                            value="{{ old('variants.'.$index.'.size', $variant['size'] ?? '') }}">
                                                     @error('variants.'.$index.'.size')
                                                     <div class="text-danger" style="font-size: 11px; margin-top: 4px;">
                                                         {{$message}}
-                                                    </div>
+                                        </div>
                                                     @enderror
                                                 </td>
                                                 <td>
@@ -106,20 +107,20 @@
                                                            value="{{ old('variants.'.$index.'.weight', $variant['weight'] ?? '') }}">
                                                     @error('variants.'.$index.'.weight')
                                                     <div class="text-danger" style="font-size: 11px; margin-top: 4px;">
-                                                        {{$message}}
-                                                    </div>
-                                                    @enderror
+                                            {{$message}}
+                                        </div>
+                                        @enderror
                                                 </td>
                                                 <td>
                                                     <input class="form-control {{$errors->has('variants.'.$index.'.price') ? 'danger' : ''}}"
-                                                           type="text"
+                                                   type="text"
                                                            name="variants[{{$index}}][price]"
                                                            value="{{ old('variants.'.$index.'.price', $variant['price'] ?? '') }}">
                                                     @error('variants.'.$index.'.price')
                                                     <div class="text-danger" style="font-size: 11px; margin-top: 4px;">
-                                                        {{$message}}
-                                                    </div>
-                                                    @enderror
+                                            {{$message}}
+                                        </div>
+                                        @enderror
                                                 </td>
                                                 <td style="text-align: center;">
                                                     <button type="button" 
@@ -132,19 +133,19 @@
                                         @endforeach
                                     </tbody>
                                 </table>
-                            </div>
+                                    </div>
 
                             <div style="margin-top: 15px;" id="add-variant-container">
                                 <button type="button" class="btn btn-success addButton">
                                     <span class="fa fa-plus"></span> Добавить вариант
                                 </button>
-                            </div>
+                                        </div>
 
                             @error('variants')
                             <div class="text-danger" style="margin-top: 10px; font-size: 13px;">
-                                {{$message}}
-                            </div>
-                            @enderror
+                                            {{$message}}
+                                        </div>
+                                        @enderror
                         </div>
                     </div>
                 </div>
