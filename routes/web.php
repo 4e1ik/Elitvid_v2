@@ -3,15 +3,11 @@
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\Auth\LoginController;
 use App\Http\Controllers\Admin\Auth\RegisterController;
-use App\Http\Controllers\Admin\Benches\BenchImageController;
-use App\Http\Controllers\Admin\Benches\BenchProductController;
 use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\GalleryController;
 use App\Http\Controllers\Admin\MailController;
 use App\Http\Controllers\Admin\MetaTagController;
-use App\Http\Controllers\Admin\Pots\PotImageController;
-use App\Http\Controllers\Admin\Pots\PotProductController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\StaticImagesController;
 use App\Http\Controllers\Admin\StaticPageController;
@@ -175,15 +171,7 @@ Route::middleware('auth')->where([])->prefix('admin')->group(function () {
 
     Route::get('/create/{route}', [AdminController::class, 'create'])->name('create');
 
-    // Кашпо
-    Route::delete('/pot/images/{potImage}/{potProduct}/delete', [PotImageController::class, 'pot_image_destroy'])->name('pot_image_destroy');
-    Route::put('/pot/images/{potImage}/{potProduct}/update', [PotImageController::class, 'pot_image_update'])->name('pot_image_update');
-
-    // Скамейки
-    Route::delete('/bench/images/{benchImage}/{benchProduct}/delete', [BenchImageController::class, 'bench_image_destroy'])->name('bench_image_destroy');
-    Route::put('/bench/images/{benchImage}/{benchProduct}/update', [BenchImageController::class, 'bench_image_update'])->name('bench_image_update');
-
-    // Изображения (новая полиморфная структура)
+    // Изображения (полиморфная структура)
     Route::put('/images/{image}/{product}/update', [\App\Http\Controllers\Admin\ImageController::class, 'update'])->name('images.update');
     Route::delete('/images/{image}/{product}/delete', [\App\Http\Controllers\Admin\ImageController::class, 'destroy'])->name('images.destroy');
 
@@ -196,8 +184,6 @@ Route::middleware('auth')->where([])->prefix('admin')->group(function () {
 //    Route::put('/categories/{category}/update', [CategoryController::class, 'update'])->name('category_update');
 
     Route::resources([
-        'potProducts' => PotProductController::class,
-        'benchProducts' => BenchProductController::class,
         'galleries' => GalleryController::class,
         'blogs' => BlogController::class,
         'categories' => CategoryController::class,
