@@ -15,7 +15,7 @@ class RegisterController extends Controller
                 return redirect(route('admin'));
             }
         }
-        return view('includes.elitvid.admin.registration');
+        return view('elitvid.admin.auth.registration');
     }
 
     public function registration(UserRequest $request){

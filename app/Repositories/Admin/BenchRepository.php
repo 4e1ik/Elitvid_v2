@@ -4,14 +4,14 @@ namespace App\Repositories\Admin;
 
 use App\Models\Product;
 
-class PotRepository
+class BenchRepository
 {
-    public function getPots(string $collection)
+    public function getBenches(string $collection)
     {
-        $products = Product::whereHas('pot', function ($query) use ($collection) {
+        $products = Product::whereHas('bench', function ($query) use ($collection) {
                 $query->where('collection', $collection);
             })
-            ->with('pot')
+            ->with('bench')
             ->latest()
             ->get();
 

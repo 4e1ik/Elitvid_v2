@@ -1,14 +1,17 @@
 document.addEventListener('DOMContentLoaded', () => {
     const panelBody = document.getElementById('panel-body');
-    const tbody = document.getElementById('variants-tbody');
+    const addVariantContainer = document.getElementById('add-variant-container');
     const variantIndexData = document.getElementById('variants-tbody');
     let variantIndex = variantIndexData ? variantIndexData.querySelectorAll('.variant-row').length : 1;
-    
+
+    const tbody = document.getElementById('variants-tbody');
     const imagesInput = document.getElementById('images');
     const imagePreviewContainer = document.getElementById('image-preview-container');
+
+    // Обработка загрузки изображений
     const imageFiles = [];
     let imageIndex = 0;
-
+    
     // Функция для создания превью изображения
     function createImagePreview(file, index) {
         return new Promise((resolve) => {
@@ -66,7 +69,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
     
-    // Обработка загрузки изображений
     if (imagesInput && imagePreviewContainer) {
         imagesInput.addEventListener('change', async function(e) {
             const newFiles = Array.from(e.target.files);
@@ -86,7 +88,7 @@ document.addEventListener('DOMContentLoaded', () => {
             await refreshImagePreviews();
         });
     }
-
+    
     if (panelBody) {
         panelBody.addEventListener('click', (e) => {
             // Обработка кнопки добавления
@@ -141,4 +143,3 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
-

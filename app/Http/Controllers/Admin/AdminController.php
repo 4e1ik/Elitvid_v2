@@ -263,9 +263,11 @@ class AdminController extends Controller
         if ($route_name == 'gallery'){
             return view('includes.elitvid.admin.create_gallery', compact('route_name'));
         } else if($route_name == 'pots'){
-            return view('includes.elitvid.admin.create_pot_product', compact('route_name'));
+            $productType = 'pot';
+            return view('includes.elitvid.admin.create_product', compact('productType'));
         } else if($route_name == 'benches'){
-            return view('includes.elitvid.admin.create_bench_product', compact('route_name'));
+            $productType = 'bench';
+            return view('includes.elitvid.admin.create_product', compact('productType'));
         }
 
     }

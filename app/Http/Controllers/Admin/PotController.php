@@ -15,18 +15,18 @@ class PotController
 
         $products = $this->potRepository->getPots('Round');
 
-        return view('elitvid.admin.pots.round_pots', compact( 'products'));
+        return view('elitvid.admin.pots.pots_round', compact( 'products'));
     }
 
     public function rectangular_pots() {
         $products = $this->potRepository->getPots('Rectangular');
 
-        return view('elitvid.admin.pots.rectangular_pots', compact('products'));
+        return view('elitvid.admin.pots.pots_rectangular', compact('products'));
     }
 
     public function square_pots() {
         $products = $this->potRepository->getPots('Square');
 
-        return view('elitvid.admin.pots.square_pots', compact('products'));
+        return view('elitvid.admin.pots.pots_square', compact('products'));
     }
 }

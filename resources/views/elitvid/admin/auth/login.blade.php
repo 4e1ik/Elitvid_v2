@@ -1,6 +1,6 @@
-@extends('layouts.elitvid.admin.login&registration')
+@extends('layouts.elitvid.admin.login_and_registration')
 
-@section('login&registration')
+@section('login_and_registration')
 
     <div class="container">
 

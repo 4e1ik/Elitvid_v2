@@ -31,7 +31,7 @@
 
 <body id="mimin" class="dashboard form-signin-wrapper">
 
-@yield('login&registration')
+@yield('login_and_registration')
 
 <!-- end: Content -->
 <!-- start: Javascript -->

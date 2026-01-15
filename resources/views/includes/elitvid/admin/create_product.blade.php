@@ -3,137 +3,135 @@
 @section('admin_content')
     <div id="content">
         <div class="panel box-shadow-none content-header">
-            <h1>Страница
-                создания {{ $route_name == 'benches' ? ('скамеек') : ($route_name == 'pots' ? ('кашпо') : '') }}</h1>
+            <h1>Страница создания {{ $productType === 'pot' ? 'кашпо' : 'скамейки' }}</h1>
         </div>
-        <form action="{{ route('products.store')}}"
-              enctype="multipart/form-data" method="post">
+        <form action="{{ route('products.store')}}" enctype="multipart/form-data" method="post">
             @csrf
-            @if($route_name == 'benches')
-                <input type="hidden" value="bench" name="item">
-            @elseif($route_name == 'pots')
-                <input type="hidden" value="pot" name="item">
-            @endif
+            <input type="hidden" name="product_type" value="{{ $productType }}">
+            
             <div class="col-md-12 padding-0">
                 <div class="col-md-12">
                     <div class="panel">
                         <div class="panel-body">
-                            <h3>Картинка</h3>
-                            <input type="file" name="image[]" multiple="multiple" class="dropzone dz-clickable col-md-5"
-                                   id="my-awesome-dropzone">
-                            @error('image')
-                            <div class="text-danger">
-                                {{$message}}
+                            <h3>Картинка{{ $productType === 'pot' ? 'и' : '' }}</h3>
+                            <div class="col-md-12" style="margin-bottom: 20px;">
+                                <label style="display: flex; justify-content: center; align-items: center; padding: 20px; border: 2px dashed #ddd; border-radius: 5px; cursor: pointer; background: #fafafa;"
+                                       for="images" class="dropzone dz-clickable">
+                                    <span>Переместите {{ $productType === 'pot' ? 'файлы' : 'файл' }} сюда для загрузки</span>
+                                </label>
+                                <input style="display: none" id="images" type="file" name="image[]"
+                                       @if($productType === 'pot') multiple="multiple" @endif accept="image/*">
                             </div>
-                            @enderror
+                            <div id="image-preview-container" class="col-md-12" style="margin-top: 20px; display: flex; flex-wrap: wrap; gap: 20px; min-height: 50px;"></div>
                         </div>
                     </div>
                 </div>
             </div>
+            
             <div class="col-md-12 padding-0">
                 <div class="col-md-12">
                     <div class="panel">
                         <div class="panel-body">
-                            <h3>Название товара</h3>
-                            <div class="col-md-5 padding-0">
-                                <input class="form-control {{$errors->has('title') ? 'danger' : ''}}" type="text"
-                                       name="title" value="{{old('title')}}">
-                            </div>
-                            @error('title')
-                            <div class="text-danger">
-                                {{$message}}
-                            </div>
-                            @enderror
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-12 padding-0">
-                <div class="col-md-12">
-                    <div class="panel">
-                        <div class="panel-body">
-                            <h3>Описание товара</h3>
-                            <div class="">
-                                <input id="input" type="text"
-                                       class="form-control" name="content" value="{{old('content')}}">
-                            </div>
-                            @error('content')
-                            <div class="text-danger">
-                                {{$message}}
-                            </div>
-                            @enderror
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-12 padding-0">
-                <div class="col-md-12">
-                    <div class="panel">
-                        <div class="panel-body">
-                            <h2>Раздел</h2>
-                            <select class="form-control" name="type"
-                                    id="">
-                                @if($route_name == 'benches')
-                                    <option {{ $errors->has('type') ? '' : 'selected' }} disabled>Выберите раздел</option>
-                                    <option {{ old('type') == 'Stones' ? 'selected' : ''}}  value="Stones">Коллекция Stones</option>
-                                    <option {{ old('type') == 'Radius' ? 'selected' : ''}} value="Radius">Коллекция Radius</option>
-                                    <option {{ old('type') == 'Solo' ? 'selected' : ''}} value="Solo">Коллекция Solo</option>
-                                    <option {{ old('type') == 'Outdoor' ? 'selected' : ''}} value="Outdoor">Коллекция Outdoor</option>
-                                @elseif($route_name == 'pots')
-                                    <option {{ $errors->has('type') ? '' : 'selected' }} disabled>Выберите раздел</option>
-                                    <option {{ old('type') == 'Square' ? 'selected' : ''}} value="Square">Квадратное кашпо</option>
-                                    <option {{ old('type') == 'Round' ? 'selected' : ''}}  value="Round">Круглое кашпо</option>
-                                    <option {{ old('type') == 'Rectangular' ? 'selected' : ''}} value="Rectangular">Прямоугольные кашпо</option>
-                                @endif
-                            </select>
-{{--                            {{old('type')}}--}}
-                            @error('type')
-                            <div class="text-danger">
-                                {{$message}}
-                            </div>
-                            @enderror
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-12 padding-0">
-                <div class="col-md-12">
-                    <div class="panel">
-                        <div class="panel-body">
-                            <h3>Сделать активным?</h3>
-                            <div class="form-group">
-                                <div class="col-md-10">
-                                    <div class="col-md-12 padding-0">
-                                        <input type="radio" name="active" value="1"> Да
+                            <div class="col-md-12">
+                                <div class="col-md-3 padding-0">
+                                    <h3>Название товара</h3>
+                                    <div class="col-md-11 padding-0">
+                                        <input class="form-control {{$errors->has('name') ? 'danger' : ''}}"
+                                               type="text"
+                                               name="name" value="{{old('name')}}">
                                     </div>
-                                    <div class="col-md-12 padding-0">
-                                        <input type="radio" name="active" value="0"> Нет
+                                    @error('name')
+                                    <div class="text-danger">
+                                        {{$message}}
+                                    </div>
+                                    @enderror
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            {{-- Подключаем специфичную форму в зависимости от типа продукта --}}
+            @include('includes.elitvid.admin.create_' . $productType . '_form')
+            
+            <div class="col-md-12 padding-0">
+                <div class="col-md-12">
+                    <div class="panel">
+                        <div class="panel-body">
+                            <div class="col-md-12">
+                                <div class="col-md-3 padding-0">
+                                    <h3>Meta Title</h3>
+                                    <div class="col-md-11 padding-0">
+                                        <input class="form-control {{$errors->has('meta_title') ? 'danger' : ''}}"
+                                               type="text"
+                                               name="meta_title" value="{{old('meta_title')}}">
+                                    </div>
+                                    @error('meta_title')
+                                    <div class="text-danger">
+                                        {{$message}}
+                                    </div>
+                                    @enderror
+                                </div>
+                                <div class="col-md-8 padding-0">
+                                    <div class="col-md-12">
+                                        <div class="col-md-8 padding-0">
+                                            <h3>Meta Description</h3>
+                                            <textarea name="meta_description" style="width: 100%;" rows="10" type="text"
+                                                      placeholder="Введите описание товара">{{old('meta_description')}}</textarea>
+                                            @error('meta_description')
+                                            <div class="text-danger">
+                                                {{$message}}
+                                            </div>
+                                            @enderror
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            @error('active')
-                            <div class="text-danger">
-                                {{$message}}
-                            </div>
-                            @enderror
                         </div>
                     </div>
                 </div>
             </div>
+            
             <div class="col-md-12 padding-0">
                 <div class="col-md-12">
                     <div class="panel">
                         <div class="panel-body">
-                            <input type="submit" class="btn  btn-3d btn-success" value="Создать">
+                            <div class="col-md-12">
+                                <div class="col-md-4 padding-0">
+                                    <h3>Сделать активным?</h3>
+                                    <div class="form-group">
+                                        <div class="col-md-10">
+                                            <div class="col-md-1 padding-0">
+                                                <input type="radio" name="active" value="1" {{ old('active') == 1 ? 'checked' : '' }}> Да
+                                            </div>
+                                            <div class="col-md-1 padding-0">
+                                                <input type="radio" name="active" value="0" {{ old('active') == 0 ? 'checked' : '' }}> Нет
+                                            </div>
+                                        </div>
+                                    </div>
+                                    @error('active')
+                                    <div class="text-danger">
+                                        {{$message}}
+                                    </div>
+                                    @enderror
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-
-
-            {{--            <h2>{{ $route_name == 'benches' ? ('Коллекция') : ($route_name == 'pots' ? ('Раздел') : ($route_name == 'textures' ? ('Текстура'):($route_name == 'gallery' ? ('Продукция'): ('')))) }}</h2>--}}
-
-
+            
+            <div class="col-md-12 padding-0">
+                <div class="col-md-12">
+                    <div class="panel">
+                        <div class="panel-body">
+                            <input type="submit" class="btn btn-success" value="Создать">
+                        </div>
+                    </div>
+                </div>
+            </div>
         </form>
     </div>
+    <script src="{{asset('/elitvid_assets/newDesign/newDesign/js/create_' . $productType . '_product.js')}}"></script>
 @endsection

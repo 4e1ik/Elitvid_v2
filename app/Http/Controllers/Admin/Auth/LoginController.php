@@ -14,7 +14,7 @@ class LoginController extends Controller
                 return redirect(route('admin'));
             }
         }
-        return view('includes.elitvid.admin.login');
+        return view('elitvid.admin.auth.login');
     }
 
     public function logout(){

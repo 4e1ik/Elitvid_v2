@@ -16,6 +16,7 @@ use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\StaticImagesController;
 use App\Http\Controllers\Admin\StaticPageController;
 use \App\Http\Controllers\Admin\PotController as AdminPotController;
+use \App\Http\Controllers\Admin\BenchController as AdminBenchController;
 
 
 use App\Http\Controllers\BenchController;
@@ -131,11 +132,11 @@ Route::middleware('auth')->where([])->prefix('admin')->group(function () {
 
     // Скамейки в панели администратора
     Route::prefix('benches')->group(function (){
-        Route::get('/benches_verona', [AdminController::class, 'benches_verona'])->name('admin_benches_verona');
-        Route::get('/benches_stones', [AdminController::class, 'benches_stones'])->name('admin_benches_stones');
-        Route::get('/benches_solo', [AdminController::class, 'benches_solo'])->name('admin_benches_solo');
-        Route::get('/benches_lines', [AdminController::class, 'benches_lines'])->name('admin_benches_lines');
-        Route::get('/benches_street_furniture', [AdminController::class, 'benches_street_furniture'])->name('admin_benches_street_furniture');
+        Route::get('/benches_verona', [AdminBenchController::class, 'verona'])->name('admin_benches_verona');
+        Route::get('/benches_stones', [AdminBenchController::class, 'stones'])->name('admin_benches_stones');
+        Route::get('/benches_solo', [AdminBenchController::class, 'solo'])->name('admin_benches_solo');
+        Route::get('/benches_lines', [AdminBenchController::class, 'lines'])->name('admin_benches_lines');
+        Route::get('/benches_street_furniture', [AdminBenchController::class, 'street_furniture'])->name('admin_benches_street_furniture');
     });
 
     // Кашпо в панели администратора
@@ -181,6 +182,10 @@ Route::middleware('auth')->where([])->prefix('admin')->group(function () {
     // Скамейки
     Route::delete('/bench/images/{benchImage}/{benchProduct}/delete', [BenchImageController::class, 'bench_image_destroy'])->name('bench_image_destroy');
     Route::put('/bench/images/{benchImage}/{benchProduct}/update', [BenchImageController::class, 'bench_image_update'])->name('bench_image_update');
+
+    // Изображения (новая полиморфная структура)
+    Route::put('/images/{image}/update', [\App\Http\Controllers\Admin\ImageController::class, 'update'])->name('images.update');
+    Route::delete('/images/{image}/delete', [\App\Http\Controllers\Admin\ImageController::class, 'destroy'])->name('images.destroy');
 
     //Мета-теги
     Route::get('/metatags', [AdminController::class, 'metaTags'])->name('admin_metatags');

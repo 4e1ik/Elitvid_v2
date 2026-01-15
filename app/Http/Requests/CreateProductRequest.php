@@ -32,6 +32,7 @@ class CreateProductRequest extends FormRequest
             'active' => 'nullable|boolean',
             'meta_title' => 'nullable|string|max:255',
             'meta_description' => 'nullable|string|max:5000',
+            'image' => 'required',
             'image.*' => 'required|image|mimes:jpeg,jpg,png,webp|max:10240',
         ];
     }
@@ -63,6 +64,7 @@ class CreateProductRequest extends FormRequest
             'active.boolean' => 'Поле "Активность" должно быть логическим значением.',
             'meta_title.max' => 'Meta Title не должен превышать :max символов.',
             'meta_description.max' => 'Meta Description не должен превышать :max символов.',
+            'image.required' => 'Необходимо загрузить хотя бы одно изображение.',
             'image.*.required' => 'Необходимо загрузить хотя бы одно изображение.',
             'image.*.image' => 'Загруженный файл должен быть изображением.',
             'image.*.mimes' => 'Изображение должно быть в формате: jpeg, jpg, png или webp.',
