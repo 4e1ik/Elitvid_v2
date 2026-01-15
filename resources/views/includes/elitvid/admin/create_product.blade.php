@@ -34,21 +34,21 @@
                         <div class="panel-body">
                             <div class="col-md-12">
                                 <div class="col-md-3 padding-0">
-                                    <h3>Название товара</h3>
+                            <h3>Название товара</h3>
                                     <div class="col-md-11 padding-0">
                                         <input class="form-control {{$errors->has('name') ? 'danger' : ''}}"
                                                type="text"
                                                name="name" value="{{old('name')}}">
-                                    </div>
-                                    @error('name')
-                                    <div class="text-danger">
-                                        {{$message}}
-                                    </div>
-                                    @enderror
-                                </div>
                             </div>
+                                    @error('name')
+                            <div class="text-danger">
+                                {{$message}}
+                            </div>
+                            @enderror
                         </div>
                     </div>
+                </div>
+            </div>
                 </div>
             </div>
             
@@ -72,7 +72,7 @@
                                         {{$message}}
                                     </div>
                                     @enderror
-                                </div>
+                            </div>
                                 <div class="col-md-8 padding-0">
                                     <div class="col-md-12">
                                         <div class="col-md-8 padding-0">
@@ -80,14 +80,14 @@
                                             <textarea name="meta_description" style="width: 100%;" rows="10" type="text"
                                                       placeholder="Введите описание товара">{{old('meta_description')}}</textarea>
                                             @error('meta_description')
-                                            <div class="text-danger">
-                                                {{$message}}
-                                            </div>
-                                            @enderror
-                                        </div>
-                                    </div>
-                                </div>
+                            <div class="text-danger">
+                                {{$message}}
                             </div>
+                            @enderror
+                        </div>
+                    </div>
+                </div>
+            </div>
                         </div>
                     </div>
                 </div>
@@ -99,26 +99,26 @@
                         <div class="panel-body">
                             <div class="col-md-12">
                                 <div class="col-md-4 padding-0">
-                                    <h3>Сделать активным?</h3>
-                                    <div class="form-group">
-                                        <div class="col-md-10">
+                            <h3>Сделать активным?</h3>
+                            <div class="form-group">
+                                <div class="col-md-10">
                                             <div class="col-md-1 padding-0">
                                                 <input type="radio" name="active" value="1" {{ old('active') == 1 ? 'checked' : '' }}> Да
-                                            </div>
+                                    </div>
                                             <div class="col-md-1 padding-0">
                                                 <input type="radio" name="active" value="0" {{ old('active') == 0 ? 'checked' : '' }}> Нет
-                                            </div>
-                                        </div>
                                     </div>
-                                    @error('active')
-                                    <div class="text-danger">
-                                        {{$message}}
-                                    </div>
-                                    @enderror
                                 </div>
                             </div>
+                            @error('active')
+                            <div class="text-danger">
+                                {{$message}}
+                            </div>
+                            @enderror
                         </div>
                     </div>
+                </div>
+            </div>
                 </div>
             </div>
             

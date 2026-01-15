@@ -55,4 +55,14 @@ class ImageService
             ]);
         });
     }
+
+    public function update()
+    {
+
+    }
+
+    public function delete()
+    {
+
+    }
 }

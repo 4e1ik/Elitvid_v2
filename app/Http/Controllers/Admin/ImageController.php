@@ -4,11 +4,16 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Image;
+use App\Services\ImageService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
 class ImageController extends Controller
 {
+    public function __construct(
+        public ImageService $imageService
+    ){}
+
     public function update(Request $request, Image $image)
     {
         $data = $request->validate([
@@ -17,11 +22,13 @@ class ImageController extends Controller
             'texture' => 'nullable|string|max:255',
         ]);
 
+//        $product = $this->imageService->update($data);
+
         $image->update($data);
 
         // Получаем продукт для редиректа
         $product = $image->imageable;
-        
+
         if ($product && method_exists($product, 'pot')) {
             return redirect()->route('products.edit', ['product' => $product])->with('success', 'Изображение успешно обновлено');
         }
@@ -43,7 +50,7 @@ class ImageController extends Controller
 
         // Получаем продукт для редиректа
         $product = $image->imageable;
-        
+
         $image->delete();
 
         if ($product && method_exists($product, 'pot')) {

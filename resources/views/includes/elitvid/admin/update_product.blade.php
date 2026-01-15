@@ -64,8 +64,7 @@
                                                 </button>
                                             </div>
                                         </form>
-                                        <form action="{{ route('images.destroy', ['image' => $image]) }}" method="post" 
-                                              onsubmit="return confirm('Вы уверены, что хотите удалить это изображение?');">
+                                        <form action="{{ route('images.destroy', ['image' => $image]) }}" method="post">
                                             @method('DELETE')
                                             @csrf
                                             <button type="submit" class="btn btn-danger btn-sm" style="width: 100%;">
