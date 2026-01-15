@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Helpers\ProductRouteCreatingHelper;
 use App\Http\Requests\CreateProductRequest;
 use App\Http\Requests\UpdateProductRequest;
 use App\Models\Bench;
@@ -13,6 +14,7 @@ class ProductController
 {
     public function __construct(
         public ImageService $imageService,
+        public ProductRouteCreatingHelper $productRouteCreatingHelper,
     ){}
 
     public function store(CreateProductRequest $request)
@@ -26,24 +28,10 @@ class ProductController
         switch ($data['product_type']) {
             case 'bench':
                 Bench::create($data);
-
-                $routes = [
-                    'Verona' => route('admin_benches_verona'),
-                    'Stones' => route('admin_benches_stones'),
-                    'lines' => route('admin_benches_solo'),
-                    'Solo' => route('admin_benches_lines'),
-                    'Street_furniture' => route('admin_benches_street_furniture'),
-                ];
                 break;
 
             case 'pot':
                 Pot::create($data);
-
-                $routes = [
-                    'Square' => route('admin_square_pots'),
-                    'Round' => route('admin_round_pots'),
-                    'Rectangular' => route('admin_rectangular_pots'),
-                ];
                 break;
         }
 
@@ -68,8 +56,8 @@ class ProductController
             }
         }
 
+        $routes = $this->productRouteCreatingHelper->route($data['product_type']);
         $collection = $data['collection'];
-
 
         return redirect($routes[$collection]);
     }
@@ -110,11 +98,6 @@ class ProductController
                     $pot->update($data);
                 }
 
-                $routes = [
-                    'Square' => route('admin_square_pots'),
-                    'Round' => route('admin_round_pots'),
-                    'Rectangular' => route('admin_rectangular_pots'),
-                ];
                 break;
 
             case 'bench':
@@ -123,13 +106,6 @@ class ProductController
                     $bench->update($data);
                 }
 
-                $routes = [
-                    'Verona' => route('admin_benches_verona'),
-                    'Stones' => route('admin_benches_stones'),
-                    'lines' => route('admin_benches_solo'),
-                    'Solo' => route('admin_benches_lines'),
-                    'Street_furniture' => route('admin_benches_street_furniture'),
-                ];
                 break;
 
             default:
@@ -158,7 +134,9 @@ class ProductController
             }
         }
 
+        $routes = $this->productRouteCreatingHelper->route($data['product_type']);
         $collection = $data['collection'];
+
         return redirect($routes[$collection]);
     }
 
