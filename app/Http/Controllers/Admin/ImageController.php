@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Helpers\ProductRouteCreatingHelper;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\UpdateImageRequest;
 use App\Models\Image;
+use App\Models\Product;
 use App\Services\ImageService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -11,52 +14,25 @@ use Illuminate\Support\Facades\Storage;
 class ImageController extends Controller
 {
     public function __construct(
-        public ImageService $imageService
+        public ImageService $imageService,
+        public ProductRouteCreatingHelper $productRouteCreatingHelper
     ){}
 
-    public function update(Request $request, Image $image)
+    public function update(UpdateImageRequest $request, Image $image, Product $product)
     {
-        $data = $request->validate([
-            'description_image' => 'nullable|string|max:5000',
-            'color' => 'nullable|string|max:255',
-            'texture' => 'nullable|string|max:255',
-        ]);
+        $data = $request->all();
 
-//        $product = $this->imageService->update($data);
+        $this->imageService->update(image: $image, data: $data);
 
-        $image->update($data);
-
-        // Получаем продукт для редиректа
-        $product = $image->imageable;
-
-        if ($product && method_exists($product, 'pot')) {
-            return redirect()->route('products.edit', ['product' => $product])->with('success', 'Изображение успешно обновлено');
-        }
-
-        return back()->with('success', 'Изображение успешно обновлено');
+        return redirect(route('products.edit', ['product' => $product]))
+            ->with('success', 'Изображение успешно обновлено');
     }
 
-    public function destroy(Image $image)
+    public function destroy(Image $image, Product $product)
     {
-        // Удаляем файл изображения
-        // Путь в БД: 'public/images/filename.webp'
-        // Для Storage::disk('public') нужно использовать путь без 'public/'
-        if ($image->image) {
-            $path = str_replace('public/', '', $image->image);
-            if (Storage::disk('public')->exists($path)) {
-                Storage::disk('public')->delete($path);
-            }
-        }
+        $this->imageService->delete(image: $image);
 
-        // Получаем продукт для редиректа
-        $product = $image->imageable;
-
-        $image->delete();
-
-        if ($product && method_exists($product, 'pot')) {
-            return redirect()->route('products.edit', ['product' => $product])->with('success', 'Изображение успешно удалено');
-        }
-
-        return back()->with('success', 'Изображение успешно удалено');
+        return redirect(route('products.edit', ['product' => $product]))
+            ->with('success', 'Изображение успешно удалено');
     }
 }

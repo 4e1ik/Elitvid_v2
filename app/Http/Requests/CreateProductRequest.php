@@ -23,6 +23,7 @@ class CreateProductRequest extends FormRequest
     {
         return [
             'name' => 'required|filled|min:3|max:100',
+            'product_type' => 'required|string|in:pot,bench',
             'material' => 'required|filled|min:3|max:100',
             'data' => 'required|array|min:1',
             'data.*.size' => 'nullable|max:50',

@@ -2,11 +2,15 @@
 
 namespace App\Helpers;
 
+use App\Models\Product;
+
 final class ProductRouteCreatingHelper
 {
-    public function route(string $productType)
+    public function route(Product $product): string
     {
-        return match($productType) {
+        $type = $product->product_type;
+
+        $routes = [
             'pot' => [
                 'Square' => route('admin_square_pots'),
                 'Round' => route('admin_round_pots'),
@@ -18,8 +22,9 @@ final class ProductRouteCreatingHelper
                 'lines' => route('admin_benches_solo'),
                 'Solo' => route('admin_benches_lines'),
                 'Street_furniture' => route('admin_benches_street_furniture'),
-            ],
-            default => [],
-        };
+            ]
+        ];
+
+        return $routes[$type][$product->{$type}->collection];
     }
 }

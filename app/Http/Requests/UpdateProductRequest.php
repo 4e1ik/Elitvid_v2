@@ -23,6 +23,7 @@ class UpdateProductRequest extends FormRequest
     {
         return [
             'name' => 'required|filled|min:3|max:100',
+            'product_type' => 'nullable|string|in:pot,bench',
             'material' => 'required|filled|min:3|max:100',
             'data' => 'nullable|array',
             'data.*.size' => 'nullable|max:50',

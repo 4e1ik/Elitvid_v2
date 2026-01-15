@@ -5,15 +5,16 @@ namespace App\Http\Controllers\Admin;
 use App\Helpers\ProductRouteCreatingHelper;
 use App\Http\Requests\CreateProductRequest;
 use App\Http\Requests\UpdateProductRequest;
-use App\Models\Bench;
-use App\Models\Pot;
 use App\Models\Product;
+use App\Services\Admin\ProductService;
 use App\Services\ImageService;
 
 class ProductController
 {
     public function __construct(
         public ImageService $imageService,
+        public ProductService $productService,
+
         public ProductRouteCreatingHelper $productRouteCreatingHelper,
     ){}
 
@@ -21,53 +22,18 @@ class ProductController
     {
         $data = $request->all();
 
-        $product = Product::create($data);
+        $product = $this->productService->store($data);
 
-        $data['product_id'] = $product->id;
+        $route = $this->productRouteCreatingHelper->route($product);
 
-        switch ($data['product_type']) {
-            case 'bench':
-                Bench::create($data);
-                break;
-
-            case 'pot':
-                Pot::create($data);
-                break;
-        }
-
-        if ($request->hasFile('image')) {
-            $images = $request->file('image');
-            $imageData = $request->input('image_data', []);
-
-            // Если это одно изображение (скамейка), преобразуем в массив
-            if (!is_array($images)) {
-                $images = [$images];
-                $imageData = [$imageData];
-            }
-
-            foreach ($images as $index => $file) {
-                $imageDataForFile = $imageData[$index] ?? [];
-
-                $this->imageService->save(
-                    file: $file,
-                    model: $product,
-                    data: $imageDataForFile
-                );
-            }
-        }
-
-        $routes = $this->productRouteCreatingHelper->route($data['product_type']);
-        $collection = $data['collection'];
-
-        return redirect($routes[$collection]);
+        return redirect($route ?? route('products.edit', ['product' => $product]));
     }
 
     public function edit(Product $product)
     {
         $product->load(['pot', 'bench', 'images']);
 
-        // Определяем тип продукта
-        $productType = $product->pot ? 'pot' : ($product->bench ? 'bench' : null);
+        $productType = $product->product_type;
 
         if (!$productType) {
             abort(404, 'Тип продукта не определен');
@@ -80,68 +46,20 @@ class ProductController
     {
         $data = $request->all();
 
-        // Обновляем продукт
-        $product->update($data);
+        $product = $this->productService->update(data: $data, product: $product);
 
-        // Определяем тип продукта
-        $productType = $data['product_type'] ?? ($product->pot ? 'pot' : ($product->bench ? 'bench' : null));
+        $route = $this->productRouteCreatingHelper->route($product);
 
-        if (!$productType) {
-            abort(404, 'Тип продукта не определен');
-        }
-
-        // Обновляем специфичные данные в зависимости от типа
-        switch ($productType) {
-            case 'pot':
-                $pot = $product->pot;
-                if ($pot) {
-                    $pot->update($data);
-                }
-
-                break;
-
-            case 'bench':
-                $bench = $product->bench;
-                if ($bench) {
-                    $bench->update($data);
-                }
-
-                break;
-
-            default:
-                abort(404, 'Неизвестный тип продукта');
-        }
-
-        // Обрабатываем новые изображения
-        if ($request->hasFile('image')) {
-            $images = $request->file('image');
-            $imageData = $request->input('image_data', []);
-
-            // Если это одно изображение (скамейка), преобразуем в массив
-            if (!is_array($images)) {
-                $images = [$images];
-                $imageData = [$imageData];
-            }
-
-            foreach ($images as $index => $file) {
-                $imageDataForFile = $imageData[$index] ?? [];
-
-                $this->imageService->save(
-                    file: $file,
-                    model: $product,
-                    data: $imageDataForFile
-                );
-            }
-        }
-
-        $routes = $this->productRouteCreatingHelper->route($data['product_type']);
-        $collection = $data['collection'];
-
-        return redirect($routes[$collection]);
+        return redirect($route ?? route('products.edit', ['product' => $product]));
     }
 
-    public function delete()
+    public function destroy(Product $product)
     {
+        $route = $this->productRouteCreatingHelper->route($product);
 
+        $this->productService->destroy(product: $product);
+
+        return redirect($route ?? route('admin'))
+            ->with('success', 'Товар успешно удален');
     }
 }

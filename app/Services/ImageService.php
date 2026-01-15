@@ -11,58 +11,71 @@ use Intervention\Image\ImageManager;
 
 class ImageService
 {
-    public function save($file, Model $model, array $data)
+    public function save(array $images, Model $model, array $imageData = []): void
     {
-        DB::transaction(function () use ($file, $model, $data) {
+        DB::transaction(function () use ($images, $model, $imageData) {
+            if (!is_array($images)) {
+                $images = [$images];
+                $imageData = [$imageData];
+            }
 
-            $disk = Storage::disk('public');
+            foreach ($images as $index => $file) {
+                $imageDataForFile = $imageData[$index] ?? [];
 
-            $interventionManager = ImageManager::gd();
+                $disk = Storage::disk('public');
+                $interventionManager = ImageManager::gd();
 
-            $name = str_replace(' ', '_', pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME));
+                $name = str_replace(' ', '_', pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME));
 
-            $originalName = (new GenerateUniqueNameHelper)->generateUniqueName(originalName: $name . '.webp', disk: $disk, folder: 'images');
-
-            $item = $interventionManager->read($file->getPathname());
-
-            // Ресайз изображения
-            $item = $item->scaleDown(480, 400);
-
-            // Конвертация в WebP
-            try {
-                $converted_image = $item->toWebp(100);
-            } catch (\Exception $e) {
-                $extension = $file->getClientOriginalExtension();
                 $originalName = (new GenerateUniqueNameHelper)->generateUniqueName(
-                    originalName: $name . '.' . $extension,
+                    originalName: $name . '.webp',
                     disk: $disk,
                     folder: 'images'
                 );
-                $converted_image = $item->encode();
+
+                $item = $interventionManager->read($file->getPathname());
+
+                // Конвертация в WebP
+                try {
+                    $converted_image = $item->toWebp(100);
+                } catch (\Exception $e) {
+                    $extension = $file->getClientOriginalExtension();
+                    $originalName = (new GenerateUniqueNameHelper)->generateUniqueName(
+                        originalName: $name . '.' . $extension,
+                        disk: $disk,
+                        folder: 'images'
+                    );
+                    $converted_image = $item->encode();
+                }
+
+                $path = 'images/' . $originalName;
+                $disk->put($path, $converted_image);
+                $storagePath = 'public/' . $path;
+
+                $model->images()->create([
+                    'image' => $storagePath,
+                    'description_image' => $imageDataForFile['description_image'] ?? null,
+                    'color' => $imageDataForFile['color'] ?? null,
+                    'texture' => $imageDataForFile['texture'] ?? null,
+                ]);
             }
-
-            $path = 'images/' . $originalName;
-
-            $disk->put($path, $converted_image);
-
-            $storagePath = 'public/' . $path;
-
-            $model->images()->create([
-                'image' => $storagePath,
-                'description_image' => $data['description_image'] ?? null,
-                'color' => $data['color'] ?? null,
-                'texture' => $data['texture'] ?? null,
-            ]);
         });
     }
 
-    public function update()
+    public function update(Image $image,$data): bool
     {
-
+        return $image->update($data);
     }
 
-    public function delete()
+    public function delete(Image $image): bool
     {
+        if ($image->image) {
+            $path = str_replace('public/', '', $image->image);
+            if (Storage::disk('public')->exists($path)) {
+                Storage::disk('public')->delete($path);
+            }
+        }
 
+        return $image->delete();
     }
 }

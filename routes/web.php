@@ -184,8 +184,8 @@ Route::middleware('auth')->where([])->prefix('admin')->group(function () {
     Route::put('/bench/images/{benchImage}/{benchProduct}/update', [BenchImageController::class, 'bench_image_update'])->name('bench_image_update');
 
     // Изображения (новая полиморфная структура)
-    Route::put('/images/{image}/update', [\App\Http\Controllers\Admin\ImageController::class, 'update'])->name('images.update');
-    Route::delete('/images/{image}/delete', [\App\Http\Controllers\Admin\ImageController::class, 'destroy'])->name('images.destroy');
+    Route::put('/images/{image}/{product}/update', [\App\Http\Controllers\Admin\ImageController::class, 'update'])->name('images.update');
+    Route::delete('/images/{image}/{product}/delete', [\App\Http\Controllers\Admin\ImageController::class, 'destroy'])->name('images.destroy');
 
     //Мета-теги
     Route::get('/metatags', [AdminController::class, 'metaTags'])->name('admin_metatags');
