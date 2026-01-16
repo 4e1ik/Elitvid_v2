@@ -28,23 +28,9 @@ class StaticPageController extends Controller
 
     public function store(StaticPageRequest $request)
     {
-        $data = $request->validated();
-        
-        // Обработка active (checkbox не передается, если не отмечен)
-        $data['active'] = $request->has('active');
-        
-        // Обработка файлов
-        if ($request->hasFile('main_image')) {
-            $data['main_image'] = $request->file('main_image');
-        }
-        
-        if ($request->hasFile('menu_image')) {
-            $data['menu_image'] = $request->file('menu_image');
-        }
-        
-        if ($request->hasFile('gallery_images')) {
-            $data['gallery_images'] = $request->file('gallery_images');
-        }
+        $data = $request->all();
+
+        dd($data);
 
         $staticPage = $this->staticPageService->store($data);
 
@@ -61,13 +47,14 @@ class StaticPageController extends Controller
     public function update(StaticPageRequest $request, StaticPage $staticPage)
     {
         $data = $request->validated();
-        
-        // Обработка active (checkbox не передается, если не отмечен)
-        $data['active'] = $request->has('active');
-        
-        // Обработка active для галереи
-        $data['gallery_active'] = $request->has('gallery_active');
-        
+
+        // Обработка active - всегда устанавливаем явное значение (true или false)
+        // Скрытое поле всегда отправляет "0", если чекбокс отмечен - приходит "1"
+        $data['active'] = $request->input('active') == '1';
+
+        // Обработка active для галереи - всегда устанавливаем явное значение
+        $data['gallery_active'] = $request->has('gallery_active') && $request->input('gallery_active') == '1';
+
         // Обработка обновления существующей галереи
         if ($request->has('gallery_id')) {
             $gallery = \App\Models\StaticPageGallery::find($request->input('gallery_id'));
@@ -77,19 +64,19 @@ class StaticPageController extends Controller
                     ->with('success', 'Статус галереи обновлен');
             }
         }
-        
+
         // Убираем slug из данных при обновлении (нельзя изменять)
         unset($data['slug']);
-        
+
         // Обработка файлов
         if ($request->hasFile('main_image')) {
             $data['main_image'] = $request->file('main_image');
         }
-        
+
         if ($request->hasFile('menu_image')) {
             $data['menu_image'] = $request->file('menu_image');
         }
-        
+
         if ($request->hasFile('gallery_images')) {
             $data['gallery_images'] = $request->file('gallery_images');
         }

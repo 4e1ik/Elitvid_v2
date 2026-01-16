@@ -11,12 +11,12 @@
                                    type="text"
                                    name="material"
                                    value="{{$errors->has('material') ? old('material') : $product->bench->material}}">
+                            @error('material')
+                            <div class="text-danger" style="margin-top: 5px;">
+                                {{$message}}
+                            </div>
+                            @enderror
                         </div>
-                        @error('material')
-                        <div class="text-danger">
-                            {{$message}}
-                        </div>
-                        @enderror
                     </div>
                 </div>
             </div>
@@ -119,7 +119,7 @@
                 <div class="col-md-12">
                     <div class="col-md-3 padding-0">
                         <h2>Коллекция</h2>
-                        <select class="form-control" name="collection" id="">
+                        <select class="form-control {{$errors->has('collection') ? 'danger' : ''}}" name="collection" id="">
                             <option {{ $errors->has('collection') ? '' : 'selected' }} disabled>Выберите коллекцию</option>
                             <option {{ ($errors->has('collection') ? old('collection') : $product->bench->collection) == 'Verona' ? 'selected' : ''}} value="Verona">Коллекция Verona</option>
                             <option {{ ($errors->has('collection') ? old('collection') : $product->bench->collection) == 'Stones' ? 'selected' : ''}}  value="Stones">Коллекция Stones</option>
@@ -128,7 +128,7 @@
                             <option {{ ($errors->has('collection') ? old('collection') : $product->bench->collection) == 'Street_furniture' ? 'selected' : ''}} value="Street_furniture">Коллекция Street furniture</option>
                         </select>
                         @error('collection')
-                        <div class="text-danger">
+                        <div class="text-danger" style="margin-top: 5px;">
                             {{$message}}
                         </div>
                         @enderror

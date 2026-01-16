@@ -22,6 +22,16 @@
                                 <input style="display: none" id="images" type="file" name="image[]"
                                        @if($productType === 'pot') multiple="multiple" @endif accept="image/*">
                             </div>
+                            @error('image')
+                            <div class="text-danger" style="margin-top: 10px;">
+                                {{$message}}
+                            </div>
+                            @enderror
+                            @error('image.*')
+                            <div class="text-danger" style="margin-top: 10px;">
+                                {{$message}}
+                            </div>
+                            @enderror
                             <div id="image-preview-container" class="col-md-12" style="margin-top: 20px; display: flex; flex-wrap: wrap; gap: 20px; min-height: 50px;"></div>
                         </div>
                     </div>
@@ -39,12 +49,12 @@
                                         <input class="form-control {{$errors->has('name') ? 'danger' : ''}}"
                                                type="text"
                                                name="name" value="{{old('name')}}">
-                            </div>
-                                    @error('name')
-                            <div class="text-danger">
-                                {{$message}}
-                            </div>
-                            @enderror
+                                        @error('name')
+                                        <div class="text-danger" style="margin-top: 5px;">
+                                            {{$message}}
+                                        </div>
+                                        @enderror
+                                    </div>
                         </div>
                     </div>
                 </div>
@@ -66,24 +76,24 @@
                                         <input class="form-control {{$errors->has('meta_title') ? 'danger' : ''}}"
                                                type="text"
                                                name="meta_title" value="{{old('meta_title')}}">
+                                        @error('meta_title')
+                                        <div class="text-danger" style="margin-top: 5px;">
+                                            {{$message}}
+                                        </div>
+                                        @enderror
                                     </div>
-                                    @error('meta_title')
-                                    <div class="text-danger">
-                                        {{$message}}
-                                    </div>
-                                    @enderror
                             </div>
                                 <div class="col-md-8 padding-0">
                                     <div class="col-md-12">
                                         <div class="col-md-8 padding-0">
                                             <h3>Meta Description</h3>
-                                            <textarea name="meta_description" style="width: 100%;" rows="10" type="text"
+                                            <textarea name="meta_description" class="form-control {{$errors->has('meta_description') ? 'danger' : ''}}" style="width: 100%;" rows="10" type="text"
                                                       placeholder="Введите описание товара">{{old('meta_description')}}</textarea>
                                             @error('meta_description')
-                            <div class="text-danger">
-                                {{$message}}
-                            </div>
-                            @enderror
+                                            <div class="text-danger" style="margin-top: 5px;">
+                                                {{$message}}
+                                            </div>
+                                            @enderror
                         </div>
                     </div>
                 </div>
@@ -111,7 +121,7 @@
                                 </div>
                             </div>
                             @error('active')
-                            <div class="text-danger">
+                            <div class="text-danger" style="margin-top: 5px;">
                                 {{$message}}
                             </div>
                             @enderror

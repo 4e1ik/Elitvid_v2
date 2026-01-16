@@ -11,9 +11,9 @@ use Intervention\Image\ImageManager;
 
 class ImageService
 {
-    public function save(array $images, Model $model, array $imageData = []): void
+    public function save(array $images, Model $model, array $imageData = []): bool
     {
-        DB::transaction(function () use ($images, $model, $imageData) {
+        return DB::transaction(function () use ($images, $model, $imageData) {
             if (!is_array($images)) {
                 $images = [$images];
                 $imageData = [$imageData];
@@ -66,18 +66,23 @@ class ImageService
 
     public function update(Image $image,$data): bool
     {
-        return $image->update($data);
+        return DB::transaction(function () use ($image,$data) {
+            return $image->update($data);
+        });
+
     }
 
     public function delete(Image $image): bool
     {
-        if ($image->image) {
-            $path = str_replace('public/', '', $image->image);
-            if (Storage::disk('public')->exists($path)) {
-                Storage::disk('public')->delete($path);
+        return DB::transaction(function () use ($image) {
+            if ($image->image) {
+                $path = str_replace('public/', '', $image->image);
+                if (Storage::disk('public')->exists($path)) {
+                    Storage::disk('public')->delete($path);
+                }
             }
-        }
 
-        return $image->delete();
+            return $image->delete();
+        });
     }
 }

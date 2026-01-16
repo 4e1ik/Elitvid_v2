@@ -10,12 +10,12 @@
                             <input class="form-control {{$errors->has('material') ? 'danger' : ''}}"
                                    type="text"
                                    name="material" value="{{old('material')}}">
+                            @error('material')
+                            <div class="text-danger" style="margin-top: 5px;">
+                                {{$message}}
+                            </div>
+                            @enderror
                         </div>
-                        @error('material')
-                        <div class="text-danger">
-                            {{$message}}
-                        </div>
-                        @enderror
                     </div>
                 </div>
             </div>
@@ -118,14 +118,14 @@
                 <div class="col-md-12">
                     <div class="col-md-3 padding-0">
                         <h2>Форма</h2>
-                        <select class="form-control" name="collection" id="">
+                        <select class="form-control {{$errors->has('collection') ? 'danger' : ''}}" name="collection" id="">
                             <option {{ $errors->has('collection') ? '' : 'selected' }} disabled>Выберите форму</option>
                             <option {{ old('collection') == 'Square' ? 'selected' : ''}} value="Square">Квадратное кашпо</option>
                             <option {{ old('collection') == 'Round' ? 'selected' : ''}}  value="Round">Круглое кашпо</option>
                             <option {{ old('collection') == 'Rectangular' ? 'selected' : ''}} value="Rectangular">Прямоугольные кашпо</option>
                         </select>
                         @error('collection')
-                        <div class="text-danger">
+                        <div class="text-danger" style="margin-top: 5px;">
                             {{$message}}
                         </div>
                         @enderror

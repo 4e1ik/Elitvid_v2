@@ -132,7 +132,9 @@
                                     </div>
                                 </div>
                                 @error('main_image')
-                                <div class="text-danger">{{$message}}</div>
+                                <div class="text-danger" style="margin-top: 10px;">
+                                    {{$message}}
+                                </div>
                                 @enderror
                             </div>
                             <div class="col-md-6 padding-0" style="padding-left: 15px;">
@@ -187,11 +189,15 @@
                                     <h4>Название в меню</h4>
                                     <input type="text" class="form-control @error('menu_name') danger @enderror" name="menu_name" value="{{old('menu_name', $staticPage->menu_name)}}" placeholder="Название, которое будет отображаться в меню">
                                     @error('menu_name')
-                                    <div class="text-danger">{{$message}}</div>
+                                    <div class="text-danger" style="margin-top: 5px;">
+                                        {{$message}}
+                                    </div>
                                     @enderror
                                 </div>
                                 @error('menu_image')
-                                <div class="text-danger">{{$message}}</div>
+                                <div class="text-danger" style="margin-top: 10px;">
+                                    {{$message}}
+                                </div>
                                 @enderror
                             </div>
                         </div>
@@ -310,6 +316,8 @@
                     <div class="panel">
                         <div class="panel-body">
                             <div class="form-check">
+                                {{-- Скрытое поле для гарантии передачи значения, даже если чекбокс не отмечен --}}
+                                <input type="hidden" name="active" value="0">
                                 <input class="form-check-input" type="checkbox" name="active" id="active" value="1" {{old('active', $staticPage->active) ? 'checked' : ''}}>
                                 <label class="form-check-label" for="active">
                                     Страница активна

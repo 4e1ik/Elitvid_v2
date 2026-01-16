@@ -21,14 +21,18 @@
                                 <h3>Заголовок (H1)</h3>
                                 <input type="text" class="form-control @error('title') danger @enderror" name="title" id="title" value="{{old('title')}}" placeholder="Например: Болларды и ограждения">
                                 @error('title')
-                                <div class="text-danger">{{$message}}</div>
+                                <div class="text-danger" style="margin-top: 5px;">
+                                    {{$message}}
+                                </div>
                                 @enderror
                             </div>
                             <div class="col-md-6 padding-0" style="padding-left: 15px;">
                                 <h3>Подзаголовок (описание заголовка)</h3>
                                 <textarea class="form-control @error('subtitle') danger @enderror" name="subtitle" rows="3" placeholder="Краткое описание страницы">{{old('subtitle')}}</textarea>
                                 @error('subtitle')
-                                <div class="text-danger">{{$message}}</div>
+                                <div class="text-danger" style="margin-top: 5px;">
+                                    {{$message}}
+                                </div>
                                 @enderror
                             </div>
                         </div>
@@ -53,7 +57,9 @@
                                 <span class="fa fa-info-circle"></span> Если оставить поле пустым, slug будет автоматически сгенерирован из заголовка.
                             </small>
                             @error('slug')
-                            <div class="text-danger">{{$message}}</div>
+                            <div class="text-danger" style="margin-top: 5px;">
+                                {{$message}}
+                            </div>
                             @enderror
                         </div>
                     </div>
@@ -67,6 +73,11 @@
                         <div class="panel-body">
                             <h3>Главный текст</h3>
                             <textarea class="form-control @error('content') danger @enderror" name="content" id="editor" rows="10" placeholder="Основное содержание страницы">{{old('content')}}</textarea>
+                            @error('content')
+                            <div class="text-danger" style="margin-top: 5px;">
+                                {{$message}}
+                            </div>
+                            @enderror
                             <script>
                                 tinymce.init({
                                     selector: '#editor',
@@ -74,9 +85,6 @@
                                     toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat',
                                 });
                             </script>
-                            @error('content')
-                            <div class="text-danger">{{$message}}</div>
-                            @enderror
                         </div>
                     </div>
                 </div>
@@ -109,7 +117,9 @@
                                     </div>
                                 </div>
                                 @error('main_image')
-                                <div class="text-danger">{{$message}}</div>
+                                <div class="text-danger" style="margin-top: 10px;">
+                                    {{$message}}
+                                </div>
                                 @enderror
                             </div>
                             <div class="col-md-6 padding-0" style="padding-left: 15px;">
@@ -137,11 +147,15 @@
                                     <h4>Название в меню</h4>
                                     <input type="text" class="form-control @error('menu_name') danger @enderror" name="menu_name" value="{{old('menu_name')}}" placeholder="Название, которое будет отображаться в меню">
                                     @error('menu_name')
-                                    <div class="text-danger">{{$message}}</div>
+                                    <div class="text-danger" style="margin-top: 5px;">
+                                        {{$message}}
+                                    </div>
                                     @enderror
                                 </div>
                                 @error('menu_image')
-                                <div class="text-danger">{{$message}}</div>
+                                <div class="text-danger" style="margin-top: 10px;">
+                                    {{$message}}
+                                </div>
                                 @enderror
                             </div>
                         </div>
@@ -168,6 +182,16 @@
                                 </label>
                                 <input style="display: none" id="gallery_images" type="file" name="gallery_images[]" multiple accept="image/*">
                             </div>
+                            @error('gallery_images')
+                            <div class="text-danger" style="margin-top: 10px;">
+                                {{$message}}
+                            </div>
+                            @enderror
+                            @error('gallery_images.*')
+                            <div class="text-danger" style="margin-top: 10px;">
+                                {{$message}}
+                            </div>
+                            @enderror
                             <div id="gallery-preview-container" class="col-md-12" style="margin-top: 20px; display: flex; flex-wrap: wrap; gap: 20px; min-height: 50px;"></div>
                         </div>
                     </div>
@@ -183,14 +207,18 @@
                                 <h3>Meta заголовок (для SEO)</h3>
                                 <input type="text" class="form-control @error('meta_title') danger @enderror" name="meta_title" value="{{old('meta_title')}}" placeholder="Meta заголовок для поисковых систем">
                                 @error('meta_title')
-                                <div class="text-danger">{{$message}}</div>
+                                <div class="text-danger" style="margin-top: 5px;">
+                                    {{$message}}
+                                </div>
                                 @enderror
                             </div>
                             <div class="col-md-6 padding-0" style="padding-left: 15px;">
                                 <h3>Meta описание (для SEO)</h3>
                                 <textarea class="form-control @error('meta_description') danger @enderror" name="meta_description" rows="3" placeholder="Meta описание для поисковых систем">{{old('meta_description')}}</textarea>
                                 @error('meta_description')
-                                <div class="text-danger">{{$message}}</div>
+                                <div class="text-danger" style="margin-top: 5px;">
+                                    {{$message}}
+                                </div>
                                 @enderror
                             </div>
                         </div>
@@ -204,6 +232,8 @@
                     <div class="panel">
                         <div class="panel-body">
                             <div class="form-check">
+                                {{-- Скрытое поле для гарантии передачи значения, даже если чекбокс не отмечен --}}
+                                <input type="hidden" name="active" value="0">
                                 <input class="form-check-input" type="checkbox" name="active" id="active" value="1" {{old('active', true) ? 'checked' : ''}}>
                                 <label class="form-check-label" for="active">
                                     Страница активна

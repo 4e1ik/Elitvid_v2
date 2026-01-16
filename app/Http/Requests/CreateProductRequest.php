@@ -25,7 +25,24 @@ class CreateProductRequest extends FormRequest
             'name' => 'required|filled|min:3|max:100',
             'product_type' => 'required|string|in:pot,bench',
             'material' => 'required|filled|min:3|max:100',
-            'data' => 'required|array|min:1',
+            'data' => [
+                'required',
+                'array',
+                'min:1',
+                function ($attribute, $value, $fail) {
+                    // Проверяем, что хотя бы один вариант заполнен (size, weight или price)
+                    $hasFilledVariant = false;
+                    foreach ($value as $index => $variant) {
+                        if (!empty($variant['size']) || !empty($variant['weight']) || !empty($variant['price'])) {
+                            $hasFilledVariant = true;
+                            break;
+                        }
+                    }
+                    if (!$hasFilledVariant) {
+                        $fail('Необходимо заполнить хотя бы одно поле (размер, вес или цена) хотя бы для одного варианта товара.');
+                    }
+                },
+            ],
             'data.*.size' => 'nullable|max:50',
             'data.*.weight' => 'nullable|max:50',
             'data.*.price' => 'nullable|max:50',

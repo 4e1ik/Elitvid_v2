@@ -116,12 +116,12 @@
                                                type="text"
                                                name="name"
                                                value="{{$errors->has('name') ? old('name') : $product->name}}">
+                                        @error('name')
+                                        <div class="text-danger" style="margin-top: 5px;">
+                                            {{$message}}
+                                        </div>
+                                        @enderror
                                     </div>
-                                    @error('name')
-                                    <div class="text-danger">
-                                        {{$message}}
-                                    </div>
-                                    @enderror
                                 </div>
                             </div>
                         </div>
@@ -143,21 +143,21 @@
                                         <input class="form-control {{$errors->has('meta_title') ? 'danger' : ''}}"
                                                type="text"
                                                name="meta_title" value="{{$errors->has('meta_title') ? old('meta_title') : $product->meta_title}}">
+                                        @error('meta_title')
+                                        <div class="text-danger" style="margin-top: 5px;">
+                                            {{$message}}
+                                        </div>
+                                        @enderror
                                     </div>
-                                    @error('meta_title')
-                                    <div class="text-danger">
-                                        {{$message}}
-                                    </div>
-                                    @enderror
                                 </div>
                                 <div class="col-md-8 padding-0">
                                     <div class="col-md-12">
                                         <div class="col-md-8 padding-0">
                                             <h3>Meta Description</h3>
-                                            <textarea name="meta_description" style="width: 100%;" rows="10" type="text"
+                                            <textarea name="meta_description" class="form-control {{$errors->has('meta_description') ? 'danger' : ''}}" style="width: 100%;" rows="10" type="text"
                                                       placeholder="Введите описание товара">{{$errors->has('meta_description') ? old('meta_description') : $product->meta_description}}</textarea>
                                             @error('meta_description')
-                                            <div class="text-danger">
+                                            <div class="text-danger" style="margin-top: 5px;">
                                                 {{$message}}
                                             </div>
                                             @enderror
@@ -188,7 +188,7 @@
                                         </div>
                                     </div>
                                     @error('active')
-                                    <div class="text-danger">
+                                    <div class="text-danger" style="margin-top: 5px;">
                                         {{$message}}
                                     </div>
                                     @enderror
