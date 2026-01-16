@@ -143,5 +143,5 @@
             </div>
         </form>
     </div>
-    <script src="{{asset('/elitvid_assets/newDesign/newDesign/js/create_' . $productType . '_product.js')}}"></script>
+    <script src="{{asset('/elitvid_assets/newDesign/newDesign/js/create_' . $productType . '_product.js')}}?v={{ time() }}"></script>
 @endsection

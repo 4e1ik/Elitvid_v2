@@ -11,9 +11,9 @@ use Intervention\Image\ImageManager;
 
 class ImageService
 {
-    public function save(array $images, Model $model, array $imageData = []): bool
+    public function save(array $images, Model $model, array $imageData = []): void
     {
-        return DB::transaction(function () use ($images, $model, $imageData) {
+        DB::transaction(function () use ($images, $model, $imageData) {
             if (!is_array($images)) {
                 $images = [$images];
                 $imageData = [$imageData];

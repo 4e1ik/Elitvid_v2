@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\DB;
 
 return new class extends Migration
 {
@@ -37,7 +38,8 @@ return new class extends Migration
                 $table->text('subtitle')->nullable()->after('title')->comment('Описание заголовка');
             }
             if (!Schema::hasColumn('static_pages', 'slug')) {
-                $table->string('slug', 100)->unique()->after('subtitle')->comment('Уникальный идентификатор страницы');
+                // Сначала добавляем slug без unique индекса
+                $table->string('slug', 100)->nullable()->after('subtitle')->comment('Уникальный идентификатор страницы');
             }
             if (!Schema::hasColumn('static_pages', 'content')) {
                 $table->text('content')->nullable()->after('slug')->comment('Главный текст страницы');
@@ -52,6 +54,30 @@ return new class extends Migration
                 $table->boolean('active')->default(true)->after('meta_description')->comment('Активна ли страница');
             }
         });
+        
+        // Заполняем пустые slug значения уникальными значениями
+        $pages = DB::table('static_pages')->whereNull('slug')->orWhere('slug', '')->get();
+        foreach ($pages as $page) {
+            $slug = 'page-' . $page->id;
+            // Проверяем уникальность
+            $counter = 1;
+            while (DB::table('static_pages')->where('slug', $slug)->where('id', '!=', $page->id)->exists()) {
+                $slug = 'page-' . $page->id . '-' . $counter;
+                $counter++;
+            }
+            DB::table('static_pages')->where('id', $page->id)->update(['slug' => $slug]);
+        }
+        
+        // Теперь делаем slug not null и добавляем unique индекс через прямой SQL
+        DB::statement('ALTER TABLE `static_pages` MODIFY `slug` VARCHAR(100) NOT NULL');
+        
+        // Проверяем, нет ли уже уникального индекса
+        $indexExists = DB::select("SHOW INDEXES FROM `static_pages` WHERE Key_name = 'static_pages_slug_unique'");
+        if (empty($indexExists)) {
+            Schema::table('static_pages', function (Blueprint $table) {
+                $table->unique('slug', 'static_pages_slug_unique');
+            });
+        }
         
         Schema::enableForeignKeyConstraints();
     }

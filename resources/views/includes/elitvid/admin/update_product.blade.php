@@ -19,7 +19,7 @@
                                             <img style="width: 100%; height: 200px; object-fit: cover; border-radius: 5px; border: 1px solid #ddd;"
                                                  src="{{asset('storage/'.str_replace('public/','',$image->image))}}" alt="">
                                         </div>
-                                        <form action="{{ route('images.update', ['image' => $image, 'product' => $product]) }}" method="post">
+                                        <form action="{{ route('images.update', ['image' => $image]) }}" method="post">
                                             @method('PUT')
                                             @csrf
                                             <div style="margin-bottom: 10px;">
@@ -64,7 +64,7 @@
                                                 </button>
                                             </div>
                                         </form>
-                                        <form action="{{ route('images.destroy', ['image' => $image, 'product' => $product]) }}" method="post">
+                                        <form action="{{ route('images.destroy', ['image' => $image]) }}" method="post">
                                             @method('DELETE')
                                             @csrf
                                             <button type="submit" class="btn btn-danger btn-sm" style="width: 100%;">

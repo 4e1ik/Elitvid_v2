@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Обработка загрузки изображений
     const imageFiles = [];
     let imageIndex = 0;
-    
+
     // Функция для создания превью изображения
     function createImagePreview(file, index) {
         return new Promise((resolve) => {
@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 previewDiv.className = 'image-preview-item';
                 previewDiv.style.cssText = 'width: 250px; margin-bottom: 20px; padding: 15px; border: 1px solid #ddd; border-radius: 5px; background: #fafafa;';
                 previewDiv.setAttribute('data-image-index', index);
-                
+
                 previewDiv.innerHTML = `
                     <div style="margin-bottom: 10px; position: relative;">
                         <img src="${event.target.result}" style="width: 100%; height: 200px; object-fit: cover; border-radius: 5px; border: 1px solid #ddd;" alt="Preview">
@@ -63,61 +63,101 @@ document.addEventListener('DOMContentLoaded', () => {
                         <span class="fa fa-trash"></span> Удалить
                     </button>
                 `;
-                
+
                 // Обработчик удаления изображения
                 previewDiv.querySelector('.remove-image').addEventListener('click', function() {
                     const indexToRemove = parseInt(previewDiv.getAttribute('data-image-index'));
+                    // Удаляем файл из массива
                     imageFiles.splice(indexToRemove, 1);
-                    previewDiv.remove();
-                    
                     // Пересоздаем все превью с правильными индексами
                     refreshImagePreviews();
                 });
-                
+
                 resolve(previewDiv);
             };
             reader.readAsDataURL(file);
         });
     }
-    
-    // Функция для обновления всех превью с правильными индексами
+
+    // Функция для обновления всех превью из массива imageFiles
     async function refreshImagePreviews() {
+        // Сохраняем данные из полей перед пересозданием
+        const savedData = [];
+        const previewItems = imagePreviewContainer.querySelectorAll('.image-preview-item');
+        
+        previewItems.forEach((item) => {
+            const index = parseInt(item.getAttribute('data-image-index'));
+            if (index >= 0 && index < imageFiles.length) {
+                savedData[index] = {
+                    description_image: item.querySelector('input[name*="description_image"]')?.value || '',
+                    color: item.querySelector('select[name*="color"]')?.value || '',
+                    texture: item.querySelector('select[name*="texture"]')?.value || ''
+                };
+            }
+        });
+        
+        // Очищаем контейнер
         imagePreviewContainer.innerHTML = '';
         imageIndex = 0;
-        
-        // Обновляем input file
+
+        // Обновляем input file через DataTransfer
         const dt = new DataTransfer();
         imageFiles.forEach(f => dt.items.add(f));
         imagesInput.files = dt.files;
-        
-        // Пересоздаем все превью
+
+        // Пересоздаем все превью из массива
         for (let i = 0; i < imageFiles.length; i++) {
             const previewDiv = await createImagePreview(imageFiles[i], i);
+            
+            // Восстанавливаем сохраненные данные
+            if (savedData[i]) {
+                const descInput = previewDiv.querySelector('input[name*="description_image"]');
+                const colorSelect = previewDiv.querySelector('select[name*="color"]');
+                const textureSelect = previewDiv.querySelector('select[name*="texture"]');
+                
+                if (descInput) descInput.value = savedData[i].description_image;
+                if (colorSelect) colorSelect.value = savedData[i].color;
+                if (textureSelect) textureSelect.value = savedData[i].texture;
+            }
+            
             imagePreviewContainer.appendChild(previewDiv);
             imageIndex++;
         }
     }
-    
+
     if (imagesInput && imagePreviewContainer) {
         imagesInput.addEventListener('change', async function(e) {
             const newFiles = Array.from(e.target.files);
             
-            // Очищаем старые данные
-            imageFiles.length = 0;
-            imageIndex = 0;
-            
-            // Добавляем все новые файлы
+            if (newFiles.length === 0) {
+                return;
+            }
+
+            // Добавляем новые файлы в массив (с проверкой на дубликаты по имени)
             newFiles.forEach((file) => {
                 if (file.type.startsWith('image/')) {
-                    imageFiles.push(file);
+                    // Проверяем, нет ли уже такого файла в массиве
+                    const fileExists = imageFiles.some(existingFile => 
+                        existingFile.name === file.name && 
+                        existingFile.size === file.size &&
+                        existingFile.lastModified === file.lastModified
+                    );
+                    
+                    if (!fileExists) {
+                        imageFiles.push(file);
+                    }
                 }
             });
-            
-            // Пересоздаем все превью с правильными индексами
+
+            // Очищаем контейнер и пересоздаем все превью из массива
+            // Это гарантирует, что все файлы будут отображены и данные сохранятся
             await refreshImagePreviews();
+
+            // Очищаем input, чтобы можно было добавить те же файлы снова
+            imagesInput.value = '';
         });
     }
-    
+
     if (panelBody) {
         panelBody.addEventListener('click', (e) => {
             // Обработка кнопки добавления

@@ -30,8 +30,6 @@ class StaticPageController extends Controller
     {
         $data = $request->all();
 
-        dd($data);
-
         $staticPage = $this->staticPageService->store($data);
 
         return redirect()->route('static_pages.index')

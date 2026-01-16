@@ -94,7 +94,7 @@
                                              src="{{asset('storage/' . str_replace('public/', '', $mainImage->image))}}" 
                                              alt="{{$mainImage->description_image}}">
                                         <p><small>Текущее изображение</small></p>
-                                        <form action="{{route('images.update', ['image' => $mainImage, 'product' => $staticPage])}}" method="post" style="margin-top: 10px;">
+                                        <form action="{{route('images.update', ['image' => $mainImage])}}" method="post" style="margin-top: 10px;">
                                             @method('PUT')
                                             @csrf
                                             <label>Описание главной картинки</label>
@@ -103,7 +103,7 @@
                                                 <span class="fa fa-save"></span> Сохранить описание
                                             </button>
                                         </form>
-                                        <form action="{{route('images.destroy', ['image' => $mainImage, 'product' => $staticPage])}}" method="post" style="display: inline-block; margin-top: 5px;">
+                                        <form action="{{route('images.destroy', ['image' => $mainImage])}}" method="post" style="display: inline-block; margin-top: 5px;">
                                             @method('DELETE')
                                             @csrf
                                             <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Удалить главное изображение?')">
@@ -148,7 +148,7 @@
                                              src="{{asset('storage/' . str_replace('public/', '', $menuImage->image))}}" 
                                              alt="{{$menuImage->description_image}}">
                                         <p><small>Текущее изображение</small></p>
-                                        <form action="{{route('images.update', ['image' => $menuImage, 'product' => $staticPage])}}" method="post" style="margin-top: 10px;">
+                                        <form action="{{route('images.update', ['image' => $menuImage])}}" method="post" style="margin-top: 10px;">
                                             @method('PUT')
                                             @csrf
                                             <label>Описание картинки меню</label>
@@ -157,7 +157,7 @@
                                                 <span class="fa fa-save"></span> Сохранить описание
                                             </button>
                                         </form>
-                                        <form action="{{route('images.destroy', ['image' => $menuImage, 'product' => $staticPage])}}" method="post" style="display: inline-block; margin-top: 5px;">
+                                        <form action="{{route('images.destroy', ['image' => $menuImage])}}" method="post" style="display: inline-block; margin-top: 5px;">
                                             @method('DELETE')
                                             @csrf
                                             <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Удалить изображение меню?')">
@@ -240,7 +240,7 @@
                                                         <img src="{{asset('storage/' . str_replace('public/', '', $image->image))}}" 
                                                              style="width: 100%; height: auto; border: 1px solid #ddd; border-radius: 5px;" 
                                                              alt="{{$image->description_image}}">
-                                                        <form action="{{route('images.update', ['image' => $image, 'product' => $staticPage])}}" method="post" style="margin-top: 10px;">
+                                                        <form action="{{route('images.update', ['image' => $image])}}" method="post" style="margin-top: 10px;">
                                                             @method('PUT')
                                                             @csrf
                                                             <input type="text" class="form-control" name="description_image" value="{{$image->description_image}}" placeholder="Описание изображения">
@@ -248,7 +248,7 @@
                                                                 <span class="fa fa-save"></span> Сохранить описание
                                                             </button>
                                                         </form>
-                                                        <form action="{{route('images.destroy', ['image' => $image, 'product' => $staticPage])}}" method="post" style="margin-top: 5px;">
+                                                        <form action="{{route('images.destroy', ['image' => $image])}}" method="post" style="margin-top: 5px;">
                                                             @method('DELETE')
                                                             @csrf
                                                             <button type="submit" class="btn btn-danger btn-sm" style="width: 100%;" onclick="return confirm('Удалить это изображение?')">
