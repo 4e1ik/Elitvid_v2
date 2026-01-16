@@ -16,6 +16,8 @@ class Image extends Model
         'description_image',
         'color',
         'texture',
+        'main_image',
+        'menu_image'
     ];
 
     public function imageable()

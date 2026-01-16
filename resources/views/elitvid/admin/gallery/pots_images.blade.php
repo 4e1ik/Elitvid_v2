@@ -10,11 +10,8 @@
                 </div>
                 <ul class="nav navbar-nav">
                     <a href="{{route('create', ['route' => 'gallery'])}}">
-                        <button class="btn ripple btn-outline btn-primary">
-                            <div>
-                                <span>Добавить картинки примеров работ</span>
-                                <span class="ink"></span>
-                            </div>
+                        <button class="btn btn-3d btn-sm btn-success">
+                            <span class="fa fa-plus"></span> Добавить картинки примеров работ
                         </button>
                     </a>
                 </ul>
@@ -25,17 +22,19 @@
                 <div class="panel">
                     <div class="panel-heading"><h3>Примеры работ кашпо</h3></div>
                     <div class="panel-body">
+                        <div style="margin-bottom: 20px;">
+                            <a href="{{route('create', ['route' => 'gallery'])}}" class="btn btn-3d btn-sm btn-success">
+                                <span class="fa fa-plus"></span> Добавить картинки примеров работ
+                            </a>
+                        </div>
                         <div class="responsive-table">
                             <table id="datatables-example" class="table table-striped table-bordered" width="100%"
                                    cellspacing="0">
                                 <thead>
                                 <tr>
                                     <th>Картинка</th>
-                                    <th>Описание</th>
-                                    <th>Время создания</th>
-                                    <th>Время редактирования</th>
                                     <th>Опубликован</th>
-                                    <th>Удалить</th>
+                                    <th style="text-align: center; width: 200px;">Действия</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -47,37 +46,32 @@
                                                 <img style="height: 200px" src="{{asset('storage/'.str_replace('public/','',$image->image))}}" alt="">
                                             </td>
                                             <td>
-                                                <form
-                                                    action="{{ route('galleries.update', ['gallery' =>  $item]) }}"
-                                                    method="post">
-                                                    @method('PUT')
-                                                    @csrf
-                                                    <input type="text" name="description_image"
-                                                           value="{{$image->description_image}}">
-                                                    <button type="submit" style="border: 0">
-                                                        <input type="button" class=" btn btn-3d btn-primary"
-                                                               value="Сохранить описание">
-                                                    </button>
-                                                </form>
-                                            </td>
-                                            <td>{{$item->created_at}}</td>
-                                            <td>{{$item->updated_at}}</td>
-                                            <td>
                                                 @if($item->active == 1)
-                                                    Да
+                                                    <span class="label label-success">Да</span>
                                                 @else
-                                                    Нет
+                                                    <span class="label label-default">Нет</span>
                                                 @endif
                                             </td>
-                                            <td>
+                                            <td style="text-align: center; white-space: nowrap;">
+                                                <form
+                                                    action="{{ route('galleries.update', ['gallery' =>  $item]) }}"
+                                                    method="post" style="display: inline-block; margin-right: 5px;">
+                                                    @method('PUT')
+                                                    @csrf
+                                                    <input type="text" name="description_image" class="form-control" style="display: inline-block; width: auto; margin-right: 5px;"
+                                                           value="{{$image->description_image}}" placeholder="Описание">
+                                                    <button type="submit" class="btn btn-3d btn-sm btn-primary" title="Сохранить описание">
+                                                        <span class="fa fa-save"></span>
+                                                    </button>
+                                                </form>
                                                 <form
                                                     action="{{ route('galleries.destroy', ['gallery' => $item]) }}"
-                                                    method="post">
+                                                    method="post" style="display: inline-block; margin: 0; vertical-align: top;"
+                                                    onsubmit="return confirm('Вы уверены, что хотите удалить это изображение?');">
                                                     @method('DELETE')
                                                     @csrf
-                                                    <button type="submit" style="border: 0">
-                                                        <input type="button" class="btn btn-3d btn-danger"
-                                                               value="Удалить">
+                                                    <button type="submit" class="btn btn-3d btn-sm btn-danger" title="Удалить">
+                                                        <span class="fa fa-trash"></span>
                                                     </button>
                                                 </form>
                                             </td>

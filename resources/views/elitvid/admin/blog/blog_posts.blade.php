@@ -11,11 +11,8 @@
                 <ul class="nav navbar-nav">
                     {{--                    {{$route_name = \Illuminate\Support\Facades\Route::currentRouteName()}}--}}
                     <a href="{{route('blogs.create')}}">
-                        <button class="btn ripple btn-outline btn-primary">
-                            <div>
-                                <span>Создать пост</span>
-                                <span class="ink"></span>
-                            </div>
+                        <button class="btn btn-3d btn-sm btn-success">
+                            <span class="fa fa-plus"></span> Создать пост
                         </button>
                     </a>
                 </ul>
@@ -26,6 +23,11 @@
                 <div class="panel">
                     <div class="panel-heading"><h3>Посты</h3></div>
                     <div class="panel-body">
+                        <div style="margin-bottom: 20px;">
+                            <a href="{{route('blogs.create')}}" class="btn btn-3d btn-sm btn-success">
+                                <span class="fa fa-plus"></span> Создать пост
+                            </a>
+                        </div>
                         <div class="responsive-table">
                             <table id="datatables-example" class="table table-striped table-bordered" width="100%"
                                    cellspacing="0">
@@ -36,8 +38,7 @@
                                     <th>Мета-тег</th>
                                     <th>Мета-описание</th>
                                     <th>Опубликован</th>
-                                    <th>Редактировать</th>
-                                    <th>Удалить</th>
+                                    <th style="text-align: center; width: 120px;">Действия</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -55,19 +56,23 @@
                                                     Нет
                                                 @endif
                                             </td>
-                                            <td>
-                                                <a href="{{ route('blogs.edit', ['blog' => $blog_post]) }}">
-                                                    <input type="button" class=" btn btn-3d btn-primary"
-                                                           value="Редактировать">
+                                            <td style="text-align: center; white-space: nowrap;">
+                                                <a href="{{ route('blogs.edit', ['blog' => $blog_post]) }}" 
+                                                   class="btn btn-3d btn-sm btn-primary" 
+                                                   title="Редактировать"
+                                                   style="margin-right: 5px;">
+                                                    <span class="fa fa-pencil"></span>
                                                 </a>
-                                            </td>
-                                            <td>
                                                 <form action="{{ route('blogs.destroy', ['blog' => $blog_post]) }}"
-                                                      method="post">
+                                                      method="post" 
+                                                      style="display: inline-block; margin: 0; vertical-align: top;"
+                                                      onsubmit="return confirm('Вы уверены, что хотите удалить этот пост?');">
                                                     @method('DELETE')
                                                     @csrf
-                                                    <button type="submit" style="border: 0">
-                                                        <input type="button" class="btn btn-3d btn-danger" value="Удалить">
+                                                    <button type="submit" 
+                                                            class="btn btn-3d btn-sm btn-danger" 
+                                                            title="Удалить">
+                                                        <span class="fa fa-trash"></span>
                                                     </button>
                                                 </form>
                                             </td>

@@ -10,11 +10,8 @@
                 </div>
                 <ul class="nav navbar-nav">
                     <a href="{{route('create', ['route' => 'benches'])}}">
-                        <button class="btn ripple btn-outline btn-primary">
-                            <div>
-                                <span>Добавить товар</span>
-                                <span class="ink"></span>
-                            </div>
+                        <button class="btn btn-3d btn-sm btn-success">
+                            <span class="fa fa-plus"></span> Добавить товар
                         </button>
                     </a>
                 </ul>
@@ -86,7 +83,7 @@
                                             </td>
                                             <td style="text-align: center; white-space: nowrap;">
                                                 <a href="{{ route('products.edit', ['product' => $product]) }}" 
-                                                   class="btn btn-sm btn-primary" 
+                                                   class="btn btn-3d btn-sm btn-primary" 
                                                    title="Редактировать"
                                                    style="margin-right: 5px;">
                                                     <span class="fa fa-pencil"></span>
@@ -98,7 +95,7 @@
                                                     @method('DELETE')
                                                     @csrf
                                                     <button type="submit" 
-                                                            class="btn btn-sm btn-danger" 
+                                                            class="btn btn-3d btn-sm btn-danger" 
                                                             title="Удалить">
                                                         <span class="fa fa-trash"></span>
                                                     </button>

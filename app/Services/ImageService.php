@@ -57,6 +57,8 @@ class ImageService
                     'description_image' => $imageDataForFile['description_image'] ?? null,
                     'color' => $imageDataForFile['color'] ?? null,
                     'texture' => $imageDataForFile['texture'] ?? null,
+                    'main_image' => $imageDataForFile['main_image'] ?? false,
+                    'menu_image' => $imageDataForFile['menu_image'] ?? false,
                 ]);
             }
         });
