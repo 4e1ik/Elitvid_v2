@@ -31,7 +31,7 @@
             </div>
         </section>
         @if($category)
-            <section class="description">
+            <section class="description description-products">
                 <div class="text">
                     {!! $category !!}
                 </div>

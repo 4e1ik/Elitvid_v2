@@ -6,6 +6,7 @@ use App\Models\Category;
 use App\Models\Gallery;
 use App\Models\MetaTag;
 use App\Models\PotProduct;
+use App\Models\Product;
 use App\Models\StaticImages;
 
 class PotController
@@ -60,8 +61,20 @@ class PotController
     }
 
     function round_pots() {
-        $pots = PotProduct::query()->whereIn('active', [1])->with(['pot_images'])->latest()->get();
-        $round_pots = $pots->where('collection', 'Round');
+//        $pots = PotProduct::query()->whereIn('active', [1])->with(['pot_images'])->latest()->get();
+//        $round_pots = $pots->where('collection', 'Round');
+
+
+        $products = Product::whereIn('active', [1])
+            ->whereHas('pot', function ($query) {
+                $query->where('collection', 'Round');
+            })
+            ->with(['images', 'pot'])
+            ->latest()
+            ->get();
+
+        dd(1);
+
         $metaTags = MetaTag::where('page', 'round_pots')->get();
         $metaTitle = $metaTags->isNotEmpty() ? $metaTags[0]->title : 'Круглые кашпо';
         $metaDescription = $metaTags->isNotEmpty() ? $metaTags[0]->description : 'Описание круглых кашпо';

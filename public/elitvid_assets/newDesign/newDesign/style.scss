@@ -745,8 +745,12 @@ main {
         }
     }
 
+    .description-products{
+        margin-top: 5em;
+    }
+
     .breadcrumbs {
-        padding: 2.25em 0 0em 0;
+        padding: 2.25em 0 0 0;
 
         .breadcrumbs__links {
             display: flex;
@@ -763,6 +767,7 @@ main {
     .main {
         padding-top: 7.5em;
         position: relative;
+        min-height: 41.53em;
 
         .description-text {
             display: flex;
@@ -1745,7 +1750,6 @@ main {
         align-items: flex-start;
     }
 
-
 }
 
 footer {
@@ -2117,7 +2121,7 @@ footer {
                 font-size: 1em;
             }
         }
-        
+
         .contacts-text,
         .catalog-text {
             h4,
@@ -2126,7 +2130,7 @@ footer {
                 font-family: 'Montserrat-SemiBold';
             }
         }
-        
+
         .heading-5 {
             text-decoration: none;
             cursor: pointer;
@@ -2134,7 +2138,7 @@ footer {
             margin: 0;
             font-weight: normal;
             font-size: 1em;
-            
+
             a {
                 text-decoration: none;
                 color: inherit;

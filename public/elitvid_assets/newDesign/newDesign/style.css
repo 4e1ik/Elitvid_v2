@@ -568,8 +568,11 @@ main section {
 main section h1 {
   font-weight: 300;
 }
+main .description-products {
+  margin-top: 5em;
+}
 main .breadcrumbs {
-  padding: 2.25em 0 0em 0;
+  padding: 2.25em 0 0 0;
 }
 main .breadcrumbs .breadcrumbs__links {
   display: flex;
@@ -583,6 +586,7 @@ main .breadcrumbs a {
 main .main {
   padding-top: 7.5em;
   position: relative;
+  min-height: 41.53em;
 }
 main .main .description-text {
   display: flex;
@@ -1302,16 +1306,16 @@ main .description .text ul {
 main .description .text ul li {
   list-style-type: initial;
 }
-main .blog {
-  flex-direction: column;
-  align-items: flex-start;
-}
 main .blog li, main .blog ul {
   list-style-type: initial;
 }
 main .blog ul {
   padding-left: 40px;
   margin: 15px 0;
+}
+main .blog {
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 footer {
