@@ -67,10 +67,27 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Обработчик удаления изображения
                 previewDiv.querySelector('.remove-image').addEventListener('click', function() {
                     const indexToRemove = parseInt(previewDiv.getAttribute('data-image-index'));
+                    // Сохраняем данные ВСЕХ превью перед удалением
+                    const savedData = new Map();
+                    const previewItems = imagePreviewContainer.querySelectorAll('.image-preview-item');
+                    previewItems.forEach((item) => {
+                        const itemIndex = parseInt(item.getAttribute('data-image-index'));
+                        if (itemIndex >= 0 && itemIndex < imageFiles.length) {
+                            const file = imageFiles[itemIndex];
+                            const fileKey = getFileKey(file);
+                            savedData.set(fileKey, {
+                                description_image: item.querySelector('input[name*="description_image"]')?.value || '',
+                                color: item.querySelector('select[name*="color"]')?.value || '',
+                                texture: item.querySelector('select[name*="texture"]')?.value || ''
+                            });
+                        }
+                    });
+                    
                     // Удаляем файл из массива
                     imageFiles.splice(indexToRemove, 1);
-                    // Пересоздаем все превью с правильными индексами
-                    refreshImagePreviews();
+                    
+                    // Пересоздаем все превью с правильными индексами и восстанавливаем данные
+                    refreshImagePreviewsWithData(savedData);
                 });
 
                 resolve(previewDiv);
@@ -79,22 +96,31 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // Функция для получения уникального ключа файла
+    function getFileKey(file) {
+        return `${file.name}_${file.size}_${file.lastModified}`;
+    }
+
     // Функция для обновления всех превью из массива imageFiles
-    async function refreshImagePreviews() {
-        // Сохраняем данные из полей перед пересозданием
-        const savedData = [];
-        const previewItems = imagePreviewContainer.querySelectorAll('.image-preview-item');
-        
-        previewItems.forEach((item) => {
-            const index = parseInt(item.getAttribute('data-image-index'));
-            if (index >= 0 && index < imageFiles.length) {
-                savedData[index] = {
-                    description_image: item.querySelector('input[name*="description_image"]')?.value || '',
-                    color: item.querySelector('select[name*="color"]')?.value || '',
-                    texture: item.querySelector('select[name*="texture"]')?.value || ''
-                };
-            }
-        });
+    async function refreshImagePreviews(savedDataMap = null) {
+        // Если данные не переданы, сохраняем их из текущих превью
+        if (!savedDataMap) {
+            savedDataMap = new Map();
+            const previewItems = imagePreviewContainer.querySelectorAll('.image-preview-item');
+            
+            previewItems.forEach((item) => {
+                const index = parseInt(item.getAttribute('data-image-index'));
+                if (index >= 0 && index < imageFiles.length) {
+                    const file = imageFiles[index];
+                    const fileKey = getFileKey(file);
+                    savedDataMap.set(fileKey, {
+                        description_image: item.querySelector('input[name*="description_image"]')?.value || '',
+                        color: item.querySelector('select[name*="color"]')?.value || '',
+                        texture: item.querySelector('select[name*="texture"]')?.value || ''
+                    });
+                }
+            });
+        }
         
         // Очищаем контейнер
         imagePreviewContainer.innerHTML = '';
@@ -107,22 +133,30 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Пересоздаем все превью из массива
         for (let i = 0; i < imageFiles.length; i++) {
-            const previewDiv = await createImagePreview(imageFiles[i], i);
+            const file = imageFiles[i];
+            const fileKey = getFileKey(file);
+            const previewDiv = await createImagePreview(file, i);
             
-            // Восстанавливаем сохраненные данные
-            if (savedData[i]) {
+            // Восстанавливаем сохраненные данные по уникальному ключу файла
+            if (savedDataMap.has(fileKey)) {
+                const data = savedDataMap.get(fileKey);
                 const descInput = previewDiv.querySelector('input[name*="description_image"]');
                 const colorSelect = previewDiv.querySelector('select[name*="color"]');
                 const textureSelect = previewDiv.querySelector('select[name*="texture"]');
                 
-                if (descInput) descInput.value = savedData[i].description_image;
-                if (colorSelect) colorSelect.value = savedData[i].color;
-                if (textureSelect) textureSelect.value = savedData[i].texture;
+                if (descInput) descInput.value = data.description_image;
+                if (colorSelect) colorSelect.value = data.color;
+                if (textureSelect) textureSelect.value = data.texture;
             }
             
             imagePreviewContainer.appendChild(previewDiv);
             imageIndex++;
         }
+    }
+
+    // Функция для обновления превью с переданными данными (используется при удалении)
+    async function refreshImagePreviewsWithData(savedDataMap) {
+        await refreshImagePreviews(savedDataMap);
     }
 
     if (imagesInput && imagePreviewContainer) {

@@ -27,7 +27,7 @@ class ImageController extends Controller
 
         // Получаем связанную модель через полиморфную связь
         $model = $image->imageable;
-        
+
         if ($model instanceof Product) {
             return redirect(route('products.edit', ['product' => $model]))
                 ->with('success', 'Изображение успешно обновлено');
@@ -44,12 +44,11 @@ class ImageController extends Controller
     {
         // Получаем связанную модель через полиморфную связь перед удалением
         $model = $image->imageable;
-        
+
         $this->imageService->delete(image: $image);
 
         if ($model instanceof Product) {
-            $route = $this->productRouteCreatingHelper->route($model);
-            return redirect($route ?? route('products.edit', ['product' => $model]))
+            return redirect(route('products.edit', ['product' => $model]))
                 ->with('success', 'Изображение успешно удалено');
         } elseif ($model instanceof StaticPage) {
             return redirect(route('static_pages.edit', ['static_page' => $model]))

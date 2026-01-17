@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Models\Product;
 use Illuminate\Foundation\Http\FormRequest;
 
 class UpdateProductRequest extends FormRequest
@@ -33,8 +34,61 @@ class UpdateProductRequest extends FormRequest
             'active' => 'nullable|boolean',
             'meta_title' => 'nullable|string|max:255',
             'meta_description' => 'nullable|string|max:5000',
+            'image' => [
+                'nullable',
+                'array',
+                function ($attribute, $value, $fail) {
+                    $product = $this->route('product');
+                    $productType = $this->input('product_type') ?? ($product ? $product->product_type : null);
+                    
+                    if (!$productType) {
+                        return;
+                    }
+
+                    $newImagesCount = is_array($value) ? count(array_filter($value)) : 0;
+                    
+                    if ($productType === 'bench' && $newImagesCount > 1) {
+                        $fail('Для скамейки можно загрузить только одно изображение.');
+                    }
+                },
+            ],
             'image.*' => 'nullable|image|mimes:jpeg,jpg,png,webp|max:10240',
         ];
+    }
+
+    /**
+     * Настройка валидатора для проверки количества изображений
+     */
+    public function withValidator($validator)
+    {
+        $validator->after(function ($validator) {
+            $product = $this->route('product');
+            $productType = $this->input('product_type') ?? ($product ? $product->product_type : null);
+            
+            if (!$productType || !$product) {
+                return;
+            }
+
+            $newImagesCount = $this->hasFile('image') && is_array($this->file('image')) 
+                ? count(array_filter($this->file('image'))) 
+                : 0;
+            $existingImagesCount = $product->images()->count();
+            $totalImagesCount = $existingImagesCount + $newImagesCount;
+
+            if ($productType === 'bench') {
+                // Для скамеек - должно быть ровно одно изображение
+                if ($totalImagesCount === 0) {
+                    $validator->errors()->add('image', 'Для скамейки необходимо загрузить одно изображение.');
+                } elseif ($totalImagesCount > 1) {
+                    $validator->errors()->add('image', 'Для скамейки должно быть только одно изображение. Удалите существующие изображения перед загрузкой нового.');
+                }
+            } elseif ($productType === 'pot') {
+                // Для кашпо - должно быть хотя бы одно изображение
+                if ($totalImagesCount === 0) {
+                    $validator->errors()->add('image', 'Для кашпо необходимо загрузить хотя бы одно изображение.');
+                }
+            }
+        });
     }
 
     /**

@@ -50,7 +50,26 @@ class CreateProductRequest extends FormRequest
             'active' => 'nullable|boolean',
             'meta_title' => 'nullable|string|max:255',
             'meta_description' => 'nullable|string|max:5000',
-            'image' => 'required',
+            'image' => [
+                'required',
+                'array',
+                function ($attribute, $value, $fail) {
+                    $productType = $this->input('product_type');
+                    $imageCount = is_array($value) ? count(array_filter($value)) : 0;
+                    
+                    if ($productType === 'bench') {
+                        // Для скамеек - ровно одна картинка
+                        if ($imageCount !== 1) {
+                            $fail('Для скамейки необходимо загрузить ровно одно изображение.');
+                        }
+                    } elseif ($productType === 'pot') {
+                        // Для кашпо - хотя бы одна картинка
+                        if ($imageCount < 1) {
+                            $fail('Для кашпо необходимо загрузить хотя бы одно изображение.');
+                        }
+                    }
+                },
+            ],
             'image.*' => 'required|image|mimes:jpeg,jpg,png,webp|max:10240',
         ];
     }
@@ -82,8 +101,8 @@ class CreateProductRequest extends FormRequest
             'active.boolean' => 'Поле "Активность" должно быть логическим значением.',
             'meta_title.max' => 'Meta Title не должен превышать :max символов.',
             'meta_description.max' => 'Meta Description не должен превышать :max символов.',
-            'image.required' => 'Необходимо загрузить хотя бы одно изображение.',
-            'image.*.required' => 'Необходимо загрузить хотя бы одно изображение.',
+            'image.required' => 'Необходимо загрузить изображение.',
+            'image.*.required' => 'Необходимо загрузить изображение.',
             'image.*.image' => 'Загруженный файл должен быть изображением.',
             'image.*.mimes' => 'Изображение должно быть в формате: jpeg, jpg, png или webp.',
             'image.*.max' => 'Размер изображения не должен превышать 10 МБ.',

@@ -98,6 +98,16 @@
                                 <input style="display: none" id="images" type="file" name="image[]"
                                        @if($productType === 'pot') multiple="multiple" @endif accept="image/*">
                             </div>
+                            @error('image')
+                            <div class="text-danger" style="margin-top: 10px; margin-bottom: 10px;">
+                                {{$message}}
+                            </div>
+                            @enderror
+                            @error('image.*')
+                            <div class="text-danger" style="margin-top: 10px; margin-bottom: 10px;">
+                                {{$message}}
+                            </div>
+                            @enderror
                             <div id="image-preview-container" class="col-md-12" style="margin-top: 20px; display: flex; flex-wrap: wrap; gap: 20px; min-height: 50px;"></div>
                         </div>
                     </div>
