@@ -51,7 +51,7 @@ class ProductController
         $route = $this->productRouteCreatingHelper->route($product);
 
         return redirect($route ?? route('products.edit', ['product' => $product]));
-    }
+        }
 
     public function destroy(Product $product)
     {

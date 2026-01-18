@@ -36,9 +36,9 @@
         <section class="not_main_page produce">
             <h2>Выберите форму</h2>
             <div class="not_main_page directions">
-                @foreach($verona_benches as $product)
+                @foreach($products as $product)
                     <div class="direction">
-                        <img src="{{asset('storage/'.str_replace('public/','',$product->bench_images[0]->image))}}" alt="{{$product->bench_images[0]->description_image}}">
+                        <img src="{{asset('storage/'.str_replace('public/','',$product->images->first()->image))}}" alt="{{$product->images->first()->description_image}}">
                         <a href="{{route('show_bench_product', ['collection' => 'verona_benches', 'id' => $product->id])}}">
                             <button>{{$product->name}}</button>
                         </a>

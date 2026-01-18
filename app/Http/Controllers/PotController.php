@@ -29,8 +29,17 @@ class PotController
     }
 
     function rectangular_pots() {
-        $pots = PotProduct::query()->whereIn('active', [1])->with(['pot_images'])->latest()->get();
-        $rectangular_pots = $pots->where('collection', 'Rectangular');
+//        $pots = PotProduct::query()->whereIn('active', [1])->with(['pot_images'])->latest()->get();
+//        $rectangular_pots = $pots->where('collection', 'Rectangular');
+
+        $products = Product::whereIn('active', [1])
+            ->whereHas('pot', function ($query) {
+                $query->where('collection', 'Rectangular');
+            })
+            ->with(['images', 'pot'])
+            ->latest()
+            ->get();
+
         $metaTags = MetaTag::where('page', 'rectangular_pots')->get();
         $metaTitle = $metaTags->isNotEmpty() ? $metaTags[0]->title : 'Прямоугольные кашпо';
         $metaDescription = $metaTags->isNotEmpty() ? $metaTags[0]->description : 'Описание прямоугольных кашпо';
@@ -41,12 +50,21 @@ class PotController
         foreach ($static_images as $static_image) {
             $static_images_arr[$static_image->image] = $static_image->description_image;
         }
-        return view('elitvid.site.pots.rectangular_pots', compact('rectangular_pots', 'metaTitle', 'metaDescription', 'category', 'static_images_arr'));
+        return view('elitvid.site.pots.rectangular_pots', compact('products', 'metaTitle', 'metaDescription', 'category', 'static_images_arr'));
     }
 
     function square_pots() {
-        $pots = PotProduct::whereIn('active', [1])->latest()->get();
-        $square_pots = $pots->where('collection', 'Square');
+//        $pots = PotProduct::whereIn('active', [1])->latest()->get();
+//        $square_pots = $pots->where('collection', 'Square');
+
+        $products = Product::whereIn('active', [1])
+            ->whereHas('pot', function ($query) {
+                $query->where('collection', 'Square');
+            })
+            ->with(['images', 'pot'])
+            ->latest()
+            ->get();
+
         $metaTags = MetaTag::where('page', 'square_pots')->get();
         $metaTitle = $metaTags->isNotEmpty() ? $metaTags[0]->title : 'Квадратные кашпо';
         $metaDescription = $metaTags->isNotEmpty() ? $metaTags[0]->description : 'Описание квадратных кашпо';
@@ -57,7 +75,7 @@ class PotController
         foreach ($static_images as $static_image) {
             $static_images_arr[$static_image->image] = $static_image->description_image;
         }
-        return view('elitvid.site.pots.square_pots', compact('square_pots', 'metaTitle', 'metaDescription', 'category', 'static_images_arr'));
+        return view('elitvid.site.pots.square_pots', compact('products', 'metaTitle', 'metaDescription', 'category', 'static_images_arr'));
     }
 
     function round_pots() {
@@ -73,8 +91,6 @@ class PotController
             ->latest()
             ->get();
 
-        dd(1);
-
         $metaTags = MetaTag::where('page', 'round_pots')->get();
         $metaTitle = $metaTags->isNotEmpty() ? $metaTags[0]->title : 'Круглые кашпо';
         $metaDescription = $metaTags->isNotEmpty() ? $metaTags[0]->description : 'Описание круглых кашпо';
@@ -85,50 +101,21 @@ class PotController
         foreach ($static_images as $static_image) {
             $static_images_arr[$static_image->image] = $static_image->description_image;
         }
-        return view('elitvid.site.pots.round_pots', compact('round_pots', 'metaTitle', 'metaDescription', 'category', 'static_images_arr'));
+        return view('elitvid.site.pots.round_pots', compact('products', 'metaTitle', 'metaDescription', 'category', 'static_images_arr'));
     }
 
     function show_pot_product($collection, $id){
-        $products = PotProduct::query()->with('pot_images')->where('id', $id)->latest()->get();
-        $rand_products = PotProduct::query()->with('pot_images')->where('active', '1')->inRandomOrder()->get();
-        $i = 1;
-        $j = 1;
-
-        $rows = [];
-        $arr_size = ['','','','',''];
-        $arr_weight = ['','','','',''];
-        $arr_price = ['','','','',''];
-        foreach ($products as $product) {
-            $p_size = explode("|", $product->size);
-            $p_weight = explode("|", $product->weight);
-            $p_price = explode("|", $product->price);
-
-            for($i=0;$i<5;$i++){
-                if(empty($p_size[$i])) {
-                    $arr_size[$i] = '';
-                }  else {
-                    $arr_size[$i] = $p_size[$i];
-                }
-
-                if(empty($p_weight[$i])){
-                    $arr_weight[$i] = '';
-                }  else {
-                    $arr_weight[$i] = $p_weight[$i];
-                }
-
-                if(empty($p_price[$i])){
-                    $arr_price[$i] = '';
-                }  else {
-                    $arr_price[$i] = $p_price[$i];
-                }
-                $rows[$i] = (empty($product->size) ? '' : $arr_size[$i]).'|'.(empty($product->weight) ? '' : $arr_weight[$i]).'|'.(empty($product->price) ? '' : $arr_price[$i]);
-            }
-        }
-
-        $count = count($rows);
-
-        $metaTitle = $products->first()?->meta_title ?? 'Товар';
-        $metaDescription = $products->first()?->meta_description ?? 'Описание товара';
+//        dd($collection);
+        $product = Product::whereId($id)->with(['images', 'pot'])->first();
+        $rand_products = Product::whereIn('active', [1])
+            ->whereHas('pot', function ($query) use ($product) {
+                $query->where('collection', $product->pot->collection);
+            })
+            ->with(['images'])
+            ->inRandomOrder()
+            ->get();
+        $metaTitle = $product?->meta_title ?? 'Товар';
+        $metaDescription = $product?->meta_description ?? 'Описание товара';
         $static_images = StaticImages::where('page', 'pot_product_page')->get();
         $static_images_arr = [];
         $canonicalUrl = route('show_pot_product', ['collection' => $collection,'id' => $id]);
@@ -136,11 +123,7 @@ class PotController
             $static_images_arr[$static_image->image] = $static_image->description_image;
         }
         return view('elitvid.site.pots.pot_product_page',
-            compact('products',
-                'i',
-                'j',
-                'rows',
-                'count',
+            compact('product',
                 'rand_products',
                 'metaTitle',
                 'metaDescription',

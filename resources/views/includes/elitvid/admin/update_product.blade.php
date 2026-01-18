@@ -126,11 +126,11 @@
                                                type="text"
                                                name="name"
                                                value="{{$errors->has('name') ? old('name') : $product->name}}">
-                                        @error('name')
+                                    @error('name')
                                         <div class="text-danger" style="margin-top: 5px;">
-                                            {{$message}}
-                                        </div>
-                                        @enderror
+                                        {{$message}}
+                                    </div>
+                                    @enderror
                                     </div>
                                 </div>
                             </div>
@@ -153,11 +153,11 @@
                                         <input class="form-control {{$errors->has('meta_title') ? 'danger' : ''}}"
                                                type="text"
                                                name="meta_title" value="{{$errors->has('meta_title') ? old('meta_title') : $product->meta_title}}">
-                                        @error('meta_title')
+                                    @error('meta_title')
                                         <div class="text-danger" style="margin-top: 5px;">
-                                            {{$message}}
-                                        </div>
-                                        @enderror
+                                        {{$message}}
+                                    </div>
+                                    @enderror
                                     </div>
                                 </div>
                                 <div class="col-md-8 padding-0">

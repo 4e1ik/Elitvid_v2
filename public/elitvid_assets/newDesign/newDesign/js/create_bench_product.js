@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const addVariantContainer = document.getElementById('add-variant-container');
     const variantIndexData = document.getElementById('variants-tbody');
     let variantIndex = variantIndexData ? variantIndexData.querySelectorAll('.variant-row').length : 1;
-
+    
     const tbody = document.getElementById('variants-tbody');
     const imagesInput = document.getElementById('images');
     const imagePreviewContainer = document.getElementById('image-preview-container');
@@ -11,33 +11,33 @@ document.addEventListener('DOMContentLoaded', () => {
     // Обработка загрузки изображений
     const imageFiles = [];
     let imageIndex = 0;
-    
+
     // Функция для создания превью изображения
     function createImagePreview(file, index) {
         return new Promise((resolve) => {
-            const reader = new FileReader();
-            reader.onload = function(event) {
-                const previewDiv = document.createElement('div');
-                previewDiv.className = 'image-preview-item';
-                previewDiv.style.cssText = 'width: 250px; margin-bottom: 20px; padding: 15px; border: 1px solid #ddd; border-radius: 5px; background: #fafafa;';
+                    const reader = new FileReader();
+                    reader.onload = function(event) {
+                        const previewDiv = document.createElement('div');
+                        previewDiv.className = 'image-preview-item';
+                        previewDiv.style.cssText = 'width: 250px; margin-bottom: 20px; padding: 15px; border: 1px solid #ddd; border-radius: 5px; background: #fafafa;';
                 previewDiv.setAttribute('data-image-index', index);
-                
-                previewDiv.innerHTML = `
-                    <div style="margin-bottom: 10px; position: relative;">
-                        <img src="${event.target.result}" style="width: 100%; height: 200px; object-fit: cover; border-radius: 5px; border: 1px solid #ddd;" alt="Preview">
-                    </div>
-                    <div style="margin-bottom: 10px;">
-                        <label style="font-size: 13px; font-weight: 500; display: block; margin-bottom: 5px;">Описание</label>
+                        
+                        previewDiv.innerHTML = `
+                            <div style="margin-bottom: 10px; position: relative;">
+                                <img src="${event.target.result}" style="width: 100%; height: 200px; object-fit: cover; border-radius: 5px; border: 1px solid #ddd;" alt="Preview">
+                            </div>
+                            <div style="margin-bottom: 10px;">
+                                <label style="font-size: 13px; font-weight: 500; display: block; margin-bottom: 5px;">Описание</label>
                         <input type="text" class="form-control" name="image_data[${index}][description_image]" placeholder="Описание изображения">
-                    </div>
-                    <button type="button" class="btn btn-danger btn-sm remove-image" style="width: 100%;">
-                        <span class="fa fa-trash"></span> Удалить
-                    </button>
-                `;
-                
-                // Обработчик удаления изображения
-                previewDiv.querySelector('.remove-image').addEventListener('click', function() {
-                    const indexToRemove = parseInt(previewDiv.getAttribute('data-image-index'));
+                            </div>
+                            <button type="button" class="btn btn-danger btn-sm remove-image" style="width: 100%;">
+                                <span class="fa fa-trash"></span> Удалить
+                            </button>
+                        `;
+                        
+                        // Обработчик удаления изображения
+                        previewDiv.querySelector('.remove-image').addEventListener('click', function() {
+                            const indexToRemove = parseInt(previewDiv.getAttribute('data-image-index'));
                     // Сохраняем данные ВСЕХ превью перед удалением
                     const savedData = new Map();
                     const previewItems = imagePreviewContainer.querySelectorAll('.image-preview-item');
@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     });
                     
                     // Удаляем файл из массива
-                    imageFiles.splice(indexToRemove, 1);
+                            imageFiles.splice(indexToRemove, 1);
                     
                     // Пересоздаем все превью с правильными индексами и восстанавливаем данные
                     refreshImagePreviewsWithData(savedData);
@@ -84,18 +84,18 @@ document.addEventListener('DOMContentLoaded', () => {
                     savedDataMap.set(fileKey, {
                         description_image: item.querySelector('input[name*="description_image"]')?.value || ''
                     });
-                }
-            });
+                                    }
+                                });
         }
         
         // Очищаем контейнер
         imagePreviewContainer.innerHTML = '';
         imageIndex = 0;
-        
+                            
         // Обновляем input file через DataTransfer
-        const dt = new DataTransfer();
-        imageFiles.forEach(f => dt.items.add(f));
-        imagesInput.files = dt.files;
+                            const dt = new DataTransfer();
+                            imageFiles.forEach(f => dt.items.add(f));
+                            imagesInput.files = dt.files;
         
         // Пересоздаем все превью из массива
         for (let i = 0; i < imageFiles.length; i++) {
@@ -111,7 +111,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             
             imagePreviewContainer.appendChild(previewDiv);
-            imageIndex++;
+                        imageIndex++;
         }
     }
 
@@ -163,7 +163,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
     }
-    
+
     if (panelBody) {
         panelBody.addEventListener('click', (e) => {
             // Обработка кнопки добавления

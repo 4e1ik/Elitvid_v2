@@ -34,10 +34,10 @@
     <section class="not_main_page produce">
         <h2>Выберите форму</h2>
         <div class="not_main_page directions">
-            @foreach($square_pots as $product)
+            @foreach($products as $product)
                 <div class="direction">
-                    <img src="{{asset('storage/'.str_replace('public/','',$product->pot_images[0]->image))}}" alt="{{$product->pot_images[0]->description_image}}">
-                    <a href="{{route('show_pot_product', ['collection' => 'square_pots', 'id' => $product->id])}}">
+                    <img src="{{asset('storage/'.str_replace('public/','',$product->images->first()->image))}}" alt="{{$product->images->first()->description_image}}">
+                    <a href="{{route('show_pot_product', ['collection' => 'round_pots', 'id' => $product->id])}}">
                         <button>{{$product->name}}</button>
                     </a>
                 </div>
