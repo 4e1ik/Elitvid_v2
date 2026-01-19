@@ -20,7 +20,7 @@
             <div class="stages">
                 <div class="image">
                     <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/decorations.webp')}}" alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/decorations.webp']}}"
-                         class="main-page-up">
+                         class="main-page-up" loading="lazy">
                 </div>
                 <div class="submit-application submit-application--mobile">
                     <button class="submit-application--button open_popup_application1 submit-application-button--mobile">
@@ -44,19 +44,19 @@
                         </div>
                     </div>
                     <div class="decorative-texture__card">
-                        <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/decorations/gold.webp')}}" alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/decorations/gold.webp']}}">
+                        <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/decorations/gold.webp')}}" alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/decorations/gold.webp']}}" loading="lazy">
                         <!--                    <p>02</p>-->
                     </div>
                     <div class="decorative-texture__card">
-                        <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/decorations/silver.webp')}}" alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/decorations/silver.webp']}}">
+                        <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/decorations/silver.webp')}}" alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/decorations/silver.webp']}}" loading="lazy">
                         <!--                    <p>03</p>-->
                     </div>
                     <div class="decorative-texture__card">
-                        <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/decorations/white.webp')}}" alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/decorations/white.webp']}}">
+                        <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/decorations/white.webp')}}" alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/decorations/white.webp']}}" loading="lazy">
                         <!--                    <p>01</p>-->
                     </div>
                     <div class="decorative-texture__card">
-                        <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/decorations/bronze.webp')}}" alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/decorations/bronze.webp']}}">
+                        <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/decorations/bronze.webp')}}" alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/decorations/bronze.webp']}}" loading="lazy">
                         <!--                    <p>04</p>-->
                     </div>
                 </div>
@@ -70,7 +70,7 @@
                     <p>04 Бронза</p>
                 </div>
             </div>
-            <img class="background-img" src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/decorations/blitz_plant.webp')}}" alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/decorations/blitz_plant.webp']}}">
+            <img class="background-img" src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/decorations/blitz_plant.webp')}}" alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/decorations/blitz_plant.webp']}}" loading="lazy">
         </section>
         <section class="wild-stone">
             <h2>Дикий камень</h2>
@@ -78,15 +78,15 @@
             <div class="wild-stone__content">
                 <div class="content__decorative-textures">
                     <div class="decorative-texture__card">
-                        <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/decorations/gray_concrete.webp')}}" alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/decorations/gray_concrete.webp']}}">
+                        <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/decorations/gray_concrete.webp')}}" alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/decorations/gray_concrete.webp']}}" loading="lazy">
                         <!--                    <p>02</p>-->
                     </div>
                     <div class="decorative-texture__card">
-                        <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/decorations/black.webp')}}" alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/decorations/black.webp']}}">
+                        <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/decorations/black.webp')}}" alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/decorations/black.webp']}}" loading="lazy">
                         <!--                    <p>03</p>-->
                     </div>
                     <div class="decorative-texture__card">
-                        <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/decorations/graphite.webp')}}" alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/decorations/graphite.webp']}}">
+                        <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/decorations/graphite.webp')}}" alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/decorations/graphite.webp']}}" loading="lazy">
                         <!--                    <p>04</p>-->
                     </div>
                     <div class="decorative-texture__card unique">
@@ -108,14 +108,14 @@
                     <p>04 Бронза</p>
                 </div>
             </div>
-            <img class="background-img" src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/decorations/wild_plant.webp')}}" alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/decorations/wild_plant.webp']}}">
+            <img class="background-img" src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/decorations/wild_plant.webp')}}" alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/decorations/wild_plant.webp']}}" loading="lazy">
         </section>
         <section class="ornament">
             <h2>Орнамент</h2>
             <p>Орнамент придает изделию уникальность и индивидуальность, делая его  более привлекательным. Возможны различные варианты.</p>
             <div class="ornament__content">
-                <img class="decor" src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/decorations/decor.webp')}}" alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/decorations/decor.webp']}}">
-                <img class="decor_pot" src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/decorations/decor_pot.webp')}}" alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/decorations/decor_pot.webp']}}">
+                <img class="decor" src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/decorations/decor.webp')}}" alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/decorations/decor.webp']}}" loading="lazy">
+                <img class="decor_pot" src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/decorations/decor_pot.webp')}}" alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/decorations/decor_pot.webp']}}" loading="lazy">
             </div>
         </section>
         @if($category)
@@ -135,7 +135,7 @@
                             <!-- Slides -->
                             @foreach($decorative_elements_images as $item)
                                 @foreach($item->gallery_images as $image)
-                                    <div class="swiper-slide"><img src="{{asset('storage/'.str_replace('public/','',$image->image))}}" alt="{{$image->description_image}}"></div>
+                                    <div class="swiper-slide"><img src="{{asset('storage/'.str_replace('public/','',$image->image))}}" alt="{{$image->description_image}}" loading="lazy"></div>
                                 @endforeach
                             @endforeach
                         </div>
@@ -161,7 +161,7 @@
                             <!-- Slides -->
                             @foreach($decorative_elements_images as $item)
                                 @foreach($item->gallery_images as $image)
-                                    <div class="swiper-slide"><img src="{{asset('storage/'.str_replace('public/','',$image->image))}}" alt="{{$image->description_image}}"></div>
+                                    <div class="swiper-slide"><img src="{{asset('storage/'.str_replace('public/','',$image->image))}}" alt="{{$image->description_image}}" loading="lazy"></div>
                                 @endforeach
                             @endforeach
                         </div>

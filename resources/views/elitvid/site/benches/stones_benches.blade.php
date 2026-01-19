@@ -23,7 +23,7 @@
                 <div class="image">
                     <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/benches/collections/stones/stones.webp')}}"
                          alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/benches/collections/stones/stones.webp']}}"
-                         class="main-page-up">
+                         class="main-page-up" loading="lazy">
                 </div>
                 <div class="submit-application submit-application--mobile">
                     <button class="submit-application--button open_popup_application1 submit-application-button--mobile">
@@ -38,7 +38,7 @@
             <div class="not_main_page directions">
                 @foreach($products as $product)
                     <div class="direction">
-                        <img src="{{asset('storage/'.str_replace('public/','',$product->images->first()->image))}}" alt="{{$product->images->first()->description_image}}">
+                        <img src="{{asset('storage/'.str_replace('public/','',$product->images->first()->image))}}" alt="{{$product->images->first()->description_image}}" loading="lazy">
                         <a href="{{route('show_bench_product', ['collection' => 'stones_benches', 'id' => $product->id])}}">
                             <button>{{$product->name}}</button>
                         </a>

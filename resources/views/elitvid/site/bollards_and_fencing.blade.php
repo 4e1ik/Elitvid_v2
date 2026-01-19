@@ -21,7 +21,7 @@
             <div class="stages">
                 <div class="image">
                     <img src="{{asset($staticPage->main_image ?? '/elitvid_assets/newDesign/newDesign/imgs/bollards/main_bollards.webp')}}" alt="{{$staticPage->alt_image ?? $static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/bollards/main_bollards.webp'] ?? 'Болларды и ограждения'}}"
-                         class="main-page-up">
+                         class="main-page-up" loading="lazy">
                     <div class="image-gradient-overlay"></div>
                 </div>
                 <div class="submit-application submit-application--mobile">
@@ -43,7 +43,7 @@
             <h2>Формы каменных ограждений</h2>
             <div class="prev_directions__forms">
                 <div class="prev_directions__form">
-                    <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/bollards/BL-1.webp')}}" alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/bollards/BL-1.webp']}}">
+                    <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/bollards/BL-1.webp')}}" alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/bollards/BL-1.webp']}}" loading="lazy">
                     <div class="prev_directions_form--text">
                         <div class="text--description">
                             <h3>Боллард BL-1</h3>
@@ -61,7 +61,7 @@
                     </div>
                 </div>
                 <div class="prev_directions__form">
-                    <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/bollards/BL-2.webp')}}" alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/bollards/BL-2.webp']}}">
+                    <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/bollards/BL-2.webp')}}" alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/bollards/BL-2.webp']}}" loading="lazy">
                     <div class="prev_directions_form--text">
                         <div class="text--description">
                             <h3>Боллард BL-2</h3>
@@ -79,7 +79,7 @@
                     </div>
                 </div>
                 <div class="prev_directions__form">
-                    <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/bollards/BL-3.webp')}}" alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/bollards/BL-3.webp']}}">
+                    <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/bollards/BL-3.webp')}}" alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/bollards/BL-3.webp']}}" loading="lazy">
                     <div class="prev_directions_form--text">
                         <div class="text--description">
                             <h3>Боллард BL-3</h3>
@@ -97,7 +97,7 @@
                     </div>
                 </div>
                 <div class="prev_directions__form">
-                    <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/bollards/BL-4.webp')}}" alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/bollards/BL-4.webp']}}">
+                    <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/bollards/BL-4.webp')}}" alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/bollards/BL-4.webp']}}" loading="lazy">
                     <div class="prev_directions_form--text">
                         <div class="text--description">
                             <h3>Боллард BL-4</h3>
@@ -115,7 +115,7 @@
                     </div>
                 </div>
                 <div class="prev_directions__form">
-                    <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/bollards/BL-5.webp')}}" alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/bollards/BL-5.webp']}}">
+                    <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/bollards/BL-5.webp')}}" alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/bollards/BL-5.webp']}}" loading="lazy">
                     <div class="prev_directions_form--text">
                         <div class="text--description">
                             <h3>Боллард BL-5</h3>
@@ -133,7 +133,7 @@
                     </div>
                 </div>
                 <div class="prev_directions__form">
-                    <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/bollards/BL-6.webp')}}" alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/bollards/BL-6.webp']}}">
+                    <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/bollards/BL-6.webp')}}" alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/bollards/BL-6.webp']}}" loading="lazy">
                     <div class="prev_directions_form--text">
                         <div class="text--description">
                             <h3>Боллард BL-6</h3>
@@ -151,7 +151,7 @@
                     </div>
                 </div>
                 <div class="prev_directions__form">
-                    <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/bollards/BL-7.webp')}}" alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/bollards/BL-7.webp']}}">
+                    <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/bollards/BL-7.webp')}}" alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/bollards/BL-7.webp']}}" loading="lazy">
                     <div class="prev_directions_form--text">
                         <div class="text--description">
                             <h3>Боллард BL-7</h3>
@@ -169,7 +169,7 @@
                     </div>
                 </div>
                 <div class="prev_directions__form">
-                    <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/bollards/BL-8.webp')}}" alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/bollards/BL-8.webp']}}">
+                    <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/bollards/BL-8.webp')}}" alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/bollards/BL-8.webp']}}" loading="lazy">
                     <div class="prev_directions_form--text">
                         <div class="text--description">
                             <h3>Боллард BL-8</h3>
@@ -205,7 +205,7 @@
                             <!-- Slides -->
                             @foreach($bollards_and_fencing_images as $item)
                                 @foreach($item->gallery_images as $image)
-                                    <div class="swiper-slide"><img src="{{asset('storage/'.str_replace('public/','',$image->image))}}" alt="{{$image->description_image}}"></div>
+                                    <div class="swiper-slide"><img src="{{asset('storage/'.str_replace('public/','',$image->image))}}" alt="{{$image->description_image}}" loading="lazy"></div>
                                 @endforeach
                             @endforeach
                         </div>
@@ -231,7 +231,7 @@
                             <!-- Slides -->
                             @foreach($bollards_and_fencing_images as $item)
                                 @foreach($item->gallery_images as $image)
-                                    <div class="swiper-slide"><img src="{{asset('storage/'.str_replace('public/','',$image->image))}}" alt="{{$image->description_image}}"></div>
+                                    <div class="swiper-slide"><img src="{{asset('storage/'.str_replace('public/','',$image->image))}}" alt="{{$image->description_image}}" loading="lazy"></div>
                                 @endforeach
                             @endforeach
                         </div>

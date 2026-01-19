@@ -22,7 +22,7 @@
                 <div class="image">
                     <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/benches.webp')}}"
                          alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/benches.webp']}}"
-                         class="main-page-up">
+                         class="main-page-up" loading="lazy">
                 </div>
                 <div class="submit-application submit-application--mobile">
                     <button class="submit-application--button open_popup_application1 submit-application-button--mobile">
@@ -44,7 +44,7 @@
             <div class="prev_directions__forms">
                 <div class="prev_directions__form">
                     <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/benches/collections/verona/main_verona.webp')}}"
-                         alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/benches/collections/verona/main_verona.webp']}}">
+                         alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/benches/collections/verona/main_verona.webp']}}" loading="lazy">
                     <div class="prev_directions_form--text">
                         <div class="text--description">
                             <h3>Verona</h3>
@@ -61,7 +61,7 @@
                 </div>
                 <div class="prev_directions__form">
                     <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/benches/collections/stones/main_stones.webp')}}"
-                         alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/benches/collections/stones/main_stones.webp']}}">
+                         alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/benches/collections/stones/main_stones.webp']}}" loading="lazy">
                     <div class="prev_directions_form--text">
                         <div class="text--description">
                             <h3>Stones</h3>
@@ -78,7 +78,7 @@
                 </div>
                 <div class="prev_directions__form">
                     <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/benches/collections/lines/main_lines.webp')}}"
-                         alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/benches/collections/lines/main_lines.webp']}}">
+                         alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/benches/collections/lines/main_lines.webp']}}" loading="lazy">
                     <div class="prev_directions_form--text">
                         <div class="text--description">
                             <h3>lines</h3>
@@ -95,7 +95,7 @@
                 </div>
                 <div class="prev_directions__form">
                     <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/benches/collections/solo/main_solo.webp')}}"
-                         alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/benches/collections/solo/main_solo.webp']}}">
+                         alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/benches/collections/solo/main_solo.webp']}}" loading="lazy">
                     <div class="prev_directions_form--text">
                         <div class="text--description">
                             <h3>Solo</h3>
@@ -112,7 +112,7 @@
                 </div>
                 <div class="prev_directions__form">
                     <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/benches/collections/street_furniture/main_street_furniture.webp')}}"
-                         alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/benches/collections/street_furniture/main_street_furniture.webp']}}">
+                         alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/benches/collections/street_furniture/main_street_furniture.webp']}}" loading="lazy">
                     <div class="prev_directions_form--text">
                         <div class="text--description">
                             <h3>Street furniture</h3>
@@ -147,7 +147,7 @@
                             <!-- Slides -->
                             @foreach($benches_images as $item)
                                 @foreach($item->gallery_images as $image)
-                                    <div class="swiper-slide"><img src="{{asset('storage/'.str_replace('public/','',$image->image))}}" alt="{{$image->description_image}}"></div>
+                                    <div class="swiper-slide"><img src="{{asset('storage/'.str_replace('public/','',$image->image))}}" alt="{{$image->description_image}}" loading="lazy"></div>
                                 @endforeach
                             @endforeach
                         </div>
@@ -173,7 +173,7 @@
                             <!-- Slides -->
                             @foreach($benches_images as $item)
                                 @foreach($item->gallery_images as $image)
-                                    <div class="swiper-slide"><img src="{{asset('storage/'.str_replace('public/','',$image->image))}}" alt="{{$image->description_image}}"></div>
+                                    <div class="swiper-slide"><img src="{{asset('storage/'.str_replace('public/','',$image->image))}}" alt="{{$image->description_image}}" loading="lazy"></div>
                                 @endforeach
                             @endforeach
                         </div>

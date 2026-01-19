@@ -63,7 +63,7 @@
                             <div class="image_texture">
                                 <img data-texture="porous"
                                      src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/pots/textures/texture-porous.webp')}}"
-                                     alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/pots/textures/texture-porous.webp']}}">
+                                     alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/pots/textures/texture-porous.webp']}}" loading="lazy">
                                 <p>Пористая</p>
                                 <img data-texture="porous" class="texture_popup__image"
                                      src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/pots/textures/texture-porous.webp')}}"
@@ -73,7 +73,7 @@
                             <div class="image_texture">
                                 <img data-texture="smooth"
                                      src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/pots/textures/texture-smooth.webp')}}"
-                                     alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/pots/textures/texture-smooth.webp']}}">
+                                     alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/pots/textures/texture-smooth.webp']}}" loading="lazy">
                                 <p>Гладкая</p>
                                 <img data-texture="smooth" class="texture_popup__image"
                                      src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/pots/textures/texture-smooth.webp')}}"
@@ -83,7 +83,7 @@
                             <div class="image_texture">
                                 <img data-texture="marble"
                                      src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/pots/textures/texture-marble.webp')}}"
-                                     alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/pots/textures/texture-marble.webp']}}">
+                                     alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/pots/textures/texture-marble.webp']}}" loading="lazy">
                                 <p>Мрамор</p>
                                 <img data-texture="marble" class="texture_popup__image"
                                      src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/pots/textures/texture-marble.webp')}}"
@@ -95,12 +95,12 @@
                     <div id="product-images" class="content_images__main-image">
                         <img id="first_image"
                              src="{{asset('storage/'.str_replace('public/','',$product->images->first()->image))}}"
-                             alt="{{$product->images->first()->description_image}}">
+                             alt="{{$product->images->first()->description_image}}" loading="lazy">
                         @foreach($product->images as $image)
                             <img id="image" data-texture="{{ $image->texture }}" data-color="{{ $image->color }}"
                                  class="main-image__image"
                                  src="{{asset('storage/'.str_replace('public/','',$image->image))}}"
-                                 alt="{{$image->description_image}}">
+                                 alt="{{$image->description_image}}" loading="lazy">
                         @endforeach
                     </div>
                     <div class="content_images__colors">
@@ -109,62 +109,62 @@
                             <div data-color="grey" data-title="Серый бетон" class="image_color">
                                 <img
                                     src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/pots/colors/grey_concrete_color.webp')}}"
-                                    alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/pots/colors/grey_concrete_color.webp']}}">
+                                    alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/pots/colors/grey_concrete_color.webp']}}" loading="lazy">
                             </div>
                             <div data-color="graphite" data-title="Графит" class="image_color">
                                 <img
                                     src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/pots/colors/graphite_color.webp')}}"
-                                    alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/pots/colors/graphite_color.webp']}}">
+                                    alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/pots/colors/graphite_color.webp']}}" loading="lazy">
                             </div>
                             <div data-color="black" data-title="Черный" class="image_color">
                                 <img
                                     src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/pots/colors/black_color.webp')}}"
-                                    alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/pots/colors/black_color.webp']}}">
+                                    alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/pots/colors/black_color.webp']}}" loading="lazy">
                             </div>
                             <div data-color="white" data-title="Белый" class="image_color">
                                 <img
                                     src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/pots/colors/white_color.webp')}}"
-                                    alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/pots/colors/white_color.webp']}}">
+                                    alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/pots/colors/white_color.webp']}}" loading="lazy">
                             </div>
                             <div data-color="ivory" data-title="Слоновая кость" class="image_color">
                                 <img
                                     src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/pots/colors/ivory_color.webp')}}"
-                                    alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/pots/colors/ivory_color.webp']}}">
+                                    alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/pots/colors/ivory_color.webp']}}" loading="lazy">
                             </div>
                             <div data-color="sand" data-title="Песочный" class="image_color">
                                 <img
                                     src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/pots/colors/sand_color.webp')}}"
-                                    alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/pots/colors/sand_color.webp']}}">
+                                    alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/pots/colors/sand_color.webp']}}" loading="lazy">
                             </div>
                             <div data-color="orange" data-title="Оранжевый" class="image_color">
                                 <img
                                     src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/pots/colors/orange_color.webp')}}"
-                                    alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/pots/colors/orange_color.webp']}}">
+                                    alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/pots/colors/orange_color.webp']}}" loading="lazy">
                             </div>
                             <div data-color="olive" data-title="Оливка" class="image_color">
                                 <img
                                     src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/pots/colors/olive_color.webp')}}"
-                                    alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/pots/colors/olive_color.webp']}}">
+                                    alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/pots/colors/olive_color.webp']}}" loading="lazy">
                             </div>
                             <div data-color="malachite" data-title="Малахит" class="image_color">
                                 <img
                                     src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/pots/colors/malachite_color.webp')}}"
-                                    alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/pots/colors/malachite_color.webp']}}">
+                                    alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/pots/colors/malachite_color.webp']}}" loading="lazy">
                             </div>
                             <div data-color="white_blue" data-title="Голубой" class="image_color">
                                 <img
                                     src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/pots/colors/white-blue_color.webp')}}"
-                                    alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/pots/colors/white-blue_color.webp']}}">
+                                    alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/pots/colors/white-blue_color.webp']}}" loading="lazy">
                             </div>
                             <div data-color="blue" data-title="Синий" class="image_color">
                                 <img
                                     src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/pots/colors/blue_color.webp')}}"
-                                    alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/pots/colors/blue_color.webp']}}">
+                                    alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/pots/colors/blue_color.webp']}}" loading="lazy">
                             </div>
                             <div data-color="bronze" data-title="Бронза" class="image_color">
                                 <img
                                     src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/pots/colors/bronze_color.webp')}}"
-                                    alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/pots/colors/bronze_color.webp']}}">
+                                    alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/pots/colors/bronze_color.webp']}}" loading="lazy">
                             </div>
                         </div>
                     </div>
@@ -174,42 +174,42 @@
                             <div data-title="Белый" class="image_color">
                                 <img
                                     src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/benches/colors/white.webp')}}"
-                                    alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/benches/colors/white.webp']}}">
+                                    alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/benches/colors/white.webp']}}" loading="lazy">
                             </div>
                             <div data-title="Серый" class="image_color">
                                 <img
                                     src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/benches/colors/grey.webp')}}"
-                                    alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/benches/colors/grey.webp']}}">
+                                    alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/benches/colors/grey.webp']}}" loading="lazy">
                             </div>
                             <div data-title="Бесцветный" class="image_color">
                                 <img
                                     src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/benches/colors/no_color.webp')}}"
-                                    alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/benches/colors/no_color.webp']}}">
+                                    alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/benches/colors/no_color.webp']}}" loading="lazy">
                             </div>
                             <div data-title="Сосна" class="image_color">
                                 <img
                                     src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/benches/colors/pine.webp')}}"
-                                    alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/benches/colors/pine.webp']}}">
+                                    alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/benches/colors/pine.webp']}}" loading="lazy">
                             </div>
                             <div data-title="Тик" class="image_color">
                                 <img
                                     src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/benches/colors/teak.webp')}}"
-                                    alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/benches/colors/teak.webp']}}">
+                                    alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/benches/colors/teak.webp']}}" loading="lazy">
                             </div>
                             <div data-title="Мерабу" class="image_color">
                                 <img
                                     src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/benches/colors/merabu.webp')}}"
-                                    alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/benches/colors/merabu.webp']}}">
+                                    alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/benches/colors/merabu.webp']}}" loading="lazy">
                             </div>
                             <div data-title="Дуб" class="image_color">
                                 <img
                                     src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/benches/colors/oak.webp')}}"
-                                    alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/benches/colors/oak.webp']}}">
+                                    alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/benches/colors/oak.webp']}}" loading="lazy">
                             </div>
                             <div data-title="Палисандр" class="image_color">
                                 <img
                                     src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/benches/colors/rosewood.webp')}}"
-                                    alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/benches/colors/rosewood.webp']}}">
+                                    alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/benches/colors/rosewood.webp']}}" loading="lazy">
                             </div>
                         </div>
                     </div>
@@ -253,42 +253,42 @@
                             <div data-title="Белый" class="image_color">
                                 <img
                                     src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/benches/colors/white.webp')}}"
-                                    alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/benches/colors/white.webp']}}">
+                                    alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/benches/colors/white.webp']}}" loading="lazy">
                             </div>
                             <div data-title="Серый" class="image_color">
                                 <img
                                     src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/benches/colors/grey.webp')}}"
-                                    alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/benches/colors/grey.webp']}}">
+                                    alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/benches/colors/grey.webp']}}" loading="lazy">
                             </div>
                             <div data-title="Бесцветный" class="image_color">
                                 <img
                                     src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/benches/colors/no_color.webp')}}"
-                                    alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/benches/colors/no_color.webp']}}">
+                                    alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/benches/colors/no_color.webp']}}" loading="lazy">
                             </div>
                             <div data-title="Сосна" class="image_color">
                                 <img
                                     src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/benches/colors/pine.webp')}}"
-                                    alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/benches/colors/pine.webp']}}">
+                                    alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/benches/colors/pine.webp']}}" loading="lazy">
                             </div>
                             <div data-title="Тик" class="image_color">
                                 <img
                                     src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/benches/colors/teak.webp')}}"
-                                    alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/benches/colors/teak.webp']}}">
+                                    alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/benches/colors/teak.webp']}}" loading="lazy">
                             </div>
                             <div data-title="Мерабу" class="image_color">
                                 <img
                                     src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/benches/colors/merabu.webp')}}"
-                                    alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/benches/colors/merabu.webp']}}">
+                                    alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/benches/colors/merabu.webp']}}" loading="lazy">
                             </div>
                             <div data-title="Дуб" class="image_color">
                                 <img
                                     src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/benches/colors/oak.webp')}}"
-                                    alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/benches/colors/oak.webp']}}">
+                                    alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/benches/colors/oak.webp']}}" loading="lazy">
                             </div>
                             <div data-title="Палисандр" class="image_color">
                                 <img
                                     src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/benches/colors/rosewood.webp')}}"
-                                    alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/benches/colors/rosewood.webp']}}">
+                                    alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/benches/colors/rosewood.webp']}}" loading="lazy">
                             </div>
                         </div>
                     </div>
@@ -314,9 +314,9 @@
                         @foreach($rand_products as $rand_product)
                             <div class="swiper-slide">
                                 <div class="direction">
-                                    <img
-                                        src="{{asset('storage/'.str_replace('public/','',$rand_product->images->first()->image))}}"
-                                        alt="{{$rand_product->images->first()->description_image}}">
+                                <img
+                                    src="{{asset('storage/'.str_replace('public/','',$rand_product->images->first()->image))}}"
+                                    alt="{{$rand_product->images->first()->description_image}}" loading="lazy">
                                     <a href="{{route('show_bench_product', ['collection' => ($product->bench->collection == 'Verona' ?
                                                                                 'verona_benches':($product->bench->collection == 'Stones' ?
                                                                                     'stones_benches': ($product->bench->collection == 'lines' ?

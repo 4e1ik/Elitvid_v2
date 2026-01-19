@@ -22,7 +22,7 @@
             <div class="stages">
                 <div class="image">
                     <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/pots.webp')}}" alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/pots.webp']}}"
-                         class="main-page-up">
+                         class="main-page-up" loading="lazy">
                 </div>
                 <div class="submit-application submit-application--mobile">
                     <button class="submit-application--button open_popup_application1 submit-application-button--mobile">
@@ -36,7 +36,7 @@
             <h2>Формы ваз из полистоуна</h2>
             <div class="prev_directions__forms">
                 <div class="prev_directions__form">
-                    <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/pots/forms/circle_pot.webp')}}" alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/pots/forms/circle_pot.webp']}}">
+                    <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/pots/forms/circle_pot.webp')}}" alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/pots/forms/circle_pot.webp']}}" loading="lazy">
                     <div class="prev_directions_form--text">
                         <div class="text--description">
                             <h4>Круглые</h4>
@@ -52,7 +52,7 @@
                     </a>
                 </div>
                 <div class="prev_directions__form">
-                    <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/pots/forms/square_pot.webp')}}" alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/pots/forms/square_pot.webp']}}">
+                    <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/pots/forms/square_pot.webp')}}" alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/pots/forms/square_pot.webp']}}" loading="lazy">
                     <div class="prev_directions_form--text">
                         <div class="text--description">
                             <h4>Квадратные</h4>
@@ -68,7 +68,7 @@
                     </a>
                 </div>
                 <div class="prev_directions__form">
-                    <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/pots/forms/rectangular_pot.webp')}}" alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/pots/forms/rectangular_pot.webp']}}">
+                    <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/pots/forms/rectangular_pot.webp')}}" alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/pots/forms/rectangular_pot.webp']}}" loading="lazy">
                     <div class="prev_directions_form--text">
                         <div class="text--description">
                             <h4>Прямоугольные</h4>
@@ -102,7 +102,7 @@
                             <!-- Slides -->
                             @foreach($pots_images as $item)
                                 @foreach($item->gallery_images as $image)
-                                    <div class="swiper-slide"><img src="{{asset('storage/'.str_replace('public/','',$image->image))}}" alt="{{$image->description_image}}"></div>
+                                    <div class="swiper-slide"><img src="{{asset('storage/'.str_replace('public/','',$image->image))}}" alt="{{$image->description_image}}" loading="lazy"></div>
                                 @endforeach
                             @endforeach
                         </div>
@@ -128,7 +128,7 @@
                             <!-- Slides -->
                             @foreach($pots_images as $item)
                                 @foreach($item->gallery_images as $image)
-                                    <div class="swiper-slide"><img src="{{asset('storage/'.str_replace('public/','',$image->image))}}" alt="{{$image->description_image}}"></div>
+                                    <div class="swiper-slide"><img src="{{asset('storage/'.str_replace('public/','',$image->image))}}" alt="{{$image->description_image}}" loading="lazy"></div>
                                 @endforeach
                             @endforeach
                         </div>

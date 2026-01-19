@@ -126,7 +126,7 @@
                     </style>
                     <div class="article">
                         <div class="article__image">
-                            <img src="{{asset('storage/'.str_replace('public/','',$blog->main_image))}}" alt="Фотография cтатьи">
+                            <img src="{{asset('storage/'.str_replace('public/','',$blog->main_image))}}" alt="Фотография cтатьи" loading="lazy">
                         </div>
                     </div>
                 </div>

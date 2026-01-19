@@ -31,7 +31,7 @@
                 <div class="image">
                     <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/directions.webp')}}"
                          alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/directions.webp']}}"
-                         class="main-page-up">
+                         class="main-page-up" loading="lazy">
                 </div>
                 <div class="submit-application submit-application--mobile">
                     <button

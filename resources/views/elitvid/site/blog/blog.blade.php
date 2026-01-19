@@ -136,7 +136,7 @@
                     <div class="direction__image">
                         <a href="{{route('show_blog_post', ['id' => $blog->id])}}">
                             <img src="{{asset('storage/'.str_replace('public/','',$blog->main_image))}}"
-                                 alt="Фотография cтатьи">
+                                 alt="Фотография cтатьи" loading="lazy">
                         </a>
                     </div>
                     <a href="{{route('show_blog_post', ['id' => $blog->id])}}">

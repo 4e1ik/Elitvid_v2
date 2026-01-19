@@ -5,60 +5,10 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <script type="text/javascript">
-        (function (m, e, t, r, i, k, a) {
-            m[i] = m[i] || function () {
-                (m[i].a = m[i].a || []).push(arguments)
-            };
-            m[i].l = 1 * new Date();
-            for (var j = 0; j < document.scripts.length; j++) {
-                if (document.scripts[j].src === r) {
-                    return;
-                }
-            }
-            k = e.createElement(t), a = e.getElementsByTagName(t)[0], k.async = 1, k.src = r, a.parentNode.insertBefore(k, a)
-        })
-        (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
-
-        ym(90164998, "init", {
-            clickmap: true,
-            trackLinks: true,
-            accurateTrackBounce: true,
-            webvisor: true
-        });
-    </script>
-    <!-- Google Tag Manager -->
-    <script>(function (w, d, s, l, i) {
-            w[l] = w[l] || [];
-            w[l].push({
-                'gtm.start':
-                    new Date().getTime(), event: 'gtm.js'
-            });
-            var f = d.getElementsByTagName(s)[0],
-                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
-            j.async = true;
-            j.src =
-                'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
-            f.parentNode.insertBefore(j, f);
-        })(window, document, 'script', 'dataLayer', 'GTM-N2MNKNDW');</script>
-    <!-- End Google Tag Manager -->
-    <noscript>
-        <div><img src="https://mc.yandex.ru/watch/90164998" style="position:absolute; left:-9999px;" alt=""/></div>
-    </noscript>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-27WP3P8931"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-
-        function gtag() {
-            dataLayer.push(arguments);
-        }
-
-        gtag('js', new Date());
-
-        gtag('config', 'G-27WP3P8931');
-    </script>
     <meta name="yandex-verification" content="3d561315259a84fe"/>
+    <!-- Preload критических ресурсов -->
+    <link rel="preload" href="{{asset('/elitvid_assets/newDesign/newDesign/style.css')}}?v=1.6" as="style">
+    <link rel="preload" href="{{asset('/elitvid_assets/newDesign/newDesign/imgs/logo/logo.svg')}}" as="image">
     <link rel="stylesheet" href="{{asset('/elitvid_assets/newDesign/newDesign/reset.css')}}">
     {{--    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>--}}
     <link rel="stylesheet" href="{{asset('/elitvid_assets/newDesign/newDesign/swiper.min.css')}}"/>
@@ -199,7 +149,7 @@
                 Sevostian</a></div>
     </div>
 </footer>
-<script src="https://www.google.com/recaptcha/api.js?render={{config('services.recaptcha.site_key')}}"></script>
+<script async src="https://www.google.com/recaptcha/api.js?render={{config('services.recaptcha.site_key')}}"></script>
 <script>
     {{--function onClick(e) {--}}
     {{--    e.preventDefault();--}}
@@ -313,16 +263,73 @@
 </script>
 {{--<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>--}}
 {{--<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>--}}
-<script src="{{asset('/elitvid_assets/newDesign/newDesign/js/jquery-3.7.1.min.js')}}"></script>
-<script src="{{asset('/elitvid_assets/newDesign/newDesign/js/jquery-migrate-1.4.1.min.js')}}"></script>
-<script src="{{asset('/elitvid_assets/newDesign/newDesign/swiper.min.js')}}"></script>
-<script src="{{asset('/elitvid_assets/newDesign/newDesign/swiper-bundle.min.js')}}"></script>
+<script defer src="{{asset('/elitvid_assets/newDesign/newDesign/js/jquery-3.7.1.min.js')}}"></script>
+<script defer src="{{asset('/elitvid_assets/newDesign/newDesign/js/jquery-migrate-1.4.1.min.js')}}"></script>
+<script defer src="{{asset('/elitvid_assets/newDesign/newDesign/swiper.min.js')}}"></script>
+<script defer src="{{asset('/elitvid_assets/newDesign/newDesign/swiper-bundle.min.js')}}"></script>
 <script defer src="{{asset('/elitvid_assets/newDesign/newDesign/js/sliders/main_slider.js')}}"></script>
 <script defer src="{{asset('/elitvid_assets/newDesign/newDesign/js/popupSubmitApplication.js')}}"></script>
 {{--<script defer src="{{asset('/elitvid_assets/newDesign/newDesign/js/popupRequestCall.js')}}"></script>--}}
 <script defer src="{{asset('/elitvid_assets/newDesign/newDesign/js/burgerMenu.js')}}"></script>
 <script defer src="{{asset('/elitvid_assets/newDesign/newDesign/js/imageUpdater.js')}}"></script>
 <script defer src="{{asset('/elitvid_assets/newDesign/newDesign/js/test.js')}}"></script>
+
+<!-- Yandex Metrika -->
+<script type="text/javascript">
+    (function (m, e, t, r, i, k, a) {
+        m[i] = m[i] || function () {
+            (m[i].a = m[i].a || []).push(arguments)
+        };
+        m[i].l = 1 * new Date();
+        for (var j = 0; j < document.scripts.length; j++) {
+            if (document.scripts[j].src === r) {
+                return;
+            }
+        }
+        k = e.createElement(t), a = e.getElementsByTagName(t)[0], k.async = 1, k.src = r, a.parentNode.insertBefore(k, a)
+    })
+    (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+    ym(90164998, "init", {
+        clickmap: true,
+        trackLinks: true,
+        accurateTrackBounce: true,
+        webvisor: true
+    });
+</script>
+<noscript>
+    <div><img src="https://mc.yandex.ru/watch/90164998" style="position:absolute; left:-9999px;" alt=""/></div>
+</noscript>
+
+<!-- Google Tag Manager -->
+<script>(function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({
+            'gtm.start':
+                new Date().getTime(), event: 'gtm.js'
+        });
+        var f = d.getElementsByTagName(s)[0],
+            j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src =
+            'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-N2MNKNDW');</script>
+<!-- End Google Tag Manager -->
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-27WP3P8931"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-27WP3P8931');
+</script>
 
 </body>
 </html>

@@ -24,7 +24,7 @@
                 <div class="image">
                     <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/main_page/main_page_up.webp')}}"
                          alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/main_page/main_page_up.webp'] ?? ''}}"
-                         class="main-page-up">
+                         class="main-page-up" loading="lazy">
                 </div>
                 <div class="stages--text">
                     <p>Проектирование</p>
@@ -49,7 +49,7 @@
                 <div class="image">
                     <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/main_page/main_page_center.webp')}}"
                          alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/main_page/main_page_center.webp'] ?? ''}}"
-                         class="main-page-center">
+                         class="main-page-center" loading="lazy">
                 </div>
                 <div class="description-text">
                     <h2>Почему выбирают изделия из полистоуна у нас?</h2>
@@ -103,28 +103,28 @@
                         <!-- Slides -->
                         <div class="swiper-slide"><img
                                     src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/main_page/partners/game_stream.jpg')}}"
-                                    alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/main_page/partners/game_stream.jpg'] ?? ''}}"></div>
+                                    alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/main_page/partners/game_stream.jpg'] ?? ''}}" loading="lazy"></div>
                         <div class="swiper-slide"><img
                                     src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/main_page/partners/a100.jpg')}}"
-                                    alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/main_page/partners/a100.jpg'] ?? ''}}"></div>
+                                    alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/main_page/partners/a100.jpg'] ?? ''}}" loading="lazy"></div>
                         <div class="swiper-slide"><img
                                     src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/main_page/partners/Belorusneft.jpg')}}"
-                                    alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/main_page/partners/Belorusneft.jpg'] ?? ''}}"></div>
+                                    alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/main_page/partners/Belorusneft.jpg'] ?? ''}}" loading="lazy"></div>
                         <div class="swiper-slide"><img
                                     src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/main_page/partners/development_bank.jpg')}}"
-                                    alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/main_page/partners/development_bank.jpg'] ?? ''}}"></div>
+                                    alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/main_page/partners/development_bank.jpg'] ?? ''}}" loading="lazy"></div>
                         <div class="swiper-slide"><img
                                     src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/main_page/partners/green_haven.jpg')}}"
-                                    alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/main_page/partners/green_haven.jpg'] ?? ''}}"></div>
+                                    alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/main_page/partners/green_haven.jpg'] ?? ''}}" loading="lazy"></div>
                         <div class="swiper-slide"><img
                                     src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/main_page/partners/tobacco_invest.jpg')}}"
-                                    alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/main_page/partners/tobacco_invest.jpg'] ?? ''}}"></div>
+                                    alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/main_page/partners/tobacco_invest.jpg'] ?? ''}}" loading="lazy"></div>
                         <div class="swiper-slide"><img
                                     src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/main_page/partners/unisoil.jpg')}}"
-                                    alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/main_page/partners/unisoil.jpg'] ?? ''}}"></div>
+                                    alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/main_page/partners/unisoil.jpg'] ?? ''}}" loading="lazy"></div>
                         <div class="swiper-slide"><img
                                     src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/main_page/partners/vds.jpg')}}"
-                                    alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/main_page/partners/vds.jpg'] ?? ''}}"></div>
+                                    alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/main_page/partners/vds.jpg'] ?? ''}}" loading="lazy"></div>
                     </div>
                 </div>
             </div>
@@ -166,7 +166,7 @@
                 </div>
                 <div class="decorative_elements__image">
                     <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/main_page/decor.webp')}}"
-                         alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/main_page/decor.webp'] ?? ''}}">
+                         alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/main_page/decor.webp'] ?? ''}}" loading="lazy">
                 </div>
             </div>
         </section>
@@ -189,7 +189,7 @@
                                 @foreach($item->gallery_images as $image)
                                     <div class="swiper-slide"><img
                                                 src="{{asset('storage/'.str_replace('public/','',$image->image))}}"
-                                                alt="{{$image->description_image}}"></div>
+                                                alt="{{$image->description_image}}" loading="lazy"></div>
                                 @endforeach
                             @endforeach
                         </div>
@@ -221,7 +221,7 @@
                                 @foreach($item->gallery_images as $image)
                                     <div class="swiper-slide"><img
                                                 src="{{asset('storage/'.str_replace('public/','',$image->image))}}"
-                                                alt="{{$image->description_image}}"></div>
+                                                alt="{{$image->description_image}}" loading="lazy"></div>
                                 @endforeach
                             @endforeach
                         </div>

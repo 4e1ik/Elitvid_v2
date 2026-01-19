@@ -20,7 +20,7 @@
             <div class="stages">
                 <div class="image">
                     <img src="{{asset($staticPage->main_image ?? '/elitvid_assets/newDesign/newDesign/imgs/maf/maf.webp')}}" alt="{{$staticPage->alt_image ?? $static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/maf/maf.webp'] ?? 'Малые архитектурные формы'}}"
-                         class="main-page-up">
+                         class="main-page-up" loading="lazy">
                     <div class="image-gradient-overlay"></div>
                 </div>
                 <div class="submit-application submit-application--mobile">
@@ -47,7 +47,7 @@
                             <!-- Slides -->
                             @foreach($small_architectural_forms_images as $item)
                                 @foreach($item->gallery_images as $image)
-                                    <div class="swiper-slide"><img src="{{asset('storage/'.str_replace('public/','',$image->image))}}" alt="{{$image->description_image}}"></div>
+                                    <div class="swiper-slide"><img src="{{asset('storage/'.str_replace('public/','',$image->image))}}" alt="{{$image->description_image}}" loading="lazy"></div>
                                 @endforeach
                             @endforeach
                         </div>
@@ -73,7 +73,7 @@
                             <!-- Slides -->
                             @foreach($small_architectural_forms_images as $item)
                                 @foreach($item->gallery_images as $image)
-                                    <div class="swiper-slide"><img src="{{asset('storage/'.str_replace('public/','',$image->image))}}" alt="{{$image->description_image}}"></div>
+                                    <div class="swiper-slide"><img src="{{asset('storage/'.str_replace('public/','',$image->image))}}" alt="{{$image->description_image}}" loading="lazy"></div>
                                 @endforeach
                             @endforeach
                         </div>
