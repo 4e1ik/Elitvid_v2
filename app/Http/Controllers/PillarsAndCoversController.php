@@ -11,8 +11,11 @@ use App\Models\StaticPage;
 class PillarsAndCoversController
 {
     function pillars_and_covers() {
-        $gallery = Gallery::query()->with(['gallery_images'])->latest()->get();
-        $columns_and_panels_images = $gallery->where('type', 'columns_and_panels');
+        $columns_and_panels_images = Gallery::query()
+            ->where('type', 'columns_and_panels')
+            ->with(['gallery_images'])
+            ->latest()
+            ->get();
         $metaTags = MetaTag::where('page', 'pillars_and_covers')->get();
         $metaTitle = $metaTags->isNotEmpty() ? $metaTags[0]->title : 'Столбы и накрывки';
         $metaDescription = $metaTags->isNotEmpty() ? $metaTags[0]->description : 'Описание столбов и накрывок';

@@ -11,8 +11,11 @@ use App\Models\StaticPage;
 class ParkletsAndCanopiesController
 {
     function parklets_and_canopies() {
-        $gallery = Gallery::query()->with(['gallery_images'])->latest()->get();
-        $parklets_and_naves_images = $gallery->where('type', 'parklets_and_naves');
+        $parklets_and_naves_images = Gallery::query()
+            ->where('type', 'parklets_and_naves')
+            ->with(['gallery_images'])
+            ->latest()
+            ->get();
         $metaTags = MetaTag::where('page', 'parklets_and_canopies')->get();
         $metaTitle = $metaTags->isNotEmpty() ? $metaTags[0]->title : 'Парклеты и навесы';
         $metaDescription = $metaTags->isNotEmpty() ? $metaTags[0]->description : 'Описание парклетов и навесов';

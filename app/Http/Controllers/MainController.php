@@ -15,8 +15,11 @@ use Illuminate\Support\Facades\Response;
 class MainController extends Controller
 {
     function index() {
-        $gallery = Gallery::query()->with(['gallery_images'])->latest()->get();
-        $main_page_images = $gallery->where('type', 'main_page');
+        $main_page_images = Gallery::query()
+            ->where('type', 'main_page')
+            ->with(['gallery_images'])
+            ->latest()
+            ->get();
         $metaTags = MetaTag::where('page', 'main')->get();
         $metaTitle = $metaTags->isNotEmpty() ? $metaTags[0]->title : 'Главная страница';
         $metaDescription = $metaTags->isNotEmpty() ? $metaTags[0]->description : 'Описание главной страницы';
@@ -74,8 +77,11 @@ class MainController extends Controller
 
     function decorations()
     {
-        $gallery = Gallery::query()->with(['gallery_images'])->latest()->get();
-        $decorative_elements_images = $gallery->where('type', 'decorative_elements');
+        $decorative_elements_images = Gallery::query()
+            ->where('type', 'decorative_elements')
+            ->with(['gallery_images'])
+            ->latest()
+            ->get();
         $metaTags = MetaTag::where('page', 'decorations')->get();
         $metaTitle = $metaTags->isNotEmpty() ? $metaTags[0]->title : 'Декоративные элементы';
         $metaDescription = $metaTags->isNotEmpty() ? $metaTags[0]->description : 'Описание декоративных элементов';

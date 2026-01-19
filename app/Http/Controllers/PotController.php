@@ -12,9 +12,11 @@ use App\Models\StaticImages;
 class PotController
 {
     function pots() {
-
-        $gallery = Gallery::query()->with(['gallery_images'])->latest()->get();
-        $pots_images = $gallery->where('type', 'pots');
+        $pots_images = Gallery::query()
+            ->where('type', 'pots')
+            ->with(['gallery_images'])
+            ->latest()
+            ->get();
         $metaTags = MetaTag::where('page', 'pots')->get();
         $metaTitle = $metaTags->isNotEmpty() ? $metaTags[0]->title : 'Кашпо';
         $metaDescription = $metaTags->isNotEmpty() ? $metaTags[0]->description : 'Описание кашпо';

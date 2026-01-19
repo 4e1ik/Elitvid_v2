@@ -11,8 +11,11 @@ use App\Models\StaticPage;
 class FacadeStuccoMoldingAndPanelsController
 {
     function facade_stucco_molding_and_panels() {
-        $gallery = Gallery::query()->with(['gallery_images'])->latest()->get();
-        $facade_walls_images = $gallery->where('type', 'facade_walls');
+        $facade_walls_images = Gallery::query()
+            ->where('type', 'facade_walls')
+            ->with(['gallery_images'])
+            ->latest()
+            ->get();
         $metaTags = MetaTag::where('page', 'facade_stucco_molding_and_panels')->get();
         $metaTitle = $metaTags->isNotEmpty() ? $metaTags[0]->title : 'Фасадная лепнина и панели';
         $metaDescription = $metaTags->isNotEmpty() ? $metaTags[0]->description : 'Описание фасадной лепнины и панелей';

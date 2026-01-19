@@ -12,8 +12,11 @@ class MafController
 {
     function small_architectural_forms()
     {
-        $gallery = Gallery::query()->with(['gallery_images'])->latest()->get();
-        $small_architectural_forms_images = $gallery->where('type', 'maf');
+        $small_architectural_forms_images = Gallery::query()
+            ->where('type', 'maf')
+            ->with(['gallery_images'])
+            ->latest()
+            ->get();
         $metaTags = MetaTag::where('page', 'small_architectural_forms')->get();
         $metaTitle = $metaTags->isNotEmpty() ? $metaTags[0]->title : 'Малые архитектурные формы';
         $metaDescription = $metaTags->isNotEmpty() ? $metaTags[0]->description : 'Описание малых архитектурных форм';

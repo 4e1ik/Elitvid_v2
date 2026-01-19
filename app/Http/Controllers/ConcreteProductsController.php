@@ -11,8 +11,11 @@ use App\Models\StaticPage;
 class ConcreteProductsController
 {
     function concrete_products() {
-        $gallery = Gallery::query()->with(['gallery_images'])->latest()->get();
-        $concrete_products_images = $gallery->where('type', 'concrete_products');
+        $concrete_products_images = Gallery::query()
+            ->where('type', 'concrete_products')
+            ->with(['gallery_images'])
+            ->latest()
+            ->get();
         $metaTags = MetaTag::where('page', 'concrete_products')->get();
         $metaTitle = $metaTags->isNotEmpty() ? $metaTags[0]->title : 'Изделия из бетона';
         $metaDescription = $metaTags->isNotEmpty() ? $metaTags[0]->description : 'Описание описание изделий из бетона';

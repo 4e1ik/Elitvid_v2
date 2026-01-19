@@ -11,8 +11,11 @@ use App\Models\StaticPage;
 class BollardsAndFencingController
 {
     function bollards_and_fencing() {
-        $gallery = Gallery::query()->with(['gallery_images'])->latest()->get();
-        $bollards_and_fencing_images = $gallery->where('type', 'bollards');
+        $bollards_and_fencing_images = Gallery::query()
+            ->where('type', 'bollards')
+            ->with(['gallery_images'])
+            ->latest()
+            ->get();
         $metaTags = MetaTag::where('page', 'bollards_and_fencing')->get();
         $metaTitle = $metaTags->isNotEmpty() ? $metaTags[0]->title : 'Болларды и ограждения';
         $metaDescription = $metaTags->isNotEmpty() ? $metaTags[0]->description : 'Описание боллардов и ограждений';

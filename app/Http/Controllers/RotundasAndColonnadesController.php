@@ -11,8 +11,11 @@ use App\Models\StaticPage;
 class RotundasAndColonnadesController
 {
     function rotundas_and_colonnades() {
-        $gallery = Gallery::query()->with(['gallery_images'])->latest()->get();
-        $rotundas_and_colonnades_images = $gallery->where('type', 'rotundas');
+        $rotundas_and_colonnades_images = Gallery::query()
+            ->where('type', 'rotundas')
+            ->with(['gallery_images'])
+            ->latest()
+            ->get();
         $metaTags = MetaTag::where('page', 'rotundas_and_colonnades')->get();
         $metaTitle = $metaTags->isNotEmpty() ? $metaTags[0]->title : 'Ротонды и колонны';
         $metaDescription = $metaTags->isNotEmpty() ? $metaTags[0]->description : 'Описание ротонд и колонн';

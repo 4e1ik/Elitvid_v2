@@ -11,9 +11,11 @@ use App\Models\StaticImages;
 class BenchController
 {
     function benches() {
-
-        $gallery = Gallery::query()->with(['gallery_images'])->latest()->get();
-        $benches_images = $gallery->where('type', 'benches');
+        $benches_images = Gallery::query()
+            ->where('type', 'benches')
+            ->with(['gallery_images'])
+            ->latest()
+            ->get();
         $metaTags = MetaTag::where('page', 'benches')->get();
         $metaTitle = $metaTags->isNotEmpty() ? $metaTags[0]->title : 'Скамейки';
         $metaDescription = $metaTags->isNotEmpty() ? $metaTags[0]->description : 'Описание скамеек';

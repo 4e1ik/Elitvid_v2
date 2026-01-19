@@ -136,8 +136,11 @@ class AdminController extends Controller
     }
 
     public function pots_images(Gallery $gallery) {
-        $gallery = Gallery::query()->with(['gallery_images'])->latest()->get();
-        $pots_images = $gallery->where('type', 'pots');
+        $pots_images = Gallery::query()
+            ->where('type', 'pots')
+            ->with(['gallery_images'])
+            ->latest()
+            ->get();
 
         return view(
             'elitvid.admin.gallery.pots_images', compact(
@@ -147,8 +150,11 @@ class AdminController extends Controller
     }
 
     public function benches_images(Gallery $gallery) {
-        $gallery = Gallery::query()->with(['gallery_images'])->latest()->get();
-        $benches_images = $gallery->where('type', 'benches');
+        $benches_images = Gallery::query()
+            ->where('type', 'benches')
+            ->with(['gallery_images'])
+            ->latest()
+            ->get();
 
         return view(
             'elitvid.admin.gallery.benches_images', compact(
@@ -158,8 +164,11 @@ class AdminController extends Controller
     }
 
     public function main_page_images(Gallery $gallery) {
-        $gallery = Gallery::query()->with(['gallery_images'])->latest()->get();
-        $main_page_images = $gallery->where('type', 'main_page');
+        $main_page_images = Gallery::query()
+            ->where('type', 'main_page')
+            ->with(['gallery_images'])
+            ->latest()
+            ->get();
 
         return view(
             'elitvid.admin.gallery.main_page_images', compact(
@@ -169,8 +178,11 @@ class AdminController extends Controller
     }
 
     public function decorative_elements_images(Gallery $gallery) {
-        $gallery = Gallery::query()->with(['gallery_images'])->latest()->get();
-        $decorative_elements_images = $gallery->where('type', 'decorative_elements');
+        $decorative_elements_images = Gallery::query()
+            ->where('type', 'decorative_elements')
+            ->with(['gallery_images'])
+            ->latest()
+            ->get();
 
         return view(
             'elitvid.admin.gallery.decorative_elements_images', compact(
@@ -180,8 +192,11 @@ class AdminController extends Controller
     }
 
     public function bollards_images(Gallery $gallery) {
-        $gallery = Gallery::query()->with(['gallery_images'])->latest()->get();
-        $bollards_images = $gallery->where('type', 'bollards');
+        $bollards_images = Gallery::query()
+            ->where('type', 'bollards')
+            ->with(['gallery_images'])
+            ->latest()
+            ->get();
 
         return view(
             'elitvid.admin.gallery.bollards_images', compact(
@@ -191,8 +206,11 @@ class AdminController extends Controller
     }
 
     public function parklets_and_naves_images(Gallery $gallery) {
-        $gallery = Gallery::query()->with(['gallery_images'])->latest()->get();
-        $parklets_and_naves_images = $gallery->where('type', 'parklets_and_naves');
+        $parklets_and_naves_images = Gallery::query()
+            ->where('type', 'parklets_and_naves')
+            ->with(['gallery_images'])
+            ->latest()
+            ->get();
 
         return view(
             'elitvid.admin.gallery.parklets_and_naves_images', compact(
@@ -202,8 +220,11 @@ class AdminController extends Controller
     }
 
     public function columns_and_panels_images(Gallery $gallery) {
-        $gallery = Gallery::query()->with(['gallery_images'])->latest()->get();
-        $columns_and_panels_images = $gallery->where('type', 'columns_and_panels');
+        $columns_and_panels_images = Gallery::query()
+            ->where('type', 'columns_and_panels')
+            ->with(['gallery_images'])
+            ->latest()
+            ->get();
 
         return view(
             'elitvid.admin.gallery.columns_and_panels_images', compact(
@@ -213,8 +234,11 @@ class AdminController extends Controller
     }
 
     public function facade_walls_images(Gallery $gallery) {
-        $gallery = Gallery::query()->with(['gallery_images'])->latest()->get();
-        $facade_walls_images = $gallery->where('type', 'facade_walls');
+        $facade_walls_images = Gallery::query()
+            ->where('type', 'facade_walls')
+            ->with(['gallery_images'])
+            ->latest()
+            ->get();
 
         return view(
             'elitvid.admin.gallery.facade_walls_images', compact(
@@ -224,8 +248,11 @@ class AdminController extends Controller
     }
 
     public function rotundas_images(Gallery $gallery) {
-        $gallery = Gallery::query()->with(['gallery_images'])->latest()->get();
-        $rotundas_images = $gallery->where('type', 'rotundas');
+        $rotundas_images = Gallery::query()
+            ->where('type', 'rotundas')
+            ->with(['gallery_images'])
+            ->latest()
+            ->get();
 
         return view(
             'elitvid.admin.gallery.rotundas_images', compact(
@@ -235,8 +262,11 @@ class AdminController extends Controller
     }
 
     public function maf_images(Gallery $gallery) {
-        $gallery = Gallery::query()->with(['gallery_images'])->latest()->get();
-        $maf_images = $gallery->where('type', 'maf');
+        $maf_images = Gallery::query()
+            ->where('type', 'maf')
+            ->with(['gallery_images'])
+            ->latest()
+            ->get();
 
         return view(
             'elitvid.admin.gallery.maf_images', compact(
@@ -246,8 +276,11 @@ class AdminController extends Controller
     }
 
     public function concrete_products_images(Gallery $gallery) {
-        $gallery = Gallery::query()->with(['gallery_images'])->latest()->get();
-        $concrete_products_images = $gallery->where('type', 'concrete_products');
+        $concrete_products_images = Gallery::query()
+            ->where('type', 'concrete_products')
+            ->with(['gallery_images'])
+            ->latest()
+            ->get();
 
         return view(
             'elitvid.admin.gallery.concrete_products_images', compact(
