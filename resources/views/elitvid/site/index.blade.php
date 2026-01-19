@@ -102,29 +102,29 @@
                     <div class="partners-swiper-wrapper__slider swiper-wrapper">
                         <!-- Slides -->
                         <div class="swiper-slide"><img
-                                    src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/main_page/partners/game_stream.jpg')}}"
-                                    alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/main_page/partners/game_stream.jpg'] ?? ''}}" loading="lazy"></div>
+                                    src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/main_page/partners/game_stream.webp')}}"
+                                    alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/main_page/partners/game_stream.webp'] ?? ''}}" loading="lazy"></div>
                         <div class="swiper-slide"><img
-                                    src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/main_page/partners/a100.jpg')}}"
-                                    alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/main_page/partners/a100.jpg'] ?? ''}}" loading="lazy"></div>
+                                    src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/main_page/partners/a100.webp')}}"
+                                    alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/main_page/partners/a100.webp'] ?? ''}}" loading="lazy"></div>
                         <div class="swiper-slide"><img
-                                    src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/main_page/partners/Belorusneft.jpg')}}"
-                                    alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/main_page/partners/Belorusneft.jpg'] ?? ''}}" loading="lazy"></div>
+                                    src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/main_page/partners/Belorusneft.webp')}}"
+                                    alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/main_page/partners/Belorusneft.webp'] ?? ''}}" loading="lazy"></div>
                         <div class="swiper-slide"><img
-                                    src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/main_page/partners/development_bank.jpg')}}"
-                                    alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/main_page/partners/development_bank.jpg'] ?? ''}}" loading="lazy"></div>
+                                    src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/main_page/partners/development_bank.webp')}}"
+                                    alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/main_page/partners/development_bank.webp'] ?? ''}}" loading="lazy"></div>
                         <div class="swiper-slide"><img
-                                    src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/main_page/partners/green_haven.jpg')}}"
-                                    alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/main_page/partners/green_haven.jpg'] ?? ''}}" loading="lazy"></div>
+                                    src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/main_page/partners/green_haven.webp')}}"
+                                    alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/main_page/partners/green_haven.webp'] ?? ''}}" loading="lazy"></div>
                         <div class="swiper-slide"><img
-                                    src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/main_page/partners/tobacco_invest.jpg')}}"
-                                    alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/main_page/partners/tobacco_invest.jpg'] ?? ''}}" loading="lazy"></div>
+                                    src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/main_page/partners/tobacco_invest.webp')}}"
+                                    alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/main_page/partners/tobacco_invest.webp'] ?? ''}}" loading="lazy"></div>
                         <div class="swiper-slide"><img
-                                    src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/main_page/partners/unisoil.jpg')}}"
-                                    alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/main_page/partners/unisoil.jpg'] ?? ''}}" loading="lazy"></div>
+                                    src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/main_page/partners/unisoil.webp')}}"
+                                    alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/main_page/partners/unisoil.webp'] ?? ''}}" loading="lazy"></div>
                         <div class="swiper-slide"><img
-                                    src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/main_page/partners/vds.jpg')}}"
-                                    alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/main_page/partners/vds.jpg'] ?? ''}}" loading="lazy"></div>
+                                    src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/main_page/partners/vds.webp')}}"
+                                    alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/main_page/partners/vds.webp'] ?? ''}}" loading="lazy"></div>
                     </div>
                 </div>
             </div>
