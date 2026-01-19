@@ -15,6 +15,19 @@
     <link rel="stylesheet" href="{{asset('/elitvid_assets/newDesign/newDesign/swiper-bundle.min.css')}}"/>
     <link rel="stylesheet" href="{{asset('/elitvid_assets/newDesign/newDesign/style.css')}}?v=1.6">
 
+    {{--<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>--}}
+    {{--<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>--}}
+    <script defer src="{{asset('/elitvid_assets/newDesign/newDesign/js/jquery-3.7.1.min.js')}}"></script>
+    <script defer src="{{asset('/elitvid_assets/newDesign/newDesign/js/jquery-migrate-1.4.1.min.js')}}"></script>
+    <script defer src="{{asset('/elitvid_assets/newDesign/newDesign/swiper.min.js')}}"></script>
+    <script defer src="{{asset('/elitvid_assets/newDesign/newDesign/swiper-bundle.min.js')}}"></script>
+    <script defer src="{{asset('/elitvid_assets/newDesign/newDesign/js/sliders/main_slider.js')}}"></script>
+    <script defer src="{{asset('/elitvid_assets/newDesign/newDesign/js/popupSubmitApplication.js')}}"></script>
+    {{--<script defer src="{{asset('/elitvid_assets/newDesign/newDesign/js/popupRequestCall.js')}}"></script>--}}
+    <script defer src="{{asset('/elitvid_assets/newDesign/newDesign/js/burgerMenu.js')}}"></script>
+    <script defer src="{{asset('/elitvid_assets/newDesign/newDesign/js/imageUpdater.js')}}"></script>
+    <script defer src="{{asset('/elitvid_assets/newDesign/newDesign/js/test.js')}}"></script>
+
 {{--    <link rel="shortcut icon" type="image/x-icon" href="{{asset('/elitvid_assets/newDesign/newDesign/imgs/logo/logo.svg')}}" >--}}
 {{--    <link rel="shortcut icon" href="{{asset('/favicon.ico')}}" sizes="16x16">--}}
     <link rel="shortcut icon" href="{{asset('/favicon2.webp')}}" sizes="67x67">
@@ -261,19 +274,6 @@
         document.querySelectorAll('.form_error').forEach(el => el.innerHTML = '');
     }
 </script>
-{{--<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>--}}
-{{--<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>--}}
-<script defer src="{{asset('/elitvid_assets/newDesign/newDesign/js/jquery-3.7.1.min.js')}}"></script>
-<script defer src="{{asset('/elitvid_assets/newDesign/newDesign/js/jquery-migrate-1.4.1.min.js')}}"></script>
-<script defer src="{{asset('/elitvid_assets/newDesign/newDesign/swiper.min.js')}}"></script>
-<script defer src="{{asset('/elitvid_assets/newDesign/newDesign/swiper-bundle.min.js')}}"></script>
-<script defer src="{{asset('/elitvid_assets/newDesign/newDesign/js/sliders/main_slider.js')}}"></script>
-<script defer src="{{asset('/elitvid_assets/newDesign/newDesign/js/popupSubmitApplication.js')}}"></script>
-{{--<script defer src="{{asset('/elitvid_assets/newDesign/newDesign/js/popupRequestCall.js')}}"></script>--}}
-<script defer src="{{asset('/elitvid_assets/newDesign/newDesign/js/burgerMenu.js')}}"></script>
-<script defer src="{{asset('/elitvid_assets/newDesign/newDesign/js/imageUpdater.js')}}"></script>
-<script defer src="{{asset('/elitvid_assets/newDesign/newDesign/js/test.js')}}"></script>
-
 <!-- Yandex Metrika -->
 <script type="text/javascript">
     (function (m, e, t, r, i, k, a) {
