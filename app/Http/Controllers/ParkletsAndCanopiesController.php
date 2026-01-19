@@ -22,6 +22,10 @@ class ParkletsAndCanopiesController
         $static_images_arr = [];
         foreach ($static_images as $static_image) {
             $static_images_arr[$static_image->image] = $static_image->description_image;
+            if (str_ends_with($static_image->image, '.webp')) {
+                $oldPath = str_replace('.webp', '.png', $static_image->image);
+                $static_images_arr[$oldPath] = $static_image->description_image;
+            }
         }
         try {
             $staticPage = StaticPage::where('page', 'parklets_and_canopies')->first();

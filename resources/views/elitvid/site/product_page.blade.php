@@ -31,10 +31,10 @@
                                         @endforeach
                                     </div>
                                     <div class="swiper-button-prev">
-                                        <img src="{{asset('/elitvid_assets/images/slider/prev.png')}}" alt="">
+                                        <img src="{{asset('/elitvid_assets/images/slider/prev.webp')}}" alt="">
                                     </div>
                                     <div class="swiper-button-next">
-                                        <img src="{{asset('/elitvid_assets/images/slider/next.png')}}" alt="">
+                                        <img src="{{asset('/elitvid_assets/images/slider/next.webp')}}" alt="">
                                     </div>
                                 </div>
                             </div>

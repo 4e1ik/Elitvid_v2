@@ -21,8 +21,8 @@
             </div>
             <div class="stages">
                 <div class="image">
-                    <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/benches/collections/lines/lines.png')}}"
-                         alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/benches/collections/lines/lines.png']}}"
+                    <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/benches/collections/lines/lines.webp')}}"
+                         alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/benches/collections/lines/lines.webp']}}"
                          class="main-page-up">
                 </div>
                 <div class="submit-application submit-application--mobile">

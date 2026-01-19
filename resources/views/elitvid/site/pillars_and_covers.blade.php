@@ -20,7 +20,7 @@
             </div>
             <div class="stages">
                 <div class="image">
-                    <img src="{{asset($staticPage->main_image ?? '/elitvid_assets/newDesign/newDesign/imgs/pillars/pillars.png')}}" alt="{{$staticPage->alt_image ?? $static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/pillars/pillars.png'] ?? 'Столбы и накрывки'}}"
+                    <img src="{{asset($staticPage->main_image ?? '/elitvid_assets/newDesign/newDesign/imgs/pillars/pillars.webp')}}" alt="{{$staticPage->alt_image ?? $static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/pillars/pillars.webp'] ?? 'Столбы и накрывки'}}"
                          class="main-page-up">
                     <div class="image-gradient-overlay"></div>
                 </div>

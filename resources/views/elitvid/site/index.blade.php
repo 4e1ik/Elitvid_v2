@@ -22,8 +22,8 @@
             </div>
             <div class="stages">
                 <div class="image">
-                    <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/main_page/main_page_up.png')}}"
-                         alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/main_page/main_page_up.png'] ?? ''}}"
+                    <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/main_page/main_page_up.webp')}}"
+                         alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/main_page/main_page_up.webp'] ?? ''}}"
                          class="main-page-up">
                 </div>
                 <div class="stages--text">
@@ -47,8 +47,8 @@
             </div>
             <div class="description">
                 <div class="image">
-                    <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/main_page/main_page_center.png')}}"
-                         alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/main_page/main_page_center.png'] ?? ''}}"
+                    <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/main_page/main_page_center.webp')}}"
+                         alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/main_page/main_page_center.webp'] ?? ''}}"
                          class="main-page-center">
                 </div>
                 <div class="description-text">
@@ -165,8 +165,8 @@
                     </div>
                 </div>
                 <div class="decorative_elements__image">
-                    <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/main_page/decor.png')}}"
-                         alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/main_page/decor.png'] ?? ''}}">
+                    <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/main_page/decor.webp')}}"
+                         alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/main_page/decor.webp'] ?? ''}}">
                 </div>
             </div>
         </section>

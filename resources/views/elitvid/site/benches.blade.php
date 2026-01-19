@@ -20,8 +20,8 @@
             </div>
             <div class="stages">
                 <div class="image">
-                    <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/benches.png')}}"
-                         alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/benches.png']}}"
+                    <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/benches.webp')}}"
+                         alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/benches.webp']}}"
                          class="main-page-up">
                 </div>
                 <div class="submit-application submit-application--mobile">
@@ -43,8 +43,8 @@
             <h2>Коллекции каменных скамеек</h2>
             <div class="prev_directions__forms">
                 <div class="prev_directions__form">
-                    <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/benches/collections/verona/main_verona.png')}}"
-                         alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/benches/collections/verona/main_verona.png']}}">
+                    <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/benches/collections/verona/main_verona.webp')}}"
+                         alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/benches/collections/verona/main_verona.webp']}}">
                     <div class="prev_directions_form--text">
                         <div class="text--description">
                             <h3>Verona</h3>
@@ -60,8 +60,8 @@
                     </a>
                 </div>
                 <div class="prev_directions__form">
-                    <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/benches/collections/stones/main_stones.png')}}"
-                         alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/benches/collections/stones/main_stones.png']}}">
+                    <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/benches/collections/stones/main_stones.webp')}}"
+                         alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/benches/collections/stones/main_stones.webp']}}">
                     <div class="prev_directions_form--text">
                         <div class="text--description">
                             <h3>Stones</h3>
@@ -77,8 +77,8 @@
                     </a>
                 </div>
                 <div class="prev_directions__form">
-                    <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/benches/collections/lines/main_lines.png')}}"
-                         alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/benches/collections/lines/main_lines.png']}}">
+                    <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/benches/collections/lines/main_lines.webp')}}"
+                         alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/benches/collections/lines/main_lines.webp']}}">
                     <div class="prev_directions_form--text">
                         <div class="text--description">
                             <h3>lines</h3>
@@ -94,8 +94,8 @@
                     </a>
                 </div>
                 <div class="prev_directions__form">
-                    <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/benches/collections/solo/main_solo.png')}}"
-                         alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/benches/collections/solo/main_solo.png']}}">
+                    <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/benches/collections/solo/main_solo.webp')}}"
+                         alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/benches/collections/solo/main_solo.webp']}}">
                     <div class="prev_directions_form--text">
                         <div class="text--description">
                             <h3>Solo</h3>
@@ -111,8 +111,8 @@
                     </a>
                 </div>
                 <div class="prev_directions__form">
-                    <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/benches/collections/street_furniture/main_street_furniture.png')}}"
-                         alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/benches/collections/street_furniture/main_street_furniture.png']}}">
+                    <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/benches/collections/street_furniture/main_street_furniture.webp')}}"
+                         alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/benches/collections/street_furniture/main_street_furniture.webp']}}">
                     <div class="prev_directions_form--text">
                         <div class="text--description">
                             <h3>Street furniture</h3>

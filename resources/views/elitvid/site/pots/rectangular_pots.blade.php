@@ -20,7 +20,7 @@
         </div>
         <div class="stages">
             <div class="image">
-                <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/rectangular_pots.png')}}" alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/rectangular_pots.png']}}"
+                <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/rectangular_pots.webp')}}" alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/rectangular_pots.webp']}}"
                      class="main-page-up">
             </div>
             <div class="submit-application submit-application--mobile">

@@ -23,6 +23,11 @@ class BenchController
         $static_images_arr = [];
         foreach ($static_images as $static_image) {
             $static_images_arr[$static_image->image] = $static_image->description_image;
+            // Добавляем также ключ со старым расширением .png для обратной совместимости
+            if (str_ends_with($static_image->image, '.webp')) {
+                $oldPath = str_replace('.webp', '.png', $static_image->image);
+                $static_images_arr[$oldPath] = $static_image->description_image;
+            }
         }
         return view('elitvid.site.benches', compact('benches_images', 'metaTitle', 'metaDescription', 'category', 'static_images_arr'));
     }
@@ -46,6 +51,10 @@ class BenchController
         $static_images_arr = [];
         foreach ($static_images as $static_image) {
             $static_images_arr[$static_image->image] = $static_image->description_image;
+            if (str_ends_with($static_image->image, '.webp')) {
+                $oldPath = str_replace('.webp', '.png', $static_image->image);
+                $static_images_arr[$oldPath] = $static_image->description_image;
+            }
         }
         return view('elitvid.site.benches.street_furniture_benches', compact('products', 'metaTitle', 'metaDescription', 'category', 'static_images_arr'));
     }
@@ -69,6 +78,10 @@ class BenchController
         $static_images_arr = [];
         foreach ($static_images as $static_image) {
             $static_images_arr[$static_image->image] = $static_image->description_image;
+            if (str_ends_with($static_image->image, '.webp')) {
+                $oldPath = str_replace('.webp', '.png', $static_image->image);
+                $static_images_arr[$oldPath] = $static_image->description_image;
+            }
         }
         return view('elitvid.site.benches.verona_benches', compact('products', 'metaTitle', 'metaDescription', 'category', 'static_images_arr'));
     }
@@ -92,6 +105,10 @@ class BenchController
         $static_images_arr = [];
         foreach ($static_images as $static_image) {
             $static_images_arr[$static_image->image] = $static_image->description_image;
+            if (str_ends_with($static_image->image, '.webp')) {
+                $oldPath = str_replace('.webp', '.png', $static_image->image);
+                $static_images_arr[$oldPath] = $static_image->description_image;
+            }
         }
         return view('elitvid.site.benches.stones_benches', compact('products', 'metaTitle', 'metaDescription', 'category', 'static_images_arr'));
     }
@@ -115,6 +132,10 @@ class BenchController
         $static_images_arr = [];
         foreach ($static_images as $static_image) {
             $static_images_arr[$static_image->image] = $static_image->description_image;
+            if (str_ends_with($static_image->image, '.webp')) {
+                $oldPath = str_replace('.webp', '.png', $static_image->image);
+                $static_images_arr[$oldPath] = $static_image->description_image;
+            }
         }
         return view('elitvid.site.benches.solo_benches', compact('products', 'metaTitle', 'metaDescription', 'category', 'static_images_arr'));
     }
@@ -138,6 +159,10 @@ class BenchController
         $static_images_arr = [];
         foreach ($static_images as $static_image) {
             $static_images_arr[$static_image->image] = $static_image->description_image;
+            if (str_ends_with($static_image->image, '.webp')) {
+                $oldPath = str_replace('.webp', '.png', $static_image->image);
+                $static_images_arr[$oldPath] = $static_image->description_image;
+            }
         }
         return view('elitvid.site.benches.lines_benches', compact('products', 'metaTitle', 'metaDescription', 'category', 'static_images_arr'));
     }
@@ -158,6 +183,10 @@ class BenchController
         $canonicalUrl = route('show_bench_product', ['collection' => $collection,'id' => $id]);
         foreach ($static_images as $static_image) {
             $static_images_arr[$static_image->image] = $static_image->description_image;
+            if (str_ends_with($static_image->image, '.webp')) {
+                $oldPath = str_replace('.webp', '.png', $static_image->image);
+                $static_images_arr[$oldPath] = $static_image->description_image;
+            }
         }
         return view('elitvid.site.benches.bench_product_page',
             compact('product',
