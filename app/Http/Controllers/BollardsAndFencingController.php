@@ -21,13 +21,29 @@ class BollardsAndFencingController
         $metaDescription = $metaTags->isNotEmpty() ? $metaTags[0]->description : 'Описание боллардов и ограждений';
         $categories = Category::where('page', 'bollards_and_fencing')->get();
         $category = $categories->isNotEmpty() ? $categories[0]->description : null;
+
+        // Статические картинки для alt-тегов, нормализуем пути
         $static_images = StaticImages::where('page', 'bollards_and_fencing')->get();
         $static_images_arr = [];
         foreach ($static_images as $static_image) {
-            $static_images_arr[$static_image->image] = $static_image->description_image;
-            if (str_ends_with($static_image->image, '.webp')) {
-                $oldPath = str_replace('.webp', '.png', $static_image->image);
+            // убираем ведущие ./ и дублируем варианты путей
+            $normalizedPath = ltrim($static_image->image, './');
+
+            // без слеша в начале
+            $static_images_arr[$normalizedPath] = $static_image->description_image;
+
+            // со слешем в начале
+            if (!str_starts_with($normalizedPath, '/')) {
+                $static_images_arr['/' . $normalizedPath] = $static_image->description_image;
+            }
+
+            // Дополнительно поддерживаем старый формат .png вместо .webp
+            if (str_ends_with($normalizedPath, '.webp')) {
+                $oldPath = str_replace('.webp', '.png', $normalizedPath);
                 $static_images_arr[$oldPath] = $static_image->description_image;
+                if (!str_starts_with($oldPath, '/')) {
+                    $static_images_arr['/' . $oldPath] = $static_image->description_image;
+                }
             }
         }
         try {

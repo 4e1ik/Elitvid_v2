@@ -10,7 +10,8 @@ use App\Http\Controllers\Admin\MailController;
 use App\Http\Controllers\Admin\MetaTagController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\StaticImagesController;
-use App\Http\Controllers\Admin\StaticPageController;
+use App\Http\Controllers\StaticPagesController;
+use App\Http\Controllers\Admin\StaticPageController as AdminStaticPageController;
 use \App\Http\Controllers\Admin\PotController as AdminPotController;
 use \App\Http\Controllers\Admin\BenchController as AdminBenchController;
 
@@ -60,14 +61,15 @@ Route::prefix('blog')->group(function () {
 
 Route::prefix('directions')->group(function () {
     Route::get('/', [MainController::class, 'directions'])->name('directions');
+    Route::get('/{slug}', [StaticPagesController::class, 'index'])->name('static_page');
 
     Route::get('/bollards_and_fencing', [BollardsAndFencingController::class, 'bollards_and_fencing'])->name('bollards_and_fencing');
-    Route::get('/facade_stucco_molding_and_panels', [FacadeStuccoMoldingAndPanelsController::class, 'facade_stucco_molding_and_panels'])->name('facade_stucco_molding_and_panels');
-    Route::get('/parklets_and_canopies', [ParkletsAndCanopiesController::class, 'parklets_and_canopies'])->name('parklets_and_canopies');
-    Route::get('/pillars_and_covers', [PillarsAndCoversController::class, 'pillars_and_covers'])->name('pillars_and_covers');
-    Route::get('/rotundas_and_colonnades', [RotundasAndColonnadesController::class, 'rotundas_and_colonnades'])->name('rotundas_and_colonnades');
-    Route::get('/maf', [MafController::class, 'small_architectural_forms'])->name('small_architectural_forms');
-    Route::get('/izdelia_iz_betona', [ConcreteProductsController::class, 'concrete_products'])->name('concrete_products');
+//    Route::get('/facade_stucco_molding_and_panels', [FacadeStuccoMoldingAndPanelsController::class, 'facade_stucco_molding_and_panels'])->name('facade_stucco_molding_and_panels');
+//    Route::get('/parklets_and_canopies', [ParkletsAndCanopiesController::class, 'parklets_and_canopies'])->name('parklets_and_canopies');
+//    Route::get('/pillars_and_covers', [PillarsAndCoversController::class, 'pillars_and_covers'])->name('pillars_and_covers');
+//    Route::get('/rotundas_and_colonnades', [RotundasAndColonnadesController::class, 'rotundas_and_colonnades'])->name('rotundas_and_colonnades');
+//    Route::get('/maf', [MafController::class, 'small_architectural_forms'])->name('small_architectural_forms');
+//    Route::get('/izdelia_iz_betona', [ConcreteProductsController::class, 'concrete_products'])->name('concrete_products');
 
     Route::prefix('benches')->group(function () {
         Route::get('/', [BenchController::class, 'benches'])->name('benches');
@@ -188,7 +190,7 @@ Route::middleware('auth')->where([])->prefix('admin')->group(function () {
         'blogs' => BlogController::class,
         'categories' => CategoryController::class,
         'static_images' => StaticImagesController::class,
-        'static_pages' => StaticPageController::class,
+        'static_pages' => AdminStaticPageController::class,
         'products' => ProductController::class,
     ]);
 });
