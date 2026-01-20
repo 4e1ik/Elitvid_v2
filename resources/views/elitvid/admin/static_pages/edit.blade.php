@@ -21,6 +21,9 @@
                             <div class="col-md-6 padding-0" style="padding-right: 15px;">
                                 <h3>Заголовок (H1)</h3>
                                 <input type="text" class="form-control @error('title') danger @enderror" name="title" id="title" value="{{old('title', $staticPage->title)}}" placeholder="Например: Болларды и ограждения">
+                                <small class="text-muted" style="display: block; margin-top: 5px;">
+                                    <span class="fa fa-info-circle"></span> Поле поддерживает HTML теги, например: &lt;br&gt; для переноса строки
+                                </small>
                                 @error('title')
                                 <div class="text-danger">{{$message}}</div>
                                 @enderror

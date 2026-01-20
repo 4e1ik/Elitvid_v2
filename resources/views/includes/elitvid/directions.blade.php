@@ -94,7 +94,7 @@
             </div>
             <h3>
                 <a href="{{route('static_page', ['slug' => $static_page->slug])}}">
-                    <button>{{$static_page->title}}</button>
+                    <button>{{$static_page->menu_name}}</button>
                 </a>
             </h3>
         </div>
