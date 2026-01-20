@@ -28,7 +28,8 @@
     <div class="direction">
         <div class="direction__image">
             <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/main_page/directions/pots.webp')}} "
-                 alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/main_page/directions/pots.webp'] ?? ''}}">
+                 alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/main_page/directions/pots.webp'] ?? ''}}"
+                 loading="lazy">
         </div>
         <h3><a href="{{route('pots')}}">
                 <button>Кашпо</button>
@@ -46,7 +47,8 @@
     </style>
     <div class="slogan__direction">
         <div class="slogan__direction-text">
-            <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/main_page/img.webp')}}" alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/main_page/img.webp'] ?? ''}}">
+            <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/main_page/img.webp')}}" alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/main_page/img.webp'] ?? ''}}"
+                 loading="lazy">
             <div class="h4">Мы воплотим в реальность любую вашу идею!</div>
             <p>Работаем по индивидуальным размерам, эскизам и чертежам. Гарантируем качественное и
                 профессиональное
@@ -62,7 +64,8 @@
     <div class="direction">
         <div class="direction__image">
             <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/main_page/directions/benches.webp')}}"
-                 alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/main_page/directions/benches.webp'] ?? ''}}">
+                 alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/main_page/directions/benches.webp'] ?? ''}}"
+                 loading="lazy">
         </div>
         <h3>
             <a href="{{route('benches')}}">
@@ -73,7 +76,8 @@
     <div class="direction">
         <div class="direction__image">
             <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/main_page/directions/bollards.webp')}}"
-                 alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/main_page/directions/bollards.webp'] ?? ''}}">
+                 alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/main_page/directions/bollards.webp'] ?? ''}}"
+                 loading="lazy">
         </div>
         <h3>
             <a href="{{route('bollards_and_fencing')}}">
@@ -84,8 +88,9 @@
     @foreach($static_pages as $static_page)
         <div class="direction">
             <div class="direction__image">
-                <img src="{{asset('/storage/'.$static_page->images()->where('main_image', true)->first()->image)}}"
-                     alt="{{$static_page->images()->where('main_image', true)->first()->image->description_image ?? ''}}">
+                <img src="{{asset('/storage/'.str_replace('public/','',$static_page->images()->where('main_image', true)->first()->image))}}"
+                     alt="{{$static_page->images()->where('main_image', true)->first()->image->description_image ?? ''}}"
+                loading="lazy">
             </div>
             <h3>
                 <a href="{{route('static_page', ['slug' => $static_page->slug])}}">
