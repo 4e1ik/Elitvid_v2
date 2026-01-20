@@ -3,7 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\StaticPageRequest;
+use App\Http\Requests\CreateStaticPageRequest;
+use App\Http\Requests\UpdateStaticPageRequest;
 use App\Repositories\Admin\StaticPageRepository;
 use App\Services\Admin\StaticPageService;
 use App\Models\StaticPage;
@@ -26,9 +27,9 @@ class StaticPageController extends Controller
         return view('elitvid.admin.static_pages.create');
     }
 
-    public function store(StaticPageRequest $request)
+    public function store(CreateStaticPageRequest $request)
     {
-        $data = $request->all();
+        $data = $request->validated();
 
         $staticPage = $this->staticPageService->store($data);
 
@@ -42,12 +43,11 @@ class StaticPageController extends Controller
         return view('elitvid.admin.static_pages.edit', compact('staticPage'));
     }
 
-    public function update(StaticPageRequest $request, StaticPage $staticPage)
+    public function update(UpdateStaticPageRequest $request, StaticPage $staticPage)
     {
-        $data = $request->validated();
+        $data = $request->all();
 
-        // Обработка active - всегда устанавливаем явное значение (true или false)
-        // Скрытое поле всегда отправляет "0", если чекбокс отмечен - приходит "1"
+        // Обработка active - радио-кнопка всегда отправляет '0' или '1'
         $data['active'] = $request->input('active') == '1';
 
         // Обработка active для галереи - всегда устанавливаем явное значение
@@ -63,8 +63,7 @@ class StaticPageController extends Controller
             }
         }
 
-        // Убираем slug из данных при обновлении (нельзя изменять)
-        unset($data['slug']);
+        // Slug обрабатывается в сервисе - если пустой, генерируется из title
 
         // Обработка файлов
         if ($request->hasFile('main_image')) {

@@ -76,6 +76,11 @@ class StaticPageService
         return DB::transaction(function () use ($data, $staticPage) {
             // active уже обработан в контроллере, просто приводим к boolean для гарантии
 
+            // Генерируем slug, если он пустой и есть title (такая же логика, как при создании)
+            if (empty($data['slug']) && !empty($data['title'])) {
+                $data['slug'] = $this->slugGenerateHelper->slug($data['title']);
+            }
+
             $staticPage->update($data);
 
             // Обработка новой главной картинки

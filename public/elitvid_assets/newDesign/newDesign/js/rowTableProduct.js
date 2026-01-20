@@ -1,9 +1,8 @@
 let addRow = document.querySelector('.addRow');
 const newRow = document.getElementById('js');
 
-
-
-addRow.addEventListener('click', e=>{
+if (addRow) {
+    addRow.addEventListener('click', e=>{
 
 
     // const col12 = document.createElement('div');
@@ -34,4 +33,5 @@ addRow.addEventListener('click', e=>{
 //     input.setAttribute('name','name');
 //     input.setAttribute('value', '1233');
 //     panelBody.append(input);
-});
+    });
+}

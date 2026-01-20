@@ -72,28 +72,6 @@
     </div>
     <div class="direction">
         <div class="direction__image">
-            <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/main_page/directions/rotundas.webp')}}"
-                 alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/main_page/directions/rotundas.webp'] ?? ''}}">
-        </div>
-        <h3>
-            <a href="{{route('rotundas_and_colonnades')}}">
-                <button>Ротонды и колонны</button>
-            </a>
-        </h3>
-    </div>
-    <div class="direction">
-        <div class="direction__image">
-            <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/main_page/directions/parklets.webp')}}"
-                 alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/main_page/directions/parklets.webp'] ?? ''}}">
-        </div>
-        <h3>
-            <a href="{{route('parklets_and_canopies')}}">
-                <button>Парклеты, навесы</button>
-            </a>
-        </h3>
-    </div>
-    <div class="direction">
-        <div class="direction__image">
             <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/main_page/directions/bollards.webp')}}"
                  alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/main_page/directions/bollards.webp'] ?? ''}}">
         </div>
@@ -103,48 +81,86 @@
             </a>
         </h3>
     </div>
-    <div class="direction">
-        <div class="direction__image">
-            <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/main_page/directions/pillars.webp')}}"
-                 alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/main_page/directions/pillars.webp'] ?? ''}}">
+    @foreach($static_pages as $static_page)
+        <div class="direction">
+            <div class="direction__image">
+                <img src="{{asset('/storage/'.$static_page->images()->where('main_image', true)->first()->image)}}"
+                     alt="{{$static_page->images()->where('main_image', true)->first()->image->description_image ?? ''}}">
+            </div>
+            <h3>
+                <a href="{{route('static_page', ['slug' => $static_page->slug])}}">
+                    <button>{{$static_page->title}}</button>
+                </a>
+            </h3>
         </div>
-        <h3>
-            <a href="{{route('pillars_and_covers')}}">
-                <button>Столбы и накрывки</button>
-            </a>
-        </h3>
-    </div>
-    <div class="direction">
-        <div class="direction__image">
-            <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/main_page/directions/facade_stucco.webp')}}"
-                 alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/main_page/directions/facade_stucco.webp'] ?? ''}}">
-        </div>
-        <h3>
-            <a href="{{route('facade_stucco_molding_and_panels')}}">
-                <button>Фасадная лепнина и панели</button>
-            </a>
-        </h3>
-    </div>
-    <div class="direction">
-        <div class="direction__image">
-            <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/main_page/directions/1maf.webp')}}"
-                 alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/main_page/directions/1maf.webp'] ?? ''}}">
-        </div>
-        <h3>
-            <a href="{{route('small_architectural_forms')}}">
-                <button>Малые архитектурные формы</button>
-            </a>
-        </h3>
-    </div>
-    <div class="direction">
-        <div class="direction__image">
-            <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/main_page/directions/concrete_products1.webp')}}"
-                 alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/main_page/directions/concrete_products1.webp'] ?? ''}}">
-        </div>
-        <h3>
-            <a href="{{route('concrete_products')}}">
-                <button>Изделия из бетона</button>
-            </a>
-        </h3>
-    </div>
+    @endforeach
+
+
+{{--    <div class="direction">--}}
+{{--        <div class="direction__image">--}}
+{{--            <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/main_page/directions/rotundas.webp')}}"--}}
+{{--                 alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/main_page/directions/rotundas.webp'] ?? ''}}">--}}
+{{--        </div>--}}
+{{--        <h3>--}}
+{{--            <a href="{{route('rotundas_and_colonnades')}}">--}}
+{{--                <button>Ротонды и колонны</button>--}}
+{{--            </a>--}}
+{{--        </h3>--}}
+{{--    </div>--}}
+{{--    <div class="direction">--}}
+{{--        <div class="direction__image">--}}
+{{--            <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/main_page/directions/parklets.webp')}}"--}}
+{{--                 alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/main_page/directions/parklets.webp'] ?? ''}}">--}}
+{{--        </div>--}}
+{{--        <h3>--}}
+{{--            <a href="{{route('parklets_and_canopies')}}">--}}
+{{--                <button>Парклеты, навесы</button>--}}
+{{--            </a>--}}
+{{--        </h3>--}}
+{{--    </div>--}}
+{{--    --}}
+{{--    <div class="direction">--}}
+{{--        <div class="direction__image">--}}
+{{--            <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/main_page/directions/pillars.webp')}}"--}}
+{{--                 alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/main_page/directions/pillars.webp'] ?? ''}}">--}}
+{{--        </div>--}}
+{{--        <h3>--}}
+{{--            <a href="{{route('pillars_and_covers')}}">--}}
+{{--                <button>Столбы и накрывки</button>--}}
+{{--            </a>--}}
+{{--        </h3>--}}
+{{--    </div>--}}
+{{--    <div class="direction">--}}
+{{--        <div class="direction__image">--}}
+{{--            <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/main_page/directions/facade_stucco.webp')}}"--}}
+{{--                 alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/main_page/directions/facade_stucco.webp'] ?? ''}}">--}}
+{{--        </div>--}}
+{{--        <h3>--}}
+{{--            <a href="{{route('facade_stucco_molding_and_panels')}}">--}}
+{{--                <button>Фасадная лепнина и панели</button>--}}
+{{--            </a>--}}
+{{--        </h3>--}}
+{{--    </div>--}}
+{{--    <div class="direction">--}}
+{{--        <div class="direction__image">--}}
+{{--            <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/main_page/directions/1maf.webp')}}"--}}
+{{--                 alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/main_page/directions/1maf.webp'] ?? ''}}">--}}
+{{--        </div>--}}
+{{--        <h3>--}}
+{{--            <a href="{{route('small_architectural_forms')}}">--}}
+{{--                <button>Малые архитектурные формы</button>--}}
+{{--            </a>--}}
+{{--        </h3>--}}
+{{--    </div>--}}
+{{--    <div class="direction">--}}
+{{--        <div class="direction__image">--}}
+{{--            <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/main_page/directions/concrete_products1.webp')}}"--}}
+{{--                 alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/main_page/directions/concrete_products1.webp'] ?? ''}}">--}}
+{{--        </div>--}}
+{{--        <h3>--}}
+{{--            <a href="{{route('concrete_products')}}">--}}
+{{--                <button>Изделия из бетона</button>--}}
+{{--            </a>--}}
+{{--        </h3>--}}
+{{--    </div>--}}
 </div>

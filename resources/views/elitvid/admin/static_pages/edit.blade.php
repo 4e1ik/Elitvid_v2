@@ -12,7 +12,7 @@
         <form action="{{route('static_pages.update', ['static_page' => $staticPage])}}" enctype="multipart/form-data" method="post">
             @method('PUT')
             @csrf
-            
+
             {{-- Заголовок и подзаголовок в одном блоке --}}
             <div class="col-md-12 padding-0">
                 <div class="col-md-12">
@@ -20,7 +20,7 @@
                         <div class="panel-body">
                             <div class="col-md-6 padding-0" style="padding-right: 15px;">
                                 <h3>Заголовок (H1)</h3>
-                                <input type="text" class="form-control @error('title') danger @enderror" name="title" value="{{old('title', $staticPage->title)}}" placeholder="Например: Болларды и ограждения">
+                                <input type="text" class="form-control @error('title') danger @enderror" name="title" id="title" value="{{old('title', $staticPage->title)}}" placeholder="Например: Болларды и ограждения">
                                 @error('title')
                                 <div class="text-danger">{{$message}}</div>
                                 @enderror
@@ -36,7 +36,7 @@
                     </div>
                 </div>
             </div>
-            
+
             {{-- Slug --}}
             <div class="col-md-12 padding-0">
                 <div class="col-md-12">
@@ -44,18 +44,25 @@
                         <div class="panel-body">
                             <h3>
                                 Slug (уникальный идентификатор)
-                                <span class="fa fa-question-circle" style="cursor: pointer; color: #337ab7;" 
-                                      data-toggle="tooltip" 
-                                      data-placement="right" 
+                                <span class="fa fa-question-circle" style="cursor: pointer; color: #337ab7;"
+                                      data-toggle="tooltip"
+                                      data-placement="right"
                                       title="Slug используется в URL страницы. Должен содержать только латинские буквы, цифры и подчеркивания. Можно сгенерировать в интернете из русского текста при желании."></span>
                             </h3>
-                            <input type="text" class="form-control" value="{{$staticPage->slug}}" readonly disabled style="background-color: #f5f5f5;">
-                            <small class="text-muted">Идентификатор нельзя изменить</small>
+                            <input type="text" class="form-control @error('slug') danger @enderror" name="slug" id="slug" value="{{old('slug', $staticPage->slug)}}" placeholder="например: bollards_and_fencing">
+                            <small class="text-muted">
+                                <span class="fa fa-info-circle"></span> Если оставить поле пустым, slug будет автоматически сгенерирован из заголовка.
+                            </small>
+                            @error('slug')
+                            <div class="text-danger" style="margin-top: 5px;">
+                                {{$message}}
+                            </div>
+                            @enderror
                         </div>
                     </div>
                 </div>
             </div>
-            
+
             {{-- Главный текст --}}
             <div class="col-md-12 padding-0">
                 <div class="col-md-12">
@@ -77,7 +84,7 @@
                     </div>
                 </div>
             </div>
-            
+
             {{-- Главная картинка и картинка меню в одном блоке --}}
             <div class="col-md-12 padding-0">
                 <div class="col-md-12">
@@ -90,26 +97,20 @@
                                 @endphp
                                 @if($mainImage)
                                     <div style="margin-bottom: 20px;">
-                                        <img style="max-width: 100%; height: auto; max-height: 300px; border: 1px solid #ddd; border-radius: 5px;" 
-                                             src="{{asset('storage/' . str_replace('public/', '', $mainImage->image))}}" 
+                                        <img style="max-width: 100%; height: auto; max-height: 300px; border: 1px solid #ddd; border-radius: 5px;"
+                                             src="{{asset('storage/' . str_replace('public/', '', $mainImage->image))}}"
                                              alt="{{$mainImage->description_image}}">
                                         <p><small>Текущее изображение</small></p>
-                                        <form action="{{route('images.update', ['image' => $mainImage])}}" method="post" style="margin-top: 10px;">
-                                            @method('PUT')
-                                            @csrf
+                                        <div style="margin-top: 10px;">
                                             <label>Описание главной картинки</label>
-                                            <input type="text" class="form-control" name="description_image" value="{{$mainImage->description_image}}" placeholder="Описание изображения">
-                                            <button type="submit" class="btn btn-primary btn-sm" style="margin-top: 5px;">
+                                            <input type="text" class="form-control" name="main_image_description_edit" id="main_image_description_edit_{{$mainImage->id}}" value="{{$mainImage->description_image}}" placeholder="Описание изображения">
+                                            <button type="button" class="btn btn-primary btn-sm" style="margin-top: 5px;" onclick="updateImageDescription({{$mainImage->id}}, '{{route('images.update', ['image' => $mainImage])}}')">
                                                 <span class="fa fa-save"></span> Сохранить описание
                                             </button>
-                                        </form>
-                                        <form action="{{route('images.destroy', ['image' => $mainImage])}}" method="post" style="display: inline-block; margin-top: 5px;">
-                                            @method('DELETE')
-                                            @csrf
-                                            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Удалить главное изображение?')">
-                                                <span class="fa fa-trash"></span> Удалить
-                                            </button>
-                                        </form>
+                                        </div>
+                                        <button type="button" class="btn btn-danger btn-sm" style="margin-top: 5px;" onclick="deleteImage({{$mainImage->id}}, '{{route('images.destroy', ['image' => $mainImage])}}', 'Удалить главное изображение?')">
+                                            <span class="fa fa-trash"></span> Удалить
+                                        </button>
                                     </div>
                                 @endif
                                 <div class="col-md-12" style="margin-bottom: 20px;">
@@ -144,26 +145,20 @@
                                 @endphp
                                 @if($menuImage)
                                     <div style="margin-bottom: 20px;">
-                                        <img style="max-width: 100%; height: auto; max-height: 300px; border: 1px solid #ddd; border-radius: 5px;" 
-                                             src="{{asset('storage/' . str_replace('public/', '', $menuImage->image))}}" 
+                                        <img style="max-width: 100%; height: auto; max-height: 300px; border: 1px solid #ddd; border-radius: 5px;"
+                                             src="{{asset('storage/' . str_replace('public/', '', $menuImage->image))}}"
                                              alt="{{$menuImage->description_image}}">
                                         <p><small>Текущее изображение</small></p>
-                                        <form action="{{route('images.update', ['image' => $menuImage])}}" method="post" style="margin-top: 10px;">
-                                            @method('PUT')
-                                            @csrf
+                                        <div style="margin-top: 10px;">
                                             <label>Описание картинки меню</label>
-                                            <input type="text" class="form-control" name="description_image" value="{{$menuImage->description_image}}" placeholder="Описание изображения">
-                                            <button type="submit" class="btn btn-primary btn-sm" style="margin-top: 5px;">
+                                            <input type="text" class="form-control" name="menu_image_description_edit" id="menu_image_description_edit_{{$menuImage->id}}" value="{{$menuImage->description_image}}" placeholder="Описание изображения">
+                                            <button type="button" class="btn btn-primary btn-sm" style="margin-top: 5px;" onclick="updateImageDescription({{$menuImage->id}}, '{{route('images.update', ['image' => $menuImage])}}')">
                                                 <span class="fa fa-save"></span> Сохранить описание
                                             </button>
-                                        </form>
-                                        <form action="{{route('images.destroy', ['image' => $menuImage])}}" method="post" style="display: inline-block; margin-top: 5px;">
-                                            @method('DELETE')
-                                            @csrf
-                                            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Удалить изображение меню?')">
-                                                <span class="fa fa-trash"></span> Удалить
-                                            </button>
-                                        </form>
+                                        </div>
+                                        <button type="button" class="btn btn-danger btn-sm" style="margin-top: 5px;" onclick="deleteImage({{$menuImage->id}}, '{{route('images.destroy', ['image' => $menuImage])}}', 'Удалить изображение меню?')">
+                                            <span class="fa fa-trash"></span> Удалить
+                                        </button>
                                     </div>
                                 @endif
                                 <div class="col-md-12" style="margin-bottom: 20px;">
@@ -204,8 +199,8 @@
                     </div>
                 </div>
             </div>
-            
-            {{-- Существующие изображения галереи --}}
+
+             Существующие изображения галереи
             <div class="col-md-12 padding-0">
                 <div class="col-md-12">
                     <div class="panel">
@@ -237,24 +232,18 @@
                                             <div class="col-md-12" style="display: flex; flex-wrap: wrap; gap: 20px; margin-bottom: 20px;">
                                                 @foreach($galleryImagesList as $image)
                                                     <div style="position: relative; width: 200px;">
-                                                        <img src="{{asset('storage/' . str_replace('public/', '', $image->image))}}" 
-                                                             style="width: 100%; height: auto; border: 1px solid #ddd; border-radius: 5px;" 
+                                                        <img src="{{asset('storage/' . str_replace('public/', '', $image->image))}}"
+                                                             style="width: 100%; height: auto; border: 1px solid #ddd; border-radius: 5px;"
                                                              alt="{{$image->description_image}}">
-                                                        <form action="{{route('images.update', ['image' => $image])}}" method="post" style="margin-top: 10px;">
-                                                            @method('PUT')
-                                                            @csrf
-                                                            <input type="text" class="form-control" name="description_image" value="{{$image->description_image}}" placeholder="Описание изображения">
-                                                            <button type="submit" class="btn btn-primary btn-sm" style="margin-top: 5px; width: 100%;">
+                                                        <div style="margin-top: 10px;">
+                                                            <input type="text" class="form-control" name="gallery_image_description_edit" id="gallery_image_description_edit_{{$image->id}}" value="{{$image->description_image}}" placeholder="Описание изображения">
+                                                            <button type="button" class="btn btn-primary btn-sm" style="margin-top: 5px; width: 100%;" onclick="updateImageDescription({{$image->id}}, '{{route('images.update', ['image' => $image])}}')">
                                                                 <span class="fa fa-save"></span> Сохранить описание
                                                             </button>
-                                                        </form>
-                                                        <form action="{{route('images.destroy', ['image' => $image])}}" method="post" style="margin-top: 5px;">
-                                                            @method('DELETE')
-                                                            @csrf
-                                                            <button type="submit" class="btn btn-danger btn-sm" style="width: 100%;" onclick="return confirm('Удалить это изображение?')">
-                                                                <span class="fa fa-trash"></span> Удалить
-                                                            </button>
-                                                        </form>
+                                                        </div>
+                                                        <button type="button" class="btn btn-danger btn-sm" style="margin-top: 5px; width: 100%;" onclick="deleteImage({{$image->id}}, '{{route('images.destroy', ['image' => $image])}}', 'Удалить это изображение?')">
+                                                            <span class="fa fa-trash"></span> Удалить
+                                                        </button>
                                                     </div>
                                                 @endforeach
                                             </div>
@@ -285,8 +274,8 @@
                     </div>
                 </div>
             </div>
-            
-            {{-- Meta теги --}}
+
+             Meta теги
             <div class="col-md-12 padding-0">
                 <div class="col-md-12">
                     <div class="panel">
@@ -309,25 +298,29 @@
                     </div>
                 </div>
             </div>
-            
-            {{-- Активность --}}
+
+             Активность
             <div class="col-md-12 padding-0">
                 <div class="col-md-12">
                     <div class="panel">
                         <div class="panel-body">
                             <div class="form-check">
-                                {{-- Скрытое поле для гарантии передачи значения, даже если чекбокс не отмечен --}}
-                                <input type="hidden" name="active" value="0">
-                                <input class="form-check-input" type="checkbox" name="active" id="active" value="1" {{old('active', $staticPage->active) ? 'checked' : ''}}>
-                                <label class="form-check-label" for="active">
+                                <input class="form-check-input" type="radio" name="active" id="active_1" value="1" {{old('active', $staticPage->active) ? 'checked' : ''}}>
+                                <label class="form-check-label" for="active_1">
                                     Страница активна
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="active" id="active_0" value="0" {{old('active', $staticPage->active) ? '' : 'checked'}}>
+                                <label class="form-check-label" for="active_0">
+                                    Страница неактивна
                                 </label>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            
+
             {{-- Кнопки --}}
             <div class="col-md-12 padding-0">
                 <div class="col-md-12">
@@ -347,6 +340,37 @@
             // Инициализация tooltip для знака вопроса
             if (typeof $ !== 'undefined') {
                 $('[data-toggle="tooltip"]').tooltip();
+            }
+
+            // Автогенерация slug из заголовка, если slug пустой
+            const titleInput = document.getElementById('title');
+            const slugInput = document.getElementById('slug');
+            if (titleInput && slugInput) {
+                titleInput.addEventListener('blur', function() {
+                    if (!slugInput.value.trim()) {
+                        // Простая транслитерация (удаляем HTML теги)
+                        let text = this.value;
+                        // Создаем временный элемент для удаления HTML
+                        const tempDiv = document.createElement('div');
+                        tempDiv.innerHTML = text;
+                        text = tempDiv.textContent || tempDiv.innerText || '';
+
+                        let slug = text.toLowerCase()
+                            .replace(/[а-яё]/g, function(match) {
+                                const map = {
+                                    'а': 'a', 'б': 'b', 'в': 'v', 'г': 'g', 'д': 'd', 'е': 'e', 'ё': 'yo',
+                                    'ж': 'zh', 'з': 'z', 'и': 'i', 'й': 'y', 'к': 'k', 'л': 'l', 'м': 'm',
+                                    'н': 'n', 'о': 'o', 'п': 'p', 'р': 'r', 'с': 's', 'т': 't', 'у': 'u',
+                                    'ф': 'f', 'х': 'h', 'ц': 'ts', 'ч': 'ch', 'ш': 'sh', 'щ': 'sch',
+                                    'ъ': '', 'ы': 'y', 'ь': '', 'э': 'e', 'ю': 'yu', 'я': 'ya'
+                                };
+                                return map[match] || '';
+                            })
+                            .replace(/[^a-z0-9]+/g, '_')
+                            .replace(/^_+|_+$/g, '');
+                        slugInput.value = slug;
+                    }
+                });
             }
 
             // Превью главной картинки
@@ -403,6 +427,68 @@
                 });
             }
 
+            // Функции для обновления и удаления изображений через AJAX
+            window.updateImageDescription = function(imageId, url) {
+                const input = document.getElementById('main_image_description_edit_' + imageId) || 
+                             document.getElementById('menu_image_description_edit_' + imageId) ||
+                             document.getElementById('gallery_image_description_edit_' + imageId);
+                if (!input) return;
+                
+                const description = input.value;
+                const formData = new FormData();
+                formData.append('description_image', description);
+                formData.append('_method', 'PUT');
+                formData.append('_token', document.querySelector('meta[name="csrf-token"]')?.getAttribute('content') || '{{csrf_token()}}');
+
+                fetch(url, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'X-Requested-With': 'XMLHttpRequest'
+                    }
+                })
+                .then(response => {
+                    if (response.ok) {
+                        return response.json().catch(() => ({success: true}));
+                    }
+                    throw new Error('Network response was not ok');
+                })
+                .then(data => {
+                    alert('Описание успешно сохранено');
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('Ошибка при сохранении описания');
+                });
+            };
+
+            window.deleteImage = function(imageId, url, confirmMessage) {
+                if (!confirm(confirmMessage)) return;
+                
+                const formData = new FormData();
+                formData.append('_method', 'DELETE');
+                formData.append('_token', document.querySelector('meta[name="csrf-token"]')?.getAttribute('content') || '{{csrf_token()}}');
+
+                fetch(url, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'X-Requested-With': 'XMLHttpRequest'
+                    }
+                })
+                .then(response => {
+                    if (response.ok) {
+                        location.reload();
+                    } else {
+                        alert('Ошибка при удалении изображения');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('Ошибка при удалении изображения');
+                });
+            };
+
             // Превью галереи
             const galleryImagesInput = document.getElementById('gallery_images');
             const galleryPreviewContainer = document.getElementById('gallery-preview-container');
@@ -411,7 +497,7 @@
             if (galleryImagesInput && galleryPreviewContainer) {
                 galleryImagesInput.addEventListener('change', function(e) {
                     const files = Array.from(e.target.files);
-                    
+
                     files.forEach((file, index) => {
                         const reader = new FileReader();
                         reader.onload = function(event) {
@@ -419,7 +505,7 @@
                             previewDiv.className = 'gallery-preview-item';
                             previewDiv.style.cssText = 'position: relative; width: 200px; margin-bottom: 20px;';
                             previewDiv.dataset.index = galleryIndex;
-                            
+
                             previewDiv.innerHTML = `
                                 <img src="${event.target.result}" style="width: 100%; height: auto; border: 1px solid #ddd; border-radius: 5px;" alt="Превью">
                                 <button type="button" class="btn btn-danger btn-sm remove-gallery-image" style="position: absolute; top: 5px; right: 5px;">
@@ -429,7 +515,7 @@
                                     <input type="text" class="form-control" name="gallery_descriptions[]" placeholder="Описание изображения">
                                 </div>
                             `;
-                            
+
                             galleryPreviewContainer.appendChild(previewDiv);
                             galleryIndex++;
                         };

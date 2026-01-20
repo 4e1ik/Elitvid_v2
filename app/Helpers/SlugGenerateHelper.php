@@ -6,6 +6,12 @@ final class SlugGenerateHelper
 {
     public function slug(string $text): string
     {
+        // Удаляем HTML теги
+        $text = strip_tags($text);
+        
+        // Декодируем HTML entities
+        $text = html_entity_decode($text, ENT_QUOTES | ENT_HTML5, 'UTF-8');
+        
         $translitMap = [
             'а' => 'a', 'б' => 'b', 'в' => 'v', 'г' => 'g', 'д' => 'd', 'е' => 'e', 'ё' => 'yo',
             'ж' => 'zh', 'з' => 'z', 'и' => 'i', 'й' => 'y', 'к' => 'k', 'л' => 'l', 'м' => 'm',

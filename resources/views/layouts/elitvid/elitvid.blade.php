@@ -145,12 +145,14 @@
                             <li><div class="heading-5"><a href="{{route('blog_posts')}}">Блог</a></div></li>
                             <li><div class="heading-5"><a href="{{route('pots')}}">Кашпо</a></div></li>
                             <li><div class="heading-5"><a href="{{route('benches')}}">Скамьи</a></div></li>
-                            <li><div class="heading-5"><a href="{{route('rotundas_and_colonnades')}}">Ротонды и коллонады</a></div></li>
-                            <li><div class="heading-5"><a href="{{route('parklets_and_canopies')}}">Парклет, навесы</a></div></li>
                             <li><div class="heading-5"><a href="{{route('bollards_and_fencing')}}">Болларды и ограждения</a></div></li>
-                            <li><div class="heading-5"><a href="{{route('pillars_and_covers')}}">Столбы и накрывки</a></div></li>
-                            <li><div class="heading-5"><a href="{{route('facade_stucco_molding_and_panels')}}">Фасадная лепнина и
-                                        панели</a></div></li>
+                            @foreach($static_pages as $static_page)
+                                <li><div class="heading-5"><a href="{{route('static_page', ['slug' => $static_page])}}">{{$static_page->title}}</a></div></li>
+                            @endforeach
+{{--                            <li><div class="heading-5"><a href="{{route('rotundas_and_colonnades')}}">Ротонды и коллонады</a></div></li>--}}
+{{--                            <li><div class="heading-5"><a href="{{route('parklets_and_canopies')}}">Парклет, навесы</a></div></li>--}}
+{{--                            <li><div class="heading-5"><a href="{{route('pillars_and_covers')}}">Столбы и накрывки</a></div></li>--}}
+{{--                            <li><div class="heading-5"><a href="{{route('facade_stucco_molding_and_panels')}}">Фасадная лепнина и панели</a></div></li>--}}
                         </ul>
                     </nav>
                 </div>

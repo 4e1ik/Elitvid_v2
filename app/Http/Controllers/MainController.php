@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Response;
 class MainController extends Controller
 {
     function index() {
+        $static_pages = StaticPage::all();
         $main_page_images = Gallery::query()
             ->where('type', 'main_page')
             ->with(['gallery_images'])
@@ -34,7 +35,7 @@ class MainController extends Controller
                 $static_images_arr[$oldPath] = $static_image->description_image;
             }
         }
-        return view('elitvid.site.index', compact( 'main_page_images', 'metaTitle', 'metaDescription', 'category', 'static_images_arr'));
+        return view('elitvid.site.index', compact( 'main_page_images', 'metaTitle', 'metaDescription', 'category', 'static_images_arr', 'static_pages'));
     }
 
     function test()
@@ -61,6 +62,9 @@ class MainController extends Controller
         $metaTags = MetaTag::where('page', 'directions')->get();
         $metaTitle = $metaTags->isNotEmpty() ? $metaTags[0]->title : 'Наши направления';
         $metaDescription = $metaTags->isNotEmpty() ? $metaTags[0]->description : 'Описание направлений';
+
+        $static_pages = StaticPage::all();
+
         $categories = Category::where('page', 'directions')->get();
         $category = $categories->isNotEmpty() ? $categories[0]->description : null;
         $static_images = StaticImages::where('page', 'directions')->get();
@@ -72,7 +76,7 @@ class MainController extends Controller
                 $static_images_arr[$oldPath] = $static_image->description_image;
             }
         }
-        return view('elitvid.site.directions', compact('metaTitle', 'metaDescription', 'category', 'static_images_arr'));
+        return view('elitvid.site.directions', compact('metaTitle', 'metaDescription', 'category', 'static_images_arr', 'static_pages'));
     }
 
     function decorations()

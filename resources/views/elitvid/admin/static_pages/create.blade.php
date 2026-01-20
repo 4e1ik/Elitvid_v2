@@ -232,11 +232,15 @@
                     <div class="panel">
                         <div class="panel-body">
                             <div class="form-check">
-                                {{-- Скрытое поле для гарантии передачи значения, даже если чекбокс не отмечен --}}
-                                <input type="hidden" name="active" value="0">
-                                <input class="form-check-input" type="checkbox" name="active" id="active" value="1" {{old('active', true) ? 'checked' : ''}}>
-                                <label class="form-check-label" for="active">
+                                <input class="form-check-input" type="radio" name="active" id="active_1" value="1" {{old('active', true) ? 'checked' : ''}}>
+                                <label class="form-check-label" for="active_1">
                                     Страница активна
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="active" id="active_0" value="0" {{old('active', true) ? '' : 'checked'}}>
+                                <label class="form-check-label" for="active_0">
+                                    Страница неактивна
                                 </label>
                             </div>
                         </div>

@@ -18,15 +18,9 @@ use \App\Http\Controllers\Admin\BenchController as AdminBenchController;
 
 use App\Http\Controllers\BenchController;
 use App\Http\Controllers\BollardsAndFencingController;
-use App\Http\Controllers\FacadeStuccoMoldingAndPanelsController;
-use App\Http\Controllers\MafController;
 use App\Http\Controllers\MainController;
-use App\Http\Controllers\ParkletsAndCanopiesController;
-use App\Http\Controllers\PillarsAndCoversController;
 use App\Http\Controllers\PotController;
-use App\Http\Controllers\RotundasAndColonnadesController;
 use App\Http\Controllers\SitemapController;
-use App\Http\Controllers\ConcreteProductsController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 

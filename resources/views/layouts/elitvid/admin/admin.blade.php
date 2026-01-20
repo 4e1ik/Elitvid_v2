@@ -751,6 +751,12 @@
 <script src="{{asset('/elitvid_assets/js/plugins/chart.min.js')}}"></script>
 <script src="{{asset('/elitvid_assets/js/plugins/moment.min.js')}}"></script>
 <script src="{{asset('/elitvid_assets/js/plugins/dropzone.js')}}"></script>
+<script>
+    // Отключаем автообнаружение Dropzone, чтобы избежать ошибок на страницах без форм загрузки
+    if (typeof Dropzone !== 'undefined') {
+        Dropzone.autoDiscover = false;
+    }
+</script>
 <script src="{{asset('/elitvid_assets/js/plugins/jquery.nicescroll.js')}}"></script>
 
 
@@ -1029,18 +1035,20 @@
 
         // start: Maps============
 
-        jQuery('.maps').vectorMap({
-            map: 'world_en',
-            backgroundColor: null,
-            color: '#fff',
-            hoverOpacity: 0.7,
-            selectedColor: '#666666',
-            enableZoom: true,
-            showTooltip: true,
-            values: sample_data,
-            scaleColors: ['#C8EEFF', '#006491'],
-            normalizeFunction: 'polynomial'
-        });
+        if (jQuery('.maps').length > 0) {
+            jQuery('.maps').vectorMap({
+                map: 'world_en',
+                backgroundColor: null,
+                color: '#fff',
+                hoverOpacity: 0.7,
+                selectedColor: '#666666',
+                enableZoom: true,
+                showTooltip: true,
+                values: sample_data,
+                scaleColors: ['#C8EEFF', '#006491'],
+                normalizeFunction: 'polynomial'
+            });
+        }
 
         // end: Maps==============
 
