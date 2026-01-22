@@ -12,8 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('galleries', function (Blueprint $table) {
-            // Удаляем старые поля, если они есть
-            $table->dropColumn(['type']);
+            // Оставляем поле type, так как оно активно используется в коде
+            // $table->dropColumn(['type']); // Закомментировано, так как type используется в контроллерах
             
             // Добавляем полиморфные поля
             $table->unsignedBigInteger('galleriable_id')->nullable()->after('id')->comment('ID связанной модели');

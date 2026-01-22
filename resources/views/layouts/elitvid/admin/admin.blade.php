@@ -118,12 +118,6 @@
                         <li><a href="{{route('admin_main_page_images')}}">Картинки главной страницы</a></li>
                         <li><a href="{{route('admin_decorative_elements_images')}}">Картинки страницы декоративных элементов</a></li>
                         <li><a href="{{route('admin_bollards_images')}}">Картинки страницы боллард</a></li>
-                        <li><a href="{{route('admin_parklets_and_naves_images')}}">Картинки страницы парклетов и навесов</a></li>
-                        <li><a href="{{route('admin_columns_and_panels_images')}}">Картинки страницы столбов и накрывок</a></li>
-                        <li><a href="{{route('admin_facade_walls_images')}}">Картинки страницы фасадных лепнин и панелей</a></li>
-                        <li><a href="{{route('admin_rotundas_images')}}">Картинки страницы ротонд и коллонад</a></li>
-                        <li><a href="{{route('admin_maf_images')}}">Картинки страницы малых архитектурных форм</a></li>
-                        <li><a href="{{route('admin_concrete_products_images')}}">Картинки страницы изделий из бетона</a></li>
                     </ul>
                 </li>
                 <li class="ripple">
@@ -684,12 +678,6 @@
                         <li><a href="{{route('admin_main_page_images')}}">Картинки главной страницы</a></li>
                         <li><a href="{{route('admin_decorative_elements_images')}}">Картинки страницы декоративных элементов</a></li>
                         <li><a href="{{route('admin_bollards_images')}}">Картинки страницы боллард</a></li>
-                        <li><a href="{{route('admin_parklets_and_naves_images')}}">Картинки страницы парклетов и навесов</a></li>
-                        <li><a href="{{route('admin_columns_and_panels_images')}}">Картинки страницы столбов и накрывок</a></li>
-                        <li><a href="{{route('admin_facade_walls_images')}}">Картинки страницы фасадных лепнин и панелей</a></li>
-                        <li><a href="{{route('admin_rotundas_images')}}">Картинки страницы ротонд и коллонад</a></li>
-                        <li><a href="{{route('admin_maf_images')}}">Картинки страницы малых архитектурных форм</a></li>
-                        <li><a href="{{route('admin_concrete_products_images')}}">Картинки страницы изделий из бетона</a></li>
                     </ul>
                 </li>
                 <li class="ripple">
@@ -820,7 +808,7 @@
         var chartProductsData = @json($chart_data['products']);
         var chartImagesData = @json($chart_data['images']);
         var chartDistribution = @json($chart_data['distribution']);
-        
+
         var lineChartData = {
             labels: chartMonths,
             datasets: [{

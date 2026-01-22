@@ -16,6 +16,7 @@ class BollardsAndFencingController
             ->with(['gallery_images'])
             ->latest()
             ->get();
+        $static_pages = StaticPage::all();
         $metaTags = MetaTag::where('page', 'bollards_and_fencing')->get();
         $metaTitle = $metaTags->isNotEmpty() ? $metaTags[0]->title : 'Болларды и ограждения';
         $metaDescription = $metaTags->isNotEmpty() ? $metaTags[0]->description : 'Описание боллардов и ограждений';
@@ -51,6 +52,6 @@ class BollardsAndFencingController
         } catch (\Exception $e) {
             $staticPage = null;
         }
-        return view('elitvid.site.bollards_and_fencing', compact('bollards_and_fencing_images', 'metaTitle', 'metaDescription', 'category', 'static_images_arr', 'staticPage'));
+        return view('elitvid.site.bollards_and_fencing', compact('bollards_and_fencing_images', 'metaTitle', 'metaDescription', 'category', 'static_images_arr', 'staticPage', 'static_pages'));
     }
 }

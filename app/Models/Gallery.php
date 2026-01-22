@@ -9,7 +9,7 @@ class Gallery extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['galleriable_id', 'galleriable_type', 'active'];
+    protected $fillable = ['type', 'galleriable_id', 'galleriable_type', 'active'];
 
     protected $casts = [
         'active' => 'boolean',

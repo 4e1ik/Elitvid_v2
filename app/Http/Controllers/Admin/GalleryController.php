@@ -17,7 +17,8 @@ class GalleryController extends Controller
      */
     public function index()
     {
-        //
+        $galleries = Gallery::all();
+        return view('admin.gallery.index', compact('galleries'));
     }
 
     /**
@@ -25,7 +26,7 @@ class GalleryController extends Controller
      */
     public function create()
     {
-        //
+
     }
 
     /**
