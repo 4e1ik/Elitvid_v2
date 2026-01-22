@@ -55,9 +55,9 @@ Route::prefix('blog')->group(function () {
 
 Route::prefix('directions')->group(function () {
     Route::get('/', [MainController::class, 'directions'])->name('directions');
+    Route::get('/bollards_and_fencing', [BollardsAndFencingController::class, 'bollards_and_fencing'])->name('bollards_and_fencing');
     Route::get('/{slug}', [StaticPagesController::class, 'index'])->name('static_page');
 
-    Route::get('/bollards_and_fencing', [BollardsAndFencingController::class, 'bollards_and_fencing'])->name('bollards_and_fencing');
 //    Route::get('/facade_stucco_molding_and_panels', [FacadeStuccoMoldingAndPanelsController::class, 'facade_stucco_molding_and_panels'])->name('facade_stucco_molding_and_panels');
 //    Route::get('/parklets_and_canopies', [ParkletsAndCanopiesController::class, 'parklets_and_canopies'])->name('parklets_and_canopies');
 //    Route::get('/pillars_and_covers', [PillarsAndCoversController::class, 'pillars_and_covers'])->name('pillars_and_covers');

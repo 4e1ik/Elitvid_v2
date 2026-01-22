@@ -32,6 +32,9 @@
                             <div class="col-md-6 padding-0" style="padding-left: 15px;">
                                 <h3>Подзаголовок (описание заголовка)</h3>
                                 <textarea class="form-control @error('subtitle') danger @enderror" name="subtitle" rows="3" placeholder="Краткое описание страницы">{{old('subtitle')}}</textarea>
+                                <small class="text-muted" style="display: block; margin-top: 5px;">
+                                    <span class="fa fa-info-circle"></span> Поле поддерживает HTML теги, например: &lt;br&gt; для переноса строки
+                                </small>
                                 @error('subtitle')
                                 <div class="text-danger" style="margin-top: 5px;">
                                     {{$message}}
@@ -100,6 +103,10 @@
                         <div class="panel-body">
                             <div class="col-md-6 padding-0" style="padding-right: 15px;">
                                 <h3>Главная картинка</h3>
+                                <div class="alert" style="margin-bottom: 15px; padding: 10px; font-size: 13px; background-color: #ff9800; color: #fff; border-color: #ff9800;">
+                                    <span class="fa fa-info-circle"></span> 
+                                    <strong>Рекомендуемый размер:</strong> 1801x1216 пикселей для корректного отображения на странице направления
+                                </div>
                                 <div class="col-md-12" style="margin-bottom: 20px;">
                                     <label style="display: flex; justify-content: center; align-items: center; padding: 20px; border: 2px dashed #ddd; border-radius: 5px; cursor: pointer; background: #fafafa;"
                                            for="main_image" class="dropzone dz-clickable">
@@ -127,6 +134,10 @@
                             </div>
                             <div class="col-md-6 padding-0" style="padding-left: 15px;">
                                 <h3>Картинка меню</h3>
+                                <div class="alert" style="margin-bottom: 15px; padding: 10px; font-size: 13px; background-color: #ff9800; color: #fff; border-color: #ff9800;">
+                                    <span class="fa fa-info-circle"></span> 
+                                    <strong>Рекомендуемый размер:</strong> 368x280 пикселей для корректного отображения в плитке направлений
+                                </div>
                                 <div class="col-md-12" style="margin-bottom: 20px;">
                                     <label style="display: flex; justify-content: center; align-items: center; padding: 20px; border: 2px dashed #ddd; border-radius: 5px; cursor: pointer; background: #fafafa;"
                                            for="menu_image" class="dropzone dz-clickable">

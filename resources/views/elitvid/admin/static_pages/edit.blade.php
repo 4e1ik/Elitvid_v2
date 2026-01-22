@@ -31,6 +31,9 @@
                             <div class="col-md-6 padding-0" style="padding-left: 15px;">
                                 <h3>Подзаголовок (описание заголовка)</h3>
                                 <textarea class="form-control @error('subtitle') danger @enderror" name="subtitle" rows="3" placeholder="Краткое описание страницы">{{old('subtitle', $staticPage->subtitle)}}</textarea>
+                                <small class="text-muted" style="display: block; margin-top: 5px;">
+                                    <span class="fa fa-info-circle"></span> Поле поддерживает HTML теги, например: &lt;br&gt; для переноса строки
+                                </small>
                                 @error('subtitle')
                                 <div class="text-danger">{{$message}}</div>
                                 @enderror
@@ -95,6 +98,10 @@
                         <div class="panel-body">
                             <div class="col-md-6 padding-0" style="padding-right: 15px;">
                                 <h3>Главная картинка</h3>
+                                <div class="alert" style="margin-bottom: 15px; padding: 10px; font-size: 13px; background-color: #ff9800; color: #fff; border-color: #ff9800;">
+                                    <span class="fa fa-info-circle"></span> 
+                                    <strong>Рекомендуемый размер:</strong> 1801x1216 пикселей для корректного отображения на странице направления
+                                </div>
                                 @php
                                     $mainImage = $staticPage->images()->where('main_image', true)->first();
                                 @endphp
@@ -143,6 +150,10 @@
                             </div>
                             <div class="col-md-6 padding-0" style="padding-left: 15px;">
                                 <h3>Картинка меню</h3>
+                                <div class="alert" style="margin-bottom: 15px; padding: 10px; font-size: 13px; background-color: #ff9800; color: #fff; border-color: #ff9800;">
+                                    <span class="fa fa-info-circle"></span> 
+                                    <strong>Рекомендуемый размер:</strong> 368x280 пикселей для корректного отображения в плитке направлений
+                                </div>
                                 @php
                                     $menuImage = $staticPage->images()->where('menu_image', true)->first();
                                 @endphp
@@ -210,8 +221,7 @@
                         <div class="panel-body">
                             <h3>Существующие изображения галереи</h3>
                             @php
-                                $galleries = $staticPage->static_gallery;
-                                $galleryImages = $staticPage->images()->where('main_image', false)->where('menu_image', false)->get();
+                                $galleries = $staticPage->galleries;
                             @endphp
                             @if($galleries->count() > 0)
                                 @foreach($galleries as $gallery)
@@ -229,11 +239,11 @@
                                             </form>
                                         </div>
                                         @php
-                                            $galleryImagesList = $gallery->images;
+                                            $galleryImages = $gallery->images;
                                         @endphp
-                                        @if($galleryImagesList->count() > 0)
+                                        @if($galleryImages->count() > 0)
                                             <div class="col-md-12" style="display: flex; flex-wrap: wrap; gap: 20px; margin-bottom: 20px;">
-                                                @foreach($galleryImagesList as $image)
+                                                @foreach($galleryImages as $image)
                                                     <div style="position: relative; width: 200px;">
                                                         <img src="{{asset('storage/' . str_replace('public/', '', $image->image))}}"
                                                              style="width: 100%; height: auto; border: 1px solid #ddd; border-radius: 5px;"

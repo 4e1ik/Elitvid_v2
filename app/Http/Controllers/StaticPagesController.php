@@ -8,7 +8,9 @@ class StaticPagesController
 {
     public function index(string $slug)
     {
-        $static_page = StaticPage::where('slug', $slug)->first();
-        return view('static_page', compact('static_page'));
+        $staticPage = StaticPage::where('slug', $slug)->first();
+        dd($staticPage->images()->get());
+        $static_pages = StaticPage::all();
+        return view('elitvid.site.static_page', compact('staticPage', 'static_pages'));
     }
 }

@@ -39,7 +39,7 @@ class StaticPageController extends Controller
 
     public function edit(StaticPage $staticPage)
     {
-        $staticPage->load(['images', 'static_gallery.images']);
+        $staticPage->load(['images', 'galleries.images']);
         return view('elitvid.admin.static_pages.edit', compact('staticPage'));
     }
 
@@ -55,7 +55,7 @@ class StaticPageController extends Controller
 
         // Обработка обновления существующей галереи
         if ($request->has('gallery_id')) {
-            $gallery = \App\Models\StaticPageGallery::find($request->input('gallery_id'));
+            $gallery = \App\Models\Gallery::find($request->input('gallery_id'));
             if ($gallery) {
                 $gallery->update(['active' => $data['gallery_active']]);
                 return redirect()->route('static_pages.edit', ['static_page' => $staticPage])

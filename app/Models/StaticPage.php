@@ -23,11 +23,25 @@ class StaticPage extends Model
         'active' => 'boolean',
     ];
 
-    public function static_gallery()
+    /**
+     * Полиморфная связь: StaticPage имеет много Gallery
+     */
+    public function galleries()
     {
-        return $this->morphMany(StaticPageGallery::class, 'static_galleriable');
+        return $this->morphMany(Gallery::class, 'galleriable');
     }
 
+    /**
+     * Связь для обратной совместимости
+     */
+    public function gallery()
+    {
+        return $this->morphOne(Gallery::class, 'galleriable');
+    }
+
+    /**
+     * Прямая связь с изображениями (main_image, menu_image)
+     */
     public function images()
     {
         return $this->morphMany(Image::class, 'imageable');
