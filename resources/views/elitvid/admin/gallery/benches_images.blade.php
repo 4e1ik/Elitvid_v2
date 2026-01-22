@@ -23,7 +23,6 @@
         <div class="col-md-12 top-20 padding-0">
             <div class="col-md-12">
                 <div class="panel">
-                    <div class="panel-heading"><h3>Примеры работ скамеек</h3></div>
                     <div class="panel-body">
                         <div class="responsive-table">
                             <table id="datatables-example" class="table table-striped table-bordered" width="100%"
@@ -31,11 +30,8 @@
                                 <thead>
                                 <tr>
                                     <th>Картинка</th>
-                                    <th>Описание</th>
-                                    <th>Время создания</th>
-                                    <th>Время редактирования</th>
                                     <th>Опубликован</th>
-                                    <th>Удалить</th>
+                                    <th style="text-align: center; width: 200px;">Действия</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -43,43 +39,39 @@
                                     @foreach($item->gallery_images as $image)
                                         <tr>
                                             <td>
-                                                {{--                                                <img style="height: 200px" src="{{asset('storage/'.$image->image)}}" alt="">--}}
                                                 <img style="height: 200px" src="{{asset('storage/'.str_replace('public/','',$image->image))}}" alt="">
                                             </td>
                                             <td>
-                                                <form
-                                                    action="{{ route('galleries.update', ['gallery' =>  $item]) }}"
-                                                    method="post">
-                                                    @method('PUT')
-                                                    @csrf
-                                                    <input type="text" name="description_image"
-                                                           value="{{$image->description_image}}">
-                                                    <button type="submit" style="border: 0">
-                                                        <input type="button" class=" btn btn-3d btn-primary"
-                                                               value="Сохранить описание">
-                                                    </button>
-                                                </form>
-                                            </td>
-                                            <td>{{$item->created_at}}</td>
-                                            <td>{{$item->updated_at}}</td>
-                                            <td>
                                                 @if($item->active == 1)
-                                                    Да
+                                                    <span class="label label-success">Да</span>
                                                 @else
-                                                    Нет
+                                                    <span class="label label-default">Нет</span>
                                                 @endif
                                             </td>
-                                            <td>
-                                                <form
-                                                    action="{{ route('galleries.destroy', ['gallery' => $item]) }}"
-                                                    method="post">
-                                                    @method('DELETE')
-                                                    @csrf
-                                                    <button type="submit" style="border: 0">
-                                                        <input type="button" class="btn btn-3d btn-danger"
-                                                               value="Удалить">
-                                                    </button>
-                                                </form>
+                                            <td style="text-align: center;">
+                                                <div style="display: flex; align-items: center; gap: 5px; justify-content: center;">
+                                                    <form
+                                                        action="{{ route('galleries.update', ['gallery' =>  $item]) }}"
+                                                        method="post" style="display: flex; align-items: center; gap: 5px; flex: 1; margin: 0;">
+                                                        @method('PUT')
+                                                        @csrf
+                                                        <input type="text" name="description_image" class="form-control" style="flex: 1; min-width: 150px;"
+                                                               value="{{$image->description_image}}" placeholder="Описание">
+                                                        <button type="submit" class="btn btn-3d btn-sm btn-primary" title="Сохранить описание" style="min-width: 40px;">
+                                                            <span class="fa fa-save"></span>
+                                                        </button>
+                                                    </form>
+                                                    <form
+                                                        action="{{ route('galleries.destroy', ['gallery' => $item]) }}"
+                                                        method="post" style="display: inline-block; margin: 0;"
+                                                        onsubmit="return confirm('Вы уверены, что хотите удалить это изображение?');">
+                                                        @method('DELETE')
+                                                        @csrf
+                                                        <button type="submit" class="btn btn-3d btn-sm btn-danger" title="Удалить" style="min-width: 40px;">
+                                                            <span class="fa fa-trash"></span>
+                                                        </button>
+                                                    </form>
+                                                </div>
                                             </td>
                                         </tr>
                                     @endforeach
