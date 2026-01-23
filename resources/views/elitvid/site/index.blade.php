@@ -40,6 +40,10 @@
                 </div>
             </div>
         </section>
+        <section class="produce">
+            <h2>Каталог изделий из полистоуна</h2>
+            @include('includes.elitvid.directions')
+        </section>
         <section class="advantages">
             <div class="lines-decor">
                 <div class="horizontal-line--decor"></div>
@@ -132,10 +136,6 @@
                 <div class="horizontal-line--decor"></div>
                 <div class="vertical-line--decor"></div>
             </div>
-        </section>
-        <section class="produce">
-            <h2>Каталог изделий из полистоуна</h2>
-            @include('includes.elitvid.directions')
         </section>
         <section class="decorative_elements">
             <div class="lines-decor">
