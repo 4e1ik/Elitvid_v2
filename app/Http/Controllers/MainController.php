@@ -55,7 +55,8 @@ class MainController extends Controller
     }
 
     function about() {
-        return view('elitvid.site.about');
+        $static_pages = StaticPage::all();
+        return view('elitvid.site.about', compact('static_pages'));
     }
 
     function directions() {
@@ -81,6 +82,7 @@ class MainController extends Controller
 
     function decorations()
     {
+        $static_pages = StaticPage::all();
         $decorative_elements_images = Gallery::query()
             ->where('type', 'decorative_elements')
             ->with(['gallery_images'])
@@ -100,22 +102,24 @@ class MainController extends Controller
                 $static_images_arr[$oldPath] = $static_image->description_image;
             }
         }
-        return view('elitvid.site.decorations', compact('decorative_elements_images', 'metaTitle', 'metaDescription', 'category', 'static_images_arr'));
+        return view('elitvid.site.decorations', compact('decorative_elements_images', 'metaTitle', 'metaDescription', 'category', 'static_images_arr', 'static_pages'));
     }
 
     function blog_posts()
     {
+        $static_pages = StaticPage::all();
         $blogs = Blog::whereIn('active', [1])->latest()->get();
         $metaTags = MetaTag::where('page', 'blog')->get();
         $metaTitle = $metaTags->isNotEmpty() ? $metaTags[0]->title : 'Блог';
         $metaDescription = $metaTags->isNotEmpty() ? $metaTags[0]->description : 'Описание блога';
         $categories = Category::where('page', 'blog')->get();
         $category = $categories->isNotEmpty() ? $categories[0]->description : null;
-        return view('elitvid.site.blog.blog', compact('blogs', 'metaTitle', 'metaDescription', 'category'));
+        return view('elitvid.site.blog.blog', compact('blogs', 'metaTitle', 'metaDescription', 'category', 'static_pages'));
     }
 
     function show_blog_post($id)
     {
+        $static_pages = StaticPage::all();
         $blog = Blog::where('id', $id)->first();
         if (!$blog) {
             abort(404);
@@ -125,6 +129,6 @@ class MainController extends Controller
         $metaTitle = $blog->meta_title ?? 'Блог';
         $metaDescription = $blog->meta_description ?? 'Описание поста блога';
 
-        return view('elitvid.site.blog.blog_post', compact('blog', 'metaTitle', 'metaDescription', 'nextPost', 'prevPost'));
+        return view('elitvid.site.blog.blog_post', compact('blog', 'metaTitle', 'metaDescription', 'nextPost', 'prevPost', 'static_pages'));
     }
 }

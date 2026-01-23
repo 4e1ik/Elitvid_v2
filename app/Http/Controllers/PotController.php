@@ -8,10 +8,12 @@ use App\Models\MetaTag;
 use App\Models\PotProduct;
 use App\Models\Product;
 use App\Models\StaticImages;
+use App\Models\StaticPage;
 
 class PotController
 {
     function pots() {
+        $static_pages = StaticPage::all();
         $pots_images = Gallery::query()
             ->where('type', 'pots')
             ->with(['gallery_images'])
@@ -31,13 +33,11 @@ class PotController
                 $static_images_arr[$oldPath] = $static_image->description_image;
             }
         }
-        return view('elitvid.site.pots', compact('pots_images', 'metaTitle', 'metaDescription', 'category', 'static_images_arr'));
+        return view('elitvid.site.pots', compact('pots_images', 'metaTitle', 'metaDescription', 'category', 'static_images_arr', 'static_pages'));
     }
 
     function rectangular_pots() {
-//        $pots = PotProduct::query()->whereIn('active', [1])->with(['pot_images'])->latest()->get();
-//        $rectangular_pots = $pots->where('collection', 'Rectangular');
-
+        $static_pages = StaticPage::all();
         $products = Product::whereIn('active', [1])
             ->whereHas('pot', function ($query) {
                 $query->where('collection', 'Rectangular');
@@ -60,13 +60,11 @@ class PotController
                 $static_images_arr[$oldPath] = $static_image->description_image;
             }
         }
-        return view('elitvid.site.pots.rectangular_pots', compact('products', 'metaTitle', 'metaDescription', 'category', 'static_images_arr'));
+        return view('elitvid.site.pots.rectangular_pots', compact('products', 'metaTitle', 'metaDescription', 'category', 'static_images_arr', 'static_pages'));
     }
 
     function square_pots() {
-//        $pots = PotProduct::whereIn('active', [1])->latest()->get();
-//        $square_pots = $pots->where('collection', 'Square');
-
+        $static_pages = StaticPage::all();
         $products = Product::whereIn('active', [1])
             ->whereHas('pot', function ($query) {
                 $query->where('collection', 'Square');
@@ -89,14 +87,11 @@ class PotController
                 $static_images_arr[$oldPath] = $static_image->description_image;
             }
         }
-        return view('elitvid.site.pots.square_pots', compact('products', 'metaTitle', 'metaDescription', 'category', 'static_images_arr'));
+        return view('elitvid.site.pots.square_pots', compact('products', 'metaTitle', 'metaDescription', 'category', 'static_images_arr', 'static_pages'));
     }
 
     function round_pots() {
-//        $pots = PotProduct::query()->whereIn('active', [1])->with(['pot_images'])->latest()->get();
-//        $round_pots = $pots->where('collection', 'Round');
-
-
+        $static_pages = StaticPage::all();
         $products = Product::whereIn('active', [1])
             ->whereHas('pot', function ($query) {
                 $query->where('collection', 'Round');
@@ -119,11 +114,11 @@ class PotController
                 $static_images_arr[$oldPath] = $static_image->description_image;
             }
         }
-        return view('elitvid.site.pots.round_pots', compact('products', 'metaTitle', 'metaDescription', 'category', 'static_images_arr'));
+        return view('elitvid.site.pots.round_pots', compact('products', 'metaTitle', 'metaDescription', 'category', 'static_images_arr', 'static_pages'));
     }
 
     function show_pot_product($collection, $id){
-//        dd($collection);
+        $static_pages = StaticPage::all();
         $product = Product::whereId($id)->with(['images', 'pot'])->first();
         $rand_products = Product::whereIn('active', [1])
             ->whereHas('pot', function ($query) use ($product) {
@@ -150,7 +145,8 @@ class PotController
                 'metaTitle',
                 'metaDescription',
                 'static_images_arr',
-                'canonicalUrl'
+                'canonicalUrl',
+                'static_pages'
             ));
     }
 }

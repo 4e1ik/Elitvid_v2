@@ -14,11 +14,14 @@ return new class extends Migration
         Schema::table('galleries', function (Blueprint $table) {
             // Оставляем поле type, так как оно активно используется в коде
             // $table->dropColumn(['type']); // Закомментировано, так как type используется в контроллерах
-            
+            if (Schema::hasColumn('galleries', 'type')) {
+                $table->text('type')->nullable()->change();
+            }
+
             // Добавляем полиморфные поля
             $table->unsignedBigInteger('galleriable_id')->nullable()->after('id')->comment('ID связанной модели');
             $table->string('galleriable_type', 255)->nullable()->after('galleriable_id')->comment('Тип связанной модели');
-            
+
             // Добавляем индекс для полиморфной связи
             $table->index(['galleriable_id', 'galleriable_type'], 'galleries_galleriable_index');
         });
@@ -33,7 +36,7 @@ return new class extends Migration
             // Удаляем полиморфные поля
             $table->dropIndex('galleries_galleriable_index');
             $table->dropColumn(['galleriable_id', 'galleriable_type']);
-            
+
             // Возвращаем старое поле
             $table->text('type')->nullable(false)->after('id');
         });

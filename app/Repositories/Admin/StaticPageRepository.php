@@ -8,21 +8,21 @@ class StaticPageRepository
 {
     public function getAll()
     {
-        return StaticPage::with(['images', 'galleries.images'])
+        return StaticPage::with(['images', 'gallery.images'])
             ->latest()
             ->get();
     }
 
     public function getBySlug(string $slug)
     {
-        return StaticPage::with(['images', 'galleries.images'])
+        return StaticPage::with(['images', 'gallery.images'])
             ->where('slug', $slug)
             ->first();
     }
 
     public function getById(int $id)
     {
-        return StaticPage::with(['images', 'galleries.images'])
+        return StaticPage::with(['images', 'gallery.images'])
             ->findOrFail($id);
     }
 }

@@ -18,25 +18,27 @@
                 <div class="col-md-12">
                     <div class="panel">
                         <div class="panel-body">
-                            <div class="col-md-6 padding-0" style="padding-right: 15px;">
-                                <h3>Заголовок (H1)</h3>
-                                <input type="text" class="form-control @error('title') danger @enderror" name="title" id="title" value="{{old('title', $staticPage->title)}}" placeholder="Например: Болларды и ограждения">
-                                <small class="text-muted" style="display: block; margin-top: 5px;">
-                                    <span class="fa fa-info-circle"></span> Поле поддерживает HTML теги, например: &lt;br&gt; для переноса строки
-                                </small>
-                                @error('title')
-                                <div class="text-danger">{{$message}}</div>
-                                @enderror
-                            </div>
-                            <div class="col-md-6 padding-0" style="padding-left: 15px;">
-                                <h3>Подзаголовок (описание заголовка)</h3>
-                                <textarea class="form-control @error('subtitle') danger @enderror" name="subtitle" rows="3" placeholder="Краткое описание страницы">{{old('subtitle', $staticPage->subtitle)}}</textarea>
-                                <small class="text-muted" style="display: block; margin-top: 5px;">
-                                    <span class="fa fa-info-circle"></span> Поле поддерживает HTML теги, например: &lt;br&gt; для переноса строки
-                                </small>
-                                @error('subtitle')
-                                <div class="text-danger">{{$message}}</div>
-                                @enderror
+                            <div class="row">
+                                <div class="col-md-6" style="padding-right: 15px;">
+                                    <h3>Заголовок (H1)</h3>
+                                    <input type="text" class="form-control @error('title') danger @enderror" name="title" id="title" value="{{old('title', $staticPage->title)}}" placeholder="Например: Болларды и ограждения">
+                                    <small class="text-muted" style="display: block; margin-top: 5px;">
+                                        <span class="fa fa-info-circle"></span> Поле поддерживает HTML теги, например: &lt;br&gt; для переноса строки
+                                    </small>
+                                    @error('title')
+                                    <div class="text-danger">{{$message}}</div>
+                                    @enderror
+                                </div>
+                                <div class="col-md-6" style="padding-left: 15px;">
+                                    <h3>Подзаголовок (описание заголовка)</h3>
+                                    <textarea class="form-control @error('subtitle') danger @enderror" name="subtitle" rows="3" placeholder="Краткое описание страницы">{{old('subtitle', $staticPage->subtitle)}}</textarea>
+                                    <small class="text-muted" style="display: block; margin-top: 5px;">
+                                        <span class="fa fa-info-circle"></span> Поле поддерживает HTML теги, например: &lt;br&gt; для переноса строки
+                                    </small>
+                                    @error('subtitle')
+                                    <div class="text-danger">{{$message}}</div>
+                                    @enderror
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -96,10 +98,11 @@
                 <div class="col-md-12">
                     <div class="panel">
                         <div class="panel-body">
-                            <div class="col-md-6 padding-0" style="padding-right: 15px;">
+                            <div class="row">
+                                <div class="col-md-6" style="padding-right: 15px;">
                                 <h3>Главная картинка</h3>
                                 <div class="alert" style="margin-bottom: 15px; padding: 10px; font-size: 13px; background-color: #ff9800; color: #fff; border-color: #ff9800;">
-                                    <span class="fa fa-info-circle"></span> 
+                                    <span class="fa fa-info-circle"></span>
                                     <strong>Рекомендуемый размер:</strong> 1801x1216 пикселей для корректного отображения на странице направления
                                 </div>
                                 @php
@@ -147,11 +150,11 @@
                                     {{$message}}
                                 </div>
                                 @enderror
-                            </div>
-                            <div class="col-md-6 padding-0" style="padding-left: 15px;">
-                                <h3>Картинка меню</h3>
+                                </div>
+                                <div class="col-md-6" style="padding-left: 15px;">
+                                    <h3>Картинка меню</h3>
                                 <div class="alert" style="margin-bottom: 15px; padding: 10px; font-size: 13px; background-color: #ff9800; color: #fff; border-color: #ff9800;">
-                                    <span class="fa fa-info-circle"></span> 
+                                    <span class="fa fa-info-circle"></span>
                                     <strong>Рекомендуемый размер:</strong> 368x280 пикселей для корректного отображения в плитке направлений
                                 </div>
                                 @php
@@ -208,73 +211,66 @@
                                     {{$message}}
                                 </div>
                                 @enderror
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-             Существующие изображения галереи
+            {{-- Существующие изображения галереи --}}
             <div class="col-md-12 padding-0">
                 <div class="col-md-12">
                     <div class="panel">
                         <div class="panel-body">
                             <h3>Существующие изображения галереи</h3>
                             @php
-                                $galleries = $staticPage->galleries;
+                                $gallery = $staticPage->gallery;
                             @endphp
-                            @if($galleries->count() > 0)
-                                @foreach($galleries as $gallery)
-                                    <div style="margin-bottom: 30px; padding: 15px; border: 1px solid #ddd; border-radius: 5px;">
-                                        <h4>Галерея #{{$gallery->id}}</h4>
-                                        <div class="form-check" style="margin-bottom: 15px;">
-                                            <form action="{{route('static_pages.update', ['static_page' => $staticPage])}}" method="post" style="display: inline-block;">
-                                                @method('PUT')
-                                                @csrf
-                                                <input type="hidden" name="gallery_id" value="{{$gallery->id}}">
-                                                <input class="form-check-input" type="checkbox" name="gallery_active" id="gallery_active_{{$gallery->id}}" value="1" {{$gallery->active ? 'checked' : ''}} onchange="this.form.submit()">
-                                                <label class="form-check-label" for="gallery_active_{{$gallery->id}}">
-                                                    Галерея активна
-                                                </label>
-                                            </form>
-                                        </div>
-                                        @php
-                                            $galleryImages = $gallery->images;
-                                        @endphp
-                                        @if($galleryImages->count() > 0)
-                                            <div class="col-md-12" style="display: flex; flex-wrap: wrap; gap: 20px; margin-bottom: 20px;">
-                                                @foreach($galleryImages as $image)
-                                                    <div style="position: relative; width: 200px;">
-                                                        <img src="{{asset('storage/' . str_replace('public/', '', $image->image))}}"
-                                                             style="width: 100%; height: auto; border: 1px solid #ddd; border-radius: 5px;"
-                                                             alt="{{$image->description_image}}">
-                                                        <div style="margin-top: 10px;">
-                                                            <input type="text" class="form-control" name="gallery_image_description_edit" id="gallery_image_description_edit_{{$image->id}}" value="{{$image->description_image}}" placeholder="Описание изображения">
-                                                            <button type="button" class="btn btn-primary btn-sm" style="margin-top: 5px; width: 100%;" onclick="updateImageDescription({{$image->id}}, '{{route('images.update', ['image' => $image])}}')">
-                                                                <span class="fa fa-save"></span> Сохранить описание
-                                                            </button>
-                                                        </div>
-                                                        <button type="button" class="btn btn-danger btn-sm" style="margin-top: 5px; width: 100%;" onclick="deleteImage({{$image->id}}, '{{route('images.destroy', ['image' => $image])}}', 'Удалить это изображение?')">
-                                                            <span class="fa fa-trash"></span> Удалить
+                            @if($gallery)
+                                <div style="margin-bottom: 30px; padding: 15px; border: 1px solid #ddd; border-radius: 5px;">
+                                    <div class="form-check" style="margin-bottom: 15px;">
+                                        <input class="form-check-input" type="checkbox" name="gallery_active" id="gallery_active" value="1" {{$gallery->active ? 'checked' : ''}}>
+                                        <label class="form-check-label" for="gallery_active">
+                                            Галерея активна
+                                        </label>
+                                    </div>
+                                    @php
+                                        $galleryImages = $gallery->images;
+                                    @endphp
+                                    @if($galleryImages->count() > 0)
+                                        <div class="col-md-12" style="display: flex; flex-wrap: wrap; gap: 20px; margin-bottom: 20px;">
+                                            @foreach($galleryImages as $image)
+                                                <div style="position: relative; width: 200px;">
+                                                    <img src="{{asset('storage/' . str_replace('public/', '', $image->image))}}"
+                                                         style="width: 100%; height: auto; border: 1px solid #ddd; border-radius: 5px;"
+                                                         alt="{{$image->description_image}}">
+                                                    <div style="margin-top: 10px;">
+                                                        <input type="text" class="form-control" name="gallery_image_description_edit" id="gallery_image_description_edit_{{$image->id}}" value="{{$image->description_image}}" placeholder="Описание изображения">
+                                                        <button type="button" class="btn btn-primary btn-sm" style="margin-top: 5px; width: 100%;" onclick="updateImageDescription({{$image->id}}, '{{route('images.update', ['image' => $image])}}')">
+                                                            <span class="fa fa-save"></span> Сохранить описание
                                                         </button>
                                                     </div>
-                                                @endforeach
-                                            </div>
-                                        @else
-                                            <p class="text-muted">Нет изображений в этой галерее</p>
-                                        @endif
-                                    </div>
-                                @endforeach
+                                                    <button type="button" class="btn btn-danger btn-sm" style="margin-top: 5px; width: 100%;" onclick="deleteImage({{$image->id}}, '{{route('images.destroy', ['image' => $image])}}', 'Удалить это изображение?')">
+                                                        <span class="fa fa-trash"></span> Удалить
+                                                    </button>
+                                                </div>
+                                            @endforeach
+                                        </div>
+                                    @else
+                                        <p class="text-muted">Нет изображений в галерее</p>
+                                    @endif
+                                </div>
                             @else
-                                <p class="text-muted">Нет галерей</p>
+                                <p class="text-muted">Галерея еще не создана</p>
+                                <div class="form-check" style="margin-bottom: 20px;">
+                                    <input class="form-check-input" type="checkbox" name="gallery_active" id="gallery_active" value="1" {{old('gallery_active', true) ? 'checked' : ''}}>
+                                    <label class="form-check-label" for="gallery_active">
+                                        Галерея активна
+                                    </label>
+                                </div>
                             @endif
                             <h3>Добавить новые изображения в галерею</h3>
-                            <div class="form-check" style="margin-bottom: 20px;">
-                                <input class="form-check-input" type="checkbox" name="gallery_active" id="gallery_active" value="1" {{old('gallery_active', true) ? 'checked' : ''}}>
-                                <label class="form-check-label" for="gallery_active">
-                                    Галерея активна
-                                </label>
-                            </div>
                             <div class="col-md-12" style="margin-bottom: 20px;">
                                 <label style="display: flex; justify-content: center; align-items: center; padding: 20px; border: 2px dashed #ddd; border-radius: 5px; cursor: pointer; background: #fafafa;"
                                        for="gallery_images" class="dropzone dz-clickable">
@@ -288,31 +284,33 @@
                 </div>
             </div>
 
-             Meta теги
+            {{-- Meta теги --}}
             <div class="col-md-12 padding-0">
                 <div class="col-md-12">
                     <div class="panel">
                         <div class="panel-body">
-                            <div class="col-md-6 padding-0" style="padding-right: 15px;">
-                                <h3>Meta заголовок (для SEO)</h3>
-                                <input type="text" class="form-control @error('meta_title') danger @enderror" name="meta_title" value="{{old('meta_title', $staticPage->meta_title)}}" placeholder="Meta заголовок для поисковых систем">
-                                @error('meta_title')
-                                <div class="text-danger">{{$message}}</div>
-                                @enderror
-                            </div>
-                            <div class="col-md-6 padding-0" style="padding-left: 15px;">
-                                <h3>Meta описание (для SEO)</h3>
-                                <textarea class="form-control @error('meta_description') danger @enderror" name="meta_description" rows="3" placeholder="Meta описание для поисковых систем">{{old('meta_description', $staticPage->meta_description)}}</textarea>
-                                @error('meta_description')
-                                <div class="text-danger">{{$message}}</div>
-                                @enderror
+                            <div class="row">
+                                <div class="col-md-6" style="padding-right: 15px;">
+                                    <h3>Meta заголовок (для SEO)</h3>
+                                    <input type="text" class="form-control @error('meta_title') danger @enderror" name="meta_title" value="{{old('meta_title', $staticPage->meta_title)}}" placeholder="Meta заголовок для поисковых систем">
+                                    @error('meta_title')
+                                    <div class="text-danger">{{$message}}</div>
+                                    @enderror
+                                </div>
+                                <div class="col-md-6" style="padding-left: 15px;">
+                                    <h3>Meta описание (для SEO)</h3>
+                                    <textarea class="form-control @error('meta_description') danger @enderror" name="meta_description" rows="3" placeholder="Meta описание для поисковых систем">{{old('meta_description', $staticPage->meta_description)}}</textarea>
+                                    @error('meta_description')
+                                    <div class="text-danger">{{$message}}</div>
+                                    @enderror
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-             Активность
+            {{-- Активность --}}
             <div class="col-md-12 padding-0">
                 <div class="col-md-12">
                     <div class="panel">
@@ -442,11 +440,11 @@
 
             // Функции для обновления и удаления изображений через AJAX
             window.updateImageDescription = function(imageId, url) {
-                const input = document.getElementById('main_image_description_edit_' + imageId) || 
+                const input = document.getElementById('main_image_description_edit_' + imageId) ||
                              document.getElementById('menu_image_description_edit_' + imageId) ||
                              document.getElementById('gallery_image_description_edit_' + imageId);
                 if (!input) return;
-                
+
                 const description = input.value;
                 const formData = new FormData();
                 formData.append('description_image', description);
@@ -477,7 +475,7 @@
 
             window.deleteImage = function(imageId, url, confirmMessage) {
                 if (!confirm(confirmMessage)) return;
-                
+
                 const formData = new FormData();
                 formData.append('_method', 'DELETE');
                 formData.append('_token', document.querySelector('meta[name="csrf-token"]')?.getAttribute('content') || '{{csrf_token()}}');

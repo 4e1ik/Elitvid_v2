@@ -24,14 +24,6 @@ class StaticPage extends Model
     ];
 
     /**
-     * Полиморфная связь: StaticPage имеет много Gallery
-     */
-    public function galleries()
-    {
-        return $this->morphMany(Gallery::class, 'galleriable');
-    }
-
-    /**
      * Связь для обратной совместимости
      */
     public function gallery()

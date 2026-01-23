@@ -49,22 +49,19 @@ class StaticPageService
                 );
             }
 
+            // Обработка active для галереи
+            $galleryActive = isset($data['gallery_active']) && ($data['gallery_active'] == '1' || $data['gallery_active'] === true);
+
+            // Обработка новых изображений галереи
             if (isset($data['gallery_images']) && !empty($data['gallery_images'])) {
                 $galleryDescriptions = $data['gallery_descriptions'] ?? [];
-                $galleryActive = isset($data['gallery_active']) && ($data['gallery_active'] == '1' || $data['gallery_active'] === true);
 
-                // Создаем или получаем галерею через полиморфную связь
-                $gallery = Gallery::firstOrCreate([
+                // Создаем галерею через полиморфную связь
+                $gallery = Gallery::create([
                     'galleriable_id' => $staticPage->id,
                     'galleriable_type' => StaticPage::class,
-                ], [
                     'active' => $galleryActive,
                 ]);
-
-                // Обновляем active, если галерея уже существовала
-                if ($gallery->wasRecentlyCreated === false) {
-                    $gallery->update(['active' => $galleryActive]);
-                }
 
                 // Сохраняем изображения в Gallery
                 $this->imageService->save(
@@ -136,24 +133,26 @@ class StaticPageService
                 );
             }
 
+            // Обработка active для галереи (даже если не добавляются новые изображения)
+            $galleryActive = isset($data['gallery_active']) && ($data['gallery_active'] == '1' || $data['gallery_active'] === true);
+            $gallery = $staticPage->gallery;
+            
+            if ($gallery) {
+                // Обновляем active для существующей галереи
+                $gallery->update(['active' => $galleryActive]);
+            }
+
             // Обработка новых изображений галереи
             if (isset($data['gallery_images']) && !empty($data['gallery_images'])) {
                 $galleryDescriptions = $data['gallery_descriptions'] ?? [];
 
-                // Обработка active для галереи
-                $galleryActive = isset($data['gallery_active']) && ($data['gallery_active'] == '1' || $data['gallery_active'] === true);
-
                 // Получаем или создаем галерею через полиморфную связь
-                $gallery = Gallery::firstOrCreate([
-                    'galleriable_id' => $staticPage->id,
-                    'galleriable_type' => StaticPage::class,
-                ], [
-                    'active' => $galleryActive,
-                ]);
-
-                // Обновляем active, если галерея уже существовала
-                if ($gallery->wasRecentlyCreated === false) {
-                    $gallery->update(['active' => $galleryActive]);
+                if (!$gallery) {
+                    $gallery = Gallery::create([
+                        'galleriable_id' => $staticPage->id,
+                        'galleriable_type' => StaticPage::class,
+                        'active' => $galleryActive,
+                    ]);
                 }
 
                 // Сохраняем новые изображения в Gallery
@@ -182,8 +181,9 @@ class StaticPageService
                 $this->imageService->delete($image);
             }
 
-            // Удаляем галереи и их изображения
-            foreach ($staticPage->galleries as $gallery) {
+            // Удаляем галерею и её изображения (одна галерея на страницу)
+            $gallery = $staticPage->gallery;
+            if ($gallery) {
                 // Удаляем все изображения галереи
                 foreach ($gallery->images as $image) {
                     $this->imageService->delete($image);

@@ -29,7 +29,26 @@ class StaticPageController extends Controller
 
     public function store(CreateStaticPageRequest $request)
     {
-        $data = $request->validated();
+        $data = $request->all();
+
+        // Обработка active - радио-кнопка всегда отправляет '0' или '1'
+        $data['active'] = $request->input('active') == '1';
+
+        // Обработка active для галереи - всегда устанавливаем явное значение
+        $data['gallery_active'] = $request->has('gallery_active') && $request->input('gallery_active') == '1';
+
+        // Обработка файлов
+        if ($request->hasFile('main_image')) {
+            $data['main_image'] = $request->file('main_image');
+        }
+
+        if ($request->hasFile('menu_image')) {
+            $data['menu_image'] = $request->file('menu_image');
+        }
+
+        if ($request->hasFile('gallery_images')) {
+            $data['gallery_images'] = $request->file('gallery_images');
+        }
 
         $staticPage = $this->staticPageService->store($data);
 
@@ -39,7 +58,6 @@ class StaticPageController extends Controller
 
     public function edit(StaticPage $staticPage)
     {
-        $staticPage->load(['images', 'galleries.images']);
         return view('elitvid.admin.static_pages.edit', compact('staticPage'));
     }
 
@@ -52,18 +70,6 @@ class StaticPageController extends Controller
 
         // Обработка active для галереи - всегда устанавливаем явное значение
         $data['gallery_active'] = $request->has('gallery_active') && $request->input('gallery_active') == '1';
-
-        // Обработка обновления существующей галереи
-        if ($request->has('gallery_id')) {
-            $gallery = \App\Models\Gallery::find($request->input('gallery_id'));
-            if ($gallery) {
-                $gallery->update(['active' => $data['gallery_active']]);
-                return redirect()->route('static_pages.edit', ['static_page' => $staticPage])
-                    ->with('success', 'Статус галереи обновлен');
-            }
-        }
-
-        // Slug обрабатывается в сервисе - если пустой, генерируется из title
 
         // Обработка файлов
         if ($request->hasFile('main_image')) {

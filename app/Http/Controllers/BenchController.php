@@ -7,10 +7,12 @@ use App\Models\Gallery;
 use App\Models\MetaTag;
 use App\Models\Product;
 use App\Models\StaticImages;
+use App\Models\StaticPage;
 
 class BenchController
 {
     function benches() {
+        $static_pages = StaticPage::all();
         $benches_images = Gallery::query()
             ->where('type', 'benches')
             ->with(['gallery_images'])
@@ -31,11 +33,11 @@ class BenchController
                 $static_images_arr[$oldPath] = $static_image->description_image;
             }
         }
-        return view('elitvid.site.benches', compact('benches_images', 'metaTitle', 'metaDescription', 'category', 'static_images_arr'));
+        return view('elitvid.site.benches', compact('benches_images', 'metaTitle', 'metaDescription', 'category', 'static_images_arr', 'static_pages'));
     }
 
     function street_furniture_benches() {
-
+        $static_pages = StaticPage::all();
         $products = Product::whereIn('active', [1])
             ->whereHas('bench', function ($query) {
                 $query->where('collection', 'Street_furniture');
@@ -58,11 +60,11 @@ class BenchController
                 $static_images_arr[$oldPath] = $static_image->description_image;
             }
         }
-        return view('elitvid.site.benches.street_furniture_benches', compact('products', 'metaTitle', 'metaDescription', 'category', 'static_images_arr'));
+        return view('elitvid.site.benches.street_furniture_benches', compact('products', 'metaTitle', 'metaDescription', 'category', 'static_images_arr', 'static_pages'));
     }
 
     function verona_benches() {
-
+        $static_pages = StaticPage::all();
         $products = Product::whereIn('active', [1])
             ->whereHas('bench', function ($query) {
                 $query->where('collection', 'Verona');
@@ -85,11 +87,11 @@ class BenchController
                 $static_images_arr[$oldPath] = $static_image->description_image;
             }
         }
-        return view('elitvid.site.benches.verona_benches', compact('products', 'metaTitle', 'metaDescription', 'category', 'static_images_arr'));
+        return view('elitvid.site.benches.verona_benches', compact('products', 'metaTitle', 'metaDescription', 'category', 'static_images_arr', 'static_pages'));
     }
 
     function stones_benches() {
-
+        $static_pages = StaticPage::all();
         $products = Product::whereIn('active', [1])
             ->whereHas('bench', function ($query) {
                 $query->where('collection', 'Stones');
@@ -112,11 +114,11 @@ class BenchController
                 $static_images_arr[$oldPath] = $static_image->description_image;
             }
         }
-        return view('elitvid.site.benches.stones_benches', compact('products', 'metaTitle', 'metaDescription', 'category', 'static_images_arr'));
+        return view('elitvid.site.benches.stones_benches', compact('products', 'metaTitle', 'metaDescription', 'category', 'static_images_arr', 'static_pages'));
     }
 
     function solo_benches() {
-
+        $static_pages = StaticPage::all();
         $products = Product::whereIn('active', [1])
             ->whereHas('bench', function ($query) {
                 $query->where('collection', 'Solo');
@@ -139,11 +141,11 @@ class BenchController
                 $static_images_arr[$oldPath] = $static_image->description_image;
             }
         }
-        return view('elitvid.site.benches.solo_benches', compact('products', 'metaTitle', 'metaDescription', 'category', 'static_images_arr'));
+        return view('elitvid.site.benches.solo_benches', compact('products', 'metaTitle', 'metaDescription', 'category', 'static_images_arr', 'static_pages'));
     }
 
     function lines_benches() {
-
+        $static_pages = StaticPage::all();
         $products = Product::whereIn('active', [1])
             ->whereHas('bench', function ($query) {
                 $query->where('collection', 'lines');
@@ -166,10 +168,11 @@ class BenchController
                 $static_images_arr[$oldPath] = $static_image->description_image;
             }
         }
-        return view('elitvid.site.benches.lines_benches', compact('products', 'metaTitle', 'metaDescription', 'category', 'static_images_arr'));
+        return view('elitvid.site.benches.lines_benches', compact('products', 'metaTitle', 'metaDescription', 'category', 'static_images_arr', 'static_pages'));
     }
 
     function show_bench_product($collection, $id){
+        $static_pages = StaticPage::all();
         $product = Product::whereId($id)->with(['images', 'bench'])->first();
         $rand_products = Product::whereIn('active', [1])
             ->whereHas('bench', function ($query) use ($product) {
@@ -196,7 +199,8 @@ class BenchController
                 'metaTitle',
                 'metaDescription',
                 'static_images_arr',
-                'canonicalUrl'
+                'canonicalUrl',
+                'static_pages'
             ));
     }
 }
