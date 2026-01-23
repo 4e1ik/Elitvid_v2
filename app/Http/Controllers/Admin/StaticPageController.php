@@ -31,26 +31,7 @@ class StaticPageController extends Controller
     {
         $data = $request->all();
 
-        // Обработка active - радио-кнопка всегда отправляет '0' или '1'
-        $data['active'] = $request->input('active') == '1';
-
-        // Обработка active для галереи - всегда устанавливаем явное значение
-        $data['gallery_active'] = $request->has('gallery_active') && $request->input('gallery_active') == '1';
-
-        // Обработка файлов
-        if ($request->hasFile('main_image')) {
-            $data['main_image'] = $request->file('main_image');
-        }
-
-        if ($request->hasFile('menu_image')) {
-            $data['menu_image'] = $request->file('menu_image');
-        }
-
-        if ($request->hasFile('gallery_images')) {
-            $data['gallery_images'] = $request->file('gallery_images');
-        }
-
-        $staticPage = $this->staticPageService->store($data);
+        $this->staticPageService->store($data);
 
         return redirect()->route('static_pages.index')
             ->with('success', 'Статическая страница успешно создана');

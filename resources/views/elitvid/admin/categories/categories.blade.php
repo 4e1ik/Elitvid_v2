@@ -52,20 +52,8 @@
                                                         Страница декорации
                                                     @elseif($category->page == 'directions')
                                                         Страница направления
-                                                    @elseif($category->page == 'facade_stucco_molding_and_panels')
-                                                        Страница фасадная лепнина и панели
                                                     @elseif($category->page == 'main')
                                                         Главная страница
-                                                    @elseif($category->page == 'parklets_and_canopies')
-                                                        Страница парклеты и навесы
-                                                    @elseif($category->page == 'pillars_and_covers')
-                                                        Страница столбы и накрывки
-                                                    @elseif($category->page == 'rotundas_and_colonnades')
-                                                        Страница ротонды и коллоны
-                                                    @elseif($category->page == 'small_architectural_forms')
-                                                        Страница малые архитектурные формы
-                                                    @elseif($category->page == 'concrete_products')
-                                                        Страница малые архитектурные формы
                                                     @elseif($category->page == 'blog')
                                                         Страница постов блога
                                                     @endif

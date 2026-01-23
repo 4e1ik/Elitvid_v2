@@ -136,7 +136,7 @@ class StaticPageService
             // Обработка active для галереи (даже если не добавляются новые изображения)
             $galleryActive = isset($data['gallery_active']) && ($data['gallery_active'] == '1' || $data['gallery_active'] === true);
             $gallery = $staticPage->gallery;
-            
+
             if ($gallery) {
                 // Обновляем active для существующей галереи
                 $gallery->update(['active' => $galleryActive]);

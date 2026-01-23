@@ -139,12 +139,6 @@ Route::middleware('auth')->where([])->prefix('admin')->group(function () {
         Route::get('/main_page_images', [AdminController::class, 'main_page_images'])->name('admin_main_page_images');
         Route::get('/decorative_elements_images', [AdminController::class, 'decorative_elements_images'])->name('admin_decorative_elements_images');
         Route::get('/bollards_images', [AdminController::class, 'bollards_images'])->name('admin_bollards_images');
-        Route::get('/parklets_and_naves_images', [AdminController::class, 'parklets_and_naves_images'])->name('admin_parklets_and_naves_images');
-        Route::get('/columns_and_panels_images', [AdminController::class, 'columns_and_panels_images'])->name('admin_columns_and_panels_images');
-        Route::get('/facade_walls_images', [AdminController::class, 'facade_walls_images'])->name('admin_facade_walls_images');
-        Route::get('/rotundas_images', [AdminController::class, 'rotundas_images'])->name('admin_rotundas_images');
-        Route::get('/maf_images', [AdminController::class, 'maf_images'])->name('admin_maf_images');
-        Route::get('/concrete_products_images', [AdminController::class, 'concrete_products_images'])->name('admin_concrete_products_images');
     });
 
     /*
