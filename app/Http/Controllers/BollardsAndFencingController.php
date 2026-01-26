@@ -37,15 +37,6 @@ class BollardsAndFencingController
             if (!str_starts_with($normalizedPath, '/')) {
                 $static_images_arr['/' . $normalizedPath] = $static_image->description_image;
             }
-
-            // Дополнительно поддерживаем старый формат .png вместо .webp
-            if (str_ends_with($normalizedPath, '.webp')) {
-                $oldPath = str_replace('.webp', '.png', $normalizedPath);
-                $static_images_arr[$oldPath] = $static_image->description_image;
-                if (!str_starts_with($oldPath, '/')) {
-                    $static_images_arr['/' . $oldPath] = $static_image->description_image;
-                }
-            }
         }
         try {
             $staticPage = StaticPage::where('page', 'bollards_and_fencing')->first();

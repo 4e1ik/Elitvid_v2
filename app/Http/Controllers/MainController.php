@@ -28,10 +28,6 @@ class MainController extends Controller
         $static_images_arr = [];
         foreach ($static_images as $static_image) {
             $static_images_arr[$static_image->image] = $static_image->description_image;
-            if (str_ends_with($static_image->image, '.webp')) {
-                $oldPath = str_replace('.webp', '.png', $static_image->image);
-                $static_images_arr[$oldPath] = $static_image->description_image;
-            }
         }
         return view('elitvid.site.index', compact( 'main_page_images', 'metaTitle', 'metaDescription', 'category', 'static_images_arr', 'static_pages'));
     }
@@ -70,10 +66,6 @@ class MainController extends Controller
         $static_images_arr = [];
         foreach ($static_images as $static_image) {
             $static_images_arr[$static_image->image] = $static_image->description_image;
-            if (str_ends_with($static_image->image, '.webp')) {
-                $oldPath = str_replace('.webp', '.png', $static_image->image);
-                $static_images_arr[$oldPath] = $static_image->description_image;
-            }
         }
         return view('elitvid.site.directions', compact('metaTitle', 'metaDescription', 'category', 'static_images_arr', 'static_pages'));
     }
@@ -95,10 +87,6 @@ class MainController extends Controller
         $static_images_arr = [];
         foreach ($static_images as $static_image) {
             $static_images_arr[$static_image->image] = $static_image->description_image;
-            if (str_ends_with($static_image->image, '.webp')) {
-                $oldPath = str_replace('.webp', '.png', $static_image->image);
-                $static_images_arr[$oldPath] = $static_image->description_image;
-            }
         }
         return view('elitvid.site.decorations', compact('decorative_elements_images', 'metaTitle', 'metaDescription', 'category', 'static_images_arr', 'static_pages'));
     }

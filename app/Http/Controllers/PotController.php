@@ -27,10 +27,6 @@ class PotController
         $static_images_arr = [];
         foreach ($static_images as $static_image) {
             $static_images_arr[$static_image->image] = $static_image->description_image;
-            if (str_ends_with($static_image->image, '.webp')) {
-                $oldPath = str_replace('.webp', '.png', $static_image->image);
-                $static_images_arr[$oldPath] = $static_image->description_image;
-            }
         }
         return view('elitvid.site.pots', compact('pots_images', 'metaTitle', 'metaDescription', 'category', 'static_images_arr', 'static_pages'));
     }
@@ -54,10 +50,6 @@ class PotController
         $static_images_arr = [];
         foreach ($static_images as $static_image) {
             $static_images_arr[$static_image->image] = $static_image->description_image;
-            if (str_ends_with($static_image->image, '.webp')) {
-                $oldPath = str_replace('.webp', '.png', $static_image->image);
-                $static_images_arr[$oldPath] = $static_image->description_image;
-            }
         }
         return view('elitvid.site.pots.rectangular_pots', compact('products', 'metaTitle', 'metaDescription', 'category', 'static_images_arr', 'static_pages'));
     }
@@ -81,10 +73,6 @@ class PotController
         $static_images_arr = [];
         foreach ($static_images as $static_image) {
             $static_images_arr[$static_image->image] = $static_image->description_image;
-            if (str_ends_with($static_image->image, '.webp')) {
-                $oldPath = str_replace('.webp', '.png', $static_image->image);
-                $static_images_arr[$oldPath] = $static_image->description_image;
-            }
         }
         return view('elitvid.site.pots.square_pots', compact('products', 'metaTitle', 'metaDescription', 'category', 'static_images_arr', 'static_pages'));
     }
@@ -108,10 +96,6 @@ class PotController
         $static_images_arr = [];
         foreach ($static_images as $static_image) {
             $static_images_arr[$static_image->image] = $static_image->description_image;
-            if (str_ends_with($static_image->image, '.webp')) {
-                $oldPath = str_replace('.webp', '.png', $static_image->image);
-                $static_images_arr[$oldPath] = $static_image->description_image;
-            }
         }
         return view('elitvid.site.pots.round_pots', compact('products', 'metaTitle', 'metaDescription', 'category', 'static_images_arr', 'static_pages'));
     }
@@ -133,10 +117,6 @@ class PotController
         $canonicalUrl = route('show_pot_product', ['collection' => $collection,'id' => $id]);
         foreach ($static_images as $static_image) {
             $static_images_arr[$static_image->image] = $static_image->description_image;
-            if (str_ends_with($static_image->image, '.webp')) {
-                $oldPath = str_replace('.webp', '.png', $static_image->image);
-                $static_images_arr[$oldPath] = $static_image->description_image;
-            }
         }
         return view('elitvid.site.pots.pot_product_page',
             compact('product',
