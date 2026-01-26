@@ -1,11 +1,8 @@
 <?php
 
-use App\Models\BenchProduct;
 use App\Models\Blog;
-use App\Models\PotProduct;
 use Tabuna\Breadcrumbs\Breadcrumbs;
 use Tabuna\Breadcrumbs\Trail;
-//use \App\Providers\BreadcrumbsServiceProvider;
 
 Breadcrumbs::for('home', fn (Trail $trail) =>
     $trail->push('Главная', route('home'))
@@ -78,16 +75,6 @@ $trail->parent('blog_posts')->push(
 )
 );
 
-// Breadcrumbs::for('show_bench_product', fn (Trail $trail, $id) =>
-// $trail->parent(Route::getRoutes()->match(request()->create(url()->previousPath()))->getName() == 'verona_benches' ? 'verona_benches' :
-//        (Route::getRoutes()->match(request()->create(url()->previousPath()))->getName() == 'street_furniture_benches' ? 'street_furniture_benches' :
-//        (Route::getRoutes()->match(request()->create(url()->previousPath()))->getName() == 'solo_benches' ? 'solo_benches' :
-//        (Route::getRoutes()->match(request()->create(url()->previousPath()))->getName() == 'lines_benches' ? 'lines_benches' :
-//        (Route::getRoutes()->match(request()->create(url()->previousPath()))->getName() == 'stones_benches' ? 'stones_benches' : 'benches'))))
-// )->push(BenchProduct::query()->with('bench_images')->where('id', $id)->get(), route('show_bench_product', $id))
-// );
-
-
 Breadcrumbs::for('pots', fn (Trail $trail) =>
     $trail->parent('directions')->push('Кашпо', route('pots'))
 );
@@ -103,12 +90,3 @@ Breadcrumbs::for('square_pots', fn (Trail $trail) =>
 Breadcrumbs::for('round_pots', fn (Trail $trail) =>
     $trail->parent('pots')->push('Круглые кашпо', route('round_pots'))
 );
-
-
-
-// Breadcrumbs::for('show_pot_product', fn (Trail $trail, $id) =>
-// $trail->parent(Route::getRoutes()->match(request()->create(url()->previousPath()))->getName() == 'round_pots' ? 'round_pots' :
-//                     (Route::getRoutes()->match(request()->create(url()->previousPath()))->getName() == 'square_pots' ? 'square_pots' :
-//                     (Route::getRoutes()->match(request()->create(url()->previousPath()))->getName() == 'rectangular_pots' ? 'rectangular_pots' : 'pots'))
-//                 )->push(PotProduct::query()->with('pot_images')->where('id', $id)->get()[0]['name'], route('show_pot_product', $id))
-// );

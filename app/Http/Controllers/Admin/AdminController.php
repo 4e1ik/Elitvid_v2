@@ -3,14 +3,12 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\BenchProduct;
-use App\Models\BenchImage;
 use App\Models\Blog;
 use App\Models\Gallery;
 use App\Models\GalleryImage;
+use App\Models\Image;
 use App\Models\MetaTag;
-use App\Models\PotProduct;
-use App\Models\PotImage;
+use App\Models\Product;
 use App\Models\StaticImages;
 use App\Models\StaticPage;
 
@@ -20,14 +18,15 @@ class AdminController extends Controller
         $stats = [
             'blog_posts' => Blog::count(),
             'active_blog_posts' => Blog::where('active', 1)->count(),
-            'bench_products' => BenchProduct::count(),
-            'active_bench_products' => BenchProduct::where('active', 1)->count(),
-            'pot_products' => PotProduct::count(),
-            'active_pot_products' => PotProduct::where('active', 1)->count(),
+            'products' => Product::count(),
+            'active_products' => Product::where('active', 1)->count(),
+            'bench_products' => Product::where('product_type', 'bench')->count(),
+            'active_bench_products' => Product::where('product_type', 'bench')->where('active', 1)->count(),
+            'pot_products' => Product::where('product_type', 'pot')->count(),
+            'active_pot_products' => Product::where('product_type', 'pot')->where('active', 1)->count(),
             'galleries' => Gallery::count(),
             'gallery_images' => GalleryImage::count(),
-            'bench_images' => BenchImage::count(),
-            'pot_images' => PotImage::count(),
+            'product_images' => Image::whereHasMorph('imageable', [Product::class])->count(),
             'static_pages' => StaticPage::count(),
             'static_images' => StaticImages::count(),
         ];
@@ -49,11 +48,10 @@ class AdminController extends Controller
             $endOfMonth = $date->copy()->endOfMonth();
 
             $blog_data[] = Blog::whereBetween('created_at', [$startOfMonth, $endOfMonth])->count();
-            $products_data[] = BenchProduct::whereBetween('created_at', [$startOfMonth, $endOfMonth])->count() +
-                              PotProduct::whereBetween('created_at', [$startOfMonth, $endOfMonth])->count();
+            $products_data[] = Product::whereBetween('created_at', [$startOfMonth, $endOfMonth])->count();
             $images_data[] = GalleryImage::whereBetween('created_at', [$startOfMonth, $endOfMonth])->count() +
-                            BenchImage::whereBetween('created_at', [$startOfMonth, $endOfMonth])->count() +
-                            PotImage::whereBetween('created_at', [$startOfMonth, $endOfMonth])->count();
+                            Image::whereHasMorph('imageable', [Product::class])
+                                ->whereBetween('created_at', [$startOfMonth, $endOfMonth])->count();
         }
 
         // Данные для круговой диаграммы (распределение по типам)
@@ -64,6 +62,7 @@ class AdminController extends Controller
             'images' => $images_data,
             'distribution' => [
                 'blog' => $stats['blog_posts'],
+                'products' => $stats['products'],
                 'bench_products' => $stats['bench_products'],
                 'pot_products' => $stats['pot_products'],
                 'galleries' => $stats['galleries'],

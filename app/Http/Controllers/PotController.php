@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Gallery;
 use App\Models\MetaTag;
-use App\Models\PotProduct;
 use App\Models\Product;
 use App\Models\StaticImages;
 use App\Models\StaticPage;

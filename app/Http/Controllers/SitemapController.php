@@ -2,9 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\BenchProduct;
 use App\Models\Blog;
-use App\Models\PotProduct;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\URL;
 use Carbon\Carbon;
@@ -192,10 +191,13 @@ class SitemapController extends Controller
         ];
 
         // Add dynamic pages
-//        $posts = \App\Models\Post::all();
-        $benches = BenchProduct::where('active', 1)->get();
+        $benches = Product::where('active', 1)
+            ->where('product_type', 'bench')
+            ->with('bench')
+            ->get();
         foreach ($benches as $bench) {
-            $collection = $bench->collection;
+            if (!$bench->bench) continue;
+            $collection = $bench->bench->collection;
             $benchRoutes = [
                 'Verona' => route('verona_benches'),
                 'Stones' => route('stones_benches'),
@@ -204,29 +206,37 @@ class SitemapController extends Controller
                 'Street_furniture' => route('street_furniture_benches'),
             ];
 
-            $urls[] = [
-                'loc' => URL::to($benchRoutes[$collection].'/'.$bench->id),
-                'lastmod' => $bench->updated_at->toAtomString(),
-                'changefreq' => 'weekly',
-                'priority' => '0.4'
-            ];
+            if (isset($benchRoutes[$collection])) {
+                $urls[] = [
+                    'loc' => URL::to($benchRoutes[$collection].'/'.$bench->id),
+                    'lastmod' => $bench->updated_at->toAtomString(),
+                    'changefreq' => 'weekly',
+                    'priority' => '0.4'
+                ];
+            }
         }
 
-        $pots = PotProduct::where('active', 1)->get();
+        $pots = Product::where('active', 1)
+            ->where('product_type', 'pot')
+            ->with('pot')
+            ->get();
         foreach ($pots as $pot) {
-            $collection = $pot->collection;
+            if (!$pot->pot) continue;
+            $collection = $pot->pot->collection;
             $potRoutes = [
                 'Square' => route('square_pots'),
                 'Round' => route('round_pots'),
                 'Rectangular' => route('rectangular_pots'),
             ];
 
-            $urls[] = [
-                'loc' => URL::to($potRoutes[$collection].'/'.$pot->id),
-                'lastmod' => $pot->updated_at->toAtomString(),
-                'changefreq' => 'weekly',
-                'priority' => '0.4'
-            ];
+            if (isset($potRoutes[$collection])) {
+                $urls[] = [
+                    'loc' => URL::to($potRoutes[$collection].'/'.$pot->id),
+                    'lastmod' => $pot->updated_at->toAtomString(),
+                    'changefreq' => 'weekly',
+                    'priority' => '0.4'
+                ];
+            }
         }
 
         $blogs = Blog::where('active', 1)->get();

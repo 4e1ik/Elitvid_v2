@@ -64,8 +64,8 @@
                                     </div>
                                 </div>
                                 <div class="panel-body text-center">
-                                        <h1>{{$stats['bench_products'] + $stats['pot_products']}}</h1>
-                                        <p>Всего продуктов ({{$stats['active_bench_products'] + $stats['active_pot_products']}} активных)</p>
+                                        <h1>{{$stats['products']}}</h1>
+                                        <p>Всего продуктов ({{$stats['active_products']}} активных)</p>
                                         <hr/>
                                     </div>
                                 </div>
@@ -78,7 +78,7 @@
                                 <div class="panel box-v1" style="cursor: pointer; transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
                                     <div class="panel-heading bg-white border-none">
                                         <div class="col-md-6 col-sm-6 col-xs-6 text-left padding-0">
-                                            <h4 class="text-left">Изображения галерей</h4>
+                                            <h4 class="text-left">Изображения</h4>
                                         </div>
                                         <div class="col-md-6 col-sm-6 col-xs-6 text-right">
                                             <h4>
@@ -108,7 +108,7 @@
                                         </div>
                                     </div>
                                     <div class="panel-body text-center">
-                                        <h1>{{$stats['gallery_images'] + $stats['bench_images'] + $stats['pot_images'] + $stats['static_images']}}</h1>
+                                        <h1>{{$stats['gallery_images'] + $stats['product_images'] + $stats['static_images']}}</h1>
                                         <p>Всего изображений</p>
                                         <hr/>
                                     </div>
@@ -161,11 +161,11 @@
                                         <p>Постов</p>
                                     </div>
                                     <div class="col-md-4 col-sm-4 col-xs-6 padding-0">
-                                        <h3>{{$stats['bench_products'] + $stats['pot_products']}}</h3>
+                                        <h3>{{$stats['products']}}</h3>
                                         <p>Продуктов</p>
                                     </div>
                                     <div class="col-md-4 col-sm-4 col-xs-12 padding-0">
-                                        <h3>{{$stats['gallery_images'] + $stats['bench_images'] + $stats['pot_images']}}</h3>
+                                        <h3>{{$stats['gallery_images'] + $stats['product_images']}}</h3>
                                         <p>Изображений</p>
                                     </div>
                                 </div>
@@ -180,11 +180,11 @@
                             </div>
                             <div class="panel-body">
                                 @php
-                                    $total_products = $stats['bench_products'] + $stats['pot_products'];
-                                    $active_products = $stats['active_bench_products'] + $stats['active_pot_products'];
+                                    $total_products = $stats['products'];
+                                    $active_products = $stats['active_products'];
                                     $products_percent = $total_products > 0 ? round(($active_products / $total_products) * 100) : 0;
                                     
-                                    $total_images = $stats['gallery_images'] + $stats['bench_images'] + $stats['pot_images'] + $stats['static_images'];
+                                    $total_images = $stats['gallery_images'] + $stats['product_images'] + $stats['static_images'];
                                     $images_percent = $total_images > 0 ? min(100, round(($total_images / 1000) * 100)) : 0;
                                     
                                     $blog_percent = $stats['blog_posts'] > 0 ? min(100, round(($stats['active_blog_posts'] / $stats['blog_posts']) * 100)) : 0;
@@ -240,7 +240,7 @@
                                         <span class="icon-picture icons" style="font-size:2em;"></span>
                                     </div>
                                     <div class="media-body">
-                                        <h5 class="media-heading">Изображения галерей</h5>
+                                        <h5 class="media-heading">Изображения</h5>
                                         <div class="progress progress-mini">
                                             <div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
                                                 <span class="sr-only">100%</span>
@@ -312,11 +312,11 @@
                                     <small>Постов блога</small>
                                 </div>
                                 <div class="col-md-4 col-sm-4 col-xs-6 text-center">
-                                    <h2 style="line-height:.4;">{{$stats['bench_products'] + $stats['pot_products']}}</h2>
+                                    <h2 style="line-height:.4;">{{$stats['products']}}</h2>
                                     <small>Продуктов</small>
                                 </div>
                                 <div class="col-md-4 col-sm-4 col-xs-12 text-center">
-                                    <h2 style="line-height:.4;">{{$stats['gallery_images'] + $stats['bench_images'] + $stats['pot_images']}}</h2>
+                                    <h2 style="line-height:.4;">{{$stats['gallery_images'] + $stats['product_images']}}</h2>
                                     <small>Изображений</small>
                                 </div>
                             </div>
@@ -343,11 +343,11 @@
                                     <h4>Распределение контента</h4>
                                     <p>Общее количество контента по категориям</p>
                                     <div class="progress progress-mini">
-                                        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="{{round(($stats['blog_posts'] / max(1, $stats['blog_posts'] + $stats['bench_products'] + $stats['pot_products'] + $stats['galleries'])) * 100)}}" aria-valuemin="0" aria-valuemax="100" style="width: {{round(($stats['blog_posts'] / max(1, $stats['blog_posts'] + $stats['bench_products'] + $stats['pot_products'] + $stats['galleries'])) * 100)}}%;">
-                                            <span class="sr-only">{{round(($stats['blog_posts'] / max(1, $stats['blog_posts'] + $stats['bench_products'] + $stats['pot_products'] + $stats['galleries'])) * 100)}}%</span>
+                                        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="{{round(($stats['blog_posts'] / max(1, $stats['blog_posts'] + $stats['products'] + $stats['galleries'])) * 100)}}" aria-valuemin="0" aria-valuemax="100" style="width: {{round(($stats['blog_posts'] / max(1, $stats['blog_posts'] + $stats['products'] + $stats['galleries'])) * 100)}}%;">
+                                            <span class="sr-only">{{round(($stats['blog_posts'] / max(1, $stats['blog_posts'] + $stats['products'] + $stats['galleries'])) * 100)}}%</span>
                                         </div>
                                     </div>
-                                    <small>Блог: {{$stats['blog_posts']}}, Продукты: {{$stats['bench_products'] + $stats['pot_products']}}, Галереи: {{$stats['galleries']}}</small>
+                                    <small>Блог: {{$stats['blog_posts']}}, Продукты: {{$stats['products']}}, Галереи: {{$stats['galleries']}}</small>
                                 </div>
                             </div>
                         </div>
