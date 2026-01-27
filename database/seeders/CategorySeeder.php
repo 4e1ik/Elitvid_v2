@@ -15,24 +15,20 @@ class CategorySeeder extends Seeder
     {
         $pages = [
             'main',
-            'benches',
-            'lines_benches',
-            'solo_benches',
-            'stones_benches',
-            'street_furniture_benches',
-            'verona_benches',
-            'pots',
-            'rectangular_pots',
-            'round_pots',
-            'square_pots',
-            'bollards_and_fencing',
-            'decorations',
             'directions',
-            'facade_stucco_molding_and_panels',
-            'parklets_and_canopies',
-            'pillars_and_covers',
-            'rotundas_and_colonnades',
+            'decorations',
             'blog',
+            'benches',
+            'pots',
+            'bollards_and_fencing',
+            'verona_benches',
+            'street_furniture_benches',
+            'solo_benches',
+            'lines_benches',
+            'stones_benches',
+            'rectangular_pots',
+            'square_pots',
+            'round_pots',
         ];
 
         // Создаем массив данных для вставки
@@ -45,7 +41,12 @@ class CategorySeeder extends Seeder
             ];
         }, $pages);
 
-        // Вставляем данные в таблицу categories
-        DB::table('categories')->insert($categories);
+        // Используем updateOrInsert чтобы не создавать дубликаты
+        foreach ($categories as $category) {
+            DB::table('categories')->updateOrInsert(
+                ['page' => $category['page']],
+                $category
+            );
+        }
     }
 }

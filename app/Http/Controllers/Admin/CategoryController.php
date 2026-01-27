@@ -2,19 +2,26 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Helpers\PageNamesHelper;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
+    public function __construct(
+        public PageNamesHelper $pageNamesHelper
+    ){}
+
     /**
-     * Display a listing of the resource.
+     * Список всех категорий
      */
     public function index()
     {
         $categories = Category::all();
-        return view('elitvid.admin.categories.categories', compact('categories'));
+        $pageNames = $this->pageNamesHelper->getPageNames();
+
+        return view('elitvid.admin.categories.index', compact('categories', 'pageNames'));
     }
 
     /**
@@ -42,21 +49,26 @@ class CategoryController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Страница редактирования категории
      */
     public function edit(Category $category)
     {
-        //
+        $pageNames = $this->pageNamesHelper->getPageNames();
+        $pageName = $pageNames[$category->page] ?? $category->page;
+
+        return view('elitvid.admin.categories.edit', compact('category', 'pageName'));
     }
 
     /**
-     * Update the specified resource in storage.
+     * Обновление категории
      */
     public function update(Request $request, Category $category)
     {
         $data = $request->all();
         $category->fill($data)->save();
-        return back();
+
+        return redirect()->route('categories.index')
+            ->with('success', 'Описание категории успешно обновлено');
     }
 
     /**

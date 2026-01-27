@@ -109,19 +109,6 @@
                 </li>
                 <li class="ripple">
                     <a class="tree-toggle nav-header">
-                        <span class="fa-image fa"></span> Примеры работ
-                        <span class="fa-angle-right fa right-arrow text-right"></span>
-                    </a>
-                    <ul class="nav nav-list tree" style="display: none;">
-                        <li><a href="{{route('admin_pots_images')}}">Картинки страницы кашпо</a></li>
-                        <li><a href="{{route('admin_benches_images')}}">Картинки страницы скамеек</a></li>
-                        <li><a href="{{route('admin_main_page_images')}}">Картинки главной страницы</a></li>
-                        <li><a href="{{route('admin_decorative_elements_images')}}">Картинки страницы декоративных элементов</a></li>
-                        <li><a href="{{route('admin_bollards_images')}}">Картинки страницы боллард</a></li>
-                    </ul>
-                </li>
-                <li class="ripple">
-                    <a class="tree-toggle nav-header">
                         <span class="fa-image fa"></span> Картинки
                         <span class="fa-angle-right fa right-arrow text-right"></span>
                     </a>
@@ -149,8 +136,7 @@
                         <li><a href="{{route('admin_static_images', ['page' => 'square_pots'])}}">Квадратные кашпо</a></li>
                     </ul>
                 </li>
-                <li><a href="{{route('admin_metatags')}}"><span class="icons icon-tag"></span>Мета-теги</a></li>
-                <li><a href="{{route('categories.index')}}"><span class="icons icon-list"></span>Описание категорий</a></li>
+                <li><a href="{{route('admin_page_contents.index')}}"><span class="fa fa-file-text-o"></span>Контент страниц</a></li>
                 <li><a href="{{route('static_pages.index')}}"><span class="fa fa-file-text"></span>Статические страницы</a></li>
                 <li><a href="{{route('admin_blog')}}"><span class="fa fa-newspaper-o"></span>Блог</a></li>
             </ul>
@@ -669,19 +655,6 @@
                 </li>
                 <li class="ripple">
                     <a class="tree-toggle nav-header">
-                        <span class="fa-image fa"></span> Примеры работ
-                        <span class="fa-angle-right fa right-arrow text-right"></span>
-                    </a>
-                    <ul class="nav nav-list tree" style="display: none;">
-                        <li><a href="{{route('admin_pots_images')}}">Картинки страницы кашпо</a></li>
-                        <li><a href="{{route('admin_benches_images')}}">Картинки страницы скамеек</a></li>
-                        <li><a href="{{route('admin_main_page_images')}}">Картинки главной страницы</a></li>
-                        <li><a href="{{route('admin_decorative_elements_images')}}">Картинки страницы декоративных элементов</a></li>
-                        <li><a href="{{route('admin_bollards_images')}}">Картинки страницы боллард</a></li>
-                    </ul>
-                </li>
-                <li class="ripple">
-                    <a class="tree-toggle nav-header">
                         <span class="fa-image fa"></span> Картинки
                         <span class="fa-angle-right fa right-arrow text-right"></span>
                     </a>
@@ -709,8 +682,7 @@
                         <li><a href="{{route('admin_static_images', ['page' => 'square_pots'])}}">Квадратные кашпо</a></li>
                     </ul>
                 </li>
-                <li><a href="{{route('admin_metatags')}}"><span class="icons icon-tag"></span>Мета-теги</a></li>
-                <li><a href="{{route('categories.index')}}"><span class="icons icon-list"></span>Описание категорий</a></li>
+                <li><a href="{{route('admin_page_contents.index')}}"><span class="fa fa-file-text-o"></span>Контент страниц</a></li>
                 <li><a href="{{route('static_pages.index')}}"><span class="fa fa-file-text"></span>Статические страницы</a></li>
                 <li><a href="{{route('admin_blog')}}"><span class="fa fa-newspaper-o"></span>Блог</a></li>
 

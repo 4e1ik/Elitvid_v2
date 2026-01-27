@@ -18,7 +18,7 @@
                         <li><a href="{{route('admin_blog')}}" ><span class="fa fa-file-text"></span> Блог</a></li>
                         <li><a href="{{route('admin_benches_verona')}}" ><span class="fa fa-cube"></span> Скамейки</a></li>
                         <li><a href="{{route('admin_round_pots')}}" ><span class="fa fa-cube"></span> Кашпо</a></li>
-                        <li><a href="{{route('admin_main_page_images')}}" ><span class="fa fa-picture-o"></span> Галереи</a></li>
+                        <li><a href="{{route('admin_page_contents.index')}}" ><span class="fa fa-picture-o"></span> Галереи</a></li>
                         <li><a href="{{route('admin_static_images', 'index')}}" ><span class="fa fa-image"></span> Статические изображения</a></li>
                     </ul>
                 </div>
@@ -74,7 +74,7 @@
                     </div>
                     <div class="col-md-12 padding-0" style="margin-top: 20px;">
                         <div class="col-md-6">
-                            <a href="{{route('admin_main_page_images')}}" style="text-decoration: none; color: inherit;">
+                            <a href="{{route('admin_page_contents.index')}}" style="text-decoration: none; color: inherit;">
                                 <div class="panel box-v1" style="cursor: pointer; transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
                                     <div class="panel-heading bg-white border-none">
                                         <div class="col-md-6 col-sm-6 col-xs-6 text-left padding-0">

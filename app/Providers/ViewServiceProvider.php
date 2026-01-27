@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\StaticPage;
 use Illuminate\Support\ServiceProvider;
 
 class ViewServiceProvider extends ServiceProvider
@@ -25,6 +26,7 @@ class ViewServiceProvider extends ServiceProvider
                 'metaDescription' => 'Качественные изделия из полистоуна от производителя Elitvid.com.
                                         В нашем каталоге широкий выбор декоративных элементов для интерьера и экстерьера.
                                         Надежность, эстетика и доступные цены – только у нас!',
+                'static_pages' => StaticPage::all(),
             ]);
         });
     }

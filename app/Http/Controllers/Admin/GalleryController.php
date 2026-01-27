@@ -17,8 +17,8 @@ class GalleryController extends Controller
      */
     public function index()
     {
-        $galleries = Gallery::all();
-        return view('admin.gallery.index', compact('galleries'));
+        // Редиректим на страницу контента, так как все галереи теперь управляются там
+        return redirect()->route('admin_page_contents.index');
     }
 
     /**
@@ -37,8 +37,16 @@ class GalleryController extends Controller
         $data = $galleryRequest->all();
 
         if ($galleryRequest->hasFile('image')) {
+            // Находим или создаем одну галерею для этого типа
+            $gallery = Gallery::firstOrCreate(
+                ['type' => $data['type']],
+                [
+                    'type' => $data['type'],
+                    'active' => $data['active'] ?? true,
+                ]
+            );
+
             foreach ($galleryRequest->file('image') as $file) {
-                $gallery = Gallery::create($data);
                 $data['gallery_image_id'] = $gallery->id;
                 $name = save_image($file, GalleryImage::query());
                 $path = Storage::putFileAs('public/images', $file, $name); // Даем путь к этому файлу
@@ -51,21 +59,23 @@ class GalleryController extends Controller
 
         $collection = $data['type'];
 
-        $potsRoutes = [
-            'pots' => route('admin_pots_images'),
-            'benches' => route('admin_benches_images'),
-            'main_page' => route('admin_main_page_images'),
-            'decorative_elements' => route('admin_decorative_elements_images'),
-            'bollards' => route('admin_bollards_images'),
-            'parklets_and_naves' => route('admin_parklets_and_naves_images'),
-            'columns_and_panels' => route('admin_columns_and_panels_images'),
-            'facade_walls' => route('admin_facade_walls_images'),
-            'rotundas' => route('admin_rotundas_images'),
-            'maf' => route('admin_maf_images'),
-            'concrete_products' => route('admin_concrete_products_images'),
+        // Маппинг типов галерей на страницы контента
+        $typeToPageMap = [
+            'pots' => 'pots',
+            'benches' => 'benches',
+            'main_page' => 'main',
+            'decorative_elements' => 'decorations',
+            'bollards' => 'bollards_and_fencing',
         ];
 
-        return redirect($potsRoutes[$collection]);
+        $page = $typeToPageMap[$collection] ?? null;
+
+        if ($page) {
+            return redirect()->route('admin_page_contents.edit', $page)
+                ->with('success', 'Изображения успешно добавлены в галерею');
+        }
+
+        return back()->with('success', 'Изображения успешно добавлены в галерею');
     }
 
     /**

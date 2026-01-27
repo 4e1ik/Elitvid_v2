@@ -133,13 +133,6 @@ Route::middleware('auth')->where([])->prefix('admin')->group(function () {
     });
 
     // Примеры работ в панели администратора
-    Route::prefix('gallery')->group(function (){
-        Route::get('/pots_images', [AdminController::class, 'pots_images'])->name('admin_pots_images');
-        Route::get('/benches_images', [AdminController::class, 'benches_images'])->name('admin_benches_images');
-        Route::get('/main_page_images', [AdminController::class, 'main_page_images'])->name('admin_main_page_images');
-        Route::get('/decorative_elements_images', [AdminController::class, 'decorative_elements_images'])->name('admin_decorative_elements_images');
-        Route::get('/bollards_images', [AdminController::class, 'bollards_images'])->name('admin_bollards_images');
-    });
 
     /*
      * Статические картинки сайта
@@ -159,18 +152,15 @@ Route::middleware('auth')->where([])->prefix('admin')->group(function () {
     Route::put('/images/{image}/update', [\App\Http\Controllers\Admin\ImageController::class, 'update'])->name('images.update');
     Route::delete('/images/{image}/delete', [\App\Http\Controllers\Admin\ImageController::class, 'destroy'])->name('images.destroy');
 
-    //Мета-теги
-    Route::get('/metatags', [AdminController::class, 'metaTags'])->name('admin_metatags');
-    Route::put('/metatags/{metaTag}/update', [MetaTagController::class, 'update'])->name('meta_tags_update');
-
-    //Категории
-//    Route::get('/categories', [AdminController::class, 'categories'])->name('admin_categories');
-//    Route::put('/categories/{category}/update', [CategoryController::class, 'update'])->name('category_update');
+    //Контент страниц (объединенный: мета-теги, категории, галереи)
+    Route::get('/page-contents', [\App\Http\Controllers\Admin\PageContentController::class, 'index'])->name('admin_page_contents.index');
+    Route::get('/page-contents/{page}/edit', [\App\Http\Controllers\Admin\PageContentController::class, 'edit'])->name('admin_page_contents.edit');
+    Route::put('/page-contents/{page}', [\App\Http\Controllers\Admin\PageContentController::class, 'update'])->name('admin_page_contents.update');
+    Route::put('/page-contents/{page}/images/{imageId}/description', [\App\Http\Controllers\Admin\PageContentController::class, 'updateImageDescription'])->name('admin_page_contents.update_image_description');
 
     Route::resources([
         'galleries' => GalleryController::class,
         'blogs' => BlogController::class,
-        'categories' => CategoryController::class,
         'static_images' => StaticImagesController::class,
         'static_pages' => AdminStaticPageController::class,
         'products' => ProductController::class,
