@@ -26,24 +26,8 @@ class PageContentSeeder extends Seeder
             'bollards_and_fencing' => 'bollards',
         ];
 
-        // Получаем все страницы из PageNamesHelper
-        $pages = [
-            'main',
-            'directions',
-            'decorations',
-            'blog',
-            'benches',
-            'pots',
-            'bollards_and_fencing',
-            'verona_benches',
-            'street_furniture_benches',
-            'solo_benches',
-            'lines_benches',
-            'stones_benches',
-            'rectangular_pots',
-            'square_pots',
-            'round_pots',
-        ];
+        // Получаем все страницы из конфига pages.php
+        $pages = array_keys(config('pages', []));
 
         foreach ($pages as $page) {
             // Получаем мета-теги

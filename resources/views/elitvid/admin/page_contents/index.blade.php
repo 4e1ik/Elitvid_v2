@@ -32,50 +32,42 @@
                                         <th>Мета-теги</th>
                                         <th>Описание</th>
                                         <th>Галерея</th>
-                                        <th>Статус</th>
                                         <th>Действия</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach($pages as $pageData)
+                                    @foreach($pageContents as $pageData)
                                         <tr>
                                             <td>
-                                                <strong>{{ $pageData['name'] }}</strong>
+                                                <strong>{{ $pageData->name }}</strong>
                                                 <br>
-                                                <small class="text-muted">{{ $pageData['page'] }}</small>
+                                                <small class="text-muted">{{ $pageData->page }}</small>
                                             </td>
                                             <td>
-                                                @if($pageData['content'] && $pageData['content']->meta_title)
+                                                @if($pageData->content && $pageData->content->meta_title)
                                                     <span class="text-success">✓ Заполнено</span>
                                                 @else
                                                     <span class="text-muted">— Не заполнено</span>
                                                 @endif
                                             </td>
                                             <td>
-                                                @if($pageData['content'] && $pageData['content']->category_description)
+                                                @if($pageData->content && $pageData->content->category_description)
                                                     <span class="text-success">✓ Заполнено</span>
                                                 @else
                                                     <span class="text-muted">— Не заполнено</span>
                                                 @endif
                                             </td>
                                             <td>
-                                                @if($pageData['content'] && $pageData['content']->gallery)
+                                                @if($pageData->content && $pageData->content->gallery)
                                                     <span class="text-success">✓ Настроена</span>
                                                 @else
                                                     <span class="text-muted">— Не настроена</span>
                                                 @endif
                                             </td>
                                             <td>
-                                                @if($pageData['has_content'])
-                                                    <span class="label label-success">Активна</span>
-                                                @else
-                                                    <span class="label label-default">Не создана</span>
-                                                @endif
-                                            </td>
-                                            <td>
-                                                <a href="{{ route('admin_page_contents.edit', $pageData['page']) }}"
+                                                <a href="{{ route('admin_page_contents.edit', $pageData) }}"
                                                    class="btn btn-sm btn-primary">
-                                                    {{ $pageData['has_content'] ? 'Изменить' : 'Создать' }}
+                                                    Изменить
                                                 </a>
                                             </td>
                                         </tr>

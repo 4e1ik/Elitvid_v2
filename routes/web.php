@@ -4,10 +4,8 @@ use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\Auth\LoginController;
 use App\Http\Controllers\Admin\Auth\RegisterController;
 use App\Http\Controllers\Admin\BlogController;
-use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\GalleryController;
 use App\Http\Controllers\Admin\MailController;
-use App\Http\Controllers\Admin\MetaTagController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\StaticImagesController;
 use App\Http\Controllers\StaticPagesController;
@@ -154,9 +152,9 @@ Route::middleware('auth')->where([])->prefix('admin')->group(function () {
 
     //Контент страниц (объединенный: мета-теги, категории, галереи)
     Route::get('/page-contents', [\App\Http\Controllers\Admin\PageContentController::class, 'index'])->name('admin_page_contents.index');
-    Route::get('/page-contents/{page}/edit', [\App\Http\Controllers\Admin\PageContentController::class, 'edit'])->name('admin_page_contents.edit');
-    Route::put('/page-contents/{page}', [\App\Http\Controllers\Admin\PageContentController::class, 'update'])->name('admin_page_contents.update');
-    Route::put('/page-contents/{page}/images/{imageId}/description', [\App\Http\Controllers\Admin\PageContentController::class, 'updateImageDescription'])->name('admin_page_contents.update_image_description');
+    Route::get('/page-contents/{pageContent}/edit', [\App\Http\Controllers\Admin\PageContentController::class, 'edit'])->name('admin_page_contents.edit');
+    Route::put('/page-contents/{pageContent}', [\App\Http\Controllers\Admin\PageContentController::class, 'update'])->name('admin_page_contents.update');
+    Route::put('/page-contents/{pageContent}/images/{imageId}/description', [\App\Http\Controllers\Admin\PageContentController::class, 'updateImageDescription'])->name('admin_page_contents.update_image_description');
 
     Route::resources([
         'galleries' => GalleryController::class,
