@@ -5,15 +5,15 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\BlogRequest;
 use App\Models\Blog;
+use App\Services\Admin\BlogService;
 use App\Services\ImageService;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Storage;
 
 class BlogController extends Controller
 {
     public function __construct(
         public ImageService $imageService,
+        public BlogService  $blogService,
     ){}
 
     /**
@@ -38,26 +38,11 @@ class BlogController extends Controller
      */
     public function store(BlogRequest $request)
     {
-        return DB::transaction(function () use ($request) {
-            $data = $request->all();
-            unset($data['main_image']); // Убираем из данных, так как будем сохранять через ImageService
+        $data = $request->all();
 
-            $blog = Blog::create($data);
+        $this->blogService->create(data: $data);
 
-            // Сохраняем главное изображение через ImageService
-            if ($request->hasFile('main_image')) {
-                $this->imageService->save(
-                    images: [$request->file('main_image')],
-                    model: $blog,
-                    imageData: [[
-                        'main_image' => true,
-                        'menu_image' => false,
-                    ]]
-                );
-            }
-
-            return redirect(route('admin_blog'))->with('success', 'Пост успешно создан!');
-        });
+        return redirect(route('admin_blog'))->with('success', 'Пост успешно создан!');
     }
 
     /**
@@ -81,33 +66,11 @@ class BlogController extends Controller
      */
     public function update(Request $request, Blog $blog)
     {
-        return DB::transaction(function () use ($request, $blog) {
-            $data = $request->all();
-            unset($data['main_image']); // Убираем из данных, так как будем сохранять через ImageService
+        $data = $request->all();
 
-            $blog->update($data);
+        $this->blogService->update(data: $data, blog: $blog);
 
-            // Обработка новой главной картинки
-            if ($request->hasFile('main_image')) {
-                // Удаляем старое главное изображение
-                $oldMainImage = $blog->images()->where('main_image', true)->first();
-                if ($oldMainImage) {
-                    $this->imageService->delete($oldMainImage);
-                }
-
-                // Сохраняем новое главное изображение
-                $this->imageService->save(
-                    images: [$request->file('main_image')],
-                    model: $blog,
-                    imageData: [[
-                        'main_image' => true,
-                        'menu_image' => false,
-                    ]]
-                );
-            }
-
-            return redirect(route('admin_blog'))->with('success', 'Пост успешно обновлен!');
-        });
+        return redirect(route('admin_blog'))->with('success', 'Пост успешно обновлен!');
     }
 
     /**
@@ -115,19 +78,7 @@ class BlogController extends Controller
      */
     public function destroy(Blog $blog)
     {
-        return DB::transaction(function () use ($blog) {
-            // Удаляем все изображения блога
-            foreach ($blog->images as $image) {
-                $this->imageService->delete($image);
-            }
-
-            // Удаляем старое изображение, если оно хранится в поле main_image (для обратной совместимости)
-            if ($blog->main_image) {
-                Storage::delete($blog->main_image);
-            }
-
-            $blog->delete();
-            return back();
-        });
+        $this->blogService->delete(blog: $blog);
+        return back();
     }
 }
