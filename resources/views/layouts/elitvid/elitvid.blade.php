@@ -28,14 +28,18 @@
     <script defer src="{{asset('/elitvid_assets/newDesign/newDesign/js/imageUpdater.js')}}"></script>
     <script defer src="{{asset('/elitvid_assets/newDesign/newDesign/js/test.js')}}"></script>
 
-{{--    <link rel="shortcut icon" type="image/x-icon" href="{{asset('/elitvid_assets/newDesign/newDesign/imgs/logo/logo.svg')}}" >--}}
-{{--    <link rel="shortcut icon" href="{{asset('/favicon.ico')}}" sizes="16x16">--}}
+    {{--    <link rel="shortcut icon" type="image/x-icon" href="{{asset('/elitvid_assets/newDesign/newDesign/imgs/logo/logo.svg')}}" >--}}
+    {{--    <link rel="shortcut icon" href="{{asset('/favicon.ico')}}" sizes="16x16">--}}
     <link rel="shortcut icon" href="{{asset('/favicon2.webp')}}" sizes="67x67">
-{{--    <link rel="icon" type="image/svg+xml" href="{{asset('/favicon.svg')}}" sizes="16x16">--}}
+    {{--    <link rel="icon" type="image/svg+xml" href="{{asset('/favicon.svg')}}" sizes="16x16">--}}
 
-    <title>{{$pageContent?->meta_title ?? 'Изделия из полистоуна от производителя на заказ - Elitvid.com'}}</title>
+    <title>@if(isset($pageContent) && $pageContent)
+            {{$pageContent->meta_title ?? 'Изделия из полистоуна от производителя на заказ - Elitvid.com'}}
+        @else
+            {{$metaTitle ?? 'Изделия из полистоуна от производителя на заказ - Elitvid.com'}}
+        @endif</title>
     <meta name="description"
-          content="{{ $pageContent?->meta_description ?? 'Качественные изделия из полистоуна от производителя Elitvid.com. В нашем каталоге широкий выбор декоративных элементов для интерьера и экстерьера. Надежность, эстетика и доступные цены – только у нас!' }}">
+          content="@if(isset($pageContent) && $pageContent){{ $pageContent->meta_description ?? 'Качественные изделия из полистоуна от производителя Elitvid.com. В нашем каталоге широкий выбор декоративных элементов для интерьера и экстерьера. Надежность, эстетика и доступные цены – только у нас!' }}@else{{ $metaDescription ?? 'Качественные изделия из полистоуна от производителя Elitvid.com. В нашем каталоге широкий выбор декоративных элементов для интерьера и экстерьера. Надежность, эстетика и доступные цены – только у нас!' }}@endif">
     @yield('404')
     @yield('cannonicalUrl')
 </head>
@@ -142,17 +146,30 @@
                     <div class="heading-4">Каталог</div>
                     <nav class="footer-menu">
                         <ul class="catalog-text--list menu">
-                            <li><div class="heading-5"><a href="{{route('blog_posts')}}">Блог</a></div></li>
-                            <li><div class="heading-5"><a href="{{route('pots')}}">Кашпо</a></div></li>
-                            <li><div class="heading-5"><a href="{{route('benches')}}">Скамьи</a></div></li>
-                            <li><div class="heading-5"><a href="{{route('bollards_and_fencing')}}">Болларды и ограждения</a></div></li>
+                            <li>
+                                <div class="heading-5"><a href="{{route('blog_posts')}}">Блог</a></div>
+                            </li>
+                            <li>
+                                <div class="heading-5"><a href="{{route('pots')}}">Кашпо</a></div>
+                            </li>
+                            <li>
+                                <div class="heading-5"><a href="{{route('benches')}}">Скамьи</a></div>
+                            </li>
+                            <li>
+                                <div class="heading-5"><a href="{{route('bollards_and_fencing')}}">Болларды и
+                                        ограждения</a></div>
+                            </li>
                             @foreach($static_pages as $static_page)
-                                <li><div class="heading-5"><a href="{{route('static_page', ['slug' => $static_page])}}">{{$static_page->menu_name}}</a></div></li>
+                                <li>
+                                    <div class="heading-5"><a
+                                            href="{{route('static_page', ['slug' => $static_page])}}">{{$static_page->menu_name}}</a>
+                                    </div>
+                                </li>
                             @endforeach
-{{--                            <li><div class="heading-5"><a href="{{route('rotundas_and_colonnades')}}">Ротонды и коллонады</a></div></li>--}}
-{{--                            <li><div class="heading-5"><a href="{{route('parklets_and_canopies')}}">Парклет, навесы</a></div></li>--}}
-{{--                            <li><div class="heading-5"><a href="{{route('pillars_and_covers')}}">Столбы и накрывки</a></div></li>--}}
-{{--                            <li><div class="heading-5"><a href="{{route('facade_stucco_molding_and_panels')}}">Фасадная лепнина и панели</a></div></li>--}}
+                            {{--                            <li><div class="heading-5"><a href="{{route('rotundas_and_colonnades')}}">Ротонды и коллонады</a></div></li>--}}
+                            {{--                            <li><div class="heading-5"><a href="{{route('parklets_and_canopies')}}">Парклет, навесы</a></div></li>--}}
+                            {{--                            <li><div class="heading-5"><a href="{{route('pillars_and_covers')}}">Столбы и накрывки</a></div></li>--}}
+                            {{--                            <li><div class="heading-5"><a href="{{route('facade_stucco_molding_and_panels')}}">Фасадная лепнина и панели</a></div></li>--}}
                         </ul>
                     </nav>
                 </div>
@@ -160,7 +177,8 @@
         </div>
     </div>
     <div class="my_site">
-        <div class="h5">Developed by <a href="https://t.me/ArtemiSevostian" target="_blank" rel="nofollow noopener noreferrer">Artemi
+        <div class="h5">Developed by <a href="https://t.me/ArtemiSevostian" target="_blank"
+                                        rel="nofollow noopener noreferrer">Artemi
                 Sevostian</a></div>
     </div>
 </footer>
@@ -258,12 +276,12 @@
                     `).join('');
                 }
 
-                if(field === 'name_corp'){
+                if (field === 'name_corp') {
                     const name_corp = document.querySelector('.name-corp');
                     name_corp.classList.add('name-corp-error');
                 }
 
-                if(field === 'file'){
+                if (field === 'file') {
                     const name_corp = document.querySelector('.popup_content_inputs__file-button');
                     name_corp.classList.add('file-error');
                 }

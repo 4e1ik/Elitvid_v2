@@ -63,10 +63,8 @@ class MainController extends Controller
         $static_pages = $this->staticPageRepository->getAllStaticPages();
         $blogs = Blog::whereIn('active', [1])->latest()->get();
         $pageContent = $this->pageContentRepository->getPageContent(page: 'blog');
-        $metaTitle = $pageContent?->meta_title ?? 'Блог';
-        $metaDescription = $pageContent?->meta_description ?? 'Описание блога';
         $category = $pageContent?->category_description ?? null;
-        return view('elitvid.site.blog.blog', compact('blogs', 'metaTitle', 'metaDescription', 'category', 'static_pages'));
+        return view('elitvid.site.blog.blog', compact('blogs', 'category', 'static_pages', 'pageContent'));
     }
 
     function show_blog_post($id)

@@ -188,13 +188,7 @@
                 </div>
             </div>
         </section>
-        @if($pageContent && $pageContent->category_description)
-            <section class="description">
-                <div class="text">
-                    {!! $pageContent->category_description !!}
-                </div>
-            </section>
-        @endif
+        @include('includes.elitvid.description')
         @if($bollards_and_fencing_images->first())
             <section class="works">
                 <h2>Примеры работ</h2>

@@ -126,7 +126,13 @@
                     </style>
                     <div class="article">
                         <div class="article__image">
-                            <img src="{{asset('storage/'.str_replace('public/','',$blog->main_image))}}" alt="Фотография cтатьи" loading="lazy">
+                            @php
+                                $mainImage = $blog->images()->where('main_image', true)->first();
+                                $imagePath = $mainImage ? $mainImage->image : ($blog->attributes['main_image'] ?? null);
+                            @endphp
+                            @if($imagePath)
+                                <img src="{{asset('storage/'.str_replace('public/','',$imagePath))}}" alt="Фотография cтатьи" loading="lazy">
+                            @endif
                         </div>
                     </div>
                 </div>

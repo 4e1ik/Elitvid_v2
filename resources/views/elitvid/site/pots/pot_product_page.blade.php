@@ -91,12 +91,12 @@
                     <div id="product-images" class="content_images__main-image">
                         <img id="first_image"
                              src="{{asset('storage/'.str_replace('public/','',$product->images->first()->image))}}"
-                             alt="{{$product->images->first()->description_image}}" loading="lazy">
+                             alt="{{$product->images->first()->description_image}}">
                         @foreach($product->images as $image)
                             <img id="image" data-texture="{{ $image->texture }}" data-color="{{ $image->color }}"
                                  class="main-image__image"
                                  src="{{asset('storage/'.str_replace('public/','',$image->image))}}"
-                                 alt="{{$image->description_image}}" loading="lazy">
+                                 alt="{{$image->description_image}}">
                         @endforeach
                     </div>
                     <div class="content_images__colors">

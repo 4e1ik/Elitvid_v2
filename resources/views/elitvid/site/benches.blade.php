@@ -130,13 +130,7 @@
                 </div>
             </div>
         </section>
-        @if($pageContent && $pageContent->category_description)
-            <section class="description">
-                <div class="text">
-                    {!! $pageContent->category_description !!}
-                </div>
-            </section>
-        @endif
+        @include('includes.elitvid.description')
         @if($benches_images->first())
             <section class="works">
                 <h2>Наши скамейки из камня</h2>

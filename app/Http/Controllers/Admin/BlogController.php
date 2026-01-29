@@ -5,11 +5,17 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\BlogRequest;
 use App\Models\Blog;
+use App\Services\ImageService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 
 class BlogController extends Controller
 {
+    public function __construct(
+        public ImageService $imageService,
+    ){}
+
     /**
      * Display a listing of the resource.
      */
@@ -23,7 +29,7 @@ class BlogController extends Controller
      */
     public function create()
     {
-        return view('includes.elitvid.admin.create_blog_post');
+        return view('elitvid.admin.blog.create');
     }
 
     /**
@@ -31,17 +37,26 @@ class BlogController extends Controller
      */
     public function store(BlogRequest $request)
     {
-        $data = $request->all();
-        if ($request->hasFile('main_image')) {
-            $image = $request->file('main_image');
-            $extension = $image->getClientOriginalExtension();
-            $name = hash('md5', $image->getClientOriginalName());
-            $path = Storage::putFileAs('public/images', $image, $name.'.'.$extension); // Даем путь к этому файлу
-            $data['main_image'] = $path;
-        }
-        Blog::create($data);
+        return DB::transaction(function () use ($request) {
+            $data = $request->all();
+            unset($data['main_image']); // Убираем из данных, так как будем сохранять через ImageService
 
-        return redirect(route('admin_blog'));
+            $blog = Blog::create($data);
+
+            // Сохраняем главное изображение через ImageService
+            if ($request->hasFile('main_image')) {
+                $this->imageService->save(
+                    images: [$request->file('main_image')],
+                    model: $blog,
+                    imageData: [[
+                        'main_image' => true,
+                        'menu_image' => false,
+                    ]]
+                );
+            }
+
+            return redirect(route('admin_blog'))->with('success', 'Пост успешно создан!');
+        });
     }
 
     /**
@@ -57,7 +72,7 @@ class BlogController extends Controller
      */
     public function edit(Blog $blog)
     {
-        return view('includes.elitvid.admin.update_blog_post', compact('blog'));
+        return view('elitvid.admin.blog.edit', compact('blog'));
     }
 
     /**
@@ -65,19 +80,33 @@ class BlogController extends Controller
      */
     public function update(Request $request, Blog $blog)
     {
-        $data = $request->all();
+        return DB::transaction(function () use ($request, $blog) {
+            $data = $request->all();
+            unset($data['main_image']); // Убираем из данных, так как будем сохранять через ImageService
 
-        if ($request->hasFile('main_image')) {
-            $image = $request->file('main_image');
-            $extension = $image->getClientOriginalExtension();
-            $name = hash('md5', $image->getClientOriginalName());
-            $path = Storage::putFileAs('public/images', $image, $name.'.'.$extension); // Даем путь к этому файлу
-            $data['main_image'] = $path;
-        }
+            $blog->update($data);
 
-        $blog->fill($data)->save();
+            // Обработка новой главной картинки
+            if ($request->hasFile('main_image')) {
+                // Удаляем старое главное изображение
+                $oldMainImage = $blog->images()->where('main_image', true)->first();
+                if ($oldMainImage) {
+                    $this->imageService->delete($oldMainImage);
+                }
 
-        return redirect(route('admin_blog'));
+                // Сохраняем новое главное изображение
+                $this->imageService->save(
+                    images: [$request->file('main_image')],
+                    model: $blog,
+                    imageData: [[
+                        'main_image' => true,
+                        'menu_image' => false,
+                    ]]
+                );
+            }
+
+            return redirect(route('admin_blog'))->with('success', 'Пост успешно обновлен!');
+        });
     }
 
     /**
@@ -85,8 +114,19 @@ class BlogController extends Controller
      */
     public function destroy(Blog $blog)
     {
-        Storage::delete($blog->main_image);
-        $blog->delete();
-        return back();
+        return DB::transaction(function () use ($blog) {
+            // Удаляем все изображения блога
+            foreach ($blog->images as $image) {
+                $this->imageService->delete($image);
+            }
+
+            // Удаляем старое изображение, если оно хранится в поле main_image (для обратной совместимости)
+            if ($blog->main_image) {
+                Storage::delete($blog->main_image);
+            }
+
+            $blog->delete();
+            return back();
+        });
     }
 }

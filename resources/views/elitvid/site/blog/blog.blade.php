@@ -135,8 +135,14 @@
                 <div class="news">
                     <div class="direction__image">
                         <a href="{{route('show_blog_post', ['id' => $blog->id])}}">
-                            <img src="{{asset('storage/'.str_replace('public/','',$blog->main_image))}}"
+                            @php
+                                $mainImage = $blog->images()->where('main_image', true)->first();
+                                $imagePath = $mainImage ? $mainImage->image : ($blog->attributes['main_image'] ?? null);
+                            @endphp
+                            @if($imagePath)
+                                <img src="{{asset('storage/'.str_replace('public/','',$imagePath))}}"
                                  alt="Фотография cтатьи" loading="lazy">
+                            @endif
                         </a>
                     </div>
                     <a href="{{route('show_blog_post', ['id' => $blog->id])}}">

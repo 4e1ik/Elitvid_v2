@@ -46,12 +46,6 @@
                 @endforeach
             </div>
         </section>
-        @if($pageContent && $pageContent->category_description)
-            <section class="description">
-                <div class="text">
-                    {!! $pageContent->category_description !!}
-                </div>
-            </section>
-        @endif
+        @include('includes.elitvid.description')
     </main>
 @endsection
