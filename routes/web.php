@@ -141,7 +141,7 @@ Route::middleware('auth')->where([])->prefix('admin')->group(function () {
 
     //Блог в панели администратора
     Route::prefix('blog')->group(function () {
-        Route::get('/', [AdminController::class, 'blog_posts'])->name('admin_blog');
+        Route::get('/', [BlogController::class, 'index'])->name('admin_blog');
     });
 
     Route::get('/create/{route}', [AdminController::class, 'create'])->name('create');

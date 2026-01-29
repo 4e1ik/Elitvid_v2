@@ -7,6 +7,7 @@ use App\Http\Requests\GalleryRequest;
 use App\Http\Requests\ImageRequest;
 use App\Models\Gallery;
 use App\Models\GalleryImage;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\ImageManager;
 
@@ -34,48 +35,50 @@ class GalleryController extends Controller
      */
     public function store(GalleryRequest $galleryRequest)
     {
-        $data = $galleryRequest->all();
+        return DB::transaction(function () use ($galleryRequest) {
+            $data = $galleryRequest->all();
 
-        if ($galleryRequest->hasFile('image')) {
-            // Находим или создаем одну галерею для этого типа
-            $gallery = Gallery::firstOrCreate(
-                ['type' => $data['type']],
-                [
-                    'type' => $data['type'],
-                    'active' => $data['active'] ?? true,
-                ]
-            );
+            if ($galleryRequest->hasFile('image')) {
+                // Находим или создаем одну галерею для этого типа
+                $gallery = Gallery::firstOrCreate(
+                    ['type' => $data['type']],
+                    [
+                        'type' => $data['type'],
+                        'active' => $data['active'] ?? true,
+                    ]
+                );
 
-            foreach ($galleryRequest->file('image') as $file) {
-                $data['gallery_image_id'] = $gallery->id;
-                $name = save_image($file, GalleryImage::query());
-                $path = Storage::putFileAs('public/images', $file, $name); // Даем путь к этому файлу
-                $data['image'] = $path;
-                GalleryImage::create($data);
+                foreach ($galleryRequest->file('image') as $file) {
+                    $data['gallery_image_id'] = $gallery->id;
+                    $name = save_image($file, GalleryImage::query());
+                    $path = Storage::putFileAs('public/images', $file, $name); // Даем путь к этому файлу
+                    $data['image'] = $path;
+                    GalleryImage::create($data);
 
-                ImageManager::gd()->read($file)->scaleDown(1180,  592)->save(storage_path('app/public/images/'.$name));
+                    ImageManager::gd()->read($file)->scaleDown(1180,  592)->save(storage_path('app/public/images/'.$name));
+                }
             }
-        }
 
-        $collection = $data['type'];
+            $collection = $data['type'];
 
-        // Маппинг типов галерей на страницы контента
-        $typeToPageMap = [
-            'pots' => 'pots',
-            'benches' => 'benches',
-            'main_page' => 'main',
-            'decorative_elements' => 'decorations',
-            'bollards' => 'bollards_and_fencing',
-        ];
+            // Маппинг типов галерей на страницы контента
+            $typeToPageMap = [
+                'pots' => 'pots',
+                'benches' => 'benches',
+                'main_page' => 'main',
+                'decorative_elements' => 'decorations',
+                'bollards' => 'bollards_and_fencing',
+            ];
 
-        $page = $typeToPageMap[$collection] ?? null;
+            $page = $typeToPageMap[$collection] ?? null;
 
-        if ($page) {
-            return redirect()->route('admin_page_contents.edit', $page)
-                ->with('success', 'Изображения успешно добавлены в галерею');
-        }
+            if ($page) {
+                return redirect()->route('admin_page_contents.edit', $page)
+                    ->with('success', 'Изображения успешно добавлены в галерею');
+            }
 
-        return back()->with('success', 'Изображения успешно добавлены в галерею');
+            return back()->with('success', 'Изображения успешно добавлены в галерею');
+        });
     }
 
     /**
@@ -99,13 +102,15 @@ class GalleryController extends Controller
      */
     public function update(ImageRequest $request, Gallery $gallery)
     {
-        $data = $request->all();
-        $images = $gallery->gallery_images()->where('gallery_image_id', $gallery->attributesToArray()['id'])->get();
-        foreach ($images as $image) {
-            $image->fill($data)->save();
-        }
+        return DB::transaction(function () use ($request, $gallery) {
+            $data = $request->all();
+            $images = $gallery->gallery_images()->where('gallery_image_id', $gallery->attributesToArray()['id'])->get();
+            foreach ($images as $image) {
+                $image->fill($data)->save();
+            }
 
-        return back();
+            return back();
+        });
     }
 
     /**
@@ -113,12 +118,14 @@ class GalleryController extends Controller
      */
     public function destroy(Gallery $gallery)
     {
-        $images = $gallery->gallery_images()->where('gallery_image_id', $gallery->attributesToArray()['id'])->get();
-        foreach ($images as $image) {
-            Storage::delete($image->image);
-        }
-        $gallery->delete();
+        return DB::transaction(function () use ($gallery) {
+            $images = $gallery->gallery_images()->where('gallery_image_id', $gallery->attributesToArray()['id'])->get();
+            foreach ($images as $image) {
+                Storage::delete($image->image);
+            }
+            $gallery->delete();
 
-        return back();
+            return back();
+        });
     }
 }

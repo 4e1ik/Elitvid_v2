@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\StaticImages;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class StaticImagesController extends Controller
 {
@@ -53,9 +54,11 @@ class StaticImagesController extends Controller
      */
     public function update(Request $request, StaticImages $static_image)
     {
-        $data = $request->all();
-        $static_image->update($data);
-        return redirect()->back();
+        return DB::transaction(function () use ($request, $static_image) {
+            $data = $request->all();
+            $static_image->update($data);
+            return redirect()->back();
+        });
     }
 
     /**

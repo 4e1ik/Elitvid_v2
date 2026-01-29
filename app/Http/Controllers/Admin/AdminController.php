@@ -76,14 +76,6 @@ class AdminController extends Controller
         return view('elitvid.admin.static_images.index', compact('static_images'));
     }
 
-    public function blog_posts()
-    {
-        $blog_posts = Blog::all();
-        return view('elitvid.admin.blog.blog_posts', compact('blog_posts'));
-    }
-
-
-
     public function create($route){
 
         $route_name = $route;

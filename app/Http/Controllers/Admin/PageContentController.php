@@ -79,14 +79,16 @@ class PageContentController extends Controller
             'description_image' => 'nullable|string|max:500',
         ]);
 
-        // Пытаемся найти в новой таблице images
-        $image = Image::find($imageId);
+        return DB::transaction(function () use ($validated, $imageId, $page) {
+            // Пытаемся найти в новой таблице images
+            $image = Image::find($imageId);
 
-        if ($image) {
-            $image->update($validated);
-        }
+            if ($image) {
+                $image->update($validated);
+            }
 
-        return redirect()->route('admin_page_contents.edit', $page)
-            ->with('success', 'Описание изображения успешно обновлено');
+            return redirect()->route('admin_page_contents.edit', $page)
+                ->with('success', 'Описание изображения успешно обновлено');
+        });
     }
 }

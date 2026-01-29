@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\UserRequest;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class RegisterController extends Controller
 {
@@ -27,13 +28,16 @@ class RegisterController extends Controller
         if (User::where('email', $request->all()['email'])->exists()){
             return redirect(route('registration'));
         }
-        $user = User::create($request->all());
-        if ($user){
-            if (Auth::user()['is_admin'] == true) {
-                Auth::login($user);
-                return redirect(route('admin'));
+        
+        return DB::transaction(function () use ($request) {
+            $user = User::create($request->all());
+            if ($user){
+                if (Auth::user()['is_admin'] == true) {
+                    Auth::login($user);
+                    return redirect(route('admin'));
+                }
             }
-        }
-        return redirect(route('login'))->withInput();
+            return redirect(route('login'))->withInput();
+        });
     }
 }

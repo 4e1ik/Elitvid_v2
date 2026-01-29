@@ -21,7 +21,8 @@ class BlogController extends Controller
      */
     public function index()
     {
-        //
+        $blog_posts = Blog::all();
+        return view('elitvid.admin.blog.blog_posts', compact('blog_posts'));
     }
 
     /**

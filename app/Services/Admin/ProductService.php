@@ -92,10 +92,12 @@ class ProductService
 
     public function destroy(Product $product):bool
     {
-        foreach ($product->images as $image) {
-            $this->imageService->delete($image);
-        }
+        return DB::transaction(function () use ($product) {
+            foreach ($product->images as $image) {
+                $this->imageService->delete($image);
+            }
 
-        return $product->delete();
+            return $product->delete();
+        });
     }
 }
