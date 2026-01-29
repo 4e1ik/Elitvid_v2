@@ -178,19 +178,17 @@
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                         allowfullscreen loading="lazy"></iframe>
             </div>
-            @if($main_page_images->first())
+            @if($pageContent->gallery->images)
                 <div class="works-examples">
                     <div class="main__slider swiper">
                         <!-- Additional required wrapper -->
                         <div class="main-swiper-wrapper__slider swiper-wrapper">
 
                             <!-- Slides -->
-                            @foreach($main_page_images as $item)
-                                @foreach($item->gallery_images as $image)
+                            @foreach($pageContent->gallery->images as $image)
                                     <div class="swiper-slide"><img
                                                 src="{{asset('storage/'.str_replace('public/','',$image->image))}}"
                                                 alt="{{$image->description_image}}" loading="lazy"></div>
-                                @endforeach
                             @endforeach
                         </div>
 
@@ -217,24 +215,16 @@
                         <!-- Additional required wrapper -->
                         <div class="main-swiper-wrapper__slider swiper-wrapper">
                             <!-- Slides -->
-                            @foreach($main_page_images as $item)
-                                @foreach($item->gallery_images as $image)
+                            @foreach($pageContent->gallery->images as $image)
                                     <div class="swiper-slide"><img
                                                 src="{{asset('storage/'.str_replace('public/','',$image->image))}}"
                                                 alt="{{$image->description_image}}" loading="lazy"></div>
-                                @endforeach
                             @endforeach
                         </div>
                     </div>
                 </div>
             @endif
         </section>
-        @if($category)
-            <section class="description">
-                <div class="text">
-                    {!! $category !!}
-                </div>
-            </section>
-        @endif
+        @include('includes.elitvid.description')
     </main>
 @endsection

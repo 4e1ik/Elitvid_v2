@@ -25,25 +25,6 @@ class PageContent extends Model
     }
 
     /**
-     * Получить галерею по типу (для обратной совместимости со старыми галереями)
-     */
-    public function getGalleryByType()
-    {
-        // Сначала пытаемся получить через полиморфную связь
-        if ($this->gallery) {
-            return $this->gallery;
-        }
-
-        // Если нет, пытаемся найти по типу страницы
-        $galleryType = $this->getGalleryTypeByPage();
-        if ($galleryType) {
-            return Gallery::where('type', $galleryType)->first();
-        }
-
-        return null;
-    }
-
-    /**
      * Маппинг страниц на типы галерей (для обратной совместимости)
      */
     private function getGalleryTypeByPage(): ?string

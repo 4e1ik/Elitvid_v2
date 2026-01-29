@@ -53,12 +53,6 @@
         <section class="not_main_page produce">
             @include('includes.elitvid.directions')
         </section>
-        @if($category)
-            <section class="description">
-                <div class="text">
-                    {!! $category !!}
-                </div>
-            </section>
-        @endif
+            @include('includes.elitvid.description')
     </main>
 @endsection

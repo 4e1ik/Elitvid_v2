@@ -8,8 +8,8 @@
         <section class="main">
             <div class="description">
                 <div class="description-text">
-                    <h1>{!! $staticPage->title ?? 'Заголовок новой статической страницы' !!}</h1>
-                    <p>{!! $staticPage->subtitle ?? 'Описание новой статической страницы'!!}</p>
+                    <h1>{!! $pageContent->title ?? 'Заголовок новой статической страницы' !!}</h1>
+                    <p>{!! $pageContent->subtitle ?? 'Описание новой статической страницы'!!}</p>
                 </div>
                 <div class="submit-application">
                     <button class="submit-application--button open_popup_application">
@@ -20,8 +20,8 @@
             <div class="stages">
                 <div class="image">
                     <img
-                        src="{{asset('/storage/'.str_replace('public/','',$staticPage->images()->where('main_image', true)->first()->image) ?? '')}}"
-                        alt="{{$staticPage->images()->where('main_image', true)->first()->image ?? 'Описание главной старницы статической стараницы'}}"
+                        src="{{asset('/storage/'.str_replace('public/','',$pageContent->images()->where('main_image', true)->first()->image) ?? '')}}"
+                        alt="{{$pageContent->images()->where('main_image', true)->first()->image ?? 'Описание главной старницы статической стараницы'}}"
                         class="main-page-up" loading="lazy">
                     <div class="image-gradient-overlay"></div>
                 </div>
@@ -33,18 +33,18 @@
                 </div>
             </div>
         </section>
-        @if($staticPage->content)
+        @if($pageContent->content)
             <section class="description description-products">
                 <div class="text">
-                    {!! $staticPage->content !!}
+                    {!! $pageContent->content !!}
                 </div>
             </section>
         @endif
         {{--        @php--}}
-        {{--            $galleryImages = $staticPage->gallery->images()->where('main_image', '!=', true)->where('menu_image', '!=', true);--}}
+        {{--            $galleryImages = $pageContent->gallery->images()->where('main_image', '!=', true)->where('menu_image', '!=', true);--}}
         {{--        @endphp--}}
-        @if($staticPage->gallery != null)
-            @if($staticPage->gallery->where('active', 1)->first())
+        @if($pageContent->gallery != null)
+            @if($pageContent->gallery->where('active', 1)->first())
 
                 <section class="works">
                     <h2>Примеры работ</h2>
@@ -53,7 +53,7 @@
                             <!-- Additional required wrapper -->
                             <div class="main-swiper-wrapper__slider swiper-wrapper">
                                 <!-- Slides -->
-                                @foreach($staticPage->gallery->images()->where('main_image', '!=', true)->where('menu_image', '!=', true)->get() as $image)
+                                @foreach($pageContent->gallery->images()->where('main_image', '!=', true)->where('menu_image', '!=', true)->get() as $image)
                                     <div class="swiper-slide"><img
                                             src="{{asset('storage/'.str_replace('public/','',$image->image))}}"
                                             alt="{{$image->description_image}}" loading="lazy"></div>
@@ -81,7 +81,7 @@
                             <!-- Additional required wrapper -->
                             <div class="main-swiper-wrapper__slider swiper-wrapper">
                                 <!-- Slides -->
-                                @foreach($staticPage->gallery->images()->where('main_image', '!=', true)->where('menu_image', '!=', true)->get() as $image)
+                                @foreach($pageContent->gallery->images()->where('main_image', '!=', true)->where('menu_image', '!=', true)->get() as $image)
                                     <div class="swiper-slide"><img
                                             src="{{asset('storage/'.str_replace('public/','',$image->image))}}"
                                             alt="{{$image->description_image}}" loading="lazy"></div>

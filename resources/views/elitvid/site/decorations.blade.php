@@ -118,13 +118,7 @@
                 <img class="decor_pot" src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/decorations/decor_pot.webp')}}" alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/decorations/decor_pot.webp']}}" loading="lazy">
             </div>
         </section>
-        @if($category)
-            <section class="description">
-                <div class="text">
-                    {!! $category !!}
-                </div>
-            </section>
-        @endif
+        @include('includes.elitvid.description')
         @if($decorative_elements_images->first())
             <section class="works">
                 <h2>Примеры работ</h2>
