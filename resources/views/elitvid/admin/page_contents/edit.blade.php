@@ -170,7 +170,7 @@
                                                                     class="btn btn-sm btn-primary"
                                                                     style="width: 100%; margin-bottom: 5px;"
                                                                     title="Сохранить описание"
-                                                                    onclick="updateImageDescription({{ $image->id }}, '{{ route('admin_page_contents.update_image_description', ['pageContent' => $pageContent, 'imageId' => $image->id]) }}')">
+                                                                    onclick="updateImageDescription({{ $image->id }}, '{{ route('images.update', ['image' => $image]) }}')">
                                                                 <span class="fa fa-save"></span> Сохранить
                                                             </button>
                                                                 <button type="button"
@@ -255,21 +255,22 @@
                     method: 'POST',
                     body: formData,
                     headers: {
-                        'X-Requested-With': 'XMLHttpRequest'
+                        'X-Requested-With': 'XMLHttpRequest',
+                        'Accept': 'application/json'
                     }
                 })
                 .then(response => {
                     if (response.ok) {
-                        return response.json().catch(() => ({success: true}));
+                        return response.json().catch(() => ({success: true, message: 'Описание успешно сохранено'}));
                     }
-                    throw new Error('Network response was not ok');
+                    return response.json().then(err => Promise.reject(err));
                 })
                 .then(data => {
-                    alert('Описание успешно сохранено');
+                    alert(data.message || 'Описание успешно сохранено');
                 })
                 .catch(error => {
                     console.error('Error:', error);
-                    alert('Ошибка при сохранении описания');
+                    alert(error.message || 'Ошибка при сохранении описания');
                 });
             };
 
@@ -327,19 +328,23 @@
                     method: 'POST',
                     body: formData,
                     headers: {
-                        'X-Requested-With': 'XMLHttpRequest'
+                        'X-Requested-With': 'XMLHttpRequest',
+                        'Accept': 'application/json'
                     }
                 })
                 .then(response => {
                     if (response.ok) {
-                        location.reload();
-                    } else {
-                        alert('Ошибка при удалении изображения');
+                        return response.json().catch(() => ({success: true, message: 'Изображение успешно удалено'}));
                     }
+                    return response.json().then(err => Promise.reject(err));
+                })
+                .then(data => {
+                    // Перезагружаем страницу после успешного удаления
+                    location.reload();
                 })
                 .catch(error => {
                     console.error('Error:', error);
-                    alert('Ошибка при удалении изображения');
+                    alert(error.message || 'Ошибка при удалении изображения');
                 });
             };
         });

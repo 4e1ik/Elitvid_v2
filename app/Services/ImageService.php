@@ -64,7 +64,7 @@ class ImageService
         });
     }
 
-    public function update(Image $image,$data): bool
+    public function update(Image $image, $data): bool
     {
         return DB::transaction(function () use ($image,$data) {
             return $image->update($data);

@@ -18,9 +18,7 @@ class PageContentController extends Controller
     public function __construct(
         public ImageService          $imageService,
         public PageContentRepository $pageContentRepository
-    )
-    {
-    }
+    ){}
 
     /**
      * Список всех страниц с контентом
@@ -61,7 +59,7 @@ class PageContentController extends Controller
                 ]);
             }
 
-            if ($data['gallery_images']) {
+            if (isset($data['gallery_images'], $data)) {
                 $this->imageService->save(
                     images: $data['gallery_images'], model: $gallery, imageData: $data['gallery_descriptions']
                 );
@@ -86,15 +84,6 @@ class PageContentController extends Controller
 
         if ($image) {
             $image->update($validated);
-        } else {
-            // Если не найдено, ищем в старой таблице gallery_images
-            $galleryImage = GalleryImage::find($imageId);
-            if ($galleryImage) {
-                $galleryImage->update($validated);
-            } else {
-                return redirect()->route('admin_page_contents.edit', $page)
-                    ->with('error', 'Изображение не найдено');
-            }
         }
 
         return redirect()->route('admin_page_contents.edit', $page)

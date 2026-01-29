@@ -44,21 +44,21 @@
                                                 <small class="text-muted">{{ $pageData->page }}</small>
                                             </td>
                                             <td>
-                                                @if($pageData->content && $pageData->content->meta_title)
+                                                @if(!empty($pageData->meta_title))
                                                     <span class="text-success">✓ Заполнено</span>
                                                 @else
                                                     <span class="text-muted">— Не заполнено</span>
                                                 @endif
                                             </td>
                                             <td>
-                                                @if($pageData->content && $pageData->content->category_description)
+                                                @if(!empty($pageData->category_description))
                                                     <span class="text-success">✓ Заполнено</span>
                                                 @else
                                                     <span class="text-muted">— Не заполнено</span>
                                                 @endif
                                             </td>
                                             <td>
-                                                @if($pageData->content && $pageData->content->gallery)
+                                                @if($pageData->gallery)
                                                     <span class="text-success">✓ Настроена</span>
                                                 @else
                                                     <span class="text-muted">— Не настроена</span>

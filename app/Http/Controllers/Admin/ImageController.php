@@ -21,39 +21,15 @@ class ImageController extends Controller
 
     public function update(UpdateImageRequest $request, Image $image)
     {
-        $data = $request->all();
-
-        $this->imageService->update(image: $image, data: $data);
-
-        // Получаем связанную модель через полиморфную связь
-        $model = $image->imageable;
-
-        if ($model instanceof Product) {
-            return redirect(route('products.edit', ['product' => $model]))
-                ->with('success', 'Изображение успешно обновлено');
-        } elseif ($model instanceof StaticPage) {
-            return redirect(route('static_pages.edit', ['static_page' => $model]))
-                ->with('success', 'Изображение успешно обновлено');
-        }
+        $this->imageService->update(image: $image, data: $request->all());
 
         return redirect()->back()
             ->with('success', 'Изображение успешно обновлено');
     }
 
-    public function destroy(Image $image)
+    public function destroy(Request $request, Image $image)
     {
-        // Получаем связанную модель через полиморфную связь перед удалением
-        $model = $image->imageable;
-
         $this->imageService->delete(image: $image);
-
-        if ($model instanceof Product) {
-            return redirect(route('products.edit', ['product' => $model]))
-                ->with('success', 'Изображение успешно удалено');
-        } elseif ($model instanceof StaticPage) {
-            return redirect(route('static_pages.edit', ['static_page' => $model]))
-                ->with('success', 'Изображение успешно удалено');
-        }
 
         return redirect()->back()
             ->with('success', 'Изображение успешно удалено');

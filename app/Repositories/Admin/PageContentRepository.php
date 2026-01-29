@@ -8,7 +8,7 @@ class PageContentRepository
 {
     public function getAllPages()
     {
-        return PageContent::all();
+        return PageContent::with('gallery')->get();
     }
 
     public function getPageContentById($id)
