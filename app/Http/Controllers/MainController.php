@@ -3,9 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Blog;
-use App\Models\Category;
 use App\Models\Gallery;
-use App\Models\MetaTag;
 use App\Models\PageContent;
 use App\Models\StaticImages;
 use App\Models\StaticPage;
@@ -62,13 +60,12 @@ class MainController extends Controller
 
     function blog_posts()
     {
-        $static_pages = StaticPage::all();
+        $static_pages = $this->staticPageRepository->getAllStaticPages();
         $blogs = Blog::whereIn('active', [1])->latest()->get();
-        $metaTags = MetaTag::where('page', 'blog')->get();
-        $metaTitle = $metaTags->isNotEmpty() ? $metaTags[0]->title : 'Блог';
-        $metaDescription = $metaTags->isNotEmpty() ? $metaTags[0]->description : 'Описание блога';
-        $categories = Category::where('page', 'blog')->get();
-        $category = $categories->isNotEmpty() ? $categories[0]->description : null;
+        $pageContent = $this->pageContentRepository->getPageContent(page: 'blog');
+        $metaTitle = $pageContent?->meta_title ?? 'Блог';
+        $metaDescription = $pageContent?->meta_description ?? 'Описание блога';
+        $category = $pageContent?->category_description ?? null;
         return view('elitvid.site.blog.blog', compact('blogs', 'metaTitle', 'metaDescription', 'category', 'static_pages'));
     }
 

@@ -33,9 +33,9 @@
     <link rel="shortcut icon" href="{{asset('/favicon2.webp')}}" sizes="67x67">
 {{--    <link rel="icon" type="image/svg+xml" href="{{asset('/favicon.svg')}}" sizes="16x16">--}}
 
-    <title>{{$pageContent->meta_title ?? 'Изделия из полистоуна от производителя на заказ - Elitvid.com'}}</title>
+    <title>{{$pageContent?->meta_title ?? 'Изделия из полистоуна от производителя на заказ - Elitvid.com'}}</title>
     <meta name="description"
-          content="{{ $pageContent->meta_description ?? 'Качественные изделия из полистоуна от производителя Elitvid.com. В нашем каталоге широкий выбор декоративных элементов для интерьера и экстерьера. Надежность, эстетика и доступные цены – только у нас!' }}">
+          content="{{ $pageContent?->meta_description ?? 'Качественные изделия из полистоуна от производителя Elitvid.com. В нашем каталоге широкий выбор декоративных элементов для интерьера и экстерьера. Надежность, эстетика и доступные цены – только у нас!' }}">
     @yield('404')
     @yield('cannonicalUrl')
 </head>

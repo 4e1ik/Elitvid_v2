@@ -8,6 +8,8 @@ class PageContentRepository
 {
     public function getPageContent(string $page)
     {
-        return PageContent::where('page', $page)->with(['gallery'])->first();
+        return PageContent::where('page', $page)
+            ->with(['gallery.images'])
+            ->first();
     }
 }

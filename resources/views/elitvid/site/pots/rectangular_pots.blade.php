@@ -44,10 +44,10 @@
             @endforeach
         </div>
     </section>
-    @if($category)
+    @if($pageContent && $pageContent->category_description)
         <section class="description">
             <div class="text">
-                {!! $category !!}
+                {!! $pageContent->category_description !!}
             </div>
         </section>
     @endif

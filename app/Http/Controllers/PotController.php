@@ -2,37 +2,40 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category;
 use App\Models\Gallery;
-use App\Models\MetaTag;
 use App\Models\Product;
-use App\Models\StaticImages;
-use App\Models\StaticPage;
+use App\Repositories\PageContentRepository;
+use App\Repositories\StaticImagesRepository;
+use App\Repositories\StaticPageRepository;
 
 class PotController
 {
+    public function __construct(
+        public StaticPageRepository $staticPageRepository,
+        public PageContentRepository $pageContentRepository,
+        public StaticImagesRepository $staticImagesRepository,
+    ){}
+
     function pots() {
-        $static_pages = StaticPage::all();
+        $static_pages = $this->staticPageRepository->getAllStaticPages();
+        $pageContent = $this->pageContentRepository->getPageContent(page: 'pots');
+        $static_images_arr = $this->staticImagesRepository->getStaticImagesForPage(page: 'pots');
+        
+        // Для обратной совместимости получаем галерею через старый способ
         $pots_images = Gallery::query()
             ->where('type', 'pots')
             ->with(['gallery_images'])
             ->latest()
             ->get();
-        $metaTags = MetaTag::where('page', 'pots')->get();
-        $metaTitle = $metaTags->isNotEmpty() ? $metaTags[0]->title : 'Кашпо';
-        $metaDescription = $metaTags->isNotEmpty() ? $metaTags[0]->description : 'Описание кашпо';
-        $categories = Category::where('page', 'pots')->get();
-        $category = $categories->isNotEmpty() ? $categories[0]->description : null;
-        $static_images = StaticImages::where('page', 'pots')->get();
-        $static_images_arr = [];
-        foreach ($static_images as $static_image) {
-            $static_images_arr[$static_image->image] = $static_image->description_image;
-        }
-        return view('elitvid.site.pots', compact('pots_images', 'metaTitle', 'metaDescription', 'category', 'static_images_arr', 'static_pages'));
+            
+        return view('elitvid.site.pots', compact('pots_images', 'pageContent', 'static_images_arr', 'static_pages'));
     }
 
     function rectangular_pots() {
-        $static_pages = StaticPage::all();
+        $static_pages = $this->staticPageRepository->getAllStaticPages();
+        $pageContent = $this->pageContentRepository->getPageContent(page: 'rectangular_pots');
+        $static_images_arr = $this->staticImagesRepository->getStaticImagesForPage(page: 'rectangular_pots');
+        
         $products = Product::whereIn('active', [1])
             ->whereHas('pot', function ($query) {
                 $query->where('collection', 'Rectangular');
@@ -41,21 +44,14 @@ class PotController
             ->latest()
             ->get();
 
-        $metaTags = MetaTag::where('page', 'rectangular_pots')->get();
-        $metaTitle = $metaTags->isNotEmpty() ? $metaTags[0]->title : 'Прямоугольные кашпо';
-        $metaDescription = $metaTags->isNotEmpty() ? $metaTags[0]->description : 'Описание прямоугольных кашпо';
-        $categories = Category::where('page', 'rectangular_pots')->get();
-        $category = $categories->isNotEmpty() ? $categories[0]->description : null;
-        $static_images = StaticImages::where('page', 'rectangular_pots')->get();
-        $static_images_arr = [];
-        foreach ($static_images as $static_image) {
-            $static_images_arr[$static_image->image] = $static_image->description_image;
-        }
-        return view('elitvid.site.pots.rectangular_pots', compact('products', 'metaTitle', 'metaDescription', 'category', 'static_images_arr', 'static_pages'));
+        return view('elitvid.site.pots.rectangular_pots', compact('products', 'pageContent', 'static_images_arr', 'static_pages'));
     }
 
     function square_pots() {
-        $static_pages = StaticPage::all();
+        $static_pages = $this->staticPageRepository->getAllStaticPages();
+        $pageContent = $this->pageContentRepository->getPageContent(page: 'square_pots');
+        $static_images_arr = $this->staticImagesRepository->getStaticImagesForPage(page: 'square_pots');
+        
         $products = Product::whereIn('active', [1])
             ->whereHas('pot', function ($query) {
                 $query->where('collection', 'Square');
@@ -64,21 +60,14 @@ class PotController
             ->latest()
             ->get();
 
-        $metaTags = MetaTag::where('page', 'square_pots')->get();
-        $metaTitle = $metaTags->isNotEmpty() ? $metaTags[0]->title : 'Квадратные кашпо';
-        $metaDescription = $metaTags->isNotEmpty() ? $metaTags[0]->description : 'Описание квадратных кашпо';
-        $categories = Category::where('page', 'square_pots')->get();
-        $category = $categories->isNotEmpty() ? $categories[0]->description : null;
-        $static_images = StaticImages::where('page', 'square_pots')->get();
-        $static_images_arr = [];
-        foreach ($static_images as $static_image) {
-            $static_images_arr[$static_image->image] = $static_image->description_image;
-        }
-        return view('elitvid.site.pots.square_pots', compact('products', 'metaTitle', 'metaDescription', 'category', 'static_images_arr', 'static_pages'));
+        return view('elitvid.site.pots.square_pots', compact('products', 'pageContent', 'static_images_arr', 'static_pages'));
     }
 
     function round_pots() {
-        $static_pages = StaticPage::all();
+        $static_pages = $this->staticPageRepository->getAllStaticPages();
+        $pageContent = $this->pageContentRepository->getPageContent(page: 'round_pots');
+        $static_images_arr = $this->staticImagesRepository->getStaticImagesForPage(page: 'round_pots');
+        
         $products = Product::whereIn('active', [1])
             ->whereHas('pot', function ($query) {
                 $query->where('collection', 'Round');
@@ -87,21 +76,11 @@ class PotController
             ->latest()
             ->get();
 
-        $metaTags = MetaTag::where('page', 'round_pots')->get();
-        $metaTitle = $metaTags->isNotEmpty() ? $metaTags[0]->title : 'Круглые кашпо';
-        $metaDescription = $metaTags->isNotEmpty() ? $metaTags[0]->description : 'Описание круглых кашпо';
-        $categories = Category::where('page', 'round_pots')->get();
-        $category = $categories->isNotEmpty() ? $categories[0]->description : null;
-        $static_images = StaticImages::where('page', 'round_pots')->get();
-        $static_images_arr = [];
-        foreach ($static_images as $static_image) {
-            $static_images_arr[$static_image->image] = $static_image->description_image;
-        }
-        return view('elitvid.site.pots.round_pots', compact('products', 'metaTitle', 'metaDescription', 'category', 'static_images_arr', 'static_pages'));
+        return view('elitvid.site.pots.round_pots', compact('products', 'pageContent', 'static_images_arr', 'static_pages'));
     }
 
     function show_pot_product($collection, $id){
-        $static_pages = StaticPage::all();
+        $static_pages = $this->staticPageRepository->getAllStaticPages();
         $product = Product::whereId($id)->with(['images', 'pot'])->first();
         $rand_products = Product::whereIn('active', [1])
             ->whereHas('pot', function ($query) use ($product) {
@@ -112,12 +91,8 @@ class PotController
             ->get();
         $metaTitle = $product?->meta_title ?? 'Товар';
         $metaDescription = $product?->meta_description ?? 'Описание товара';
-        $static_images = StaticImages::where('page', 'pot_product_page')->get();
-        $static_images_arr = [];
+        $static_images_arr = $this->staticImagesRepository->getStaticImagesForPage(page: 'pot_product_page');
         $canonicalUrl = route('show_pot_product', ['collection' => $collection,'id' => $id]);
-        foreach ($static_images as $static_image) {
-            $static_images_arr[$static_image->image] = $static_image->description_image;
-        }
         return view('elitvid.site.pots.pot_product_page',
             compact('product',
                 'rand_products',

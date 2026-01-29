@@ -5,8 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-use App\Models\MetaTag;
-use App\Models\Category;
+use Illuminate\Support\Facades\Schema;
 use App\Models\Gallery;
 use App\Models\PageContent;
 
@@ -30,21 +29,37 @@ class PageContentSeeder extends Seeder
         $pages = array_keys(config('pages', []));
 
         foreach ($pages as $page) {
-            // Получаем мета-теги
-            $metaTag = MetaTag::where('page', $page)->first();
+            // Получаем мета-теги из старой таблицы (если миграция еще не выполнена)
+            // Пробуем оба варианта названия таблицы для обратной совместимости
+            $metaTag = null;
+            if (Schema::hasTable('meta_tags')) {
+                $metaTag = DB::table('meta_tags')->where('page', $page)->first();
+            } elseif (Schema::hasTable('metatags')) {
+                $metaTag = DB::table('metatags')->where('page', $page)->first();
+            }
             
-            // Получаем категорию
-            $category = Category::where('page', $page)->first();
+            // Получаем категорию из старой таблицы (если миграция еще не выполнена)
+            $category = null;
+            if (Schema::hasTable('categories')) {
+                $category = DB::table('categories')->where('page', $page)->first();
+            }
 
             // Создаем или обновляем запись в page_contents
-            $pageContent = PageContent::updateOrCreate(
-                ['page' => $page],
-                [
-                    'meta_title' => $metaTag->title ?? null,
-                    'meta_description' => $metaTag->description ?? null,
-                    'category_description' => $category->description ?? null,
-                ]
-            );
+            // Если запись уже существует (создана миграциями), обновляем только пустые поля
+            $pageContent = PageContent::firstOrNew(['page' => $page]);
+            
+            // Обновляем только если поля пустые (чтобы не перезаписать данные из миграций)
+            if (empty($pageContent->meta_title) && $metaTag) {
+                $pageContent->meta_title = $metaTag->title;
+            }
+            if (empty($pageContent->meta_description) && $metaTag) {
+                $pageContent->meta_description = $metaTag->description;
+            }
+            if (empty($pageContent->category_description) && $category) {
+                $pageContent->category_description = $category->description;
+            }
+            
+            $pageContent->save();
 
             // Связываем галерею через полиморфную связь, если она существует
             $galleryType = $pageToGalleryType[$page] ?? null;

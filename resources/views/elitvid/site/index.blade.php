@@ -178,7 +178,7 @@
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                         allowfullscreen loading="lazy"></iframe>
             </div>
-            @if($pageContent->gallery->images)
+            @if($pageContent && $pageContent->gallery && $pageContent->gallery->images)
                 <div class="works-examples">
                     <div class="main__slider swiper">
                         <!-- Additional required wrapper -->

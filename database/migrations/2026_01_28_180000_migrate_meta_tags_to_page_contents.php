@@ -28,8 +28,20 @@ return new class extends Migration
             });
         }
 
+        // Проверяем существование таблицы meta_tags
+        if (!Schema::hasTable('meta_tags')) {
+            // Пробуем альтернативное название таблицы
+            if (!Schema::hasTable('metatags')) {
+                // Таблица meta_tags не существует, пропускаем миграцию данных
+                return;
+            }
+            $tableName = 'metatags';
+        } else {
+            $tableName = 'meta_tags';
+        }
+
         // Получаем все записи из meta_tags
-        $metaTags = DB::table('meta_tags')->get();
+        $metaTags = DB::table($tableName)->get();
 
         foreach ($metaTags as $metaTag) {
             // Ищем соответствующую запись в page_contents по полю page

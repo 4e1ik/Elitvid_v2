@@ -3,7 +3,6 @@
 namespace Database\Seeders;
 
 use App\Models\StaticPage;
-use App\Models\MetaTag;
 use App\Services\ImageService;
 use Illuminate\Database\Seeder;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
@@ -65,8 +64,12 @@ class StaticPageSeeder extends Seeder
         ];
 
         foreach ($pages as $slug => $config) {
-            // Берем мета-теги, если есть
-            $meta = MetaTag::where('page', $slug)->first();
+            // Берем мета-теги из PageContent, если есть
+            $pageContent = \App\Models\PageContent::where('page', $slug)->first();
+            $meta = $pageContent ? (object)[
+                'title' => $pageContent->meta_title,
+                'description' => $pageContent->meta_description
+            ] : null;
 
             $staticPage = StaticPage::updateOrCreate(
                 ['slug' => $slug],
