@@ -19,14 +19,6 @@ class BollardsAndFencingController
     function bollards_and_fencing() {
         $static_pages = $this->staticPageRepository->getAllStaticPages();
         $pageContent = $this->pageContentRepository->getPageContent(page: 'bollards_and_fencing');
-        
-        // Для обратной совместимости получаем галерею через старый способ
-        $bollards_and_fencing_images = Gallery::query()
-            ->where('type', 'bollards')
-            ->with(['gallery_images'])
-            ->latest()
-            ->get();
-
         // Статические картинки для alt-тегов, нормализуем пути
         $static_images = \App\Models\StaticImages::where('page', 'bollards_and_fencing')->get();
         $static_images_arr = [];
@@ -42,14 +34,14 @@ class BollardsAndFencingController
                 $static_images_arr['/' . $normalizedPath] = $static_image->description_image;
             }
         }
-        
+
         // Получаем StaticPage для title и description (если нужно)
         try {
             $staticPage = StaticPage::where('slug', 'bollards_and_fencing')->first();
         } catch (\Exception $e) {
             $staticPage = null;
         }
-        
-        return view('elitvid.site.bollards_and_fencing', compact('bollards_and_fencing_images', 'pageContent', 'static_images_arr', 'staticPage', 'static_pages'));
+
+        return view('elitvid.site.bollards_and_fencing', compact( 'pageContent', 'static_images_arr', 'staticPage', 'static_pages'));
     }
 }

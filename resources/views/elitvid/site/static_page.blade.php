@@ -40,12 +40,8 @@
                 </div>
             </section>
         @endif
-        {{--        @php--}}
-        {{--            $galleryImages = $pageContent->gallery->images()->where('main_image', '!=', true)->where('menu_image', '!=', true);--}}
-        {{--        @endphp--}}
         @if($pageContent->gallery != null)
             @if($pageContent->gallery->where('active', 1)->first())
-
                 <section class="works">
                     <h2>Примеры работ</h2>
                     <div class="works-examples">
@@ -75,7 +71,6 @@
                                           stroke-linecap="round"/>
                                 </svg>
                             </div>
-
                         </div>
                         <div class="thumbs__slider swiper">
                             <!-- Additional required wrapper -->

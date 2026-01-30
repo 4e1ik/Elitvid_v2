@@ -9,6 +9,7 @@ use App\Models\GalleryImage;
 use App\Models\Image;
 use App\Models\PageContent;
 use App\Repositories\Admin\PageContentRepository;
+use App\Services\Admin\PageContentService;
 use App\Services\ImageService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -17,7 +18,8 @@ class PageContentController extends Controller
 {
     public function __construct(
         public ImageService          $imageService,
-        public PageContentRepository $pageContentRepository
+        public PageContentRepository $pageContentRepository,
+        public PageContentService    $pageContentService
     ){}
 
     /**
@@ -46,49 +48,11 @@ class PageContentController extends Controller
      */
     public function update(UpdatePageContentRequest $request, PageContent $pageContent)
     {
-        return DB::transaction(function () use ($request, $pageContent) {
-            $data = $request->all();
-            $pageContent->update($data);
-            $gallery = $pageContent->gallery;
-            if (!$gallery) {
-                $gallery = Gallery::create([
-                    'type' => $pageContent->page,
-                    'galleriable_id' => $pageContent->id,
-                    'galleriable_type' => PageContent::class,
-                    'active' => 1,
-                ]);
-            }
+        $data = $request->all();
 
-            if (isset($data['gallery_images'], $data)) {
-                $this->imageService->save(
-                    images: $data['gallery_images'], model: $gallery, imageData: $data['gallery_descriptions']
-                );
-            }
+        $this->pageContentService->update(data: $data, pageContent: $pageContent);
 
-            return redirect()->route('admin_page_contents.index')
-                ->with('success', 'Контент страницы успешно обновлен');
-        });
-    }
-
-    /**
-     * Обновление описания изображения галереи
-     */
-    public function updateImageDescription(Request $request, string $page, $imageId)
-    {
-        $validated = $request->validate([
-            'description_image' => 'nullable|string|max:500',
-        ]);
-
-        return DB::transaction(function () use ($validated, $imageId, $page) {
-            // Пытаемся найти в новой таблице images
-            $image = Image::find($imageId);
-
-            if ($image) {
-                $image->update($validated);
-            }
-
-            return redirect()->route('admin_page_contents.edit', $page)
-                ->with('success', 'Описание изображения успешно обновлено');
-        });
+        return redirect()->route('admin_page_contents.index')
+            ->with('success', 'Контент страницы успешно обновлен');
     }
 }

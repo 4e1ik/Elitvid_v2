@@ -189,7 +189,7 @@
             </div>
         </section>
         @include('includes.elitvid.description')
-        @if($bollards_and_fencing_images->first())
+        @if(isset($pageContent->gallery) && $pageContent->gallery->active)
             <section class="works">
                 <h2>Примеры работ</h2>
                 <div class="works-examples">
@@ -197,11 +197,9 @@
                         <!-- Additional required wrapper -->
                         <div class="main-swiper-wrapper__slider swiper-wrapper">
                             <!-- Slides -->
-                            @foreach($bollards_and_fencing_images as $item)
-                                @foreach($item->gallery_images as $image)
+                                @foreach($pageContent->gallery->images as $image)
                                     <div class="swiper-slide"><img src="{{asset('storage/'.str_replace('public/','',$image->image))}}" alt="{{$image->description_image}}" loading="lazy"></div>
                                 @endforeach
-                            @endforeach
                         </div>
 
                         <!-- If we need navigation buttons -->
@@ -223,11 +221,9 @@
                         <!-- Additional required wrapper -->
                         <div class="main-swiper-wrapper__slider swiper-wrapper">
                             <!-- Slides -->
-                            @foreach($bollards_and_fencing_images as $item)
-                                @foreach($item->gallery_images as $image)
+                                @foreach($pageContent->gallery->images as $image)
                                     <div class="swiper-slide"><img src="{{asset('storage/'.str_replace('public/','',$image->image))}}" alt="{{$image->description_image}}" loading="lazy"></div>
                                 @endforeach
-                            @endforeach
                         </div>
                     </div>
                 </div>

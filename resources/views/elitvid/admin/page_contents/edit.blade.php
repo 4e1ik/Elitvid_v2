@@ -126,7 +126,7 @@
                                     @if($pageContent->gallery)
                                         <div class="form-group" style="margin-bottom: 15px;">
                                             <label style="display: inline-flex; align-items: center; gap: 8px;">
-                                                <input type="checkbox" name="gallery_active" value="1" {{ $pageContent->gallery->active ? 'checked' : '' }}>
+                                                <input type="checkbox" name="active" value="1" {{ $pageContent->gallery->active ? 'checked' : '' }}>
                                                 <span>Галерея активна</span>
                                             </label>
                                         </div>

@@ -131,18 +131,16 @@
             </div>
         </section>
         @include('includes.elitvid.description')
-        @if($benches_images->first())
+        @if(isset($pageContent->gallery) && $pageContent->gallery->active)
             <section class="works">
-                <h2>Наши скамейки из камня</h2>
+                <h2>Примеры работ</h2>
                 <div class="works-examples">
                     <div class="main__slider swiper">
                         <!-- Additional required wrapper -->
                         <div class="main-swiper-wrapper__slider swiper-wrapper">
                             <!-- Slides -->
-                            @foreach($benches_images as $item)
-                                @foreach($item->gallery_images as $image)
-                                    <div class="swiper-slide"><img src="{{asset('storage/'.str_replace('public/','',$image->image))}}" alt="{{$image->description_image}}" loading="lazy"></div>
-                                @endforeach
+                            @foreach($pageContent->gallery->images as $image)
+                                <div class="swiper-slide"><img src="{{asset('storage/'.str_replace('public/','',$image->image))}}" alt="{{$image->description_image}}" loading="lazy"></div>
                             @endforeach
                         </div>
 
@@ -165,10 +163,8 @@
                         <!-- Additional required wrapper -->
                         <div class="main-swiper-wrapper__slider swiper-wrapper">
                             <!-- Slides -->
-                            @foreach($benches_images as $item)
-                                @foreach($item->gallery_images as $image)
-                                    <div class="swiper-slide"><img src="{{asset('storage/'.str_replace('public/','',$image->image))}}" alt="{{$image->description_image}}" loading="lazy"></div>
-                                @endforeach
+                            @foreach($pageContent->gallery->images as $image)
+                                <div class="swiper-slide"><img src="{{asset('storage/'.str_replace('public/','',$image->image))}}" alt="{{$image->description_image}}" loading="lazy"></div>
                             @endforeach
                         </div>
                     </div>

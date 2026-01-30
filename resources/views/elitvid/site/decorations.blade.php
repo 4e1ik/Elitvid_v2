@@ -119,7 +119,7 @@
             </div>
         </section>
         @include('includes.elitvid.description')
-        @if($decorative_elements_images->first())
+        @if(isset($pageContent->gallery) && $pageContent->gallery->active)
             <section class="works">
                 <h2>Примеры работ</h2>
                 <div class="works-examples">
@@ -127,10 +127,8 @@
                         <!-- Additional required wrapper -->
                         <div class="main-swiper-wrapper__slider swiper-wrapper">
                             <!-- Slides -->
-                            @foreach($decorative_elements_images as $item)
-                                @foreach($item->gallery_images as $image)
-                                    <div class="swiper-slide"><img src="{{asset('storage/'.str_replace('public/','',$image->image))}}" alt="{{$image->description_image}}" loading="lazy"></div>
-                                @endforeach
+                            @foreach($pageContent->gallery->images as $image)
+                                <div class="swiper-slide"><img src="{{asset('storage/'.str_replace('public/','',$image->image))}}" alt="{{$image->description_image}}" loading="lazy"></div>
                             @endforeach
                         </div>
 
@@ -153,10 +151,8 @@
                         <!-- Additional required wrapper -->
                         <div class="main-swiper-wrapper__slider swiper-wrapper">
                             <!-- Slides -->
-                            @foreach($decorative_elements_images as $item)
-                                @foreach($item->gallery_images as $image)
-                                    <div class="swiper-slide"><img src="{{asset('storage/'.str_replace('public/','',$image->image))}}" alt="{{$image->description_image}}" loading="lazy"></div>
-                                @endforeach
+                            @foreach($pageContent->gallery->images as $image)
+                                <div class="swiper-slide"><img src="{{asset('storage/'.str_replace('public/','',$image->image))}}" alt="{{$image->description_image}}" loading="lazy"></div>
                             @endforeach
                         </div>
                     </div>

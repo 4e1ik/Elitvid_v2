@@ -17,20 +17,6 @@ class MailController extends Controller
         return view('elitvid.site.form');
     }
 
-//    public function send(MailRequest $mailRequest)
-//    {
-//        $data = $mailRequest->all();
-//        if ($mailRequest->hasFile('file')) {
-//            $name = $mailRequest->file('file')->getClientOriginalName();
-//            $path = Storage::putFileAs('files', $mailRequest->file('file'), $name); // Даем путь к этому файлу
-//            $data['file'] = $path;
-//            Mail::to('Elitvid.site@yandex.ru')->send(new FeedbackMail($data));
-//            Storage::delete($path);
-//        } else {
-//            Mail::to('Elitvid.site@yandex.ru')->send(new FeedbackMail($data));
-//        }
-//    }
-
     public function send(MailRequest $mailRequest)
     {
         try {
