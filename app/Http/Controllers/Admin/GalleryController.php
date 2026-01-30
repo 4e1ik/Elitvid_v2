@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Helpers\WebResponse;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\GalleryRequest;
 use App\Http\Requests\ImageRequest;
@@ -18,8 +19,11 @@ class GalleryController extends Controller
      */
     public function index()
     {
-        // Редиректим на страницу контента, так как все галереи теперь управляются там
-        return redirect()->route('admin_page_contents.index');
+        try {
+            return WebResponse::success(redirect()->route('admin_page_contents.index'));
+        } catch (\Exception $e) {
+            return WebResponse::error($e, true);
+        }
     }
 
     /**
@@ -35,7 +39,8 @@ class GalleryController extends Controller
      */
     public function store(GalleryRequest $galleryRequest)
     {
-        return DB::transaction(function () use ($galleryRequest) {
+        try {
+            return WebResponse::success(DB::transaction(function () use ($galleryRequest) {
             $data = $galleryRequest->all();
 
             if ($galleryRequest->hasFile('image')) {
@@ -78,7 +83,10 @@ class GalleryController extends Controller
             }
 
             return back()->with('success', 'Изображения успешно добавлены в галерею');
-        });
+            }));
+        } catch (\Exception $e) {
+            return WebResponse::error($e, true);
+        }
     }
 
     /**
@@ -102,15 +110,19 @@ class GalleryController extends Controller
      */
     public function update(ImageRequest $request, Gallery $gallery)
     {
-        return DB::transaction(function () use ($request, $gallery) {
-            $data = $request->all();
-            $images = $gallery->gallery_images()->where('gallery_image_id', $gallery->attributesToArray()['id'])->get();
-            foreach ($images as $image) {
-                $image->fill($data)->save();
-            }
+        try {
+            return WebResponse::success(DB::transaction(function () use ($request, $gallery) {
+                $data = $request->all();
+                $images = $gallery->gallery_images()->where('gallery_image_id', $gallery->attributesToArray()['id'])->get();
+                foreach ($images as $image) {
+                    $image->fill($data)->save();
+                }
 
-            return back();
-        });
+                return back();
+            }));
+        } catch (\Exception $e) {
+            return WebResponse::error($e, true);
+        }
     }
 
     /**
@@ -118,14 +130,18 @@ class GalleryController extends Controller
      */
     public function destroy(Gallery $gallery)
     {
-        return DB::transaction(function () use ($gallery) {
-            $images = $gallery->gallery_images()->where('gallery_image_id', $gallery->attributesToArray()['id'])->get();
-            foreach ($images as $image) {
-                Storage::delete($image->image);
-            }
-            $gallery->delete();
+        try {
+            return WebResponse::success(DB::transaction(function () use ($gallery) {
+                $images = $gallery->gallery_images()->where('gallery_image_id', $gallery->attributesToArray()['id'])->get();
+                foreach ($images as $image) {
+                    Storage::delete($image->image);
+                }
+                $gallery->delete();
 
-            return back();
-        });
+                return back();
+            }));
+        } catch (\Exception $e) {
+            return WebResponse::error($e, true);
+        }
     }
 }

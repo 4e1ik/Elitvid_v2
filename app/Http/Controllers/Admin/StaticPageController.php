@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Helpers\WebResponse;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CreateStaticPageRequest;
 use App\Http\Requests\UpdateStaticPageRequest;
@@ -18,45 +19,64 @@ class StaticPageController extends Controller
 
     public function index()
     {
-        $staticPages = $this->staticPageRepository->getAll();
-        return view('elitvid.admin.static_pages.index', compact('staticPages'));
+        try {
+            $staticPages = $this->staticPageRepository->getAll();
+            return WebResponse::success(view('elitvid.admin.static_pages.index', compact('staticPages')));
+        } catch (\Exception $e) {
+            return WebResponse::error($e, true);
+        }
     }
 
     public function create()
     {
-        return view('elitvid.admin.static_pages.create');
+        try {
+            return WebResponse::success(view('elitvid.admin.static_pages.create'));
+        } catch (\Exception $e) {
+            return WebResponse::error($e, true);
+        }
     }
 
     public function store(CreateStaticPageRequest $request)
     {
-        $data = $request->all();
-
-        $this->staticPageService->store($data);
-
-        return redirect()->route('static_pages.index')
-            ->with('success', 'Статическая страница успешно создана');
+        try {
+            $data = $request->all();
+            $this->staticPageService->store($data);
+            return WebResponse::success(redirect()->route('static_pages.index')
+                ->with('success', 'Статическая страница успешно создана'));
+        } catch (\Exception $e) {
+            return WebResponse::error($e, true);
+        }
     }
 
     public function edit(StaticPage $staticPage)
     {
-        return view('elitvid.admin.static_pages.edit', compact('staticPage'));
+        try {
+            return WebResponse::success(view('elitvid.admin.static_pages.edit', compact('staticPage')));
+        } catch (\Exception $e) {
+            return WebResponse::error($e, true);
+        }
     }
 
     public function update(UpdateStaticPageRequest $request, StaticPage $staticPage)
     {
-        $data = $request->all();
-
-        $this->staticPageService->update($data, $staticPage);
-
-        return redirect()->route('static_pages.index')
-            ->with('success', 'Статическая страница успешно обновлена');
+        try {
+            $data = $request->all();
+            $this->staticPageService->update($data, $staticPage);
+            return WebResponse::success(redirect()->route('static_pages.index')
+                ->with('success', 'Статическая страница успешно обновлена'));
+        } catch (\Exception $e) {
+            return WebResponse::error($e, true);
+        }
     }
 
     public function destroy(StaticPage $staticPage)
     {
-        $this->staticPageService->destroy($staticPage);
-
-        return redirect()->route('static_pages.index')
-            ->with('success', 'Статическая страница успешно удалена');
+        try {
+            $this->staticPageService->destroy($staticPage);
+            return WebResponse::success(redirect()->route('static_pages.index')
+                ->with('success', 'Статическая страница успешно удалена'));
+        } catch (\Exception $e) {
+            return WebResponse::error($e, true);
+        }
     }
 }

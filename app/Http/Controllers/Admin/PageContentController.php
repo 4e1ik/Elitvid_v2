@@ -2,18 +2,13 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Helpers\WebResponse;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UpdatePageContentRequest;
-use App\Models\Gallery;
-use App\Models\GalleryImage;
-use App\Models\Image;
 use App\Models\PageContent;
 use App\Repositories\Admin\PageContentRepository;
 use App\Services\Admin\PageContentService;
 use App\Services\ImageService;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-
 class PageContentController extends Controller
 {
     public function __construct(
@@ -27,11 +22,15 @@ class PageContentController extends Controller
      */
     public function index()
     {
-        $pageContents = $this->pageContentRepository->getAllPages();
-        $pageContents->map(function ($pageContent) {
-            return $pageContent->name = config('pages', [])[$pageContent->page] ?? $pageContent->page;
-        });
-        return view('elitvid.admin.page_contents.index', compact('pageContents'));
+        try {
+            $pageContents = $this->pageContentRepository->getAllPages();
+            $pageContents->map(function ($pageContent) {
+                return $pageContent->name = config('pages', [])[$pageContent->page] ?? $pageContent->page;
+            });
+            return WebResponse::success(view('elitvid.admin.page_contents.index', compact('pageContents')));
+        } catch (\Exception $e) {
+            return WebResponse::error($e, true);
+        }
     }
 
     /**
@@ -39,8 +38,12 @@ class PageContentController extends Controller
      */
     public function edit(PageContent $pageContent)
     {
-        $pageContent->pageName = config('pages', [])[$pageContent->page] ?? $pageContent->page;
-        return view('elitvid.admin.page_contents.edit', compact('pageContent'));
+        try {
+            $pageContent->pageName = config('pages', [])[$pageContent->page] ?? $pageContent->page;
+            return WebResponse::success(view('elitvid.admin.page_contents.edit', compact('pageContent')));
+        } catch (\Exception $e) {
+            return WebResponse::error($e, true);
+        }
     }
 
     /**
@@ -48,11 +51,13 @@ class PageContentController extends Controller
      */
     public function update(UpdatePageContentRequest $request, PageContent $pageContent)
     {
-        $data = $request->all();
-
-        $this->pageContentService->update(data: $data, pageContent: $pageContent);
-
-        return redirect()->route('admin_page_contents.index')
-            ->with('success', 'Контент страницы успешно обновлен');
+        try {
+            $data = $request->all();
+            $this->pageContentService->update(data: $data, pageContent: $pageContent);
+            return WebResponse::success(redirect()->route('admin_page_contents.index')
+                ->with('success', 'Контент страницы успешно обновлен'));
+        } catch (\Exception $e) {
+            return WebResponse::error($e, true);
+        }
     }
 }

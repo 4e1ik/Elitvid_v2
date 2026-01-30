@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\WebResponse;
 use App\Models\Blog;
 use App\Models\Product;
 use Illuminate\Http\Request;
@@ -12,6 +13,7 @@ class SitemapController extends Controller
 {
     public function index()
     {
+        try {
         // Array to store URLs
         $urls = [];
 
@@ -253,9 +255,11 @@ class SitemapController extends Controller
         // Generate XML
         $xml = $this->generateSitemap($urls);
 
-        return response($xml, 200)
-//            ->header('Content-Type', 'application/xml');
-            ->header('Content-Type', 'text/xml; charset=utf-8');
+        return WebResponse::success(response($xml, 200)
+            ->header('Content-Type', 'text/xml; charset=utf-8'));
+        } catch (\Exception $e) {
+            return WebResponse::error($e);
+        }
     }
 
     private function generateSitemap($urls)

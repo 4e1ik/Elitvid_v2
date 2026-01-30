@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\WebResponse;
 use App\Models\Blog;
 use App\Models\StaticPage;
 use App\Repositories\PageContentRepository;
@@ -18,64 +19,92 @@ class MainController extends Controller
     ){}
 
     function index() {
-        $static_pages = $this->staticPageRepository->getAllStaticPages();
-        $pageContent =  $this->pageContentRepository->getPageContent(page: 'main');
-        $static_images_arr = $this->staticImagesRepository->getStaticImagesForPage(page: 'index');
-        return view('elitvid.site.index', compact( 'pageContent', 'static_images_arr', 'static_pages'));
+        try {
+            $static_pages = $this->staticPageRepository->getAllStaticPages();
+            $pageContent =  $this->pageContentRepository->getPageContent(page: 'main');
+            $static_images_arr = $this->staticImagesRepository->getStaticImagesForPage(page: 'index');
+            return WebResponse::success(view('elitvid.site.index', compact( 'pageContent', 'static_images_arr', 'static_pages')));
+        } catch (\Exception $e) {
+            return WebResponse::error($e);
+        }
     }
 
     function test()
     {
-        return view('elitvid.site.test');
+        try {
+            return WebResponse::success(view('elitvid.site.test'));
+        } catch (\Exception $e) {
+            return WebResponse::error($e);
+        }
     }
 
     function sitemap()
     {
-        $filePath = public_path('sitemap.xml');
-        if (!file_exists($filePath)) {
-            abort(404, 'Sitemap not found.');
+        try {
+            $filePath = public_path('sitemap.xml');
+            if (!file_exists($filePath)) {
+                abort(404, 'Sitemap not found.');
+            }
+            return WebResponse::success(Response::file($filePath, [
+                'Content-Type' => 'application/xml',
+            ]));
+        } catch (\Exception $e) {
+            return WebResponse::error($e);
         }
-        return Response::file($filePath, [
-            'Content-Type' => 'application/xml',
-        ]);
     }
 
     function directions() {
-        $static_pages = $this->staticPageRepository->getAllStaticPages();
-        $pageContent =  $this->pageContentRepository->getPageContent(page: 'directions');
-        $static_images_arr = $this->staticImagesRepository->getStaticImagesForPage(page: 'directions');
-        return view('elitvid.site.directions', compact( 'pageContent', 'static_images_arr', 'static_pages'));
+        try {
+            $static_pages = $this->staticPageRepository->getAllStaticPages();
+            $pageContent =  $this->pageContentRepository->getPageContent(page: 'directions');
+            $static_images_arr = $this->staticImagesRepository->getStaticImagesForPage(page: 'directions');
+            return WebResponse::success(view('elitvid.site.directions', compact( 'pageContent', 'static_images_arr', 'static_pages')));
+        } catch (\Exception $e) {
+            return WebResponse::error($e);
+        }
     }
 
     function decorations()
     {
-        $static_pages = $this->staticPageRepository->getAllStaticPages();
-        $pageContent =  $this->pageContentRepository->getPageContent(page: 'directions');
-        $static_images_arr = $this->staticImagesRepository->getStaticImagesForPage(page: 'index');
-        return view('elitvid.site.decorations', compact('pageContent', 'static_images_arr', 'static_pages'));
+        try {
+            $static_pages = $this->staticPageRepository->getAllStaticPages();
+            $pageContent =  $this->pageContentRepository->getPageContent(page: 'directions');
+            $static_images_arr = $this->staticImagesRepository->getStaticImagesForPage(page: 'index');
+            return WebResponse::success(view('elitvid.site.decorations', compact('pageContent', 'static_images_arr', 'static_pages')));
+        } catch (\Exception $e) {
+            return WebResponse::error($e);
+        }
     }
 
     function blog_posts()
     {
-        $static_pages = $this->staticPageRepository->getAllStaticPages();
-        $blogs = Blog::whereIn('active', [1])->latest()->get();
-        $pageContent = $this->pageContentRepository->getPageContent(page: 'blog');
-        $category = $pageContent?->category_description ?? null;
-        return view('elitvid.site.blog.blog', compact('blogs', 'category', 'static_pages', 'pageContent'));
+        try {
+            $static_pages = $this->staticPageRepository->getAllStaticPages();
+            $blogs = Blog::whereIn('active', [1])->latest()->get();
+            $pageContent = $this->pageContentRepository->getPageContent(page: 'blog');
+            $category = $pageContent?->category_description ?? null;
+            return WebResponse::success(view('elitvid.site.blog.blog', compact('blogs', 'category', 'static_pages', 'pageContent')));
+        } catch (\Exception $e) {
+            return WebResponse::error($e);
+        }
     }
 
     function show_blog_post($id)
     {
-        $static_pages = StaticPage::all();
-        $blog = Blog::where('id', $id)->first();
-        if (!$blog) {
-            abort(404);
-        }
-        $nextPost = Blog::where('created_at', '<', $blog->created_at)->latest()->first();
-        $prevPost = Blog::where('created_at', '>', $blog->created_at)->oldest()->first();
-        $metaTitle = $blog->meta_title ?? 'Блог';
-        $metaDescription = $blog->meta_description ?? 'Описание поста блога';
+        try {
+            $static_pages = StaticPage::all();
+            $blog = Blog::where('id', $id)->first();
+            if (!$blog) {
+                abort(404);
+            }
+            $nextPost = Blog::where('created_at', '<', $blog->created_at)->latest()->first();
+            $prevPost = Blog::where('created_at', '>', $blog->created_at)->oldest()->first();
+            $metaTitle = $blog->meta_title ?? 'Блог';
+            $metaDescription = $blog->meta_description ?? 'Описание поста блога';
 
-        return view('elitvid.site.blog.blog_post', compact('blog', 'metaTitle', 'metaDescription', 'nextPost', 'prevPost', 'static_pages'));
+            return WebResponse::success(view('elitvid.site.blog.blog_post', compact('blog', 'metaTitle', 'metaDescription', 'nextPost', 'prevPost', 'static_pages')));
+        } catch (\Exception $e) {
+            return WebResponse::error($e);
+        }
     }
 }

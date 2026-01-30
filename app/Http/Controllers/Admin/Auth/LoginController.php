@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin\Auth;
 
+use App\Helpers\WebResponse;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -9,37 +10,49 @@ use Illuminate\Support\Facades\Auth;
 class LoginController extends Controller
 {
     public function index(){
-        if (Auth::check()){
-            if (Auth::user()['is_admin'] == true) {
-                return redirect(route('admin'));
+        try {
+            if (Auth::check()){
+                if (Auth::user()['is_admin'] == true) {
+                    return redirect(route('admin'));
+                }
             }
+            return WebResponse::success(view('elitvid.admin.auth.login'));
+        } catch (\Exception $e) {
+            return WebResponse::error($e, true);
         }
-        return view('elitvid.admin.auth.login');
     }
 
     public function logout(){
-        Auth::logout();
-        return redirect(route('login'));
+        try {
+            Auth::logout();
+            return WebResponse::success(redirect(route('login')));
+        } catch (\Exception $e) {
+            return WebResponse::error($e, true);
+        }
     }
 
     public function login(Request $request){
-        if (Auth::check()){
-            if (Auth::user()['is_admin'] == true) {
-                return redirect(route('admin'));
+        try {
+            if (Auth::check()){
+                if (Auth::user()['is_admin'] == true) {
+                    return redirect(route('admin'));
+                }
             }
-        }
 
-        $arr_data = [
-          'email' => $request->all()['email'],
-          'password' => $request->all()['password'],
-        ];
+            $arr_data = [
+              'email' => $request->all()['email'],
+              'password' => $request->all()['password'],
+            ];
 
-        if (Auth::attempt($arr_data)){
-            if (Auth::user()['is_admin'] == true){
-                return redirect(route('admin'));
+            if (Auth::attempt($arr_data)){
+                if (Auth::user()['is_admin'] == true){
+                    return WebResponse::success(redirect(route('admin')));
+                }
             }
-        }
 
-        return redirect(route('login'))->withInput();
+            return WebResponse::success(redirect(route('login'))->withInput());
+        } catch (\Exception $e) {
+            return WebResponse::error($e, true);
+        }
     }
 }

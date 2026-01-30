@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin\Auth;
 
+use App\Helpers\WebResponse;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ProfileUpdateRequest;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -18,52 +19,64 @@ class ProfileController extends Controller
     /**
      * Display the user's profile form.
      */
-    public function edit(Request $request): Response
+    public function edit(Request $request): Response|mixed
     {
-        return Inertia::render('Profile/Edit', [
-            'mustVerifyEmail' => $request->user() instanceof MustVerifyEmail,
-            'status' => session('status'),
-        ]);
+        try {
+            return WebResponse::success(Inertia::render('Profile/Edit', [
+                'mustVerifyEmail' => $request->user() instanceof MustVerifyEmail,
+                'status' => session('status'),
+            ]));
+        } catch (\Exception $e) {
+            return WebResponse::error($e, true);
+        }
     }
 
     /**
      * Update the user's profile information.
      */
-    public function update(ProfileUpdateRequest $request): RedirectResponse
+    public function update(ProfileUpdateRequest $request): RedirectResponse|mixed
     {
-        return DB::transaction(function () use ($request) {
-            $request->user()->fill($request->validated());
+        try {
+            return WebResponse::success(DB::transaction(function () use ($request) {
+                $request->user()->fill($request->validated());
 
-            if ($request->user()->isDirty('email')) {
-                $request->user()->email_verified_at = null;
-            }
+                if ($request->user()->isDirty('email')) {
+                    $request->user()->email_verified_at = null;
+                }
 
-            $request->user()->save();
+                $request->user()->save();
 
-            return Redirect::route('profile.edit');
-        });
+                return Redirect::route('profile.edit');
+            }));
+        } catch (\Exception $e) {
+            return WebResponse::error($e, true);
+        }
     }
 
     /**
      * Delete the user's account.
      */
-    public function destroy(Request $request): RedirectResponse
+    public function destroy(Request $request): RedirectResponse|mixed
     {
-        $request->validate([
-            'password' => ['required', 'current_password'],
-        ]);
+        try {
+            $request->validate([
+                'password' => ['required', 'current_password'],
+            ]);
 
-        return DB::transaction(function () use ($request) {
-            $user = $request->user();
+            return WebResponse::success(DB::transaction(function () use ($request) {
+                $user = $request->user();
 
-            Auth::logout();
+                Auth::logout();
 
-            $user->delete();
+                $user->delete();
 
-            $request->session()->invalidate();
-            $request->session()->regenerateToken();
+                $request->session()->invalidate();
+                $request->session()->regenerateToken();
 
-            return Redirect::to('/');
-        });
+                return Redirect::to('/');
+            }));
+        } catch (\Exception $e) {
+            return WebResponse::error($e, true);
+        }
     }
 }

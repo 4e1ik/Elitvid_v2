@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Helpers\WebResponse;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\MailRequest;
 use App\Mail\FeedbackMail;
@@ -14,7 +15,11 @@ class MailController extends Controller
 
     public function show_form()
     {
-        return view('elitvid.site.form');
+        try {
+            return WebResponse::success(view('elitvid.site.form'));
+        } catch (\Exception $e) {
+            return WebResponse::error($e, true);
+        }
     }
 
     public function send(MailRequest $mailRequest)
@@ -32,18 +37,12 @@ class MailController extends Controller
                 Mail::to('el_vid@mail.ru')->send(new FeedbackMail($data));
             }
 
-            // Успешный ответ
-            return response()->json([
+            return WebResponse::success(response()->json([
                 'success' => true,
                 'message' => 'Письмо успешно отправлено!'
-            ]);
-
+            ]));
         } catch (\Exception $e) {
-            // Ошибка при отправке
-            return response()->json([
-                'success' => false,
-                'message' => 'Произошла ошибка при отправке письма: ' . $e->getMessage()
-            ], 500); // Код 500 для ошибок сервера
+            return WebResponse::error($e, true);
         }
     }
 }

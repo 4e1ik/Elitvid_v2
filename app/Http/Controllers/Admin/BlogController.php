@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Helpers\WebResponse;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\BlogRequest;
 use App\Models\Blog;
@@ -21,8 +22,13 @@ class BlogController extends Controller
      */
     public function index()
     {
-        $blog_posts = Blog::all();
-        return view('elitvid.admin.blog.blog_posts', compact('blog_posts'));
+        try {
+            return WebResponse::success(view('elitvid.admin.blog.blog_posts', [
+                'blog_posts' => Blog::all(),
+            ]));
+        } catch (\Exception $e) {
+            return WebResponse::error($e, true);
+        }
     }
 
     /**
@@ -30,7 +36,11 @@ class BlogController extends Controller
      */
     public function create()
     {
-        return view('elitvid.admin.blog.create');
+        try {
+            return WebResponse::success(view('elitvid.admin.blog.create'));
+        } catch (\Exception $e) {
+            return WebResponse::error($e, true);
+        }
     }
 
     /**
@@ -38,11 +48,13 @@ class BlogController extends Controller
      */
     public function store(BlogRequest $request)
     {
-        $data = $request->all();
-
-        $this->blogService->create(data: $data);
-
-        return redirect(route('admin_blog'))->with('success', 'Пост успешно создан!');
+        try {
+            $data = $request->all();
+            $this->blogService->create(data: $data);
+            return WebResponse::success(redirect(route('admin_blog'))->with('success', 'Пост успешно создан!'));
+        } catch (\Exception $e) {
+            return WebResponse::error($e, true);
+        }
     }
 
     /**
@@ -58,7 +70,11 @@ class BlogController extends Controller
      */
     public function edit(Blog $blog)
     {
-        return view('elitvid.admin.blog.edit', compact('blog'));
+        try {
+            return WebResponse::success(view('elitvid.admin.blog.edit', compact('blog')));
+        } catch (\Exception $e) {
+            return WebResponse::error($e, true);
+        }
     }
 
     /**
@@ -66,11 +82,13 @@ class BlogController extends Controller
      */
     public function update(Request $request, Blog $blog)
     {
-        $data = $request->all();
-
-        $this->blogService->update(data: $data, blog: $blog);
-
-        return redirect(route('admin_blog'))->with('success', 'Пост успешно обновлен!');
+        try {
+            $data = $request->all();
+            $this->blogService->update(data: $data, blog: $blog);
+            return WebResponse::success(redirect(route('admin_blog'))->with('success', 'Пост успешно обновлен!'));
+        } catch (\Exception $e) {
+            return WebResponse::error($e, true);
+        }
     }
 
     /**
@@ -78,7 +96,11 @@ class BlogController extends Controller
      */
     public function destroy(Blog $blog)
     {
-        $this->blogService->delete(blog: $blog);
-        return back();
+        try {
+            $this->blogService->delete(blog: $blog);
+            return WebResponse::success(back());
+        } catch (\Exception $e) {
+            return WebResponse::error($e, true);
+        }
     }
 }

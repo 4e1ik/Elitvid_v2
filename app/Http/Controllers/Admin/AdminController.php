@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Helpers\WebResponse;
 use App\Http\Controllers\Controller;
 use App\Models\Blog;
 use App\Models\Gallery;
@@ -14,6 +15,7 @@ use App\Models\StaticPage;
 class AdminController extends Controller
 {
     public function index() {
+        try {
         $stats = [
             'blog_posts' => Blog::count(),
             'active_blog_posts' => Blog::where('active', 1)->count(),
@@ -68,28 +70,37 @@ class AdminController extends Controller
             ]
         ];
 
-        return view('elitvid.admin.admin', compact('stats', 'recent_blogs', 'chart_data'));
+            return WebResponse::success(view('elitvid.admin.admin', compact('stats', 'recent_blogs', 'chart_data')));
+        } catch (\Exception $e) {
+            return WebResponse::error($e, true);
+        }
     }
 
     public function static_images($page) {
-        $static_images = StaticImages::where('page', $page)->get();
-        return view('elitvid.admin.static_images.index', compact('static_images'));
+        try {
+            $static_images = StaticImages::where('page', $page)->get();
+            return WebResponse::success(view('elitvid.admin.static_images.index', compact('static_images')));
+        } catch (\Exception $e) {
+            return WebResponse::error($e, true);
+        }
     }
 
     public function create($route){
+        try {
+            $route_name = $route;
 
-        $route_name = $route;
-
-        if ($route_name == 'gallery'){
-            return view('includes.elitvid.admin.create_gallery', compact('route_name'));
-        } else if($route_name == 'pots'){
-            $productType = 'pot';
-            return view('includes.elitvid.admin.create_product', compact('productType'));
-        } else if($route_name == 'benches'){
-            $productType = 'bench';
-            return view('includes.elitvid.admin.create_product', compact('productType'));
+            if ($route_name == 'gallery'){
+                return WebResponse::success(view('includes.elitvid.admin.create_gallery', compact('route_name')));
+            } else if($route_name == 'pots'){
+                $productType = 'pot';
+                return WebResponse::success(view('includes.elitvid.admin.create_product', compact('productType')));
+            } else if($route_name == 'benches'){
+                $productType = 'bench';
+                return WebResponse::success(view('includes.elitvid.admin.create_product', compact('productType')));
+            }
+        } catch (\Exception $e) {
+            return WebResponse::error($e, true);
         }
-
     }
 
 }

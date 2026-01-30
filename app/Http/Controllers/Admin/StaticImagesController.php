@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Helpers\WebResponse;
 use App\Http\Controllers\Controller;
 use App\Models\StaticImages;
 use Illuminate\Http\Request;
@@ -54,11 +55,17 @@ class StaticImagesController extends Controller
      */
     public function update(Request $request, StaticImages $static_image)
     {
-        return DB::transaction(function () use ($request, $static_image) {
-            $data = $request->all();
-            $static_image->update($data);
-            return redirect()->back();
-        });
+        try {
+            return WebResponse::success(
+                DB::transaction(function () use ($request, $static_image) {
+                    $data = $request->all();
+                    $static_image->update($data);
+                    return redirect()->back();
+                })
+            );
+        } catch (\Exception $e) {
+            return WebResponse::error($e, true);
+        }
     }
 
     /**

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Helpers\WebResponse;
 use App\Models\Product;
 use App\Repositories\Admin\BenchRepository;
 
@@ -12,27 +13,47 @@ class BenchController
     ){}
 
     public function verona() {
-        $products = $this->benchRepository->getBenches('Verona');
-        return view('elitvid.admin.benches.benches_verona', compact('products'));
+        try {
+            $products = $this->benchRepository->getBenches('Verona');
+            return WebResponse::success(view('elitvid.admin.benches.benches_verona', compact('products')));
+        } catch (\Exception $e) {
+            return WebResponse::error($e, true);
+        }
     }
 
     public function stones() {
-        $products = $this->benchRepository->getBenches('Stones');
-        return view('elitvid.admin.benches.benches_stones', compact('products'));
+        try {
+            $products = $this->benchRepository->getBenches('Stones');
+            return WebResponse::success(view('elitvid.admin.benches.benches_stones', compact('products')));
+        } catch (\Exception $e) {
+            return WebResponse::error($e, true);
+        }
     }
 
     public function solo() {
-        $products = $this->benchRepository->getBenches('Solo');
-        return view('elitvid.admin.benches.benches_solo', compact('products'));
+        try {
+            $products = $this->benchRepository->getBenches('Solo');
+            return WebResponse::success(view('elitvid.admin.benches.benches_solo', compact('products')));
+        } catch (\Exception $e) {
+            return WebResponse::error($e, true);
+        }
     }
 
     public function lines() {
-        $products = $this->benchRepository->getBenches('lines');
-        return view('elitvid.admin.benches.benches_lines', compact('products'));
+        try {
+            $products = $this->benchRepository->getBenches('lines');
+            return WebResponse::success(view('elitvid.admin.benches.benches_lines', compact('products')));
+        } catch (\Exception $e) {
+            return WebResponse::error($e, true);
+        }
     }
 
     public function street_furniture() {
-        $products = $this->benchRepository->getBenches('Street_furniture');
-        return view('elitvid.admin.benches.benches_street_furniture', compact('products'));
+        try {
+            $products = $this->benchRepository->getBenches('Street_furniture');
+            return WebResponse::success(view('elitvid.admin.benches.benches_street_furniture', compact('products')));
+        } catch (\Exception $e) {
+            return WebResponse::error($e, true);
+        }
     }
 }
