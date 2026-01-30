@@ -3,9 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Blog;
-use App\Models\Gallery;
-use App\Models\PageContent;
-use App\Models\StaticImages;
 use App\Models\StaticPage;
 use App\Repositories\PageContentRepository;
 use App\Repositories\StaticImagesRepository;
@@ -46,7 +43,7 @@ class MainController extends Controller
     function directions() {
         $static_pages = $this->staticPageRepository->getAllStaticPages();
         $pageContent =  $this->pageContentRepository->getPageContent(page: 'directions');
-        $static_images_arr = $this->staticImagesRepository->getStaticImagesForPage(page: 'index');
+        $static_images_arr = $this->staticImagesRepository->getStaticImagesForPage(page: 'directions');
         return view('elitvid.site.directions', compact( 'pageContent', 'static_images_arr', 'static_pages'));
     }
 
