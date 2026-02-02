@@ -38,9 +38,9 @@
                                 @foreach($staticPages as $staticPage)
                                     <tr>
                                         <td>{{$staticPage->id}}</td>
-                                        <td>{{$staticPage->slug ?? 'Не указан'}}</td>
-                                        <td>{{Str::limit($staticPage->title ?? 'Не указан', 50)}}</td>
-                                        <td>{{Str::limit($staticPage->subtitle ?? 'Не указан', 50)}}</td>
+                                        <td class="admin-table-cell-truncate admin-table-cell-truncate--short" title="{{ $staticPage->slug ?? '' }}">{{ Str::limit($staticPage->slug ?? 'Не указан', 25) }}</td>
+                                        <td class="admin-table-cell-truncate admin-table-cell-truncate--medium" title="{{ $staticPage->title ?? '' }}">{{ Str::limit($staticPage->title ?? 'Не указан', 45) }}</td>
+                                        <td class="admin-table-cell-truncate admin-table-cell-truncate--medium" title="{{ $staticPage->subtitle ?? '' }}">{{ Str::limit(strip_tags($staticPage->subtitle ?? 'Не указан'), 45) }}</td>
                                         <td>
                                             @php
                                                 $mainImage = $staticPage->images()->where('main_image', true)->first();

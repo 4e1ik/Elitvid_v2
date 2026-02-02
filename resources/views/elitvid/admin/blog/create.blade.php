@@ -57,7 +57,7 @@
                                                     required
                                                 >
                                                 <small class="form-text text-muted">
-                                                    Максимум 255 символов
+                                                    Максимум 50 символов
                                                 </small>
                                                 @error('title')
                                                 <div class="text-danger">{{ $message }}</div>
@@ -275,7 +275,7 @@
                     const previewImg = document.getElementById('main-image-preview-img');
                     const previewDiv = document.getElementById('main-image-preview');
                     const placeholder = document.getElementById('main-image-placeholder');
-                    
+
                     if (previewImg) {
                         previewImg.src = e.target.result;
                     }
@@ -297,7 +297,7 @@
             const fileInput = document.getElementById('main_image');
             const previewDiv = document.getElementById('main-image-preview');
             const placeholder = document.getElementById('main-image-placeholder');
-            
+
             if (fileInput) {
                 fileInput.value = '';
             }

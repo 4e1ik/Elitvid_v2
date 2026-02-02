@@ -38,8 +38,8 @@
                                 @if($products->isNotEmpty())
                                     @foreach($products as $product)
                                         <tr>
-                                            <td>{{$product->name}}</td>
-                                            <td>{{$product->bench->material}}</td>
+                                            <td class="admin-table-cell-truncate admin-table-cell-truncate--medium" title="{{ $product->name }}">{{ Str::limit($product->name, 45) }}</td>
+                                            <td class="admin-table-cell-truncate admin-table-cell-truncate--short" title="{{ $product->bench->material ?? '' }}">{{ Str::limit($product->bench->material ?? '', 30) }}</td>
                                             <td>
                                                 @if($product->bench->data && is_array($product->bench->data) && count($product->bench->data) > 0)
                                                     <button type="button" 

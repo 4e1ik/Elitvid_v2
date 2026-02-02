@@ -50,11 +50,11 @@
                                 @if($round_pots->isNotEmpty())
                                     @foreach($round_pots as $pot)
                                         <tr>
-                                            <td>{{$pot->name}}</td>
-                                            <td>{{ $pot->material}}</td>
-                                            <td>{{ $pot->size}}</td>
-                                            <td>{{ $pot->weight}}</td>
-                                            <td>{{ $pot->price}}</td>
+                                            <td class="admin-table-cell-truncate admin-table-cell-truncate--medium" title="{{ $pot->name }}">{{ Str::limit($pot->name, 45) }}</td>
+                                            <td class="admin-table-cell-truncate admin-table-cell-truncate--short" title="{{ $pot->material ?? '' }}">{{ Str::limit($pot->material ?? '', 30) }}</td>
+                                            <td class="admin-table-cell-truncate admin-table-cell-truncate--short" title="{{ $pot->size ?? '' }}">{{ Str::limit($pot->size ?? '', 25) }}</td>
+                                            <td class="admin-table-cell-truncate admin-table-cell-truncate--short" title="{{ $pot->weight ?? '' }}">{{ Str::limit($pot->weight ?? '', 25) }}</td>
+                                            <td class="admin-table-cell-truncate admin-table-cell-truncate--short" title="{{ $pot->price ?? '' }}">{{ Str::limit($pot->price ?? '', 25) }}</td>
                                             <td>{{$pot->created_at}}</td>
                                             <td>{{$pot->updated_at}}</td>
                                             <td>
@@ -110,11 +110,11 @@
                                 @if($rectangular_pots->isNotEmpty())
                                     @foreach($rectangular_pots as $pot)
                                         <tr>
-                                            <td>{{$pot->name}}</td>
-                                            <td>{{ $pot->material}}</td>
-                                            <td>{{ $pot->size}}</td>
-                                            <td>{{ $pot->weight}}</td>
-                                            <td>{{ $pot->price}}</td>
+                                            <td class="admin-table-cell-truncate admin-table-cell-truncate--medium" title="{{ $pot->name }}">{{ Str::limit($pot->name, 45) }}</td>
+                                            <td class="admin-table-cell-truncate admin-table-cell-truncate--short" title="{{ $pot->material ?? '' }}">{{ Str::limit($pot->material ?? '', 30) }}</td>
+                                            <td class="admin-table-cell-truncate admin-table-cell-truncate--short" title="{{ $pot->size ?? '' }}">{{ Str::limit($pot->size ?? '', 25) }}</td>
+                                            <td class="admin-table-cell-truncate admin-table-cell-truncate--short" title="{{ $pot->weight ?? '' }}">{{ Str::limit($pot->weight ?? '', 25) }}</td>
+                                            <td class="admin-table-cell-truncate admin-table-cell-truncate--short" title="{{ $pot->price ?? '' }}">{{ Str::limit($pot->price ?? '', 25) }}</td>
                                             <td>{{$pot->created_at}}</td>
                                             <td>{{$pot->updated_at}}</td>
                                             <td>
@@ -170,11 +170,11 @@
                                 @if($square_pots->isNotEmpty())
                                     @foreach($square_pots as $pot)
                                         <tr>
-                                            <td>{{$pot->name}}</td>
-                                            <td>{{ $pot->material}}</td>
-                                            <td>{{ $pot->size}}</td>
-                                            <td>{{ $pot->weight}}</td>
-                                            <td>{{ $pot->price}}</td>
+                                            <td class="admin-table-cell-truncate admin-table-cell-truncate--medium" title="{{ $pot->name }}">{{ Str::limit($pot->name, 45) }}</td>
+                                            <td class="admin-table-cell-truncate admin-table-cell-truncate--short" title="{{ $pot->material ?? '' }}">{{ Str::limit($pot->material ?? '', 30) }}</td>
+                                            <td class="admin-table-cell-truncate admin-table-cell-truncate--short" title="{{ $pot->size ?? '' }}">{{ Str::limit($pot->size ?? '', 25) }}</td>
+                                            <td class="admin-table-cell-truncate admin-table-cell-truncate--short" title="{{ $pot->weight ?? '' }}">{{ Str::limit($pot->weight ?? '', 25) }}</td>
+                                            <td class="admin-table-cell-truncate admin-table-cell-truncate--short" title="{{ $pot->price ?? '' }}">{{ Str::limit($pot->price ?? '', 25) }}</td>
                                             <td>{{$pot->created_at}}</td>
                                             <td>{{$pot->updated_at}}</td>
                                             <td>

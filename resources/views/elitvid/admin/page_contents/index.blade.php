@@ -38,10 +38,10 @@
                                 <tbody>
                                     @foreach($pageContents as $pageData)
                                         <tr>
-                                            <td>
-                                                <strong>{{ $pageData->name }}</strong>
+                                            <td class="admin-table-cell-truncate admin-table-cell-truncate--medium" title="{{ $pageData->name }} — {{ $pageData->page }}">
+                                                <strong>{{ Str::limit($pageData->name, 40) }}</strong>
                                                 <br>
-                                                <small class="text-muted">{{ $pageData->page }}</small>
+                                                <small class="text-muted">{{ Str::limit($pageData->page, 30) }}</small>
                                             </td>
                                             <td>
                                                 @if(!empty($pageData->meta_title))

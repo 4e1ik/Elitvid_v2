@@ -22,6 +22,18 @@
     <!-- end: Css -->
 
     <link rel="shortcut icon" href="{{asset('/elitvid_assets/img/logomi.png')}}">
+    <style>
+        /* Ограничение длины текста в таблицах админки — контент не выходит за экран */
+        #content .admin-table-cell-truncate {
+            max-width: 220px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        #content .admin-table-cell-truncate--short { max-width: 120px; }
+        #content .admin-table-cell-truncate--medium { max-width: 180px; }
+        #content .admin-table-cell-truncate--long { max-width: 280px; }
+    </style>
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>

@@ -34,14 +34,15 @@
                                                 {{--                                                <img style="height: 200px" src="{{asset('storage/'.$image->image)}}" alt="">--}}
                                                 <img style="height: 200px" src="{{asset($static_image->image)}}" alt="">
                                             </td>
-                                            <td>
+                                            <td style="max-width: 280px;">
                                                 <form
                                                     action="{{ route('static_images.update', ['static_image' =>  $static_image]) }}"
                                                     method="post">
                                                     @method('PUT')
                                                     @csrf
                                                     <input type="text" name="description_image"
-                                                           value="{{$static_image->description_image}}">
+                                                           value="{{ $static_image->description_image }}"
+                                                           style="max-width: 100%; box-sizing: border-box; width: 100%;">
                                                     <button type="submit" style="border: 0">
                                                         <input type="button" class=" btn btn-3d btn-primary"
                                                                value="Сохранить описание">

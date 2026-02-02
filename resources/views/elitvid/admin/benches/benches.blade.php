@@ -49,11 +49,11 @@
 {{--                                @if($benches_verona->isNotEmpty())--}}
                                     @foreach($benches_verona as $bench)
                                         <tr>
-                                            <td>{{$bench->name}}</td>
-                                            <td>{{ $bench->material}}</td>
-                                            <td>{{ $bench->size}}</td>
-                                            <td>{{ $bench->weight}}</td>
-                                            <td>{{ $bench->price}}</td>
+                                            <td class="admin-table-cell-truncate admin-table-cell-truncate--medium" title="{{ $bench->name }}">{{ Str::limit($bench->name, 45) }}</td>
+                                            <td class="admin-table-cell-truncate admin-table-cell-truncate--short" title="{{ $bench->material ?? '' }}">{{ Str::limit($bench->material ?? '', 30) }}</td>
+                                            <td class="admin-table-cell-truncate admin-table-cell-truncate--short" title="{{ $bench->size ?? '' }}">{{ Str::limit($bench->size ?? '', 25) }}</td>
+                                            <td class="admin-table-cell-truncate admin-table-cell-truncate--short" title="{{ $bench->weight ?? '' }}">{{ Str::limit($bench->weight ?? '', 25) }}</td>
+                                            <td class="admin-table-cell-truncate admin-table-cell-truncate--short" title="{{ $bench->price ?? '' }}">{{ Str::limit($bench->price ?? '', 25) }}</td>
                                             <td>{{$bench->created_at}}</td>
                                             <td>{{$bench->updated_at}}</td>
                                             <td>
@@ -109,11 +109,11 @@
                                 @if($benches_stones->isNotEmpty())
                                     @foreach($benches_stones as $bench)
                                         <tr>
-                                            <td>{{$bench->name}}</td>
-                                            <td>{{ $bench->material}}</td>
-                                            <td>{{ $bench->size}}</td>
-                                            <td>{{ $bench->weight}}</td>
-                                            <td>{{ $bench->price}}</td>
+                                            <td class="admin-table-cell-truncate admin-table-cell-truncate--medium" title="{{ $bench->name }}">{{ Str::limit($bench->name, 45) }}</td>
+                                            <td class="admin-table-cell-truncate admin-table-cell-truncate--short" title="{{ $bench->material ?? '' }}">{{ Str::limit($bench->material ?? '', 30) }}</td>
+                                            <td class="admin-table-cell-truncate admin-table-cell-truncate--short" title="{{ $bench->size ?? '' }}">{{ Str::limit($bench->size ?? '', 25) }}</td>
+                                            <td class="admin-table-cell-truncate admin-table-cell-truncate--short" title="{{ $bench->weight ?? '' }}">{{ Str::limit($bench->weight ?? '', 25) }}</td>
+                                            <td class="admin-table-cell-truncate admin-table-cell-truncate--short" title="{{ $bench->price ?? '' }}">{{ Str::limit($bench->price ?? '', 25) }}</td>
                                             <td>{{$bench->created_at}}</td>
                                             <td>{{$bench->updated_at}}</td>
                                             <td>
@@ -169,11 +169,11 @@
                                 @if($benches_solo->isNotEmpty())
                                     @foreach($benches_solo as $bench)
                                         <tr>
-                                            <td>{{$bench->name}}</td>
-                                            <td>{{ $bench->material}}</td>
-                                            <td>{{ $bench->size}}</td>
-                                            <td>{{ $bench->weight}}</td>
-                                            <td>{{ $bench->price}}</td>
+                                            <td class="admin-table-cell-truncate admin-table-cell-truncate--medium" title="{{ $bench->name }}">{{ Str::limit($bench->name, 45) }}</td>
+                                            <td class="admin-table-cell-truncate admin-table-cell-truncate--short" title="{{ $bench->material ?? '' }}">{{ Str::limit($bench->material ?? '', 30) }}</td>
+                                            <td class="admin-table-cell-truncate admin-table-cell-truncate--short" title="{{ $bench->size ?? '' }}">{{ Str::limit($bench->size ?? '', 25) }}</td>
+                                            <td class="admin-table-cell-truncate admin-table-cell-truncate--short" title="{{ $bench->weight ?? '' }}">{{ Str::limit($bench->weight ?? '', 25) }}</td>
+                                            <td class="admin-table-cell-truncate admin-table-cell-truncate--short" title="{{ $bench->price ?? '' }}">{{ Str::limit($bench->price ?? '', 25) }}</td>
                                             <td>{{$bench->created_at}}</td>
                                             <td>{{$bench->updated_at}}</td>
                                             <td>
@@ -229,11 +229,11 @@
                                 @if($benches_lines->isNotEmpty())
                                     @foreach($benches_lines as $bench)
                                         <tr>
-                                            <td>{{$bench->name}}</td>
-                                            <td>{{ $bench->material}}</td>
-                                            <td>{{ $bench->size}}</td>
-                                            <td>{{ $bench->weight}}</td>
-                                            <td>{{ $bench->price}}</td>
+                                            <td class="admin-table-cell-truncate admin-table-cell-truncate--medium" title="{{ $bench->name }}">{{ Str::limit($bench->name, 45) }}</td>
+                                            <td class="admin-table-cell-truncate admin-table-cell-truncate--short" title="{{ $bench->material ?? '' }}">{{ Str::limit($bench->material ?? '', 30) }}</td>
+                                            <td class="admin-table-cell-truncate admin-table-cell-truncate--short" title="{{ $bench->size ?? '' }}">{{ Str::limit($bench->size ?? '', 25) }}</td>
+                                            <td class="admin-table-cell-truncate admin-table-cell-truncate--short" title="{{ $bench->weight ?? '' }}">{{ Str::limit($bench->weight ?? '', 25) }}</td>
+                                            <td class="admin-table-cell-truncate admin-table-cell-truncate--short" title="{{ $bench->price ?? '' }}">{{ Str::limit($bench->price ?? '', 25) }}</td>
                                             <td>{{$bench->created_at}}</td>
                                             <td>{{$bench->updated_at}}</td>
                                             <td>
@@ -289,11 +289,11 @@
                                 @if($benches_street_furniture->isNotEmpty())
                                     @foreach($benches_street_furniture as $bench)
                                         <tr>
-                                            <td>{{$bench->name}}</td>
-                                            <td>{{ $bench->material}}</td>
-                                            <td>{{ $bench->size}}</td>
-                                            <td>{{ $bench->weight}}</td>
-                                            <td>{{ $bench->price}}</td>
+                                            <td class="admin-table-cell-truncate admin-table-cell-truncate--medium" title="{{ $bench->name }}">{{ Str::limit($bench->name, 45) }}</td>
+                                            <td class="admin-table-cell-truncate admin-table-cell-truncate--short" title="{{ $bench->material ?? '' }}">{{ Str::limit($bench->material ?? '', 30) }}</td>
+                                            <td class="admin-table-cell-truncate admin-table-cell-truncate--short" title="{{ $bench->size ?? '' }}">{{ Str::limit($bench->size ?? '', 25) }}</td>
+                                            <td class="admin-table-cell-truncate admin-table-cell-truncate--short" title="{{ $bench->weight ?? '' }}">{{ Str::limit($bench->weight ?? '', 25) }}</td>
+                                            <td class="admin-table-cell-truncate admin-table-cell-truncate--short" title="{{ $bench->price ?? '' }}">{{ Str::limit($bench->price ?? '', 25) }}</td>
                                             <td>{{$bench->created_at}}</td>
                                             <td>{{$bench->updated_at}}</td>
                                             <td>

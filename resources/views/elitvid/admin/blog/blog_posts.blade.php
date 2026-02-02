@@ -68,34 +68,22 @@
                                                     </div>
                                                 @endif
                                             </td>
-                                            <td>
-                                                <strong>{{ $blog_post->title }}</strong>
-                                                @if(strlen($blog_post->title) > 50)
-                                                    <br><small class="text-muted">{{ Str::limit($blog_post->title, 50) }}...</small>
-                                                @endif
+                                            <td class="admin-table-cell-truncate admin-table-cell-truncate--medium" title="{{ $blog_post->title }}">
+                                                <strong>{{ Str::limit($blog_post->title, 45) }}</strong>
                                             </td>
-                                            <td>
-                                                {{ Str::limit($blog_post->description, 100) }}
-                                                @if(strlen($blog_post->description) > 100)
-                                                    <span class="text-muted">...</span>
-                                                @endif
+                                            <td class="admin-table-cell-truncate admin-table-cell-truncate--long" title="{{ strip_tags($blog_post->description) }}">
+                                                {{ Str::limit(strip_tags($blog_post->description), 60) }}
                                             </td>
-                                            <td>
+                                            <td class="admin-table-cell-truncate admin-table-cell-truncate--medium" title="{{ $blog_post->meta_title ?? '' }}">
                                                 @if($blog_post->meta_title)
-                                                    {{ Str::limit($blog_post->meta_title, 80) }}
-                                                    @if(strlen($blog_post->meta_title) > 80)
-                                                        <span class="text-muted">...</span>
-                                                    @endif
+                                                    {{ Str::limit($blog_post->meta_title, 50) }}
                                                 @else
                                                     <span class="text-muted">—</span>
                                                 @endif
                                             </td>
-                                            <td>
+                                            <td class="admin-table-cell-truncate admin-table-cell-truncate--medium" title="{{ $blog_post->meta_description ?? '' }}">
                                                 @if($blog_post->meta_description)
-                                                    {{ Str::limit($blog_post->meta_description, 100) }}
-                                                    @if(strlen($blog_post->meta_description) > 100)
-                                                        <span class="text-muted">...</span>
-                                                    @endif
+                                                    {{ Str::limit($blog_post->meta_description, 50) }}
                                                 @else
                                                     <span class="text-muted">—</span>
                                                 @endif
