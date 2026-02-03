@@ -43,9 +43,8 @@
                                                     <input type="text" name="description_image"
                                                            value="{{ $static_image->description_image }}"
                                                            style="max-width: 100%; box-sizing: border-box; width: 100%;">
-                                                    <button type="submit" style="border: 0">
-                                                        <input type="button" class=" btn btn-3d btn-primary"
-                                                               value="Сохранить описание">
+                                                    <button type="submit" class="btn btn-3d btn-primary">
+                                                        Сохранить описание
                                                     </button>
                                                 </form>
                                             </td>
@@ -57,9 +56,8 @@
                                                     method="post">
                                                     @method('DELETE')
                                                     @csrf
-                                                    <button type="submit" style="border: 0">
-                                                        <input type="button" class="btn btn-3d btn-danger"
-                                                               value="Удалить">
+                                                    <button type="submit" class="btn btn-3d btn-danger">
+                                                        Удалить
                                                     </button>
                                                 </form>
                                             </td>

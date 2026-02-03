@@ -8,6 +8,7 @@ use App\Models\Blog;
 use App\Models\Gallery;
 use App\Models\GalleryImage;
 use App\Models\Image;
+use App\Models\PageContent;
 use App\Models\Product;
 use App\Models\StaticImages;
 use App\Models\StaticPage;
@@ -29,6 +30,7 @@ class AdminController extends Controller
             'gallery_images' => GalleryImage::count(),
             'product_images' => Image::whereHasMorph('imageable', [Product::class])->count(),
             'static_pages' => StaticPage::count(),
+            'page_contents' => PageContent::count(),
             'static_images' => StaticImages::count(),
         ];
 

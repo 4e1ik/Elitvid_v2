@@ -15,11 +15,9 @@
                     </p>
 
                     <ul class="nav navbar-nav" style="margin-top: 15px;">
-                        <li><a href="{{route('admin_blog')}}" ><span class="fa fa-file-text"></span> Блог</a></li>
-                        <li><a href="{{route('admin_benches_verona')}}" ><span class="fa fa-cube"></span> Скамейки</a></li>
-                        <li><a href="{{route('admin_round_pots')}}" ><span class="fa fa-cube"></span> Кашпо</a></li>
-                        <li><a href="{{route('admin_page_contents.index')}}" ><span class="fa fa-picture-o"></span> Галереи</a></li>
-                        <li><a href="{{route('admin_static_images', 'index')}}" ><span class="fa fa-image"></span> Статические изображения</a></li>
+                        <li><a href="{{ route('admin_blog') }}"><span class="fa fa-file-text"></span> Блог</a></li>
+                        <li><a href="{{ route('admin_page_contents.index') }}"><span class="fa fa-file-text-o"></span> Контент страниц</a></li>
+                        <li><a href="{{ route('static_pages.index') }}"><span class="fa fa-files-o"></span> Статические страницы</a></li>
                     </ul>
                 </div>
             </div>
@@ -30,7 +28,7 @@
                 <div class="col-md-8 padding-0">
                     <div class="col-md-12 padding-0">
                         <div class="col-md-6">
-                            <a href="{{route('admin_blog')}}" style="text-decoration: none; color: inherit;">
+                            <a href="{{ route('admin_blog') }}" style="text-decoration: none; color: inherit;">
                                 <div class="panel box-v1" style="cursor: pointer; transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
                                 <div class="panel-heading bg-white border-none">
                                     <div class="col-md-6 col-sm-6 col-xs-6 text-left padding-0">
@@ -43,16 +41,15 @@
                                     </div>
                                 </div>
                                 <div class="panel-body text-center">
-                                        <h1>{{$stats['blog_posts']}}</h1>
-                                        <p>Всего постов ({{$stats['active_blog_posts']}} активных)</p>
+                                        <h1>{{ $stats['blog_posts'] }}</h1>
+                                        <p>Всего постов ({{ $stats['active_blog_posts'] }} активных)</p>
                                     <hr/>
                                 </div>
                             </div>
                             </a>
                         </div>
                         <div class="col-md-6">
-                            <a href="{{route('admin_benches_verona')}}" style="text-decoration: none; color: inherit;">
-                                <div class="panel box-v1" style="cursor: pointer; transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
+                            <div class="panel box-v1" style="transition: transform 0.2s;">
                                 <div class="panel-heading bg-white border-none">
                                     <div class="col-md-6 col-sm-6 col-xs-6 text-left padding-0">
                                             <h4 class="text-left">Продукты</h4>
@@ -64,52 +61,51 @@
                                     </div>
                                 </div>
                                 <div class="panel-body text-center">
-                                        <h1>{{$stats['products']}}</h1>
-                                        <p>Всего продуктов ({{$stats['active_products']}} активных)</p>
+                                        <h1>{{ $stats['products'] }}</h1>
+                                        <p>Всего продуктов ({{ $stats['active_products'] }} активных)</p>
                                         <hr/>
                                     </div>
                                 </div>
-                            </a>
                         </div>
                     </div>
                     <div class="col-md-12 padding-0" style="margin-top: 20px;">
                         <div class="col-md-6">
-                            <a href="{{route('admin_page_contents.index')}}" style="text-decoration: none; color: inherit;">
+                            <a href="{{ route('admin_page_contents.index') }}" style="text-decoration: none; color: inherit;">
                                 <div class="panel box-v1" style="cursor: pointer; transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
                                     <div class="panel-heading bg-white border-none">
                                         <div class="col-md-6 col-sm-6 col-xs-6 text-left padding-0">
-                                            <h4 class="text-left">Изображения</h4>
+                                            <h4 class="text-left">Страницы (контент)</h4>
                                         </div>
                                         <div class="col-md-6 col-sm-6 col-xs-6 text-right">
                                             <h4>
-                                                <span class="icon-picture icons icon text-right"></span>
+                                                <span class="icon-doc icons icon text-right"></span>
                                             </h4>
                                         </div>
                                     </div>
                                     <div class="panel-body text-center">
-                                        <h1>{{$stats['galleries']}}</h1>
-                                        <p>Галерей изображений</p>
+                                        <h1>{{ $stats['page_contents'] }}</h1>
+                                        <p>Статические страницы, которые нельзя создать</p>
                                     <hr/>
                                 </div>
                             </div>
                             </a>
                         </div>
                         <div class="col-md-6">
-                            <a href="{{route('admin_static_images', 'index')}}" style="text-decoration: none; color: inherit;">
+                            <a href="{{ route('static_pages.index') }}" style="text-decoration: none; color: inherit;">
                                 <div class="panel box-v1" style="cursor: pointer; transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
                                     <div class="panel-heading bg-white border-none">
                                         <div class="col-md-6 col-sm-6 col-xs-6 text-left padding-0">
-                                            <h4 class="text-left">Изображения</h4>
+                                            <h4 class="text-left">Статические страницы</h4>
                                         </div>
                                         <div class="col-md-6 col-sm-6 col-xs-6 text-right">
                                             <h4>
-                                                <span class="icon-camera icons icon text-right"></span>
+                                                <span class="icon-folder icons icon text-right"></span>
                                             </h4>
                                         </div>
                                     </div>
                                     <div class="panel-body text-center">
-                                        <h1>{{$stats['gallery_images'] + $stats['product_images'] + $stats['static_images']}}</h1>
-                                        <p>Всего изображений</p>
+                                        <h1>{{ $stats['static_pages'] }}</h1>
+                                        <p>Статические страницы, которые можно создать</p>
                                         <hr/>
                                     </div>
                                 </div>
@@ -184,9 +180,6 @@
                                     $active_products = $stats['active_products'];
                                     $products_percent = $total_products > 0 ? round(($active_products / $total_products) * 100) : 0;
                                     
-                                    $total_images = $stats['gallery_images'] + $stats['product_images'] + $stats['static_images'];
-                                    $images_percent = $total_images > 0 ? min(100, round(($total_images / 1000) * 100)) : 0;
-                                    
                                     $blog_percent = $stats['blog_posts'] > 0 ? min(100, round(($stats['active_blog_posts'] / $stats['blog_posts']) * 100)) : 0;
                                 @endphp
 
@@ -207,21 +200,6 @@
 
                                 <div class="media">
                                     <div class="media-left">
-                                        <span class="icon-camera icons" style="font-size:2em;"></span>
-                                    </div>
-                                    <div class="media-body">
-                                        <h5 class="media-heading">Изображения</h5>
-                                        <div class="progress progress-mini">
-                                            <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="{{$images_percent}}" aria-valuemin="0" aria-valuemax="100" style="width: {{$images_percent}}%;">
-                                                <span class="sr-only">{{$images_percent}}%</span>
-                                            </div>
-                                        </div>
-                                        <small>{{$total_images}} изображений</small>
-                                    </div>
-                                </div>
-
-                                <div class="media">
-                                    <div class="media-left">
                                         <span class="icon-notebook icons" style="font-size:2em;"></span>
                                     </div>
                                     <div class="media-body">
@@ -232,21 +210,6 @@
                                             </div>
                                         </div>
                                         <small>{{$stats['active_blog_posts']}} из {{$stats['blog_posts']}}</small>
-                                    </div>
-                                </div>
-
-                                <div class="media">
-                                    <div class="media-left">
-                                        <span class="icon-picture icons" style="font-size:2em;"></span>
-                                    </div>
-                                    <div class="media-body">
-                                        <h5 class="media-heading">Изображения</h5>
-                                        <div class="progress progress-mini">
-                                            <div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
-                                                <span class="sr-only">100%</span>
-                                            </div>
-                                        </div>
-                                        <small>{{$stats['galleries']}} галерей</small>
                                     </div>
                                 </div>
 
