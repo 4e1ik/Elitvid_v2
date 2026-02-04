@@ -319,6 +319,8 @@ header.open .header__burger span:nth-child(3) {
 }
 .popup .textarea {
   margin-top: 0.5em;
+  overflow-y: scroll;
+  resize: none;
 }
 .popup textarea {
   color: #FFFFFF;
@@ -805,14 +807,14 @@ main .produce a button {
   color: #FFFFFF;
   margin-top: 1.5em;
   width: 22.9375em;
-  height: 3.875em;
-  padding: 0.625em 0;
+  padding: 1em;
   border-radius: 8px;
   border: 1px solid #979797;
   background: #22242A;
   cursor: pointer;
   transition: 0.2s;
   text-transform: uppercase;
+  word-break: break-word;
 }
 main .produce a button:hover {
   background-color: #FFFFFF;

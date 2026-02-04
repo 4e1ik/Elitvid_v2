@@ -426,6 +426,8 @@ header.open .header__burger span:nth-child(3) {
 
     .textarea {
         margin-top: 0.5em;
+        overflow-y: scroll;
+        resize: none;
     }
 
     textarea {
@@ -1043,14 +1045,14 @@ main {
                 color: $text--color;
                 margin-top: 1.5em;
                 width: 22.9375em;
-                height: 3.875em;
-                padding: 0.625em 0;
+                padding: 1em;
                 border-radius: $button--radius;
                 border: 1px solid $stroke-main--color;
                 background: $background-input--color;
                 cursor: pointer;
                 transition: $transition-duration;
                 text-transform: uppercase;
+                word-break: break-word;
             }
 
             button:hover {

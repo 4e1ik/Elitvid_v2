@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="yandex-verification" content="3d561315259a84fe"/>
     <!-- Preload критических ресурсов -->
-    <link rel="preload" href="{{asset('/elitvid_assets/newDesign/newDesign/style.css')}}?v=1.6" as="style">
+    <link rel="preload" href="{{asset('/elitvid_assets/newDesign/newDesign/style.css')}}?v=1.7" as="style">
     <link rel="preload" href="{{asset('/elitvid_assets/newDesign/newDesign/imgs/logo/logo.svg')}}" as="image">
     <link rel="stylesheet" href="{{asset('/elitvid_assets/newDesign/newDesign/reset.css')}}">
     {{--    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>--}}
