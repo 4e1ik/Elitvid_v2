@@ -32,7 +32,7 @@ class MailController extends Controller
     {
         try {
             $data = $mailRequest->all();
-            $mail = 'Artemi324@tut.by';
+            $mail = 'el_vid@mail.ru';
 
             if ($mailRequest->hasFile('file')) {
                 $name = $mailRequest->file('file')->getClientOriginalName();
