@@ -24,7 +24,6 @@
                                     <th>Описание</th>
                                     <th>Время создания</th>
                                     <th>Время редактирования</th>
-                                    <th>Удалить</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -50,17 +49,6 @@
                                             </td>
                                             <td>{{$static_image->created_at}}</td>
                                             <td>{{$static_image->updated_at}}</td>
-                                            <td>
-                                                <form
-                                                    action="{{ route('static_images.destroy', ['static_image' => $static_image]) }}"
-                                                    method="post">
-                                                    @method('DELETE')
-                                                    @csrf
-                                                    <button type="submit" class="btn btn-3d btn-danger">
-                                                        Удалить
-                                                    </button>
-                                                </form>
-                                            </td>
                                         </tr>
                                 @endforeach
                                 </tbody>
