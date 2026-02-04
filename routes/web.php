@@ -4,7 +4,6 @@ use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\Auth\LoginController;
 use App\Http\Controllers\Admin\Auth\RegisterController;
 use App\Http\Controllers\Admin\BlogController;
-use App\Http\Controllers\Admin\GalleryController;
 use App\Http\Controllers\Admin\MailController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\StaticImagesController;
@@ -158,7 +157,6 @@ Route::middleware('auth')->where([])->prefix('admin')->group(function () {
     Route::put('/page-contents/{pageContent}/images/{imageId}/description', [\App\Http\Controllers\Admin\PageContentController::class, 'updateImageDescription'])->name('admin_page_contents.update_image_description');
 
     Route::resources([
-        'galleries' => GalleryController::class,
         'blogs' => BlogController::class,
         'static_images' => StaticImagesController::class,
         'static_pages' => AdminStaticPageController::class,

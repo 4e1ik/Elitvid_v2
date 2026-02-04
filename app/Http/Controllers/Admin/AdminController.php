@@ -12,6 +12,9 @@ use App\Models\PageContent;
 use App\Models\Product;
 use App\Models\StaticImages;
 use App\Models\StaticPage;
+use App\Models\Mail;
+use App\Models\Bench;
+use App\Models\Pot;
 
 class AdminController extends Controller
 {
@@ -30,39 +33,82 @@ class AdminController extends Controller
             'gallery_images' => GalleryImage::count(),
             'product_images' => Image::whereHasMorph('imageable', [Product::class])->count(),
             'static_pages' => StaticPage::count(),
+            'active_static_pages' => StaticPage::where('active', 1)->count(),
             'page_contents' => PageContent::count(),
             'static_images' => StaticImages::count(),
         ];
 
-        $recent_blogs = Blog::latest()->take(5)->get();
+        // История последних действий: посты блога, страницы, продукты
+        $recent_activity = collect()
+            ->merge(
+                Blog::latest()->take(5)->get()->map(fn ($item) => (object)[
+                    'type_label' => 'Пост блога',
+                    'type' => 'blog',
+                    'title' => $item->title,
+                    'excerpt' => $item->description ?? '',
+                    'created_at' => $item->created_at,
+                    'active' => (bool) $item->active,
+                    'edit_url' => route('blogs.edit', $item),
+                ])
+            )
+            ->merge(
+                StaticPage::latest()->take(5)->get()->map(fn ($item) => (object)[
+                    'type_label' => 'Страница',
+                    'type' => 'static_page',
+                    'title' => $item->title ?? $item->slug,
+                    'excerpt' => \Illuminate\Support\Str::limit(strip_tags($item->subtitle ?? $item->content ?? ''), 100),
+                    'created_at' => $item->created_at,
+                    'active' => (bool) $item->active,
+                    'edit_url' => route('static_pages.edit', $item),
+                ])
+            )
+            ->merge(
+                Product::latest()->take(5)->get()->map(fn ($item) => (object)[
+                    'type_label' => 'Продукт',
+                    'type' => 'product',
+                    'title' => $item->name,
+                    'excerpt' => \Illuminate\Support\Str::limit($item->meta_description ?? '', 100),
+                    'created_at' => $item->created_at,
+                    'active' => (bool) $item->active,
+                    'edit_url' => route('products.edit', $item),
+                ])
+            )
+            ->sortByDesc(fn ($item) => $item->created_at)
+            ->take(12)
+            ->values();
 
-        // Данные для графиков - последние 6 месяцев
-        $months = [];
-        $blog_data = [];
-        $products_data = [];
-        $images_data = [];
-
-        for ($i = 5; $i >= 0; $i--) {
-            $date = now()->subMonths($i);
-            $monthName = $date->format('M');
-            $months[] = $monthName;
-
-            $startOfMonth = $date->copy()->startOfMonth();
-            $endOfMonth = $date->copy()->endOfMonth();
-
-            $blog_data[] = Blog::whereBetween('created_at', [$startOfMonth, $endOfMonth])->count();
-            $products_data[] = Product::whereBetween('created_at', [$startOfMonth, $endOfMonth])->count();
-            $images_data[] = GalleryImage::whereBetween('created_at', [$startOfMonth, $endOfMonth])->count() +
-                            Image::whereHasMorph('imageable', [Product::class])
-                                ->whereBetween('created_at', [$startOfMonth, $endOfMonth])->count();
+        // Данные для графика заявок по неделям (последние 8 недель)
+        $weeks_labels = [];
+        $mails_per_week = [];
+        for ($i = 7; $i >= 0; $i--) {
+            $weekStart = now()->subWeeks($i)->startOfWeek();
+            $weekEnd = $weekStart->copy()->endOfWeek();
+            $weeks_labels[] = $weekStart->format('d.m');
+            $mails_per_week[] = Mail::whereBetween('created_at', [$weekStart, $weekEnd])->count();
         }
+
+        // Топ коллекций по количеству продуктов (скамейки + кашпо)
+        $bench_collections = Bench::selectRaw('collection, count(*) as total')
+            ->groupBy('collection')
+            ->get()
+            ->mapWithKeys(fn ($r) => [$r->collection ?: '—' => $r->total]);
+        $pot_collections = Pot::selectRaw('collection, count(*) as total')
+            ->groupBy('collection')
+            ->get()
+            ->mapWithKeys(fn ($r) => [$r->collection ?: '—' => $r->total]);
+        $all_collection_names = $bench_collections->keys()->merge($pot_collections->keys())->unique()->values();
+        $collections_combined = $all_collection_names->map(function ($name) use ($bench_collections, $pot_collections) {
+            return ['name' => $name, 'total' => ($bench_collections[$name] ?? 0) + ($pot_collections[$name] ?? 0)];
+        })->sortByDesc('total')->values();
+        $collections_labels = $collections_combined->pluck('name')->all();
+        $collections_data = $collections_combined->pluck('total')->all();
 
         // Данные для круговой диаграммы (распределение по типам)
         $chart_data = [
-            'months' => $months,
-            'blog' => $blog_data,
-            'products' => $products_data,
-            'images' => $images_data,
+            'weeks' => $weeks_labels,
+            'mails_per_week' => $mails_per_week,
+            'collections_labels' => $collections_labels,
+            'collections_data' => $collections_data,
             'distribution' => [
                 'blog' => $stats['blog_posts'],
                 'products' => $stats['products'],
@@ -72,7 +118,7 @@ class AdminController extends Controller
             ]
         ];
 
-            return WebResponse::success(view('elitvid.admin.admin', compact('stats', 'recent_blogs', 'chart_data')));
+            return WebResponse::success(view('elitvid.admin.admin', compact('stats', 'recent_activity', 'chart_data')));
         } catch (\Exception $e) {
             return WebResponse::error($e, true);
         }
@@ -91,15 +137,16 @@ class AdminController extends Controller
         try {
             $route_name = $route;
 
-            if ($route_name == 'gallery'){
-                return WebResponse::success(view('includes.elitvid.admin.create_gallery', compact('route_name')));
-            } else if($route_name == 'pots'){
+            if ($route_name == 'pots'){
                 $productType = 'pot';
                 return WebResponse::success(view('includes.elitvid.admin.create_product', compact('productType')));
-            } else if($route_name == 'benches'){
+            }
+            if ($route_name == 'benches'){
                 $productType = 'bench';
                 return WebResponse::success(view('includes.elitvid.admin.create_product', compact('productType')));
             }
+
+            abort(404);
         } catch (\Exception $e) {
             return WebResponse::error($e, true);
         }

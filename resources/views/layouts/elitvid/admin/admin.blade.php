@@ -789,155 +789,83 @@
             return Math.round(Math.random() * 100);
         };
         @if(isset($chart_data))
-        var chartMonths = @json($chart_data['months']);
-        var chartBlogData = @json($chart_data['blog']);
-        var chartProductsData = @json($chart_data['products']);
-        var chartImagesData = @json($chart_data['images']);
         var chartDistribution = @json($chart_data['distribution']);
+        var chartWeeks = @json($chart_data['weeks']);
+        var chartMailsPerWeek = @json($chart_data['mails_per_week']);
+        var chartCollectionsLabels = @json($chart_data['collections_labels']);
+        var chartCollectionsData = @json($chart_data['collections_data']);
 
-        var lineChartData = {
-            labels: chartMonths,
-            datasets: [{
-                label: "Посты блога",
-                fillColor: "rgba(21,186,103,0.4)",
-                strokeColor: "rgba(21,186,103,1)",
-                pointColor: "rgba(21,186,103,1)",
-                pointStrokeColor: "#fff",
-                pointHighlightFill: "#fff",
-                pointHighlightStroke: "rgba(21,186,103,1)",
-                data: chartBlogData
-            }, {
-                label: "Продукты",
-                fillColor: "rgba(21,113,186,0.5)",
-                strokeColor: "rgba(21,113,186,1)",
-                pointColor: "rgba(21,113,186,1)",
-                pointStrokeColor: "#fff",
-                pointHighlightFill: "#fff",
-                pointHighlightStroke: "rgba(21,113,186,1)",
-                data: chartProductsData
-            }, {
-                label: "Изображения",
-                fillColor: "rgba(253,180,92,0.4)",
-                strokeColor: "rgba(253,180,92,1)",
-                pointColor: "rgba(253,180,92,1)",
-                pointStrokeColor: "#fff",
-                pointHighlightFill: "#fff",
-                pointHighlightStroke: "rgba(253,180,92,1)",
-                data: chartImagesData
-            }]
-        };
-
-        var doughnutData2 = [
-            {
-                value: chartDistribution.blog || 0,
-                color:"#129352",
-                highlight: "#15BA67",
-                label: "Блог"
-            },
-            {
-                value: chartDistribution.bench_products || 0,
-                color: "#FF6656",
-                highlight: "#FF6656",
-                label: "Скамейки"
-            },
-            {
-                value: chartDistribution.pot_products || 0,
-                color: "#FDB45C",
-                highlight: "#15BA67",
-                label: "Кашпо"
-            },
-            {
-                value: chartDistribution.galleries || 0,
-                color: "#15A65D",
-                highlight: "#15BA67",
-                label: "Галереи"
-            }
+        var pieData = [
+            { value: chartDistribution.blog || 0, color: "#129352", highlight: "#15BA67", label: "Блог" },
+            { value: chartDistribution.bench_products || 0, color: "#FF6656", highlight: "#FF6656", label: "Скамейки" },
+            { value: chartDistribution.pot_products || 0, color: "#FDB45C", highlight: "#15BA67", label: "Кашпо" }
         ];
 
-        var barChartData = {
-            labels: chartMonths,
-            datasets: [
-                {
-                    label: "Посты блога",
-                    fillColor: "rgba(21,186,103,0.4)",
-                    strokeColor: "rgba(21,186,103,0.8)",
-                    highlightFill: "rgba(21,186,103,0.2)",
-                    highlightStroke: "rgba(21,186,103,0.2)",
-                    data: chartBlogData
-                },
-                {
-                    label: "Продукты",
-                    fillColor: "rgba(21,113,186,0.5)",
-                    strokeColor: "rgba(21,113,186,0.8)",
-                    highlightFill: "rgba(21,113,186,0.2)",
-                    highlightStroke: "rgba(21,113,186,0.2)",
-                    data: chartProductsData
-                },
-                {
-                    label: "Изображения",
-                    fillColor: "rgba(253,180,92,0.4)",
-                    strokeColor: "rgba(253,180,92,0.8)",
-                    highlightFill: "rgba(253,180,92,0.2)",
-                    highlightStroke: "rgba(253,180,92,0.2)",
-                    data: chartImagesData
-                }
-            ]
+        var barMailsData = {
+            labels: chartWeeks,
+            datasets: [{
+                label: "Заявки",
+                fillColor: "rgba(21,113,186,0.6)",
+                strokeColor: "rgba(21,113,186,1)",
+                highlightFill: "rgba(21,113,186,0.4)",
+                highlightStroke: "rgba(21,113,186,1)",
+                data: chartMailsPerWeek
+            }]
+        };
+
+        var barCollectionsData = {
+            labels: chartCollectionsLabels,
+            datasets: [{
+                label: "Продуктов",
+                fillColor: "rgba(21,186,103,0.6)",
+                strokeColor: "rgba(21,186,103,1)",
+                highlightFill: "rgba(21,186,103,0.4)",
+                highlightStroke: "rgba(21,186,103,1)",
+                data: chartCollectionsData
+            }]
         };
         @else
-        var lineChartData = {
-            labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun"],
-            datasets: [{
-                label: "Посты блога",
-                fillColor: "rgba(21,186,103,0.4)",
-                strokeColor: "rgba(21,186,103,1)",
-                pointColor: "rgba(21,186,103,1)",
-                pointStrokeColor: "#fff",
-                pointHighlightFill: "#fff",
-                pointHighlightStroke: "rgba(21,186,103,1)",
-                data: [0,0,0,0,0,0]
-            }]
-        };
-        var doughnutData2 = [];
-        var barChartData = {
-            labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun"],
-            datasets: [{
-                label: "Данные",
-                fillColor: "rgba(21,186,103,0.4)",
-                strokeColor: "rgba(21,186,103,0.8)",
-                highlightFill: "rgba(21,186,103,0.2)",
-                highlightStroke: "rgba(21,186,103,0.2)",
-                data: [0,0,0,0,0,0]
-            }]
-        };
+        var pieData = [];
+        var barMailsData = { labels: [], datasets: [{ data: [] }] };
+        var barCollectionsData = { labels: [], datasets: [{ data: [] }] };
         @endif
 
         window.onload = function(){
-            if ($(".line-chart").length > 0) {
-            var ctx2 = $(".line-chart")[0].getContext("2d");
-            window.myLine = new Chart(ctx2).Line(lineChartData, {
-                responsive: true,
-                showTooltips: true,
-                multiTooltipTemplate: "<%= value %>",
-                maintainAspectRatio: false
-            });
+            if ($(".pie-chart-distribution").length > 0 && pieData.length > 0) {
+                var ctxPie = $(".pie-chart-distribution")[0].getContext("2d");
+                window.myPie = new Chart(ctxPie).Pie(pieData, {
+                    responsive: true,
+                    showTooltips: true,
+                    maintainAspectRatio: false
+                });
             }
-
-            if ($(".bar-chart").length > 0) {
-            var ctx3 = $(".bar-chart")[0].getContext("2d");
-                window.myBar = new Chart(ctx3).Bar(barChartData, {
-                responsive: true,
-                showTooltips: true
-            });
+            if ($(".bar-chart-mails").length > 0 && barMailsData.labels.length > 0) {
+                var canvasMails = $(".bar-chart-mails")[0];
+                var parentMails = canvasMails.parentNode;
+                canvasMails.width = parentMails.offsetWidth;
+                canvasMails.height = parentMails.offsetHeight;
+                window.myBarMails = new Chart(canvasMails.getContext("2d")).Bar(barMailsData, {
+                    responsive: false,
+                    showTooltips: true,
+                    maintainAspectRatio: false
+                });
             }
-
-            if ($(".doughnut-chart2").length > 0 && doughnutData2.length > 0) {
-            var ctx4 = $(".doughnut-chart2")[0].getContext("2d");
-            window.myDoughnut2 = new Chart(ctx4).Doughnut(doughnutData2, {
-                responsive : true,
-                showTooltips: true
-            });
+            if ($(".bar-chart-collections").length > 0 && barCollectionsData.labels.length > 0) {
+                var canvasColl = $(".bar-chart-collections")[0];
+                var parentColl = canvasColl.parentNode;
+                parentColl = parentColl && parentColl.offsetHeight ? parentColl : document.querySelector(".bar-chart-collections-wrapper");
+                if (parentColl) {
+                    canvasColl.width = parentColl.offsetWidth;
+                    canvasColl.height = parentColl.offsetHeight;
+                }
+                window.myBarCollections = new Chart(canvasColl.getContext("2d")).Bar(barCollectionsData, {
+                    responsive: false,
+                    showTooltips: false,
+                    barValueSpacing: 12,
+                    scaleBeginAtZero: true,
+                    maintainAspectRatio: false
+                });
             }
-
         };
 
         //  end:  Chart =============

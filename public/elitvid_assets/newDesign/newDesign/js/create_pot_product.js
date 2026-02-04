@@ -190,6 +190,16 @@ document.addEventListener('DOMContentLoaded', () => {
             // Очищаем input, чтобы можно было добавить те же файлы снова
             imagesInput.value = '';
         });
+
+        // Обновляем input перед отправкой формы, чтобы все файлы попали в форму
+        const form = imagesInput.closest('form');
+        if (form) {
+            form.addEventListener('submit', function(e) {
+                const dt = new DataTransfer();
+                imageFiles.forEach(f => dt.items.add(f));
+                imagesInput.files = dt.files;
+            });
+        }
     }
     
     if (panelBody) {

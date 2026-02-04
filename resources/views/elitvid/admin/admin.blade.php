@@ -115,25 +115,30 @@
                     <div class="col-md-12">
                         <div class="panel box-v4">
                             <div class="panel-heading bg-white border-none">
-                                <h4><span class="icon-notebook icons"></span> Последние посты блога</h4>
+                                <h4><span class="icon-notebook icons"></span> История последних действий</h4>
                             </div>
                             <div class="panel-body padding-0">
-                                @if($recent_blogs->count() > 0)
-                                    @foreach($recent_blogs as $post)
+                                @if($recent_activity->count() > 0)
+                                    @foreach($recent_activity as $item)
                                         <div class="col-md-12 col-xs-12 col-md-12 padding-0 box-v4-alert" style="border-bottom: 1px solid #eee; padding: 15px;">
-                                            <h4 style="margin-top: 0;">{{$post->title}}</h4>
-                                            <p style="margin-bottom: 5px;">{{Str::limit($post->description ?? '', 100)}}</p>
-                                            <b><span class="icon-clock icons"></span> {{$post->created_at->format('d.m.Y H:i')}}</b>
+                                            <span class="label label-info" style="font-size: 11px;">{{ $item->type_label }}</span>
+                                            <h4 style="margin-top: 8px; margin-bottom: 5px;">
+                                                <a href="{{ $item->edit_url }}">{{ $item->title }}</a>
+                                            </h4>
+                                            @if($item->excerpt)
+                                                <p style="margin-bottom: 5px; font-size: 13px; color: #666;">{{ Str::limit($item->excerpt, 100) }}</p>
+                                            @endif
+                                            <b><span class="icon-clock icons"></span> {{ $item->created_at->format('d.m.Y H:i') }}</b>
                                             <span class="pull-right">
-                                                <span class="label {{$post->active ? 'label-success' : 'label-default'}}">
-                                                    {{$post->active ? 'Активен' : 'Неактивен'}}
+                                                <span class="label {{ $item->active ? 'label-success' : 'label-default' }}">
+                                                    {{ $item->active ? 'Активен' : 'Неактивен' }}
                                                 </span>
                                             </span>
                                         </div>
                                     @endforeach
                                 @else
                                 <div class="col-md-12 col-xs-12 col-md-12 padding-0 box-v4-alert">
-                                        <p>Нет постов в блоге</p>
+                                        <p>Нет недавних записей</p>
                                 </div>
                                 @endif
                             </div>
@@ -152,17 +157,13 @@
                             </div>
                             <div class="panel-body">
                                 <div class="col-md-12 padding-0 text-center">
-                                    <div class="col-md-4 col-sm-4 col-xs-6 padding-0">
-                                        <h3>{{$stats['blog_posts']}}</h3>
+                                    <div class="col-md-6 col-sm-6 col-xs-6 padding-0">
+                                        <h3>{{ $stats['blog_posts'] }}</h3>
                                         <p>Постов</p>
                                     </div>
-                                    <div class="col-md-4 col-sm-4 col-xs-6 padding-0">
-                                        <h3>{{$stats['products']}}</h3>
+                                    <div class="col-md-6 col-sm-6 col-xs-6 padding-0">
+                                        <h3>{{ $stats['products'] }}</h3>
                                         <p>Продуктов</p>
-                                    </div>
-                                    <div class="col-md-4 col-sm-4 col-xs-12 padding-0">
-                                        <h3>{{$stats['gallery_images'] + $stats['product_images']}}</h3>
-                                        <p>Изображений</p>
                                     </div>
                                 </div>
                             </div>
@@ -230,30 +231,6 @@
                             </div>
                         </div>
                     </div>
-
-                    <div class="col-md-12 padding-0">
-                        <div class="panel bg-light-blue">
-                            <div class="panel-body text-white">
-                                <h4 class="animated fadeInUp" style="color: white; margin-top: 0;">
-                                    <span class="fa fa-info-circle fa-2x"></span> Информация о системе
-                                </h4>
-                                <div class="col-md-12 padding-0" style="margin-top: 15px;">
-                                    <div class="col-md-4 col-sm-4 col-xs-12 text-center" style="padding: 10px;">
-                                        <h3 style="color: white; margin: 0;">{{$stats['static_pages']}}</h3>
-                                        <small style="color: rgba(255,255,255,0.8);">Статических страниц</small>
-                                    </div>
-                                    <div class="col-md-4 col-sm-4 col-xs-12 text-center" style="padding: 10px;">
-                                        <h3 style="color: white; margin: 0;">{{$stats['static_images']}}</h3>
-                                        <small style="color: rgba(255,255,255,0.8);">Статических изображений</small>
-                                    </div>
-                                    <div class="col-md-4 col-sm-4 col-xs-12 text-center" style="padding: 10px;">
-                                        <h3 style="color: white; margin: 0;">{{now()->format('d.m.Y')}}</h3>
-                                        <small style="color: rgba(255,255,255,0.8);">Сегодня</small>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
 
@@ -261,28 +238,13 @@
                 <div class="col-md-6">
                     <div class="panel">
                         <div class="panel-heading bg-white border-none" style="padding:20px;">
-                            <div class="col-md-6 col-sm-6 col-sm-12 text-left">
-                                <h4>Динамика создания контента</h4>
-                            </div>
+                            <h4>Распределение контента</h4>
                         </div>
-                        <div class="panel-body" style="padding-bottom:50px;">
-                            <div id="canvas-holder1">
-                                <canvas class="line-chart" style="margin-top:30px;height:200px;"></canvas>
+                        <div class="panel-body" style="padding-bottom:30px;">
+                            <div class="text-center" style="max-width: 280px; margin: 0 auto;">
+                                <canvas class="pie-chart-distribution" style="height: 260px;"></canvas>
                             </div>
-                            <div class="col-md-12" style="padding-top:20px;">
-                                <div class="col-md-4 col-sm-4 col-xs-6 text-center">
-                                    <h2 style="line-height:.4;">{{$stats['blog_posts']}}</h2>
-                                    <small>Постов блога</small>
-                                </div>
-                                <div class="col-md-4 col-sm-4 col-xs-6 text-center">
-                                    <h2 style="line-height:.4;">{{$stats['products']}}</h2>
-                                    <small>Продуктов</small>
-                                </div>
-                                <div class="col-md-4 col-sm-4 col-xs-12 text-center">
-                                    <h2 style="line-height:.4;">{{$stats['gallery_images'] + $stats['product_images']}}</h2>
-                                    <small>Изображений</small>
-                                </div>
-                            </div>
+                            <p class="text-muted text-center" style="margin-top: 10px; font-size: 13px;">Блог: {{ $stats['blog_posts'] }}, Скамейки: {{ $stats['bench_products'] }}, Кашпо: {{ $stats['pot_products'] }}</p>
                         </div>
                     </div>
                 </div>
@@ -290,28 +252,24 @@
                 <div class="col-md-6">
                     <div class="panel">
                         <div class="panel-heading bg-white border-none" style="padding:20px;">
-                            <div class="col-md-6 col-sm-6 col-sm-12 text-left">
-                                <h4>Статистика по месяцам</h4>
+                            <h4>Заявки с сайта по неделям</h4>
+                        </div>
+                        <div class="panel-body" style="padding-bottom:30px;">
+                            <div style="height: 260px;">
+                                <canvas class="bar-chart-mails"></canvas>
                             </div>
                         </div>
-                        <div class="panel-body" style="padding-bottom:50px;">
-                            <div id="canvas-holder1">
-                                <canvas class="bar-chart"></canvas>
-                            </div>
-                            <div class="col-md-12 padding-0" >
-                                <div class="col-md-4 col-sm-4 hidden-xs" style="padding-top:20px;">
-                                    <canvas class="doughnut-chart2"></canvas>
-                                </div>
-                                <div class="col-md-8 col-sm-8 col-xs-12">
-                                    <h4>Распределение контента</h4>
-                                    <p>Общее количество контента по категориям</p>
-                                    <div class="progress progress-mini">
-                                        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="{{round(($stats['blog_posts'] / max(1, $stats['blog_posts'] + $stats['products'] + $stats['galleries'])) * 100)}}" aria-valuemin="0" aria-valuemax="100" style="width: {{round(($stats['blog_posts'] / max(1, $stats['blog_posts'] + $stats['products'] + $stats['galleries'])) * 100)}}%;">
-                                            <span class="sr-only">{{round(($stats['blog_posts'] / max(1, $stats['blog_posts'] + $stats['products'] + $stats['galleries'])) * 100)}}%</span>
-                                        </div>
-                                    </div>
-                                    <small>Блог: {{$stats['blog_posts']}}, Продукты: {{$stats['products']}}, Галереи: {{$stats['galleries']}}</small>
-                                </div>
+                    </div>
+                </div>
+
+                <div class="col-md-12">
+                    <div class="panel">
+                        <div class="panel-heading bg-white border-none" style="padding:20px;">
+                            <h4>Топ коллекций по количеству продуктов</h4>
+                        </div>
+                        <div class="panel-body" style="padding-bottom:30px;">
+                            <div class="bar-chart-collections-wrapper" style="height: 280px; width: 100%; position: relative; overflow: hidden;">
+                                <canvas class="bar-chart-collections"></canvas>
                             </div>
                         </div>
                     </div>
