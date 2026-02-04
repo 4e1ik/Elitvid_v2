@@ -108,6 +108,7 @@ Route::post('/registration', [RegisterController::class, 'registration'])->name(
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
 Route::post('/send_mail', [MailController::class, 'send'])->name('send_mail');
+Route::get('/mails', [MailController::class, 'index'])->name('admin_mails.index');
 
 
 

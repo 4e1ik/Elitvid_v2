@@ -151,6 +151,7 @@
                 <li><a href="{{route('admin_page_contents.index')}}"><span class="fa fa-file-text-o"></span>Контент страниц</a></li>
                 <li><a href="{{route('static_pages.index')}}"><span class="fa fa-file-text"></span>Статические страницы</a></li>
                 <li><a href="{{route('admin_blog')}}"><span class="fa fa-newspaper-o"></span>Блог</a></li>
+                <li><a href="{{route('admin_mails.index')}}"><span class="fa fa-envelope-o"></span> Письма</a></li>
             </ul>
         </div>
     </div>
@@ -697,6 +698,7 @@
                 <li><a href="{{route('admin_page_contents.index')}}"><span class="fa fa-file-text-o"></span>Контент страниц</a></li>
                 <li><a href="{{route('static_pages.index')}}"><span class="fa fa-file-text"></span>Статические страницы</a></li>
                 <li><a href="{{route('admin_blog')}}"><span class="fa fa-newspaper-o"></span>Блог</a></li>
+                <li><a href="{{route('admin_mails.index')}}"><span class="fa fa-envelope-o"></span> Письма</a></li>
 
             </ul>
         </div>
