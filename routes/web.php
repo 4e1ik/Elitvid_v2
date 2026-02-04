@@ -5,10 +5,11 @@ use App\Http\Controllers\Admin\Auth\LoginController;
 use App\Http\Controllers\Admin\Auth\RegisterController;
 use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\MailController;
+use App\Http\Controllers\Admin\PageContentController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\StaticImagesController;
 use App\Http\Controllers\StaticPagesController;
-use App\Http\Controllers\Admin\StaticPageController as AdminStaticPageController;
+use App\Http\Controllers\Admin\StaticPageController;
 use \App\Http\Controllers\Admin\PotController as AdminPotController;
 use \App\Http\Controllers\Admin\BenchController as AdminBenchController;
 
@@ -130,11 +131,7 @@ Route::middleware('auth')->where([])->prefix('admin')->group(function () {
         Route::get('/square_pots', [AdminPotController::class, 'square_pots'])->name('admin_square_pots');
     });
 
-    // Примеры работ в панели администратора
-
-    /*
-     * Статические картинки сайта
-     */
+    // Статические картинки сайта
     Route::prefix('static_images')->group(function (){
         Route::get('/{page}', [AdminController::class, 'static_images'])->name('admin_static_images');
     });
@@ -151,15 +148,15 @@ Route::middleware('auth')->where([])->prefix('admin')->group(function () {
     Route::delete('/images/{image}/delete', [\App\Http\Controllers\Admin\ImageController::class, 'destroy'])->name('images.destroy');
 
     //Контент страниц (объединенный: мета-теги, категории, галереи)
-    Route::get('/page-contents', [\App\Http\Controllers\Admin\PageContentController::class, 'index'])->name('admin_page_contents.index');
-    Route::get('/page-contents/{pageContent}/edit', [\App\Http\Controllers\Admin\PageContentController::class, 'edit'])->name('admin_page_contents.edit');
-    Route::put('/page-contents/{pageContent}', [\App\Http\Controllers\Admin\PageContentController::class, 'update'])->name('admin_page_contents.update');
-    Route::put('/page-contents/{pageContent}/images/{imageId}/description', [\App\Http\Controllers\Admin\PageContentController::class, 'updateImageDescription'])->name('admin_page_contents.update_image_description');
+    Route::get('/page-contents', [PageContentController::class, 'index'])->name('admin_page_contents.index');
+    Route::get('/page-contents/{pageContent}/edit', [PageContentController::class, 'edit'])->name('admin_page_contents.edit');
+    Route::put('/page-contents/{pageContent}', [PageContentController::class, 'update'])->name('admin_page_contents.update');
+
+    Route::put('/static_images/{static_image}/update', [StaticImagesController::class, 'update'])->name('static_images.update');
 
     Route::resources([
         'blogs' => BlogController::class,
-        'static_images' => StaticImagesController::class,
-        'static_pages' => AdminStaticPageController::class,
+        'static_pages' => StaticPageController::class,
         'products' => ProductController::class,
     ]);
 });
