@@ -147,7 +147,7 @@
             <section id="blog" class="blog">
                 {!! $blog->content !!}
             </section>
-        <section class="navigation">
+        <section @if(!$prevPost) style="justify-content: flex-end" @endif class="navigation">
             @if($prevPost)
             <h3>
                 <a href="{{route('show_blog_post', ['id' => $prevPost->id])}}">
