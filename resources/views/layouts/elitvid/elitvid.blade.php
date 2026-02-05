@@ -162,7 +162,7 @@
                             @foreach($static_pages as $static_page)
                                 <li>
                                     <div class="heading-5"><a
-                                            href="{{route('static_page', ['slug' => $static_page])}}">{{$static_page->menu_name}}</a>
+                                            href="{{route('static_page', ['slug' => $static_page->slug])}}">{{$static_page->menu_name}}</a>
                                     </div>
                                 </li>
                             @endforeach
