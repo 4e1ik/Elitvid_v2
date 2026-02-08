@@ -5,7 +5,7 @@
         <div class="panel box-shadow-none content-header">
             <h1>Страница редактирования {{ $productType === 'pot' ? 'кашпо' : 'скамейки' }}</h1>
         </div>
-        
+
         @if($product->images->isNotEmpty())
             <div class="col-md-12 padding-0">
                 <div class="col-md-12">
@@ -79,17 +79,17 @@
                 </div>
             </div>
         @endif
-        
+
         <form action="{{route('products.update', ['product' => $product])}}" enctype="multipart/form-data" method="post">
             @method('PUT')
             @csrf
             <input type="hidden" name="product_type" value="{{ $productType }}">
-            
+
             <div class="col-md-12 padding-0">
                 <div class="col-md-12">
                     <div class="panel">
                         <div class="panel-body">
-                            <h3>Добавить новую картинку{{ $productType === 'pot' ? 'и' : '' }}</h3>
+                            <h3>Добавить новую картинку{{ $productType === 'pot' ? '' : '' }}</h3>
                             <div class="col-md-12" style="margin-bottom: 20px;">
                                 <label style="display: flex; justify-content: center; align-items: center; padding: 20px; border: 2px dashed #ddd; border-radius: 5px; cursor: pointer; background: #fafafa;"
                                        for="images" class="dropzone dz-clickable">
@@ -113,7 +113,7 @@
                     </div>
                 </div>
             </div>
-            
+
             <div class="col-md-12 padding-0">
                 <div class="col-md-12">
                     <div class="panel">
@@ -161,10 +161,10 @@
                     </div>
                 </div>
             </div>
-            
+
             {{-- Подключаем специфичную форму в зависимости от типа продукта --}}
             @include('includes.elitvid.admin.update_' . $productType . '_form', ['product' => $product])
-            
+
             <div class="col-md-12 padding-0">
                 <div class="col-md-12">
                     <div class="panel">
@@ -202,7 +202,7 @@
                     </div>
                 </div>
             </div>
-            
+
             <div class="col-md-12 padding-0">
                 <div class="col-md-12">
                     <div class="panel">
@@ -231,7 +231,7 @@
                     </div>
                 </div>
             </div>
-            
+
             <div class="col-md-12 padding-0">
                 <div class="col-md-12">
                     <div class="panel">

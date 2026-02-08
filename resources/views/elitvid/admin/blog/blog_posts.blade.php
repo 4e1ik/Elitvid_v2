@@ -4,11 +4,17 @@
     <!-- start: Content -->
     <div id="content">
         <div class="panel box-shadow-none content-header">
-            <div class="panel-body" style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 15px;">
-                <h3 class="animated fadeInLeft" style="margin: 0;">Список постов</h3>
-                <a href="{{ route('blogs.create') }}" class="btn btn-3d btn-sm btn-success">
-                    <span class="fa fa-plus"></span> Создать пост
-                </a>
+            <div class="panel-body">
+                <div class="col-md-12">
+                    <h3 class="animated fadeInLeft">Список постов</h3>
+                </div>
+                <ul class="nav navbar-nav">
+                    <a href="{{ route('blogs.create') }}">
+                        <button class="btn btn-3d btn-sm btn-success">
+                            <span class="fa fa-plus"></span> Создать пост
+                        </button>
+                    </a>
+                </ul>
             </div>
         </div>
         <div class="col-md-12 top-20 padding-0">

@@ -87,28 +87,10 @@ class AdminController extends Controller
             $mails_per_week[] = Mail::whereBetween('created_at', [$weekStart, $weekEnd])->count();
         }
 
-        // Топ коллекций по количеству продуктов (скамейки + кашпо)
-        $bench_collections = Bench::selectRaw('collection, count(*) as total')
-            ->groupBy('collection')
-            ->get()
-            ->mapWithKeys(fn ($r) => [$r->collection ?: '—' => $r->total]);
-        $pot_collections = Pot::selectRaw('collection, count(*) as total')
-            ->groupBy('collection')
-            ->get()
-            ->mapWithKeys(fn ($r) => [$r->collection ?: '—' => $r->total]);
-        $all_collection_names = $bench_collections->keys()->merge($pot_collections->keys())->unique()->values();
-        $collections_combined = $all_collection_names->map(function ($name) use ($bench_collections, $pot_collections) {
-            return ['name' => $name, 'total' => ($bench_collections[$name] ?? 0) + ($pot_collections[$name] ?? 0)];
-        })->sortByDesc('total')->values();
-        $collections_labels = $collections_combined->pluck('name')->all();
-        $collections_data = $collections_combined->pluck('total')->all();
-
         // Данные для круговой диаграммы (распределение по типам)
         $chart_data = [
             'weeks' => $weeks_labels,
             'mails_per_week' => $mails_per_week,
-            'collections_labels' => $collections_labels,
-            'collections_data' => $collections_data,
             'distribution' => [
                 'blog' => $stats['blog_posts'],
                 'products' => $stats['products'],

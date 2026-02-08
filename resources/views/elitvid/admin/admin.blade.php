@@ -7,12 +7,6 @@
             <div class="panel-body">
                 <div class="col-md-6 col-sm-12">
                     <h3 class="animated fadeInLeft">Добро пожаловать, {{Auth::user()['username'] ?? 'Администратор'}}!</h3>
-                    <p class="animated fadeInDown">
-                        <span class="fa fa-envelope"></span> {{Auth::user()['email'] ?? ''}}
-                    </p>
-                    <p class="animated fadeInDown">
-                        <span class="fa fa-clock-o"></span> Последний вход: {{Auth::user() && Auth::user()['updated_at'] ? Auth::user()['updated_at']->format('d.m.Y H:i') : 'Недавно'}}
-                    </p>
 
                     <ul class="nav navbar-nav" style="margin-top: 15px;">
                         <li><a href="{{ route('admin_blog') }}"><span class="fa fa-file-text"></span> Блог</a></li>
@@ -147,30 +141,6 @@
                 </div>
                 <div class="col-md-4">
                     <div class="col-md-12 padding-0">
-                        <div class="panel box-v2">
-                            <div class="panel-heading padding-0">
-                                <img src="{{asset('/elitvid_assets/img/bg2.jpg')}}" class="box-v2-cover img-responsive"/>
-                                <div class="box-v2-detail">
-                                    <img src="{{asset('/elitvid_assets/img/avatar.jpg')}}" class="img-responsive"/>
-                                    <h4>Akihiko Avaron</h4>
-                                </div>
-                            </div>
-                            <div class="panel-body">
-                                <div class="col-md-12 padding-0 text-center">
-                                    <div class="col-md-6 col-sm-6 col-xs-6 padding-0">
-                                        <h3>{{ $stats['blog_posts'] }}</h3>
-                                        <p>Постов</p>
-                                    </div>
-                                    <div class="col-md-6 col-sm-6 col-xs-6 padding-0">
-                                        <h3>{{ $stats['products'] }}</h3>
-                                        <p>Продуктов</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-12 padding-0">
                         <div class="panel box-v3">
                             <div class="panel-heading bg-white border-none">
                                 <h4>Report</h4>
@@ -257,19 +227,6 @@
                         <div class="panel-body" style="padding-bottom:30px;">
                             <div style="height: 260px;">
                                 <canvas class="bar-chart-mails"></canvas>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-12">
-                    <div class="panel">
-                        <div class="panel-heading bg-white border-none" style="padding:20px;">
-                            <h4>Топ коллекций по количеству продуктов</h4>
-                        </div>
-                        <div class="panel-body" style="padding-bottom:30px;">
-                            <div class="bar-chart-collections-wrapper" style="height: 280px; width: 100%; position: relative; overflow: hidden;">
-                                <canvas class="bar-chart-collections"></canvas>
                             </div>
                         </div>
                     </div>

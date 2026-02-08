@@ -792,8 +792,6 @@
         var chartDistribution = @json($chart_data['distribution']);
         var chartWeeks = @json($chart_data['weeks']);
         var chartMailsPerWeek = @json($chart_data['mails_per_week']);
-        var chartCollectionsLabels = @json($chart_data['collections_labels']);
-        var chartCollectionsData = @json($chart_data['collections_data']);
 
         var pieData = [
             { value: chartDistribution.blog || 0, color: "#129352", highlight: "#15BA67", label: "Блог" },
@@ -812,22 +810,9 @@
                 data: chartMailsPerWeek
             }]
         };
-
-        var barCollectionsData = {
-            labels: chartCollectionsLabels,
-            datasets: [{
-                label: "Продуктов",
-                fillColor: "rgba(21,186,103,0.6)",
-                strokeColor: "rgba(21,186,103,1)",
-                highlightFill: "rgba(21,186,103,0.4)",
-                highlightStroke: "rgba(21,186,103,1)",
-                data: chartCollectionsData
-            }]
-        };
         @else
         var pieData = [];
         var barMailsData = { labels: [], datasets: [{ data: [] }] };
-        var barCollectionsData = { labels: [], datasets: [{ data: [] }] };
         @endif
 
         window.onload = function(){
@@ -847,22 +832,6 @@
                 window.myBarMails = new Chart(canvasMails.getContext("2d")).Bar(barMailsData, {
                     responsive: false,
                     showTooltips: true,
-                    maintainAspectRatio: false
-                });
-            }
-            if ($(".bar-chart-collections").length > 0 && barCollectionsData.labels.length > 0) {
-                var canvasColl = $(".bar-chart-collections")[0];
-                var parentColl = canvasColl.parentNode;
-                parentColl = parentColl && parentColl.offsetHeight ? parentColl : document.querySelector(".bar-chart-collections-wrapper");
-                if (parentColl) {
-                    canvasColl.width = parentColl.offsetWidth;
-                    canvasColl.height = parentColl.offsetHeight;
-                }
-                window.myBarCollections = new Chart(canvasColl.getContext("2d")).Bar(barCollectionsData, {
-                    responsive: false,
-                    showTooltips: false,
-                    barValueSpacing: 12,
-                    scaleBeginAtZero: true,
                     maintainAspectRatio: false
                 });
             }

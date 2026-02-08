@@ -7,6 +7,13 @@
                 <div class="col-md-12">
                     <h3 class="animated fadeInLeft">Статические страницы направлений</h3>
                 </div>
+                <ul class="nav navbar-nav">
+                    <a href="{{route('static_pages.create')}}">
+                        <button class="btn btn-3d btn-sm btn-success">
+                            <span class="fa fa-plus"></span> Создать новую страницу
+                        </button>
+                    </a>
+                </ul>
             </div>
         </div>
         <div class="col-md-12 top-20 padding-0">
@@ -16,11 +23,6 @@
                         <h3>Список страниц</h3>
                     </div>
                     <div class="panel-body">
-                        <div style="margin-bottom: 20px;">
-                            <a href="{{route('static_pages.create')}}" class="btn btn-3d btn-sm btn-success">
-                                <span class="fa fa-plus"></span> Создать новую страницу
-                            </a>
-                        </div>
                         <div class="responsive-table">
                             <table id="datatables-example" class="table table-striped table-bordered" width="100%" cellspacing="0">
                                 <thead>

@@ -13,11 +13,8 @@
                 </div>
                 <ul class="nav navbar-nav">
                     <a href="{{route('create', ['route' => 'benches'])}}">
-                        <button class="btn ripple btn-outline btn-primary">
-                            <div>
-                                <span>Добавить товар</span>
-                                <span class="ink"></span>
-                            </div>
+                        <button class="btn btn-3d btn-sm btn-success">
+                            <span class="fa fa-plus"></span> Добавить товар
                         </button>
                     </a>
                 </ul>
