@@ -4,42 +4,32 @@
     <!-- start: Content -->
     <div id="content">
         <div class="panel box-shadow-none content-header">
-            <div class="panel-body">
-                <div class="col-md-12">
-                    <h3 class="animated fadeInLeft">Список постов</h3>
-                </div>
-                <ul class="nav navbar-nav">
-                    {{--                    {{$route_name = \Illuminate\Support\Facades\Route::currentRouteName()}}--}}
-                    <a href="{{route('blogs.create')}}">
-                        <button class="btn btn-3d btn-sm btn-success">
-                            <span class="fa fa-plus"></span> Создать пост
-                        </button>
-                    </a>
-                </ul>
+            <div class="panel-body" style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 15px;">
+                <h3 class="animated fadeInLeft" style="margin: 0;">Список постов</h3>
+                <a href="{{ route('blogs.create') }}" class="btn btn-3d btn-sm btn-success">
+                    <span class="fa fa-plus"></span> Создать пост
+                </a>
             </div>
         </div>
         <div class="col-md-12 top-20 padding-0">
             <div class="col-md-12">
                 <div class="panel">
-                    <div class="panel-heading"><h3>Посты</h3></div>
+                    <div class="panel-heading"><h3 style="margin: 0;">Посты</h3></div>
                     <div class="panel-body">
                         @if(session('success'))
                             <div class="alert alert-success">
                                 {{ session('success') }}
                             </div>
                         @endif
-                        <div class="responsive-table">
-                            <table id="datatables-example" class="table table-striped table-bordered" width="100%"
-                                   cellspacing="0">
+                        <div class="responsive-table blog-posts-table-wrapper" style="overflow-x: auto; max-width: 100%; -webkit-overflow-scrolling: touch;">
+                            <table id="datatables-example" class="table table-striped table-bordered" cellspacing="0" style="width: 100%; min-width: 600px;">
                                 <thead>
                                 <tr>
                                     <th style="width: 80px;">Изображение</th>
                                     <th>Заголовок</th>
                                     <th>Описание</th>
-                                    <th>Мета-тег</th>
-                                    <th>Мета-описание</th>
                                     <th style="width: 100px;">Опубликован</th>
-                                    <th style="text-align: center; width: 120px;">Действия</th>
+                                    <th style="text-align: center; width: 140px; white-space: nowrap;">Действия</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -68,25 +58,11 @@
                                                     </div>
                                                 @endif
                                             </td>
-                                            <td class="admin-table-cell-truncate admin-table-cell-truncate--medium" title="{{ $blog_post->title }}">
+                                            <td style="max-width: 180px; overflow: hidden; text-overflow: ellipsis;" title="{{ $blog_post->title }}">
                                                 <strong>{{ Str::limit($blog_post->title, 45) }}</strong>
                                             </td>
-                                            <td class="admin-table-cell-truncate admin-table-cell-truncate--long" title="{{ strip_tags($blog_post->description) }}">
+                                            <td style="max-width: 200px; overflow: hidden; text-overflow: ellipsis;" title="{{ strip_tags($blog_post->description) }}">
                                                 {{ Str::limit(strip_tags($blog_post->description), 60) }}
-                                            </td>
-                                            <td class="admin-table-cell-truncate admin-table-cell-truncate--medium" title="{{ $blog_post->meta_title ?? '' }}">
-                                                @if($blog_post->meta_title)
-                                                    {{ Str::limit($blog_post->meta_title, 50) }}
-                                                @else
-                                                    <span class="text-muted">—</span>
-                                                @endif
-                                            </td>
-                                            <td class="admin-table-cell-truncate admin-table-cell-truncate--medium" title="{{ $blog_post->meta_description ?? '' }}">
-                                                @if($blog_post->meta_description)
-                                                    {{ Str::limit($blog_post->meta_description, 50) }}
-                                                @else
-                                                    <span class="text-muted">—</span>
-                                                @endif
                                             </td>
                                             <td>
                                                 @if($blog_post->active == 1)
@@ -99,21 +75,21 @@
                                                     </span>
                                                 @endif
                                             </td>
-                                            <td style="text-align: center; white-space: nowrap;">
-                                                <a href="{{ route('blogs.edit', ['blog' => $blog_post]) }}" 
-                                                   class="btn btn-3d btn-sm btn-primary" 
+                                            <td style="text-align: center; white-space: nowrap; min-width: 130px;">
+                                                <a href="{{ route('blogs.edit', ['blog' => $blog_post]) }}"
+                                                   class="btn btn-3d btn-sm btn-primary"
                                                    title="Редактировать"
-                                                   style="margin-right: 5px;">
+                                                   style="margin-right: 6px;">
                                                     <span class="fa fa-pencil"></span>
                                                 </a>
                                                 <form action="{{ route('blogs.destroy', ['blog' => $blog_post]) }}"
-                                                      method="post" 
-                                                      style="display: inline-block; margin: 0; vertical-align: top;"
+                                                      method="post"
+                                                      style="display: inline-block; margin: 0; vertical-align: middle;"
                                                       onsubmit="return confirm('Вы уверены, что хотите удалить этот пост?');">
                                                     @method('DELETE')
                                                     @csrf
-                                                    <button type="submit" 
-                                                            class="btn btn-3d btn-sm btn-danger" 
+                                                    <button type="submit"
+                                                            class="btn btn-3d btn-sm btn-danger"
                                                             title="Удалить">
                                                         <span class="fa fa-trash"></span>
                                                     </button>
@@ -123,7 +99,7 @@
                                     @endforeach
                                 @else
                                     <tr>
-                                        <td colspan="7" style="text-align: center; padding: 40px; color: #999;">
+                                        <td colspan="5" style="text-align: center; padding: 40px; color: #999;">
                                             <span class="fa fa-info-circle" style="font-size: 48px; display: block; margin-bottom: 10px;"></span>
                                             Постов пока нет. <a href="{{ route('blogs.create') }}">Создайте первый пост</a>
                                         </td>
@@ -138,4 +114,12 @@
         </div>
     </div>
     <!-- end: content -->
+    <style>
+        .blog-posts-table-wrapper .table td:first-child {
+            width: 80px;
+        }
+        .blog-posts-table-wrapper .table td:nth-child(5) {
+            min-width: 130px;
+        }
+    </style>
 @endsection

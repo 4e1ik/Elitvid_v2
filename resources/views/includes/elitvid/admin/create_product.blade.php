@@ -44,21 +44,43 @@
                         <div class="panel-body">
                             <div class="col-md-12">
                                 <div class="col-md-3 padding-0">
-                            <h3>Название товара</h3>
+                                    <h3>Название товара</h3>
                                     <div class="col-md-11 padding-0">
                                         <input class="form-control {{$errors->has('name') ? 'danger' : ''}}"
                                                type="text"
-                                               name="name" value="{{old('name')}}">
+                                               name="name" id="name" value="{{old('name')}}">
                                         @error('name')
                                         <div class="text-danger" style="margin-top: 5px;">
                                             {{$message}}
                                         </div>
                                         @enderror
                                     </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
+
+            <div class="col-md-12 padding-0">
+                <div class="col-md-12">
+                    <div class="panel">
+                        <div class="panel-body">
+                            <h3>
+                                Slug (уникальный идентификатор)
+                                <span class="fa fa-question-circle" style="cursor: pointer; color: #337ab7;" data-toggle="tooltip" data-placement="right" title="Slug используется в URL. Только латинские буквы, цифры, дефис и подчёркивание."></span>
+                            </h3>
+                            <input type="text" class="form-control @error('slug') danger @enderror" name="slug" id="slug" value="{{old('slug')}}" placeholder="например: kashpo_krugloe">
+                            <small class="text-muted" style="display: block; margin-top: 5px;">
+                                <span class="fa fa-info-circle"></span> Если оставить поле пустым, slug будет автоматически сгенерирован из названия товара.
+                            </small>
+                            @error('slug')
+                            <div class="text-danger" style="margin-top: 5px;">
+                                {{$message}}
+                            </div>
+                            @enderror
+                        </div>
+                    </div>
                 </div>
             </div>
             
@@ -143,5 +165,28 @@
             </div>
         </form>
     </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            if (typeof $ !== 'undefined') {
+                $('[data-toggle="tooltip"]').tooltip();
+            }
+            const nameInput = document.getElementById('name');
+            const slugInput = document.getElementById('slug');
+            if (nameInput && slugInput) {
+                nameInput.addEventListener('blur', function() {
+                    if (!slugInput.value.trim()) {
+                        let slug = this.value.toLowerCase()
+                            .replace(/[а-яё]/g, function(match) {
+                                const map = { 'а':'a','б':'b','в':'v','г':'g','д':'d','е':'e','ё':'yo','ж':'zh','з':'z','и':'i','й':'y','к':'k','л':'l','м':'m','н':'n','о':'o','п':'p','р':'r','с':'s','т':'t','у':'u','ф':'f','х':'h','ц':'ts','ч':'ch','ш':'sh','щ':'sch','ъ':'','ы':'y','ь':'','э':'e','ю':'yu','я':'ya' };
+                                return map[match] || '';
+                            })
+                            .replace(/[^a-z0-9]+/g, '-')
+                            .replace(/^_+|_+$/g, '');
+                        slugInput.value = slug;
+                    }
+                });
+            }
+        });
+    </script>
     <script src="{{asset('/elitvid_assets/newDesign/newDesign/js/create_' . $productType . '_product.js')}}?v={{ time() }}"></script>
 @endsection

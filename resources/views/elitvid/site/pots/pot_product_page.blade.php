@@ -223,7 +223,7 @@
                                     <a href="{{route('show_pot_product', ['collection' => ($product->pot->collection == 'Square' ?
                                                                                 'square_pots':($product->pot->collection == 'Round' ?
                                                                                     'round_pots': ($product->pot->collection == 'Rectangular' ?
-                                                                                        'rectangular_pots' : ''))), 'id' => $rand_product->id])}}">
+                                                                                        'rectangular_pots' : ''))), 'slug' => $rand_product->slug])}}">
                                         <button>{{$rand_product->name}}</button>
                                     </a>
                                 </div>

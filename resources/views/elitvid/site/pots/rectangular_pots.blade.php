@@ -37,7 +37,7 @@
             @foreach($products as $product)
                 <div class="direction">
                     <img src="{{asset('storage/'.str_replace('public/','',$product->images->first()->image))}}" alt="{{$product->images->first()->description_image}}" loading="lazy">
-                    <a href="{{route('show_pot_product', ['collection' => 'round_pots', 'id' => $product->id])}}">
+                    <a href="{{route('show_pot_product', ['collection' => 'rectangular_pots', 'slug' => $product->slug])}}">
                         <button>{{$product->name}}</button>
                     </a>
                 </div>

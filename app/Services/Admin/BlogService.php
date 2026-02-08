@@ -2,6 +2,7 @@
 
 namespace App\Services\Admin;
 
+use App\Helpers\SlugGenerateHelper;
 use App\Models\Blog;
 use App\Services\ImageService;
 use Illuminate\Support\Facades\DB;
@@ -11,11 +12,16 @@ class BlogService
 {
     public function __construct(
         public ImageService $imageService,
-    ){}
+        public SlugGenerateHelper $slugGenerateHelper,
+    ) {}
 
     public function create(array $data)
     {
         DB::transaction(function () use ($data) {
+            if (empty($data['slug']) && !empty($data['title'])) {
+                $data['slug'] = $this->slugGenerateHelper->slug($data['title']);
+            }
+
             $blog = Blog::create($data);
 
             // Сохраняем главное изображение через ImageService
@@ -35,6 +41,10 @@ class BlogService
     public function update(array $data, Blog $blog)
     {
         return DB::transaction(function () use ($data, $blog) {
+            if (empty($data['slug']) && !empty($data['title'])) {
+                $data['slug'] = $this->slugGenerateHelper->slug($data['title']);
+            }
+
             $blog->update($data);
 
             if (isset($data['main_image'])) {

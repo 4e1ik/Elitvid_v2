@@ -322,7 +322,7 @@
                                                                                     'stones_benches': ($product->bench->collection == 'lines' ?
                                                                                         'lines_benches' : ($product->bench->collection == 'Solo' ?
                                                                                             'solo_benches' : ($product->bench->collection == 'Street_furniture' ?
-                                                                                                'street_furniture_benches': ''))))), 'id' => $rand_product->id])}}">
+                                                                                                'street_furniture_benches': ''))))), 'slug' => $rand_product->slug])}}">
                                         <button>{{$rand_product->name}}</button>
                                     </a>
                                 </div>

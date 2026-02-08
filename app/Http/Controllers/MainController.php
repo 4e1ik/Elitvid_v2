@@ -89,11 +89,11 @@ class MainController extends Controller
         }
     }
 
-    function show_blog_post($id)
+    function show_blog_post(string $slug)
     {
         try {
             $static_pages = StaticPage::all();
-            $blog = Blog::where('id', $id)->first();
+            $blog = Blog::where('slug', $slug)->first();
             if (!$blog) {
                 abort(404);
             }

@@ -107,6 +107,20 @@
                                         <div class="text-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
+
+                                    <div class="form-group">
+                                        <label for="slug">
+                                            <strong>Slug (уникальный идентификатор)</strong>
+                                            <span class="fa fa-question-circle" style="cursor: pointer; color: #337ab7;" data-toggle="tooltip" data-placement="right" title="Slug используется в URL. Только латинские буквы, цифры, дефис и подчёркивание."></span>
+                                        </label>
+                                        <input type="text" name="slug" id="slug" class="form-control @error('slug') is-invalid @enderror" value="{{ old('slug') }}" placeholder="например: novosti_2025" maxlength="255">
+                                        <small class="form-text text-muted">
+                                            <span class="fa fa-info-circle"></span> Если оставить поле пустым, slug будет автоматически сгенерирован из заголовка.
+                                        </small>
+                                        @error('slug')
+                                        <div class="text-danger">{{ $message }}</div>
+                                        @enderror
+                                    </div>
                                 </div>
                             </div>
 
@@ -308,5 +322,28 @@
                 placeholder.style.display = 'block';
             }
         };
+
+        // Автогенерация slug из заголовка, если slug пустой (как на static pages)
+        (function() {
+            if (typeof $ !== 'undefined') {
+                $('[data-toggle="tooltip"]').tooltip();
+            }
+            const titleInput = document.getElementById('title');
+            const slugInput = document.getElementById('slug');
+            if (titleInput && slugInput) {
+                titleInput.addEventListener('blur', function() {
+                    if (!slugInput.value.trim()) {
+                        let slug = this.value.toLowerCase()
+                            .replace(/[а-яё]/g, function(match) {
+                                const map = { 'а':'a','б':'b','в':'v','г':'g','д':'d','е':'e','ё':'yo','ж':'zh','з':'z','и':'i','й':'y','к':'k','л':'l','м':'m','н':'n','о':'o','п':'p','р':'r','с':'s','т':'t','у':'u','ф':'f','х':'h','ц':'ts','ч':'ch','ш':'sh','щ':'sch','ъ':'','ы':'y','ь':'','э':'e','ю':'yu','я':'ya' };
+                                return map[match] || '';
+                            })
+                            .replace(/[^a-z0-9]+/g, '-')
+                            .replace(/^-+|-+$/g, '');
+                        slugInput.value = slug;
+                    }
+                });
+            }
+        })();
     </script>
 @endsection

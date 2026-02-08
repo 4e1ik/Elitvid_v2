@@ -25,7 +25,7 @@ class CreateStaticPageRequest extends FormRequest
             'main_image_description' => 'nullable|string|max:5000',
             'menu_image' => 'required|image|mimes:jpeg,jpg,png,webp|max:10240',
             'menu_image_description' => 'nullable|string|max:5000',
-            'slug' => 'nullable|string|max:100|unique:static_pages,slug|regex:/^[a-z0-9_]+$/',
+            'slug' => 'nullable|string|max:100|unique:static_pages,slug|regex:/^[a-z0-9-]+$/',
             'gallery_images' => 'nullable|array',
             'gallery_images.*' => 'nullable|image|mimes:jpeg,jpg,png,webp|max:10240',
             'gallery_descriptions' => 'nullable|array',
@@ -84,7 +84,7 @@ class CreateStaticPageRequest extends FormRequest
             'slug.string' => 'Slug должен быть строкой.',
             'slug.max' => 'Slug не должен превышать :max символов.',
             'slug.unique' => 'Такой slug уже существует. Пожалуйста, используйте другой.',
-            'slug.regex' => 'Slug может содержать только латинские буквы в нижнем регистре, цифры и подчеркивания.',
+            'slug.regex' => 'Slug может содержать только латинские буквы в нижнем регистре, цифры и дефисы.',
         ];
     }
 }

@@ -68,10 +68,10 @@ Breadcrumbs::for('blog_posts', fn (Trail $trail) =>
 $trail->parent('home')->push('Новости', route('blog_posts'))
 );
 
-Breadcrumbs::for('show_blog_post', fn (Trail $trail, $id) =>
+Breadcrumbs::for('show_blog_post', fn (Trail $trail, string $slug) =>
 $trail->parent('blog_posts')->push(
-    Blog::where('id', $id)->first()?->title ?? 'Статья',
-    route('show_blog_post', $id)
+    Blog::where('slug', $slug)->first()?->title ?? 'Статья',
+    route('show_blog_post', ['slug' => $slug])
 )
 );
 

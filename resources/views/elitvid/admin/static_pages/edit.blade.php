@@ -377,8 +377,8 @@
                                 };
                                 return map[match] || '';
                             })
-                            .replace(/[^a-z0-9]+/g, '_')
-                            .replace(/^_+|_+$/g, '');
+                            .replace(/[^a-z0-9]+/g, '-')
+                            .replace(/^-+|-+$/g, '');
                         slugInput.value = slug;
                     }
                 });

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Helpers\WebResponse;
 use App\Models\Blog;
 use App\Models\Product;
+use App\Models\StaticPage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\URL;
 use Carbon\Carbon;
@@ -56,57 +57,12 @@ class SitemapController extends Controller
 
 
         $urls[] = [
-            'loc' => URL::to(route('rotundas_and_colonnades')),
-            'lastmod' => Carbon::now()->toAtomString(),
-            'changefreq' => 'daily',
-            'priority' => '0.8'
-        ];
-
-
-        $urls[] = [
-            'loc' => URL::to(route('parklets_and_canopies')),
-            'lastmod' => Carbon::now()->toAtomString(),
-            'changefreq' => 'daily',
-            'priority' => '0.8'
-        ];
-
-
-        $urls[] = [
             'loc' => URL::to(route('bollards_and_fencing')),
             'lastmod' => Carbon::now()->toAtomString(),
             'changefreq' => 'daily',
             'priority' => '0.8'
         ];
 
-
-        $urls[] = [
-            'loc' => URL::to(route('pillars_and_covers')),
-            'lastmod' => Carbon::now()->toAtomString(),
-            'changefreq' => 'daily',
-            'priority' => '0.8'
-        ];
-
-
-        $urls[] = [
-            'loc' => URL::to(route('facade_stucco_molding_and_panels')),
-            'lastmod' => Carbon::now()->toAtomString(),
-            'changefreq' => 'daily',
-            'priority' => '0.8'
-        ];
-
-        $urls[] = [
-            'loc' => URL::to(route('small_architectural_forms')),
-            'lastmod' => Carbon::now()->toAtomString(),
-            'changefreq' => 'daily',
-            'priority' => '0.8'
-        ];
-
-        $urls[] = [
-            'loc' => URL::to(route('concrete_products')),
-            'lastmod' => Carbon::now()->toAtomString(),
-            'changefreq' => 'daily',
-            'priority' => '0.8'
-        ];
 
         $urls[] = [
             'loc' => URL::to(route('decorations')),
@@ -138,13 +94,6 @@ class SitemapController extends Controller
 
         $urls[] = [
             'loc' => URL::to(route('square_pots')),
-            'lastmod' => Carbon::now()->toAtomString(),
-            'changefreq' => 'daily',
-            'priority' => '0.6'
-        ];
-
-        $urls[] = [
-            'loc' => URL::to(route('rectangular_pots')),
             'lastmod' => Carbon::now()->toAtomString(),
             'changefreq' => 'daily',
             'priority' => '0.6'
@@ -192,25 +141,35 @@ class SitemapController extends Controller
             'priority' => '0.6'
         ];
 
+        // Статические страницы из БД (active)
+        $staticPages = StaticPage::where('active', true)->get();
+        foreach ($staticPages as $page) {
+            $urls[] = [
+                'loc' => URL::to(route('static_page', ['slug' => $page->slug])),
+                'lastmod' => $page->updated_at->toAtomString(),
+                'changefreq' => 'weekly',
+                'priority' => '0.6'
+            ];
+        }
+
         // Add dynamic pages
         $benches = Product::where('active', 1)
             ->where('product_type', 'bench')
             ->with('bench')
             ->get();
+        $benchCollectionSlugs = [
+            'Verona' => 'verona_benches',
+            'Stones' => 'stones_benches',
+            'lines' => 'lines_benches',
+            'Solo' => 'solo_benches',
+            'Street_furniture' => 'street_furniture_benches',
+        ];
         foreach ($benches as $bench) {
             if (!$bench->bench) continue;
             $collection = $bench->bench->collection;
-            $benchRoutes = [
-                'Verona' => route('verona_benches'),
-                'Stones' => route('stones_benches'),
-                'lines' => route('lines_benches'),
-                'Solo' => route('solo_benches'),
-                'Street_furniture' => route('street_furniture_benches'),
-            ];
-
-            if (isset($benchRoutes[$collection])) {
+            if (isset($benchCollectionSlugs[$collection])) {
                 $urls[] = [
-                    'loc' => URL::to($benchRoutes[$collection].'/'.$bench->id),
+                    'loc' => URL::to(route('show_bench_product', ['collection' => $benchCollectionSlugs[$collection], 'slug' => $bench->slug])),
                     'lastmod' => $bench->updated_at->toAtomString(),
                     'changefreq' => 'weekly',
                     'priority' => '0.4'
@@ -222,18 +181,17 @@ class SitemapController extends Controller
             ->where('product_type', 'pot')
             ->with('pot')
             ->get();
+        $potCollectionSlugs = [
+            'Square' => 'square_pots',
+            'Round' => 'round_pots',
+            'Rectangular' => 'rectangular_pots',
+        ];
         foreach ($pots as $pot) {
             if (!$pot->pot) continue;
             $collection = $pot->pot->collection;
-            $potRoutes = [
-                'Square' => route('square_pots'),
-                'Round' => route('round_pots'),
-                'Rectangular' => route('rectangular_pots'),
-            ];
-
-            if (isset($potRoutes[$collection])) {
+            if (isset($potCollectionSlugs[$collection])) {
                 $urls[] = [
-                    'loc' => URL::to($potRoutes[$collection].'/'.$pot->id),
+                    'loc' => URL::to(route('show_pot_product', ['collection' => $potCollectionSlugs[$collection], 'slug' => $pot->slug])),
                     'lastmod' => $pot->updated_at->toAtomString(),
                     'changefreq' => 'weekly',
                     'priority' => '0.4'
@@ -242,10 +200,13 @@ class SitemapController extends Controller
         }
 
         $blogs = Blog::where('active', 1)->get();
+        $blogSlugsExclude = ['tsuatsuatsuatsua']; // тестовые/мусорные slug — не попадают в sitemap
         foreach ($blogs as $blog) {
-
+            if (in_array($blog->slug, $blogSlugsExclude, true)) {
+                continue;
+            }
             $urls[] = [
-                'loc' => URL::to(route('blog_posts').'/post/'.$blog->id),
+                'loc' => URL::to(route('show_blog_post', ['slug' => $blog->slug])),
                 'lastmod' => $blog->updated_at->toAtomString(),
                 'changefreq' => 'weekly',
                 'priority' => '0.4'
@@ -269,10 +230,10 @@ class SitemapController extends Controller
 
         foreach ($urls as $url) {
             $urlTag = $xml->addChild('url');
-            $urlTag->addChild('loc', $url['loc']);
-            $urlTag->addChild('lastmod', $url['lastmod']);
-            $urlTag->addChild('changefreq', $url['changefreq']);
-            $urlTag->addChild('priority', $url['priority']);
+            $urlTag->addChild('loc', trim($url['loc']));
+            $urlTag->addChild('lastmod', trim($url['lastmod']));
+            $urlTag->addChild('changefreq', trim($url['changefreq']));
+            $urlTag->addChild('priority', trim((string) $url['priority']));
         }
 
         return $xml->asXML();

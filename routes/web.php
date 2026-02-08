@@ -48,7 +48,7 @@ Route::get('/decorations', [MainController::class, 'decorations'])->name('decora
 
 Route::prefix('blog')->group(function () {
     Route::get('/', [MainController::class, 'blog_posts'])->name('blog_posts');
-    Route::get('/post/{id}', [MainController::class, 'show_blog_post'])->name('show_blog_post');
+    Route::get('/post/{slug}', [MainController::class, 'show_blog_post'])->name('show_blog_post');
 });
 
 Route::prefix('directions')->group(function () {
@@ -57,7 +57,7 @@ Route::prefix('directions')->group(function () {
 
     Route::prefix('benches')->group(function () {
         Route::get('/', [BenchController::class, 'benches'])->name('benches');
-        Route::get('/{collection}/{id}', [BenchController::class, 'show_bench_product'])->name('show_bench_product');
+        Route::get('/{collection}/{slug}', [BenchController::class, 'show_bench_product'])->name('show_bench_product');
 
         Route::prefix('verona_benches')->group(function () {
             Route::get('/', [BenchController::class, 'verona_benches'])->name('verona_benches');
@@ -83,7 +83,7 @@ Route::prefix('directions')->group(function () {
 
     Route::prefix('pots')->group(function () {
         Route::get('/', [PotController::class, 'pots'])->name('pots');
-        Route::get('/{collection}/{id}', [PotController::class, 'show_pot_product'])->name('show_pot_product');
+        Route::get('/{collection}/{slug}', [PotController::class, 'show_pot_product'])->name('show_pot_product');
 
         Route::prefix('rectangular_pots')->group(function () {
             Route::get('/', [PotController::class, 'rectangular_pots'])->name('rectangular_pots');

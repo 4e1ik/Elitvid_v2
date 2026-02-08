@@ -11,6 +11,7 @@ class Blog extends Model
 
     protected $fillable = [
         'title',
+        'slug',
         'description',
         'main_image', // Оставляем для обратной совместимости со старыми записями
         'content',

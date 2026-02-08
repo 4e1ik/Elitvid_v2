@@ -95,10 +95,14 @@ class PotController
         }
     }
 
-    function show_pot_product($collection, $id){
+    function show_pot_product(string $collection, string $slug)
+    {
         try {
             $static_pages = $this->staticPageRepository->getAllStaticPages();
-            $product = Product::whereId($id)->with(['images', 'pot'])->first();
+            $product = Product::where('slug', $slug)->with(['images', 'pot'])->first();
+            if (!$product) {
+                abort(404);
+            }
             $rand_products = Product::whereIn('active', [1])
                 ->whereHas('pot', function ($query) use ($product) {
                     $query->where('collection', $product->pot->collection);
@@ -109,7 +113,7 @@ class PotController
             $metaTitle = $product?->meta_title ?? 'Товар';
             $metaDescription = $product?->meta_description ?? 'Описание товара';
             $static_images_arr = $this->staticImagesRepository->getStaticImagesForPage(page: 'pot_product_page');
-            $canonicalUrl = route('show_pot_product', ['collection' => $collection,'id' => $id]);
+            $canonicalUrl = route('show_pot_product', ['collection' => $collection, 'slug' => $product->slug]);
             return WebResponse::success(view('elitvid.site.pots.pot_product_page',
                 compact('product',
                     'rand_products',

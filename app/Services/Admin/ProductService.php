@@ -2,6 +2,7 @@
 
 namespace App\Services\Admin;
 
+use App\Helpers\SlugGenerateHelper;
 use App\Models\Bench;
 use App\Models\Pot;
 use App\Models\Product;
@@ -12,11 +13,16 @@ class ProductService
 {
     public function __construct(
         public ImageService $imageService,
-    ){}
+        public SlugGenerateHelper $slugGenerateHelper,
+    ) {}
 
     public function store(array $data)
     {
         return DB::transaction(function () use ($data) {
+            if (empty($data['slug']) && !empty($data['name'])) {
+                $data['slug'] = $this->slugGenerateHelper->slug($data['name']);
+            }
+
             $product = Product::create($data);
 
             $data['product_id'] = $product->id;
@@ -46,6 +52,9 @@ class ProductService
     public function update(array $data, Product $product)
     {
         return DB::transaction(function () use ($data, $product) {
+            if (empty($data['slug']) && !empty($data['name'])) {
+                $data['slug'] = $this->slugGenerateHelper->slug($data['name']);
+            }
 
             $product->update($data);
 

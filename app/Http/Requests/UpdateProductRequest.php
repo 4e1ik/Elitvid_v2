@@ -34,19 +34,26 @@ class UpdateProductRequest extends FormRequest
             'active' => 'nullable|boolean',
             'meta_title' => 'nullable|string|max:255',
             'meta_description' => 'nullable|string|max:5000',
+            'slug' => [
+                'nullable',
+                'string',
+                'max:255',
+                'unique:products,slug',
+                'regex:/^[a-z0-9-]+$/',
+            ],
             'image' => [
                 'nullable',
                 'array',
                 function ($attribute, $value, $fail) {
                     $product = $this->route('product');
                     $productType = $this->input('product_type') ?? ($product ? $product->product_type : null);
-                    
+
                     if (!$productType) {
                         return;
                     }
 
                     $newImagesCount = is_array($value) ? count(array_filter($value)) : 0;
-                    
+
                     if ($productType === 'bench' && $newImagesCount > 1) {
                         $fail('Для скамейки можно загрузить только одно изображение.');
                     }
@@ -64,13 +71,13 @@ class UpdateProductRequest extends FormRequest
         $validator->after(function ($validator) {
             $product = $this->route('product');
             $productType = $this->input('product_type') ?? ($product ? $product->product_type : null);
-            
+
             if (!$productType || !$product) {
                 return;
             }
 
-            $newImagesCount = $this->hasFile('image') && is_array($this->file('image')) 
-                ? count(array_filter($this->file('image'))) 
+            $newImagesCount = $this->hasFile('image') && is_array($this->file('image'))
+                ? count(array_filter($this->file('image')))
                 : 0;
             $existingImagesCount = $product->images()->count();
             $totalImagesCount = $existingImagesCount + $newImagesCount;
@@ -119,6 +126,9 @@ class UpdateProductRequest extends FormRequest
             'image.*.image' => 'Загруженный файл должен быть изображением.',
             'image.*.mimes' => 'Изображение должно быть в формате: jpeg, jpg, png или webp.',
             'image.*.max' => 'Размер изображения не должен превышать 10 МБ.',
+            'slug.max' => 'Slug не должен превышать :max символов.',
+            'slug.unique' => 'Такой slug уже используется. Выберите другой.',
+            'slug.regex' => 'Slug может содержать только латинские буквы в нижнем регистре, цифры и дефисы.',
         ];
     }
 }

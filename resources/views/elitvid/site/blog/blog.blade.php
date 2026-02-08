@@ -134,7 +134,7 @@
                 </style>
                 <div class="news">
                     <div class="direction__image">
-                        <a href="{{route('show_blog_post', ['id' => $blog->id])}}">
+                        <a href="{{route('show_blog_post', ['slug' => $blog->slug])}}">
                             @php
                                 $mainImage = $blog->images()->where('main_image', true)->first();
                                 $imagePath = $mainImage ? $mainImage->image : ($blog->attributes['main_image'] ?? null);
@@ -145,11 +145,11 @@
                             @endif
                         </a>
                     </div>
-                    <a href="{{route('show_blog_post', ['id' => $blog->id])}}">
+                    <a href="{{route('show_blog_post', ['slug' => $blog->slug])}}">
                         <h3 class="text__h3">{{$blog->title}}</h3>
                     </a>
                     <p>{{$blog->description}}</p>
-                    <h3><a href="{{route('show_blog_post', ['id' => $blog->id])}}">
+                    <h3><a href="{{route('show_blog_post', ['slug' => $blog->slug])}}">
                             <button>Читать далее</button>
                         </a>
                     </h3>

@@ -150,14 +150,14 @@
         <section @if(!$prevPost) style="justify-content: flex-end" @endif class="navigation">
             @if($prevPost)
             <h3>
-                <a href="{{route('show_blog_post', ['id' => $prevPost->id])}}">
+                <a href="{{route('show_blog_post', ['slug' => $prevPost->slug])}}">
                     <button>Предыдущая статья</button>
                 </a>
             </h3>
             @endif
             @if($nextPost)
             <h3>
-                <a href="{{route('show_blog_post', ['id' => $nextPost->id])}}">
+                <a href="{{route('show_blog_post', ['slug' => $nextPost->slug])}}">
                     <button>Следующая статья</button>
                 </a>
             </h3>

@@ -135,10 +135,14 @@ class BenchController
         }
     }
 
-    function show_bench_product($collection, $id){
+    function show_bench_product(string $collection, string $slug)
+    {
         try {
             $static_pages = $this->staticPageRepository->getAllStaticPages();
-            $product = Product::whereId($id)->with(['images', 'bench'])->first();
+            $product = Product::where('slug', $slug)->with(['images', 'bench'])->first();
+            if (!$product) {
+                abort(404);
+            }
             $rand_products = Product::whereIn('active', [1])
                 ->whereHas('bench', function ($query) use ($product) {
                     $query->where('collection', $product->bench->collection);
@@ -149,7 +153,7 @@ class BenchController
             $metaTitle = $product?->meta_title ?? 'Товар';
             $metaDescription = $product?->meta_description ?? 'Описание товара';
             $static_images_arr = $this->staticImagesRepository->getStaticImagesForPage(page: 'bench_product_page');
-            $canonicalUrl = route('show_bench_product', ['collection' => $collection,'id' => $id]);
+            $canonicalUrl = route('show_bench_product', ['collection' => $collection, 'slug' => $product->slug]);
             return WebResponse::success(view('elitvid.site.benches.bench_product_page',
                 compact('product',
                     'rand_products',
