@@ -3,24 +3,24 @@
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\Auth\LoginController;
 use App\Http\Controllers\Admin\Auth\RegisterController;
+use App\Http\Controllers\Admin\BenchController as AdminBenchController;
 use App\Http\Controllers\Admin\BlogController;
-use App\Http\Controllers\Admin\MailController;
 use App\Http\Controllers\Admin\PageContentController;
+use App\Http\Controllers\Admin\PotController as AdminPotController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\StaticImagesController;
-use App\Http\Controllers\StaticPagesController;
 use App\Http\Controllers\Admin\StaticPageController;
-use \App\Http\Controllers\Admin\PotController as AdminPotController;
-use \App\Http\Controllers\Admin\BenchController as AdminBenchController;
-
-
 use App\Http\Controllers\BenchController;
 use App\Http\Controllers\BollardsAndFencingController;
+use App\Http\Controllers\MailController;
+use App\Http\Controllers\Admin\MailController as AdminMailController;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\PotController;
 use App\Http\Controllers\SitemapController;
+use App\Http\Controllers\StaticPagesController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -108,7 +108,6 @@ Route::post('/registration', [RegisterController::class, 'registration'])->name(
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
 Route::post('/send_mail', [MailController::class, 'send'])->name('send_mail');
-Route::get('/mails', [MailController::class, 'index'])->name('admin_mails.index');
 
 
 
@@ -153,6 +152,8 @@ Route::middleware('auth')->where([])->prefix('admin')->group(function () {
     Route::put('/page-contents/{pageContent}', [PageContentController::class, 'update'])->name('admin_page_contents.update');
 
     Route::put('/static_images/{static_image}/update', [StaticImagesController::class, 'update'])->name('static_images.update');
+
+    Route::get('/mails', [AdminMailController::class, 'index'])->name('admin_mails.index');
 
     Route::resources([
         'blogs' => BlogController::class,

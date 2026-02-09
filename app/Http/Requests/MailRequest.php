@@ -23,7 +23,7 @@ class MailRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required|min:3|max:30',
+            'name' => 'required|min:1|max:50',
             'email' => 'required|email|max:50',
             'name_corp' => 'max:50',
             'phone' => [

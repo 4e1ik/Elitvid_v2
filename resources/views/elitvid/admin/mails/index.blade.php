@@ -85,7 +85,7 @@
                                                                         <p><strong>Организация:</strong> {{ $mail->corporation_name ?: '—' }}</p>
                                                                         @if($mail->file)
                                                                             <p><strong>Файл:</strong>
-                                                                                <a href="{{ Storage::url($mail->file) }}" target="_blank" rel="noopener">
+                                                                                <a href="{{ asset('storage/' . str_replace('public/', '', $mail->file)) }}" rel="noopener noreferrer">
                                                                                     {{ basename($mail->file) }} <span class="fa fa-external-link"></span>
                                                                                 </a>
                                                                             </p>
