@@ -40,11 +40,11 @@ class LoginController extends Controller
             }
 
             $arr_data = [
-              'email' => $request->all()['email'],
-              'password' => $request->all()['password'],
+                'email' => $request->input('email'),
+                'password' => $request->input('password'),
             ];
 
-            if (Auth::attempt($arr_data)){
+            if (Auth::attempt($arr_data, $request->boolean('remember'))) {
                 if (Auth::user()['is_admin'] == true){
                     return WebResponse::success(redirect(route('admin')));
                 }
