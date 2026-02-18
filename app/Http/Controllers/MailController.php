@@ -44,7 +44,7 @@ class MailController extends Controller
                 'message' => 'Письмо успешно отправлено!'
             ]));
         } catch (\Exception $e) {
-            return WebResponse::error($e, true);
+            return WebResponse::error($e, false);
         }
     }
 }
