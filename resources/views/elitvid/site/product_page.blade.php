@@ -13,7 +13,7 @@
                             @foreach($item->images as $image)
                                 <img class="target target-{{$i}}"
                                      src="{{ asset('storage/'.$image->image) }}"
-                                     alt="{{ $image->description_image }}" loading="lazy">
+                                     alt="{{ $image->description_image ?? '' }}" loading="lazy">
                             <div hidden>{{$i++}}</div>
                             @endforeach
                         @else
@@ -26,7 +26,7 @@
                                                 <a href="{{ asset('storage/'.$image->image) }}"
                                                    data-lightbox="{{$item->id}}-images"><img
                                                         src="{{ asset('storage/'.$image->image) }}"
-                                                        alt="{{$image->description_image}}" loading="lazy"></a>
+                                                        alt="{{$image->description_image ?? ''}}" loading="lazy"></a>
                                             </div>
                                         @endforeach
                                     </div>

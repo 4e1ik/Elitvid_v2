@@ -21,7 +21,7 @@
             </div>
             <div class="stages">
                 <div class="image">
-                    <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/pots.webp')}}" alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/pots.webp']}}"
+                    <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/pots.webp')}}" alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/pots.webp'] ?? ''}}"
                          class="main-page-up" loading="lazy">
                 </div>
                 <div class="submit-application submit-application--mobile">
@@ -36,7 +36,7 @@
             <h2>Формы ваз из полистоуна</h2>
             <div class="prev_directions__forms">
                 <div class="prev_directions__form">
-                    <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/pots/forms/circle_pot.webp')}}" alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/pots/forms/circle_pot.webp']}}" loading="lazy">
+                    <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/pots/forms/circle_pot.webp')}}" alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/pots/forms/circle_pot.webp'] ?? ''}}" loading="lazy">
                     <div class="prev_directions_form--text">
                         <div class="text--description">
                             <h4>Круглые</h4>
@@ -52,7 +52,7 @@
                     </a>
                 </div>
                 <div class="prev_directions__form">
-                    <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/pots/forms/square_pot.webp')}}" alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/pots/forms/square_pot.webp']}}" loading="lazy">
+                    <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/pots/forms/square_pot.webp')}}" alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/pots/forms/square_pot.webp'] ?? ''}}" loading="lazy">
                     <div class="prev_directions_form--text">
                         <div class="text--description">
                             <h4>Квадратные</h4>
@@ -68,7 +68,7 @@
                     </a>
                 </div>
                 <div class="prev_directions__form">
-                    <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/pots/forms/rectangular_pot.webp')}}" alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/pots/forms/rectangular_pot.webp']}}" loading="lazy">
+                    <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/pots/forms/rectangular_pot.webp')}}" alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/pots/forms/rectangular_pot.webp'] ?? ''}}" loading="lazy">
                     <div class="prev_directions_form--text">
                         <div class="text--description">
                             <h4>Прямоугольные</h4>
@@ -95,7 +95,7 @@
                         <div class="main-swiper-wrapper__slider swiper-wrapper">
                             <!-- Slides -->
                             @foreach($pageContent->gallery->images as $image)
-                                <div class="swiper-slide"><img src="{{asset('storage/'.str_replace('public/','',$image->image))}}" alt="{{$image->description_image}}" loading="lazy"></div>
+                                <div class="swiper-slide"><img src="{{asset('storage/'.str_replace('public/','',$image->image))}}" alt="{{$image->description_image ?? ''}}" loading="lazy"></div>
                             @endforeach
                         </div>
 
@@ -119,7 +119,7 @@
                         <div class="main-swiper-wrapper__slider swiper-wrapper">
                             <!-- Slides -->
                             @foreach($pageContent->gallery->images as $image)
-                                <div class="swiper-slide"><img src="{{asset('storage/'.str_replace('public/','',$image->image))}}" alt="{{$image->description_image}}" loading="lazy"></div>
+                                <div class="swiper-slide"><img src="{{asset('storage/'.str_replace('public/','',$image->image))}}" alt="{{$image->description_image ?? ''}}" loading="lazy"></div>
                             @endforeach
                         </div>
                     </div>

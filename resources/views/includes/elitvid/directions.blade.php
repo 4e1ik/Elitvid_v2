@@ -89,7 +89,7 @@
         <div class="direction">
             <div class="direction__image">
                 <img src="{{asset('/storage/'.str_replace('public/','',$static_page->images()->where('menu_image', true)->first()->image)) ?? ''}}"
-                     alt="{{$static_page->images()->where('main_image', true)->first()->image->description_image ?? ''}}"
+                     alt="{{$static_page->images()->where('main_image', true)->first()?->description_image ?? ''}}"
                 loading="lazy">
             </div>
             <h3>

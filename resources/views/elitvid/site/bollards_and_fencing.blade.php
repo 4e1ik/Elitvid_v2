@@ -20,7 +20,7 @@
             </div>
             <div class="stages">
                 <div class="image">
-                    <img src="{{asset($staticPage->main_image ?? '/elitvid_assets/newDesign/newDesign/imgs/bollards/main_bollards.webp')}}" alt="{{$staticPage->alt_image ?? $static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/bollards/main_bollards.webp'] ?? 'Болларды и ограждения'}}"
+                    <img src="{{asset($staticPage->main_image ?? '/elitvid_assets/newDesign/newDesign/imgs/bollards/main_bollards.webp')}}" alt="{{$staticPage->alt_image ?? ($static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/bollards/main_bollards.webp'] ?? 'Болларды и ограждения')}}"
                          class="main-page-up" loading="lazy">
                     <div class="image-gradient-overlay"></div>
                 </div>
@@ -198,7 +198,7 @@
                         <div class="main-swiper-wrapper__slider swiper-wrapper">
                             <!-- Slides -->
                                 @foreach($pageContent->gallery->images as $image)
-                                    <div class="swiper-slide"><img src="{{asset('storage/'.str_replace('public/','',$image->image))}}" alt="{{$image->description_image}}" loading="lazy"></div>
+                                    <div class="swiper-slide"><img src="{{asset('storage/'.str_replace('public/','',$image->image))}}" alt="{{$image->description_image ?? ''}}" loading="lazy"></div>
                                 @endforeach
                         </div>
 
@@ -222,7 +222,7 @@
                         <div class="main-swiper-wrapper__slider swiper-wrapper">
                             <!-- Slides -->
                                 @foreach($pageContent->gallery->images as $image)
-                                    <div class="swiper-slide"><img src="{{asset('storage/'.str_replace('public/','',$image->image))}}" alt="{{$image->description_image}}" loading="lazy"></div>
+                                    <div class="swiper-slide"><img src="{{asset('storage/'.str_replace('public/','',$image->image))}}" alt="{{$image->description_image ?? ''}}" loading="lazy"></div>
                                 @endforeach
                         </div>
                     </div>

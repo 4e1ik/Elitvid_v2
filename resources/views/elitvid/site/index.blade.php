@@ -187,7 +187,7 @@
                             <div class="main-swiper-wrapper__slider swiper-wrapper">
                                 <!-- Slides -->
                                 @foreach($pageContent->gallery->images as $image)
-                                    <div class="swiper-slide"><img src="{{asset('storage/'.str_replace('public/','',$image->image))}}" alt="{{$image->description_image}}" loading="lazy"></div>
+                                    <div class="swiper-slide"><img src="{{asset('storage/'.str_replace('public/','',$image->image))}}" alt="{{$image->description_image ?? ''}}" loading="lazy"></div>
                                 @endforeach
                             </div>
 
@@ -211,7 +211,7 @@
                             <div class="main-swiper-wrapper__slider swiper-wrapper">
                                 <!-- Slides -->
                                 @foreach($pageContent->gallery->images as $image)
-                                    <div class="swiper-slide"><img src="{{asset('storage/'.str_replace('public/','',$image->image))}}" alt="{{$image->description_image}}" loading="lazy"></div>
+                                    <div class="swiper-slide"><img src="{{asset('storage/'.str_replace('public/','',$image->image))}}" alt="{{$image->description_image ?? ''}}" loading="lazy"></div>
                                 @endforeach
                             </div>
                         </div>

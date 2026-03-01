@@ -20,7 +20,7 @@
         </div>
         <div class="stages">
             <div class="image">
-                <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/square_pots.webp')}}" alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/square_pots.webp']}}"
+                <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/square_pots.webp')}}" alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/square_pots.webp'] ?? ''}}"
                      class="main-page-up" loading="lazy">
             </div>
             <div class="submit-application submit-application--mobile">
@@ -36,7 +36,7 @@
         <div class="not_main_page directions">
             @foreach($products as $product)
                 <div class="direction">
-                    <img src="{{asset('storage/'.str_replace('public/','',$product->images->first()->image))}}" alt="{{$product->images->first()->description_image}}" loading="lazy">
+                    <img src="{{asset('storage/'.str_replace('public/','',$product->images->first()->image))}}" alt="{{$product->images->first()?->description_image ?? ''}}" loading="lazy">
                     <a href="{{route('show_pot_product', ['collection' => 'square_pots', 'slug' => $product->slug])}}">
                         <button>{{$product->name}}</button>
                     </a>

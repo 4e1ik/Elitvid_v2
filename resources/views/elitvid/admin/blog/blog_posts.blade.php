@@ -51,7 +51,7 @@
                                                     <a href="{{ asset('storage/' . str_replace('public/', '', $imagePath)) }}" target="_blank">
                                                         <img
                                                             src="{{ asset('storage/' . str_replace('public/', '', $imagePath)) }}"
-                                                            alt="{{ $blog_post->title }}"
+                                                            alt="{{ $blog_post->title ?? '' }}"
                                                             style="width: 60px; height: 60px; object-fit: cover; border-radius: 4px; border: 1px solid #ddd; cursor: pointer; transition: transform 0.3s;"
                                                             onmouseover="this.style.transform='scale(1.1)'"
                                                             onmouseout="this.style.transform='scale(1)'"

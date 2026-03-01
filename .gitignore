@@ -18,3 +18,7 @@ yarn-error.log
 /.idea
 /.vscode
 /public/elitvid_assets/newDesign/newDesign/files
+/.osp
+composer.lock
+php
+prepareBindings($bindings)

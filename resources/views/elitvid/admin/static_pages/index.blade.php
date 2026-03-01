@@ -48,7 +48,7 @@
                                                 $mainImage = $staticPage->images()->where('main_image', true)->first();
                                             @endphp
                                             @if($mainImage)
-                                                <img style="height: 100px" src="{{asset('storage/' . str_replace('public/', '', $mainImage->image))}}" alt="{{$mainImage->description_image}}">
+                                                <img style="height: 100px" src="{{asset('storage/' . str_replace('public/', '', $mainImage->image))}}" alt="{{$mainImage->description_image ?? ''}}">
                                             @else
                                                 Нет изображения
                                             @endif

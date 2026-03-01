@@ -21,7 +21,7 @@
                 <div class="image">
                     <img
                         src="{{asset('/storage/'.str_replace('public/','',$pageContent->images()->where('main_image', true)->first()->image) ?? '')}}"
-                        alt="{{$pageContent->images()->where('main_image', true)->first()->image ?? 'Описание главной старницы статической стараницы'}}"
+                        alt="{{$pageContent->images()->where('main_image', true)->first()?->description_image ?? 'Описание главной страницы статической страницы'}}"
                         class="main-page-up" loading="lazy">
                     <div class="image-gradient-overlay"></div>
                 </div>
@@ -52,7 +52,7 @@
                                 @foreach($pageContent->gallery->images()->where('main_image', '!=', true)->where('menu_image', '!=', true)->get() as $image)
                                     <div class="swiper-slide"><img
                                             src="{{asset('storage/'.str_replace('public/','',$image->image))}}"
-                                            alt="{{$image->description_image}}" loading="lazy"></div>
+                                            alt="{{$image->description_image ?? ''}}" loading="lazy"></div>
                                 @endforeach
                             </div>
                             <div class="swiper-button-prev arrow-left arrow">
@@ -79,7 +79,7 @@
                                 @foreach($pageContent->gallery->images()->where('main_image', '!=', true)->where('menu_image', '!=', true)->get() as $image)
                                     <div class="swiper-slide"><img
                                             src="{{asset('storage/'.str_replace('public/','',$image->image))}}"
-                                            alt="{{$image->description_image}}" loading="lazy"></div>
+                                            alt="{{$image->description_image ?? ''}}" loading="lazy"></div>
                                 @endforeach
                             </div>
                         </div>

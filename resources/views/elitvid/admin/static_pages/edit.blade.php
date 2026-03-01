@@ -112,7 +112,7 @@
                                     <div style="margin-bottom: 20px;">
                                         <img style="max-width: 100%; height: auto; max-height: 300px; border: 1px solid #ddd; border-radius: 5px;"
                                              src="{{asset('storage/' . str_replace('public/', '', $mainImage->image))}}"
-                                             alt="{{$mainImage->description_image}}">
+                                             alt="{{$mainImage->description_image ?? ''}}">
                                         <p><small>Текущее изображение</small></p>
                                         <div style="margin-top: 10px;">
                                             <label>Описание главной картинки</label>
@@ -164,7 +164,7 @@
                                     <div style="margin-bottom: 20px;">
                                         <img style="max-width: 100%; height: auto; max-height: 300px; border: 1px solid #ddd; border-radius: 5px;"
                                              src="{{asset('storage/' . str_replace('public/', '', $menuImage->image))}}"
-                                             alt="{{$menuImage->description_image}}">
+                                             alt="{{$menuImage->description_image ?? ''}}">
                                         <p><small>Текущее изображение</small></p>
                                         <div style="margin-top: 10px;">
                                             <label>Описание картинки меню</label>
@@ -244,7 +244,7 @@
                                                 <div style="position: relative; width: 200px;">
                                                     <img src="{{asset('storage/' . str_replace('public/', '', $image->image))}}"
                                                          style="width: 100%; height: auto; border: 1px solid #ddd; border-radius: 5px;"
-                                                         alt="{{$image->description_image}}">
+                                                         alt="{{$image->description_image ?? ''}}">
                                                     <div style="margin-top: 10px;">
                                                         <input type="text" class="form-control" name="gallery_image_description_edit" id="gallery_image_description_edit_{{$image->id}}" value="{{$image->description_image}}" placeholder="Описание изображения">
                                                         <button type="button" class="btn btn-primary btn-sm" style="margin-top: 5px; width: 100%;" onclick="updateImageDescription({{$image->id}}, '{{route('images.update', ['image' => $image])}}')">
