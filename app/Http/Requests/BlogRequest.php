@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class BlogRequest extends FormRequest
 {
@@ -24,7 +25,13 @@ class BlogRequest extends FormRequest
         return [
             'title' => 'required|string|max:255',
             'description' => 'required|string|max:500',
-            'slug' => 'nullable|string|max:255|unique:blogs,slug|regex:/^[a-z0-9-]+$/',
+            'slug' => [
+                'nullable',
+                'string',
+                'max:255',
+                Rule::unique('blogs', 'slug')->ignore($this->route('blog')?->id),
+                'regex:/^[a-z0-9-]+$/',
+            ],
             'active' => 'nullable|in:0,1',
             'main_image' => 'required|image|mimes:jpeg,jpg,png,webp|max:10240',
             'content' => 'nullable|string',

@@ -4,6 +4,7 @@ namespace App\Http\Requests;
 
 use App\Models\Product;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class UpdateProductRequest extends FormRequest
 {
@@ -38,7 +39,7 @@ class UpdateProductRequest extends FormRequest
                 'nullable',
                 'string',
                 'max:255',
-                'unique:products,slug',
+                Rule::unique('products', 'slug')->ignore($this->route('product')?->id),
                 'regex:/^[a-z0-9-]+$/',
             ],
             'image' => [

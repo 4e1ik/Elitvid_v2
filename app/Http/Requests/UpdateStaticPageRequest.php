@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class UpdateStaticPageRequest extends FormRequest
 {
@@ -25,7 +26,13 @@ class UpdateStaticPageRequest extends FormRequest
             'main_image_description' => 'nullable|string|max:5000',
             'menu_image' => 'nullable|image|mimes:jpeg,jpg,png,webp|max:10240',
             'menu_image_description' => 'nullable|string|max:5000',
-            'slug' => 'nullable|string|max:100|unique:static_pages,slug|regex:/^[a-z0-9-]+$/',
+            'slug' => [
+                'nullable',
+                'string',
+                'max:100',
+                Rule::unique('static_pages', 'slug')->ignore($this->route('static_page')?->id),
+                'regex:/^[a-z0-9-]+$/',
+            ],
             'gallery_images' => 'nullable|array',
             'gallery_images.*' => 'nullable|image|mimes:jpeg,jpg,png,webp|max:10240',
             'gallery_descriptions' => 'nullable|array',
