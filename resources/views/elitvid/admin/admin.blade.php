@@ -139,18 +139,19 @@
                         </div>
                     </div>
                 </div>
+
                 <div class="col-md-4">
                     <div class="col-md-12 padding-0">
                         <div class="panel box-v3">
                             <div class="panel-heading bg-white border-none">
-                                <h4>Report</h4>
+                                <h4>Статистика</h4>
                             </div>
                             <div class="panel-body">
                                 @php
                                     $total_products = $stats['products'];
                                     $active_products = $stats['active_products'];
                                     $products_percent = $total_products > 0 ? round(($active_products / $total_products) * 100) : 0;
-                                    
+
                                     $blog_percent = $stats['blog_posts'] > 0 ? min(100, round(($stats['active_blog_posts'] / $stats['blog_posts']) * 100)) : 0;
                                 @endphp
 
@@ -161,11 +162,11 @@
                                     <div class="media-body">
                                         <h5 class="media-heading">Активные продукты</h5>
                                         <div class="progress progress-mini">
-                                            <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="{{$products_percent}}" aria-valuemin="0" aria-valuemax="100" style="width: {{$products_percent}}%;">
-                                                <span class="sr-only">{{$products_percent}}%</span>
+                                            <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="{{ $products_percent }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ $products_percent }}%;">
+                                                <span class="sr-only">{{ $products_percent }}%</span>
                                             </div>
                                         </div>
-                                        <small>{{$active_products}} из {{$total_products}}</small>
+                                        <small>{{ $active_products }} из {{ $total_products }}</small>
                                     </div>
                                 </div>
 
@@ -176,11 +177,11 @@
                                     <div class="media-body">
                                         <h5 class="media-heading">Активные посты блога</h5>
                                         <div class="progress progress-mini">
-                                            <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="{{$blog_percent}}" aria-valuemin="0" aria-valuemax="100" style="width: {{$blog_percent}}%;">
-                                                <span class="sr-only">{{$blog_percent}}%</span>
+                                            <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="{{ $blog_percent }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ $blog_percent }}%;">
+                                                <span class="sr-only">{{ $blog_percent }}%</span>
                                             </div>
                                         </div>
-                                        <small>{{$stats['active_blog_posts']}} из {{$stats['blog_posts']}}</small>
+                                        <small>{{ $stats['active_blog_posts'] }} из {{ $stats['blog_posts'] }}</small>
                                     </div>
                                 </div>
 
@@ -195,7 +196,7 @@
                                                 <span class="sr-only">100%</span>
                                             </div>
                                         </div>
-                                        <small>{{$stats['static_pages']}} страниц</small>
+                                        <small>{{ $stats['static_pages'] }} страниц</small>
                                     </div>
                                 </div>
                             </div>
