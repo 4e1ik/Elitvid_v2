@@ -99,6 +99,10 @@
             </div>
         </section>
         <section class="partners">
+            <div class="lines-decor">
+                <div class="horizontal-line--decor"></div>
+                <div class="vertical-line--decor"></div>
+            </div>
             <h2>Наши партнеры</h2>
             <div class="partners_slider">
                 <div class="partners__slider swiper">
@@ -132,10 +136,7 @@
                     </div>
                 </div>
             </div>
-            <div class="lines-decor">
-                <div class="horizontal-line--decor"></div>
-                <div class="vertical-line--decor"></div>
-            </div>
+
         </section>
         <section class="decorative_elements">
             <div class="lines-decor">

@@ -609,7 +609,7 @@ main .main .download_catalog--mobile {
 }
 main .main .vertical-line--decor .line {
   width: 1px;
-  height: 15.625em;
+  height: 7em;
   background: #979797;
   margin: 3.125em 0 0 8.4375em;
 }
@@ -655,7 +655,7 @@ main .advantages {
 main .advantages .horizontal-line--decor {
   height: 1px;
   background-color: #979797;
-  margin: -7.5em 0 0 8.4375em;
+  margin: -119.3em 0 0 8.4375em;
   width: 37em;
 }
 main .advantages .vertical-line--decor {
@@ -731,7 +731,7 @@ main .partners .partners__slider .swiper-slide img {
 main .partners .lines-decor {
   display: flex;
   flex-direction: row-reverse;
-  margin-top: 2.5em;
+  margin-bottom: 2.5em;
 }
 main .partners .lines-decor .horizontal-line--decor {
   height: 1px;

@@ -797,7 +797,7 @@ main {
 
             .line {
                 width: 1px;
-                height: 15.625em;
+                height: 7em;
                 background: $stroke-main--color;
                 margin: 3.125em 0 0 8.4375em;
             }
@@ -856,7 +856,7 @@ main {
         .horizontal-line--decor {
             height: 1px;
             background-color: $stroke-main--color;
-            margin: -7.5em 0 0 8.4375em;
+            margin: -119.3em 0 0 8.4375em;
             width: 37em;
         }
 
@@ -952,7 +952,7 @@ main {
         .lines-decor {
             display: flex;
             flex-direction: row-reverse;
-            margin-top: 2.5em;
+            margin-bottom: 2.5em;
 
             .horizontal-line--decor {
                 height: 1px;
