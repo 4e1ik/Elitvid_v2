@@ -1023,6 +1023,15 @@ main {
             height: 22.5em;
             width: 22.5em;
             justify-self: center;
+
+            &__link{
+                display: block;
+            }
+
+            .d-column{
+                display: flex;
+                flex-direction: column;
+            }
         }
 
         .direction__image {
@@ -1244,6 +1253,7 @@ main {
                     display: flex;
                     justify-content: center;
                     align-items: center;
+                    flex-direction: column;
 
 
                     button {

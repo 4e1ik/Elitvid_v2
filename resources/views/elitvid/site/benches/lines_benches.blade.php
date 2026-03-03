@@ -1,4 +1,3 @@
-
 @extends('layouts.elitvid.elitvid')
 
 @section('content')
@@ -21,9 +20,9 @@
             </div>
             <div class="stages">
                 <div class="image">
-                    <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/benches/collections/lines/lines.webp')}}"
-                         alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/benches/collections/lines/lines.webp'] ?? ''}}"
-                         class="main-page-up" loading="lazy">
+                    <img src="{{ asset('/elitvid_assets/newDesign/newDesign/imgs/benches/collections/lines/lines.webp') }}"
+                        alt="{{ $static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/benches/collections/lines/lines.webp'] ?? '' }}"
+                        class="main-page-up" loading="lazy">
                 </div>
                 <div class="submit-application submit-application--mobile">
                     <button class="submit-application--button open_popup_application1 submit-application-button--mobile">
@@ -36,11 +35,13 @@
         <section class="not_main_page produce">
             <h2>Выберите форму</h2>
             <div class="not_main_page directions">
-                @foreach($products as $product)
+                @foreach ($products as $product)
                     <div class="direction">
-                        <img src="{{asset('storage/'.str_replace('public/','',$product->images->first()->image))}}" alt="{{$product->images->first()?->description_image ?? ''}}" loading="lazy">
-                        <a href="{{route('show_bench_product', ['collection' => 'lines_benches', 'slug' => $product->slug])}}">
-                            <button>{{$product->name}}</button>
+                        <a href="{{ route('show_bench_product', ['collection' => 'lines_benches', 'slug' => $product->slug]) }}"
+                            class="direction__link">
+                            <img src="{{ asset('storage/' . str_replace('public/', '', $product->images->first()->image)) }}"
+                                alt="{{ $product->images->first()?->description_image ?? '' }}" loading="lazy">
+                            <button type="button">{{ $product->name }}</button>
                         </a>
                     </div>
                 @endforeach
