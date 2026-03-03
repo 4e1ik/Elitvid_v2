@@ -792,6 +792,13 @@ main .produce .direction {
   width: 22.5em;
   justify-self: center;
 }
+main .produce .direction__link {
+  display: block;
+}
+main .produce .direction .d-column {
+  display: flex;
+  flex-direction: column;
+}
 main .produce .direction__image {
   overflow: hidden;
 }
@@ -964,6 +971,7 @@ main .offered_products .offered_product_slider .swiper-slide a {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
 }
 main .offered_products .offered_product_slider .swiper-slide a button {
   color: #FFFFFF;
