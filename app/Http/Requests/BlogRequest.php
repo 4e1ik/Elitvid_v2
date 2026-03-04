@@ -33,7 +33,15 @@ class BlogRequest extends FormRequest
                 'regex:/^[a-z0-9-]+$/',
             ],
             'active' => 'nullable|in:0,1',
-            'main_image' => 'required|image|mimes:jpeg,jpg,png,webp|max:10240',
+            'main_image' => [
+                Rule::requiredIf(function () {
+                    $blog = $this->route('blog');
+                    return !$blog || !$blog->hasMainImage();
+                }),
+                'image',
+                'mimes:jpeg,jpg,png,webp',
+                'max:10240',
+            ],
             'content' => 'nullable|string',
             'meta_title' => 'nullable|string|max:255',
             'meta_description' => 'nullable|string|max:500',
