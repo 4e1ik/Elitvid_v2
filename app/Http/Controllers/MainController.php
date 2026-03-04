@@ -92,7 +92,7 @@ class MainController extends Controller
     function show_blog_post(string $slug)
     {
         try {
-            $static_pages = StaticPage::all();
+            $static_pages = $this->staticPageRepository->getAllStaticPages();
             $blog = Blog::where('slug', $slug)->first();
             if (!$blog) {
                 abort(404);

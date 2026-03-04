@@ -8,6 +8,6 @@ class StaticPageRepository
 {
     public function getAllStaticPages()
     {
-        return StaticPage::all();
+        return StaticPage::where('active', 1)->get();
     }
 }
