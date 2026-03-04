@@ -159,13 +159,16 @@
                                 <div class="heading-5"><a href="{{route('bollards_and_fencing')}}">Болларды и
                                         ограждения</a></div>
                             </li>
-                            @foreach($static_pages as $static_page)
-                                <li>
-                                    <div class="heading-5"><a
-                                            href="{{route('static_page', ['slug' => $static_page->slug])}}">{{$static_page->menu_name}}</a>
-                                    </div>
-                                </li>
-                            @endforeach
+                            @if(isset($static_pages))
+                                @foreach($static_pages as $static_page)
+                                    <li>
+                                        <div class="heading-5"><a
+                                                href="{{route('static_page', ['slug' => $static_page->slug])}}">{{$static_page->menu_name}}</a>
+                                        </div>
+                                    </li>
+                                @endforeach
+                            @endif
+
                             {{--                            <li><div class="heading-5"><a href="{{route('rotundas_and_colonnades')}}">Ротонды и коллонады</a></div></li>--}}
                             {{--                            <li><div class="heading-5"><a href="{{route('parklets_and_canopies')}}">Парклет, навесы</a></div></li>--}}
                             {{--                            <li><div class="heading-5"><a href="{{route('pillars_and_covers')}}">Столбы и накрывки</a></div></li>--}}
