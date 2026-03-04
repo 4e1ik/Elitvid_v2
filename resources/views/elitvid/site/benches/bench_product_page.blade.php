@@ -73,37 +73,37 @@
                         <h4>Фактуры:</h4>
                         <p class="images_textures__text">Выберите фактуру и цвет для визуализации скамейки</p>
                         <div class="images_textures__images">
-                            <div class="image_texture">
+                            <div class="image_texture" data-texture="porous">
                                 <img data-texture="porous"
-                                    src="{{ asset('/elitvid_assets/newDesign/newDesign/imgs/pots/textures/texture-porous.webp') }}"
-                                    alt="{{ $static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/pots/textures/texture-porous.webp'] ?? '' }}"
-                                    loading="lazy">
+                                     src="{{ asset('/elitvid_assets/newDesign/newDesign/imgs/pots/textures/texture-porous.webp') }}"
+                                     alt="{{ $static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/pots/textures/texture-porous.webp'] ?? '' }}"
+                                     loading="lazy">
                                 <p>Пористая</p>
                                 <img data-texture="porous" class="texture_popup__image"
-                                    src="{{ asset('/elitvid_assets/newDesign/newDesign/imgs/pots/textures/texture-porous.webp') }}"
-                                    alt="{{ $static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/pots/textures/texture-porous.webp'] ?? '' }}">
+                                     src="{{ asset('/elitvid_assets/newDesign/newDesign/imgs/pots/textures/texture-porous.webp') }}"
+                                     alt="{{ $static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/pots/textures/texture-porous.webp'] ?? '' }}">
                                 <p class="texture_popup__text">Пористая</p>
                             </div>
-                            <div class="image_texture">
+                            <div class="image_texture" data-texture="smooth">
                                 <img data-texture="smooth"
-                                    src="{{ asset('/elitvid_assets/newDesign/newDesign/imgs/pots/textures/texture-smooth.webp') }}"
-                                    alt="{{ $static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/pots/textures/texture-smooth.webp'] ?? '' }}"
-                                    loading="lazy">
+                                     src="{{ asset('/elitvid_assets/newDesign/newDesign/imgs/pots/textures/texture-smooth.webp') }}"
+                                     alt="{{ $static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/pots/textures/texture-smooth.webp'] ?? '' }}"
+                                     loading="lazy">
                                 <p>Гладкая</p>
                                 <img data-texture="smooth" class="texture_popup__image"
-                                    src="{{ asset('/elitvid_assets/newDesign/newDesign/imgs/pots/textures/texture-smooth.webp') }}"
-                                    alt="{{ $static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/pots/textures/texture-smooth.webp'] ?? '' }}">
+                                     src="{{ asset('/elitvid_assets/newDesign/newDesign/imgs/pots/textures/texture-smooth.webp') }}"
+                                     alt="{{ $static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/pots/textures/texture-smooth.webp'] ?? '' }}">
                                 <p class="texture_popup__text">Гладкая</p>
                             </div>
-                            <div class="image_texture">
+                            <div class="image_texture" data-texture="marble">
                                 <img data-texture="marble"
-                                    src="{{ asset('/elitvid_assets/newDesign/newDesign/imgs/pots/textures/texture-marble.webp') }}"
-                                    alt="{{ $static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/pots/textures/texture-marble.webp'] ?? '' }}"
-                                    loading="lazy">
+                                     src="{{ asset('/elitvid_assets/newDesign/newDesign/imgs/pots/textures/texture-marble.webp') }}"
+                                     alt="{{ $static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/pots/textures/texture-marble.webp'] ?? '' }}"
+                                     loading="lazy">
                                 <p>Мрамор</p>
                                 <img data-texture="marble" class="texture_popup__image"
-                                    src="{{ asset('/elitvid_assets/newDesign/newDesign/imgs/pots/textures/texture-marble.webp') }}"
-                                    alt="{{ $static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/pots/textures/texture-marble.webp'] ?? '' }}">
+                                     src="{{ asset('/elitvid_assets/newDesign/newDesign/imgs/pots/textures/texture-marble.webp') }}"
+                                     alt="{{ $static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/pots/textures/texture-marble.webp'] ?? '' }}">
                                 <p class="texture_popup__text">Мрамор</p>
                             </div>
                         </div>
