@@ -105,7 +105,7 @@
                         </div>
                     </div>
                     <input type="hidden" name="g-recaptcha-response" id="g-recaptcha-response">
-                    <div style="position: absolute; margin:0; color: red;" class="form_error">
+                    <div style="position: absolute; margin:0; color: #c94a4a;" class="form_error">
                         @error('g-recaptcha-response')
                         <div class="text-danger">
                             {{$message}}

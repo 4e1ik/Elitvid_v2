@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', function () {
     menuBtn.forEach(function (element) {
         element.addEventListener('click', function () {
             popup.style.display = 'block';
+            document.body.classList.add('popup-open');
         });
     })
 })
@@ -18,16 +19,21 @@ document.addEventListener('DOMContentLoaded', function () {
     menuBtn1.forEach(function (element) {
         element.addEventListener('click', function () {
             popup.style.display = 'block';
+            document.body.classList.add('popup-open');
         });
     })
 })
 
 crossBtn.onclick = function () {
     popup.style.display = 'none';
+    document.body.classList.remove('popup-open');
+    document.getElementById('mail_form').reset();
 };
 
 window.onclick = function (event) {
     if (event.target === document.querySelector('.popup__body_application')) {
         popup.style.display = 'none';
+        document.body.classList.remove('popup-open');
+        document.getElementById('mail_form').reset();
     }
 };
