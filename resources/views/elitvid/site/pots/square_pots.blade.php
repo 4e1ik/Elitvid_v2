@@ -38,7 +38,7 @@
             <div class="not_main_page directions">
                 @foreach ($products as $product)
                     <div class="direction">
-                        <a href="{{ route('show_pot_product', ['collection' => 'square_pots', 'slug' => $product->slug]) }}"
+                        <a href="{{ route('show_pot_product', ['collection' => 'kvadratnye', 'slug' => $product->slug]) }}"
                             class="direction__link">
                             <img src="{{ asset('storage/' . str_replace('public/', '', $product->images->first()->image)) }}"
                                 alt="{{ $product->images->first()?->description_image ?? '' }}" loading="lazy">

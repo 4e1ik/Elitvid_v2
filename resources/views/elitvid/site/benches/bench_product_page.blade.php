@@ -331,18 +331,7 @@
                             <div class="swiper-slide">
                                 <div class="direction">
                                     <a href="{{ route('show_bench_product', [
-                                        'collection' =>
-                                            $product->bench->collection == 'Verona'
-                                                ? 'verona_benches'
-                                                : ($product->bench->collection == 'Stones'
-                                                    ? 'stones_benches'
-                                                    : ($product->bench->collection == 'lines'
-                                                        ? 'lines_benches'
-                                                        : ($product->bench->collection == 'Solo'
-                                                            ? 'solo_benches'
-                                                            : ($product->bench->collection == 'Street_furniture'
-                                                                ? 'street_furniture_benches'
-                                                                : '')))),
+                                        'collection' => $collection,
                                         'slug' => $rand_product->slug,
                                     ]) }}"
                                         class="direction__link">

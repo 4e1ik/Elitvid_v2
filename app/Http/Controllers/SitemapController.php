@@ -157,19 +157,13 @@ class SitemapController extends Controller
             ->where('product_type', 'bench')
             ->with('bench')
             ->get();
-        $benchCollectionSlugs = [
-            'Verona' => 'verona_benches',
-            'Stones' => 'stones_benches',
-            'lines' => 'lines_benches',
-            'Solo' => 'solo_benches',
-            'Street_furniture' => 'street_furniture_benches',
-        ];
+        $benchUrlSegments = config('collections.bench_url_segments', []);
         foreach ($benches as $bench) {
             if (!$bench->bench) continue;
             $collection = $bench->bench->collection;
-            if (isset($benchCollectionSlugs[$collection])) {
+            if (isset($benchUrlSegments[$collection])) {
                 $urls[] = [
-                    'loc' => URL::to(route('show_bench_product', ['collection' => $benchCollectionSlugs[$collection], 'slug' => $bench->slug])),
+                    'loc' => URL::to(route('show_bench_product', ['collection' => $benchUrlSegments[$collection], 'slug' => $bench->slug])),
                     'lastmod' => $bench->updated_at->toAtomString(),
                     'changefreq' => 'weekly',
                     'priority' => '0.4'
@@ -181,17 +175,13 @@ class SitemapController extends Controller
             ->where('product_type', 'pot')
             ->with('pot')
             ->get();
-        $potCollectionSlugs = [
-            'Square' => 'square_pots',
-            'Round' => 'round_pots',
-            'Rectangular' => 'rectangular_pots',
-        ];
+        $potUrlSegments = config('collections.pot_url_segments', []);
         foreach ($pots as $pot) {
             if (!$pot->pot) continue;
             $collection = $pot->pot->collection;
-            if (isset($potCollectionSlugs[$collection])) {
+            if (isset($potUrlSegments[$collection])) {
                 $urls[] = [
-                    'loc' => URL::to(route('show_pot_product', ['collection' => $potCollectionSlugs[$collection], 'slug' => $pot->slug])),
+                    'loc' => URL::to(route('show_pot_product', ['collection' => $potUrlSegments[$collection], 'slug' => $pot->slug])),
                     'lastmod' => $pot->updated_at->toAtomString(),
                     'changefreq' => 'weekly',
                     'priority' => '0.4'
