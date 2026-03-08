@@ -113,7 +113,8 @@ button {
     font-family: 'Montserrat-Medium';
 }
 
-li, ul {
+li,
+ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
@@ -153,17 +154,23 @@ a {
 
     a:after {
         display: block;
-        left: 0; /*изменить на right:0;, чтобы изменить направление подчёркивания */
-        width: 0; /*задаём длинну линии до наведения курсора*/
-        height: 1px; /*задаём ширину линии*/
-        background-color: $text--color; /*задаём цвет линии*/
+        left: 0;
+        /*изменить на right:0;, чтобы изменить направление подчёркивания */
+        width: 0;
+        /*задаём длинну линии до наведения курсора*/
+        height: 1px;
+        /*задаём ширину линии*/
+        background-color: $text--color;
+        /*задаём цвет линии*/
         content: "";
-        transition: 0.3s; /*задаём время анимации*/
+        transition: 0.3s;
+        /*задаём время анимации*/
     }
 
     a:hover:after,
     a:focus:after {
-        width: 100%; /*устанавливаем значение 100% чтобы ссылка подчёркивалась полностью*/
+        width: 100%;
+        /*устанавливаем значение 100% чтобы ссылка подчёркивалась полностью*/
     }
 
     a:hover {
@@ -181,17 +188,23 @@ a {
 
     button:after {
         display: block;
-        left: 0; /*изменить на right:0;, чтобы изменить направление подчёркивания */
-        width: 0; /*задаём длинну линии до наведения курсора*/
-        height: 1px; /*задаём ширину линии*/
-        background-color: $text--color; /*задаём цвет линии*/
+        left: 0;
+        /*изменить на right:0;, чтобы изменить направление подчёркивания */
+        width: 0;
+        /*задаём длинну линии до наведения курсора*/
+        height: 1px;
+        /*задаём ширину линии*/
+        background-color: $text--color;
+        /*задаём цвет линии*/
         content: "";
-        transition: 0.3s; /*задаём время анимации*/
+        transition: 0.3s;
+        /*задаём время анимации*/
     }
 
     button:hover:after,
     button:focus:after {
-        width: 100%; /*устанавливаем значение 100% чтобы ссылка подчёркивалась полностью*/
+        width: 100%;
+        /*устанавливаем значение 100% чтобы ссылка подчёркивалась полностью*/
     }
 
     button:hover {
@@ -626,26 +639,38 @@ header.open .header__burger span:nth-child(3) {
         }
 
         [data-title] {
-            position: relative; /* Относительное позиционирование */
-            cursor: pointer; /* Меняем курсор на справочный */
+            position: relative;
+            /* Относительное позиционирование */
+            cursor: pointer;
+            /* Меняем курсор на справочный */
         }
 
         [data-title]::after {
-            content: attr(data-title); /* Выводим текст из атрибута data-title */
-            position: absolute; /* Абсолютное позиционирование */
+            content: attr(data-title);
+            /* Выводим текст из атрибута data-title */
+            position: absolute;
+            /* Абсолютное позиционирование */
             left: 0;
-            bottom: 2.5em; /* Положение подсказки */
-            opacity: 0; /* Скрываем подсказку, делая её прозрачной */
-            transition: 0.5s; /* Время появления подсказки */
-            pointer-events: none; /* Подсказка не реагирует на курсор */
-            background-color: $background-icon--color; /* Синий цвет фона */
-            color: #fff; /* Белый цвет текста */
+            bottom: 2.5em;
+            /* Положение подсказки */
+            opacity: 0;
+            /* Скрываем подсказку, делая её прозрачной */
+            transition: 0.5s;
+            /* Время появления подсказки */
+            pointer-events: none;
+            /* Подсказка не реагирует на курсор */
+            background-color: $background-icon--color;
+            /* Синий цвет фона */
+            color: #fff;
+            /* Белый цвет текста */
             border-radius: 5px;
-            padding: 0.125em 0.375em; /* Поля вокруг текста */
+            padding: 0.125em 0.375em;
+            /* Поля вокруг текста */
         }
 
         [data-title]:hover::after {
-            opacity: 1; /* Показываем подсказку */
+            opacity: 1;
+            /* Показываем подсказку */
         }
 
 
@@ -713,17 +738,23 @@ header {
 
     a:after {
         display: block;
-        left: 0; /*изменить на right:0;, чтобы изменить направление подчёркивания */
-        width: 0; /*задаём длинну линии до наведения курсора*/
-        height: 1px; /*задаём ширину линии*/
-        background-color: $text--color; /*задаём цвет линии*/
+        left: 0;
+        /*изменить на right:0;, чтобы изменить направление подчёркивания */
+        width: 0;
+        /*задаём длинну линии до наведения курсора*/
+        height: 1px;
+        /*задаём ширину линии*/
+        background-color: $text--color;
+        /*задаём цвет линии*/
         content: "";
-        transition: 0.3s; /*задаём время анимации*/
+        transition: 0.3s;
+        /*задаём время анимации*/
     }
 
     a:hover:after,
     a:focus:after {
-        width: 100%; /*устанавливаем значение 100% чтобы ссылка подчёркивалась полностью*/
+        width: 100%;
+        /*устанавливаем значение 100% чтобы ссылка подчёркивалась полностью*/
     }
 
     a:hover {
@@ -747,7 +778,7 @@ main {
         }
     }
 
-    .description-products{
+    .description-products {
         margin-top: 5em;
     }
 
@@ -1024,11 +1055,11 @@ main {
             width: 22.5em;
             justify-self: center;
 
-            &__link{
+            &__link {
                 display: block;
             }
 
-            .d-column{
+            .d-column {
                 display: flex;
                 flex-direction: column;
             }
@@ -1385,8 +1416,13 @@ main {
                 //gap: 3.125em;
 
                 .content_images__main-image {
+                    margin-top: 17px;
+                    margin-left: 15px;
+                }
+
+                .content_images__main-image {
                     img {
-                        width: 30em;
+                        width: 27em;
                     }
                 }
 
@@ -1472,7 +1508,6 @@ main {
             .product_content__table {
                 display: flex;
                 flex-direction: column;
-
 
                 .content_table__general {
                     display: flex;
@@ -1586,9 +1621,7 @@ main {
         gap: 1em;
         position: relative;
 
-        .technique-blitz__content {
-
-        }
+        .technique-blitz__content {}
 
         .content__decorative-textures {
             display: flex;
@@ -1629,9 +1662,7 @@ main {
 
         .decorative-texture__card {
 
-            img {
-
-            }
+            img {}
         }
 
         .background-img {
@@ -1687,7 +1718,7 @@ main {
 
         }
 
-        .decorative-texture__card:nth-child(4 ) {
+        .decorative-texture__card:nth-child(4) {
             width: 10em;
         }
 
@@ -1749,7 +1780,9 @@ main {
     }
 
     .blog {
-        li, ul {
+
+        li,
+        ul {
             list-style-type: initial;
         }
 
@@ -1774,7 +1807,8 @@ footer {
         color: #2e2e2e;
 
         a {
-            color: #53555a;;
+            color: #53555a;
+            ;
         }
 
     }
@@ -2128,6 +2162,7 @@ footer {
         padding: 3.75em 3.125em;
 
         .my_site {
+
             h5,
             .heading-5 {
                 font-size: 1em;
@@ -2136,6 +2171,7 @@ footer {
 
         .contacts-text,
         .catalog-text {
+
             h4,
             .heading-4 {
                 font-size: 1.125em;
@@ -2427,7 +2463,8 @@ footer {
                                 }
 
                                 [data-title]::after {
-                                    bottom: 4em; /* Положение подсказки */
+                                    bottom: 4em;
+                                    /* Положение подсказки */
                                 }
                             }
                         }
@@ -2435,6 +2472,7 @@ footer {
 
                     .product_content__table {
                         margin-top: 1.84em;
+                        max-width: none;
 
                         .content_images__boards-colors {
                             display: none;
@@ -2807,7 +2845,7 @@ footer {
 
             }
 
-            .decorative-texture__card:nth-child(4 ) {
+            .decorative-texture__card:nth-child(4) {
                 width: 100%;
 
             }
@@ -3068,9 +3106,7 @@ footer {
                                     }
                                 }
 
-                                .image_texture:hover {
-
-                                }
+                                .image_texture:hover {}
                             }
                         }
 
@@ -3084,12 +3120,11 @@ footer {
                                     width: 4.25em;
                                 }
 
-                                [data-title] {
-
-                                }
+                                [data-title] {}
 
                                 [data-title]::after {
-                                    bottom: 5.5em; /* Положение подсказки */
+                                    bottom: 5.5em;
+                                    /* Положение подсказки */
                                 }
                             }
                         }
@@ -3119,9 +3154,7 @@ footer {
                                     width: 11em;
                                 }
 
-                                .thumbnail {
-
-                                }
+                                .thumbnail {}
                             }
 
                             .table_row__vertical-line {
@@ -3220,7 +3253,7 @@ footer {
 
                 }
 
-                .decorative-texture__card:nth-child(4 ) {
+                .decorative-texture__card:nth-child(4) {
                     width: 100%;
                 }
             }
@@ -3325,6 +3358,7 @@ footer {
 
         footer {
             .catalog-text {
+
                 h4,
                 .heading-4 {
                     font-size: 1.77em;
@@ -3332,6 +3366,7 @@ footer {
             }
 
             .contacts-text {
+
                 h4,
                 .heading-4 {
                     font-size: 1.77em;
@@ -3419,7 +3454,7 @@ footer {
 
                 }
 
-                .decorative-texture__card:nth-child(4 ) {
+                .decorative-texture__card:nth-child(4) {
                     width: 100%;
 
                 }
@@ -3428,13 +3463,9 @@ footer {
                     width: 10em;
                 }
 
-                .unique-mobile {
+                .unique-mobile {}
 
-                }
-
-                .background-img {
-
-                }
+                .background-img {}
             }
 
             .ornament {
@@ -3498,9 +3529,7 @@ footer {
                             display: flex;
                             justify-content: center;
 
-                            img {
-
-                            }
+                            img {}
                         }
 
                         .content_images__textures {
@@ -3541,9 +3570,7 @@ footer {
                                     }
                                 }
 
-                                .image_texture:hover {
-
-                                }
+                                .image_texture:hover {}
                             }
                         }
                     }
@@ -3554,26 +3581,19 @@ footer {
                         .images_colors__images {
 
 
-                            img {
+                            img {}
 
-                            }
-
-                            [data-title] {
-
-                            }
+                            [data-title] {}
 
                             [data-title]::after {
-                                bottom: 1.5em; /* Положение подсказки */
+                                bottom: 1.5em;
+                                /* Положение подсказки */
                             }
 
 
-                            img {
+                            img {}
 
-                            }
-
-                            img:hover {
-
-                            }
+                            img:hover {}
                         }
                     }
                 }
@@ -3581,9 +3601,7 @@ footer {
                 .product_content__table {
                     margin-top: 1.84em;
 
-                    .content_table__title {
-
-                    }
+                    .content_table__title {}
 
                     .table__row {
                         padding: 0.25em;
@@ -3593,20 +3611,14 @@ footer {
                             width: 6em;
                         }
 
-                        .thumbnail {
-
-                        }
+                        .thumbnail {}
                     }
 
-                    .table_row__vertical-line {
-
-                    }
+                    .table_row__vertical-line {}
                 }
 
                 .content_table__description {
-                    p {
-
-                    }
+                    p {}
                 }
 
                 .submit-application {
@@ -3617,9 +3629,7 @@ footer {
             .technique-blitz {
 
 
-                .technique-blitz__content {
-
-                }
+                .technique-blitz__content {}
 
                 .content__decorative-textures {
                     padding: 0em;
@@ -3644,16 +3654,12 @@ footer {
 
                 .card__list-textures {
 
-                    p {
-
-                    }
+                    p {}
                 }
 
                 .decorative-texture__card {
 
-                    img {
-
-                    }
+                    img {}
                 }
 
                 .decorative-texture__card:last-of-type {
@@ -3666,9 +3672,7 @@ footer {
                     //padding-left: 4em;
                 }
 
-                .background-img {
-
-                }
+                .background-img {}
             }
 
             .wild-stone {
@@ -3706,7 +3710,7 @@ footer {
 
                 }
 
-                .decorative-texture__card:nth-child(4 ) {
+                .decorative-texture__card:nth-child(4) {
                     width: 100%;
                 }
             }
@@ -3732,12 +3736,3 @@ footer {
         }
     }
 }
-
-
-
-
-
-
-
-
-
