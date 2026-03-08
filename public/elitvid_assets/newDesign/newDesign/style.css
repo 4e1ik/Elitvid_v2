@@ -205,7 +205,6 @@ header.open .header__burger span:nth-child(3) {
 .popup {
   display: none;
   width: 100%;
-  height: 100%;
   position: fixed;
   background: rgba(151, 151, 151, 0.05);
   backdrop-filter: blur(4px);
@@ -218,7 +217,6 @@ header.open .header__burger span:nth-child(3) {
   z-index: 3;
 }
 .popup .popup__body {
-  min-height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -256,13 +254,13 @@ header.open .header__burger span:nth-child(3) {
 }
 .popup .popup_content__inputs .popup__input .poop .form_error {
   font-size: 0.9em;
-  color: #9e2929;
+  color: #c94a4a;
   top: 3.6em;
   margin: 0;
   position: absolute;
 }
 .popup .popup_content__inputs .popup__input .form_error {
-  color: #9e2929;
+  color: #c94a4a;
   font-size: 0.9em;
   margin: 0;
   position: absolute;
@@ -397,6 +395,13 @@ header.open .header__burger span:nth-child(3) {
 .popup .submit__button p {
   margin-top: 1.25em;
   color: #A2A2A2;
+}
+
+body.popup-open {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: var(--popup-scroll-y, 0);
 }
 
 .download_catalog {
