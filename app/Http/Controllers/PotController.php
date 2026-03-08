@@ -121,7 +121,8 @@ class PotController
                     'metaDescription',
                     'static_images_arr',
                     'canonicalUrl',
-                    'static_pages'
+                    'static_pages',
+                    'collection'
                 )));
         } catch (\Exception $e) {
             return WebResponse::error($e);

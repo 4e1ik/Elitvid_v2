@@ -230,14 +230,7 @@
                             <div class="swiper-slide">
                                 <div class="direction">
                                     <a href="{{ route('show_pot_product', [
-                                        'collection' =>
-                                            $product->pot->collection == 'Square'
-                                                ? 'square_pots'
-                                                : ($product->pot->collection == 'Round'
-                                                    ? 'round_pots'
-                                                    : ($product->pot->collection == 'Rectangular'
-                                                        ? 'rectangular_pots'
-                                                        : '')),
+                                        'collection' => $collection,
                                         'slug' => $rand_product->slug,
                                     ]) }}"
                                         class="direction__link d-column">

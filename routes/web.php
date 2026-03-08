@@ -44,54 +44,53 @@ Route::get('/thank_you', function (Request $request){
 
 Route::get('/sitemap.xml', [SitemapController::class, 'index'])->name('index');
 
-Route::get('/decorations', [MainController::class, 'decorations'])->name('decorations');
+Route::get('/dekorativnye-elementy-polistouna', [MainController::class, 'decorations'])->name('decorations');
 
 Route::prefix('blog')->group(function () {
     Route::get('/', [MainController::class, 'blog_posts'])->name('blog_posts');
     Route::get('/post/{slug}', [MainController::class, 'show_blog_post'])->name('show_blog_post');
 });
 
-Route::prefix('directions')->group(function () {
+Route::prefix('napravleniya')->group(function () {
     Route::get('/', [MainController::class, 'directions'])->name('directions');
-    Route::get('/bollards_and_fencing', [BollardsAndFencingController::class, 'bollards_and_fencing'])->name('bollards_and_fencing');
+    Route::get('/bollardy-ograzhdeniya', [BollardsAndFencingController::class, 'bollards_and_fencing'])->name('bollards_and_fencing');
 
-    Route::prefix('benches')->group(function () {
+    Route::prefix('skami')->group(function () {
         Route::get('/', [BenchController::class, 'benches'])->name('benches');
         Route::get('/{collection}/{slug}', [BenchController::class, 'show_bench_product'])->name('show_bench_product');
 
-        Route::prefix('verona_benches')->group(function () {
+        Route::prefix('verona')->group(function () {
             Route::get('/', [BenchController::class, 'verona_benches'])->name('verona_benches');
         });
 
-        Route::prefix('street_furniture_benches')->group(function () {
+        Route::prefix('street-furniture')->group(function () {
             Route::get('/', [BenchController::class, 'street_furniture_benches'])->name('street_furniture_benches');
         });
 
-        Route::prefix('solo_benches')->group(function () {
+        Route::prefix('solo')->group(function () {
             Route::get('/', [BenchController::class, 'solo_benches'])->name('solo_benches');
         });
 
-        Route::prefix('lines_benches')->group(function () {
+        Route::prefix('lines')->group(function () {
             Route::get('/', [BenchController::class, 'lines_benches'])->name('lines_benches');
         });
 
-        Route::prefix('stones_benches')->group(function () {
+        Route::prefix('stones')->group(function () {
             Route::get('/', [BenchController::class, 'stones_benches'])->name('stones_benches');
-
         });
     });
 
-    Route::prefix('pots')->group(function () {
+    Route::prefix('kashpo')->group(function () {
         Route::get('/', [PotController::class, 'pots'])->name('pots');
         Route::get('/{collection}/{slug}', [PotController::class, 'show_pot_product'])->name('show_pot_product');
 
-        Route::prefix('rectangular_pots')->group(function () {
+        Route::prefix('pryamougolnye')->group(function () {
             Route::get('/', [PotController::class, 'rectangular_pots'])->name('rectangular_pots');
         });
-        Route::prefix('square_pots')->group(function () {
+        Route::prefix('kvadratnye')->group(function () {
             Route::get('/', [PotController::class, 'square_pots'])->name('square_pots');
         });
-        Route::prefix('round_pots')->group(function () {
+        Route::prefix('kruglye')->group(function () {
             Route::get('/', [PotController::class, 'round_pots'])->name('round_pots');
         });
     });
