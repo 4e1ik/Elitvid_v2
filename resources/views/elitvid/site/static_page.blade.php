@@ -40,8 +40,7 @@
                 </div>
             </section>
         @endif
-        @if($pageContent->gallery != null)
-            @if($pageContent->gallery->where('active', 1)->first())
+        @if(isset($pageContent->gallery) && $pageContent->gallery->active)
                 <section class="works">
                     <h2>Примеры работ</h2>
                     <div class="works-examples">
@@ -85,7 +84,6 @@
                         </div>
                     </div>
                 </section>
-            @endif
         @endif
     </main>
 @endsection
