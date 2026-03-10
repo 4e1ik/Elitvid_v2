@@ -11,6 +11,25 @@ use Intervention\Image\ImageManager;
 
 class ImageService
 {
+    /**
+     * Читает изображение, при необходимости используя Imagick (для HEIC и др., когда GD не поддерживает).
+     */
+    private function readImage(string $pathname): \Intervention\Image\Interfaces\ImageInterface
+    {
+        try {
+            return ImageManager::gd()->read($pathname);
+        } catch (\Throwable $e) {
+            if (extension_loaded('imagick')) {
+                try {
+                    return ImageManager::imagick()->read($pathname);
+                } catch (\Throwable) {
+                    // fallthrough to rethrow original
+                }
+            }
+            throw $e;
+        }
+    }
+
     public function save(array $images, Model $model, array $imageData = []): void
     {
         DB::transaction(function () use ($images, $model, $imageData) {
@@ -23,33 +42,49 @@ class ImageService
                 $imageDataForFile = $imageData[$index] ?? [];
 
                 $disk = Storage::disk('public');
-                $interventionManager = ImageManager::gd();
+                $pathname = $file->getPathname();
 
                 $name = str_replace(' ', '_', pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME));
 
-                $originalName = (new GenerateUniqueNameHelper)->generateUniqueName(
-                    originalName: $name . '.webp',
-                    disk: $disk,
-                    folder: 'images'
-                );
-
-                $item = $interventionManager->read($file->getPathname());
-
-                // Конвертация в WebP
                 try {
-                    $converted_image = $item->toWebp(100);
-                } catch (\Exception $e) {
-                    $extension = $file->getClientOriginalExtension();
+                    // Пытаемся прочитать и перекодировать через Intervention (WebP)
+                    $originalName = (new GenerateUniqueNameHelper)->generateUniqueName(
+                        originalName: $name . '.webp',
+                        disk: $disk,
+                        folder: 'images'
+                    );
+
+                    $item = $this->readImage($pathname);
+
+                    try {
+                        $converted_image = $item->toWebp(100);
+                    } catch (\Exception $e) {
+                        $extension = $file->getClientOriginalExtension();
+                        $originalName = (new GenerateUniqueNameHelper)->generateUniqueName(
+                            originalName: $name . '.' . $extension,
+                            disk: $disk,
+                            folder: 'images'
+                        );
+                        $converted_image = $item->encode();
+                    }
+
+                    $path = 'images/' . $originalName;
+                    $disk->put($path, $converted_image);
+                } catch (\Throwable $e) {
+                    // Fallback: если ни GD, ни Imagick не смогли прочитать (например, HEIC без поддержки) —
+                    // просто сохраняем оригинальный файл как есть.
+                    $extension = $file->getClientOriginalExtension() ?: 'bin';
                     $originalName = (new GenerateUniqueNameHelper)->generateUniqueName(
                         originalName: $name . '.' . $extension,
                         disk: $disk,
                         folder: 'images'
                     );
-                    $converted_image = $item->encode();
+
+                    $path = 'images/' . $originalName;
+                    // putFileAs сам прочитает содержимое UploadedFile
+                    $disk->putFileAs('images', $file, $originalName);
                 }
 
-                $path = 'images/' . $originalName;
-                $disk->put($path, $converted_image);
                 $storagePath = 'public/' . $path;
 
                 $model->images()->create([

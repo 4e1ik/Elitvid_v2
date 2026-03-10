@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Rules\UploadedImageRule;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
@@ -38,9 +39,7 @@ class BlogRequest extends FormRequest
                     $blog = $this->route('blog');
                     return !$blog || !$blog->hasMainImage();
                 }),
-                'image',
-                'mimes:jpeg,jpg,png,webp',
-                'max:10240',
+                new UploadedImageRule(),
             ],
             'content' => 'nullable|string',
             'meta_title' => 'nullable|string|max:255',
@@ -63,8 +62,7 @@ class BlogRequest extends FormRequest
             'slug.regex' => 'Slug может содержать только латинские буквы в нижнем регистре, цифры и дефисы.',
             'active.in' => 'Некорректный статус публикации.',
             'main_image.required' => 'Необходимо загрузить главное изображение.',
-            'main_image.image' => 'Файл должен быть изображением.',
-            'main_image.mimes' => 'Допустимые форматы: jpeg, jpg, png, webp.',
+            'main_image.mimetypes' => 'Допустимые форматы: jpeg, jpg, png, webp, heic.',
             'main_image.max' => 'Размер изображения не должен превышать 10 МБ.',
             'meta_title.max' => 'Meta Title не должен превышать :max символов.',
             'meta_description.max' => 'Meta Description не должна превышать :max символов.',

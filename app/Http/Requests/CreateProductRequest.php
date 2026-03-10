@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Rules\UploadedImageRule;
 use Illuminate\Foundation\Http\FormRequest;
 
 class CreateProductRequest extends FormRequest
@@ -71,7 +72,10 @@ class CreateProductRequest extends FormRequest
                     }
                 },
             ],
-            'image.*' => 'required|image|mimes:jpeg,jpg,png,webp|max:10240',
+            'image.*' => [
+                'required',
+                new UploadedImageRule(),
+            ],
         ];
     }
 
@@ -104,8 +108,7 @@ class CreateProductRequest extends FormRequest
             'meta_description.max' => 'Meta Description не должен превышать :max символов.',
             'image.required' => 'Необходимо загрузить изображение.',
             'image.*.required' => 'Необходимо загрузить изображение.',
-            'image.*.image' => 'Загруженный файл должен быть изображением.',
-            'image.*.mimes' => 'Изображение должно быть в формате: jpeg, jpg, png или webp.',
+            'image.*.mimetypes' => 'Изображение должно быть в формате: jpeg, jpg, png, webp или heic.',
             'image.*.max' => 'Размер изображения не должен превышать 10 МБ.',
             'slug.max' => 'Slug не должен превышать :max символов.',
             'slug.unique' => 'Такой slug уже используется. Выберите другой.',
