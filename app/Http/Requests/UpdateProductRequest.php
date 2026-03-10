@@ -128,7 +128,7 @@ class UpdateProductRequest extends FormRequest
             'active.boolean' => 'Поле "Активность" должно быть логическим значением.',
             'meta_title.max' => 'Meta Title не должен превышать :max символов.',
             'meta_description.max' => 'Meta Description не должен превышать :max символов.',
-            'image.*.mimetypes' => 'Изображение должно быть в формате: jpeg, jpg, png, webp или heic.',
+            'image.*.mimetypes' => 'Изображение должно быть в формате: jpeg, jpg, png или webp.',
             'image.*.max' => 'Размер изображения не должен превышать 10 МБ.',
             'slug.max' => 'Slug не должен превышать :max символов.',
             'slug.unique' => 'Такой slug уже используется. Выберите другой.',
