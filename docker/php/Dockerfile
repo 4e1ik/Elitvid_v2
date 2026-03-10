@@ -10,10 +10,12 @@ RUN apt-get update && apt-get install -y \
     libonig-dev \
     libxml2-dev \
     zip \
-    unzip
-
-# Clear cache
-RUN apt-get clean && rm -rf /var/lib/apt/lists/*
+    unzip \
+    libmagickwand-dev \
+    libheif-dev --no-install-recommends \
+ && pecl install imagick \
+ && docker-php-ext-enable imagick \
+ && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Install PHP extensions with WebP support
 RUN docker-php-ext-configure gd --with-freetype --with-jpeg --with-webp

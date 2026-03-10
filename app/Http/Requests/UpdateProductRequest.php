@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use App\Models\Product;
+use App\Rules\UploadedImageRule;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
@@ -60,7 +61,10 @@ class UpdateProductRequest extends FormRequest
                     }
                 },
             ],
-            'image.*' => 'nullable|image|mimes:jpeg,jpg,png,webp|max:10240',
+            'image.*' => [
+                'nullable',
+                new UploadedImageRule(),
+            ],
         ];
     }
 
@@ -124,8 +128,7 @@ class UpdateProductRequest extends FormRequest
             'active.boolean' => 'Поле "Активность" должно быть логическим значением.',
             'meta_title.max' => 'Meta Title не должен превышать :max символов.',
             'meta_description.max' => 'Meta Description не должен превышать :max символов.',
-            'image.*.image' => 'Загруженный файл должен быть изображением.',
-            'image.*.mimes' => 'Изображение должно быть в формате: jpeg, jpg, png или webp.',
+            'image.*.mimetypes' => 'Изображение должно быть в формате: jpeg, jpg, png, webp или heic.',
             'image.*.max' => 'Размер изображения не должен превышать 10 МБ.',
             'slug.max' => 'Slug не должен превышать :max символов.',
             'slug.unique' => 'Такой slug уже используется. Выберите другой.',

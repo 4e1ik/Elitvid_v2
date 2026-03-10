@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Rules\UploadedImageRule;
 use Illuminate\Foundation\Http\FormRequest;
 
 class UpdatePageContentRequest extends FormRequest
@@ -29,7 +30,7 @@ class UpdatePageContentRequest extends FormRequest
 
             // Галерея
             'gallery_images' => 'nullable|array',
-            'gallery_images.*' => 'nullable|image|mimes:jpeg,jpg,png,webp|max:10240',
+            'gallery_images.*' => ['nullable', new UploadedImageRule()],
 
             'gallery_descriptions' => 'nullable|array',
             'gallery_descriptions.*' => 'nullable|string|max:5000',
@@ -54,8 +55,7 @@ class UpdatePageContentRequest extends FormRequest
             'category_description.string' => 'Поле "Описание" должно быть строкой.',
 
             'gallery_images.array' => 'Галерея должна быть массивом файлов.',
-            'gallery_images.*.image' => 'Каждый файл в галерее должен быть изображением.',
-            'gallery_images.*.mimes' => 'Изображения в галерее должны быть в формате: jpeg, jpg, png или webp.',
+            'gallery_images.*.mimetypes' => 'Изображения в галерее должны быть в формате: jpeg, jpg, png, webp или heic.',
             'gallery_images.*.max' => 'Размер изображения в галерее не должен превышать 10 МБ.',
 
             'gallery_descriptions.array' => 'Описания изображений должны быть массивом.',
