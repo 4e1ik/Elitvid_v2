@@ -108,7 +108,7 @@ class CreateProductRequest extends FormRequest
             'meta_description.max' => 'Meta Description не должен превышать :max символов.',
             'image.required' => 'Необходимо загрузить изображение.',
             'image.*.required' => 'Необходимо загрузить изображение.',
-            'image.*.mimetypes' => 'Изображение должно быть в формате: jpeg, jpg, png, webp или heic.',
+            'image.*.mimetypes' => 'Изображение должно быть в формате: jpeg, jpg, png или webp.',
             'image.*.max' => 'Размер изображения не должен превышать 10 МБ.',
             'slug.max' => 'Slug не должен превышать :max символов.',
             'slug.unique' => 'Такой slug уже используется. Выберите другой.',

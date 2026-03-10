@@ -55,7 +55,7 @@ class UpdatePageContentRequest extends FormRequest
             'category_description.string' => 'Поле "Описание" должно быть строкой.',
 
             'gallery_images.array' => 'Галерея должна быть массивом файлов.',
-            'gallery_images.*.mimetypes' => 'Изображения в галерее должны быть в формате: jpeg, jpg, png, webp или heic.',
+            'gallery_images.*.mimetypes' => 'Изображения в галерее должны быть в формате: jpeg, jpg, png или webp.',
             'gallery_images.*.max' => 'Размер изображения в галерее не должен превышать 10 МБ.',
 
             'gallery_descriptions.array' => 'Описания изображений должны быть массивом.',

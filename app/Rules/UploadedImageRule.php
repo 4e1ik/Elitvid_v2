@@ -9,7 +9,7 @@ use Illuminate\Http\UploadedFile;
 class UploadedImageRule implements ValidationRule
 {
     /**
-     * Единое правило валидации загружаемых изображений (включая HEIC/HEIF).
+     * Единое правило валидации загружаемых изображений (jpeg/png/webp).
      *
      * @param  \Closure(string, ?string=): \Illuminate\Translation\PotentiallyTranslatedString  $fail
      */
@@ -38,17 +38,11 @@ class UploadedImageRule implements ValidationRule
             'image/jpeg',
             'image/png',
             'image/webp',
-            'image/heic',
-            'image/heif',
-            'image/heic-sequence',
-            'image/heif-sequence',
-            'image/x-heic',
-            'image/x-heif',
         ];
 
         $mimeType = $file->getMimeType();
         if (! in_array($mimeType, $allowedMimes, true)) {
-            $fail('Изображение должно быть в формате: jpeg, png, webp или heic.');
+            $fail('Изображение должно быть в формате: jpeg, png или webp.');
             return;
         }
     }

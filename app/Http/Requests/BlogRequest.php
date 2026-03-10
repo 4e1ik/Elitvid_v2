@@ -62,7 +62,7 @@ class BlogRequest extends FormRequest
             'slug.regex' => 'Slug может содержать только латинские буквы в нижнем регистре, цифры и дефисы.',
             'active.in' => 'Некорректный статус публикации.',
             'main_image.required' => 'Необходимо загрузить главное изображение.',
-            'main_image.mimetypes' => 'Допустимые форматы: jpeg, jpg, png, webp, heic.',
+            'main_image.mimetypes' => 'Допустимые форматы: jpeg, jpg, png или webp.',
             'main_image.max' => 'Размер изображения не должен превышать 10 МБ.',
             'meta_title.max' => 'Meta Title не должен превышать :max символов.',
             'meta_description.max' => 'Meta Description не должна превышать :max символов.',
