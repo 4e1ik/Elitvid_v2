@@ -128,6 +128,14 @@
     Redirect 301 /directions https://elitvid.com/napravleniya
     Redirect 301 /decorations https://elitvid.com/dekorativnye-elementy-polistouna
 
+    Redirect 301 /napravleniya/parklets_and_canopies https://elitvid.com/napravleniya/kamennye-navesy-i-parklety
+    Redirect 301 /napravleniya/facade_stucco_molding_and_panels https://elitvid.com/napravleniya/fasadnaya-lepnina-i-paneli-iz-kamnya
+    Redirect 301 /napravleniya/pillars_and_covers https://elitvid.com/napravleniya/stolby-i-nakryvki-iz-kamnya
+    Redirect 301 /napravleniya/rotundas_and_colonnades https://elitvid.com/napravleniya/kamennye-rotondy-kolonny
+    Redirect 301 /napravleniya/small_architectural_forms https://elitvid.com/napravleniya/malye-arhitekturnye-formy
+    Redirect 301 /napravleniya/concrete_products https://elitvid.com/napravleniya/izdeliya-betona
+    Redirect 301 /napravleniya/izdelia_iz_betona https://elitvid.com/napravleniya/izdeliya-betona
+
     # Handle Authorization Header
     RewriteCond %{HTTP:Authorization} .
     RewriteRule .* -[E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
