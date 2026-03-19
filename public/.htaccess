@@ -119,11 +119,11 @@
     Redirect 301 /directions/benches https://elitvid.com/napravleniya/skami
     Redirect 301 /directions/pots https://elitvid.com/napravleniya/kashpo
     Redirect 301 /directions/bollards_and_fencing https://elitvid.com/napravleniya/bollardy-ograzhdeniya
-    Redirect 301 /directions/rotundas_and_colonnades https://elitvid.com/napravleniya/rotundas_and_colonnades
-    Redirect 301 /directions/parklets_and_canopies https://elitvid.com/napravleniya/parklets_and_canopies
-    Redirect 301 /directions/pillars_and_covers https://elitvid.com/napravleniya/pillars_and_covers
-    Redirect 301 /directions/facade_stucco_molding_and_panels https://elitvid.com/napravleniya/facade_stucco_molding_and_panels
-    Redirect 301 /directions/maf https://elitvid.com/napravleniya/maf
+    Redirect 301 /directions/rotundas_and_colonnades https://elitvid.com/napravleniya/kamennye-rotondy-kolonny
+    Redirect 301 /directions/parklets_and_canopies https://elitvid.com/napravleniya/kamennye-navesy-i-parklety
+    Redirect 301 /directions/pillars_and_covers https://elitvid.com/napravleniya/stolby-i-nakryvki-iz-kamnya
+    Redirect 301 /directions/facade_stucco_molding_and_panels https://elitvid.com/napravleniya/fasadnaya-lepnina-i-paneli-iz-kamnya
+    Redirect 301 /directions/maf https://elitvid.com/napravleniya/malye-arhitekturnye-formy
     Redirect 301 /directions/concrete_products https://elitvid.com/napravleniya/izdelia_iz_betona
     Redirect 301 /directions https://elitvid.com/napravleniya
     Redirect 301 /decorations https://elitvid.com/dekorativnye-elementy-polistouna
