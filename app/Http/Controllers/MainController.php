@@ -68,8 +68,8 @@ class MainController extends Controller
     {
         try {
             $static_pages = $this->staticPageRepository->getAllStaticPages();
-            $pageContent =  $this->pageContentRepository->getPageContent(page: 'directions');
-            $static_images_arr = $this->staticImagesRepository->getStaticImagesForPage(page: 'index');
+            $pageContent =  $this->pageContentRepository->getPageContent(page: 'decorations');
+            $static_images_arr = $this->staticImagesRepository->getStaticImagesForPage(page: 'decorations');
             return WebResponse::success(view('elitvid.site.decorations', compact('pageContent', 'static_images_arr', 'static_pages')));
         } catch (\Exception $e) {
             return WebResponse::error($e);
