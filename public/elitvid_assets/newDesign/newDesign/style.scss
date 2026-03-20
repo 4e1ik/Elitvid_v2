@@ -282,6 +282,7 @@ header.open .header__burger span:nth-child(3) {
     overflow-y: auto;
     overflow-x: hidden;
     z-index: 3;
+    height: 100vh;
 
     .popup__body {
         display: flex;
