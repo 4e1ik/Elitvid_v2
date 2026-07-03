@@ -12,9 +12,7 @@ class LoginController extends Controller
     public function index(){
         try {
             if (Auth::check()){
-                if (Auth::user()['is_admin'] == true) {
-                    return redirect(route('admin'));
-                }
+                return redirect(route('admin'));
             }
             return WebResponse::success(view('elitvid.admin.auth.login'));
         } catch (\Exception $e) {
@@ -34,9 +32,7 @@ class LoginController extends Controller
     public function login(Request $request){
         try {
             if (Auth::check()){
-                if (Auth::user()['is_admin'] == true) {
-                    return redirect(route('admin'));
-                }
+                return redirect(route('admin'));
             }
 
             $arr_data = [
@@ -45,9 +41,7 @@ class LoginController extends Controller
             ];
 
             if (Auth::attempt($arr_data, $request->boolean('remember'))) {
-                if (Auth::user()['is_admin'] == true){
-                    return WebResponse::success(redirect(route('admin')));
-                }
+                return WebResponse::success(redirect(route('admin')));
             }
 
             return WebResponse::success(redirect(route('login'))->withInput());

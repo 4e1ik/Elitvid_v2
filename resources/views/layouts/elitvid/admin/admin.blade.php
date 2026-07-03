@@ -33,6 +33,22 @@
         #content .admin-table-cell-truncate--short { max-width: 120px; }
         #content .admin-table-cell-truncate--medium { max-width: 180px; }
         #content .admin-table-cell-truncate--long { max-width: 280px; }
+        .admin-flash-alert {
+            position: fixed;
+            top: 70px;
+            right: 20px;
+            left: 240px;
+            z-index: 1050;
+            max-width: 720px;
+            margin-left: auto;
+        }
+        @media (max-width: 768px) {
+            .admin-flash-alert {
+                left: 20px;
+                right: 20px;
+                max-width: none;
+            }
+        }
     </style>
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -58,7 +74,13 @@
             </a>
 
             <ul class="nav navbar-nav navbar-right user-nav">
-                <li class="user-name"><span>{{\Illuminate\Support\Facades\Auth::user()['username']}}</span></li>
+                <li class="user-name">
+                    <span>{{\Illuminate\Support\Facades\Auth::user()['username']}}</span>
+                    @php $authRole = auth()->user()->role ?? null; @endphp
+                    @if($authRole)
+                        <span class="label label-default" style="margin-left: 6px;">{{ $authRole->label() }}</span>
+                    @endif
+                </li>
                 <li class="dropdown avatar-dropdown">
                     <img src="{{asset('/elitvid_assets/img/avatar.jpg')}}" class="img-circle avatar" alt="user name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"/>
                     <ul class="dropdown-menu user-dropdown">
@@ -152,9 +174,28 @@
                 <li><a href="{{route('static_pages.index')}}"><span class="fa fa-file-text"></span>Статические страницы</a></li>
                 <li><a href="{{route('admin_blog')}}"><span class="fa fa-newspaper-o"></span>Блог</a></li>
                 <li><a href="{{route('admin_mails.index')}}"><span class="fa fa-envelope-o"></span> Письма</a></li>
+                <li><a href="{{route('users.index')}}"><span class="fa fa-users"></span> Пользователи</a></li>
             </ul>
         </div>
     </div>
+
+@if(session('error'))
+    <div class="admin-flash-alert">
+        <div class="alert alert-warning alert-dismissible" role="alert" style="margin: 0;">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            {{ session('error') }}
+        </div>
+    </div>
+@endif
+
+@if(session('success'))
+    <div class="admin-flash-alert">
+        <div class="alert alert-success alert-dismissible" role="alert" style="margin: 0;">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            {{ session('success') }}
+        </div>
+    </div>
+@endif
 
 @yield('admin_content')
 
@@ -699,6 +740,7 @@
                 <li><a href="{{route('static_pages.index')}}"><span class="fa fa-file-text"></span>Статические страницы</a></li>
                 <li><a href="{{route('admin_blog')}}"><span class="fa fa-newspaper-o"></span>Блог</a></li>
                 <li><a href="{{route('admin_mails.index')}}"><span class="fa fa-envelope-o"></span> Письма</a></li>
+                <li><a href="{{route('users.index')}}"><span class="fa fa-users"></span> Пользователи</a></li>
 
             </ul>
         </div>

@@ -85,11 +85,13 @@
                                                 <a href="{{ route('blogs.edit', ['blog' => $blog_post]) }}"
                                                    class="btn btn-3d btn-sm btn-primary"
                                                    title="Редактировать"
+                                                  
                                                    style="margin-right: 6px;">
                                                     <span class="fa fa-pencil"></span>
                                                 </a>
                                                 <form action="{{ route('blogs.destroy', ['blog' => $blog_post]) }}"
                                                       method="post"
+                                                     
                                                       style="display: inline-block; margin: 0; vertical-align: middle;"
                                                       onsubmit="return confirm('Вы уверены, что хотите удалить этот пост?');">
                                                     @method('DELETE')

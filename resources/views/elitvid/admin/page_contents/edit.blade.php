@@ -176,6 +176,7 @@
                                                                 <button type="button"
                                                                         class="btn btn-sm btn-danger"
                                                                         style="width: 100%;"
+                                                                       
                                                                         onclick="deleteImage({{ $image->id }}, '{{ route('images.destroy', ['image' => $image]) }}', 'Удалить это изображение?')"
                                                                         title="Удалить изображение">
                                                                     <span class="fa fa-trash"></span> Удалить

@@ -36,7 +36,8 @@
                                             <td style="max-width: 280px;">
                                                 <form
                                                     action="{{ route('static_images.update', ['static_image' =>  $static_image]) }}"
-                                                    method="post">
+                                                    method="post"
+                                                   >
                                                     @method('PUT')
                                                     @csrf
                                                     <input type="text" name="description_image"

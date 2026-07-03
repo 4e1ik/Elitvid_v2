@@ -66,7 +66,8 @@
                                             </td>
                                             <td>
                                                 <a href="{{ route('admin_page_contents.edit', $pageData) }}"
-                                                   class="btn btn-sm btn-primary">
+                                                   class="btn btn-sm btn-primary"
+                                                  >
                                                     Изменить
                                                 </a>
                                             </td>

@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\Auth\LoginController;
-use App\Http\Controllers\Admin\Auth\RegisterController;
+use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\BenchController as AdminBenchController;
 use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\PageContentController;
@@ -101,20 +101,16 @@ Route::prefix('napravleniya')->group(function () {
 Route::get('/login', [LoginController::class, 'index'])->name('login');
 Route::post('/login', [LoginController::class, 'login']);
 
-Route::get('/registration', [RegisterController::class, 'index'])->name('registration');
-Route::post('/registration', [RegisterController::class, 'registration'])->name('save');
-
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
 Route::post('/send_mail', [MailController::class, 'send'])->name('send_mail');
 
 
 
-Route::middleware('auth')->where([])->prefix('admin')->group(function () {
+Route::middleware(['auth', 'role.access:admin,manager,viewer'])->prefix('admin')->group(function () {
     Route::get('/', [AdminController::class, 'index'])->name('admin');
 
-    // Скамейки в панели администратора
-    Route::prefix('benches')->group(function (){
+    Route::prefix('benches')->group(function () {
         Route::get('/benches_verona', [AdminBenchController::class, 'verona'])->name('admin_benches_verona');
         Route::get('/benches_stones', [AdminBenchController::class, 'stones'])->name('admin_benches_stones');
         Route::get('/benches_solo', [AdminBenchController::class, 'solo'])->name('admin_benches_solo');
@@ -122,41 +118,52 @@ Route::middleware('auth')->where([])->prefix('admin')->group(function () {
         Route::get('/benches_street_furniture', [AdminBenchController::class, 'street_furniture'])->name('admin_benches_street_furniture');
     });
 
-    // Кашпо в панели администратора
-    Route::prefix('pots')->group(function (){
+    Route::prefix('pots')->group(function () {
         Route::get('/round_pots', [AdminPotController::class, 'round_pots'])->name('admin_round_pots');
         Route::get('/rectangular_pots', [AdminPotController::class, 'rectangular_pots'])->name('admin_rectangular_pots');
         Route::get('/square_pots', [AdminPotController::class, 'square_pots'])->name('admin_square_pots');
     });
 
-    // Статические картинки сайта
-    Route::prefix('static_images')->group(function (){
+    Route::prefix('static_images')->group(function () {
         Route::get('/{page}', [AdminController::class, 'static_images'])->name('admin_static_images');
     });
 
-    //Блог в панели администратора
     Route::prefix('blog')->group(function () {
         Route::get('/', [BlogController::class, 'index'])->name('admin_blog');
     });
 
     Route::get('/create/{route}', [AdminController::class, 'create'])->name('create');
 
-    // Изображения (полиморфная структура)
-    Route::put('/images/{image}/update', [\App\Http\Controllers\Admin\ImageController::class, 'update'])->name('images.update');
-    Route::delete('/images/{image}/delete', [\App\Http\Controllers\Admin\ImageController::class, 'destroy'])->name('images.destroy');
-
-    //Контент страниц (объединенный: мета-теги, категории, галереи)
     Route::get('/page-contents', [PageContentController::class, 'index'])->name('admin_page_contents.index');
     Route::get('/page-contents/{pageContent}/edit', [PageContentController::class, 'edit'])->name('admin_page_contents.edit');
-    Route::put('/page-contents/{pageContent}', [PageContentController::class, 'update'])->name('admin_page_contents.update');
 
-    Route::put('/static_images/{static_image}/update', [StaticImagesController::class, 'update'])->name('static_images.update');
+    Route::get('/mails', [AdminMailController::class, 'index'])
+        ->middleware('role.access:admin,manager')
+        ->name('admin_mails.index');
 
-    Route::get('/mails', [AdminMailController::class, 'index'])->name('admin_mails.index');
+    Route::middleware('role.access:admin')->group(function () {
+        Route::resource('users', UserController::class)->except(['show']);
+    });
 
-    Route::resources([
-        'blogs' => BlogController::class,
-        'static_pages' => StaticPageController::class,
-        'products' => ProductController::class,
-    ]);
+    Route::resource('blogs', BlogController::class)->only(['index', 'create', 'edit', 'show']);
+    Route::resource('static_pages', StaticPageController::class)->only(['index', 'create', 'edit', 'show']);
+    Route::get('products/{product}/edit', [ProductController::class, 'edit'])->name('products.edit');
+
+    Route::middleware('deny.roles:viewer')->group(function () {
+        Route::put('/images/{image}/update', [\App\Http\Controllers\Admin\ImageController::class, 'update'])->name('images.update');
+        Route::put('/page-contents/{pageContent}', [PageContentController::class, 'update'])->name('admin_page_contents.update');
+        Route::put('/static_images/{static_image}/update', [StaticImagesController::class, 'update'])->name('static_images.update');
+
+        Route::resource('blogs', BlogController::class)->only(['store', 'update']);
+        Route::resource('static_pages', StaticPageController::class)->only(['store', 'update']);
+        Route::post('products', [ProductController::class, 'store'])->name('products.store');
+        Route::put('products/{product}', [ProductController::class, 'update'])->name('products.update');
+    });
+
+    Route::middleware('role.access:admin')->group(function () {
+        Route::delete('/images/{image}/delete', [\App\Http\Controllers\Admin\ImageController::class, 'destroy'])->name('images.destroy');
+        Route::delete('blogs/{blog}', [BlogController::class, 'destroy'])->name('blogs.destroy');
+        Route::delete('static_pages/{static_page}', [StaticPageController::class, 'destroy'])->name('static_pages.destroy');
+        Route::delete('products/{product}', [ProductController::class, 'destroy'])->name('products.destroy');
+    });
 });
