@@ -23,3 +23,5 @@ composer.lock
 php
 prepareBindings($bindings)
 .DS_Store
+cr48940_elitvid.sql
+cr48940_elitvid_ordered.sql
