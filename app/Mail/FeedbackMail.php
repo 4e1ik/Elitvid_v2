@@ -53,7 +53,7 @@ class FeedbackMail extends Mailable
     {
         if(array_key_exists('file', $this->data)){
             return [
-                Attachment::fromStorage($this->data['file']),
+                Attachment::fromStorageDisk('public', $this->data['file']),
             ];
         }
         return [];

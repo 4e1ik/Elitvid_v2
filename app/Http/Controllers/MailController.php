@@ -21,7 +21,7 @@ class MailController extends Controller
 
             if ($mailRequest->hasFile('file')) {
                 $name = $mailRequest->file('file')->getClientOriginalName();
-                $path = Storage::putFileAs('files', $mailRequest->file('file'), $name);
+                $path = Storage::disk('public')->putFileAs('files', $mailRequest->file('file'), $name);
                 $data['file'] = $path;
                 Mail::to($mail)->send(new FeedbackMail($data));
             } else {
