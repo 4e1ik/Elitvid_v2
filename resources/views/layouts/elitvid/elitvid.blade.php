@@ -28,6 +28,9 @@
     <script defer src="{{asset('/elitvid_assets/newDesign/newDesign/js/imageUpdater.js')}}"></script>
     <script defer src="{{asset('/elitvid_assets/newDesign/newDesign/js/test.js')}}"></script>
 
+    <!-- modal.js -->
+    <script defer src="{{asset('/elitvid_assets/newDesign/newDesign/js/modal.js')}}"></script>
+
     {{--    <link rel="shortcut icon" type="image/x-icon" href="{{asset('/elitvid_assets/newDesign/newDesign/imgs/logo/logo.svg')}}" >--}}
     {{--    <link rel="shortcut icon" href="{{asset('/favicon.ico')}}" sizes="16x16">--}}
     <link rel="shortcut icon" href="{{asset('/favicon2.webp')}}" sizes="67x67">
@@ -185,6 +188,24 @@
                 Sevostian</a></div>
     </div>
 </footer>
+<div class="cookie-overlay" id="cookieOverlay"></div>
+<div class="cookie-popup" id="cookiePopup" role="dialog" aria-modal="true" aria-labelledby="cookiePopupTitle">
+    <div class="popup__body cookie-popup__body">
+        <div class="cookie-popup__header">
+            <p id="cookiePopupTitle" class="title-1">Обработка персональных данных</p>
+        </div>
+        <div class="cookie-popup__content">
+            <p>
+                Мы используем файлы cookie и другие технологии, чтобы улучшить ваш опыт работы с сайтом.
+                Продолжая использовать наш сайт, вы соглашаетесь на <span>обработку персональных данных</span>.
+            </p>
+        </div>
+        <div class="cookie-popup__actions">
+            <button class="btn btn-default" id="cookieRejectBtn">Отказаться</button>
+            <button class="btn btn-primary" id="cookieAcceptBtn">Согласен</button>
+        </div>
+    </div>
+</div>
 <script async src="https://www.google.com/recaptcha/api.js?render={{config('services.recaptcha.site_key')}}"></script>
 <script>
     {{--function onClick(e) {--}}

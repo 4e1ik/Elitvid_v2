@@ -37,3 +37,29 @@ window.onclick = function (event) {
         document.getElementById('mail_form').reset();
     }
 };
+
+//Изменение состояния кнопки
+document.addEventListener('DOMContentLoaded', function () {
+    const checkbox = document.getElementById('personalDataConsent');
+    const submitButton = document.querySelector('.form__form-button');
+
+    if (!checkbox || !submitButton) {
+        console.warn('Чекбокс или кнопка не найдены');
+        return;
+    }
+
+    function updateButtonState() {
+        if (checkbox.checked) {
+            submitButton.classList.remove('disabled');
+        } else {
+            submitButton.classList.add('disabled');
+        }
+    }
+
+    submitButton.classList.add('disabled');
+
+    checkbox.addEventListener('change', function () {
+        updateButtonState();
+        this.closest('.form__checkbox').classList.remove('error');
+    });
+});

@@ -524,12 +524,12 @@ header.open .header__burger span:nth-child(3) {
 
 }
 
-  body.popup-open {
+body.popup-open {
     position: fixed;
     left: 0;
     right: 0;
     top: var(--popup-scroll-y, 0);
-  }
+}
 
 .download_catalog {
     margin-top: 1em;
@@ -3738,6 +3738,392 @@ footer {
                 .stages--text {
                     gap: 1.75em;
                 }
+            }
+        }
+    }
+}
+
+// ============================================
+// ВСПЛЫВАЮЩЕЕ ОКНО ОБРАБОТКИ ПЕРСОНАЛЬНЫХ ДАННЫХ (COOKIE)
+// ============================================
+
+// ---- Оверлей ----
+.cookie-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    z-index: 9999;
+    pointer-events: none;
+}
+
+// ---- Основное окно ----
+.cookie-popup {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 10000;
+    background-color: rgba(0, 0, 0, 0.9);
+    border-radius: 16px 16px 0 0;
+    box-shadow: 0 -4px 30px rgba(0, 0, 0, 0.3);
+    font-family: 'Montserrat-Regular', sans-serif;
+    color: $text--color;
+    padding: 0;
+    animation: slideUp 0.5s ease;
+    pointer-events: auto;
+    border-top: 1px solid #979797;
+
+    // ---- Тело окна ----
+    .popup__body {
+        padding: 30px 25px;
+        max-width: 1200px;
+        margin: 0 auto;
+        width: 100%;
+    }
+
+    // ---- Заголовок ----
+    .cookie-popup__header {
+        .title-1 {
+            font-size: 24px;
+            font-weight: 700;
+            font-family: 'Merriweather', serif;
+            color: $text--color;
+            margin-bottom: 15px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid $stroke-main--color;
+            letter-spacing: 0.5px;
+        }
+    }
+
+    // ---- Контент ----
+    .cookie-popup__content {
+        p {
+            font-size: 16px;
+            line-height: 1.7;
+            color: $text-support--color;
+            margin-bottom: 25px;
+            font-weight: 400;
+
+            span {
+                color: $action-color;
+                text-decoration: underline;
+                cursor: pointer;
+                transition: color 0.2s;
+
+                &:hover {
+                    color: $text--color;
+                }
+            }
+        }
+
+        a {
+            color: $action-color;
+            text-decoration: underline;
+            transition: color 0.2s;
+
+            &:hover {
+                color: $text--color;
+            }
+        }
+    }
+
+    // ---- Кнопки ----
+    .cookie-popup__actions {
+        display: flex;
+        justify-content: flex-end;
+        gap: 15px;
+        flex-wrap: wrap;
+
+        .btn {
+            display: inline-block;
+            padding: 14px 40px;
+            font-size: 15px;
+            font-weight: 600;
+            font-family: 'Montserrat-Medium', sans-serif;
+            text-transform: uppercase;
+            border: 2px solid $stroke-main--color;
+            border-radius: $button--radius;
+            cursor: pointer;
+            transition: $transition-duration;
+            background: transparent;
+            color: $text--color;
+            letter-spacing: 0.5px;
+
+            // Кнопка "Отказаться"
+            &-default {
+                background-color: transparent;
+                color: $text--color;
+                border-color: $stroke-main--color;
+
+                &:hover {
+                    background-color: $stroke-main--color;
+                    color: $text-dark--color;
+                }
+            }
+
+            // Кнопка "Согласен"
+            &-primary {
+                background-color: #dfdddd;
+                color: #000;
+                border-color: $stroke-main--color;
+
+                &:hover {
+                    background-color: $action-color;
+                    color: $text-dark--color;
+                    border-color: $action-color;
+                }
+            }
+
+            // Дополнительные варианты кнопок (если понадобятся)
+            &-hover-dark {
+                background-color: transparent;
+                color: $text--color;
+                border-color: $stroke-main--color;
+
+                &:hover {
+                    background-color: $stroke-main--color;
+                    color: $text-dark--color;
+                }
+            }
+
+            &-hover-brand {
+                background-color: transparent;
+                color: $text--color;
+                border-color: $stroke-main--color;
+
+                &:hover {
+                    background-color: $action-color;
+                    color: $text-dark--color;
+                    border-color: $action-color;
+                }
+            }
+        }
+    }
+}
+
+// ---- Анимация появления ----
+@keyframes slideUp {
+    from {
+        transform: translateY(100%);
+    }
+
+    to {
+        transform: translateY(0);
+    }
+}
+
+// ---- Адаптивность ----
+@media (max-width: 768px) {
+    .cookie-popup {
+        .popup__body {
+            padding: 25px 20px;
+        }
+
+        .cookie-popup__header {
+            .title-1 {
+                font-size: 20px;
+            }
+        }
+
+        .cookie-popup__content {
+            p {
+                font-size: 14px;
+            }
+        }
+    }
+}
+
+@media (max-width: 576px) {
+    .cookie-popup {
+        border-radius: 12px 12px 0 0;
+
+        .popup__body {
+            padding: 20px 16px;
+        }
+
+        .cookie-popup__header {
+            .title-1 {
+                font-size: 18px;
+                margin-bottom: 12px;
+                padding-bottom: 10px;
+            }
+        }
+
+        .cookie-popup__content {
+            p {
+                font-size: 13px;
+                margin-bottom: 20px;
+            }
+        }
+
+        .cookie-popup__actions {
+            flex-direction: column;
+            align-items: stretch;
+            gap: 10px;
+
+            .btn {
+                width: 100%;
+                text-align: center;
+                padding: 12px 20px;
+                font-size: 13px;
+            }
+        }
+    }
+}
+
+@media (max-width: 375px) {
+    .cookie-popup {
+        .popup__body {
+            padding: 16px 12px;
+        }
+
+        .cookie-popup__header {
+            .title-1 {
+                font-size: 16px;
+            }
+        }
+
+        .cookie-popup__content {
+            p {
+                font-size: 12px;
+                line-height: 1.5;
+                margin-bottom: 16px;
+            }
+        }
+
+        .cookie-popup__actions {
+            .btn {
+                padding: 10px 16px;
+                font-size: 12px;
+            }
+        }
+    }
+}
+
+.form__form-button {
+
+    // Состояние: активная кнопка
+    &:hover:not(.disabled) {
+        background: $action-color;
+        transition: $transition-duration;
+    }
+
+    // Состояние: disabled (через класс)
+    &.disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+        pointer-events: none;
+    }
+}
+
+.form__checkbox {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 15px;
+    cursor: pointer;
+    position: relative;
+
+    input[type="checkbox"] {
+        // Скрываем стандартный чекбокс
+        position: absolute;
+        opacity: 0;
+        width: 0;
+        height: 0;
+        margin: 0;
+        pointer-events: none;
+
+        // Стили для кастомного чекбокса
+        &+label {
+            position: relative;
+            padding-left: 32px;
+            font-size: 14px;
+            line-height: 1.5;
+            color: $text-support--color;
+            cursor: pointer;
+            user-select: none;
+            transition: color 0.2s;
+
+            // Кастомный квадрат
+            &::before {
+                content: '';
+                position: absolute;
+                left: 0;
+                top: 50%; // Центрируем по вертикали
+                transform: translateY(-50%);
+                width: 20px;
+                height: 20px;
+                border: 2px solid $stroke-main--color;
+                border-radius: 4px;
+                background-color: transparent;
+                transition: all 0.2s;
+            }
+
+            // Галочка
+            &::after {
+                content: '✓';
+                position: absolute;
+                left: 4px;
+                top: 50%; // Центрируем по вертикали
+                transform: translateY(-50%) scale(0);
+                font-size: 16px;
+                color: $text-dark--color;
+                opacity: 0;
+                transition: all 0.2s ease;
+                font-weight: 700;
+                line-height: 1;
+            }
+
+            span {
+                color: $action-color;
+                text-decoration: underline;
+                transition: color 0.2s;
+
+                &:hover {
+                    color: $text--color;
+                }
+            }
+
+            &:hover {
+                color: $text--color;
+
+                &::before {
+                    border-color: $action-color;
+                }
+            }
+        }
+
+        // Состояние: checked
+        &:checked+label {
+            &::before {
+                background-color: $action-color;
+                border-color: $action-color;
+            }
+
+            &::after {
+                opacity: 1; // ДОБАВЛЯЕМ — показываем галочку
+                transform: translateY(-50%) scale(1);
+            }
+        }
+
+        // Состояние: focus
+        &:focus+label::before {
+            box-shadow: 0 0 0 3px rgba($action-color, 0.3);
+        }
+
+        // Состояние: disabled
+        &:disabled+label {
+            opacity: 0.5;
+            cursor: not-allowed;
+
+            &::before {
+                border-color: $stroke-additional--color;
+                background-color: $background-icon--color;
             }
         }
     }
