@@ -13,6 +13,7 @@ use App\Http\Controllers\Admin\StaticPageController;
 use App\Http\Controllers\BenchController;
 use App\Http\Controllers\BollardsAndFencingController;
 use App\Http\Controllers\MailController;
+use App\Http\Controllers\MailAttachmentController;
 use App\Http\Controllers\Admin\MailController as AdminMailController;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\PotController;
@@ -105,7 +106,9 @@ Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
 Route::post('/send_mail', [MailController::class, 'send'])->name('send_mail');
 
-
+Route::get('/storage/files/{filename}', [MailAttachmentController::class, 'show'])
+    ->where('filename', '[^/]+')
+    ->name('mail_attachment.show');
 
 Route::middleware(['auth', 'role.access:admin,manager,viewer'])->prefix('admin')->group(function () {
     Route::get('/', [AdminController::class, 'index'])->name('admin');
