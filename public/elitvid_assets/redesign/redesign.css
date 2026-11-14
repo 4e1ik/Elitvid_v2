@@ -604,6 +604,23 @@
     border-radius: 5px;
 }
 
+.rd-page main section.works {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.rd-page .works .main__slider,
+.rd-page .works .thumbs__slider {
+    width: 100%;
+}
+
+.rd-page .works .swiper-slide img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
 .rd-video {
     display: block;
     width: 100%;
