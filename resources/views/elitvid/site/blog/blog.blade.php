@@ -1,168 +1,35 @@
 @extends('layouts.elitvid.elitvid')
 
+@section('body-class', 'rd-page')
+
 @section('content')
     <main>
-        @include('includes.elitvid.popup_call')
         @include('includes.elitvid.popup_application')
-        @include('includes.elitvid.breadcrumbs')
-        <section class="produce">
-            <div class="description">
-                <div class="description-text">
-                    <h1>Новости</h1>
-                </div>
-            </div>
-            <div class="blok_news">
-            @foreach($blogs as $blog)
-                <style>
-                    h3 {
-                        font-size: 1em;
-                        font-family: "Merriweather";
-                        text-transform: uppercase;
-                        display: flex;
-                        justify-content: center;
-                        align-items: center;
-                        font-weight: normal;
-                        padding: 0.25em 0em;
-                    }
-
-                    .text__h3 {
-                        text-transform: none;
-                        font-size: 1.5em;
-                        height: 5em;
-                    }
-
-                    main .produce a {
-                        display: flex;
-                        justify-content: start;
-                        align-items: center;
-                    }
-
-                    h3 button {
-                        font-family: "Montserrat-Medium";
-                        color: #FFFFFF;
-                        margin-top: 1.5em;
-                        width: 22.9375em;
-                        height: 3.875em;
-                        padding: 0.625em 0;
-                        border-radius: 8px;
-                        border: 1px solid #979797;
-                        background: #22242A;
-                        cursor: pointer;
-                        transition: 0.2s;
-                        text-transform: uppercase;
-                    }
-
-                    main .produce .blok_news {
-                        display: grid;
-                        grid-column-gap: 2.5em;
-                        grid-row-gap: 2.5em;
-                        grid-template-columns: repeat(auto-fill, minmax(22.5em, 1fr));
-                        margin-top: 3em;
-
-                        .news {
-                            display: flex;
-                            flex-direction: column;
-                            /* height: 22.5em; */
-                            width: 22.5em;
-                            justify-self: center;
-
-                            img {
-                                max-height:12.6875em ;
-                            }
-
-                            p{
-                                height: 7.219em;
-                            }
-                        }
-                    }
-
-                    @media (max-width: 640px) {
-
-                        .text__h3 {
-                            height: 4em;
-                        }
-
-                        main .produce .blok_news {
-                            display: flex;
-                            flex-direction: column;
-                            align-items: center;
-                            justify-content: center;
-                            margin-top: 0em;
-
-
-                            .news {
-                                display: flex;
-                                flex-direction: column;
-                                /* align-items: center; */
-                                justify-content: center;
-                                margin-top: 0em;
-                                width: 33em;
-                                /* height: 37em; */
-
-                                a {
-                                    width: 100%;
-
-                                    button {
-                                        width: 100%;
-                                    }
-                                }
-
-                                img {
-                                    width: 100%;
-                                    max-height: 100%;
-                                }
-                            }
-                        }
-                    }
-
-                    @media (max-width: 480px) {
-
-                        body main .produce .blok_news {
-                            grid-row-gap: 4.5em;
-
-                            .news {
-                                width: 100%;
-                                height: 100%;
-
-                                .text__h3 {
-                                    font-size: 2em;
-                                    height: 3em;
-                                }
-                            }
-                        }
-                    }
-                </style>
-                <div class="news">
-                    <div class="direction__image">
-                        <a href="{{route('show_blog_post', ['slug' => $blog->slug])}}">
-                            @php
-                                $mainImage = $blog->images()->where('main_image', true)->first();
-                                $imagePath = $mainImage ? $mainImage->image : ($blog->attributes['main_image'] ?? null);
-                            @endphp
-                            @if($imagePath)
-                                <img src="{{asset('storage/'.str_replace('public/','',$imagePath))}}"
-                                 alt="Фотография cтатьи" loading="lazy">
-                            @endif
-                        </a>
-                    </div>
-                    <a href="{{route('show_blog_post', ['slug' => $blog->slug])}}">
-                        <h3 class="text__h3">{{$blog->title}}</h3>
-                    </a>
-                    <p>{{$blog->description}}</p>
-                    <h3><a href="{{route('show_blog_post', ['slug' => $blog->slug])}}">
-                            <button>Читать далее</button>
-                        </a>
-                    </h3>
-                </div>
-            @endforeach
+        <section class="rd-pagehead">
+            <div class="rd-wrap">
+                <h1>Наши новости</h1>
             </div>
         </section>
-        @if($category)
-            <section class="description">
-                <div class="text">
-                    {!! $category !!}
+        <div class="rd-wrap">
+            <section class="rd-section">
+                <div class="rd-grid">
+                    @foreach($blogs as $blog)
+                        @php
+                            $mainImage = $blog->images()->where('main_image', true)->first();
+                            $imagePath = $mainImage ? $mainImage->image : ($blog->attributes['main_image'] ?? null);
+                            $imageUrl = $imagePath ? asset('storage/'.str_replace('public/','',$imagePath)) : null;
+                        @endphp
+                        <x-elitvid.blog-card
+                            :href="route('show_blog_post', ['slug' => $blog->slug])"
+                            :image="$imageUrl"
+                            :title="$blog->title"
+                            :description="$blog->description" />
+                    @endforeach
                 </div>
             </section>
-        @endif
+            @if($category)
+                <section class="rd-section">{!! $category !!}</section>
+            @endif
+        </div>
     </main>
 @endsection

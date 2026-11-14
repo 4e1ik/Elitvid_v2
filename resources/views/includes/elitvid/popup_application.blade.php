@@ -1,5 +1,5 @@
-<div class="popup popup_application">
-    <div class="popup__body popup__body_application">
+<div class="popup popup_application rd-form">
+    <div class="popup__body popup__body_application rd-form__panel">
         <form class="popup__form" action="{{route('send_mail')}}" method="post" enctype="multipart/form-data" id="mail_form">
             @csrf
             <div class="popup__cross popup__cross_application">
@@ -8,14 +8,6 @@
                           fill="#7F7F7F"/>
                 </svg>
             </div>
-            <style>
-                .h2 {
-                    font-size: 2.25em;
-                    font-family: 'Merriweather';
-                    text-transform: uppercase;
-                    font-weight: 300;
-                }
-            </style>
             <div class="h2">Здесь можно оставить вашу заявку</div>
             <div class="popup__content">
                 <div class="popup_content__inputs">
