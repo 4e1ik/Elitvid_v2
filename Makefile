@@ -1,8 +1,8 @@
 .PHONY: init app db-import
 
-# Инициализация проекта - сборка и запуск контейнеров
+# Контейнеры, база elitvid_db, импорт дампа и подготовка Laravel
 init:
-	docker compose up -d --build
+	bash scripts/init.sh
 
 # Подключение к контейнеру с PHP-FPM
 app:
