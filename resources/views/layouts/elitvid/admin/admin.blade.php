@@ -174,6 +174,7 @@
                 <li><a href="{{route('static_pages.index')}}"><span class="fa fa-file-text"></span>Статические страницы</a></li>
                 <li><a href="{{route('admin_blog')}}"><span class="fa fa-newspaper-o"></span>Блог</a></li>
                 <li><a href="{{route('admin_mails.index')}}"><span class="fa fa-envelope-o"></span> Письма</a></li>
+                <li><a href="{{route('admin_orders.index')}}"><span class="fa fa-shopping-cart"></span> Заказы</a></li>
                 <li><a href="{{route('users.index')}}"><span class="fa fa-users"></span> Пользователи</a></li>
             </ul>
         </div>
@@ -740,6 +741,7 @@
                 <li><a href="{{route('static_pages.index')}}"><span class="fa fa-file-text"></span>Статические страницы</a></li>
                 <li><a href="{{route('admin_blog')}}"><span class="fa fa-newspaper-o"></span>Блог</a></li>
                 <li><a href="{{route('admin_mails.index')}}"><span class="fa fa-envelope-o"></span> Письма</a></li>
+                <li><a href="{{route('admin_orders.index')}}"><span class="fa fa-shopping-cart"></span> Заказы</a></li>
                 <li><a href="{{route('users.index')}}"><span class="fa fa-users"></span> Пользователи</a></li>
 
             </ul>

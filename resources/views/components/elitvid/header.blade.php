@@ -24,7 +24,7 @@
             </li>
         </ul>
         <div class="rd-header__actions">
-            <button class="rd-btn rd-btn--ghost" type="button">Корзина</button>
+            <a class="rd-btn rd-btn--ghost js-cart-link" href="{{ route('cart.show') }}">Корзина</a>
             <button class="rd-btn rd-btn--light open_popup_application" type="button">Оставить заявку</button>
         </div>
         <button class="rd-header__burger" type="button" aria-label="Меню">

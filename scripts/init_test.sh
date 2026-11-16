@@ -113,6 +113,41 @@ fi
 rm -rf "$tmp"
 ROOT="$ROOT_PROJECT"
 
+# mysqladmin ping exits 0 even when the password is rejected. On a fresh
+# volume that happens while MariaDB is still on its temporary server.
+probe_log="$(mktemp)"
+docker() {
+  printf '%s\n' "$*" >> "$probe_log"
+  if [[ "$*" == *"mysqladmin"* ]]; then
+    return 0
+  fi
+  return 1
+}
+MYSQL_WAIT_ATTEMPTS=2
+MYSQL_WAIT_INTERVAL=0
+if wait_for_mysql; then
+  bad "wait ignores unauthenticated ping" "ready" "not ready"
+else
+  ok "wait ignores unauthenticated ping"
+fi
+if grep -q "mysqladmin" "$probe_log"; then
+  bad "wait still uses mysqladmin ping" "ping" "authenticated query"
+else
+  ok "wait uses authenticated query"
+fi
+: > "$probe_log"
+docker() {
+  printf '%s\n' "$*" >> "$probe_log"
+  [[ "$*" == *"SELECT 1"* ]]
+}
+if wait_for_mysql; then
+  ok "wait accepts authenticated query"
+else
+  bad "wait accepts authenticated query" "not ready" "ready"
+fi
+unset -f docker
+rm -f "$probe_log"
+
 if [[ "$fail" -eq 0 ]]; then
   echo "All checks passed"
   exit 0

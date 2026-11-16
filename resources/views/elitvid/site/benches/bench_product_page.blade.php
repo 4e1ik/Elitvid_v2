@@ -311,11 +311,21 @@
                 </div>
             </div>
             <div class="submit-application">
+                <form method="post" action="{{ route('cart.add') }}" class="js-add-to-cart">
+                    @csrf
+                    <input type="hidden" name="product_id" value="{{ $product->id }}">
+                    <button class="submit-application--button" type="submit">В корзину</button>
+                </form>
                 <button class="submit-application--button open_popup_application">
                     Оставить заявку
                 </button>
             </div>
             <div class="submit-application submit-application--mobile">
+                <form method="post" action="{{ route('cart.add') }}" class="js-add-to-cart">
+                    @csrf
+                    <input type="hidden" name="product_id" value="{{ $product->id }}">
+                    <button class="submit-application--button" type="submit">В корзину</button>
+                </form>
                 <button class="submit-application--button open_popup_application1 submit-application-button--mobile">
                     Оставить заявку
                 </button>

@@ -127,14 +127,18 @@ read_choice() {
 }
 
 wait_for_mysql() {
-  local i
-  for i in $(seq 1 30); do
-    if docker exec "$DB_CONTAINER" mysqladmin ping -u"$DB_USER" -p"$DB_PASSWORD" --silent >/dev/null 2>&1; then
+  local i attempts interval
+  attempts="${MYSQL_WAIT_ATTEMPTS:-30}"
+  interval="${MYSQL_WAIT_INTERVAL:-2}"
+  # mysqladmin ping exits 0 even when the password is rejected. A fresh volume
+  # answers that ping from MariaDB's temporary server, before root has a password.
+  for i in $(seq 1 "$attempts"); do
+    if docker exec "$DB_CONTAINER" mysql -u"$DB_USER" -p"$DB_PASSWORD" -N -e "SELECT 1" >/dev/null 2>&1; then
       return 0
     fi
-    sleep 2
+    sleep "$interval"
   done
-  echo "MariaDB не приняла подключение за 60 секунд." >&2
+  echo "MariaDB не приняла подключение за $((attempts * interval)) секунд." >&2
   return 1
 }
 
