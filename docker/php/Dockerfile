@@ -1,4 +1,4 @@
-FROM php:8.1-fpm
+FROM php:8.5-fpm
 
 RUN apt-get update && apt-get install -y \
     git \
@@ -13,7 +13,7 @@ RUN apt-get update && apt-get install -y \
     unzip \
     libmagickwand-dev \
     libheif-dev --no-install-recommends \
- && pecl install imagick \
+ && pecl install imagick-3.8.1 \
  && docker-php-ext-enable imagick \
  && apt-get clean && rm -rf /var/lib/apt/lists/*
 
@@ -31,7 +31,7 @@ RUN curl -fsSL https://deb.nodesource.com/setup_20.x | bash - \
     && apt-get install -y nodejs \
     && npm install -g yarn
 
-RUN pecl install xdebug \
+RUN pecl install xdebug-3.5.3 \
     && docker-php-ext-enable xdebug
 
 COPY docker/php/xdebug.ini /usr/local/etc/php/conf.d/docker-php-ext-xdebug111.ini

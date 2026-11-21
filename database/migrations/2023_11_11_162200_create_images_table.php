@@ -14,7 +14,6 @@ return new class extends Migration
         Schema::create('images', function (Blueprint $table) {
             $table->id ();
             $table->unsignedBigInteger ('product_id')->nullable('true');
-            $table->foreign ('product_id')->references('id')->on('products')->onDelete('cascade')->onUpdate('cascade');
             $table->unsignedBigInteger ('texture_id')->nullable('true');
             $table->foreign ('texture_id')->references('id')->on('textures')->onDelete('cascade')->onUpdate('cascade');
             $table->unsignedBigInteger ('gallery_id')->nullable('true');
