@@ -58,18 +58,13 @@ REDIS_HOST=redis
 make init
 ```
 
-Команда поднимает контейнеры, ждёт MariaDB, создаёт базу `elitvid_db` и при наличии дампа импортирует его. Затем в контейнере PHP выполняет `composer install`, при пустом `APP_KEY` — `php artisan key:generate`, создаёт симлинк `public/storage` и запускает `php artisan migrate`, если база не пустая.
+Команда поднимает контейнеры, ждёт MariaDB, создаёт пустую тестовую базу `elitvid_testing` и базу `elitvid_db`, при наличии дампа импортирует его. Затем в контейнере PHP выполняет `composer install`, при пустом `APP_KEY` — `php artisan key:generate`, создаёт симлинк `public/storage` и запускает `php artisan migrate`, если база не пустая.
 
 Если в `elitvid_db` уже есть таблицы, `make init` спрашивает: оставить данные или удалить базу и залить дамп заново.
 
 Сайт будет доступен на [http://localhost:8080](http://localhost:8080).
 
-> **Важно:** Docker-образ использует PHP 8.1. Если `composer install` ругается на несовместимость версий пакетов, восстановите lock-файл, совместимый с PHP 8.1:
->
-> ```bash
-> git checkout c16e78f -- composer.lock
-> composer install
-> ```
+> **Важно:** Docker-образ использует PHP 8.5, проект — Laravel 13. `composer.lock` собран под PHP 8.5. После смены `docker/php/Dockerfile` пересоберите образ: `docker compose up -d --build php-fpm`.
 
 Сообщение Xdebug `Could not connect to debugging client` можно игнорировать — на установку это не влияет.
 
@@ -84,6 +79,9 @@ make init
 | `make init` | Контейнеры, база `elitvid_db`, импорт дампа, composer и миграции |
 | `make app` | Вход в контейнер PHP (`php_elitvid`) |
 | `make db-import` | Импорт уже собранного `cr48940_elitvid_ordered.sql` в `elitvid_db` |
+| `make test-db` | Создать пустую базу `elitvid_testing` для тестов, если её нет |
+
+Тесты: `docker exec php_elitvid ./vendor/bin/phpunit`. Они работают в `elitvid_testing` и не трогают `elitvid_db`.
 
 `make init` собирает `cr48940_elitvid_ordered.sql` сам. `make db-import` нужен, когда ordered-файл уже готов и базу надо залить отдельно.
 

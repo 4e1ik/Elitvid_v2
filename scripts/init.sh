@@ -215,6 +215,7 @@ main() {
   cd "$ROOT"
   docker compose up -d --build
   wait_for_mysql
+  mysql_exec -e "CREATE DATABASE IF NOT EXISTS elitvid_testing CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;"
 
   if ! files_ready; then
     echo "Не хватает:"
