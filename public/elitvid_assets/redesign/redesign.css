@@ -1687,9 +1687,11 @@
         flex: none;
     }
 
-    .rd-stages span + span {
-        padding-left: 12px;
-        border-left: 1px solid #7f7f7f;
+    /* разделители — отдельные элементы, чтобы space-between ставил их посередине между словами */
+    .rd-stages i {
+        align-self: stretch;
+        width: 1px;
+        background: #7f7f7f;
     }
 
     .rd-page .rd-hero .rd-btn {

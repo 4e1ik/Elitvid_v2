@@ -10,7 +10,7 @@
                 <h1>Изделия из<br class="rd-br-wide"> полистоуна<br class="rd-br-wide"> от производителя</h1>
                 <p>Наш опыт и знания позволяют нам реализовать самые сложные и оригинальные задачи по Вашим размерам, эскизам и чертежам.</p>
                 <div class="rd-hero__photo" role="img" aria-label="Ротонда из полистоуна"></div>
-                <p class="rd-stages"><span>Проектирование</span><span>Монтаж</span><span>Производство</span></p>
+                <p class="rd-stages"><span>Проектирование</span><i aria-hidden="true"></i><span>Монтаж</span><i aria-hidden="true"></i><span>Производство</span></p>
                 <button class="rd-btn rd-btn--accent open_popup_application" type="button">Оставить заявку</button>
             </div>
         </section>

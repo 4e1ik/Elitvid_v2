@@ -4,12 +4,12 @@
 - cluster-only mode — file stats not available
 
 ## Summary
-- 5321 nodes · 11640 edges · 477 communities (417 shown, 60 thin omitted)
+- 5321 nodes · 11640 edges · 475 communities (415 shown, 60 thin omitted)
 - Extraction: 88% EXTRACTED · 12% INFERRED · 0% AMBIGUOUS · INFERRED: 1426 edges (avg confidence: 0.58)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `eda4d0b5`
+- Built from commit: `f8fcbc7b`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -88,7 +88,6 @@
 - Community 71
 - Community 72
 - Community 73
-- Community 74
 - Community 75
 - Community 76
 - Community 77
@@ -98,7 +97,7 @@
 - Community 81
 - Community 82
 - Community 83
-- Community 84
+- Community 85
 - Community 86
 - Community 87
 - Community 88
@@ -107,13 +106,13 @@
 - Community 91
 - Community 92
 - Community 93
+- Community 94
 - Community 95
 - Community 96
 - Community 97
 - Community 98
 - Community 99
 - Community 100
-- Community 101
 - Community 102
 - Community 103
 - Community 104
@@ -194,7 +193,6 @@
 - Community 181
 - Community 182
 - Community 183
-- Community 184
 - Community 185
 - Community 186
 - Community 187
@@ -304,7 +302,7 @@
 ## Import Cycles
 - None detected.
 
-## Communities (477 total, 60 thin omitted)
+## Communities (475 total, 60 thin omitted)
 
 ### Community 0 - "Community 0"
 Cohesion: 0.08
@@ -356,7 +354,7 @@ Nodes (53): Canvas(), floorInBase(), Plot(), adjustLayoutForThingsStickingOut(),
 
 ### Community 12 - "Community 12"
 Cohesion: 0.08
-Nodes (62): w(), aa(), Ab(), B(), ba(), Bb(), C(), ca() (+54 more)
+Nodes (64): da(), f(), w(), aa(), Ab(), B(), ba(), Bb() (+56 more)
 
 ### Community 13 - "Community 13"
 Cohesion: 0.06
@@ -368,11 +366,11 @@ Nodes (59): addChangeToHistory(), addMarkedSpan(), addSelectionToHistory(), appl
 
 ### Community 15 - "Community 15"
 Cohesion: 0.08
-Nodes (62): w(), aa(), Ab(), B(), ba(), Bb(), C(), ca() (+54 more)
+Nodes (64): da(), f(), w(), aa(), Ab(), B(), ba(), Bb() (+56 more)
 
 ### Community 16 - "Community 16"
 Cohesion: 0.05
-Nodes (17): CartController, App\Http\Controllers\ImageController, SitemapController, AddToCartRequest, ImageRequest, PlaceOrderRequest, ProfileUpdateRequest, UpdateCartRequest (+9 more)
+Nodes (16): CartController, App\Http\Controllers\ImageController, AddToCartRequest, CreateStaticPageRequest, ImageRequest, PlaceOrderRequest, ProfileUpdateRequest, UpdateCartRequest (+8 more)
 
 ### Community 17 - "Community 17"
 Cohesion: 0.05
@@ -387,12 +385,12 @@ Cohesion: 0.08
 Nodes (37): Ae(), B(), Be(), c(), $e(), ee(), F(), fe() (+29 more)
 
 ### Community 20 - "Community 20"
-Cohesion: 0.07
-Nodes (11): StaticPageController, BollardsAndFencingController, StaticPagesController, CreateStaticPageRequest, UpdateStaticPageRequest, StaticPage, ViewServiceProvider, StaticPageRepository (+3 more)
+Cohesion: 0.06
+Nodes (19): GenerateUniqueNameHelper, ProductRouteCreatingHelper, ImageController, PageContentController, UpdateImageRequest, Gallery, Image, PageContent (+11 more)
 
 ### Community 21 - "Community 21"
-Cohesion: 0.09
-Nodes (37): b(), c(), d(), f(), G(), ga(), ha(), b() (+29 more)
+Cohesion: 0.07
+Nodes (12): SlugGenerateHelper, StaticPageController, BollardsAndFencingController, StaticPagesController, UpdateStaticPageRequest, StaticPage, ViewServiceProvider, StaticPageRepository (+4 more)
 
 ### Community 22 - "Community 22"
 Cohesion: 0.09
@@ -400,11 +398,11 @@ Nodes (37): b(), c(), d(), f(), G(), ga(), ha(), b() (+29 more)
 
 ### Community 23 - "Community 23"
 Cohesion: 0.09
-Nodes (17): ApplicationLogo(), Checkbox(), DangerButton(), Dropdown(), DropDownContext, InputError(), InputLabel(), Modal() (+9 more)
+Nodes (37): b(), c(), d(), f(), G(), ga(), ha(), b() (+29 more)
 
-### Community 26 - "Community 26"
+### Community 24 - "Community 24"
 Cohesion: 0.09
-Nodes (35): a(), bA(), bd(), be(), bk(), bq(), bs(), bv() (+27 more)
+Nodes (17): ApplicationLogo(), Checkbox(), DangerButton(), Dropdown(), DropDownContext, InputError(), InputLabel(), Modal() (+9 more)
 
 ### Community 27 - "Community 27"
 Cohesion: 0.09
@@ -412,19 +410,19 @@ Nodes (35): a(), bA(), bd(), be(), bk(), bq(), bs(), bv() (+27 more)
 
 ### Community 28 - "Community 28"
 Cohesion: 0.09
-Nodes (11): BackfillProductSlugs, ConvertImagesToWebP, MigrateOldProductsData, ParseStaticImages, GenerateUniqueNameHelper, Illuminate\Console\Command, Illuminate\Contracts\Filesystem\Filesystem, Illuminate\Support\Facades\DB (+3 more)
+Nodes (35): a(), bA(), bd(), be(), bk(), bq(), bs(), bv() (+27 more)
 
 ### Community 29 - "Community 29"
-Cohesion: 0.05
-Nodes (15): WebResponse, LoginController, BenchController, PotController, BenchController, MainController, BenchRepository, PotRepository (+7 more)
+Cohesion: 0.06
+Nodes (11): WebResponse, LoginController, BenchController, BlogController, PotController, MainController, BlogRequest, Blog (+3 more)
 
 ### Community 30 - "Community 30"
 Cohesion: 0.08
-Nodes (49): badPos(), bidiLeft(), bidiRight(), collapsedSpanAtEnd(), collapsedSpanAtSide(), collapsedSpanAtStart(), compareBidiLevel(), compareCollapsedMarkers() (+41 more)
+Nodes (45): badPos(), bidiLeft(), bidiRight(), charCoords(), compareBidiLevel(), compensateForHScroll(), coordsChar(), coordsCharInner() (+37 more)
 
 ### Community 31 - "Community 31"
-Cohesion: 0.08
-Nodes (43): bind(), clearDragCursor(), clickInGutter(), CodeMirror(), contextMenuInGutter(), delayBlurEvent(), dispatchKey(), docMethodOp() (+35 more)
+Cohesion: 0.09
+Nodes (42): bind(), clearDragCursor(), clickInGutter(), CodeMirror(), contextMenuInGutter(), delayBlurEvent(), dispatchKey(), docMethodOp() (+34 more)
 
 ### Community 32 - "Community 32"
 Cohesion: 0.07
@@ -435,80 +433,80 @@ Cohesion: 0.08
 Nodes (50): activeElt(), clearDragCursor(), clickInGutter(), clipPos(), clipPosArray(), clipToLen(), contextMenuInGutter(), delayBlurEvent() (+42 more)
 
 ### Community 34 - "Community 34"
-Cohesion: 0.08
-Nodes (19): AdminController, Bench, BenchImage, BenchProduct, GalleryImage, Image, Login, Mail (+11 more)
+Cohesion: 0.09
+Nodes (18): AdminController, Bench, BenchImage, BenchProduct, GalleryImage, Login, Mail, OrderItem (+10 more)
 
 ### Community 35 - "Community 35"
-Cohesion: 0.05
-Nodes (25): PreventRequestsDuringMaintenance, TrimStrings, TrustProxies, VerifyCsrfToken, LoginRequest, UserFactory, Illuminate\Auth\Events\Lockout, Illuminate\Cache\RateLimiting\Limit (+17 more)
-
-### Community 36 - "Community 36"
-Cohesion: 0.06
-Nodes (19): boxModelAdjustment(), computeStyleTests(), curCSS(), dataAttr(), expectSync(), finalPropName(), getData(), getWidthOrHeight() (+11 more)
-
-### Community 37 - "Community 37"
-Cohesion: 0.06
-Nodes (18): B(), ba(), fa(), ia(), k(), la(), m(), ma() (+10 more)
-
-### Community 38 - "Community 38"
-Cohesion: 0.07
-Nodes (14): ProductRouteCreatingHelper, ImageController, ProductController, PotController, CreateProductRequest, UpdateProductRequest, Product, ProductService (+6 more)
-
-### Community 39 - "Community 39"
 Cohesion: 0.08
 Nodes (20): ProfileController, StaticImagesController, Authenticate, DenyRolesMiddleware, HandleInertiaRequests, RedirectIfAuthenticated, RoleAccessMiddleware, Closure (+12 more)
 
-### Community 40 - "Community 40"
+### Community 36 - "Community 36"
+Cohesion: 0.05
+Nodes (25): PreventRequestsDuringMaintenance, TrimStrings, TrustProxies, VerifyCsrfToken, LoginRequest, UserFactory, Illuminate\Auth\Events\Lockout, Illuminate\Cache\RateLimiting\Limit (+17 more)
+
+### Community 37 - "Community 37"
 Cohesion: 0.06
-Nodes (18): B(), ba(), fa(), ia(), k(), la(), m(), ma() (+10 more)
+Nodes (19): buildParams(), computeStyleTests(), dataAttr(), expectSync(), finalPropName(), getData(), Identity(), isArrayLike() (+11 more)
+
+### Community 38 - "Community 38"
+Cohesion: 0.07
+Nodes (16): UserController, CreateUserRequest, App\Http\Requests\DeleteUserRequest, UpdateUserRequest, User, UserRepository, UserService, AdminUserSeeder (+8 more)
+
+### Community 39 - "Community 39"
+Cohesion: 0.06
+Nodes (19): B(), ba(), fa(), ia(), k(), l(), la(), m() (+11 more)
+
+### Community 40 - "Community 40"
+Cohesion: 0.07
+Nodes (15): RegisterController, MailController, Controller, MailAttachmentController, MailController, MailRequest, UserRequest, MailRepository (+7 more)
 
 ### Community 41 - "Community 41"
 Cohesion: 0.07
-Nodes (14): RegisterController, MailController, Controller, MailAttachmentController, MailController, MailRequest, UserRequest, MailRepository (+6 more)
+Nodes (13): ProductController, PotController, SitemapController, CreateProductRequest, UpdateProductRequest, Product, ProductService, Illuminate\Foundation\Testing\RefreshDatabase (+5 more)
 
 ### Community 42 - "Community 42"
 Cohesion: 0.06
-Nodes (10): ajaxConvert(), ajaxHandleResponses(), Animation(), augmentWidthOrHeight(), createFxNow(), createTweens(), done(), getWidthOrHeight() (+2 more)
+Nodes (19): B(), ba(), fa(), ia(), k(), l(), la(), m() (+11 more)
 
 ### Community 43 - "Community 43"
 Cohesion: 0.06
 Nodes (10): ajaxConvert(), ajaxHandleResponses(), Animation(), augmentWidthOrHeight(), createFxNow(), createTweens(), done(), getWidthOrHeight() (+2 more)
 
 ### Community 44 - "Community 44"
-Cohesion: 0.15
-Nodes (38): c(), d(), D(), e(), i(), j(), k(), n() (+30 more)
+Cohesion: 0.06
+Nodes (10): ajaxConvert(), ajaxHandleResponses(), Animation(), augmentWidthOrHeight(), createFxNow(), createTweens(), done(), getWidthOrHeight() (+2 more)
 
 ### Community 45 - "Community 45"
-Cohesion: 0.10
-Nodes (39): activeElt(), alignHorizontally(), calculateScrollPos(), compensateForHScroll(), countDirtyView(), displayHeight(), DisplayUpdate(), displayWidth() (+31 more)
+Cohesion: 0.14
+Nodes (40): c(), d(), D(), e(), i(), j(), k(), n() (+32 more)
 
 ### Community 46 - "Community 46"
+Cohesion: 0.11
+Nodes (37): activeElt(), alignHorizontally(), calculateScrollPos(), countDirtyView(), displayHeight(), DisplayUpdate(), displayWidth(), endOperation_finish() (+29 more)
+
+### Community 47 - "Community 47"
 Cohesion: 0.06
 Nodes (9): Animation(), augmentWidthOrHeight(), createFxNow(), createTweens(), getWidthOrHeight(), propFilter(), NOTE: To any future maintainer, we've window.getComputedStyle, TODO: Stop taunting the data cache; remove global events and always attach to… (+1 more)
 
-### Community 47 - "Community 47"
+### Community 48 - "Community 48"
 Cohesion: 0.10
 Nodes (39): alignHorizontally(), calculateScrollPos(), countDirtyView(), displayHeight(), DisplayUpdate(), displayWidth(), endOperation_finish(), endOperation_R1() (+31 more)
 
-### Community 48 - "Community 48"
+### Community 49 - "Community 49"
 Cohesion: 0.06
 Nodes (9): Animation(), augmentWidthOrHeight(), createFxNow(), createTweens(), getWidthOrHeight(), propFilter(), NOTE: To any future maintainer, we've window.getComputedStyle, TODO: Stop taunting the data cache; remove global events and always attach to… (+1 more)
 
-### Community 49 - "Community 49"
+### Community 50 - "Community 50"
 Cohesion: 0.08
 Nodes (20): check-prerequisites.sh script, check_dir(), check_file(), get_feature_paths(), get_repo_root(), has_jq(), _persist_feature_json(), resolve_specify_init_dir() (+12 more)
 
-### Community 50 - "Community 50"
-Cohesion: 0.07
-Nodes (13): SlugGenerateHelper, PageContentController, UpdatePageContentRequest, Gallery, PageContent, PageContentRepository, PageContentService, StaticPageService (+5 more)
-
 ### Community 51 - "Community 51"
-Cohesion: 0.15
-Nodes (38): c(), d(), D(), e(), i(), j(), k(), n() (+30 more)
+Cohesion: 0.14
+Nodes (40): c(), d(), D(), e(), i(), j(), k(), n() (+32 more)
 
 ### Community 52 - "Community 52"
-Cohesion: 0.07
-Nodes (42): buildLineContent(), buildLineElement(), buildTokenBadBidi(), charCoords(), charWidth(), defaultSpecialCharPlaceholder(), Display(), drawSelectionRange() (+34 more)
+Cohesion: 0.09
+Nodes (36): buildLineContent(), buildLineElement(), buildTokenBadBidi(), charWidth(), defaultSpecialCharPlaceholder(), Display(), drawSelectionRange(), add() (+28 more)
 
 ### Community 53 - "Community 53"
 Cohesion: 0.11
@@ -519,132 +517,128 @@ Cohesion: 0.06
 Nodes (34): alpinejs, autoprefixer, axios, @headlessui/react, @inertiajs/react, laravel-vite-plugin, devDependencies, alpinejs (+26 more)
 
 ### Community 55 - "Community 55"
-Cohesion: 0.07
-Nodes (16): UserController, CreateUserRequest, App\Http\Requests\DeleteUserRequest, UpdateUserRequest, User, UserRepository, UserService, AdminUserSeeder (+8 more)
+Cohesion: 0.14
+Nodes (6): BackfillProductSlugs, ConvertImagesToWebP, MigrateOldProductsData, ParseStaticImages, Illuminate\Console\Command, Illuminate\Support\Facades\File
 
 ### Community 56 - "Community 56"
-Cohesion: 0.40
-Nodes (5): da(), f(), m(), n(), l()
+Cohesion: 0.10
+Nodes (8): BenchController, BenchRepository, BenchService, Carbon\Carbon, Exception, Illuminate\Support\Facades\Log, Illuminate\Support\Facades\Response, Illuminate\Support\Facades\URL
 
 ### Community 57 - "Community 57"
 Cohesion: 0.13
 Nodes (26): a(), b(), c(), d(), f(), g(), h(), i() (+18 more)
 
 ### Community 58 - "Community 58"
-Cohesion: 0.13
-Nodes (26): a(), b(), c(), d(), f(), g(), h(), i() (+18 more)
+Cohesion: 0.08
+Nodes (21): addNamespace(), addNamespacesAndStylesheet(), appendFill(), assertImageIsValid(), CanvasPattern_(), CanvasRenderingContext2D_(), createMatrixIdentity(), getContext() (+13 more)
 
 ### Community 59 - "Community 59"
 Cohesion: 0.08
 Nodes (21): addNamespace(), addNamespacesAndStylesheet(), appendFill(), assertImageIsValid(), CanvasPattern_(), CanvasRenderingContext2D_(), createMatrixIdentity(), getContext() (+13 more)
 
 ### Community 60 - "Community 60"
-Cohesion: 0.08
-Nodes (21): addNamespace(), addNamespacesAndStylesheet(), appendFill(), assertImageIsValid(), CanvasPattern_(), CanvasRenderingContext2D_(), createMatrixIdentity(), getContext() (+13 more)
+Cohesion: 0.26
+Nodes (26): b(), c(), d(), e(), ee(), f(), g(), h() (+18 more)
 
 ### Community 61 - "Community 61"
 Cohesion: 0.26
 Nodes (26): b(), c(), d(), e(), ee(), f(), g(), h() (+18 more)
 
 ### Community 62 - "Community 62"
-Cohesion: 0.26
-Nodes (26): b(), c(), d(), e(), ee(), f(), g(), h() (+18 more)
-
-### Community 63 - "Community 63"
 Cohesion: 0.07
 Nodes (12): OrderFilterData, PlaceOrderData, OrderController, OrderFilterRequest, Order, CartRepository, OrderRepository, OrderService (+4 more)
+
+### Community 63 - "Community 63"
+Cohesion: 0.14
+Nodes (21): a(), i(), j(), m(), mt(), nn(), o(), e() (+13 more)
 
 ### Community 64 - "Community 64"
 Cohesion: 0.14
 Nodes (21): a(), i(), j(), m(), mt(), nn(), o(), e() (+13 more)
 
 ### Community 65 - "Community 65"
-Cohesion: 0.14
-Nodes (21): a(), i(), j(), m(), mt(), nn(), o(), e() (+13 more)
-
-### Community 66 - "Community 66"
 Cohesion: 0.18
 Nodes (20): app_key_present(), apply_db_action(), build_ordered_sql(), dir_has_file_except(), files_ready(), has_tty(), import_ordered_sql(), main() (+12 more)
 
-### Community 67 - "Community 67"
+### Community 66 - "Community 66"
 Cohesion: 0.13
 Nodes (18): a(), aa(), B(), c(), D(), F(), g(), h() (+10 more)
+
+### Community 67 - "Community 67"
+Cohesion: 0.24
+Nodes (25): E(), n(), o(), A(), B(), C(), D(), e() (+17 more)
 
 ### Community 68 - "Community 68"
-Cohesion: 0.24
-Nodes (25): E(), n(), o(), A(), B(), C(), D(), e() (+17 more)
-
-### Community 69 - "Community 69"
 Cohesion: 0.13
 Nodes (18): a(), aa(), B(), c(), D(), F(), g(), h() (+10 more)
 
-### Community 70 - "Community 70"
-Cohesion: 0.24
-Nodes (25): E(), n(), o(), A(), B(), C(), D(), e() (+17 more)
-
-### Community 71 - "Community 71"
+### Community 69 - "Community 69"
 Cohesion: 0.12
 Nodes (18): init(), combine(), draw(), drawPie(), drawLabels(), drawDonutHole(), drawOverlay(), findNearbySlice() (+10 more)
 
-### Community 72 - "Community 72"
+### Community 70 - "Community 70"
 Cohesion: 0.10
 Nodes (18): aa(), ea(), ga(), A(), B(), C(), g(), l() (+10 more)
 
-### Community 73 - "Community 73"
+### Community 71 - "Community 71"
+Cohesion: 0.13
+Nodes (26): a(), b(), c(), d(), f(), g(), h(), i() (+18 more)
+
+### Community 72 - "Community 72"
 Cohesion: 0.12
 Nodes (18): init(), combine(), draw(), drawPie(), drawLabels(), drawDonutHole(), drawOverlay(), findNearbySlice() (+10 more)
 
-### Community 74 - "Community 74"
+### Community 73 - "Community 73"
 Cohesion: 0.10
 Nodes (18): aa(), ea(), ga(), A(), B(), C(), g(), l() (+10 more)
 
 ### Community 75 - "Community 75"
-Cohesion: 0.15
-Nodes (4): BlogController, BlogRequest, Blog, BlogService
+Cohesion: 0.26
+Nodes (20): a(), n(), c(), d(), f(), g(), h(), l() (+12 more)
 
 ### Community 76 - "Community 76"
-Cohesion: 0.26
-Nodes (20): a(), n(), c(), d(), f(), g(), h(), l() (+12 more)
+Cohesion: 0.32
+Nodes (22): b(), c(), d(), e(), f(), g(), h(), i() (+14 more)
 
 ### Community 77 - "Community 77"
-Cohesion: 0.32
-Nodes (22): b(), c(), d(), e(), f(), g(), h(), i() (+14 more)
-
-### Community 78 - "Community 78"
 Cohesion: 0.17
 Nodes (17): b(), c(), d(), e(), e(), f(), i(), j() (+9 more)
 
-### Community 79 - "Community 79"
+### Community 78 - "Community 78"
 Cohesion: 0.26
 Nodes (20): a(), n(), c(), d(), f(), g(), h(), l() (+12 more)
 
-### Community 80 - "Community 80"
+### Community 79 - "Community 79"
 Cohesion: 0.32
 Nodes (22): b(), c(), d(), e(), f(), g(), h(), i() (+14 more)
 
-### Community 81 - "Community 81"
+### Community 80 - "Community 80"
 Cohesion: 0.17
 Nodes (17): b(), c(), d(), e(), e(), f(), i(), j() (+9 more)
+
+### Community 81 - "Community 81"
+Cohesion: 0.14
+Nodes (16): init(), combine(), draw(), drawPie(), drawLabels(), drawDonutHole(), drawOverlay(), findNearbySlice() (+8 more)
 
 ### Community 82 - "Community 82"
 Cohesion: 0.14
 Nodes (16): init(), combine(), draw(), drawPie(), drawLabels(), drawDonutHole(), drawOverlay(), findNearbySlice() (+8 more)
 
 ### Community 83 - "Community 83"
-Cohesion: 0.14
-Nodes (16): init(), combine(), draw(), drawPie(), drawLabels(), drawDonutHole(), drawOverlay(), findNearbySlice() (+8 more)
-
-### Community 84 - "Community 84"
 Cohesion: 0.16
 Nodes (20): clipPos(), clipPosArray(), clipToLen(), e_button(), extendRange(), extendSelection(), extendSelections(), filterSelectionChange() (+12 more)
 
-### Community 86 - "Community 86"
+### Community 85 - "Community 85"
 Cohesion: 0.13
 Nodes (7): AppServiceProvider, AuthServiceProvider, BreadcrumbsServiceProvider, BroadcastServiceProvider, Illuminate\Foundation\Support\Providers\AuthServiceProvider, Illuminate\Support\Facades\Broadcast, Illuminate\Support\ServiceProvider
 
+### Community 86 - "Community 86"
+Cohesion: 0.13
+Nodes (18): adjustView(), attachDoc(), buildViewArray(), clearCaches(), clearLineMeasurementCache(), clearLineMeasurementCacheFor(), findMaxLine(), findViewForLine() (+10 more)
+
 ### Community 87 - "Community 87"
-Cohesion: 0.16
-Nodes (16): adjustView(), attachDoc(), buildViewArray(), clearCaches(), clearLineMeasurementCache(), clearLineMeasurementCacheFor(), findMaxLine(), findViewIndex() (+8 more)
+Cohesion: 0.24
+Nodes (25): E(), n(), o(), A(), B(), C(), D(), e() (+17 more)
 
 ### Community 88 - "Community 88"
 Cohesion: 0.10
@@ -666,19 +660,19 @@ Nodes (16): addLineWidget(), addToScrollPos(), adjustScrollWhenAboveVisible(), c
 Cohesion: 0.17
 Nodes (16): addLineWidget(), addToScrollPos(), adjustScrollWhenAboveVisible(), changeLine(), clipLine(), estimateCoords(), fromCoordSystem(), heightAtLine() (+8 more)
 
-### Community 98 - "Community 98"
-Cohesion: 0.67
-Nodes (4): domTextBetween(), recognizeMarker(), walk(), getBetween()
-
-### Community 99 - "Community 99"
+### Community 97 - "Community 97"
 Cohesion: 0.18
 Nodes (15): collapsedSpanAtEnd(), collapsedSpanAtSide(), collapsedSpanAtStart(), compareCollapsedMarkers(), conflictingCollapsedRange(), copySharedMarkers(), domTextBetween(), recognizeMarker() (+7 more)
 
-### Community 100 - "Community 100"
+### Community 98 - "Community 98"
+Cohesion: 0.18
+Nodes (15): collapsedSpanAtEnd(), collapsedSpanAtSide(), collapsedSpanAtStart(), compareCollapsedMarkers(), conflictingCollapsedRange(), copySharedMarkers(), domTextBetween(), recognizeMarker() (+7 more)
+
+### Community 99 - "Community 99"
 Cohesion: 0.19
 Nodes (11): x(), y(), init(), init(), FIXME: LEGACY BROWSER FIX, init(), init(), processRawData() (+3 more)
 
-### Community 101 - "Community 101"
+### Community 100 - "Community 100"
 Cohesion: 0.29
 Nodes (14): init(), clamp(), clearSelection(), extractRange(), getSelection(), onMouseDown(), onMouseMove(), onMouseUp() (+6 more)
 
@@ -736,7 +730,7 @@ Nodes (14): adoptValue(), ajaxConvert(), ajaxHandleResponses(), Animation(), cam
 
 ### Community 116 - "Community 116"
 Cohesion: 0.16
-Nodes (14): buildFragment(), buildParams(), cloneCopyEvent(), disableScript(), DOMEval(), domManip(), getAll(), isArrayLike() (+6 more)
+Nodes (14): boxModelAdjustment(), buildFragment(), cloneCopyEvent(), curCSS(), disableScript(), DOMEval(), domManip(), getAll() (+6 more)
 
 ### Community 117 - "Community 117"
 Cohesion: 0.22
@@ -978,10 +972,6 @@ Nodes (4): Monolog\Handler\NullHandler, Monolog\Handler\StreamHandler, Monolog\H
 Cohesion: 0.50
 Nodes (4): init(), processThresholds(), thresholdData(), FIXME: there are probably some edge cases left in bars
 
-### Community 184 - "Community 184"
-Cohesion: 0.40
-Nodes (5): da(), f(), m(), n(), l()
-
 ### Community 185 - "Community 185"
 Cohesion: 0.70
 Nodes (4): a(), b(), c(), d()
@@ -1122,12 +1112,12 @@ Nodes (3): keywords, framework, laravel
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `V()` connect `Community 19` to `Community 0`, `Community 68`, `Community 70`, `Community 12`, `Community 15`, `Community 18`?**
-  _High betweenness centrality (0.086) - this node is a cross-community bridge._
-- **Why does `highlightLine()` connect `Community 123` to `Community 89`, `Community 6`?**
-  _High betweenness centrality (0.050) - this node is a cross-community bridge._
+- **Why does `V()` connect `Community 19` to `Community 0`, `Community 67`, `Community 12`, `Community 15`, `Community 18`, `Community 87`?**
+  _High betweenness centrality (0.095) - this node is a cross-community bridge._
 - **Why does `highlightLine()` connect `Community 125` to `Community 89`, `Community 9`?**
   _High betweenness centrality (0.046) - this node is a cross-community bridge._
+- **Why does `te()` connect `Community 18` to `Community 64`, `Community 9`?**
+  _High betweenness centrality (0.045) - this node is a cross-community bridge._
 - **Are the 20 inferred relationships involving `WebResponse` (e.g. with `.benches()` and `.lines_benches()`) actually correct?**
   _`WebResponse` has 20 INFERRED edges - model-reasoned connections that need verification._
 - **What connects `MainService`, `guzzlehttp/guzzle`, `inertiajs/inertia-laravel` to the rest of the system?**
