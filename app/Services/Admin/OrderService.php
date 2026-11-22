@@ -25,7 +25,7 @@ class OrderService
 
         foreach ($this->orders->matching($filter)->get() as $order) {
             $products = $order->items
-                ->map(fn ($item) => $item->product_name.' × '.$item->quantity)
+                ->pluck('product_name')
                 ->implode('; ');
 
             fputcsv($handle, [

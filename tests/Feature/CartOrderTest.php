@@ -45,7 +45,7 @@ class CartOrderTest extends TestCase
         $this->assertDatabaseHas('order_items', [
             'product_id' => $cube->id,
             'product_name' => 'CUBE',
-            'quantity' => 2,
+            'quantity' => 1,
         ]);
         $this->assertDatabaseHas('order_items', [
             'product_id' => $kolonna->id,
@@ -72,7 +72,42 @@ class CartOrderTest extends TestCase
             'date_to' => $day,
         ]));
         $csv->assertOk();
-        $this->assertStringContainsString('CUBE × 2; KOLONNA × 1', $csv->getContent());
+        $this->assertStringContainsString('CUBE; KOLONNA', $csv->getContent());
         $this->assertStringContainsString('Дата;Имя;Почта;Телефон;Организация;Комментарий;Товары', $csv->getContent());
+    }
+    public function test_removing_from_product_page_returns_to_it_and_empties_the_line(): void
+    {
+        $cube = Product::create(['name' => 'CUBE', 'slug' => 'cube', 'product_type' => 'pot', 'active' => true]);
+        $productPage = 'http://localhost/napravleniya/kashpo/kvadratnye/cube';
+
+        $this->withSession(['cart' => [$cube->id => 3]])
+            ->from($productPage)
+            ->post(route('cart.update', ['product' => $cube->id]), ['quantity' => 0])
+            ->assertRedirect($productPage)
+            ->assertSessionHas('cart', []);
+
+        $this->assertFalse(app(\App\Services\CartService::class)->has($cube->id));
+    }
+
+    public function test_removing_on_cart_page_stays_on_cart_page(): void
+    {
+        $cube = Product::create(['name' => 'CUBE', 'slug' => 'cube', 'product_type' => 'pot', 'active' => true]);
+
+        $this->withSession(['cart' => [$cube->id => 1]])
+            ->from(route('cart.show'))
+            ->post(route('cart.update', ['product' => $cube->id]), ['quantity' => 0])
+            ->assertRedirect(route('cart.show'))
+            ->assertSessionHas('cart', []);
+    }
+
+    public function test_adding_twice_keeps_one_line_without_quantity(): void
+    {
+        $cube = Product::create(['name' => 'CUBE', 'slug' => 'cube', 'product_type' => 'pot', 'active' => true]);
+
+        $this->post(route('cart.add'), ['product_id' => $cube->id]);
+        $this->post(route('cart.add'), ['product_id' => $cube->id])
+            ->assertSessionHas('cart', [$cube->id => 1]);
+
+        $this->assertTrue(app(\App\Services\CartService::class)->has($cube->id));
     }
 }

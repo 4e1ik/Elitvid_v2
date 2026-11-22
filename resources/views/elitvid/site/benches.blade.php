@@ -1,175 +1,51 @@
 @extends('layouts.elitvid.elitvid')
 
+@section('body-class', 'rd-page')
+
 @section('content')
+    @php
+        $collectionImage = fn (string $name) => asset("/elitvid_assets/newDesign/newDesign/imgs/benches/collections/{$name}/main_{$name}.webp");
+        $collectionAlt = fn (string $name) => $static_images_arr["/elitvid_assets/newDesign/newDesign/imgs/benches/collections/{$name}/main_{$name}.webp"] ?? '';
+    @endphp
     <main>
-        @include('includes.elitvid.popup_call')
         @include('includes.elitvid.popup_application')
-        @include('includes.elitvid.breadcrumbs')
-        <section class="main">
-            <div class="description">
-                <div class="description-text">
-                    <h1>Скамьи <br> из камня</h1>
-                    <p>Доверьте нам свои идеи, и мы поможем Вам воплотить их в жизнь. Свяжитесь с нами сегодня и начните реализацию своего проекта!</p>
-                </div>
-                <div class="submit-application">
-                    <button class="submit-application--button open_popup_application">
-                        Оставить заявку
-                    </button>
-                </div>
-                @include('includes.elitvid.catalog_price_benches')
-            </div>
-            <div class="stages">
-                <div class="image">
-                    <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/benches.webp')}}"
-                         alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/benches.webp'] ?? ''}}"
-                         class="main-page-up" loading="lazy">
-                </div>
-                <div class="submit-application submit-application--mobile">
-                    <button class="submit-application--button open_popup_application1 submit-application-button--mobile">
-                        Оставить заявку
-                    </button>
-                </div>
-                @include('includes.elitvid.mobile_catalog_price_benches')
-            </div>
-        </section>
-        <style>
-            .text--description > h3 {
-                font-size: 18px;
-                font-family: "Montserrat-SemiBold";
-                text-transform: revert;
-            }
-        </style>
-        <section class="prev_direction">
-            <h2>Коллекции каменных скамеек</h2>
-            <div class="prev_directions__forms">
-                <div class="prev_directions__form">
-                    <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/benches/collections/verona/main_verona.webp')}}"
-                         alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/benches/collections/verona/main_verona.webp'] ?? ''}}" loading="lazy">
-                    <div class="prev_directions_form--text">
-                        <div class="text--description">
-                            <h3>Verona</h3>
-                            <p>Коллекция с потрясающими природными формами, гармонично впишется в любой ландшафт.</p>
-                        </div>
-                        <div class="lines-decor">
-                            <div class="vertical-line"></div>
-                            <div class="horizontal-line"></div>
-                        </div>
-                    </div>
-                    <a href="{{route('verona_benches')}}">
-                        <button class="look-collection">Смотреть коллекцию</button>
-                    </a>
-                </div>
-                <div class="prev_directions__form">
-                    <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/benches/collections/stones/main_stones.webp')}}"
-                         alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/benches/collections/stones/main_stones.webp'] ?? ''}}" loading="lazy">
-                    <div class="prev_directions_form--text">
-                        <div class="text--description">
-                            <h3>Stones</h3>
-                            <p>Идеальна для создания стильных пространств возле офисов и в парковых зонах.</p>
-                        </div>
-                        <div class="lines-decor">
-                            <div class="vertical-line"></div>
-                            <div class="horizontal-line"></div>
-                        </div>
-                    </div>
-                    <a href="{{route('stones_benches')}}">
-                        <button class="look-collection">Смотреть коллекцию</button>
-                    </a>
-                </div>
-                <div class="prev_directions__form">
-                    <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/benches/collections/lines/main_lines.webp')}}"
-                         alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/benches/collections/lines/main_lines.webp'] ?? ''}}" loading="lazy">
-                    <div class="prev_directions_form--text">
-                        <div class="text--description">
-                            <h3>lines</h3>
-                            <p>Подходят для создания различных композиций в торговых центрах и на улице.</p>
-                        </div>
-                        <div class="lines-decor">
-                            <div class="vertical-line"></div>
-                            <div class="horizontal-line"></div>
-                        </div>
-                    </div>
-                    <a href="{{route('lines_benches')}}">
-                        <button class="look-collection">Смотреть коллекцию</button>
-                    </a>
-                </div>
-                <div class="prev_directions__form">
-                    <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/benches/collections/solo/main_solo.webp')}}"
-                         alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/benches/collections/solo/main_solo.webp'] ?? ''}}" loading="lazy">
-                    <div class="prev_directions_form--text">
-                        <div class="text--description">
-                            <h3>Solo</h3>
-                            <p>Подойдёт для торговых центров, стильно впишется в любой дизайн-проект.</p>
-                        </div>
-                        <div class="lines-decor">
-                            <div class="vertical-line"></div>
-                            <div class="horizontal-line"></div>
-                        </div>
-                    </div>
-                    <a href="{{route('solo_benches')}}">
-                        <button class="look-collection">Смотреть коллекцию</button>
-                    </a>
-                </div>
-                <div class="prev_directions__form">
-                    <img src="{{asset('/elitvid_assets/newDesign/newDesign/imgs/benches/collections/street_furniture/main_street_furniture.webp')}}"
-                         alt="{{$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/benches/collections/street_furniture/main_street_furniture.webp'] ?? ''}}" loading="lazy">
-                    <div class="prev_directions_form--text">
-                        <div class="text--description">
-                            <h3>Street furniture</h3>
-                            <p>Удобна для детских площадок и аллей. Прекрасно впишется
-                                в ваш уютный двор.</p>
-                        </div>
-                        <div class="lines-decor">
-                            <div class="vertical-line"></div>
-                            <div class="horizontal-line"></div>
-                        </div>
-                    </div>
-                    <a href="{{route('street_furniture_benches')}}">
-                        <button class="look-collection">Смотреть коллекцию</button>
-                    </a>
+        <section class="rd-hero rd-hero--crumbs rd-hero--benches">
+            <div class="rd-wrap">
+                <x-elitvid.breadcrumbs />
+                <h1>Скамьи из камня</h1>
+                <p>Доверьте нам свои идеи, и мы поможем Вам воплотить их в жизнь. Свяжитесь с нами сегодня и начните реализацию своего проекта!</p>
+                <div class="rd-hero__photo" role="img" aria-label="Скамьи из камня"></div>
+                <div class="rd-hero__actions">
+                    <button class="rd-btn rd-btn--accent open_popup_application" type="button">Оставить заявку</button>
+                    <x-elitvid.download-catalog file="/elitvid_assets/newDesign/newDesign/files/benches.pdf" />
                 </div>
             </div>
         </section>
-        @include('includes.elitvid.description')
-        @if(isset($pageContent->gallery) && $pageContent->gallery->active)
-            <section class="works">
-                <h2>Примеры работ</h2>
-                <div class="works-examples">
-                    <div class="main__slider swiper">
-                        <!-- Additional required wrapper -->
-                        <div class="main-swiper-wrapper__slider swiper-wrapper">
-                            <!-- Slides -->
-                            @foreach($pageContent->gallery->images as $image)
-                                <div class="swiper-slide"><img src="{{asset('storage/'.str_replace('public/','',$image->image))}}" alt="{{$image->description_image ?? ''}}" loading="lazy"></div>
-                            @endforeach
-                        </div>
 
-                        <!-- If we need navigation buttons -->
-                        <div class="swiper-button-prev arrow-left arrow">
-                            <svg width="12" height="18" viewBox="0 0 12 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path id="Line 1" d="M9.54419 1.5L2.45559 9L9.54419 16.5" stroke="white" stroke-width="2.99575"
-                                      stroke-linecap="round"/>
-                            </svg>
-                        </div>
-                        <div class="swiper-button-next arrow-right arrow">
-                            <svg width="12" height="18" viewBox="0 0 12 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path id="Line 1" d="M2.45581 1.5L9.54441 9L2.45581 16.5" stroke="white" stroke-width="2.99575"
-                                      stroke-linecap="round"/>
-                            </svg>
-                        </div>
-
-                    </div>
-                    <div class="thumbs__slider swiper">
-                        <!-- Additional required wrapper -->
-                        <div class="main-swiper-wrapper__slider swiper-wrapper">
-                            <!-- Slides -->
-                            @foreach($pageContent->gallery->images as $image)
-                                <div class="swiper-slide"><img src="{{asset('storage/'.str_replace('public/','',$image->image))}}" alt="{{$image->description_image ?? ''}}" loading="lazy"></div>
-                            @endforeach
-                        </div>
-                    </div>
+        <div class="rd-wrap">
+            <section class="rd-section">
+                <h2>Коллекции каменных скамеек</h2>
+                <div class="rd-forms rd-forms--side">
+                    <x-elitvid.form-row side :image="$collectionImage('verona')" :alt="$collectionAlt('verona')" title="Verona" :href="route('verona_benches')">
+                        Коллекция с потрясающими природными формами, гармонично впишется в любой ландшафт.
+                    </x-elitvid.form-row>
+                    <x-elitvid.form-row side :image="$collectionImage('stones')" :alt="$collectionAlt('stones')" title="Stones" :href="route('stones_benches')">
+                        Идеальна для создания стильных пространств возле офисов и в парковых зонах.
+                    </x-elitvid.form-row>
+                    <x-elitvid.form-row side :image="$collectionImage('lines')" :alt="$collectionAlt('lines')" title="Lines" :href="route('lines_benches')">
+                        Подходят для создания различных композиций в торговых центрах и на улице.
+                    </x-elitvid.form-row>
+                    <x-elitvid.form-row side :image="$collectionImage('solo')" :alt="$collectionAlt('solo')" title="Solo" :href="route('solo_benches')">
+                        Подойдёт для торговых центров, стильно впишется в любой дизайн-проект.
+                    </x-elitvid.form-row>
                 </div>
             </section>
-        @endif
+            @if($pageContent && $pageContent->category_description)
+                <section class="rd-section rd-seo">{!! $pageContent->category_description !!}</section>
+            @endif
+            @if(isset($pageContent->gallery) && $pageContent->gallery->active)
+                <x-elitvid.works title="Примеры работ" :images="$pageContent->gallery->images" />
+            @endif
+        </div>
     </main>
 @endsection

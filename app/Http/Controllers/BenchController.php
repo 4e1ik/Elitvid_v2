@@ -8,6 +8,8 @@ use App\Models\Product;
 use App\Repositories\PageContentRepository;
 use App\Repositories\StaticImagesRepository;
 use App\Repositories\StaticPageRepository;
+use App\Services\BenchService;
+use App\Services\CartService;
 
 class BenchController
 {
@@ -15,6 +17,8 @@ class BenchController
         public StaticPageRepository $staticPageRepository,
         public PageContentRepository $pageContentRepository,
         public StaticImagesRepository $staticImagesRepository,
+        public BenchService $benchService,
+        public CartService $cartService,
     ){}
 
     function benches() {
@@ -35,24 +39,9 @@ class BenchController
         }
     }
 
-    function street_furniture_benches() {
-        try {
-            $static_pages = $this->staticPageRepository->getAllStaticPages();
-            $pageContent = $this->pageContentRepository->getPageContent(page: 'street_furniture_benches');
-            $static_images_arr = $this->staticImagesRepository->getStaticImagesForPage(page: 'street_furniture_benches');
-
-            $products = Product::whereIn('active', [1])
-                ->whereHas('bench', function ($query) {
-                    $query->where('collection', 'Street_furniture');
-                })
-                ->with(['images', 'bench'])
-                ->latest()
-                ->get();
-
-            return WebResponse::success(view('elitvid.site.benches.street_furniture_benches', compact('products', 'pageContent', 'static_images_arr', 'static_pages')));
-        } catch (\Exception $e) {
-            return WebResponse::error($e);
-        }
+    public function street_furniture_product(string $slug)
+    {
+        return redirect($this->benchService->streetFurnitureTarget($slug), 301);
     }
 
     function verona_benches() {
@@ -154,6 +143,7 @@ class BenchController
             $metaDescription = $product?->meta_description ?? 'Описание товара';
             $static_images_arr = $this->staticImagesRepository->getStaticImagesForPage(page: 'bench_product_page');
             $canonicalUrl = route('show_bench_product', ['collection' => $collection, 'slug' => $product->slug]);
+            $inCart = $this->cartService->has($product->id);
             return WebResponse::success(view('elitvid.site.benches.bench_product_page',
                 compact('product',
                     'rand_products',
@@ -162,7 +152,8 @@ class BenchController
                     'static_images_arr',
                     'canonicalUrl',
                     'static_pages',
-                    'collection'
+                    'collection',
+                    'inCart'
                 )));
         } catch (\Exception $e) {
             return WebResponse::error($e);

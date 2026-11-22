@@ -47,6 +47,8 @@
                                             <option class="ru" @selected(old('country') === '🇷🇺 +7')>🇷🇺 +7</option>
                                             <option class="kz" @selected(old('country') === '🇰🇿 +7')>🇰🇿 +7</option>
                                         </select>
+                                        <button class="rd-phone-code" type="button" aria-haspopup="listbox" aria-expanded="false" aria-label="Код страны"></button>
+                                        <ul class="rd-phone-list" role="listbox" aria-label="Код страны" hidden></ul>
                                         <input class="item-form" type="text" name="phone" value="{{ old('phone') }}" required>
                                         <div class="form_error">
                                             @error('phone')
@@ -123,11 +125,10 @@
                                     <p class="cart-page__note cart-page__note--bad">Уберите этот товар, чтобы отправить заявку.</p>
                                 @endif
                             </div>
-                            <form class="cart-page__qty" method="post" action="{{ route('cart.update', $line['product_id']) }}">
+                            <form method="post" action="{{ route('cart.update', $line['product_id']) }}">
                                 @csrf
-                                <button type="submit" name="quantity" value="{{ max($line['quantity'] - 1, 0) }}" aria-label="Уменьшить">−</button>
-                                <span>{{ $line['quantity'] }}</span>
-                                <button type="submit" name="quantity" value="{{ min($line['quantity'] + 1, 999) }}" aria-label="Увеличить">+</button>
+                                <input type="hidden" name="quantity" value="0">
+                                <button class="cart-page__button cart-page__button--ghost" type="submit">Удалить</button>
                             </form>
                         </div>
                     @endforeach
@@ -199,7 +200,7 @@
                     cross.addEventListener('click', hideOrder);
                 }
                 popup.addEventListener('click', function (event) {
-                    if (event.target === popup.querySelector('.popup__body_order')) {
+                    if (event.target === popup) { // клик по подложке вокруг окна
                         hideOrder();
                     }
                 });

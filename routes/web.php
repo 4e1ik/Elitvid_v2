@@ -59,14 +59,13 @@ Route::prefix('napravleniya')->group(function () {
 
     Route::prefix('skami')->group(function () {
         Route::get('/', [BenchController::class, 'benches'])->name('benches');
+        // коллекцию Street furniture убрали (спека 006): старые адреса — постоянные перенаправления
+        Route::permanentRedirect('/street-furniture', '/napravleniya/skami')->name('street_furniture_benches');
+        Route::get('/street-furniture/{slug}', [BenchController::class, 'street_furniture_product'])->name('street_furniture_product');
         Route::get('/{collection}/{slug}', [BenchController::class, 'show_bench_product'])->name('show_bench_product');
 
         Route::prefix('verona')->group(function () {
             Route::get('/', [BenchController::class, 'verona_benches'])->name('verona_benches');
-        });
-
-        Route::prefix('street-furniture')->group(function () {
-            Route::get('/', [BenchController::class, 'street_furniture_benches'])->name('street_furniture_benches');
         });
 
         Route::prefix('solo')->group(function () {
@@ -97,6 +96,7 @@ Route::prefix('napravleniya')->group(function () {
         });
     });
 
+    Route::get('/sbornye-klumby', [MainController::class, 'flowerbeds'])->name('flowerbeds');
     Route::get('/{slug}', [StaticPagesController::class, 'index'])->name('static_page');
 });
 

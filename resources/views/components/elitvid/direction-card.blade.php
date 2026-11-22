@@ -1,9 +1,9 @@
 @props(['image', 'label', 'alt' => '', 'href' => null])
 
 @if ($href)
-    <a class="rd-card" href="{{ $href }}">
+    <a {{ $attributes->class(['rd-card']) }} href="{{ $href }}">
 @else
-    <div class="rd-card">
+    <div {{ $attributes->class(['rd-card']) }}>
 @endif
     <span class="rd-card__photo">
         <img src="{{ $image }}" alt="{{ $alt !== '' ? $alt : $label }}" width="367" height="280" loading="lazy">

@@ -63,7 +63,7 @@
                                                 <td>{{ $order->corporation_name ?: '—' }}</td>
                                                 <td>{{ $order->comment ?: '—' }}</td>
                                                 <td>
-                                                    {{ $order->items->map(fn ($item) => $item->product_name.' × '.$item->quantity)->implode('; ') }}
+                                                    {{ $order->items->pluck('product_name')->implode('; ') }}
                                                 </td>
                                             </tr>
                                         @endforeach

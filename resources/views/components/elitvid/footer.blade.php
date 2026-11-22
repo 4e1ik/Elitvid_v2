@@ -9,7 +9,7 @@
                 <li>Пн-пт: 8.00-17.00</li>
                 <li><a href="mailto:el_vid@mail.ru">el_vid@mail.ru</a></li>
                 <li><a href="tel:+79104184777">+7 (910) 418 47 77</a></li>
-                <li><a href="tel:+79100409605">+7 (910) 040 96 05</a></li>
+                <li><a href="tel:+79190409605">+7 (919) 040 96 05</a></li>
                 <li><a href="tel:+375297665012">+375 (29) 766 50 12</a></li>
                 <li><a href="tel:+375297034014">+375 (29) 703 40 14</a></li>
             </ul>
@@ -26,6 +26,7 @@
                 <a href="{{ route('benches') }}">Скамьи</a>
                 <span>Навесы и беседки</span>
                 <a href="{{ route('static_page', ['slug' => 'kamennye-rotondy-kolonny']) }}">Ротонды и колоннады</a>
+                <a href="{{ route('flowerbeds') }}">Сборные клумбы</a>
             </div>
         </div>
     </div>
@@ -48,6 +49,7 @@
                     <li><a href="{{ route('static_page', ['slug' => 'kamennye-navesy-i-parklety']) }}">Парклеты, навесы</a></li>
                     <li><a href="{{ route('static_page', ['slug' => 'stolby-i-nakryvki-iz-kamnya']) }}">Столбы и накрывки</a></li>
                     <li><span>Навесы и беседки</span></li>
+                    <li><a href="{{ route('flowerbeds') }}">Сборные клумбы</a></li>
                 </ul>
             </div>
             <div>
@@ -56,7 +58,7 @@
                     <li>Пн-пт: 8.00-17.00</li>
                     <li><a href="mailto:el_vid@mail.ru">el_vid@mail.ru</a></li>
                     <li><a href="tel:+79104184777">+7 (910) 418 47 77</a></li>
-                    <li><a href="tel:+79100409605">+7 (910) 040 96 05</a></li>
+                    <li><a href="tel:+79190409605">+7 (919) 040 96 05</a></li>
                     <li><a href="tel:+375297665012">+375 (29) 766 50 12</a></li>
                     <li><a href="tel:+375297034014">+375 (29) 703 40 14</a></li>
                 </ul>

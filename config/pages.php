@@ -29,4 +29,5 @@ return [
     'rectangular_pots' => 'Прямоугольные кашпо',
     'square_pots' => 'Квадратные кашпо',
     'round_pots' => 'Круглые кашпо',
+    'flowerbeds' => 'Сборные клумбы',
 ];

@@ -128,14 +128,14 @@ class SitemapController extends Controller
         ];
 
         $urls[] = [
-            'loc' => URL::to(route('solo_benches')),
+            'loc' => URL::to(route('flowerbeds')),
             'lastmod' => Carbon::now()->toAtomString(),
             'changefreq' => 'daily',
             'priority' => '0.6'
         ];
 
         $urls[] = [
-            'loc' => URL::to(route('street_furniture_benches')),
+            'loc' => URL::to(route('solo_benches')),
             'lastmod' => Carbon::now()->toAtomString(),
             'changefreq' => 'daily',
             'priority' => '0.6'

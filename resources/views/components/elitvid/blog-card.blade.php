@@ -1,6 +1,6 @@
 @props(['href', 'image' => null, 'title', 'description' => ''])
 
-<article class="rd-card">
+<article class="rd-card rd-card--blog">
     <a href="{{ $href }}">
         <span class="rd-card__photo">
             @if($image)

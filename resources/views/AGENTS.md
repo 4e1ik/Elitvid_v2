@@ -12,14 +12,14 @@
 - `includes/elitvid/` — куски страниц (окно заявки, хлебные крошки, каталог), `includes/elitvid/admin/` — формы админки.
 - `components/elitvid/` — Blade-компоненты нового вида: шапка, подвал, кнопка, поле, карточки. Остальное в `components/` и `auth/` — стандартный скелет Breeze.
 - `mail/` — шаблоны писем.
-- Стили и скрипты — `public/elitvid_assets/`: новый вид в `newDesign/newDesign/` (`style.css`, `reset.css`, `js/`), редизайн в `redesign/` (`redesign.css`, `redesign.js`, `cart-add.js`), админка в `js/` и `css/`.
+- Стили и скрипты — `public/elitvid_assets/`: новый вид в `newDesign/newDesign/` (`style.css`, `reset.css`, `js/`), редизайн в `redesign/` (`redesign.css`, `redesign.js`), админка в `js/` и `css/`.
 - `resources/js/` (React, Inertia) и `resources/css/app.css` — неиспользуемый скелет Breeze: ни один маршрут не отдаёт Inertia, ни публичный, ни админский каркас не подключают Vite. Новый экран на React без спеки не заводить.
 
 ## Архитектура
 
 - Стек: Blade с серверным рендером. Публичная часть — jQuery 3.7 и Swiper, админка — jQuery, Bootstrap и TinyMCE. Новых библиотек интерфейса и сборщика без спеки не добавлять.
 - Страница показывает то, что отдал контроллер через `view(...)`. Правило предметной области (доступен ли товар, можно ли оформить заказ) считает бэкенд, вьюха берёт готовое значение, как `canOrder` в корзине.
-- Новый вид описывается в `redesign/redesign.css`. Скрипт нужен для поведения, которое CSS не даёт: меню, список контактов, форма, кнопка корзины.
+- Новый вид описывается в `redesign/redesign.css`. Скрипт нужен для поведения, которое CSS не даёт: меню, список контактов, форма.
 - Повторяемую часть нового вида выносить в `components/elitvid/`, а не копировать в страницы.
 - Ссылки — через `route('имя')`, имена брать в `routes/web.php`.
 - Форма — обычный `POST` с `@csrf` и `g-recaptcha-response`. Заявка идёт на `send_mail`, корзина — на `cart.*`. Имена полей берутся из Form Request (`MailRequest`, `PlaceOrderRequest`: `name`, `email`, `phone`, `country`, `name_corp`, `textarea`).

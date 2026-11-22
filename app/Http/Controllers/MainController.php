@@ -64,6 +64,17 @@ class MainController extends Controller
         }
     }
 
+    function flowerbeds()
+    {
+        try {
+            $static_pages = $this->staticPageRepository->getAllStaticPages();
+            $pageContent = $this->pageContentRepository->getPageContent(page: 'flowerbeds');
+            return WebResponse::success(view('elitvid.site.flowerbeds', compact('pageContent', 'static_pages')));
+        } catch (\Exception $e) {
+            return WebResponse::error($e);
+        }
+    }
+
     function decorations()
     {
         try {

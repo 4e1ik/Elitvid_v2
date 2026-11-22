@@ -9,7 +9,7 @@ Breadcrumbs::for('home', fn (Trail $trail) =>
 );
 
 Breadcrumbs::for('directions', fn (Trail $trail) =>
-    $trail->parent('home')->push('Наши направления', route('directions'))
+    $trail->parent('home')->push('Каталог', route('directions'))
 );
 
 Breadcrumbs::for('decorations', fn (Trail $trail) =>
@@ -41,7 +41,7 @@ $trail->parent('directions')->push('Малые архитектурные фор
 );
 
 Breadcrumbs::for('benches', fn (Trail $trail) =>
-$trail->parent('directions')->push('Скамьи', route('benches'))
+$trail->parent('directions')->push('Скамьи из камня', route('benches'))
 );
 
 Breadcrumbs::for('verona_benches', fn (Trail $trail) =>
@@ -76,7 +76,7 @@ $trail->parent('blog_posts')->push(
 );
 
 Breadcrumbs::for('pots', fn (Trail $trail) =>
-    $trail->parent('directions')->push('Кашпо', route('pots'))
+    $trail->parent('directions')->push('Вазоны и кашпо', route('pots'))
 );
 
 Breadcrumbs::for('rectangular_pots', fn (Trail $trail) =>
@@ -89,4 +89,8 @@ Breadcrumbs::for('square_pots', fn (Trail $trail) =>
 
 Breadcrumbs::for('round_pots', fn (Trail $trail) =>
     $trail->parent('pots')->push('Круглые кашпо', route('round_pots'))
+);
+
+Breadcrumbs::for('flowerbeds', fn (Trail $trail) =>
+    $trail->parent('directions')->push('Сборные клумбы', route('flowerbeds'))
 );

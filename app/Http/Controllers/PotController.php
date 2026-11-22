@@ -8,6 +8,7 @@ use App\Models\Product;
 use App\Repositories\PageContentRepository;
 use App\Repositories\StaticImagesRepository;
 use App\Repositories\StaticPageRepository;
+use App\Services\CartService;
 
 class PotController
 {
@@ -15,6 +16,7 @@ class PotController
         public StaticPageRepository $staticPageRepository,
         public PageContentRepository $pageContentRepository,
         public StaticImagesRepository $staticImagesRepository,
+        public CartService $cartService,
     ){}
 
     function pots() {
@@ -114,6 +116,7 @@ class PotController
             $metaDescription = $product?->meta_description ?? 'Описание товара';
             $static_images_arr = $this->staticImagesRepository->getStaticImagesForPage(page: 'pot_product_page');
             $canonicalUrl = route('show_pot_product', ['collection' => $collection, 'slug' => $product->slug]);
+            $inCart = $this->cartService->has($product->id);
             return WebResponse::success(view('elitvid.site.pots.pot_product_page',
                 compact('product',
                     'rand_products',
@@ -122,7 +125,8 @@ class PotController
                     'static_images_arr',
                     'canonicalUrl',
                     'static_pages',
-                    'collection'
+                    'collection',
+                    'inCart'
                 )));
         } catch (\Exception $e) {
             return WebResponse::error($e);

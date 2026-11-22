@@ -2,10 +2,13 @@
     $photo = fn (string $name) => asset("/elitvid_assets/redesign/images/{$name}.webp");
 @endphp
 <div class="rd-mosaic">
-    <x-elitvid.direction-card :image="$photo('beds')" label="Сборные клумбы" />
+    <x-elitvid.direction-card :href="route('flowerbeds')" :image="$photo('beds')" label="Сборные клумбы" />
     <div class="rd-slogan">
+        <img class="rd-slogan__star" src="{{ asset('/elitvid_assets/redesign/images/star.webp') }}" alt="" width="486" height="418" loading="lazy">
+        <div class="rd-slogan__text">
         <p class="rd-slogan__title">Мы воплотим в реальность любую вашу идею!</p>
         <p>Мы предлагаем широкий спектр услуг, включая доставку во все Республики. Мы стремимся к долгосрочному сотрудничеству и готовы предложить индивидуальные условия и гибкую ценовую политику.</p>
+        </div>
     </div>
     <x-elitvid.direction-card :href="route('pots')" :image="$photo('pots')" label="Кашпо" />
     <x-elitvid.direction-card :image="$photo('flowers')" label="Цветы" />

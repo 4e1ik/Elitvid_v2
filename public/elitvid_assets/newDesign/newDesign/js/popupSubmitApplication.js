@@ -31,7 +31,8 @@ crossBtn.onclick = function () {
 };
 
 window.onclick = function (event) {
-    if (event.target === document.querySelector('.popup__body_application')) {
+    // в новом дизайне .popup__body — само окно, закрываем по клику на подложку (спека 004, FR-025)
+    if (event.target === popup) {
         popup.style.display = 'none';
         document.body.classList.remove('popup-open');
         document.getElementById('mail_form').reset();

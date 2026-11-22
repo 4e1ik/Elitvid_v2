@@ -41,7 +41,8 @@ class CartController extends Controller
     {
         $this->cartService->changeQuantity($product, (int) $request->validated('quantity'));
 
-        return redirect()->route('cart.show');
+        // карточка товара убирает товар и остаётся на месте; страница корзины возвращается к себе
+        return redirect()->to(url()->previous(route('cart.show')));
     }
 
     public function clear()

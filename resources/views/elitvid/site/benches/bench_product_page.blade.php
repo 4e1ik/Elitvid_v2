@@ -84,17 +84,6 @@
                                      alt="{{ $static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/pots/textures/texture-porous.webp'] ?? '' }}">
                                 <p class="texture_popup__text">Пористая</p>
                             </div>
-                            <div class="image_texture" data-texture="smooth">
-                                <img data-texture="smooth"
-                                     src="{{ asset('/elitvid_assets/newDesign/newDesign/imgs/pots/textures/texture-smooth.webp') }}"
-                                     alt="{{ $static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/pots/textures/texture-smooth.webp'] ?? '' }}"
-                                     loading="lazy">
-                                <p>Гладкая</p>
-                                <img data-texture="smooth" class="texture_popup__image"
-                                     src="{{ asset('/elitvid_assets/newDesign/newDesign/imgs/pots/textures/texture-smooth.webp') }}"
-                                     alt="{{ $static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/pots/textures/texture-smooth.webp'] ?? '' }}">
-                                <p class="texture_popup__text">Гладкая</p>
-                            </div>
                             <div class="image_texture" data-texture="marble">
                                 <img data-texture="marble"
                                      src="{{ asset('/elitvid_assets/newDesign/newDesign/imgs/pots/textures/texture-marble.webp') }}"
@@ -109,9 +98,12 @@
                         </div>
                     </div>
                     <div id="product-images" class="content_images__main-image">
+                        @php
+                            $firstImage = $product->images->first(fn ($image) => in_array($image->texture, ['porous', 'marble'], true) && in_array($image->color, ['grey', 'graphite', 'black', 'white', 'ivory', 'sand', 'orange', 'bronze'], true)) ?? $product->images->first();
+                        @endphp
                         <img id="first_image"
-                            src="{{ asset('storage/' . str_replace('public/', '', $product->images->first()->image)) }}"
-                            alt="{{ $product->images->first()?->description_image ?? '' }}" loading="lazy">
+                            src="{{ asset('storage/' . str_replace('public/', '', $firstImage->image)) }}"
+                            alt="{{ $firstImage->description_image ?? '' }}" loading="lazy">
                         @foreach ($product->images as $image)
                             <img id="image" data-texture="{{ $image->texture }}" data-color="{{ $image->color }}"
                                 class="main-image__image"
@@ -155,26 +147,6 @@
                             <div data-color="orange" data-title="Оранжевый" class="image_color">
                                 <img src="{{ asset('/elitvid_assets/newDesign/newDesign/imgs/pots/colors/orange_color.webp') }}"
                                     alt="{{ $static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/pots/colors/orange_color.webp'] ?? '' }}"
-                                    loading="lazy">
-                            </div>
-                            <div data-color="olive" data-title="Оливка" class="image_color">
-                                <img src="{{ asset('/elitvid_assets/newDesign/newDesign/imgs/pots/colors/olive_color.webp') }}"
-                                    alt="{{ $static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/pots/colors/olive_color.webp'] ?? '' }}"
-                                    loading="lazy">
-                            </div>
-                            <div data-color="malachite" data-title="Малахит" class="image_color">
-                                <img src="{{ asset('/elitvid_assets/newDesign/newDesign/imgs/pots/colors/malachite_color.webp') }}"
-                                    alt="{{ $static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/pots/colors/malachite_color.webp'] ?? '' }}"
-                                    loading="lazy">
-                            </div>
-                            <div data-color="white_blue" data-title="Голубой" class="image_color">
-                                <img src="{{ asset('/elitvid_assets/newDesign/newDesign/imgs/pots/colors/white-blue_color.webp') }}"
-                                    alt="{{ $static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/pots/colors/white-blue_color.webp'] ?? '' }}"
-                                    loading="lazy">
-                            </div>
-                            <div data-color="blue" data-title="Синий" class="image_color">
-                                <img src="{{ asset('/elitvid_assets/newDesign/newDesign/imgs/pots/colors/blue_color.webp') }}"
-                                    alt="{{ $static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/pots/colors/blue_color.webp'] ?? '' }}"
                                     loading="lazy">
                             </div>
                             <div data-color="bronze" data-title="Бронза" class="image_color">
@@ -310,26 +282,7 @@
                     </div>
                 </div>
             </div>
-            <div class="submit-application">
-                <form method="post" action="{{ route('cart.add') }}" class="js-add-to-cart">
-                    @csrf
-                    <input type="hidden" name="product_id" value="{{ $product->id }}">
-                    <button class="submit-application--button" type="submit">В корзину</button>
-                </form>
-                <button class="submit-application--button open_popup_application">
-                    Оставить заявку
-                </button>
-            </div>
-            <div class="submit-application submit-application--mobile">
-                <form method="post" action="{{ route('cart.add') }}" class="js-add-to-cart">
-                    @csrf
-                    <input type="hidden" name="product_id" value="{{ $product->id }}">
-                    <button class="submit-application--button" type="submit">В корзину</button>
-                </form>
-                <button class="submit-application--button open_popup_application1 submit-application-button--mobile">
-                    Оставить заявку
-                </button>
-            </div>
+            <x-elitvid.cart-buttons :product="$product" :in-cart="$inCart" />
 
         </section>
         <section class="offered_products">

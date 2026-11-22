@@ -5,9 +5,10 @@
 @section('content')
     <main>
         @include('includes.elitvid.popup_application')
-        <section class="rd-pagehead">
+        <section class="rd-hero rd-hero--blog">
             <div class="rd-wrap">
-                <h1>Наши новости</h1>
+                <h1>Наши<br> новости</h1>
+                <div class="rd-hero__photo" role="img" aria-label="Сад с дорожкой и ручьём"></div>
             </div>
         </section>
         <div class="rd-wrap">

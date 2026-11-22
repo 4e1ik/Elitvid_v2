@@ -7,7 +7,7 @@
         @include('includes.elitvid.popup_application')
         <section class="rd-hero">
             <div class="rd-wrap">
-                <h1>Изделия из полистоуна от производителя</h1>
+                <h1>Изделия из<br class="rd-br-wide"> полистоуна<br class="rd-br-wide"> от производителя</h1>
                 <p>Наш опыт и знания позволяют нам реализовать самые сложные и оригинальные задачи по Вашим размерам, эскизам и чертежам.</p>
                 <div class="rd-hero__photo" role="img" aria-label="Ротонда из полистоуна"></div>
                 <p class="rd-stages"><span>Проектирование</span><span>Монтаж</span><span>Производство</span></p>
@@ -39,7 +39,7 @@
                         <li>возможность нанесения орнамента и логотипа.</li>
                     </ul>
                 </div>
-                <img class="rd-why__photo" src="{{ asset('/elitvid_assets/redesign/images/why.webp') }}" alt="" width="288" height="219">
+                <img class="rd-why__photo" src="{{ asset('/elitvid_assets/redesign/images/why-mobile.webp') }}" alt="" width="288" height="219">
             </div>
         </section>
 
@@ -52,10 +52,15 @@
 
             <section class="rd-section">
                 <h2>Наши партнеры</h2>
-                <div class="rd-partners">
-                    @foreach (['partner-a100' => 'A100', 'partner-belorusneft' => 'Белоруснефть', 'partner-bank' => 'Банк развития', 'partner-tobacco' => 'Табак-инвест', 'partner-vds' => 'VDS', 'partner-haven' => 'Зеленая гавань', 'partner-unisoil' => 'Юнисоил', 'partner-game' => 'Game Stream', 'partner-minsk' => 'Минскзеленстрой'] as $file => $name)
-                        <img src="{{ asset("/elitvid_assets/redesign/images/{$file}.webp") }}" alt="{{ $name }}" width="163" height="87" loading="lazy">
-                    @endforeach
+                {{-- .partners__slider прокручивает main_slider.js (автопрокрутка без пауз, как на прежнем сайте) --}}
+                <div class="rd-partners partners__slider swiper">
+                    <div class="swiper-wrapper">
+                        @foreach (['partner-a100' => 'A100', 'partner-belorusneft' => 'Белоруснефть', 'partner-bank' => 'Банк развития', 'partner-tobacco' => 'Табак-инвест', 'partner-vds' => 'VDS', 'partner-haven' => 'Зеленая гавань', 'partner-unisoil' => 'Юнисоил', 'partner-game' => 'Game Stream', 'partner-minsk' => 'Минскзеленстрой'] as $file => $name)
+                            <div class="swiper-slide">
+                                <img src="{{ asset("/elitvid_assets/redesign/images/{$file}.webp") }}" alt="{{ $name }}" width="163" height="87">
+                            </div>
+                        @endforeach
+                    </div>
                 </div>
             </section>
 
@@ -76,35 +81,7 @@
             </section>
 
             @if(isset($pageContent->gallery) && $pageContent->gallery->active)
-                <section class="rd-section works">
-                    <h2>Примеры работ</h2>
-                    <div class="works-examples">
-                        <div class="main__slider swiper">
-                            <div class="main-swiper-wrapper__slider swiper-wrapper">
-                                @foreach($pageContent->gallery->images as $image)
-                                    <div class="swiper-slide"><img src="{{ asset('storage/'.str_replace('public/','',$image->image)) }}" alt="{{ $image->description_image ?? '' }}" loading="lazy"></div>
-                                @endforeach
-                            </div>
-                            <div class="swiper-button-prev arrow-left arrow">
-                                <svg width="12" height="18" viewBox="0 0 12 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path id="Line 1" d="M9.54419 1.5L2.45559 9L9.54419 16.5" stroke="white" stroke-width="2.99575" stroke-linecap="round"/>
-                                </svg>
-                            </div>
-                            <div class="swiper-button-next arrow-right arrow">
-                                <svg width="12" height="18" viewBox="0 0 12 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path id="Line 1" d="M2.45581 1.5L9.54441 9L2.45581 16.5" stroke="white" stroke-width="2.99575" stroke-linecap="round"/>
-                                </svg>
-                            </div>
-                        </div>
-                        <div class="thumbs__slider swiper">
-                            <div class="main-swiper-wrapper__slider swiper-wrapper">
-                                @foreach($pageContent->gallery->images as $image)
-                                    <div class="swiper-slide"><img src="{{ asset('storage/'.str_replace('public/','',$image->image)) }}" alt="{{ $image->description_image ?? '' }}" loading="lazy"></div>
-                                @endforeach
-                            </div>
-                        </div>
-                    </div>
-                </section>
+                <x-elitvid.works title="Больше примеров" :images="$pageContent->gallery->images" />
             @endif
         </div>
     </main>

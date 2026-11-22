@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="{{asset('/elitvid_assets/newDesign/newDesign/swiper.min.css')}}"/>
     <link rel="stylesheet" href="{{asset('/elitvid_assets/newDesign/newDesign/swiper-bundle.min.css')}}"/>
     <link rel="stylesheet" href="{{asset('/elitvid_assets/newDesign/newDesign/style.css')}}?v=1.8">
-    <link rel="stylesheet" href="{{asset('/elitvid_assets/redesign/redesign.css')}}?v=1.1">
+    <link rel="stylesheet" href="{{asset('/elitvid_assets/redesign/redesign.css')}}?v=3.3">
 
     {{--<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>--}}
     {{--<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>--}}
@@ -23,13 +23,12 @@
     <script defer src="{{asset('/elitvid_assets/newDesign/newDesign/swiper.min.js')}}"></script>
     <script defer src="{{asset('/elitvid_assets/newDesign/newDesign/swiper-bundle.min.js')}}"></script>
     <script defer src="{{asset('/elitvid_assets/newDesign/newDesign/js/sliders/main_slider.js')}}"></script>
-    <script defer src="{{asset('/elitvid_assets/newDesign/newDesign/js/popupSubmitApplication.js')}}"></script>
+    <script defer src="{{asset('/elitvid_assets/newDesign/newDesign/js/popupSubmitApplication.js')}}?v=1.1"></script>
     {{--<script defer src="{{asset('/elitvid_assets/newDesign/newDesign/js/popupRequestCall.js')}}"></script>--}}
     <script defer src="{{asset('/elitvid_assets/newDesign/newDesign/js/burgerMenu.js')}}"></script>
     <script defer src="{{asset('/elitvid_assets/newDesign/newDesign/js/imageUpdater.js')}}"></script>
     <script defer src="{{asset('/elitvid_assets/newDesign/newDesign/js/test.js')}}"></script>
-    <script defer src="{{asset('/elitvid_assets/redesign/redesign.js')}}"></script>
-    <script defer src="{{asset('/elitvid_assets/redesign/cart-add.js')}}"></script>
+    <script defer src="{{asset('/elitvid_assets/redesign/redesign.js')}}?v=1.5"></script>
 
     {{--    <link rel="shortcut icon" type="image/x-icon" href="{{asset('/elitvid_assets/newDesign/newDesign/imgs/logo/logo.svg')}}" >--}}
     {{--    <link rel="shortcut icon" href="{{asset('/favicon.ico')}}" sizes="16x16">--}}

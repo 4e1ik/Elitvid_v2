@@ -42,6 +42,8 @@
                                 <option class="ru">🇷🇺 +7</option>
                                 <option class="kz">🇰🇿 +7</option>
                             </select>
+                            <button class="rd-phone-code" type="button" aria-haspopup="listbox" aria-expanded="false" aria-label="Код страны"></button>
+                            <ul class="rd-phone-list" role="listbox" aria-label="Код страны" hidden></ul>
                             <input class="item-form" type="text" name="phone" required>
                             <div  class="form_error">
                                 @error('phone')

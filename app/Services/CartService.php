@@ -30,7 +30,7 @@ class CartService
             ->keyBy('id');
 
         $lines = [];
-        foreach ($items as $id => $quantity) {
+        foreach (array_keys($items) as $id) {
             $product = $products->get($id);
             $available = $product
                 && $product->active
@@ -40,7 +40,6 @@ class CartService
             $lines[] = [
                 'product_id' => (int) $id,
                 'name' => $available ? $product->name : 'Товар недоступен',
-                'quantity' => (int) $quantity,
                 'available' => $available,
             ];
         }
@@ -48,10 +47,16 @@ class CartService
         return $lines;
     }
 
+    public function has(int $productId): bool
+    {
+        return array_key_exists($productId, $this->carts->all());
+    }
+
     public function add(int $productId): void
     {
         $items = $this->carts->all();
-        $items[$productId] = ($items[$productId] ?? 0) + 1;
+        // количество в корзине не ведём: товар либо есть, либо нет
+        $items[$productId] = 1;
         $this->carts->save($items);
     }
 
@@ -98,13 +103,13 @@ class CartService
             $stored[] = [
                 'product_id' => $line['product_id'],
                 'product_name' => $line['name'],
-                'quantity' => $line['quantity'],
+                'quantity' => 1,
             ];
         }
 
         $order = $this->orders->create($data, $stored);
         $products = $order->items
-            ->map(fn ($item) => $item->product_name.' × '.$item->quantity)
+            ->pluck('product_name')
             ->implode('; ');
 
         Log::info(sprintf(
