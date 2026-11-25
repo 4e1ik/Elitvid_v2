@@ -30,22 +30,8 @@
                         fill="white" />
                 </svg>
                 <a
-                    href="{{ route(
-                        $product->pot->collection == 'Square'
-                            ? 'square_pots'
-                            : ($product->pot->collection == 'Round'
-                                ? 'round_pots'
-                                : ($product->pot->collection == 'Rectangular'
-                                    ? 'rectangular_pots'
-                                    : '')),
-                    ) }}">
-                    {{ $product->pot->collection == 'Square'
-                        ? 'Квадратные кашпо'
-                        : ($product->pot->collection == 'Round'
-                            ? 'Круглые кашпо'
-                            : ($product->pot->collection == 'Rectangular'
-                                ? 'Прямоугольные кашпо'
-                                : '')) }}
+                    href="{{ route($product->pot->collection == 'Round' ? 'round_pots' : 'square_rectangular_pots') }}">
+                    {{ $product->pot->collection == 'Round' ? 'Круглые кашпо' : 'Квадратные и прямоугольные кашпо' }}
                 </a>
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="17" viewBox="0 0 16 17" fill="none">
                     <path fill-rule="evenodd" clip-rule="evenodd"
@@ -168,9 +154,9 @@
                                 </div>
                                 <div class="table_row__price">
                                     <p>Цена</p>
-                                    <p class="thumbnail price">от {{ $variant['price'] ?? '' }}</p>
+                                    <p class="thumbnail price">{{ filled($variant['price'] ?? null) ? 'от ' . $variant['price'] : '' }}</p>
                                     <p class="thumbnail mobile-price">
-                                        от {{ $variant['price'] ?? '' }}
+                                        {{ filled($variant['price'] ?? null) ? 'от ' . $variant['price'] : '' }}
                                     </p>
                                 </div>
                             </div>

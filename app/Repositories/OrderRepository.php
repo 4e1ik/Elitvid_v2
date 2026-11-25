@@ -26,6 +26,11 @@ class OrderRepository
         });
     }
 
+    public function markMailFailed(Order $order): void
+    {
+        $order->update(['mail_failed' => true]);
+    }
+
     public function matching(OrderFilterData $filter): Builder
     {
         return Order::query()

@@ -33,7 +33,9 @@ class PageContentService
 
             if (isset($data['gallery_images'], $data)) {
                 $this->imageService->save(
-                    images: $data['gallery_images'], model: $gallery, imageData: $data['gallery_descriptions']
+                    images: $data['gallery_images'], model: $gallery,
+                    // форма шлёт строки, ImageService ждёт ['description_image' => ...] на каждое фото
+                    imageData: array_map(fn ($d) => ['description_image' => $d], $data['gallery_descriptions'] ?? [])
                 );
             }
         });

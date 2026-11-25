@@ -32,6 +32,11 @@ class Product extends Model
         return $this->hasOne(Pot::class, 'product_id', 'id');
     }
 
+    public function urn()
+    {
+        return $this->hasOne(Urn::class, 'product_id', 'id');
+    }
+
     public function images()
     {
         return $this->morphMany(Image::class, 'imageable');

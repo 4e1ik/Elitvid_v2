@@ -26,8 +26,9 @@ return [
     'solo_benches' => 'Коллекция Solo',
     'lines_benches' => 'Коллекция Lines',
     'stones_benches' => 'Коллекция Stones',
-    'rectangular_pots' => 'Прямоугольные кашпо',
+    'square_rectangular_pots' => 'Квадратные и прямоугольные кашпо',
     'square_pots' => 'Квадратные кашпо',
     'round_pots' => 'Круглые кашпо',
     'flowerbeds' => 'Сборные клумбы',
+    'urns' => 'Урны',
 ];

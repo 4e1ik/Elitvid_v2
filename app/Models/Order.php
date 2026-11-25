@@ -13,6 +13,11 @@ class Order extends Model
         'phone',
         'corporation_name',
         'comment',
+        'mail_failed',
+    ];
+
+    protected $casts = [
+        'mail_failed' => 'boolean',
     ];
 
     public function items(): HasMany

@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\BenchController as AdminBenchController;
 use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\PageContentController;
 use App\Http\Controllers\Admin\PotController as AdminPotController;
+use App\Http\Controllers\Admin\UrnController as AdminUrnController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\StaticImagesController;
 use App\Http\Controllers\Admin\StaticPageController;
@@ -21,6 +22,7 @@ use App\Http\Controllers\MainController;
 use App\Http\Controllers\PotController;
 use App\Http\Controllers\SitemapController;
 use App\Http\Controllers\StaticPagesController;
+use App\Http\Controllers\UrnController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -83,17 +85,22 @@ Route::prefix('napravleniya')->group(function () {
 
     Route::prefix('kashpo')->group(function () {
         Route::get('/', [PotController::class, 'pots'])->name('pots');
+        // квадратные и прямоугольные объединены (спека 012): старые адреса — постоянные перенаправления
+        Route::permanentRedirect('/kvadratnye', '/napravleniya/kashpo/kvadratnye-i-pryamougolnye');
+        Route::permanentRedirect('/pryamougolnye', '/napravleniya/kashpo/kvadratnye-i-pryamougolnye');
+        Route::permanentRedirect('/kvadratnye/{slug}', '/napravleniya/kashpo/kvadratnye-i-pryamougolnye/{slug}');
+        Route::permanentRedirect('/pryamougolnye/{slug}', '/napravleniya/kashpo/kvadratnye-i-pryamougolnye/{slug}');
+        Route::get('/kvadratnye-i-pryamougolnye', [PotController::class, 'square_rectangular_pots'])->name('square_rectangular_pots');
         Route::get('/{collection}/{slug}', [PotController::class, 'show_pot_product'])->name('show_pot_product');
 
-        Route::prefix('pryamougolnye')->group(function () {
-            Route::get('/', [PotController::class, 'rectangular_pots'])->name('rectangular_pots');
-        });
-        Route::prefix('kvadratnye')->group(function () {
-            Route::get('/', [PotController::class, 'square_pots'])->name('square_pots');
-        });
         Route::prefix('kruglye')->group(function () {
             Route::get('/', [PotController::class, 'round_pots'])->name('round_pots');
         });
+    });
+
+    Route::prefix('urny')->group(function () {
+        Route::get('/', [UrnController::class, 'urns'])->name('urns');
+        Route::get('/{slug}', [UrnController::class, 'show_urn_product'])->name('show_urn_product');
     });
 
     Route::get('/sbornye-klumby', [MainController::class, 'flowerbeds'])->name('flowerbeds');
@@ -130,9 +137,10 @@ Route::middleware(['auth', 'role.access:admin,manager,viewer'])->prefix('admin')
 
     Route::prefix('pots')->group(function () {
         Route::get('/round_pots', [AdminPotController::class, 'round_pots'])->name('admin_round_pots');
-        Route::get('/rectangular_pots', [AdminPotController::class, 'rectangular_pots'])->name('admin_rectangular_pots');
-        Route::get('/square_pots', [AdminPotController::class, 'square_pots'])->name('admin_square_pots');
+        Route::get('/square_rectangular_pots', [AdminPotController::class, 'square_rectangular_pots'])->name('admin_square_rectangular_pots');
     });
+
+    Route::get('/urns', [AdminUrnController::class, 'index'])->name('admin_urns');
 
     Route::prefix('static_images')->group(function () {
         Route::get('/{page}', [AdminController::class, 'static_images'])->name('admin_static_images');

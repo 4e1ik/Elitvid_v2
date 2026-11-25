@@ -3,11 +3,13 @@
 namespace App\Services;
 
 use App\DTO\PlaceOrderData;
+use App\Mail\OrderMail;
 use App\Models\Order;
 use App\Models\Product;
 use App\Repositories\CartRepository;
 use App\Repositories\OrderRepository;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Validation\ValidationException;
 
 class CartService
@@ -35,7 +37,7 @@ class CartService
             $available = $product
                 && $product->active
                 && $product->deleted_at === null
-                && in_array($product->product_type, ['bench', 'pot'], true);
+                && in_array($product->product_type, ['bench', 'pot', 'urn'], true);
 
             $lines[] = [
                 'product_id' => (int) $id,
@@ -122,6 +124,15 @@ class CartService
             $order->comment ?: '—',
             $products
         ));
+
+        try {
+            // тот же адрес заявок, что в MailController::send — менять в обоих местах
+            Mail::to('el_vid@mail.ru')->send(new OrderMail($order));
+        } catch (\Throwable $e) {
+            // заказ уже сохранён: сбой почты не должен его терять
+            Log::error(sprintf('Письмо по заказу #%d не отправлено: %s', $order->id, $e->getMessage()));
+            $this->orders->markMailFailed($order);
+        }
 
         $this->clear();
 

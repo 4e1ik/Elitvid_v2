@@ -123,6 +123,10 @@ class AdminController extends Controller
                 $productType = 'pot';
                 return WebResponse::success(view('includes.elitvid.admin.create_product', compact('productType')));
             }
+            if ($route_name == 'urns'){
+                $productType = 'urn';
+                return WebResponse::success(view('includes.elitvid.admin.create_product', compact('productType')));
+            }
             if ($route_name == 'benches'){
                 $productType = 'bench';
                 return WebResponse::success(view('includes.elitvid.admin.create_product', compact('productType')));

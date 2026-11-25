@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="{{asset('/elitvid_assets/newDesign/newDesign/swiper.min.css')}}"/>
     <link rel="stylesheet" href="{{asset('/elitvid_assets/newDesign/newDesign/swiper-bundle.min.css')}}"/>
     <link rel="stylesheet" href="{{asset('/elitvid_assets/newDesign/newDesign/style.css')}}?v=1.8">
-    <link rel="stylesheet" href="{{asset('/elitvid_assets/redesign/redesign.css')}}?v=3.4">
+    <link rel="stylesheet" href="{{asset('/elitvid_assets/redesign/redesign.css')}}?v=3.7">
 
     {{--<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>--}}
     {{--<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>--}}

@@ -37,41 +37,21 @@ class PotController
         }
     }
 
-    function rectangular_pots() {
+    function square_rectangular_pots() {
         try {
             $static_pages = $this->staticPageRepository->getAllStaticPages();
-            $pageContent = $this->pageContentRepository->getPageContent(page: 'rectangular_pots');
-            $static_images_arr = $this->staticImagesRepository->getStaticImagesForPage(page: 'rectangular_pots');
+            $pageContent = $this->pageContentRepository->getPageContent(page: 'square_rectangular_pots');
+            $static_images_arr = $this->staticImagesRepository->getStaticImagesForPage(page: 'square_rectangular_pots');
 
             $products = Product::whereIn('active', [1])
                 ->whereHas('pot', function ($query) {
-                    $query->where('collection', 'Rectangular');
+                    $query->where('collection', 'Square_rectangular');
                 })
                 ->with(['images', 'pot'])
                 ->latest()
                 ->get();
 
-            return WebResponse::success(view('elitvid.site.pots.rectangular_pots', compact('products', 'pageContent', 'static_images_arr', 'static_pages')));
-        } catch (\Exception $e) {
-            return WebResponse::error($e);
-        }
-    }
-
-    function square_pots() {
-        try {
-            $static_pages = $this->staticPageRepository->getAllStaticPages();
-            $pageContent = $this->pageContentRepository->getPageContent(page: 'square_pots');
-            $static_images_arr = $this->staticImagesRepository->getStaticImagesForPage(page: 'square_pots');
-
-            $products = Product::whereIn('active', [1])
-                ->whereHas('pot', function ($query) {
-                    $query->where('collection', 'Square');
-                })
-                ->with(['images', 'pot'])
-                ->latest()
-                ->get();
-
-            return WebResponse::success(view('elitvid.site.pots.square_pots', compact('products', 'pageContent', 'static_images_arr', 'static_pages')));
+            return WebResponse::success(view('elitvid.site.pots.square_rectangular_pots', compact('products', 'pageContent', 'static_images_arr', 'static_pages')));
         } catch (\Exception $e) {
             return WebResponse::error($e);
         }
@@ -101,7 +81,7 @@ class PotController
     {
         try {
             $static_pages = $this->staticPageRepository->getAllStaticPages();
-            $product = Product::where('slug', $slug)->with(['images', 'pot'])->first();
+            $product = Product::where('slug', $slug)->where('active', 1)->with(['images', 'pot'])->first();
             if (!$product) {
                 abort(404);
             }

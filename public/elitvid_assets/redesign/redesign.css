@@ -514,6 +514,10 @@
     margin-top: 50px;
 }
 
+/* «Урны»: в кадре 246-1882 заголовок в одну строку, текст шире, чем у коллекций */
+.rd-page .rd-hero--urns h1 { max-width: none; }
+.rd-page .rd-hero--urns p:not(.rd-stages) { max-width: 482px; }
+
 .rd-page .rd-hero--catalog,
 .rd-page .rd-hero--blog {
     background-position: center top;
@@ -546,7 +550,8 @@
 .rd-page .rd-hero--stones,
 .rd-page .rd-hero--lines,
 .rd-page .rd-hero--solo,
-.rd-page .rd-hero--flowerbeds {
+.rd-page .rd-hero--flowerbeds,
+.rd-page .rd-hero--urns {
     background-position: center top;
     background-size: max(100%, 1440px) auto;
 }
@@ -557,6 +562,11 @@
 .rd-page .rd-hero--lines { background-image: url("images/lines-hero.webp"); }
 .rd-page .rd-hero--solo { background-image: url("images/solo-hero.webp"); }
 .rd-page .rd-hero--flowerbeds { background-image: url("images/flowerbeds-hero.webp"); }
+/* фон выше блока (657 против 560 px) — низ уходит в фон градиентом, как в кадре 246-1882 */
+.rd-page .rd-hero--urns {
+    background-image: linear-gradient(0deg, #1a1b20 0, rgba(26, 27, 32, 0) 220px), url("images/urns-hero.webp");
+    background-size: 100% 100%, max(100%, 1440px) auto;
+}
 
 /* текст страницы «Сборные клумбы»: в кадре 32px, интерлиньяж 40px, обычный регистр */
 .rd-page .rd-text,
@@ -1561,6 +1571,7 @@
     .rd-hero--lines .rd-hero__photo { background-image: url("images/lines-hero.webp"); }
     .rd-hero--solo .rd-hero__photo { background-image: url("images/solo-hero.webp"); }
     .rd-hero--flowerbeds .rd-hero__photo { background-image: url("images/flowerbeds-hero.webp"); }
+    .rd-hero--urns .rd-hero__photo { background-image: url("images/urns-hero.webp"); }
 
     .rd-page .rd-text,
     .rd-page .rd-section.rd-text p,
@@ -1582,7 +1593,8 @@
     .rd-hero--stones .rd-hero__photo,
     .rd-hero--lines .rd-hero__photo,
     .rd-hero--solo .rd-hero__photo,
-    .rd-hero--flowerbeds .rd-hero__photo {
+    .rd-hero--flowerbeds .rd-hero__photo,
+    .rd-hero--urns .rd-hero__photo {
         background-position: right center;
     }
 
@@ -2101,4 +2113,11 @@ main section.cart-page h1 {
     .rd-header__burger span {
         transition: none;
     }
+}
+
+/* «Другие формы» в карточке урны: фото разных пропорций (VEKTOR 2:3) вписываются в одну рамку 4:3, карточки одного размера */
+main .offered_products--urns .offered_product_slider .swiper-slide .direction__link img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: contain;
 }

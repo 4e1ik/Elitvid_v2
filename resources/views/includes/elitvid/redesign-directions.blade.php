@@ -18,5 +18,5 @@
     <x-elitvid.direction-card :href="route('static_page', ['slug' => 'kamennye-navesy-i-parklety'])" :image="$photo('parklets')" label="Парклеты, навесы" />
     <x-elitvid.direction-card :href="route('static_page', ['slug' => 'stolby-i-nakryvki-iz-kamnya'])" :image="$photo('pillars')" label="Столбы и накрывки" />
     <x-elitvid.direction-card :image="$photo('gazebo')" label="Навесы и беседки" />
-    <x-elitvid.direction-card :image="$photo('urns')" label="Урны" />
+    <x-elitvid.direction-card :href="route('urns')" :image="$photo('urns')" label="Урны" />
 </div>

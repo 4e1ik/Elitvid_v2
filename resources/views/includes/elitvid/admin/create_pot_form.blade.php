@@ -111,6 +111,7 @@
     </div>
 </div>
 
+@if($productType === 'pot')
 <div class="col-md-12 padding-0">
     <div class="col-md-12">
         <div class="panel">
@@ -120,9 +121,8 @@
                         <h2>Форма</h2>
                         <select class="form-control {{$errors->has('collection') ? 'danger' : ''}}" name="collection" id="">
                             <option {{ $errors->has('collection') ? '' : 'selected' }} disabled>Выберите форму</option>
-                            <option {{ old('collection') == 'Square' ? 'selected' : ''}} value="Square">Квадратное кашпо</option>
+                            <option {{ old('collection') == 'Square_rectangular' ? 'selected' : ''}} value="Square_rectangular">Квадратные и прямоугольные кашпо</option>
                             <option {{ old('collection') == 'Round' ? 'selected' : ''}}  value="Round">Круглое кашпо</option>
-                            <option {{ old('collection') == 'Rectangular' ? 'selected' : ''}} value="Rectangular">Прямоугольные кашпо</option>
                         </select>
                         @error('collection')
                         <div class="text-danger" style="margin-top: 5px;">
@@ -135,3 +135,4 @@
         </div>
     </div>
 </div>
+@endif

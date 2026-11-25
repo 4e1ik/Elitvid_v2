@@ -222,9 +222,9 @@
                                     </div>
                                     <div class="table_row__price">
                                         <p>Цена</p>
-                                        <p class="thumbnail price">от {{ $variant['price'] ?? '' }}</p>
+                                        <p class="thumbnail price">{{ filled($variant['price'] ?? null) ? 'от ' . $variant['price'] : '' }}</p>
                                         <p class="thumbnail mobile-price">
-                                            от {{ $variant['price'] ?? '' }}
+                                            {{ filled($variant['price'] ?? null) ? 'от ' . $variant['price'] : '' }}
                                         </p>
                                     </div>
                                 </div>

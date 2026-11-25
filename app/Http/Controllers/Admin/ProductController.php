@@ -34,7 +34,7 @@ class ProductController
     public function edit(Product $product)
     {
         try {
-            $product->load(['pot', 'bench', 'images']);
+            $product->load(['pot', 'bench', 'urn', 'images']);
             $productType = $product->product_type;
             if (!$productType) {
                 abort(404, 'Тип продукта не определен');

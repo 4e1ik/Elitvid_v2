@@ -24,7 +24,7 @@ class CreateProductRequest extends FormRequest
     {
         return [
             'name' => 'required|filled|min:3|max:100',
-            'product_type' => 'required|string|in:pot,bench',
+            'product_type' => 'required|string|in:pot,bench,urn',
             'material' => 'required|filled|min:3|max:100',
             'data' => [
                 'required',
@@ -47,7 +47,7 @@ class CreateProductRequest extends FormRequest
             'data.*.size' => 'nullable|max:50',
             'data.*.weight' => 'nullable|max:50',
             'data.*.price' => 'nullable|max:50',
-            'collection' => 'required|filled',
+            'collection' => 'required_unless:product_type,urn',
             'active' => 'nullable|boolean',
             'meta_title' => 'nullable|string|max:255',
             'meta_description' => 'nullable|string|max:5000',
@@ -64,10 +64,10 @@ class CreateProductRequest extends FormRequest
                         if ($imageCount !== 1) {
                             $fail('Для скамейки необходимо загрузить ровно одно изображение.');
                         }
-                    } elseif ($productType === 'pot') {
-                        // Для кашпо - хотя бы одна картинка
+                    } elseif (in_array($productType, ['pot', 'urn'], true)) {
+                        // Для кашпо и урн - хотя бы одна картинка
                         if ($imageCount < 1) {
-                            $fail('Для кашпо необходимо загрузить хотя бы одно изображение.');
+                            $fail('Необходимо загрузить хотя бы одно изображение.');
                         }
                     }
                 },
@@ -101,7 +101,7 @@ class CreateProductRequest extends FormRequest
             'data.*.size.max' => 'Размер не должен превышать :max символов.',
             'data.*.weight.max' => 'Вес не должен превышать :max символов.',
             'data.*.price.max' => 'Цена не должна превышать :max символов.',
-            'collection.required' => 'Необходимо выбрать коллекцию.',
+            'collection.required_unless' => 'Необходимо выбрать коллекцию.',
             'collection.filled' => 'Поле "Коллекция" не может быть пустым.',
             'active.boolean' => 'Поле "Активность" должно быть логическим значением.',
             'meta_title.max' => 'Meta Title не должен превышать :max символов.',

@@ -3,7 +3,7 @@
 @section('admin_content')
     <div id="content">
         <div class="panel box-shadow-none content-header">
-            <h1>Страница редактирования {{ $productType === 'pot' ? 'кашпо' : 'скамейки' }}</h1>
+            <h1>Страница редактирования {{ ['pot' => 'кашпо', 'urn' => 'урны', 'bench' => 'скамейки'][$productType] }}</h1>
         </div>
 
         @if($product->images->isNotEmpty())
@@ -27,7 +27,7 @@
                                                 <input type="text" class="form-control" name="description_image"
                                                        value="{{ old('existing_images.'.$image->id.'.description_image', $image->description_image) }}">
                                             </div>
-                                            @if($productType === 'pot')
+                                            @if(in_array($productType, ['pot', 'urn'], true))
                                                 <div style="margin-bottom: 10px;">
                                                     <label style="font-size: 13px; font-weight: 500; display: block; margin-bottom: 5px;">Цвет</label>
                                                     <select class="form-control" name="color">
@@ -89,14 +89,14 @@
                 <div class="col-md-12">
                     <div class="panel">
                         <div class="panel-body">
-                            <h3>Добавить новую картинку{{ $productType === 'pot' ? '' : '' }}</h3>
+                            <h3>Добавить новую картинку{{ in_array($productType, ['pot', 'urn'], true) ? '' : '' }}</h3>
                             <div class="col-md-12" style="margin-bottom: 20px;">
                                 <label style="display: flex; justify-content: center; align-items: center; padding: 20px; border: 2px dashed #ddd; border-radius: 5px; cursor: pointer; background: #fafafa;"
                                        for="images" class="dropzone dz-clickable">
-                                    <span>Переместите {{ $productType === 'pot' ? 'файлы' : 'файл' }} сюда для загрузки</span>
+                                    <span>Переместите {{ in_array($productType, ['pot', 'urn'], true) ? 'файлы' : 'файл' }} сюда для загрузки</span>
                                 </label>
                                 <input style="display: none" id="images" type="file" name="image[]"
-                                       @if($productType === 'pot') multiple="multiple" @endif accept="image/*">
+                                       @if(in_array($productType, ['pot', 'urn'], true)) multiple="multiple" @endif accept="image/*">
                             </div>
                             @error('image')
                             <div class="text-danger" style="margin-top: 10px; margin-bottom: 10px;">
@@ -267,5 +267,5 @@
             }
         });
     </script>
-    <script src="{{asset('/elitvid_assets/newDesign/newDesign/js/update_' . $productType . '_product.js')}}"></script>
+    <script src="{{asset('/elitvid_assets/newDesign/newDesign/js/update_' . ($productType === 'urn' ? 'pot' : $productType) . '_product.js')}}"></script>
 @endsection

@@ -56,7 +56,12 @@
                                     <tbody>
                                         @foreach($orders as $order)
                                             <tr>
-                                                <td><small>{{ $order->created_at ? $order->created_at->format('d.m.Y H:i') : '—' }}</small></td>
+                                                <td>
+                                                <small>{{ $order->created_at ? $order->created_at->format('d.m.Y H:i') : '—' }}</small>
+                                                @if($order->mail_failed)
+                                                    <br><span class="label label-danger">Письмо не отправлено</span>
+                                                @endif
+                                            </td>
                                                 <td>{{ $order->name }}</td>
                                                 <td>{{ $order->email }}</td>
                                                 <td>{{ $order->phone }}</td>

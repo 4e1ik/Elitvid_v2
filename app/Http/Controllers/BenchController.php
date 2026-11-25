@@ -128,7 +128,7 @@ class BenchController
     {
         try {
             $static_pages = $this->staticPageRepository->getAllStaticPages();
-            $product = Product::where('slug', $slug)->with(['images', 'bench'])->first();
+            $product = Product::where('slug', $slug)->where('active', 1)->with(['images', 'bench'])->first();
             if (!$product) {
                 abort(404);
             }

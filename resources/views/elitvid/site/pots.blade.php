@@ -25,11 +25,7 @@
                     <x-elitvid.form-row :image="asset('/elitvid_assets/newDesign/newDesign/imgs/pots/forms/circle_pot.webp')" :alt="$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/pots/forms/circle_pot.webp'] ?? ''" title="Круглые" :href="route('round_pots')">
                         Очень удобная форма для больших и маленьких растений. Подойдут как для лиственных так и для хвойных культур.
                     </x-elitvid.form-row>
-                    {{-- shortcut: до решения по объединённой странице (FR-002) показываются прежние две формы --}}
-                    <x-elitvid.form-row :image="asset('/elitvid_assets/newDesign/newDesign/imgs/pots/forms/square_pot.webp')" :alt="$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/pots/forms/square_pot.webp'] ?? ''" title="Квадратные" :href="route('square_pots')">
-                        Стильные кашпо, которые украсят Вашу террасу и приусадебный участок. Подойдут как для лиственных так и для хвойных культур.
-                    </x-elitvid.form-row>
-                    <x-elitvid.form-row :image="asset('/elitvid_assets/newDesign/newDesign/imgs/pots/forms/rectangular_pot.webp')" :alt="$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/pots/forms/rectangular_pot.webp'] ?? ''" title="Прямоугольные" :href="route('rectangular_pots')">
+                    <x-elitvid.form-row :image="asset('/elitvid_assets/newDesign/newDesign/imgs/pots/forms/square_pot.webp')" :alt="$static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/pots/forms/square_pot.webp'] ?? ''" title="Квадратные и прямоугольные" :href="route('square_rectangular_pots')">
                         Композиция в таких формах смотрится очень стильно. Есть возможность добавить подсветку растений.
                     </x-elitvid.form-row>
                 </div>

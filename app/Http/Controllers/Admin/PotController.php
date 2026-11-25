@@ -21,19 +21,10 @@ class PotController
         }
     }
 
-    public function rectangular_pots() {
+    public function square_rectangular_pots() {
         try {
-            $products = $this->potRepository->getPots('Rectangular');
-            return WebResponse::success(view('elitvid.admin.pots.pots_rectangular', compact('products')));
-        } catch (\Exception $e) {
-            return WebResponse::error($e, true);
-        }
-    }
-
-    public function square_pots() {
-        try {
-            $products = $this->potRepository->getPots('Square');
-            return WebResponse::success(view('elitvid.admin.pots.pots_square', compact('products')));
+            $products = $this->potRepository->getPots('Square_rectangular');
+            return WebResponse::success(view('elitvid.admin.pots.pots_square_rectangular', compact('products')));
         } catch (\Exception $e) {
             return WebResponse::error($e, true);
         }

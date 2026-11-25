@@ -124,10 +124,10 @@
                     </a>
                     <ul class="nav nav-list tree" style="display: none;">
                         <li><a href="{{route('admin_round_pots')}}">Круглые кашпо</a></li>
-                        <li><a href="{{route('admin_square_pots')}}">Квадратные кашпо</a></li>
-                        <li><a href="{{route('admin_rectangular_pots')}}">Прямоугольные кашпо</a></li>
+                        <li><a href="{{route('admin_square_rectangular_pots')}}">Квадратные и прямоугольные кашпо</a></li>
                     </ul>
                 </li>
+                <li><a href="{{route('admin_urns')}}"><span class="fa fa-cube"></span> Урны</a></li>
                 <li class="ripple">
                     <a class="tree-toggle nav-header">
                         <span class="icon-vector icons"></span> Скамейки
@@ -165,9 +165,8 @@
                         <li><a href="{{route('admin_static_images', ['page' => 'small_architectural_forms'])}}">Малые архитектурные формы</a></li>
                         <li><a href="{{route('admin_static_images', ['page' => 'pots'])}}">Кашпо</a></li>
                         <li><a href="{{route('admin_static_images', ['page' => 'pot_product_page'])}}">Страница товара кашпо</a></li>
-                        <li><a href="{{route('admin_static_images', ['page' => 'rectangular_pots'])}}">Прямоугольные кашпо</a></li>
                         <li><a href="{{route('admin_static_images', ['page' => 'round_pots'])}}">Круглые кашпо</a></li>
-                        <li><a href="{{route('admin_static_images', ['page' => 'square_pots'])}}">Квадратные кашпо</a></li>
+                        <li><a href="{{route('admin_static_images', ['page' => 'square_rectangular_pots'])}}">Квадратные и прямоугольные кашпо</a></li>
                     </ul>
                 </li>
                 <li><a href="{{route('admin_page_contents.index')}}"><span class="fa fa-file-text-o"></span>Контент страниц</a></li>
@@ -691,10 +690,10 @@
                     </a>
                     <ul class="nav nav-list tree" style="display: none;">
                         <li><a href="{{route('admin_round_pots')}}">Круглые кашпо</a></li>
-                        <li><a href="{{route('admin_square_pots')}}">Квадратные кашпо</a></li>
-                        <li><a href="{{route('admin_rectangular_pots')}}">Прямоугольные кашпо</a></li>
+                        <li><a href="{{route('admin_square_rectangular_pots')}}">Квадратные и прямоугольные кашпо</a></li>
                     </ul>
                 </li>
+                <li><a href="{{route('admin_urns')}}"><span class="fa fa-cube"></span> Урны</a></li>
                 <li class="ripple">
                     <a class="tree-toggle nav-header">
                         <span class="icon-vector icons"></span> Скамейки
@@ -732,9 +731,8 @@
                         <li><a href="{{route('admin_static_images', ['page' => 'small_architectural_forms'])}}">Малые архитектурные формы</a></li>
                         <li><a href="{{route('admin_static_images', ['page' => 'pots'])}}">Кашпо</a></li>
                         <li><a href="{{route('admin_static_images', ['page' => 'pot_product_page'])}}">Страница товара кашпо</a></li>
-                        <li><a href="{{route('admin_static_images', ['page' => 'rectangular_pots'])}}">Прямоугольные кашпо</a></li>
                         <li><a href="{{route('admin_static_images', ['page' => 'round_pots'])}}">Круглые кашпо</a></li>
-                        <li><a href="{{route('admin_static_images', ['page' => 'square_pots'])}}">Квадратные кашпо</a></li>
+                        <li><a href="{{route('admin_static_images', ['page' => 'square_rectangular_pots'])}}">Квадратные и прямоугольные кашпо</a></li>
                     </ul>
                 </li>
                 <li><a href="{{route('admin_page_contents.index')}}"><span class="fa fa-file-text-o"></span>Контент страниц</a></li>

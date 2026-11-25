@@ -3,7 +3,7 @@
 @section('admin_content')
     <div id="content">
         <div class="panel box-shadow-none content-header">
-            <h1>Страница создания {{ $productType === 'pot' ? 'кашпо' : 'скамейки' }}</h1>
+            <h1>Страница создания {{ ['pot' => 'кашпо', 'urn' => 'урны', 'bench' => 'скамейки'][$productType] }}</h1>
         </div>
         <form action="{{ route('products.store')}}" enctype="multipart/form-data" method="post">
             @csrf
@@ -13,14 +13,14 @@
                 <div class="col-md-12">
                     <div class="panel">
                         <div class="panel-body">
-                            <h3>Картинка{{ $productType === 'pot' ? 'и' : '' }}</h3>
+                            <h3>Картинка{{ in_array($productType, ['pot', 'urn'], true) ? 'и' : '' }}</h3>
                             <div class="col-md-12" style="margin-bottom: 20px;">
                                 <label style="display: flex; justify-content: center; align-items: center; padding: 20px; border: 2px dashed #ddd; border-radius: 5px; cursor: pointer; background: #fafafa;"
                                        for="images" class="dropzone dz-clickable">
-                                    <span>Переместите {{ $productType === 'pot' ? 'файлы' : 'файл' }} сюда для загрузки</span>
+                                    <span>Переместите {{ in_array($productType, ['pot', 'urn'], true) ? 'файлы' : 'файл' }} сюда для загрузки</span>
                                 </label>
                                 <input style="display: none" id="images" type="file" name="image[]"
-                                       @if($productType === 'pot') multiple="multiple" @endif accept="image/*">
+                                       @if(in_array($productType, ['pot', 'urn'], true)) multiple="multiple" @endif accept="image/*">
                             </div>
                             @error('image')
                             <div class="text-danger" style="margin-top: 10px;">
@@ -188,5 +188,5 @@
             }
         });
     </script>
-    <script src="{{asset('/elitvid_assets/newDesign/newDesign/js/create_' . $productType . '_product.js')}}?v={{ time() }}"></script>
+    <script src="{{asset('/elitvid_assets/newDesign/newDesign/js/create_' . ($productType === 'urn' ? 'pot' : $productType) . '_product.js')}}?v={{ time() }}"></script>
 @endsection

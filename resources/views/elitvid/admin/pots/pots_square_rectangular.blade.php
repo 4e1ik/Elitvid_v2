@@ -6,7 +6,7 @@
         <div class="panel box-shadow-none content-header">
             <div class="panel-body">
                 <div class="col-md-12">
-                    <h3 class="animated fadeInLeft">Список прямоугольных кашпо</h3>
+                    <h3 class="animated fadeInLeft">Список квадратных и прямоугольных кашпо</h3>
                 </div>
                 <ul class="nav navbar-nav">
                     <a href="{{route('create', ['route' => 'pots'])}}">
@@ -20,7 +20,7 @@
         <div class="col-md-12 top-20 padding-0">
             <div class="col-md-12">
                 <div class="panel">
-                    <div class="panel-heading"><h3>Прямоугольные кашпо</h3></div>
+                    <div class="panel-heading"><h3>Квадратные и прямоугольные кашпо</h3></div>
                     <div class="panel-body">
                         <div class="responsive-table">
                             <table id="datatables-example" class="table table-striped table-bordered" width="100%"

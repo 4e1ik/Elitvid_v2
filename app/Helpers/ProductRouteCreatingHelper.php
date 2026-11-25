@@ -10,11 +10,14 @@ final class ProductRouteCreatingHelper
     {
         $type = $product->product_type;
 
+        if ($type === 'urn') {
+            return route('admin_urns');
+        }
+
         $routes = [
             'pot' => [
-                'Square' => route('admin_square_pots'),
+                'Square_rectangular' => route('admin_square_rectangular_pots'),
                 'Round' => route('admin_round_pots'),
-                'Rectangular' => route('admin_rectangular_pots'),
             ],
             'bench' => [
                 'Verona' => route('admin_benches_verona'),

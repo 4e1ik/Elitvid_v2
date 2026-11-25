@@ -8,9 +8,8 @@
         <section class="main">
             <div class="description">
                 <div class="description-text">
-                    <h1>Квадратные <br>кашпо</h1>
-                    <p>Стильные кашпо, которые украсят Вашу террасу и приусадебный участок. Подойдут как для лиственных так
-                        и для хвойных культур.</p>
+                    <h1>Квадратные и прямоугольные <br>кашпо</h1>
+                    <p>Композиция в таких формах смотрится очень стильно. Есть возможность добавить подсветку растений.</p>
                 </div>
                 <div class="submit-application">
                     <button class="submit-application--button open_popup_application">
@@ -21,8 +20,8 @@
             </div>
             <div class="stages">
                 <div class="image">
-                    <img src="{{ asset('/elitvid_assets/newDesign/newDesign/imgs/square_pots.webp') }}"
-                        alt="{{ $static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/square_pots.webp'] ?? '' }}"
+                    <img src="{{ asset('/elitvid_assets/newDesign/newDesign/imgs/rectangular_pots.webp') }}"
+                        alt="{{ $static_images_arr['/elitvid_assets/newDesign/newDesign/imgs/rectangular_pots.webp'] ?? '' }}"
                         class="main-page-up" loading="lazy">
                 </div>
                 <div class="submit-application submit-application--mobile">
@@ -38,7 +37,7 @@
             <div class="not_main_page directions">
                 @foreach ($products as $product)
                     <div class="direction">
-                        <a href="{{ route('show_pot_product', ['collection' => 'kvadratnye', 'slug' => $product->slug]) }}"
+                        <a href="{{ route('show_pot_product', ['collection' => 'kvadratnye-i-pryamougolnye', 'slug' => $product->slug]) }}"
                             class="direction__link">
                             <img src="{{ asset('storage/' . str_replace('public/', '', $product->images->first()->image)) }}"
                                 alt="{{ $product->images->first()?->description_image ?? '' }}" loading="lazy">

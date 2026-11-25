@@ -6,6 +6,7 @@ use App\Helpers\SlugGenerateHelper;
 use App\Models\Bench;
 use App\Models\Pot;
 use App\Models\Product;
+use App\Models\Urn;
 use App\Services\ImageService;
 use Illuminate\Support\Facades\DB;
 
@@ -34,6 +35,10 @@ class ProductService
 
                 case 'pot':
                     Pot::create($data);
+                    break;
+
+                case 'urn':
+                    Urn::create($data);
                     break;
             }
 
@@ -79,6 +84,11 @@ class ProductService
                     if ($bench) {
                         $bench->update($data);
                     }
+
+                    break;
+
+                case 'urn':
+                    $product->urn?->update($data);
 
                     break;
 

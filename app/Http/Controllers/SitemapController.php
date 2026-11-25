@@ -47,6 +47,13 @@ class SitemapController extends Controller
             'priority' => '0.8'
         ];
 
+        $urls[] = [
+            'loc' => URL::to(route('urns')),
+            'lastmod' => Carbon::now()->toAtomString(),
+            'changefreq' => 'daily',
+            'priority' => '0.8'
+        ];
+
 
         $urls[] = [
             'loc' => URL::to(route('benches')),
@@ -79,7 +86,7 @@ class SitemapController extends Controller
         ];
 
         $urls[] = [
-            'loc' => URL::to(route('rectangular_pots')),
+            'loc' => URL::to(route('square_rectangular_pots')),
             'lastmod' => Carbon::now()->toAtomString(),
             'changefreq' => 'daily',
             'priority' => '0.6'
@@ -92,12 +99,6 @@ class SitemapController extends Controller
             'priority' => '0.6'
         ];
 
-        $urls[] = [
-            'loc' => URL::to(route('square_pots')),
-            'lastmod' => Carbon::now()->toAtomString(),
-            'changefreq' => 'daily',
-            'priority' => '0.6'
-        ];
 
         $urls[] = [
             'loc' => URL::to('https://elitvid.com/elitvid_assets/newDesign/newDesign/files/benches.pdf'),
@@ -187,6 +188,18 @@ class SitemapController extends Controller
                     'priority' => '0.4'
                 ];
             }
+        }
+
+        $urns = Product::where('active', 1)
+            ->where('product_type', 'urn')
+            ->get();
+        foreach ($urns as $urn) {
+            $urls[] = [
+                'loc' => URL::to(route('show_urn_product', ['slug' => $urn->slug])),
+                'lastmod' => $urn->updated_at->toAtomString(),
+                'changefreq' => 'weekly',
+                'priority' => '0.4'
+            ];
         }
 
         $blogs = Blog::where('active', 1)->get();

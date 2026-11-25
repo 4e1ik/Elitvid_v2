@@ -19,7 +19,6 @@ return [
     */
     'pot_url_segments' => [
         'Round' => 'kruglye',
-        'Square' => 'kvadratnye',
-        'Rectangular' => 'pryamougolnye',
+        'Square_rectangular' => 'kvadratnye-i-pryamougolnye',
     ],
 ];

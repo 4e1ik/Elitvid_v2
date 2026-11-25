@@ -18,7 +18,7 @@
             <h2>Каталог</h2>
             <div class="rd-footer__catalog">
                 <a href="{{ route('pots') }}">Кашпо</a>
-                <span>Урны</span>
+                <a href="{{ route('urns') }}">Урны</a>
                 <span>Цветы</span>
                 <a href="{{ route('static_page', ['slug' => 'kamennye-navesy-i-parklety']) }}">Парклеты, навесы</a>
                 <span>Растения</span>
@@ -45,7 +45,7 @@
                     <li><span>Растения</span></li>
                     <li><a href="{{ route('benches') }}">Скамьи</a></li>
                     <li><a href="{{ route('static_page', ['slug' => 'kamennye-rotondy-kolonny']) }}">Ротонды и колоннады</a></li>
-                    <li><span>Урны</span></li>
+                    <li><a href="{{ route('urns') }}">Урны</a></li>
                     <li><a href="{{ route('static_page', ['slug' => 'kamennye-navesy-i-parklety']) }}">Парклеты, навесы</a></li>
                     <li><a href="{{ route('static_page', ['slug' => 'stolby-i-nakryvki-iz-kamnya']) }}">Столбы и накрывки</a></li>
                     <li><span>Навесы и беседки</span></li>

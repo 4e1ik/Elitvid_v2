@@ -20,7 +20,7 @@ class AddToCartRequest extends FormRequest
                 'integer',
                 Rule::exists('products', 'id')->where(function ($query) {
                     $query->where('active', 1)
-                        ->whereIn('product_type', ['bench', 'pot'])
+                        ->whereIn('product_type', ['bench', 'pot', 'urn'])
                         ->whereNull('deleted_at');
                 }),
             ],

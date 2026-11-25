@@ -6,10 +6,10 @@
         <div class="panel box-shadow-none content-header">
             <div class="panel-body">
                 <div class="col-md-12">
-                    <h3 class="animated fadeInLeft">Список квадратных кашпо</h3>
+                    <h3 class="animated fadeInLeft">Список урн</h3>
                 </div>
                 <ul class="nav navbar-nav">
-                    <a href="{{route('create', ['route' => 'pots'])}}">
+                    <a href="{{route('create', ['route' => 'urns'])}}">
                         <button class="btn btn-3d btn-sm btn-success">
                             <span class="fa fa-plus"></span> Добавить товар
                         </button>
@@ -20,7 +20,7 @@
         <div class="col-md-12 top-20 padding-0">
             <div class="col-md-12">
                 <div class="panel">
-                    <div class="panel-heading"><h3>Квадратные кашпо</h3></div>
+                    <div class="panel-heading"><h3>Урны</h3></div>
                     <div class="panel-body">
                         <div class="responsive-table">
                             <table id="datatables-example" class="table table-striped table-bordered" width="100%"
@@ -29,7 +29,7 @@
                                 <tr>
                                     <th>Название</th>
                                     <th>Материал</th>
-                                    <th>Варианты кашпо</th>
+                                    <th>Варианты урны</th>
                                     <th>Опубликован</th>
                                     <th style="text-align: center; width: 120px;">Действия</th>
                                 </tr>
@@ -39,9 +39,9 @@
                                     @foreach($products as $product)
                                         <tr>
                                             <td class="admin-table-cell-truncate admin-table-cell-truncate--medium" title="{{ $product->name }}">{{ Str::limit($product->name, 45) }}</td>
-                                            <td class="admin-table-cell-truncate admin-table-cell-truncate--short" title="{{ $product->pot->material ?? '' }}">{{ Str::limit($product->pot->material ?? '', 30) }}</td>
+                                            <td class="admin-table-cell-truncate admin-table-cell-truncate--short" title="{{ $product->urn->material ?? '' }}">{{ Str::limit($product->urn->material ?? '', 30) }}</td>
                                             <td>
-                                                @if($product->pot->data && is_array($product->pot->data) && count($product->pot->data) > 0)
+                                                @if($product->urn->data && is_array($product->urn->data) && count($product->urn->data) > 0)
                                                     <button type="button" 
                                                             class="btn btn-sm btn-info" 
                                                             data-toggle="collapse" 
@@ -50,11 +50,11 @@
                                                             aria-controls="variants-{{$product->id}}"
                                                             style="margin-bottom: 5px;">
                                                         <span class="fa fa-chevron-down"></span> 
-                                                        Показать варианты ({{count($product->pot->data)}})
+                                                        Показать варианты ({{count($product->urn->data)}})
                                                     </button>
                                                     <div class="collapse" id="variants-{{$product->id}}">
                                                         <div class="variants-list" style="margin-top: 5px;">
-                                                            @foreach($product->pot->data as $index => $variant)
+                                                            @foreach($product->urn->data as $index => $variant)
                                                                 <div class="variant-item" style="margin-bottom: 8px; padding: 8px; background: #f5f5f5; border-radius: 3px; border-left: 3px solid #337ab7;">
                                                                     <strong>Вариант {{$index + 1}}:</strong><br>
                                                                     @if(isset($variant['size']))

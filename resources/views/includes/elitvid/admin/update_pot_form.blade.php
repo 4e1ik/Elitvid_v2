@@ -10,7 +10,7 @@
                             <input class="form-control {{$errors->has('material') ? 'danger' : ''}}"
                                    type="text"
                                    name="material"
-                                   value="{{$errors->has('material') ? old('material') : $product->pot->material}}">
+                                   value="{{$errors->has('material') ? old('material') : $product->{$productType}->material}}">
                             @error('material')
                             <div class="text-danger" style="margin-top: 5px;">
                                 {{$message}}
@@ -31,7 +31,7 @@
                 <h3 style="margin-bottom: 20px;">Варианты товара</h3>
 
                 @php
-                    $oldData = old('data', $product->pot->data ?? [['size' => '', 'weight' => '', 'price' => '']]);
+                    $oldData = old('data', $product->{$productType}->data ?? [['size' => '', 'weight' => '', 'price' => '']]);
                     if (empty($oldData) || !is_array($oldData)) {
                         $oldData = [['size' => '', 'weight' => '', 'price' => '']];
                     }
@@ -112,6 +112,7 @@
     </div>
 </div>
 
+@if($productType === 'pot')
 <div class="col-md-12 padding-0">
     <div class="col-md-12">
         <div class="panel">
@@ -121,9 +122,8 @@
                         <h2>Форма</h2>
                         <select class="form-control {{$errors->has('collection') ? 'danger' : ''}}" name="collection" id="">
                             <option {{ $errors->has('collection') ? '' : 'selected' }} disabled>Выберите форму</option>
-                            <option {{ ($errors->has('collection') ? old('collection') : $product->pot->collection) == 'Square' ? 'selected' : ''}} value="Square">Квадратное кашпо</option>
+                            <option {{ ($errors->has('collection') ? old('collection') : $product->pot->collection) == 'Square_rectangular' ? 'selected' : ''}} value="Square_rectangular">Квадратные и прямоугольные кашпо</option>
                             <option {{ ($errors->has('collection') ? old('collection') : $product->pot->collection) == 'Round' ? 'selected' : ''}}  value="Round">Круглое кашпо</option>
-                            <option {{ ($errors->has('collection') ? old('collection') : $product->pot->collection) == 'Rectangular' ? 'selected' : ''}} value="Rectangular">Прямоугольные кашпо</option>
                         </select>
                         @error('collection')
                         <div class="text-danger" style="margin-top: 5px;">
@@ -136,3 +136,4 @@
         </div>
     </div>
 </div>
+@endif

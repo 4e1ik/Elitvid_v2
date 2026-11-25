@@ -79,16 +79,16 @@ Breadcrumbs::for('pots', fn (Trail $trail) =>
     $trail->parent('directions')->push('Вазоны и кашпо', route('pots'))
 );
 
-Breadcrumbs::for('rectangular_pots', fn (Trail $trail) =>
-    $trail->parent('pots')->push('Прямоугольные кашпо', route('rectangular_pots'))
-);
-
-Breadcrumbs::for('square_pots', fn (Trail $trail) =>
-    $trail->parent('pots')->push('Квадратные кашпо', route('square_pots'))
+Breadcrumbs::for('square_rectangular_pots', fn (Trail $trail) =>
+    $trail->parent('pots')->push('Квадратные и прямоугольные кашпо', route('square_rectangular_pots'))
 );
 
 Breadcrumbs::for('round_pots', fn (Trail $trail) =>
     $trail->parent('pots')->push('Круглые кашпо', route('round_pots'))
+);
+
+Breadcrumbs::for('urns', fn (Trail $trail) =>
+    $trail->parent('directions')->push('Урны', route('urns'))
 );
 
 Breadcrumbs::for('flowerbeds', fn (Trail $trail) =>
