@@ -257,6 +257,15 @@
             if (typeof $ !== 'undefined') {
                 $('[data-toggle="tooltip"]').tooltip();
             }
+            // Главная картинка одна: отметка снимает галочку у остальных картинок товара
+            const mainImageCheckboxes = document.querySelectorAll('input[type="checkbox"][name="main_image"]');
+            mainImageCheckboxes.forEach(function(checkbox) {
+                checkbox.addEventListener('change', function() {
+                    if (this.checked) {
+                        mainImageCheckboxes.forEach(function(other) { if (other !== checkbox) other.checked = false; });
+                    }
+                });
+            });
             const nameInput = document.getElementById('name');
             const slugInput = document.getElementById('slug');
             if (nameInput && slugInput) {

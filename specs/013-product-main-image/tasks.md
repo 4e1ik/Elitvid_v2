@@ -45,6 +45,10 @@
 - [X] T013 Пройти `quickstart.md` на http://localhost:8080
 - [X] T014 Пересобрать граф `docs/ai/graphify-out/`; обновить `docs/ai/SERVICE_MAP.md` и `docs/human/katalog.md` про главную картинку
 
+## Phase 7: Доработка после проверки (2026-11-26)
+
+- [X] T015 [US1] В `resources/views/includes/elitvid/admin/update_product.blade.php` чекбоксы `main_image` существующих картинок взаимоисключающие: отметка одного снимает галочку у остальных на экране (FR-001)
+
 ## Dependencies
 
 - T001, T002 → все истории. US1, US2, US3 независимы друг от друга после Phase 2.
