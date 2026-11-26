@@ -5,7 +5,7 @@
 @section('content')
     <main>
         @include('includes.elitvid.popup_application')
-        <section class="rd-hero rd-hero--catalog rd-hero--crumbs">
+        <section class="rd-hero rd-hero--catalog rd-hero--pots rd-hero--crumbs">
             <div class="rd-wrap">
                 <x-elitvid.breadcrumbs />
                 <h1>Вазоны и кашпо</h1>

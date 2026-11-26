@@ -477,6 +477,19 @@
     background: #1a1b20 url("images/hero.webp") center 40% / cover no-repeat;
 }
 
+/* тёмная часть картинок светлее фона страницы: края растворяются тенью цвета фона, иначе видна граница.
+   Тень, а не mask-image: маска создаёт слой, и блок с margin-bottom: -92px перекрывает заголовок ниже */
+.rd-page .rd-hero {
+    box-shadow: inset 0 -200px 140px -60px #1a1b20;
+}
+
+/* экран шире блока (1442px): ещё левый и правый край */
+@media (min-width: 1443px) {
+    .rd-page .rd-hero {
+        box-shadow: inset 0 -200px 140px -60px #1a1b20, inset 160px 0 120px -40px #1a1b20, inset -160px 0 120px -40px #1a1b20;
+    }
+}
+
 .rd-hero h1,
 .rd-page h2 {
     margin: 0;
@@ -530,6 +543,8 @@
     background-image: url("images/catalog-hero.webp");
 }
 
+.rd-page .rd-hero--pots { background-image: url("images/pots-hero.webp"); }
+
 /* картинка 478px уходит под карточки: в кадре карточки начинаются на 368px */
 .rd-page .rd-hero--blog {
     min-height: 478px;
@@ -546,6 +561,7 @@
 }
 
 .rd-page .rd-hero--round,
+.rd-page .rd-hero--square,
 .rd-page .rd-hero--benches,
 .rd-page .rd-hero--stones,
 .rd-page .rd-hero--lines,
@@ -557,6 +573,7 @@
 }
 
 .rd-page .rd-hero--round { background-image: url("images/round-pots-hero.webp"); }
+.rd-page .rd-hero--square { background-image: url("images/square-pots-hero.webp"); }
 .rd-page .rd-hero--benches { background-image: url("images/benches-hero.webp"); }
 .rd-page .rd-hero--stones { background-image: url("images/stones-hero.webp"); }
 .rd-page .rd-hero--lines { background-image: url("images/lines-hero.webp"); }
@@ -1566,6 +1583,7 @@
     }
 
     .rd-hero--round .rd-hero__photo { background-image: url("images/round-pots-hero.webp"); }
+    .rd-hero--square .rd-hero__photo { background-image: url("images/square-pots-hero.webp"); }
     .rd-hero--benches .rd-hero__photo { background-image: url("images/benches-hero.webp"); }
     .rd-hero--stones .rd-hero__photo { background-image: url("images/stones-hero.webp"); }
     .rd-hero--lines .rd-hero__photo { background-image: url("images/lines-hero.webp"); }
@@ -1589,6 +1607,7 @@
     .rd-hero--verona .rd-hero__photo { background-image: url("../newDesign/newDesign/imgs/benches/collections/verona/verona.webp"); }
 
     .rd-hero--round .rd-hero__photo,
+    .rd-hero--square .rd-hero__photo,
     .rd-hero--benches .rd-hero__photo,
     .rd-hero--stones .rd-hero__photo,
     .rd-hero--lines .rd-hero__photo,
@@ -1669,6 +1688,8 @@
         background-image: url("images/catalog-hero-mobile.webp");
         background-position: center;
     }
+
+    .rd-hero--pots .rd-hero__photo { background-image: url("images/pots-hero.webp"); }
 
     .rd-hero--blog .rd-hero__photo {
         background-image: url("images/blog-hero.webp");

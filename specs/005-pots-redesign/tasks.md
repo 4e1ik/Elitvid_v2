@@ -16,6 +16,8 @@
 - [x] T006 [US2] Выключить в админке ROUND COLOMN, BEVEL, BOCHKA; записать в список для прода
 - [ ] T007 [US2] Завести SPHERE, BEVEL CYLINDER, CAPSULE (ждёт фото, US3 сц. 5)
 - [ ] T008 [US2] Объединённая страница, классическое кашпо, дикий камень (ждёт FR-002, FR-005)
+- [x] T016 [US1] «Квадратные и прямоугольные кашпо» в новом виде, как «Круглые»: `elitvid/site/pots/square_rectangular_pots.blade.php`, фон `redesign/images/square-pots-hero.webp`, `redesign.css` (`?v=3.8`)
+- [x] T017 [US1] Фон первого экрана «Вазоны и кашпо» — свой (`image 96` → `redesign/images/pots-hero.webp`, класс `rd-hero--pots`), «Каталог» остаётся с `catalog-hero.webp`; `pots.blade.php`, `redesign.css` (`?v=3.12`)
 
 ## Phase 4: US3 — карточка (P3)
 
