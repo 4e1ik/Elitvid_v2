@@ -26,7 +26,7 @@
     <script defer src="{{asset('/elitvid_assets/newDesign/newDesign/js/popupSubmitApplication.js')}}?v=1.1"></script>
     {{--<script defer src="{{asset('/elitvid_assets/newDesign/newDesign/js/popupRequestCall.js')}}"></script>--}}
     <script defer src="{{asset('/elitvid_assets/newDesign/newDesign/js/burgerMenu.js')}}"></script>
-    <script defer src="{{asset('/elitvid_assets/newDesign/newDesign/js/imageUpdater.js')}}"></script>
+    <script defer src="{{asset('/elitvid_assets/newDesign/newDesign/js/imageUpdater.js')}}?v=2"></script>
     <script defer src="{{asset('/elitvid_assets/newDesign/newDesign/js/test.js')}}"></script>
     <script defer src="{{asset('/elitvid_assets/redesign/redesign.js')}}?v=1.5"></script>
 

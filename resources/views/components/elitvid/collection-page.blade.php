@@ -24,8 +24,8 @@
                     <x-elitvid.direction-card
                         class="rd-card--product"
                         :href="route($productRoute, ['collection' => $collection, 'slug' => $product->slug])"
-                        :image="$product->images->first() ? asset('storage/' . str_replace('public/', '', $product->images->first()->image)) : ''"
-                        :alt="$product->images->first()?->description_image ?? ''"
+                        :image="$product->mainImage() ? asset('storage/' . str_replace('public/', '', $product->mainImage()->image)) : ''"
+                        :alt="$product->mainImage()?->description_image ?? ''"
                         :label="$product->name" />
                 @endforeach
             </div>

@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Helpers\GenerateUniqueNameHelper;
 use App\Models\Image;
+use App\Repositories\ImageRepository;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
@@ -11,6 +12,10 @@ use Intervention\Image\ImageManager;
 
 class ImageService
 {
+    public function __construct(
+        public ImageRepository $imageRepository,
+    ) {}
+
     /**
      * Читает изображение, при необходимости используя Imagick (для HEIC и др., когда GD не поддерживает).
      */
@@ -87,7 +92,7 @@ class ImageService
 
                 $storagePath = 'public/' . $path;
 
-                $model->images()->create([
+                $created = $model->images()->create([
                     'image' => $storagePath,
                     'description_image' => $imageDataForFile['description_image'] ?? null,
                     'color' => $imageDataForFile['color'] ?? null,
@@ -95,6 +100,8 @@ class ImageService
                     'main_image' => $imageDataForFile['main_image'] ?? false,
                     'menu_image' => $imageDataForFile['menu_image'] ?? false,
                 ]);
+
+                $this->imageRepository->clearOtherProductMainImages($created);
             }
         });
     }
@@ -102,7 +109,10 @@ class ImageService
     public function update(Image $image, $data): bool
     {
         return DB::transaction(function () use ($image,$data) {
-            return $image->update($data);
+            $updated = $image->update($data);
+            $this->imageRepository->clearOtherProductMainImages($image);
+
+            return $updated;
         });
 
     }

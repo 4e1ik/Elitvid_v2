@@ -8,6 +8,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const imagesInput = document.getElementById('images');
     const imagePreviewContainer = document.getElementById('image-preview-container');
 
+    // Главная картинка одна: отметка снимает отметку с остальных превью
+    imagePreviewContainer?.addEventListener('change', (e) => {
+        if (e.target.matches('.main-image-checkbox') && e.target.checked) {
+            imagePreviewContainer.querySelectorAll('.main-image-checkbox').forEach(cb => { if (cb !== e.target) cb.checked = false; });
+        }
+    });
+
+
     // Обработка загрузки изображений
     const imageFiles = [];
     let imageIndex = 0;
@@ -58,6 +66,9 @@ document.addEventListener('DOMContentLoaded', () => {
                             <option value="blitz">Блиц</option>
                             <option value="wild">Дикий камень</option>
                         </select>
+                    </div>
+                    <div style="margin-bottom: 10px;">
+                        <label style="font-size: 13px; font-weight: 500;"><input type="checkbox" class="main-image-checkbox" name="image_data[${index}][main_image]" value="1"> Сделать главной</label>
                     </div>
                     <button type="button" class="btn btn-danger btn-sm remove-image" style="width: 100%;">
                         <span class="fa fa-trash"></span> Удалить

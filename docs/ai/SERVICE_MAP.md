@@ -37,6 +37,18 @@
 | Создание и правка | общий `Admin/ProductController`, тип товара `urn` |
 | Товар | `app/Models/Product.php` (`product_type = urn`), `app/Models/Urn.php` |
 
+## Главная картинка товара
+
+| Часть | Где |
+|---|---|
+| Правило | `Product::mainImage()`: `images.main_image = 1`, иначе картинка с наименьшим `id` |
+| Одна на товар | `App\Repositories\ImageRepository::clearOtherProductMainImages`, вызов из `ImageService::save` и `ImageService::update`; только `imageable_type = Product` |
+| Поля форм | `main_image` в `UpdateImageRequest` (`sometimes|boolean`, `PUT images.update`); `image_data[i][main_image]` в `products.store` / `products.update` |
+| Админка | `resources/views/includes/elitvid/admin/update_product.blade.php`, превью в `public/elitvid_assets/newDesign/newDesign/js/{create,update}_{pot,bench}_product.js` |
+| Витрина | `components/elitvid/collection-page.blade.php`, `site/urns.blade.php`, `site/pots/square_rectangular_pots.blade.php`, страницы товара (`#first_image` с `data-color`, `data-texture`) |
+| Переключатели | `public/elitvid_assets/newDesign/newDesign/js/imageUpdater.js` |
+| Данные | миграция `2026_11_26_000000_set_product_main_images`: пористая `ivory` — главная |
+
 ## Сборные клумбы
 
 | Часть | Где |

@@ -8,6 +8,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const imagesInput = document.getElementById('images');
     const imagePreviewContainer = document.getElementById('image-preview-container');
 
+    // Главная картинка одна: отметка снимает отметку с остальных превью
+    imagePreviewContainer?.addEventListener('change', (e) => {
+        if (e.target.matches('.main-image-checkbox') && e.target.checked) {
+            imagePreviewContainer.querySelectorAll('.main-image-checkbox').forEach(cb => { if (cb !== e.target) cb.checked = false; });
+        }
+    });
+
+
     // Обработка загрузки изображений
     const imageFiles = [];
     let imageIndex = 0;
@@ -30,6 +38,9 @@ document.addEventListener('DOMContentLoaded', () => {
                                 <label style="font-size: 13px; font-weight: 500; display: block; margin-bottom: 5px;">Описание</label>
                         <input type="text" class="form-control" name="image_data[${index}][description_image]" placeholder="Описание изображения">
                             </div>
+                            <div style="margin-bottom: 10px;">
+                        <label style="font-size: 13px; font-weight: 500;"><input type="checkbox" class="main-image-checkbox" name="image_data[${index}][main_image]" value="1"> Сделать главной</label>
+                    </div>
                             <button type="button" class="btn btn-danger btn-sm remove-image" style="width: 100%;">
                                 <span class="fa fa-trash"></span> Удалить
                             </button>
@@ -47,7 +58,8 @@ document.addEventListener('DOMContentLoaded', () => {
                             const file = imageFiles[itemIndex];
                             const fileKey = getFileKey(file);
                             savedData.set(fileKey, {
-                                description_image: item.querySelector('input[name*="description_image"]')?.value || ''
+                                description_image: item.querySelector('input[name*="description_image"]')?.value || '',
+                                main_image: item.querySelector('.main-image-checkbox')?.checked || false
                             });
                         }
                     });
@@ -82,7 +94,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     const file = imageFiles[index];
                     const fileKey = getFileKey(file);
                     savedDataMap.set(fileKey, {
-                        description_image: item.querySelector('input[name*="description_image"]')?.value || ''
+                        description_image: item.querySelector('input[name*="description_image"]')?.value || '',
+                        main_image: item.querySelector('.main-image-checkbox')?.checked || false
                     });
                                     }
                                 });
@@ -108,6 +121,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 const data = savedDataMap.get(fileKey);
                 const descInput = previewDiv.querySelector('input[name*="description_image"]');
                 if (descInput) descInput.value = data.description_image;
+                const mainCheckbox = previewDiv.querySelector('.main-image-checkbox');
+                if (mainCheckbox) mainCheckbox.checked = data.main_image;
             }
             
             imagePreviewContainer.appendChild(previewDiv);

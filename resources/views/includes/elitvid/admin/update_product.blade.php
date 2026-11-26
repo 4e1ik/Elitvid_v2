@@ -13,6 +13,7 @@
                         <div class="panel-body">
                             <h3 style="margin-bottom: 20px;">Существующие изображения</h3>
                             <div style="display: flex; flex-wrap: wrap; gap: 20px;">
+                                @php($mainImageId = $product->mainImage()?->id)
                                 @foreach($product->images as $image)
                                     <div class="col-md-3" style="padding: 15px; border: 1px solid #ddd; border-radius: 5px; background: #fafafa; margin-bottom: 20px;">
                                         <div style="margin-bottom: 10px;">
@@ -58,6 +59,13 @@
                                                     </select>
                                                 </div>
                                             @endif
+                                            <div style="margin-bottom: 10px;">
+                                                <input type="hidden" name="main_image" value="0">
+                                                <label style="font-size: 13px; font-weight: 500;">
+                                                    <input type="checkbox" name="main_image" value="1" {{ $mainImageId === $image->id ? 'checked' : '' }}>
+                                                    Сделать главной
+                                                </label>
+                                            </div>
                                             <div style="margin-bottom: 10px;">
                                                 <button type="submit" class="btn btn-primary btn-sm" style="width: 100%;">
                                                     <span class="fa fa-save"></span> Сохранить изменения
@@ -267,5 +275,5 @@
             }
         });
     </script>
-    <script src="{{asset('/elitvid_assets/newDesign/newDesign/js/update_' . ($productType === 'urn' ? 'pot' : $productType) . '_product.js')}}"></script>
+    <script src="{{asset('/elitvid_assets/newDesign/newDesign/js/update_' . ($productType === 'urn' ? 'pot' : $productType) . '_product.js')}}?v=2"></script>
 @endsection

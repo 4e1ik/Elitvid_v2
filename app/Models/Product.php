@@ -41,4 +41,10 @@ class Product extends Model
     {
         return $this->morphMany(Image::class, 'imageable');
     }
+
+    // Отмеченная главной, иначе загруженная первой.
+    public function mainImage(): ?Image
+    {
+        return $this->images->firstWhere('main_image', true) ?? $this->images->sortBy('id')->first();
+    }
 }

@@ -2,8 +2,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // const image = document.getElementById('image');
     const firstImage = document.getElementById('first_image'); //Картинка которая отображается везде
 
-    let currentTexture = 'marble';
-    let currentColor = 'ivory';
+    // Начальный выбор — цвет и текстура главной картинки, если заданы
+    let currentTexture = firstImage?.dataset.texture || 'marble';
+    let currentColor = firstImage?.dataset.color || 'ivory';
 
     const textures = document.querySelectorAll('.images_textures__images div');
     const colors = document.querySelectorAll('.images_colors__images div');

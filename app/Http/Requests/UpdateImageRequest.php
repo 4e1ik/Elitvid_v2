@@ -25,6 +25,7 @@ class UpdateImageRequest extends FormRequest
             'description_image' => 'nullable|string|max:5000',
             'color' => 'nullable|string|max:255',
             'texture' => 'nullable|string|max:255',
+            'main_image' => 'sometimes|boolean',
         ];
     }
 
@@ -42,6 +43,7 @@ class UpdateImageRequest extends FormRequest
             'color.max' => 'Цвет не должен превышать :max символов.',
             'texture.string' => 'Текстура должна быть строкой.',
             'texture.max' => 'Текстура не должна превышать :max символов.',
+            'main_image.boolean' => 'Признак главной картинки должен быть да или нет.',
         ];
     }
 }

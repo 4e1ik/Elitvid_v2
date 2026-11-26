@@ -99,9 +99,9 @@
                     </div>
                     <div id="product-images" class="content_images__main-image">
                         @php
-                            $firstImage = $product->images->first(fn ($image) => in_array($image->texture, ['porous', 'marble'], true) && in_array($image->color, ['grey', 'graphite', 'black', 'white', 'ivory', 'sand', 'orange', 'bronze'], true)) ?? $product->images->first();
+                            $firstImage = $product->mainImage();
                         @endphp
-                        <img id="first_image"
+                        <img id="first_image" data-color="{{ $firstImage->color }}" data-texture="{{ $firstImage->texture }}"
                             src="{{ asset('storage/' . str_replace('public/', '', $firstImage->image)) }}"
                             alt="{{ $firstImage->description_image ?? '' }}" loading="lazy">
                         @foreach ($product->images as $image)
@@ -298,8 +298,8 @@
                                         'slug' => $rand_product->slug,
                                     ]) }}"
                                         class="direction__link">
-                                        <img src="{{ asset('storage/' . str_replace('public/', '', $rand_product->images->first()->image)) }}"
-                                            alt="{{ $rand_product->images->first()?->description_image ?? '' }}"
+                                        <img src="{{ asset('storage/' . str_replace('public/', '', $rand_product->mainImage()->image)) }}"
+                                            alt="{{ $rand_product->mainImage()?->description_image ?? '' }}"
                                             loading="lazy">
                                         <button type="button">{{ $rand_product->name }}</button>
                                     </a>

@@ -39,8 +39,8 @@
                     <div class="direction">
                         <a href="{{ route('show_pot_product', ['collection' => 'kvadratnye-i-pryamougolnye', 'slug' => $product->slug]) }}"
                             class="direction__link">
-                            <img src="{{ asset('storage/' . str_replace('public/', '', $product->images->first()->image)) }}"
-                                alt="{{ $product->images->first()?->description_image ?? '' }}" loading="lazy">
+                            <img src="{{ asset('storage/' . str_replace('public/', '', $product->mainImage()->image)) }}"
+                                alt="{{ $product->mainImage()?->description_image ?? '' }}" loading="lazy">
                             <button type="button">{{ $product->name }}</button>
                         </a>
                     </div>
